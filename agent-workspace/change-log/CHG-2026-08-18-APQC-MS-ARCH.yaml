@@ -1,36 +1,45 @@
-change_id: CHG-2026-08-18-APQC-MS-ARCH
-actor: ChatGPT
-mandate: User-authorised ADAPT and REPEAT of current microservice architecture against GitHub and authoritative Catalyst references
+change_id: CHG-20260818-APQC-MS-ARCH
+timestamp_utc: '2026-08-18T19:22:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved reconciliation of PR #9 against the adopted Enterprise Microservice Register and current main.'
 task_class: T2
-authority: Group CEO instruction in active conversation
+change_type: governance
+summary: Reconcile APQC-spine microservice architecture references with the adopted Service Domain boundary rule and current GitHub/Catalyst authority model.
+reason: Preserve APQC as the enterprise process spine without allowing APQC hierarchy levels to become automatic deployable microservice boundaries, and retain only net-new architecture and engineering-handover content from PR #9.
 affected_paths:
+  - agent-workspace/evidence/EV-2026-08-18-APQC-MS-REPEAT.yaml
+  - agent-workspace/evidence/EV-2026-08-18-GOVCOMP-CATALOGUE.yaml
+  - agent-workspace/governance/ADOPT-IFRS-SARS-GOVCOMP-2026-08-18.yaml
+  - agent-workspace/governance/CAT-GOVCOMP-MS-001.yaml
   - agent-workspace/governance/STD-CAT-MS-SPEC-001.yaml
+  - agent-workspace/governance/accounting-governance-microservice.yaml
   - agent-workspace/governance/application-boundaries.yaml
   - agent-workspace/governance/catalyst-runtime-baseline.yaml
-  - agent-workspace/schemas/microservice.schema.json
+  - agent-workspace/microservices/MS-GC-TAX-001-testplan.yaml
+  - agent-workspace/microservices/MS-GC-TAX-001.yaml
+  - agent-workspace/microservices/MS-GC-TAX-001/contracts/atomic-tax-rule.schema.json
+  - agent-workspace/microservices/MS-GC-TAX-001/contracts/business-event-tax-context.schema.json
+  - agent-workspace/microservices/MS-GC-TAX-001/contracts/tax-obligation-decision.schema.json
   - agent-workspace/schemas/enterprise-handover.schema.json
-  - agent-workspace/evidence/EV-2026-08-18-APQC-MS-REPEAT.yaml
-intended_outcome: Align governed engineering references to APQC-spine microservice architecture and Zoho CRM, Books, WorkDrive and Catalyst authority boundaries without overriding existing approved domain authorities.
+  - agent-workspace/schemas/microservice.schema.json
+  - functions/ms_gc_tax_001/catalyst-config.json
+  - functions/ms_gc_tax_001/index.js
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
 pdca:
-  mandate: complete
-  plan: complete
-  authorisation: complete
-  do: complete
-  evidence: complete
-  check_study: partial_pass_open_conditions
-  act: ADAPT
-  record: complete
-  close: false
-check_study_summary:
-  - APQC process spine is compatible with current Catalyst reference model when sector/domain semantic authorities are preserved.
-  - Current approved Stratus repository authority conflicts with immediate WorkDrive authority; controlled migration is required.
-  - Existing Catalyst gl_* tables require authority classification before Zoho Books can be adopted as sole accounting master.
-  - Enterprise handover extension is compatible with existing agent handoff pattern.
-open_conditions:
-  - classify Catalyst gl_* accounting tables
-  - design repository-authority migration from Stratus to WorkDrive
-  - update authoritative Catalyst architecture/repository records only after valid ACT approval
-controls:
-  do_complete_is_task_complete: false
-  production_mutation: false
-  secrets_written: false
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PASS_WITH_RECONCILIATION_ACTIONS
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'Adopted POL-ARCH-MICROSVC-APQC-001 on main defines Service Domain as the candidate microservice boundary and APQC L3-L5 as decomposition/assurance.'
+  - 'PR #9 originally defined APQC Level 3 as the default candidate business microservice boundary; STD-CAT-MS-SPEC-001 v0.4 reconciles this conflict.'
+  - 'PR #9 contains net-new application authority boundaries, Catalyst runtime baseline, enterprise handover schema, Governance & Compliance catalogue, tax-service candidate and related contracts/tests.'
+  - 'GitHub authority reconciliation adopted: GitHub is architecture authority; Catalyst is structured runtime/reference authority where applicable.'
+  - 'No production mutation is authorised by this reconciliation.'
+notes: 'PR remains open pending validation, duplicate/regression assessment of net-new artifacts, and explicit final ACT decision before merge.'
