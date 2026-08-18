@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:kongoni:ms-gc-tax-001:AtomicTaxRule:1.0",
+  "title":"AtomicTaxRule",
+  "type":"object",
+  "required":["rule_id","authority_class","authority_source","effective_from","status","inputs","condition","outcome"],
+  "properties":{
+    "rule_id":{"type":"string"},
+    "authority_class":{"enum":["PRIMARY_LEGISLATION","SECONDARY_LEGISLATION","BINDING_RULING_OR_JUDGMENT","OFFICIAL_TECHNICAL_SPECIFICATION","OFFICIAL_GUIDANCE"]},
+    "authority_source":{"type":"string"},
+    "source_ref":{"type":"string"},
+    "effective_from":{"type":"string","format":"date"},
+    "effective_to":{"type":["string","null"],"format":"date"},
+    "status":{"enum":["DRAFT","VERIFIED","APPROVED","SUPERSEDED","WITHDRAWN"]},
+    "inputs":{"type":"array","items":{"type":"string"}},
+    "condition":{"type":"object","description":"Declarative predicate only. Executable interpreter is separately governed.","additionalProperties":true},
+    "outcome":{"type":"object","additionalProperties":true},
+    "legal_verification_ref":{"type":["string","null"]},
+    "supersedes":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}
