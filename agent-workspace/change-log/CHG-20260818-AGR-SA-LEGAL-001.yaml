@@ -4,12 +4,12 @@ actor:
   type: ChatGPT
   name: ChatGPT Agreement Codification Agent
   agent_contract_ref: null
-mandate_ref: "Group CEO instruction: proceed to AGR-XWALK-011 — 2026-08-18"
+mandate_ref: "Group CEO ACT decision ADAPT for AGR-XWALK-011 — 2026-08-18"
 accountability_task_ref: WRK-AGR-SA-LEGAL-20260818
 task_class: T2
 change_type: governance
-summary: "Completed AGR-XWALK-011 statutory clause-architecture validation for the three VALIDATING Agreement Templates and moved the work item to ACT pending."
-reason: "Establish section-level South African legal-source bindings and transaction applicability gates without promoting structural templates to transaction use."
+summary: "Completed AGR-XWALK-011 statutory clause-architecture validation and recorded Group CEO ACT=ADAPT, preserving the validated legal-source architecture while opening transaction applicability, operative-clause and collateral-specific downstream gates."
+reason: "Move from statutory architecture validation to transaction-specific legal applicability and approved operative South African clause content without prematurely promoting templates."
 affected_paths:
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/plan.yaml
@@ -18,22 +18,24 @@ affected_paths:
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/clause-source-binding-v0.2.yaml
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/evidence/EVD-AGR-SA-LEGAL-001.json
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/outcome.yaml
+  - agent-workspace/work/WRK-AGR-LEGAL-APPLICABILITY-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/mandate.yaml
 environment: repository
 authority:
   status: AUTHORISED
-  reference: "Group CEO instruction: proceed to AGR-XWALK-011 — 2026-08-18"
+  reference: "Group CEO ACT decision ADAPT — 2026-08-18"
 pdca:
-  phase: CHECK_STUDY
+  phase: CLOSE_REPLAN
   do_complete: true
   check_study_result: PASS_ON_STATUTORY_CLAUSE_ARCHITECTURE_WITH_CONTROLLED_GAPS
-  act_decision: null
-  task_complete: false
+  act_decision: ADAPT
+  task_complete: true
 evidence:
   - EVD-AGR-SA-LEGAL-001
 commit_sha: null
 pull_request: 10
 notes: >-
-  NCA section 4/6 applicability, Companies Act sections 44/45 and 50-53, ECTA, FIC Item 11,
-  STT and Competition Act merger-control gates are now bound to the relevant template profiles.
-  Approved operative clause text, collateral-specific common-law validation and a bound transaction canary
-  remain outstanding. Recommended ACT is ADAPT. No Agreement Template is promoted.
+  NCA, Companies Act, ECTA, FIC, STT and Competition Act controls remain the preserved statutory source-binding layer.
+  Downstream gates AGR-XWALK-011-A/B/C are now the controlled path to transaction applicability, approved operative
+  South African clause wording, and collateral-specific common-law validation. No Agreement Template is promoted.
