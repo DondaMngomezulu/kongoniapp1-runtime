@@ -1,0 +1,93 @@
+service_specification:
+  id: SRV-XXXX-001
+  version: '0.1'
+  status: DRAFT
+  name: null
+  purpose: null
+  business_owner: null
+  value_stream_id: null
+  mandate_ref: null
+  task_class: T2
+
+semantic_source:
+  type: BIAN
+  framework_version: null
+  service_domain: null
+  control_record: null
+  behaviour_qualifiers: []
+  service_operations: []
+  source_ref: null
+
+runtime:
+  platform: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+  runtime_type: AppSail
+  language: Python
+  language_decision_reason: null
+
+service_contract:
+  base_path: null
+  version: v1
+  operations: []
+  authentication: null
+  authorisation: null
+  idempotency: null
+  timeout: null
+  retry: null
+  correlation_id_required: true
+  error_contract_ref: null
+
+data:
+  primary_resource: null
+  datastore_objects: []
+  external_systems_of_record: []
+  retention_rule_ref: null
+
+integration:
+  api_gateway_required: true
+  routes: []
+  catalyst_connections: []
+  signals: []
+  circuits: []
+  scheduled_jobs: []
+
+security:
+  least_privilege: true
+  execution_authority_ref: null
+  secrets_in_source_allowed: false
+
+audit:
+  system_write_control: CTL-SYS-WRITE-AUDIT-001
+  repository_change_control: CTL-DEV-CHG-LOG-001
+  native_transaction_refs_required_when_available: true
+
+testing:
+  schema_validation: REQUIRED
+  unit: REQUIRED
+  contract: REQUIRED
+  authentication: REQUIRED_WHEN_APPLICABLE
+  authorisation: REQUIRED
+  idempotency: REQUIRED_FOR_WRITES
+  negative_input: REQUIRED
+  data_integrity: REQUIRED
+  integration: REQUIRED
+  audit_event: REQUIRED_FOR_WRITES
+  health_check: REQUIRED
+  regression: REQUIRED
+  smoke: REQUIRED_FOR_DEPLOYMENT
+  recovery: REQUIRED_FOR_MATERIAL_CHANGE
+
+deployment:
+  source_repository: DondaMngomezulu/kongoniapp1-runtime
+  development_deployment_ref: null
+  production_authority_ref: null
+  production_deployment_ref: null
+
+pdca:
+  phase: PLAN
+  do_complete: false
+  check_study_result: null
+  regression_result: null
+  act_decision: null
+  task_complete: false
