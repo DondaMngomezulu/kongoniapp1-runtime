@@ -1,0 +1,183 @@
+service_specification:
+  id: SRV-VS00-MSG-TPL-001
+  version: "0.1.0"
+  status: CONTROLLED_CANDIDATE
+  service_name: Governed Message Template Resolution Service
+  microservice_id: MS-VS00-MESSAGE-TEMPLATE-001
+  value_stream_id: VS00
+  value_stream_name: Enterprise Shared Governance
+  task_class: T2
+  owner: Chief of Accountability
+  approval_authority: Group CEO
+  document_controller: Jane Seaward
+  methodology: MET-PDCA-001
+  closure_rule: "DO_COMPLETE != TASK_COMPLETE"
+
+semantic_source:
+  primary_catalogue: CAT-MSG-001
+  business_profile_catalogue: CAT-BMP-001
+  runtime_control: CTL-COM-MSG-RUNTIME-001
+  template_use_control: CTL-COM-MSG-TPL-001
+  logical_register: REG-MSG-TPL-001
+  physical_register:
+    platform: Zoho Catalyst Data Store
+    table: TemplateGovernanceRegister
+    table_id: "86824000000184034"
+  invariants:
+    - CAT-MSG-001 owns canonical message intent, class, name and definition.
+    - REG-MSG-TPL-001 owns controlled implementation version, release state, renderer binding and conformance evidence.
+    - The physical register SHALL NOT become an independent semantic authority for canonical message intent.
+    - Channel and rendering profile SHALL NOT redefine canonical message intent.
+    - No released implementation means fail closed with MESSAGE_TEMPLATE_GAP.
+
+runtime:
+  platform: Zoho Catalyst AppSail
+  project: Kongoniapp1
+  project_id: "86824000000020001"
+  environment: Development
+  stack: node20
+  framework: Express
+  implementation_path: appsail/kongoni_message_template_governance
+  language_decision:
+    selected: Node.js
+    reason: Existing Kongoniapp1 AppSail services use Node 20 and the Catalyst Node SDK; reuse reduces runtime and deployment drift for this service.
+
+service_contract:
+  base_path: /v1/message-templates
+  operations:
+    - operation_id: health
+      method: GET
+      path: /health
+      side_effect: NONE
+    - operation_id: get_implementations
+      method: GET
+      path: /implementations/:templateId
+      side_effect: NONE
+    - operation_id: resolve_implementation
+      method: POST
+      path: /resolve
+      side_effect: NONE
+      required_input:
+        - business_event_id
+        - value_stream_id
+        - cat_msg_template_id
+        - channel_profile
+        - rendering_profile
+        - mandate_id
+        - agent_id
+      output:
+        - cat_msg_template_id
+        - implementation_id
+        - implementation_version
+        - implementation_status
+        - channel_profile
+        - rendering_profile
+        - authority
+        - conformance_status
+        - conformance_evidence_ref
+        - owning_value_stream_id
+        - provenance
+  excluded_operations:
+    - render_message
+    - send_message
+    - change_canonical_intent
+    - approve_template
+    - release_template
+
+data:
+  datastore_table: TemplateGovernanceRegister
+  logical_profile:
+    entry_type: MessageTemplateImplementation
+    key_field: EntryID
+    canonical_template_fk: TemplateID
+    implementation_version: TemplateVersion
+    implementation_status: Status
+    channel_renderer_binding: ApplicationScope
+    authority: Authority
+    effective_from: EffectiveDate
+    conformance_status: ConformanceStatus
+    conformance_evidence: ConformanceEvidenceRef
+    owning_value_stream: OwningValueStreamID
+  lifecycle_separation:
+    canonical_field: Canonical_Template_Status
+    canonical_source: CAT-MSG-001
+    implementation_field: Implementation_Status
+    implementation_source: REG-MSG-TPL-001 logical profile
+
+integration:
+  upstream:
+    - CAT-BMP-001
+    - CAT-MSG-001
+  downstream:
+    - channel profile resolver
+    - rendering profile resolver
+    - authority gate
+    - communication renderer
+    - communication sender/display adapter
+    - evidence recorder
+  runtime_sequence:
+    - BUSINESS_EVENT
+    - VALUE_STREAM
+    - SCENARIO
+    - CAT_BMP_001_PROFILE
+    - CAT_MSG_001_TEMPLATE
+    - REG_MSG_TPL_001_IMPLEMENTATION
+    - CHANNEL_PROFILE
+    - POPULATE_GOVERNED_DATA
+    - VALIDATE
+    - AUTHORITY_GATE
+    - RENDER
+    - SEND_OR_DISPLAY
+    - EVIDENCE_RECORD
+
+security:
+  read_scope: authenticated enterprise runtime
+  write_scope: OUT_OF_SCOPE_FOR_THIS_SERVICE
+  fail_closed: true
+  prohibited:
+    - credentials in source
+    - ungoverned fallback template
+    - inferred authority
+    - silent REQUEST-to-DIRECT conversion
+
+audit:
+  required_context:
+    - Agent_ID
+    - Mandate_ID
+    - Business_Event_ID
+    - Value_Stream
+    - CAT_MSG_Template_ID
+    - Implementation_ID
+    - Implementation_Version
+    - Channel_Profile
+    - Rendering_Profile
+    - Correlation_ID
+  current_evidence_mode: structured runtime logs plus caller evidence record
+  target_evidence_mode: CTL-SYS-WRITE-AUDIT-001 compliant evidence record
+
+testing:
+  mandatory:
+    - health endpoint
+    - exact canonical Template ID validation
+    - active implementation resolution
+    - channel mismatch fail-closed
+    - rendering-profile mismatch fail-closed
+    - superseded implementation excluded
+    - no implementation returns MESSAGE_TEMPLATE_GAP
+    - forward trace CAT-BMP -> CAT-MSG -> implementation
+    - backward trace evidence -> implementation -> CAT-MSG
+    - authority fields are returned but never elevated
+
+deployment:
+  development_only_until_act: true
+  production_requires_separate_authorisation: true
+  merge_requires_green_checks: true
+  required_checks:
+    - Agent Workspace Validation
+    - KongoniApp Change Log Control
+
+pdca:
+  stage: DO
+  do_complete: false
+  task_complete: false
+  act_decision: null
