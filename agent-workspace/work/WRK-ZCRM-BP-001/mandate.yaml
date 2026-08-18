@@ -7,9 +7,9 @@ owner: Group CEO
 governance_coordinator: Reandra
 assigned_to: Claude Agent
 architecture:
-  id: BP-BIAN-AGR-001
-  version: draft
-  hash: bfc9fa731498533e52e863cd26107058b63034333d0ccab0ed773132dfa3f8a6
+  id: KEA-MOD-HS-001
+  version: '0.1'
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
 environment:
   platform: Zoho CRM
   project: Kongoni CRM
