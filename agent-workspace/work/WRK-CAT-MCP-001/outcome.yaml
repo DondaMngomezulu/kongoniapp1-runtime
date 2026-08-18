@@ -1,0 +1,14 @@
+work_id: WRK-CAT-MCP-001
+check_study:
+  status: PENDING
+  checker: ChatGPT
+  evidence_reviewed: []
+  regression_assessment: PENDING
+act:
+  decision: null
+  rationale: null
+record:
+  catalyst_updated: false
+close:
+  task_complete: false
+  reason: Runtime deployment and verification are pending.
