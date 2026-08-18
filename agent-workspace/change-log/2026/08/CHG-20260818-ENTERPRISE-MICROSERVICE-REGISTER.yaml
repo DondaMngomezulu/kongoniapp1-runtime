@@ -1,0 +1,30 @@
+change_id: CHG-20260818-ENTERPRISE-MICROSERVICE-REGISTER
+timestamp_utc: '2026-08-18T17:35:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'Group CEO approved creation of an architectural Microservice Register covering all Value Stream Service Domains with sufficient information for engineering handover.'
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Create REG-ARCH-MICROSVC-001 schema and initial enterprise candidate register for VS00-VS06.
+reason: Establish one governed architecture register that links Value Streams and Service Domains to engineering-ready microservice specifications and Catalyst implementation status.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/schema.yaml
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/register.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Register schema created. Initial register populated from live approved BIAN Operating Lease Service Domain adoption records. Explicit coverage gaps recorded where VS00-VS06 source catalogues are not yet normalized into governed Service Domain structures.'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Live Catalyst BIANServiceDomainAdoption records: 26 approved Operating Lease domains.'
+  - 'Live Catalyst tables confirm MIMOSA CCOM schema objects exist but are not normalized as Service Domains.'
+  - 'REG-ARCH-MICROSVC-001 schema includes architecture-completeness and engineering handover gates.'
+notes: 'Proposed Value Stream mappings are explicitly marked PROPOSED_MAPPING except the existing Leasing specification mapping. No missing Service Domains were invented.'

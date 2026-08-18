@@ -1,0 +1,99 @@
+policy_id: POL-ARCH-MICROSVC-APQC-001
+version: '0.1'
+status: DRAFT
+applies_to: REG-ARCH-MICROSVC-001
+owner_skill: SKL-GH-MICROSVC-ARCH-001
+purpose: >-
+  Define how APQC Process Classification Framework content is used to refine and assure
+  Value Stream Service Domains and microservice engineering handovers.
+
+source_authority:
+  cross_industry:
+    framework: APQC Process Classification Framework
+    current_version_checked: '8.0'
+    role: enterprise_common_process_baseline
+  industry_specific:
+    role: preferred_sector_process_decomposition_when_applicable
+    rule: Use the most applicable current APQC industry-specific PCF and retain its exact version in each mapping.
+
+canonical_mapping:
+  value_stream: business ownership boundary
+  service_domain: candidate microservice boundary
+  apqc_level_3: process-scope validation and major process decomposition
+  apqc_level_4: process decomposition and operation-group candidate
+  apqc_level_5: task/activity decomposition and candidate application command or workflow step
+  service_operation: executable business operation candidate
+  service_specification: engineering handover contract
+
+boundary_rule: >-
+  APQC L3, L4, and L5 elements SHALL be used to test completeness, cohesion, process ownership,
+  and operation coverage of a Service Domain. They SHALL NOT be converted automatically into
+  independent microservices. A separate microservice requires an independent architecture reason
+  such as ownership, scaling, security, failure isolation, data sovereignty, or deployment autonomy.
+
+handover_requirement:
+  applicable_mapping_required: true
+  required_levels: [3, 4, 5]
+  required_metadata:
+    - apqc_profile
+    - apqc_profile_version
+    - apqc_process_id
+    - apqc_process_title
+    - apqc_level
+    - mapping_type
+    - mapping_rationale
+    - verification_status
+  allowed_mapping_types:
+    - EXACT
+    - PARTIAL
+    - SUPPORTING
+    - CROSS_CUTTING
+    - NOT_APPLICABLE
+  failure_action: BLOCK_ENGINEERING_HANDOVER
+
+sector_selection:
+  rules:
+    - Prefer a direct industry-specific APQC PCF when the Value Stream activity falls within that sector.
+    - Use more than one industry-specific profile only when the service genuinely spans sectors; record one primary profile and all secondary mappings.
+    - Use Cross-Industry PCF for shared enterprise processes and to close gaps not covered by the sector profile.
+    - Do not claim a sector-specific mapping when APQC does not publish a suitable sector profile.
+  initial_candidates:
+    VS00:
+      primary: Cross-Industry
+      rationale: Shared enterprise processes are normally sector-neutral.
+    VS01:
+      primary: Cross-Industry
+      secondary_candidates: [Automotive]
+      status: REQUIRES_DOMAIN_BY_DOMAIN_TEST
+    VS02:
+      primary: Banking
+      secondary_candidates: [Cross-Industry]
+      status: REQUIRES_DOMAIN_BY_DOMAIN_TEST
+    VS03:
+      primary_candidates: [Property and Casualty Insurance, Banking]
+      secondary_candidates: [Cross-Industry]
+      status: REQUIRES_DOMAIN_BY_DOMAIN_TEST
+    VS04:
+      primary: Cross-Industry
+      secondary_candidates: [Automotive, Aerospace and Defense, Upstream Petroleum]
+      status: REQUIRES_DOMAIN_BY_DOMAIN_TEST
+      note: MIMOSA remains the asset-lifecycle information-model source; APQC provides process decomposition only.
+    VS05:
+      primary: Banking
+      secondary_candidates: [Cross-Industry]
+      status: REQUIRES_DOMAIN_BY_DOMAIN_TEST
+    VS06:
+      primary: Cross-Industry
+      secondary_candidates: [Upstream Petroleum]
+      status: SECTOR_PROFILE_GAP
+      note: APQC does not currently publish a mining-specific PCF in its industry-specific catalogue. GMG remains the mining-domain reference; APQC is used only where process mapping is supportable.
+
+assurance_tests:
+  - Each Service Domain has an APQC applicability decision.
+  - Each applicable Service Domain maps to L3, L4 and L5 elements or records a justified decomposition gap.
+  - No APQC L3-L5 element is treated as a microservice solely because of its hierarchy level.
+  - Each service operation traces to at least one business activity where applicable.
+  - Duplicate process coverage across microservices is identified and resolved.
+  - Cross-Value-Stream APQC mappings retain one accountable owner.
+  - Sector-specific and cross-industry mappings do not silently conflict.
+  - Source profile and version are retained for regression when APQC publishes a new release.

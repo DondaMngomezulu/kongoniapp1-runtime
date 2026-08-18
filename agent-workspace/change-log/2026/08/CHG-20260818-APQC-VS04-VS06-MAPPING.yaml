@@ -1,0 +1,28 @@
+change_id: CHG-20260818-APQC-VS04-VS06-MAPPING
+timestamp_utc: '2026-08-18T17:52:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved exact APQC L3-L5 mapping and boundary regression for VS04 and VS06.'
+task_class: T2
+change_type: governance
+summary: Add APQC L3-L5 mapping assurance for VS04 and VS06 microservice Service Domains.
+reason: Provide process-decomposition traceability for engineering handover without converting APQC process elements directly into microservices.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/apqc-mappings/VS04-VS06.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO approval in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'VS04 exact Cross-Industry 8.0 asset-maintenance mappings added where verified. VS06 supporting Cross-Industry 8.0 mappings added. Exact Upstream Petroleum 7.2.2 L3-L5 mapping remains blocked because the full sector hierarchy is not ingested into the governed APQC catalogue.'
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'Catalyst APQC_ProcessElementReference contains governed Cross-Industry 8.0 references including 10.3.2.7 / 19252.'
+  - 'Catalyst CapabilityAPQCCrosswalk records VS06 as GMG_PRIMARY_APQC_SUPPORTING_ONLY and VS04 as MIMOSA-primary with APQC supporting references.'
+  - 'Official APQC public material confirms Upstream Petroleum PCF 7.2.2 and its NAICS 21 alignment, but full hierarchy access requires controlled source acquisition.'
+  - 'Official APQC public measure scopes confirm Cross-Industry 8.0 process hierarchy for asset maintenance and production operations used in this mapping.'
+notes: 'No APQC sector-specific process identifier has been invented. VS06 sector mapping remains an explicit source-ingestion gap.'

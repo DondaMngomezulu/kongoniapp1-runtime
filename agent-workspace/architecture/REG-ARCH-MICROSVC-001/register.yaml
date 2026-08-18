@@ -1,0 +1,1045 @@
+artifact_id: REG-ARCH-MICROSVC-001
+version: '0.1'
+status: DRAFT
+owner_skill: SKL-GH-MICROSVC-ARCH-001
+engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+scope: VS00-VS06
+source_snapshot_date: '2026-08-18'
+
+entries:
+  - microservice_id: MS-VS01-PRODUCT-DESIGN-001
+    microservice_name: Product Design Service
+    value_stream_id: VS01
+    value_stream_name: Asset Provision & Access
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Product Design
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:product-design
+    service_boundary: Manage the specification lifecycle for approved asset-finance products before publication.
+    canonical_business_object: ProductorServiceSpecification
+    service_owner: VS01
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Create, Retrieve, FunctionalRequirements, Testing, Production]
+    api_intent: Govern product-design operations and approved specification state.
+    data_ownership: Product design repository and approved CRM product configuration references.
+    dependencies: [Product Directory]
+    security_class: CONTROLLED_INTERNAL
+    nonfunctional_requirements: [auditability, versioning, traceability, idempotent writes]
+    acceptance_criteria: [approved specification can be created, retrieved, tested, and published without bypassing governance]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS01-PRODUCT-DIRECTORY-001
+    microservice_name: Product Directory Service
+    value_stream_id: VS01
+    value_stream_name: Asset Provision & Access
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Product Directory
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:product-directory
+    service_boundary: Publish approved products, variants, and commercial terms.
+    canonical_business_object: ProductDirectoryEntry
+    service_owner: VS01
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Register, Retrieve, Operations, Production, SalesandMarketing, Servicing]
+    api_intent: Provide governed product-directory access to CRM and downstream services.
+    data_ownership: Zoho CRM product directory with governed architecture references.
+    dependencies: [Product Design]
+    security_class: CONTROLLED_INTERNAL
+    nonfunctional_requirements: [availability, traceability, versioning]
+    acceptance_criteria: [only approved products are published]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS00-PARTY-REF-001
+    microservice_name: Party Reference Data Service
+    value_stream_id: VS00
+    value_stream_name: Enterprise Shared Content
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Party Reference Data Directory
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:party-reference-data-directory
+    service_boundary: Maintain shared party and counterparty reference data used across Value Streams.
+    canonical_business_object: PartyReferenceDataDirectoryEntry
+    service_owner: VS00
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Register, Retrieve, Update, Associations, Demographics, BankRelations]
+    api_intent: Provide governed shared party-reference access.
+    data_ownership: Canonical enterprise party reference with CRM and external-registry references.
+    dependencies: []
+    security_class: RESTRICTED_REFERENCE_DATA
+    nonfunctional_requirements: [identity integrity, auditability, privacy, traceability]
+    acceptance_criteria: [party identity is unique and traceable to authoritative evidence]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS00-LEGAL-ENTITY-001
+    microservice_name: Legal Entity Directory Service
+    value_stream_id: VS00
+    value_stream_name: Enterprise Shared Content
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Legal Entity Directory
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:legal-entity-directory
+    service_boundary: Maintain canonical legal-entity identity and relationships for shared enterprise use.
+    canonical_business_object: LegalEntityDirectoryEntry
+    service_owner: VS00
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Register, Retrieve, Update, Profile, Associations, Reference]
+    api_intent: Provide governed legal-entity reference access.
+    data_ownership: Canonical enterprise entity register with statutory-registry evidence.
+    dependencies: []
+    security_class: CONTROLLED_REFERENCE_DATA
+    nonfunctional_requirements: [uniqueness, provenance, auditability]
+    acceptance_criteria: [each legal entity resolves to one canonical enterprise identity]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-LEAD-OPPORTUNITY-001
+    microservice_name: Lead and Opportunity Management Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Lead and Opportunity Management
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:lead-and-opportunity-management
+    service_boundary: Manage finance-origination leads and opportunities up to formal offer.
+    canonical_business_object: LeadandOpportunityProcedure
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Update, Development]
+    api_intent: Support governed origination progression and handover to Customer Offer.
+    data_ownership: Zoho CRM
+    dependencies: [Customer Product and Service Eligibility, Customer Offer]
+    security_class: CONFIDENTIAL_CUSTOMER
+    nonfunctional_requirements: [auditability, CRM interoperability, correlation]
+    acceptance_criteria: [opportunity progression is traceable and cannot bypass required gates]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-ELIGIBILITY-001
+    microservice_name: Customer Eligibility Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Customer Product and Service Eligibility
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:customer-product-and-service-eligibility
+    service_boundary: Determine product eligibility without replacing credit rating or underwriting.
+    canonical_business_object: CustomerEligibilityAssessment
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Evaluate, Retrieve, EligibilityCheck, NextBest]
+    api_intent: Provide deterministic eligibility decisions to origination services.
+    data_ownership: Zoho CRM and governed eligibility rules
+    dependencies: [Product Directory, Customer Credit Rating]
+    security_class: CONFIDENTIAL_CUSTOMER
+    nonfunctional_requirements: [determinism, explainability, auditability]
+    acceptance_criteria: [same governed inputs and rule version produce reproducible eligibility outcome]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-CUSTOMER-OFFER-001
+    microservice_name: Customer Offer Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Customer Offer
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:customer-offer
+    service_boundary: Orchestrate the formal finance offer and required specialist checks before contracting.
+    canonical_business_object: CustomerOfferProcedure
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Update, FacilityApplication, Credit, Underwriting, Agreement, Compliance, Disclosures]
+    api_intent: Orchestrate offer assembly and controlled approval evidence.
+    data_ownership: Zoho CRM
+    dependencies: [Customer Credit Rating, Underwriting, Customer Agreement, Collateral Allocation Management]
+    security_class: CONFIDENTIAL_CUSTOMER
+    nonfunctional_requirements: [orchestration traceability, auditability, idempotency]
+    acceptance_criteria: [formal offer cannot advance without required specialist decisions]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-CREDIT-RATING-001
+    microservice_name: Customer Credit Rating Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Customer Credit Rating
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:customer-credit-rating
+    service_boundary: Maintain consolidated customer credit assessment used by underwriting.
+    canonical_business_object: CustomerCreditRatingState
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Alerts, InternalReporting, ExternalReporting]
+    api_intent: Provide controlled credit-rating state and evidence.
+    data_ownership: Zoho CRM with bureau and financial-statement source references
+    dependencies: [Underwriting]
+    security_class: HIGHLY_CONFIDENTIAL_CREDIT
+    nonfunctional_requirements: [privacy, explainability, source traceability]
+    acceptance_criteria: [rating state retains source evidence and versioned assessment basis]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-UNDERWRITING-001
+    microservice_name: Underwriting Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Underwriting
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:underwriting
+    service_boundary: Own the Kongoni underwriting assessment and decision record.
+    canonical_business_object: UnderwritingAssessment
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Evaluate, Update, Execute, Request, Exchange, Grant, Retrieve]
+    api_intent: Expose controlled underwriting assessment and decision operations.
+    data_ownership: Zoho CRM and governed underwriting rules
+    dependencies: [Customer Credit Rating, Customer Offer]
+    security_class: HIGHLY_CONFIDENTIAL_CREDIT
+    nonfunctional_requirements: [explainability, segregation of duties, auditability]
+    acceptance_criteria: [decision authority and evidence are explicit and reproducible]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-CUSTOMER-AGREEMENT-001
+    microservice_name: Customer Agreement Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Customer Agreement
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:customer-agreement
+    service_boundary: Manage master customer agreement and relationship-level terms.
+    canonical_business_object: CustomerAgreement
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Evaluate, Retrieve, Update, LegalTerm, RegulatoryTerm, PolicyTerm]
+    api_intent: Provide controlled agreement terms and lifecycle operations.
+    data_ownership: Zoho CRM with governed document references
+    dependencies: [Sales Product Agreement]
+    security_class: CONFIDENTIAL_CONTRACT
+    nonfunctional_requirements: [versioning, immutability of executed terms, auditability]
+    acceptance_criteria: [current and historical agreement terms are traceable]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-SALES-PRODUCT-AGREEMENT-001
+    microservice_name: Sales Product Agreement Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Sales Product Agreement
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:sales-product-agreement
+    service_boundary: Manage the in-force operating lease product agreement subordinate to the customer agreement.
+    canonical_business_object: SalesProductAgreement
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Evaluate, Retrieve, Update, LegalTerm, RegulatoryTerm, PolicyTerm]
+    api_intent: Provide governed product-agreement lifecycle services.
+    data_ownership: Zoho CRM with governed contract-document references
+    dependencies: [Customer Agreement, Leasing]
+    security_class: CONFIDENTIAL_CONTRACT
+    nonfunctional_requirements: [versioning, auditability, relationship integrity]
+    acceptance_criteria: [product agreement remains correctly subordinate to customer agreement]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-LEASING-001
+    microservice_name: Leasing Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: ARCHITECTED
+    service_domain_name: Leasing
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:leasing
+    service_boundary: Manage the lifecycle and financial servicing state of a LeasingFacility.
+    canonical_business_object: LeasingFacility
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: SRV-BIAN-LEASING-001
+    service_specification_status: DRAFT
+    key_operations: [Initiate, Retrieve, Update]
+    api_intent: Expose the approved LeasingFacility lifecycle through a governed API.
+    data_ownership: To be resolved before engineering Data Store creation
+    dependencies: [Sales Product Agreement, Leasing Item Administration, Customer Billing, Collateral Allocation Management]
+    security_class: CONFIDENTIAL_FINANCE
+    nonfunctional_requirements: [auditability, idempotency, traceability, availability]
+    acceptance_criteria: [Initiate, Retrieve, Update pass contract, authority, idempotency, audit, and regression tests]
+    engineering_handover_status: BLOCKED_APPROVAL_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: agent-workspace/services/SRV-BIAN-LEASING-001/service-specification.yaml
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: Live BIAN 14.0.0 Catalyst records plus approved adoption record
+    mapping_basis: APPROVED_SERVICE_SPECIFICATION_VALUE_STREAM
+    coverage_state: VERIFIED_SOURCE
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS04-LEASING-ITEM-ADMIN-001
+    microservice_name: Leasing Item Administration Service
+    value_stream_id: VS04
+    value_stream_name: Asset Lifecycle Performance
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Leasing Item Administration
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:leasing-item-administration
+    service_boundary: Manage leased-equipment registration, assurance, and valuation oversight.
+    canonical_business_object: LeasingItemAdministrativePlan
+    service_owner: VS04
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Update, Assurance, ItemRegistration, Valuation]
+    api_intent: Provide lifecycle administration services for leased equipment.
+    data_ownership: Enterprise asset register and CRM asset references
+    dependencies: [Leasing, Collateral Asset Administration]
+    security_class: CONTROLLED_ASSET
+    nonfunctional_requirements: [asset identity integrity, auditability, interoperability]
+    acceptance_criteria: [leased item remains bound to a canonical asset identity and current assurance state]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS03-COLLATERAL-ASSET-ADMIN-001
+    microservice_name: Collateral Asset Administration Service
+    value_stream_id: VS03
+    value_stream_name: Asset Risk Protection & Recovery
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Collateral Asset Administration
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:collateral-asset-administration
+    service_boundary: Maintain collateral condition, maintenance, and valuation facts used for risk protection.
+    canonical_business_object: CollateralAssetAdministrativePlan
+    service_owner: VS03
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Create, Retrieve, Update, Maintenance, Valuation]
+    api_intent: Provide governed collateral asset facts to finance and recovery services.
+    data_ownership: Enterprise asset register and collateral risk records
+    dependencies: [Leasing Item Administration, Collateral Allocation Management]
+    security_class: CONFIDENTIAL_RISK
+    nonfunctional_requirements: [data integrity, provenance, auditability]
+    acceptance_criteria: [collateral value and condition are traceable to evidence]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS03-COLLATERAL-ALLOCATION-001
+    microservice_name: Collateral Allocation Management Service
+    value_stream_id: VS03
+    value_stream_name: Asset Risk Protection & Recovery
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Collateral Allocation Management
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:collateral-allocation-management
+    service_boundary: Allocate approved collateral to lease and funding exposures.
+    canonical_business_object: CollateralAssetAllocation
+    service_owner: VS03
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Capture, Retrieve, Update, Exchange]
+    api_intent: Maintain governed exposure-to-collateral allocations.
+    data_ownership: Risk and collateral allocation records
+    dependencies: [Leasing, Credit Facility, Collateral Asset Administration]
+    security_class: CONFIDENTIAL_RISK
+    nonfunctional_requirements: [referential integrity, auditability, concurrency control]
+    acceptance_criteria: [one collateral allocation state is authoritative and reconciled to exposures]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-CUSTOMER-BILLING-001
+    microservice_name: Customer Billing Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Customer Billing
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:customer-billing
+    service_boundary: Manage billing instructions and references while Zoho Books remains accounting system of record.
+    canonical_business_object: CustomerBillingProcedure
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Invoicing, Payment, TrackingandReminders]
+    api_intent: Coordinate lease billing with accounting records without duplicating the ledger.
+    data_ownership: Zoho Books for invoices, receipts and balances; CRM/Catalyst for governed instructions and references
+    dependencies: [Leasing]
+    security_class: CONFIDENTIAL_FINANCE
+    nonfunctional_requirements: [ledger reconciliation, idempotency, auditability]
+    acceptance_criteria: [billing references reconcile to the accounting system of record]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS03-DELINQUENCY-001
+    microservice_name: Delinquent Account Handling Service
+    value_stream_id: VS03
+    value_stream_name: Asset Risk Protection & Recovery
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Delinquent Account Handling
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:delinquent-account-handling
+    service_boundary: Manage early arrears review, contact, payment, and cure before transfer to Collections.
+    canonical_business_object: DelinquentAccountProcedure
+    service_owner: VS03
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Assessment, Contact, Payment, Resolution]
+    api_intent: Govern early arrears handling and cure activity.
+    data_ownership: CRM recovery case with Zoho Books balance references
+    dependencies: [Customer Billing, Collections]
+    security_class: HIGHLY_CONFIDENTIAL_RECOVERY
+    nonfunctional_requirements: [auditability, case traceability, legal-control hooks]
+    acceptance_criteria: [case transfer to Collections follows approved default and cure rules]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS03-COLLECTIONS-001
+    microservice_name: Collections Service
+    value_stream_id: VS03
+    value_stream_name: Asset Risk Protection & Recovery
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Collections
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:collections
+    service_boundary: Manage post-default recovery and collateral liquidation.
+    canonical_business_object: CollateralAssetLiquidationProcedure
+    service_owner: VS03
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, CollectionsAssessment, CollateralValuation, CollateralLiquidation]
+    api_intent: Govern default recovery and collateral liquidation activity.
+    data_ownership: CRM recovery case with accounting balance references
+    dependencies: [Delinquent Account Handling, Collateral Asset Administration, Claim Administration]
+    security_class: HIGHLY_CONFIDENTIAL_RECOVERY
+    nonfunctional_requirements: [auditability, legal evidence retention, segregation of duties]
+    acceptance_criteria: [recovery decisions and liquidation actions are authorised and evidenced]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS03-CLAIMS-REFERENCE-001
+    microservice_name: Claim Administration Integration Service
+    value_stream_id: VS03
+    value_stream_name: Asset Risk Protection & Recovery
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Claim Administration
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:claim-administration
+    service_boundary: Maintain Kongoni claim workflow, evidence, and external insurer references without replacing insurer claim authority.
+    canonical_business_object: ExternalClaimReference
+    service_owner: VS03
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: []
+    api_intent: Integrate with insurer claim systems and retain governed references.
+    data_ownership: Insurer claim platform is system of record; Kongoni owns workflow and evidence references
+    dependencies: [Collections]
+    security_class: HIGHLY_CONFIDENTIAL_CLAIMS
+    nonfunctional_requirements: [external-system resilience, evidence integrity, auditability]
+    acceptance_criteria: [Kongoni does not represent itself as claim decision authority]
+    engineering_handover_status: BLOCKED_REFERENCE_API_GAP
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: Function
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIAN adoption is APPROVED but imported BIAN source publishes no service operations
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: ARCHITECTURE_GAP
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-CREDIT-FACILITY-REF-001
+    microservice_name: Credit Facility Integration Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Credit Facility
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:credit-facility
+    service_boundary: Maintain governed references to lender-owned facilities, limits, drawdowns, and covenants.
+    canonical_business_object: CreditLineFacility
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Update, CreditAllocation, Charge]
+    api_intent: Integrate lender facility information with finance origination and servicing.
+    data_ownership: Lender facility platform is external system of record
+    dependencies: [Leasing, Collateral Allocation Management]
+    security_class: HIGHLY_CONFIDENTIAL_FUNDING
+    nonfunctional_requirements: [external reconciliation, auditability, resilience]
+    acceptance_criteria: [Kongoni references reconcile to lender facility evidence]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS05-ASSET-SECURITIZATION-001
+    microservice_name: Asset Securitization Service
+    value_stream_id: VS05
+    value_stream_name: Investment & Portfolio Value Realisation
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Asset Securitization
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:asset-securitization
+    service_boundary: Manage funding and portfolio securitization transactions without treating each lease as a securitization transaction.
+    canonical_business_object: AssetSecuritizationTransaction
+    service_owner: VS05
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Securitization, Selection, Placement]
+    api_intent: Support controlled portfolio selection and securitization execution.
+    data_ownership: Programme Treasury and transaction administrator
+    dependencies: [Leasing, Credit Facility]
+    security_class: HIGHLY_CONFIDENTIAL_CAPITAL_MARKETS
+    nonfunctional_requirements: [portfolio reconciliation, auditability, transaction integrity]
+    acceptance_criteria: [selected assets and transaction state reconcile to authoritative portfolio data]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS00-DOCUMENT-SERVICES-001
+    microservice_name: Document Services Integration Service
+    value_stream_id: VS00
+    value_stream_name: Enterprise Shared Content
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Document Services
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:document-services
+    service_boundary: Provide governed document-service integration while document lifecycle governance remains separately controlled.
+    canonical_business_object: DocumentServiceProcedure
+    service_owner: VS00
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Execute, Request, Exchange, Control, Notify]
+    api_intent: Integrate active document servicing with transactional services.
+    data_ownership: Governed document repository
+    dependencies: []
+    security_class: CONTROLLED_DOCUMENT
+    nonfunctional_requirements: [record traceability, retention binding, auditability]
+    acceptance_criteria: [structured business facts remain in transactional systems and documents remain governed records]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: Function
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS00-ARCHIVE-SERVICES-001
+    microservice_name: Archive Services Integration Service
+    value_stream_id: VS00
+    value_stream_name: Enterprise Shared Content
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Archive Services
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:archive-services
+    service_boundary: Support governed archival of inactive significant records.
+    canonical_business_object: ArchiveOperatingSession
+    service_owner: VS00
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, DocumentCapture, DocumentMaintenance, DocumentRetrieval]
+    api_intent: Integrate archival workflows with governed records controls.
+    data_ownership: Governed archive repository
+    dependencies: [Document Services]
+    security_class: CONTROLLED_RECORD
+    nonfunctional_requirements: [retention, immutability, retrieval integrity, auditability]
+    acceptance_criteria: [archived records remain retrievable and subject to retention and legal-hold controls]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: Function
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-CUSTOMER-EVENT-HISTORY-001
+    microservice_name: Customer Event History Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Customer Event History
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:customer-event-history
+    service_boundary: Capture finance-related customer sales, servicing, relationship, fraud, life, and product-processing events.
+    canonical_business_object: CustomerEventLog
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, Sales, Servicing, Relationship, Fraud, Life, ProductProcessing]
+    api_intent: Provide governed customer-event history for finance lifecycle decisions.
+    data_ownership: Zoho CRM and governed event references
+    dependencies: [Customer Offer, Leasing]
+    security_class: CONFIDENTIAL_CUSTOMER
+    nonfunctional_requirements: [append-only history, traceability, privacy]
+    acceptance_criteria: [events are attributable and not used as a generic enterprise event store]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: PROPOSED_VALUE_STREAM_MAPPING
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+    microservice_name: Operating Lease Legal Compliance Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Legal Compliance
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:legal-compliance
+    service_boundary: Execute and evidence legal compliance assessments applicable to the operating lease activities of VS02.
+    canonical_business_object: LegalComplianceAssessment
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Evaluate, Retrieve, Update, Request, Exchange]
+    api_intent: Embed legal compliance execution within the owning Value Stream.
+    data_ownership: VS02 compliance register and governed repository
+    dependencies: [Customer Offer, Customer Agreement, Leasing]
+    security_class: LEGAL_PRIVILEGED_CONTROLLED
+    nonfunctional_requirements: [evidence retention, rule provenance, auditability]
+    acceptance_criteria: [legal obligations are evaluated within VS02 and retain evidence]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: EMBEDDED_COMPLIANCE_VALUE_STREAM_RULE
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+  - microservice_id: MS-VS02-COMPLIANCE-REPORTING-001
+    microservice_name: Operating Lease Compliance Reporting Service
+    value_stream_id: VS02
+    value_stream_name: Asset Finance & Capital Provision
+    lifecycle_state: IDENTIFIED
+    service_domain_name: Compliance Reporting
+    reference_standard: BIAN
+    reference_version: '14.0.0'
+    source_domain_id: urn:bian:14.0.0:service-domain:compliance-reporting
+    service_boundary: Consolidate, assess, and report compliance obligations for VS02 operating lease activities.
+    canonical_business_object: ComplianceReportingAdministrativePlan
+    service_owner: VS02
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: null
+    service_specification_status: NOT_CREATED
+    key_operations: [Initiate, Retrieve, ComplianceAssessment, Consolidation, Remediation]
+    api_intent: Provide compliance reporting within the owning Value Stream.
+    data_ownership: VS02 compliance reporting repository
+    dependencies: [Legal Compliance]
+    security_class: CONTROLLED_COMPLIANCE
+    nonfunctional_requirements: [evidence traceability, completeness, auditability]
+    acceptance_criteria: [reported compliance status reconciles to underlying obligations and evidence]
+    engineering_handover_status: BLOCKED_SPEC_REQUIRED
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: null
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_STARTED
+    source_provenance: BIANServiceDomainAdoption APPROVED for SOMKHELE-OPERATING-LEASE
+    mapping_basis: EMBEDDED_COMPLIANCE_VALUE_STREAM_RULE
+    coverage_state: PROPOSED_MAPPING
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: PLAN
+    act_decision: null
+
+coverage_gaps:
+  - value_stream_id: VS00
+    gap: Complete VS00 Service Domain catalogue has not yet been normalized into a single governed Service Domain source for register generation.
+    status: SOURCE_CATALOGUE_GAP
+  - value_stream_id: VS01
+    gap: Non-BIAN Asset Provision and Access Service Domains require assurance against adopted OEM/APQC/TM Forum sources before full register coverage.
+    status: SOURCE_CATALOGUE_GAP
+  - value_stream_id: VS02
+    gap: BIAN Operating Lease domains are represented; other finance products and capital-provision Service Domains require separate catalogue assurance.
+    status: SOURCE_CATALOGUE_GAP
+  - value_stream_id: VS03
+    gap: BIAN risk/recovery domains are represented for Operating Lease; insurance and broader risk Service Domains require catalogue assurance.
+    status: SOURCE_CATALOGUE_GAP
+  - value_stream_id: VS04
+    gap: MIMOSA CCOM is codified as schema objects, not yet as a normalized Service Domain catalogue suitable for automatic microservice generation.
+    status: SOURCE_CATALOGUE_GAP
+  - value_stream_id: VS05
+    gap: Asset Securitization is represented; full investment and portfolio Service Domain catalogue requires assurance.
+    status: SOURCE_CATALOGUE_GAP
+  - value_stream_id: VS06
+    gap: GMG/mining production reference content is not yet normalized into the governed Service Domain structure required by this register.
+    status: SOURCE_CATALOGUE_GAP

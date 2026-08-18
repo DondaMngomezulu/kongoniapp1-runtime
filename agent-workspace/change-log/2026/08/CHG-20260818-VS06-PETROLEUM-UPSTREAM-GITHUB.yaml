@@ -1,0 +1,30 @@
+change_id: CHG-20260818-VS06-PETROLEUM-UPSTREAM-GITHUB
+timestamp_utc: '2026-08-18T17:59:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved extracting the Petroleum Upstream GitHub hierarchy as a secondary reference and crosswalking it to VS06.'
+task_class: T2
+change_type: governance
+summary: Add a provenance-controlled VS06 secondary crosswalk from dot-org-ai/business.org.ai Petroleum Upstream records.
+reason: Use available GitHub sector evidence before requesting a licensed APQC source and improve VS06 boundary assurance without misrepresenting source authority.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/mappings/MAP-VS06-PETROLEUM-UPSTREAM-GITHUB-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO approval in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Four VS06-relevant Petroleum Upstream process records were verified directly from the public GitHub corpus. Existing VS06 service boundaries remain coherent. Exact L3 parent and L5 child lineage is not asserted because those records were not directly verified.'
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'dot-org-ai/business.org.ai public repository at commit f8d1a3c80c5ea45695212dba76fa12acdfa5a3e8.'
+  - 'Repository declares CC0-1.0 licence.'
+  - 'Verified Define production planning 4.5.2.2 / PCF ID 13109.'
+  - 'Verified Execute production 4.5.2.3 / PCF ID 13110.'
+  - 'Verified Optimize production 4.5.2.5 / PCF ID 13112.'
+  - 'Verified Assess production performance 4.3.2.6 / PCF ID 10314.'
+notes: 'This secondary reference does not establish normative equivalence to APQC Upstream Petroleum v7.2.2. No Catalyst runtime resource is changed.'

@@ -1,0 +1,40 @@
+source_record:
+  id: SRC-APQC-UPSTREAM-7.2.2
+  standard: APQC Process Classification Framework
+  profile: Upstream Petroleum
+  version: '7.2.2'
+  published_date: '2025-03-27'
+  publisher: APQC
+  public_resource_status: VERIFIED
+  public_resource_type: GATED_DOWNLOAD
+  hierarchy_ingestion_status: BLOCKED_SOURCE_NOT_AVAILABLE_IN_GOVERNED_LIBRARY
+  licence_status: SPECIFIC_APQC_IBM_TERMS_APPLY
+  permitted_ingestion_scope:
+    - public release metadata
+    - public industry alignment metadata
+    - public description of framework scope
+  prohibited_without_source_and_licence_review:
+    - reconstructing unpublished L3-L5 identifiers
+    - importing hierarchy elements from inference
+    - representing Cross-Industry mappings as Upstream Petroleum mappings
+  public_metadata:
+    primary_naics:
+      - '21 Mining, Quarrying, and Oil and Gas Extraction'
+      - '211 Oil and Gas Extraction'
+      - '2111 Oil and Gas Extraction'
+      - '21111 Oil and Gas Extraction'
+      - '211111 Crude Petroleum and Natural Gas Extraction'
+    associated_naics:
+      - '213111 Drilling Oil and Gas Wells'
+      - '213112 Support Activities for Oil and Gas Operations'
+      - '541360 Geophysical Surveying and Mapping Services'
+      - '237120 Oil and Gas Pipeline and Related Structures Construction'
+    release_note: 'Version 7.2.2 updates licence and attribution language and reports no material framework-element or definition changes.'
+  authoritative_source: 'APQC resource library: Upstream Petroleum PCF PDF Version 7.2.2'
+  governed_library_search_result: 'No Upstream Petroleum 7.2.2 source file found on 2026-08-18. Cross-Industry 8.0 governed concepts are present.'
+  interim_vs06_rule:
+    primary_domain_authority: GMG
+    process_decomposition_authority: APQC Cross-Industry 8.0
+    sector_comparator: APQC Upstream Petroleum 7.2.2
+    exact_sector_l3_l5_status: UNRESOLVED_SOURCE_REQUIRED
+  act_recommendation: ADAPT

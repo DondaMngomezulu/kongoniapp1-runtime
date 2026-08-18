@@ -1,0 +1,85 @@
+catalogue_id: CAT-ARCH-SD-VS06-GMG-001
+version: '0.1'
+status: PROPOSED_DERIVED
+value_stream_id: VS06
+value_stream_name: Mining Production & Delivery
+architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+scope: Surface mining load and haul
+source_authority:
+  primary_reference: Global Mining Guidelines Group
+  reference_classification: NON_PRESCRIPTIVE_GUIDANCE
+  source_topics:
+    - Surface Mining Time Usage Model and KPI guidance
+    - Mobile Equipment Open Data guidance
+    - Mining interoperability principles
+    - Fleet productivity benchmarking project where applicable
+  external_source_notes: 'GMG does not publish a BIAN-style Service Domain model. These Service Domains are Kongoni architecture boundaries derived from the approved VS06 load-and-haul scope and aligned to GMG guidance.'
+normalisation_rule: 'Do not represent these names as GMG-native Service Domains. Use GMG guidance for definitions, metrics, data interoperability, and operating constraints. Use Kongoni IDs for service boundaries.'
+service_domains:
+  - service_domain_id: KSD-VS06-PRODUCTION-PLAN-001
+    name: Production Plan and Shift Target
+    status: PROPOSED_DERIVED
+    purpose: Manage authorised production targets, shift plans, equipment assignments, and load-and-haul operating constraints.
+    source_basis: KONGONI_VALUE_STREAM_SCOPE_GMG_ALIGNED
+    canonical_resource: ProductionPlan
+    microservice_candidate_id: MS-VS06-PRODUCTION-PLAN-001
+    notes: 'GMG does not define this service boundary. It is required by the approved VS06 operating scope.'
+  - service_domain_id: KSD-VS06-FLEET-DISPATCH-001
+    name: Load and Haul Fleet Dispatch
+    status: PROPOSED_DERIVED
+    purpose: Allocate loading and hauling resources to authorised production work and manage dispatch state.
+    source_basis: KONGONI_VALUE_STREAM_SCOPE_GMG_INTEROPERABILITY_ALIGNED
+    canonical_resource: DispatchPlan
+    microservice_candidate_id: MS-VS06-FLEET-DISPATCH-001
+  - service_domain_id: KSD-VS06-CYCLE-EXECUTION-001
+    name: Load and Haul Cycle Execution
+    status: PROPOSED_DERIVED
+    purpose: Record and control load, travel, dump, return, queue, and related production-cycle events.
+    source_basis: KONGONI_VALUE_STREAM_SCOPE_GMG_TIME_CLASSIFICATION_ALIGNED
+    canonical_resource: HaulCycle
+    microservice_candidate_id: MS-VS06-CYCLE-EXECUTION-001
+  - service_domain_id: KSD-VS06-TIME-USAGE-001
+    name: Fleet Time Usage Classification
+    status: PROPOSED_DERIVED
+    purpose: Classify fleet operational activities, statuses, delays, and events using the GMG surface-mining time usage model as the reference vocabulary.
+    source_basis: GMG_SURFACE_TIME_USAGE_GUIDELINE
+    canonical_resource: TimeUsageEvent
+    microservice_candidate_id: MS-VS06-TIME-USAGE-001
+  - service_domain_id: KSD-VS06-PERFORMANCE-KPI-001
+    name: Fleet Availability and Utilization Performance
+    status: PROPOSED_DERIVED
+    purpose: Calculate and publish governed fleet availability, utilization, and related operational KPIs from classified time data.
+    source_basis: GMG_SURFACE_TIME_USAGE_GUIDELINE
+    canonical_resource: FleetPerformanceKPI
+    microservice_candidate_id: MS-VS06-PERFORMANCE-KPI-001
+  - service_domain_id: KSD-VS06-MOBILE-DATA-001
+    name: Mobile Equipment Data Integration
+    status: PROPOSED_DERIVED
+    purpose: Provide governed access to mobile equipment data required for load-and-haul operations without making vendor telemetry the enterprise semantic authority.
+    source_basis: GMG_MOBILE_EQUIPMENT_OPEN_DATA_GUIDANCE
+    canonical_resource: MobileEquipmentDataEnvelope
+    microservice_candidate_id: MS-VS06-MOBILE-DATA-001
+  - service_domain_id: KSD-VS06-OPERATIONAL-EVENT-001
+    name: Production Event and Delay Management
+    status: PROPOSED_DERIVED
+    purpose: Record production events, operational delays, reasons, and evidence used by dispatch, production control, and performance analysis.
+    source_basis: GMG_TIME_USAGE_AND_INTEROPERABILITY_ALIGNED
+    canonical_resource: ProductionEvent
+    microservice_candidate_id: MS-VS06-OPERATIONAL-EVENT-001
+  - service_domain_id: KSD-VS06-FLEET-BENCHMARK-001
+    name: Fleet Productivity Benchmarking
+    status: CANDIDATE_DEFERRED
+    purpose: Compare governed fleet productivity metrics against an approved benchmark dataset and method.
+    source_basis: GMG_FLEET_BENCHMARKING_PROJECT
+    canonical_resource: FleetBenchmarkAssessment
+    microservice_candidate_id: MS-VS06-FLEET-BENCHMARK-001
+    notes: 'The GMG benchmarking work is still project-stage. This service must not be treated as based on a final published guideline until source maturity is confirmed.'
+architecture_notes:
+  - 'GMG guidance is non-prescriptive. Kongoni service boundaries remain internal architecture decisions.'
+  - 'Time Usage and KPI semantics should stay aligned to the current GMG surface-mining framework.'
+  - 'Production planning and dispatch boundaries require additional assurance against mine-planning, OEM, and interoperability references before architecture approval.'
+pdca:
+  stage: CHECK_STUDY
+  do_complete: true
+  task_complete: false
+  act_decision: null
