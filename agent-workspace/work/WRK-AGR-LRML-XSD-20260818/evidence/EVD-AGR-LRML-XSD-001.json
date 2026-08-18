@@ -3,9 +3,9 @@
   "evidence_id": "EVD-AGR-LRML-XSD-001",
   "evidence_type": "CONFORMANCE",
   "created_by": "ChatGPT automation",
-  "created_at": "2026-08-18T18:52:00Z",
-  "source": "AGR-XWALK-010 pre-validation readback",
-  "result": "BLOCKED",
+  "created_at": "2026-08-18T19:09:05Z",
+  "source": "AGR-XWALK-010 official OASIS compact XSD CI",
+  "result": "PASS",
   "details": {
     "official_schema": {
       "family": "OASIS LegalRuleML 1.0 compact XSD",
@@ -13,34 +13,53 @@
       "archive_lrml_compact_sha": "c2672badd7c47bba27e5411b5fa40cafc7d5ddc2",
       "archive_ruleml_sha": "03af3aeec15ccc00f38d7ccd1395313386892826"
     },
-    "library_targets": [
-      {
-        "name": "Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.1.xml",
-        "sha256": "6933e61b2f6c889a2b70ef1af9462ed7083b17a1a04f135c6849a0294fefd7f7",
-        "xml_well_formed": true,
-        "schema_status_before_gate": "OASIS XSD VALIDATION UNRESOLVED"
-      },
-      {
-        "name": "Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml",
-        "sha256": "8004b06624e52854c67ffdd6d85f1b8bca8714cafbc087b4cacd628b2e50845b",
-        "xml_well_formed": true,
-        "schema_status_before_gate": "DRAFT_FOR_LEGAL_AND_SCHEMA_VALIDATION"
-      }
-    ],
-    "superseded_provenance_only": {
-      "name": "Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.1.lrml",
-      "sha256": "7ec54759a51da1c7b021340ff7918438289be593150875fc233dad6f1b1ed71e",
-      "xml_well_formed": true
+    "repeat_authority": "Group CEO ACT decision REPEAT — 2026-08-18",
+    "baseline_ingestion": {
+      "enterprise_v0_1_library_sha256": "6933e61b2f6c889a2b70ef1af9462ed7083b17a1a04f135c6849a0294fefd7f7",
+      "facility_v0_2_library_sha256": "8004b06624e52854c67ffdd6d85f1b8bca8714cafbc087b4cacd628b2e50845b",
+      "enterprise_v0_1_first_xsd_result": "FAIL",
+      "enterprise_v0_1_failure_classes": [
+        "LegalSource child Paraphrase not permitted by compact schema",
+        "RuleML key values were bare identifiers instead of PrefixedCURIE or absolute IRI",
+        "FactualStatement direct Atom serialization invalid",
+        "Associations ordered after Statements"
+      ],
+      "facility_v0_2_first_xsd_result": "FAIL",
+      "facility_v0_2_failure_classes": [
+        "RuleML key values were bare identifiers instead of PrefixedCURIE or absolute IRI",
+        "raw date was used as an IRI",
+        "Associations ordered after Statements"
+      ]
     },
-    "repository_readback": {
-      "active_legalruleml_sources_present": false,
-      "required_target_root": "agent-workspace/legalruleml",
-      "validator_created": "agent-workspace/scripts/validate_legalruleml.py",
-      "ci_workflow_created": ".github/workflows/legalruleml-xsd-validate.yml"
+    "remediation": {
+      "facility": "Rule keys converted to prefixed CURIEs; maturity date encoded as xs:date data; Associations moved before Statements.",
+      "enterprise": "Invalid LegalSource paraphrases removed; Rule keys converted to prefixed CURIEs; invalid metadata FactualStatement removed; Associations consolidated and moved before Statements; enterprise candidate version advanced to v0.2."
     },
-    "blocker": "The current governed LegalRuleML source bytes are held in the governed Library but are not yet present in the GitHub engineering tree. XSD conformance cannot be recorded as PASS until the exact current source artifacts are ingested and CI validates them.",
-    "control_position": "Fail closed. XML well-formedness is not OASIS XSD conformance."
+    "final_ci": {
+      "workflow": "LegalRuleML OASIS XSD Conformance",
+      "run_id": 32174982874,
+      "result": "PASS",
+      "targets": [
+        {
+          "path": "agent-workspace/legalruleml/Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml",
+          "sha256": "48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e",
+          "xsd_result": "PASS"
+        },
+        {
+          "path": "agent-workspace/legalruleml/Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.2.xml",
+          "sha256": "81890d0580f139a68f38a78c15d653b44e09c9c08833076d966bdc7b285c9c40",
+          "xsd_result": "PASS"
+        }
+      ]
+    },
+    "regression": {
+      "change_log_control": "PASS",
+      "agent_workspace_validation": "FAIL_UNRELATED_PRE_EXISTING_WRK_ZCRM_BP_001_SCHEMA_DEFECT",
+      "transaction_template_state_changed": false,
+      "substantive_south_african_legal_validation": "NOT_PROVEN_AND_REMAINS_SEPARATE"
+    },
+    "control_position": "AGR-XWALK-010 technical XSD conformance is proven for the active repository LegalRuleML artifacts. This does not establish substantive legal validity."
   },
   "artifact_hash": null,
-  "external_ref": "AGR-XWALK-010"
+  "external_ref": "GitHub Actions run 32174982874"
 }
