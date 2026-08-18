@@ -1,0 +1,37 @@
+control_id: CTL-APP-AUTH-BOUNDARY-001
+version: "0.1"
+status: CANDIDATE
+rule: Each governed state dimension has one authoritative application; projections shall not become competing masters.
+authority:
+  zoho_catalyst:
+    owns:
+      - canonical_party_identity
+      - domain_logic_not_natively_owned_elsewhere
+      - orchestration
+      - handover_lifecycle_state
+      - cross_system_identity_mapping
+  zoho_crm:
+    owns:
+      - customer_relationship_state
+      - prospect_and_deal_state
+      - commercial_relationship_transactions
+    gateway: CRM Commercial Gateway
+  zoho_books:
+    owns:
+      - accounting_state
+      - committed_financial_transactions
+      - invoice
+      - payment
+      - credit_note
+      - financially_committed_sales_order
+    gateway: Books Financial Gateway
+  zoho_workdrive:
+    owns:
+      - governed_document_content
+      - handover_package_files
+      - controlled_evidence_files
+    gateway: WorkDrive Document Gateway
+storage_rule:
+  governed_documents: zoho_workdrive
+  catalyst_stratus: application_objects_and_non_governed_binary_storage
+  duplicate_authoritative_document_copy: prohibited
