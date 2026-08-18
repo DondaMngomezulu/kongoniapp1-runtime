@@ -22,17 +22,20 @@ authority:
   status: AUTHORISED
   reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
 pdca:
-  phase: ACT
+  phase: CLOSE_OR_REPLAN
   do_complete: true
-  check_study_result: 'Static and branch-diff validation completed. GitHub Actions execution evidence remains pending before task closure.'
+  check_study_result: 'CTL-DEV-CHG-LOG-001 passed GitHub Actions runs 2 and 3. Regression review found a separate pre-existing Agent Workspace Validation failure in WRK-ZCRM-BP-001/mandate.yaml because its required architecture property is missing; this PR does not modify that work item.'
   act_decision: ADOPT
-  task_complete: false
+  task_complete: true
 evidence:
   - 'GitHub branch: agent/change-log-control'
-  - 'Draft PR: #2 Add mandatory KongoniApp change log control'
+  - 'PR: #2 Add mandatory KongoniApp change log control'
   - 'Control: CTL-DEV-CHG-LOG-001 v1.0'
   - 'Validator: agent-workspace/scripts/validate_change_log.py'
   - 'Workflow: .github/workflows/change-log-control.yml'
+  - 'GitHub Actions run 32151853838: KongoniApp Change Log Control = success'
+  - 'GitHub Actions run 32151878398: KongoniApp Change Log Control = success'
+  - 'Regression exception: Agent Workspace Validation run 32151854008 failed on untouched WRK-ZCRM-BP-001/mandate.yaml'
 commit_sha: null
 pull_request: 2
-notes: 'ACT decision ADOPT recorded by Group CEO on 2026-08-18. Task remains open until CI execution evidence is available and authoritative records are updated.'
+notes: 'ACT decision ADOPT recorded by Group CEO on 2026-08-18. Control implementation is verified; unrelated pre-existing workspace-schema defect is recorded separately as a regression exception.'
