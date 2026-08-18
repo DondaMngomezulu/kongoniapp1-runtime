@@ -1,6 +1,6 @@
 change_id: CHG-2026-08-18-APQC-MS-ARCH
 actor: ChatGPT
-mandate: User-authorised ADAPT of current microservice architecture against GitHub reference build
+mandate: User-authorised ADAPT and REPEAT of current microservice architecture against GitHub and authoritative Catalyst references
 task_class: T2
 authority: Group CEO instruction in active conversation
 affected_paths:
@@ -9,17 +9,27 @@ affected_paths:
   - agent-workspace/governance/catalyst-runtime-baseline.yaml
   - agent-workspace/schemas/microservice.schema.json
   - agent-workspace/schemas/enterprise-handover.schema.json
-intended_outcome: Align governed engineering references to APQC-spine microservice architecture and Zoho CRM, Books, WorkDrive and Catalyst authority boundaries.
+  - agent-workspace/evidence/EV-2026-08-18-APQC-MS-REPEAT.yaml
+intended_outcome: Align governed engineering references to APQC-spine microservice architecture and Zoho CRM, Books, WorkDrive and Catalyst authority boundaries without overriding existing approved domain authorities.
 pdca:
   mandate: complete
   plan: complete
   authorisation: complete
   do: complete
-  evidence: branch and committed files
-  check_study: pending_post_write_readback
-  act: pending
-  record: this_change_record
+  evidence: complete
+  check_study: partial_pass_open_conditions
+  act: ADAPT
+  record: complete
   close: false
+check_study_summary:
+  - APQC process spine is compatible with current Catalyst reference model when sector/domain semantic authorities are preserved.
+  - Current approved Stratus repository authority conflicts with immediate WorkDrive authority; controlled migration is required.
+  - Existing Catalyst gl_* tables require authority classification before Zoho Books can be adopted as sole accounting master.
+  - Enterprise handover extension is compatible with existing agent handoff pattern.
+open_conditions:
+  - classify Catalyst gl_* accounting tables
+  - design repository-authority migration from Stratus to WorkDrive
+  - update authoritative Catalyst architecture/repository records only after valid ACT approval
 controls:
   do_complete_is_task_complete: false
   production_mutation: false
