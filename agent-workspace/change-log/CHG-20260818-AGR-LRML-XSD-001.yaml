@@ -38,9 +38,9 @@ evidence:
 commit_sha: null
 pull_request: 10
 notes: >-
-  Latest branch CI confirms LegalRuleML OASIS XSD Conformance PASS (run 32175444168)
-  and KongoniApp Change Log Control PASS (run 32175444190). Facility v0.2 hash:
-  48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e.
+  Latest confirmed OASIS XSD conformance run 32175444168 passed; Change Log Control run 32175444190 passed.
+  Facility v0.2 hash: 48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e.
   Enterprise v0.2 hash: 81890d0580f139a68f38a78c15d653b44e09c9c08833076d966bdc7b285c9c40.
-  Agent Workspace Validation remains FAIL due to the unrelated pre-existing WRK-ZCRM-BP-001 schema defect.
-  Recommended ACT is ADOPT. AGR-XWALK-011 remains open. No Agreement Template is promoted.
+  Enterprise v0.1 failed baseline evidence remains preserved in Git history. Agent Workspace Validation remains
+  red only because of the unrelated pre-existing WRK-ZCRM-BP-001 schema defect. AGR-XWALK-011 remains open.
+  Recommended ACT is ADOPT. No Agreement Template is promoted.
