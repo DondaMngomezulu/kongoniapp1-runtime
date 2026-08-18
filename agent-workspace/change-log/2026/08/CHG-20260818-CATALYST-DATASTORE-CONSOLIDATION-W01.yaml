@@ -1,0 +1,32 @@
+change_id: CHG-20260818-CATALYST-DATASTORE-CONSOLIDATION-W01
+timestamp_utc: '2026-08-18T20:36:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO authorised Catalyst Data Store consolidation and required assurance of a governed relational enterprise schema on 2026-08-18.'
+task_class: T2
+change_type: governance
+summary: Execute Wave 1 Catalyst Data Store schema rationalisation and codify the relational enterprise schema guardrail.
+reason: Recover constrained Data Store table capacity without loss of governed business data or degradation of relational integrity.
+affected_paths:
+  - agent-workspace/architecture/STD-CAT-REL-SCHEMA-001.yaml
+  - agent-workspace/architecture/ASMT-CAT-DATASTORE-001/wave-01-consolidation.yaml
+environment: Development
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PASS_WAVE_01
+  act_decision: ADOPT
+  task_complete: false
+evidence:
+  - 'MCP_Tools had zero business columns and zero rows immediately before deletion.'
+  - 'MCP_Tools was deleted from Catalyst Development and absence confirmed by List All Tables read-back.'
+  - 'MCP_Tool_Register and ToolRegister were retained because they represent distinct normalized capability-group and tool-instance concepts.'
+  - 'LegacySemanticEnvelope had zero rows immediately before deletion.'
+  - 'LegacySemanticEnvelope was retired in favour of the current EAMSemanticEnvelope relation.'
+  - 'StandardDiscoverySource, StandardDiscoveryCandidate and StandardDiscoveryAssertion were retained as a healthy normalized relational submodel.'
+  - 'Wave 1 retired two empty tables and deleted zero business rows.'
+notes: 'This is Wave 1 only. No accounting, EDRMS core, populated transactional, or Production tables were modified. Further consolidation remains open under STD-CAT-REL-SCHEMA-001. DO_COMPLETE != TASK_COMPLETE.'
