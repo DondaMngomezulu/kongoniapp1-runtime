@@ -7,6 +7,8 @@ const https = require('https');
 const ARCHITECTURE_ID = 'KEA-MOD-HS-001';
 const ARCHITECTURE_VERSION = '0.1';
 const ARCHITECTURE_HASH = 'e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526';
+const ENGINE_OWNERSHIP_RULE = 'BR-ENG-VS-OWN-001';
+const PROFIT_CENTRE_PROFILE = 'PROFIT_CENTRE';
 const CUSTODIAN_AGENT = 'urn:kongoni:agent:catalyst-platform-delivery';
 const ENVIRONMENT = 'Development';
 
@@ -56,6 +58,35 @@ async function loadArchitectureIndex(catalystApp) {
   return one(catalystApp,
     `SELECT * FROM CatalystRepositoryIndex WHERE ARTIFACT_ID=${sqlLiteral(ARCHITECTURE_ID)} LIMIT 1`
   );
+}
+
+async function loadEngine(catalystApp, engineCode) {
+  return one(catalystApp,
+    `SELECT * FROM EnterpriseEngineCatalog WHERE engine_code=${sqlLiteral(engineCode)} LIMIT 1`
+  );
+}
+
+async function loadValueStream(catalystApp, valueStreamId) {
+  return one(catalystApp,
+    `SELECT * FROM EnterpriseValueStream WHERE value_stream_id=${sqlLiteral(valueStreamId)} LIMIT 1`
+  );
+}
+
+async function resolveEngineValueStream(catalystApp, engineCode) {
+  if (!engineCode) return { ok:false, reason:'ENGINE_CODE_REQUIRED' };
+  const engine = await loadEngine(catalystApp, engineCode);
+  if (!engine) return { ok:false, reason:'ENGINE_NOT_REGISTERED' };
+  const valueStreamId = engine.primary_value_stream_id;
+  if (!valueStreamId) return { ok:false, reason:'ENGINE_PRIMARY_VALUE_STREAM_REQUIRED' };
+  const valueStream = await loadValueStream(catalystApp, valueStreamId);
+  if (!valueStream) return { ok:false, reason:'ENGINE_VALUE_STREAM_NOT_FOUND' };
+  if (!valueStream.active_flag || String(valueStream.lifecycle_status || '').toUpperCase() !== 'APPROVED_ACTIVE') {
+    return { ok:false, reason:'ENGINE_VALUE_STREAM_NOT_ACTIVE' };
+  }
+  if (String(valueStream.economic_profile_id || '').toUpperCase() !== PROFIT_CENTRE_PROFILE) {
+    return { ok:false, reason:'ENGINE_VALUE_STREAM_NOT_PROFIT_CENTRE' };
+  }
+  return { ok:true, engine, value_stream:valueStream };
 }
 
 async function loadPreflight(catalystApp, rowid) {
@@ -117,7 +148,8 @@ app.get('/health', (_req, res) => {
     status: 'ok',
     service: 'kongoni_mcp_execution_gateway',
     environment: ENVIRONMENT,
-    architecture_id: ARCHITECTURE_ID
+    architecture_id: ARCHITECTURE_ID,
+    engine_ownership_rule: ENGINE_OWNERSHIP_RULE
   });
 });
 
@@ -160,15 +192,25 @@ app.post('/v1/preflight', async (req, res) => {
       return res.status(409).json({ status:'HOLD', reason:'ARCHITECTURE_VERSION_OR_HASH_MISMATCH' });
     }
 
+    const engineScoped = String(b.operation_type).toUpperCase() === 'ENGINE_EXECUTION' || Boolean(b.engine_code);
+    let engineContext = null;
+    if (engineScoped) {
+      engineContext = await resolveEngineValueStream(catalystApp, b.engine_code);
+      if (!engineContext.ok) {
+        return res.status(403).json({ status:'HOLD', reason:engineContext.reason, control:ENGINE_OWNERSHIP_RULE });
+      }
+    }
+
     const material = ['T2','T3'].includes(String(b.task_class).toUpperCase());
     if (material && !b.approval_ref) {
       return res.status(403).json({ status:'HOLD', reason:'APPROVAL_REFERENCE_REQUIRED' });
     }
 
+    const ownerText = engineContext ? ` Engine ${b.engine_code} owner ${engineContext.value_stream.value_stream_id} resolved under ${ENGINE_OWNERSHIP_RULE}.` : '';
     const preflightRowid = await logPreflight(catalystApp, {
-      description: `Rule 14 preflight for ${b.server_name} / ${b.capability_group}: ${b.request_summary}`,
+      description: `Rule 14 preflight for ${b.server_name} / ${b.capability_group}: ${b.request_summary}.${ownerText}`,
       actor: b.agent_urn,
-      outcome: 'Architecture, environment authority, agent contract and MCP capability controls passed.',
+      outcome: `Architecture, environment authority, agent contract and MCP capability controls passed.${ownerText}`,
       server_name: b.server_name,
       tool_or_capability: b.capability_group,
       task_class: b.task_class,
@@ -184,6 +226,10 @@ app.post('/v1/preflight', async (req, res) => {
       architecture_id:ARCHITECTURE_ID,
       architecture_version:ARCHITECTURE_VERSION,
       architecture_hash:ARCHITECTURE_HASH,
+      engine_code: engineContext ? b.engine_code : null,
+      primary_value_stream_id: engineContext ? engineContext.value_stream.value_stream_id : null,
+      economic_profile_id: engineContext ? engineContext.value_stream.economic_profile_id : null,
+      engine_ownership_rule: engineContext ? ENGINE_OWNERSHIP_RULE : null,
       credential_exposure:false
     });
   } catch (err) {
