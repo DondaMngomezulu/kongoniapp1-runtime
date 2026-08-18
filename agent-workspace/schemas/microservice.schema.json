@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:schema:microservice:1.0",
+  "title": "Kongoni Microservice Register Entry",
+  "type": "object",
+  "required": ["microservice_id", "name", "service_class", "value_stream", "authoritative_system", "owner", "status"],
+  "properties": {
+    "microservice_id": {"type": "string"},
+    "name": {"type": "string"},
+    "service_class": {"enum": ["business_process", "domain_state", "integration_gateway", "platform_service"]},
+    "value_stream": {"type": "string"},
+    "apqc_level_2": {"type": ["string", "null"]},
+    "apqc_level_3": {"type": ["string", "null"]},
+    "apqc_level_4_operations": {"type": "array", "items": {"type": "string"}},
+    "apqc_level_5_tasks": {"type": "array", "items": {"type": "string"}},
+    "apqc_exception_justification": {"type": ["string", "null"]},
+    "tm_forum_domain": {"type": ["string", "null"]},
+    "tmf_api_contracts": {"type": "array", "items": {"type": "string"}},
+    "canonical_objects": {"type": "array", "items": {"type": "string"}},
+    "authoritative_system": {"enum": ["catalyst", "zoho_crm", "zoho_books", "zoho_workdrive", "external"]},
+    "projection_systems": {"type": "array", "items": {"type": "string"}},
+    "catalyst_runtime": {"type": ["string", "null"]},
+    "integration_gateway": {"type": ["string", "null"]},
+    "owner": {"type": "string"},
+    "status": {"type": "string"},
+    "verification_evidence_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"service_class": {"const": "business_process"}}},
+      "then": {"required": ["apqc_level_3"]}
+    }
+  ],
+  "additionalProperties": true
+}
