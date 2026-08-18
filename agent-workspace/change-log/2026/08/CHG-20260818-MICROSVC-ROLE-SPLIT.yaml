@@ -4,7 +4,7 @@ actor:
   type: ChatGPT
   name: GPT-5.6 Sol
   agent_contract_ref: null
-mandate_ref: 'Group CEO instruction: update both skills so GitHub owns the Microservice Architect role and Zoho Catalyst owns the Microservice Engineer role.'
+mandate_ref: 'Group CEO instruction: update and implement both skills so GitHub owns the Microservice Architect role and Zoho Catalyst owns the Microservice Engineer role.'
 accountability_task_ref: null
 task_class: T2
 change_type: governance
@@ -16,15 +16,18 @@ affected_paths:
 environment: repository
 authority:
   status: AUTHORISED
-  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+  reference: 'Group CEO implementation instruction in ChatGPT conversation on 2026-08-18.'
 pdca:
-  phase: CHECK_STUDY
+  phase: CLOSE_OR_REPLAN
   do_complete: true
-  check_study_result: 'Role split encoded on isolated branch. GitHub Architect produces the governed Service Specification. Catalyst Engineer implements the approved specification and returns material design defects to the Architect. CI/regression validation pending.'
-  act_decision: null
-  task_complete: false
+  check_study_result: 'GitHub Architect produces the governed Service Specification. Catalyst Engineer implements the approved specification and returns material design defects to the Architect. KongoniApp Change Log Control run 32165084739 passed. Agent Workspace Validation run 32165084685 failed only on the pre-existing WRK-ZCRM-BP-001/mandate.yaml missing architecture property; this change does not modify that work item.'
+  act_decision: ADOPT
+  task_complete: true
 evidence:
   - 'Branch: agent/split-microservice-architect-engineer'
+  - 'PR: #7 Split microservice architect and Catalyst engineer skills'
   - 'New skill: SKL-GH-MICROSVC-ARCH-001 v1.0'
   - 'Adapted skill: SKL-CAT-MICROSVC-ENG-001 v1.0'
-notes: 'No Catalyst runtime resource is changed. T2 work remains open pending CHECK/STUDY and ACT.'
+  - 'KongoniApp Change Log Control run 32165084739: success'
+  - 'Regression exception: Agent Workspace Validation run 32165084685 failed on untouched WRK-ZCRM-BP-001/mandate.yaml'
+notes: 'ACT = ADOPT. No Catalyst runtime resource is changed by this governance implementation.'
