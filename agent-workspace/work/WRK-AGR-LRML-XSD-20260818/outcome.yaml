@@ -1,0 +1,27 @@
+work_id: WRK-AGR-LRML-XSD-20260818
+pdca_stage: CHECK_STUDY
+check_study:
+  result: BLOCKED_PRECONDITION
+  evidence_ref: EVD-AGR-LRML-XSD-001
+  findings:
+    - "The official OASIS compact XSD family has been identified and a reusable validator/CI gate has been codified."
+    - "The current enterprise and facility LegalRuleML artifacts are XML well formed."
+    - "The active source bytes are not yet present in the GitHub engineering tree, so official XSD validation has not executed on governed repository targets."
+    - "XML well-formedness must not be represented as OASIS XSD conformance."
+recommended_act:
+  decision: REPEAT
+  rationale: "Repeat AGR-XWALK-010 after controlled ingestion of the current LegalRuleML artifacts into agent-workspace/legalruleml and execution of the CI conformance gate."
+open_controls:
+  - control_id: AGR-XWALK-010
+    status: OPEN
+    action: "Ingest exact current source artifacts, execute official OASIS compact XSD validation, remediate serialization errors if any, and repeat CHECK/STUDY."
+  - control_id: AGR-XWALK-011
+    status: OPEN
+    action: "Substantive South African legal validation remains independent and is not affected by XSD status."
+record_state:
+  validator_codified: true
+  ci_gate_codified: true
+  xsd_conformance_proven: false
+  task_complete: false
+transaction_use:
+  agreement_templates_promoted: false
