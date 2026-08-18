@@ -1,0 +1,46 @@
+{
+  "work_id": "WRK-AGR-LRML-XSD-20260818",
+  "evidence_id": "EVD-AGR-LRML-XSD-001",
+  "evidence_type": "CONFORMANCE",
+  "created_by": "ChatGPT automation",
+  "created_at": "2026-08-18T18:52:00Z",
+  "source": "AGR-XWALK-010 pre-validation readback",
+  "result": "BLOCKED",
+  "details": {
+    "official_schema": {
+      "family": "OASIS LegalRuleML 1.0 compact XSD",
+      "entrypoint": "https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/compact/lrml-compact.xsd",
+      "archive_lrml_compact_sha": "c2672badd7c47bba27e5411b5fa40cafc7d5ddc2",
+      "archive_ruleml_sha": "03af3aeec15ccc00f38d7ccd1395313386892826"
+    },
+    "library_targets": [
+      {
+        "name": "Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.1.xml",
+        "sha256": "6933e61b2f6c889a2b70ef1af9462ed7083b17a1a04f135c6849a0294fefd7f7",
+        "xml_well_formed": true,
+        "schema_status_before_gate": "OASIS XSD VALIDATION UNRESOLVED"
+      },
+      {
+        "name": "Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml",
+        "sha256": "8004b06624e52854c67ffdd6d85f1b8bca8714cafbc087b4cacd628b2e50845b",
+        "xml_well_formed": true,
+        "schema_status_before_gate": "DRAFT_FOR_LEGAL_AND_SCHEMA_VALIDATION"
+      }
+    ],
+    "superseded_provenance_only": {
+      "name": "Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.1.lrml",
+      "sha256": "7ec54759a51da1c7b021340ff7918438289be593150875fc233dad6f1b1ed71e",
+      "xml_well_formed": true
+    },
+    "repository_readback": {
+      "active_legalruleml_sources_present": false,
+      "required_target_root": "agent-workspace/legalruleml",
+      "validator_created": "agent-workspace/scripts/validate_legalruleml.py",
+      "ci_workflow_created": ".github/workflows/legalruleml-xsd-validate.yml"
+    },
+    "blocker": "The current governed LegalRuleML source bytes are held in the governed Library but are not yet present in the GitHub engineering tree. XSD conformance cannot be recorded as PASS until the exact current source artifacts are ingested and CI validates them.",
+    "control_position": "Fail closed. XML well-formedness is not OASIS XSD conformance."
+  },
+  "artifact_hash": null,
+  "external_ref": "AGR-XWALK-010"
+}
