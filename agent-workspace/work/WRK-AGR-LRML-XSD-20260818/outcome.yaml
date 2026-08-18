@@ -1,27 +1,36 @@
 work_id: WRK-AGR-LRML-XSD-20260818
-pdca_stage: CHECK_STUDY
+pdca_stage: ACT
 check_study:
-  result: BLOCKED_PRECONDITION
+  result: PASS_WITH_REMEDIATION
   evidence_ref: EVD-AGR-LRML-XSD-001
   findings:
-    - "The official OASIS compact XSD family has been identified and a reusable validator/CI gate has been codified."
-    - "The current enterprise and facility LegalRuleML artifacts are XML well formed."
-    - "The active source bytes are not yet present in the GitHub engineering tree, so official XSD validation has not executed on governed repository targets."
-    - "XML well-formedness must not be represented as OASIS XSD conformance."
+    - "The official OASIS LegalRuleML 1.0 compact XSD gate is operational and repeatable in GitHub CI."
+    - "The Kiboko-Venduo facility LegalRuleML v0.2 passes the official OASIS compact XSD after controlled serialization remediation."
+    - "The original enterprise LegalRuleML v0.1 failed official XSD validation on systematic serialization defects and is preserved in Git history as the failed baseline."
+    - "The remediated enterprise LegalRuleML v0.2 passes the official OASIS compact XSD."
+    - "Final CI run 32174982874 passed 2/2 active LegalRuleML targets."
+    - "KongoniApp Change Log Control passed."
+    - "Agent Workspace Validation remains red only because of the pre-existing unrelated WRK-ZCRM-BP-001 schema defect."
+    - "XSD conformance proves technical serialization conformance only; it does not prove substantive South African legal validity."
 recommended_act:
-  decision: REPEAT
-  rationale: "Repeat AGR-XWALK-010 after controlled ingestion of the current LegalRuleML artifacts into agent-workspace/legalruleml and execution of the CI conformance gate."
+  decision: ADOPT
+  rationale: >-
+    Adopt AGR-XWALK-010 as technically satisfied for the active repository LegalRuleML artifacts,
+    adopt the reusable official-XSD CI gate as the mandatory conformance control for future LegalRuleML
+    changes, and proceed to AGR-XWALK-011 without promoting any Agreement Template for transaction use.
 open_controls:
   - control_id: AGR-XWALK-010
-    status: OPEN
-    action: "Ingest exact current source artifacts, execute official OASIS compact XSD validation, remediate serialization errors if any, and repeat CHECK/STUDY."
+    status: ACT_PENDING
+    action: "Group CEO ACT decision required on the PASS_WITH_REMEDIATION result."
   - control_id: AGR-XWALK-011
     status: OPEN
-    action: "Substantive South African legal validation remains independent and is not affected by XSD status."
+    action: "Complete substantive South African legal validation of the VALIDATING Agreement Templates and governed clauses."
 record_state:
   validator_codified: true
   ci_gate_codified: true
-  xsd_conformance_proven: false
+  xsd_conformance_proven: true
+  active_targets_passed: 2
+  active_targets_failed: 0
   task_complete: false
 transaction_use:
   agreement_templates_promoted: false
