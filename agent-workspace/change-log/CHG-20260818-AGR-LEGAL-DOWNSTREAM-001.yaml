@@ -1,0 +1,50 @@
+change_id: CHG-20260818-AGR-LEGAL-DOWNSTREAM-001
+timestamp_utc: "2026-08-18T20:23:00Z"
+actor:
+  type: ChatGPT
+  name: ChatGPT Agreement Codification Agent
+  agent_contract_ref: null
+mandate_ref: "Group CEO instruction: Let's proceed — 2026-08-18"
+accountability_task_refs:
+  - WRK-AGR-LEGAL-APPLICABILITY-20260818
+  - WRK-AGR-OPERATIVE-CLAUSE-20260818
+  - WRK-AGR-SECURITY-COMMONLAW-20260818
+task_class: T2
+change_type: governance
+summary: >-
+  Performed controlled evidence discovery for the Kiboko-Venduo canary, classified the 12 evidence gaps without false closure,
+  created the governed South African operative clause-library candidate with zero approved clauses, and codified the initial
+  certificated-share pledge common-law validation control.
+reason: >-
+  Continue AGR-XWALK-011 downstream work while preserving fail-closed transaction readiness and separating clause-governance
+  architecture from substantive legal approval.
+affected_paths:
+  - agent-workspace/work/WRK-AGR-LEGAL-APPLICABILITY-20260818/evidence-gap-register-v0.2.yaml
+  - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/operative-clause-library-v0.1.yaml
+  - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/outcome.yaml
+  - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/share-pledge-validation-v0.1.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: "Group CEO instruction: Let's proceed — 2026-08-18"
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PASS_WITH_CONTROLLED_GAPS
+  act_decision: null
+  task_complete: false
+evidence:
+  - "Kongoni Group Entity Register"
+  - "Kiboko_Position_Paper_Fingroup — June 2026"
+  - "MoI_and_Shareholders_Agreements_Inventory"
+  - "Companies Act 71 of 2008"
+  - "Bock v Duburoro Investments (SCA)"
+  - "Simmonds NO v Essafrau (SCA)"
+  - "Vantage Goldfields v Arqomanzi (SCA)"
+pull_request: 10
+notes: >-
+  Evidence closure remains fail closed: 0/12 gaps closed, 3 partial blocking, 9 open blocking.
+  LIB-SA-AGR-CLAUSE-001 contains six candidate requirements and zero approved operative clauses.
+  Share-pledge control pattern is defined, but the canary cannot prove perfection or priority without Fingroup constitutional
+  documents, securities register/share-certificate evidence and substantive legal review. No Agreement Template is promoted.
