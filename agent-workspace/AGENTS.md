@@ -13,18 +13,30 @@ All agents working in this directory SHALL follow this protocol before execution
 9. For T2/T3 system changes, complete Rule 14 architecture preflight before any mutation.
 10. Respect `GATEWAY_REQUIRED` and `HARD_BLOCKED` controls.
 11. Execute only the authorised scope.
-12. For every material repository mutation, create or update a same-change-set record under `agent-workspace/change-log/` in accordance with `CTL-DEV-CHG-LOG-001`. The record SHALL identify the actor, mandate, task class, authority, affected paths, intended outcome, PDCA state and evidence.
-13. Record objective evidence under `evidence/` and/or authoritative Catalyst evidence stores.
-14. Update `handoff.md` for the next agent.
-15. Perform CHECK/STUDY before recommending closure.
-16. Record one ACT decision: ADOPT, ADAPT, REPEAT, REJECT or ESCALATE.
-17. Do not treat `DO_COMPLETE` as `TASK_COMPLETE`.
+12. Before every material enterprise system write, apply `CTL-SYS-WRITE-AUDIT-001`: resolve actor, mandate, authority, target, environment and correlation ID; capture or reference the before-state; and use an authorised auditable tool or gateway.
+13. After every material enterprise system write, record the result, native transaction/event reference where available, after-state reference, objective evidence and PDCA/task correlation. T2/T3 writes through an unauditable path SHALL fail closed.
+14. For every material repository mutation, create or update a same-change-set record under `agent-workspace/change-log/` in accordance with `CTL-DEV-CHG-LOG-001`.
+15. Record objective evidence under `evidence/` and/or authoritative Catalyst evidence stores.
+16. Update `handoff.md` for the next agent.
+17. Perform CHECK/STUDY before recommending closure.
+18. Record one ACT decision: ADOPT, ADAPT, REPEAT, REJECT or ESCALATE.
+19. Do not treat `DO_COMPLETE` as `TASK_COMPLETE`.
+
+## System-write audit control
+
+- `CTL-SYS-WRITE-AUDIT-001` is the enterprise parent control for auditable writes across enterprise systems.
+- Every material write SHALL be attributable to a human, agent, automation, application or integration.
+- T2/T3 writes SHALL NOT use a path that cannot produce sufficient audit evidence.
+- Audit events are append-only. Corrections create a superseding event; they do not erase history.
+- Failed write attempts SHALL be recorded where technically possible.
+- Secrets SHALL NOT be written into audit events.
+- Native system audit/transaction IDs SHALL be retained when available.
 
 ## Change-log control
 
-- `CTL-DEV-CHG-LOG-001` is mandatory for human, agent and automation changes to KongoniApp.
+- `CTL-DEV-CHG-LOG-001` remains mandatory for human, agent and automation changes to KongoniApp repositories.
 - Change records are append-only after merge and SHALL NOT be silently rewritten or deleted.
-- A protected change without a conformant same-change-set log record SHALL fail closed in CI.
+- A protected repository change without a conformant same-change-set log record SHALL fail closed in CI.
 - T2/T3 work SHALL NOT set `task_complete: true` without objective CHECK/STUDY evidence and a valid ACT decision.
 - Secrets SHALL NOT be written to the change log.
 
