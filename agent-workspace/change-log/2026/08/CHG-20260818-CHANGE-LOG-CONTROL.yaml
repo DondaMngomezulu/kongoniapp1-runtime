@@ -22,16 +22,17 @@ authority:
   status: AUTHORISED
   reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
 pdca:
-  phase: CHECK_STUDY
+  phase: ACT
   do_complete: true
-  check_study_result: 'Implementation files created on branch agent/change-log-control; GitHub Actions validation pending PR execution.'
-  act_decision: null
+  check_study_result: 'Static and branch-diff validation completed. GitHub Actions execution evidence remains pending before task closure.'
+  act_decision: ADOPT
   task_complete: false
 evidence:
   - 'GitHub branch: agent/change-log-control'
+  - 'Draft PR: #2 Add mandatory KongoniApp change log control'
   - 'Control: CTL-DEV-CHG-LOG-001 v1.0'
   - 'Validator: agent-workspace/scripts/validate_change_log.py'
   - 'Workflow: .github/workflows/change-log-control.yml'
 commit_sha: null
-pull_request: null
-notes: 'Task remains open until CI executes, CHECK/STUDY evidence is reviewed, and an ACT decision is recorded.'
+pull_request: 2
+notes: 'ACT decision ADOPT recorded by Group CEO on 2026-08-18. Task remains open until CI execution evidence is available and authoritative records are updated.'
