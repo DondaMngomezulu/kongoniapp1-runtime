@@ -1,0 +1,35 @@
+change_id: CHG-20260818-SYSTEM-WRITE-AUDIT
+timestamp_utc: '2026-08-18T15:10:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'Group CEO instruction: create a control which will enable all system writes to be auditable.'
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Add enterprise-wide auditable system write control and agent inheritance.
+reason: Ensure writes across GitHub, Zoho, Google and other enterprise systems are attributable, authorised and reconstructable.
+affected_paths:
+  - agent-workspace/governance/CTL-SYS-WRITE-AUDIT-001.yaml
+  - agent-workspace/schemas/system-write-audit-event.schema.json
+  - agent-workspace/templates/system-write-audit-event.yaml
+  - agent-workspace/AGENTS.md
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Control, schema, template and agent inheritance implemented on isolated branch; CI/regression validation pending.'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Branch: agent/system-write-audit-control'
+  - 'Control: CTL-SYS-WRITE-AUDIT-001 v1.0'
+  - 'Schema: agent-workspace/schemas/system-write-audit-event.schema.json'
+  - 'Template: agent-workspace/templates/system-write-audit-event.yaml'
+commit_sha: null
+pull_request: null
+notes: 'T2 task remains open pending validation and ACT decision.'
