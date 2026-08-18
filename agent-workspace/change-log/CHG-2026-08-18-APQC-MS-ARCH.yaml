@@ -1,0 +1,26 @@
+change_id: CHG-2026-08-18-APQC-MS-ARCH
+actor: ChatGPT
+mandate: User-authorised ADAPT of current microservice architecture against GitHub reference build
+task_class: T2
+authority: Group CEO instruction in active conversation
+affected_paths:
+  - agent-workspace/governance/STD-CAT-MS-SPEC-001.yaml
+  - agent-workspace/governance/application-boundaries.yaml
+  - agent-workspace/governance/catalyst-runtime-baseline.yaml
+  - agent-workspace/schemas/microservice.schema.json
+  - agent-workspace/schemas/enterprise-handover.schema.json
+intended_outcome: Align governed engineering references to APQC-spine microservice architecture and Zoho CRM, Books, WorkDrive and Catalyst authority boundaries.
+pdca:
+  mandate: complete
+  plan: complete
+  authorisation: complete
+  do: complete
+  evidence: branch and committed files
+  check_study: pending_post_write_readback
+  act: pending
+  record: this_change_record
+  close: false
+controls:
+  do_complete_is_task_complete: false
+  production_mutation: false
+  secrets_written: false
