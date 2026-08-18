@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:kongoni:schema:agent-evidence:1.0",
+  "title":"Kongoni Agent Evidence",
+  "type":"object",
+  "required":["work_id","evidence_id","evidence_type","created_by","created_at","source","result"],
+  "properties":{
+    "work_id":{"type":"string"},
+    "evidence_id":{"type":"string"},
+    "evidence_type":{"enum":["CONFIGURATION","EXECUTION","TEST","LOG","READBACK","APPROVAL","CONFORMANCE"]},
+    "created_by":{"type":"string"},
+    "created_at":{"type":"string"},
+    "source":{"type":"string"},
+    "result":{"enum":["PASS","FAIL","INFO","BLOCKED"]},
+    "details":{"type":"object"},
+    "artifact_hash":{"type":["string","null"]},
+    "external_ref":{"type":["string","null"]}
+  },
+  "additionalProperties":true
+}
