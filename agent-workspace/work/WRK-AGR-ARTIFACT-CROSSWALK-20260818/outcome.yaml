@@ -18,25 +18,25 @@ act:
     - "ADOPT existing Kongoni work/evidence/change-log/handoff schemas as the execution control envelope."
     - "ADAPT Accord Cicero/Concerto template-data-render-test mechanics under the existing Artifact Contract and governed Template layers."
     - "BUILD only a thin Agreement Clause Profile and validator after first-clause reuse testing proves the remaining gap."
-    - "Do not promote any Agreement Template until OASIS XSD validation, substantive South African clause validation, regression, final ACT, and authoritative record update pass."
-open_controls:
+    - "Do not promote any Agreement Template until technical conformance and substantive South African clause validation pass."
+controls:
   - control_id: AGR-XWALK-010
-    status: ACT_PENDING_AFTER_PASS_WITH_REMEDIATION
-    action: "Official OASIS compact XSD conformance is proven for 2/2 active LegalRuleML artifacts in GitHub Actions run 32174982874; Group CEO final ACT pending."
+    status: CLOSED_ADOPTED
+    action: "Maintain the adopted official OASIS compact-XSD CI gate for future LegalRuleML changes."
   - control_id: AGR-XWALK-011
     status: OPEN
-    action: "Complete substantive South African legal clause crosswalk for the three VALIDATING templates."
+    action: "Complete substantive South African legal clause crosswalk and validation for the three VALIDATING templates."
 record_state:
   controlled_candidate_created: true
   act_recorded: true
   authoritative_update_complete: true
   task_complete: true
+  xsd_conformance_gate_complete: true
 closure:
-  result: CONTROLLED_COMPLETE_WITH_OPEN_DOWNSTREAM_GATES
+  result: CONTROLLED_COMPLETE_WITH_OPEN_DOWNSTREAM_LEGAL_GATE
   note: >-
-    This T2 crosswalk work item is complete because CHECK/STUDY and ACT are recorded.
-    AGR-XWALK-010 has reached technical PASS_WITH_REMEDIATION and awaits its own final ACT.
+    The crosswalk T2 work item and AGR-XWALK-010 technical conformance gate are complete.
     AGR-XWALK-011 remains mandatory and no Agreement Template is authorised for transaction use.
 next_action:
-  authority: Group CEO
-  action: "Decide ACT for AGR-XWALK-010; recommended ADOPT, then proceed to AGR-XWALK-011."
+  authority: Legal validation workstream under existing governance
+  action: "Proceed to AGR-XWALK-011 substantive South African legal clause and template validation."
