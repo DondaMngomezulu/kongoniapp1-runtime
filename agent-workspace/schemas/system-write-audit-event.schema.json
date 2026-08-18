@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:schema:system-write-audit-event:1.0",
+  "title": "Kongoni Enterprise System Write Audit Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id","correlation_id","timestamp_utc","actor","mandate_ref","task_class","target","operation","authority_ref","requested_change","result","evidence_refs","pdca_phase"],
+  "properties": {
+    "event_id": {"type":"string","pattern":"^WAE-[0-9]{8}-[A-Z0-9-]+$"},
+    "correlation_id": {"type":"string","minLength":1},
+    "timestamp_utc": {"type":"string","format":"date-time"},
+    "actor": {
+      "type":"object","additionalProperties":false,"required":["type","id"],
+      "properties": {
+        "type":{"enum":["human","ChatGPT","Claude","Codex","Zia","specialist_agent","automation","application","integration"]},
+        "id":{"type":"string","minLength":1},
+        "agent_contract_ref":{"type":["string","null"]}
+      }
+    },
+    "mandate_ref":{"type":"string","minLength":1},
+    "accountability_task_ref":{"type":["string","null"]},
+    "task_class":{"enum":["T0","T1","T2","T3"]},
+    "target": {
+      "type":"object","additionalProperties":false,"required":["system","environment","type","id"],
+      "properties": {
+        "system":{"type":"string","minLength":1},
+        "environment":{"type":"string","minLength":1},
+        "type":{"type":"string","minLength":1},
+        "id":{"type":"string","minLength":1}
+      }
+    },
+    "operation":{"enum":["create","update","delete","activate","deactivate","publish","deploy","approve","reject","transition","permission_change","configuration_change","schema_change","data_import","other"]},
+    "authority_ref":{"type":"string","minLength":1},
+    "before_ref":{"type":["string","null"]},
+    "requested_change":{"type":"string","minLength":1},
+    "result":{"enum":["SUCCESS","FAILURE","PARTIAL","BLOCKED"]},
+    "after_ref":{"type":["string","null"]},
+    "native_transaction_ref":{"type":["string","null"]},
+    "evidence_refs":{"type":"array","items":{"type":"string"}},
+    "pdca_phase":{"enum":["MANDATE","PLAN","AUTHORISATION","DO","EVIDENCE","CHECK_STUDY","ACT","RECORD","CLOSE_OR_REPLAN"]},
+    "error_code":{"type":["string","null"]},
+    "notes":{"type":["string","null"]}
+  }
+}
