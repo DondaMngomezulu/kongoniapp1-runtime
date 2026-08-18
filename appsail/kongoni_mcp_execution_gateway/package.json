@@ -1,0 +1,17 @@
+{
+  "name": "kongoni-mcp-execution-gateway",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Governed MCP execution gateway for Kongoniapp1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "zcatalyst-sdk-node": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
