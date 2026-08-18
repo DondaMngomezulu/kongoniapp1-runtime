@@ -12,6 +12,7 @@ summary: "Created a controlled agreement-codification artifact crosswalk, comple
 reason: "Apply ADOPT -> ADAPT -> BUILD before further clause codification and prevent duplicate contract, catalogue, template, and evidence frameworks."
 affected_paths:
   - agent-workspace/governance/agreement-artifact-crosswalk-v0.1.yaml
+  - agent-workspace/governance/agreement-artifact-crosswalk-v0.2.yaml
   - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/plan.yaml
   - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/evidence/EVD-AGR-ARTIFACT-CROSSWALK-001.json
