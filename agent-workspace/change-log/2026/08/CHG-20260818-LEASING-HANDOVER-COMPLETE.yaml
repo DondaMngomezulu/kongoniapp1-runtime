@@ -1,0 +1,41 @@
+change_id: CHG-20260818-LEASING-HANDOVER-COMPLETE
+timestamp_utc: '2026-08-18T19:59:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO ACT ADAPT followed by instruction to complete the Leasing microservice handover on 2026-08-18.'
+task_class: T2
+change_type: governance
+summary: Complete the Development engineering handover package for SRV-BIAN-LEASING-001 and reconcile the enterprise system-write audit control.
+reason: Remove the remaining controlled blockers to Development engineering without fabricating APQC process identifiers or authorising Production.
+affected_paths:
+  - agent-workspace/governance/CTL-SYS-WRITE-AUDIT-001.yaml
+  - agent-workspace/schemas/system-write-audit-event.schema.json
+  - agent-workspace/templates/system-write-audit-event.yaml
+  - agent-workspace/services/SRV-BIAN-LEASING-001/apqc-traceability.yaml
+  - agent-workspace/services/SRV-BIAN-LEASING-001/handover.yaml
+  - agent-workspace/services/SRV-BIAN-LEASING-001/service-specification.yaml
+  - agent-workspace/architecture/PRF-ARCH-MICROSVC-HO-001/assessments/SRV-BIAN-LEASING-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PASS_FOR_DEVELOPMENT_WITH_CONTROLLED_EXCEPTION
+  act_decision: ADOPT
+  task_complete: false
+evidence:
+  - 'Catalyst APQC_ProcessElementReference table verified with exact schema; no rows matched lease or finance search terms used for this assessment.'
+  - 'Catalyst APQC_BIAN_Crosswalk verified; no Leasing mapping row returned.'
+  - 'EXC-APQC-LEASING-DEV-001 records a Development-only traceability exception and prohibits Production handover until resolved or separately excepted.'
+  - 'Catalyst EnvironmentExecutionAuthority contains active ENV-AUTH-CAT-KONGONIAPP1-DEV with POLICY_ACTIVE_CUSTODIAN_AUTHORIZED.'
+  - 'CTL-SYS-WRITE-AUDIT-001 reconstructed on the current main-derived branch rather than merging stale PR #4.'
+  - 'GATE-ARCH-TO-ENG-001 reassessed as PASS_FOR_DEVELOPMENT_WITH_CONTROLLED_EXCEPTION.'
+regression:
+  service_boundary: PASS_NO_CHANGE
+  bian_semantics: PASS_PRESERVED
+  application_authority: PASS_NO_COMPETING_MASTER
+  production_safety: PASS_PRODUCTION_NOT_AUTHORISED
+notes: 'This authorises architecture handover to the Catalyst Engineer for Development only. Implementation, runtime testing, CHECK/STUDY and final service ACT remain open; DO_COMPLETE != TASK_COMPLETE.'
