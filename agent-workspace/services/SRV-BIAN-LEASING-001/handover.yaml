@@ -1,18 +1,28 @@
 handover_id: HO-SRV-BIAN-LEASING-001
 profile: PRF-ARCH-MICROSVC-HO-001
-version: '0.1'
-status: RETURNED_FOR_ADAPTATION
+version: '0.2'
+status: AUTHORISED_FOR_ENGINEERING
 microservice_id: SRV-BIAN-LEASING-001
-register_entry_ref: REG-ARCH-MICROSVC-001
+register_entry_ref: REG-ARCH-MICROSVC-001#MS-VS02-LEASING-001
 service_specification_ref: agent-workspace/services/SRV-BIAN-LEASING-001/service-specification.yaml
 architecture_version: '0.2'
 target_environment: Development
-engineering_authority_ref: PENDING_EXPLICIT_DO_AUTHORISATION
+engineering_authority_ref: ENV-AUTH-CAT-KONGONIAPP1-DEV
+engineering_authority_evidence:
+  active_flag: true
+  enforcement_status: POLICY_ACTIVE_CUSTODIAN_AUTHORIZED
+  platform: ZOHO_CATALYST
+  project_id: '86824000000020001'
+  environment: Development
+  custodian_agent_urn: urn:kongoni:agent:catalyst-platform-delivery
+  coordinator_direct_mutation_allowed: false
+  mcp_gateway_required: true
 source_refs:
   - Catalyst BIANServiceDomain/BIANServiceArtifact — BIAN 14.0.0 Leasing
-  - APQC Banking PCF 7.2.2 — version verified, exact hierarchy source pending
+  - MAP-APQC-SRV-BIAN-LEASING-001 v0.2 — controlled Development exception
   - PRF-ARCH-MICROSVC-HO-001
   - CTL-APP-AUTH-BOUNDARY-001
+  - CTL-SYS-WRITE-AUDIT-001
 required_artifact_refs:
   architecture_description: architecture.yaml
   canonical_data_model: data-model.yaml
@@ -33,7 +43,7 @@ security_design:
     threats: [unauthorised_facility_mutation, duplicate_write, cross-system_state_conflict, sensitive_customer_data_exposure, forged_accounting_reference]
     controls: [authentication, authorisation, idempotency, correlation_id, state_authority_validation, audit_evidence, input_validation]
 nfr_slo_profile:
-  availability: DEVELOPMENT_TARGET_TO_BE_MEASURED; production target requires separate adoption
+  availability: DEVELOPMENT_BASELINE_TO_BE_MEASURED
   latency: p95 target to be established by Development baseline test
   capacity: horizontal AppSail scaling candidate; validate under load test
   resilience: fail closed on authority/audit failure; external dependency failure shall not create partial authoritative state
@@ -52,7 +62,7 @@ test_specification:
 deployment_and_rollback:
   deployment_scope: Development only
   production_authority: NOT_GRANTED
-  pre_deploy: [schema_validation, contract_tests, security_tests, duplicate_data_store_check]
+  pre_deploy: [schema_validation, contract_tests, security_tests, duplicate_data_store_check, audit_control_check]
   smoke: [health_check, Initiate, Retrieve, Update, unauthorised_write_rejection, duplicate_idempotency_test]
   rollback: revert deployment and reconcile any Development service-state writes using correlation/audit evidence
 operational_runbook:
@@ -65,11 +75,14 @@ acceptance_criteria:
   - Unauthorised writes fail closed.
   - CRM and Books references are validated without copying their authoritative state into a competing master.
   - All canary operations preserve BIAN semantic intent.
-blocking_gaps:
-  - Exact APQC Banking L3-L5 hierarchy mapping is unresolved.
-  - CTL-SYS-WRITE-AUDIT-001 authoritative merged/adopted state must be reconciled before mutating engineering tests.
-  - Explicit Development DO authority for Catalyst implementation is not yet recorded.
+development_exceptions:
+  - EXC-APQC-LEASING-DEV-001
+production_blockers:
+  - Resolve exact APQC Banking L3-L5 traceability or approve a separate permanent exception.
+  - Complete production operational runbook and production SLO adoption.
+  - Obtain separate Production execution authority.
 unresolved_nonblocking_assumptions:
   - AppSail/Python remains preferred subject to current Catalyst documentation confirmation at engineering start.
-gate_result: FAIL_WITH_REDUCED_GAPS
-act_recommendation: ADAPT
+gate_result: PASS_FOR_DEVELOPMENT_WITH_CONTROLLED_EXCEPTION
+act_decision: ADOPT_FOR_DEVELOPMENT_ENGINEERING
+closure_rule: DO_COMPLETE != TASK_COMPLETE
