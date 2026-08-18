@@ -8,20 +8,23 @@ check_study:
     - "The Kiboko-Venduo facility LegalRuleML v0.2 passes the official OASIS compact XSD after controlled serialization remediation."
     - "The original enterprise LegalRuleML v0.1 failed official XSD validation on systematic serialization defects and is preserved in Git history as the failed baseline."
     - "The remediated enterprise LegalRuleML v0.2 passes the official OASIS compact XSD."
-    - "Final CI run 32174982874 passed 2/2 active LegalRuleML targets."
+    - "Latest confirmed conformance run 32175444168 passed 2/2 active LegalRuleML targets."
     - "KongoniApp Change Log Control passed."
     - "Agent Workspace Validation remains red only because of the pre-existing unrelated WRK-ZCRM-BP-001 schema defect."
     - "XSD conformance proves technical serialization conformance only; it does not prove substantive South African legal validity."
-recommended_act:
+act:
   decision: ADOPT
-  rationale: >-
-    Adopt AGR-XWALK-010 as technically satisfied for the active repository LegalRuleML artifacts,
-    adopt the reusable official-XSD CI gate as the mandatory conformance control for future LegalRuleML
-    changes, and proceed to AGR-XWALK-011 without promoting any Agreement Template for transaction use.
+  authority: Group CEO
+  decision_date: "2026-08-18"
+  status: APPROVED
+  effect:
+    - "AGR-XWALK-010 is technically satisfied for the active governed LegalRuleML artifacts."
+    - "The official OASIS LegalRuleML compact-XSD CI gate is adopted as the mandatory technical conformance control for future governed LegalRuleML changes."
+    - "Substantive South African legal validation remains independent under AGR-XWALK-011."
 open_controls:
   - control_id: AGR-XWALK-010
-    status: ACT_PENDING
-    action: "Group CEO ACT decision required on the PASS_WITH_REMEDIATION result."
+    status: CLOSED_ADOPTED
+    action: "Maintain the adopted XSD CI gate for future LegalRuleML changes."
   - control_id: AGR-XWALK-011
     status: OPEN
     action: "Complete substantive South African legal validation of the VALIDATING Agreement Templates and governed clauses."
@@ -31,6 +34,11 @@ record_state:
   xsd_conformance_proven: true
   active_targets_passed: 2
   active_targets_failed: 0
-  task_complete: false
+  act_recorded: true
+  task_complete: true
 transaction_use:
   agreement_templates_promoted: false
+  reason: "AGR-XWALK-011 remains open; technical XSD conformance does not establish transaction readiness."
+closure:
+  result: CONTROLLED_COMPLETE
+  next_gate: AGR-XWALK-011
