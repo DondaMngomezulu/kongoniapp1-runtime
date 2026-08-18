@@ -1,0 +1,48 @@
+work_id: WRK-MSG-TPL-SVC-001
+title: Integrate governed message template resolution as Kongoniapp1 microservice
+task_class: T2
+status: DO_IN_PROGRESS
+methodology: MET-PDCA-001
+owner: Group CEO
+assigned_to: SKL-CAT-MICROSVC-ENG-001
+coordinators:
+  - Reandra
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+environment:
+  platform: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+required_controls:
+  - CTL-COM-MSG-TPL-001
+  - CTL-COM-MSG-RUNTIME-001
+  - MET-PDCA-001
+  - CTL-SYS-WRITE-AUDIT-001
+approval_ref: Group CEO instruction 2026-08-18
+pdca:
+  stage: DO
+  do_complete: false
+  task_complete: false
+  act_decision: null
+objective: >-
+  Implement SRV-VS00-MSG-TPL-001 as a Development-only Zoho Catalyst microservice that
+  resolves approved message-template implementations from logical register REG-MSG-TPL-001
+  while preserving CAT-MSG-001 as the canonical semantic authority.
+authorised_scope:
+  - add the service specification and AppSail source to the governed GitHub repository
+  - reuse TemplateGovernanceRegister as the physical register for REG-MSG-TPL-001
+  - add one Development-only canary implementation record
+  - run forward and backward regression checks
+  - remediate pre-existing Agent Workspace schema non-conformance required to restore CI
+prohibited_scope:
+  - deploy or activate the service in Production
+  - change CAT-MSG-001 canonical message definitions without a separate governed change
+  - render or send enterprise communications from this resolver
+  - create a parallel physical template register
+  - bypass failed CI or merge controls
+next_action:
+  assigned_to: SKL-CAT-MICROSVC-ENG-001
+  instruction_file: agent-workspace/architecture/REG-ARCH-MICROSVC-001/service-specifications/SRV-VS00-MSG-TPL-001.yaml
+closure_rule: DO_COMPLETE != TASK_COMPLETE
