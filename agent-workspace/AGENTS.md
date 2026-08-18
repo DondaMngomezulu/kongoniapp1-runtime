@@ -13,11 +13,20 @@ All agents working in this directory SHALL follow this protocol before execution
 9. For T2/T3 system changes, complete Rule 14 architecture preflight before any mutation.
 10. Respect `GATEWAY_REQUIRED` and `HARD_BLOCKED` controls.
 11. Execute only the authorised scope.
-12. Record objective evidence under `evidence/` and/or authoritative Catalyst evidence stores.
-13. Update `handoff.md` for the next agent.
-14. Perform CHECK/STUDY before recommending closure.
-15. Record one ACT decision: ADOPT, ADAPT, REPEAT, REJECT or ESCALATE.
-16. Do not treat `DO_COMPLETE` as `TASK_COMPLETE`.
+12. For every material repository mutation, create or update a same-change-set record under `agent-workspace/change-log/` in accordance with `CTL-DEV-CHG-LOG-001`. The record SHALL identify the actor, mandate, task class, authority, affected paths, intended outcome, PDCA state and evidence.
+13. Record objective evidence under `evidence/` and/or authoritative Catalyst evidence stores.
+14. Update `handoff.md` for the next agent.
+15. Perform CHECK/STUDY before recommending closure.
+16. Record one ACT decision: ADOPT, ADAPT, REPEAT, REJECT or ESCALATE.
+17. Do not treat `DO_COMPLETE` as `TASK_COMPLETE`.
+
+## Change-log control
+
+- `CTL-DEV-CHG-LOG-001` is mandatory for human, agent and automation changes to KongoniApp.
+- Change records are append-only after merge and SHALL NOT be silently rewritten or deleted.
+- A protected change without a conformant same-change-set log record SHALL fail closed in CI.
+- T2/T3 work SHALL NOT set `task_complete: true` without objective CHECK/STUDY evidence and a valid ACT decision.
+- Secrets SHALL NOT be written to the change log.
 
 ## Authority rules
 
