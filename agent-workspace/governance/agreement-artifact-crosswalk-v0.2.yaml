@@ -52,19 +52,19 @@ act:
 
 open_controls:
   - control_id: AGR-XWALK-010
-    status: OPEN
-    gate: "Validate current Kongoni LegalRuleML artifacts against the official OASIS compact XSD family."
+    status: ACT_PENDING_AFTER_PASS_WITH_REMEDIATION
+    gate: "Official OASIS compact XSD conformance proven for active LegalRuleML targets in GitHub Actions run 32174982874; Group CEO final ACT pending."
   - control_id: AGR-XWALK-011
     status: OPEN
     gate: "Complete substantive South African legal clause validation for the three VALIDATING Agreement Templates."
 
 transaction_use:
   agreement_templates_promoted: false
-  reason: "Open controls AGR-XWALK-010 and AGR-XWALK-011 remain mandatory promotion gates."
+  reason: "AGR-XWALK-011 remains a mandatory substantive legal promotion gate."
 
 closure:
   crosswalk_pdca_complete: true
   act_recorded: true
   decision: ADAPT
   downstream_validation_complete: false
-  next_gate: AGR-XWALK-010
+  next_gate: "AGR-XWALK-010 final ACT, then AGR-XWALK-011"
