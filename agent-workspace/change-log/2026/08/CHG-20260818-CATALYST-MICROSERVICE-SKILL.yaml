@@ -8,7 +8,7 @@ mandate_ref: 'Group CEO instruction: start developing a Zoho Catalyst Microservi
 accountability_task_ref: null
 task_class: T2
 change_type: governance
-summary: Develop the first governed Zoho Catalyst Microservice Engineering Skill and its service specification and acceptance-test artefacts.
+summary: Develop and adopt the first governed Zoho Catalyst Microservice Engineering Skill and its service specification and acceptance-test artefacts.
 reason: Provide a repeatable engineering method that converts governed business service specifications, including BIAN-derived services, into controlled Zoho Catalyst microservices.
 affected_paths:
   - agent-workspace/skills/SKL-CAT-MICROSVC-ENG-001/SKILL.md
@@ -17,18 +17,21 @@ affected_paths:
 environment: repository
 authority:
   status: AUTHORISED
-  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+  reference: 'Group CEO approval in ChatGPT conversation on 2026-08-18.'
 pdca:
-  phase: CHECK_STUDY
+  phase: CLOSE_OR_REPLAN
   do_complete: true
-  check_study_result: 'Initial skill, service specification template and 15 acceptance tests created on an isolated branch. CI and regression validation pending.'
-  act_decision: null
-  task_complete: false
+  check_study_result: 'KongoniApp Change Log Control run 32163719639 passed. Agent Workspace Validation run 32163719682 failed only on pre-existing WRK-ZCRM-BP-001/mandate.yaml because the required architecture property is missing. This skill did not modify that work item. Regression exception recorded.'
+  act_decision: ADOPT
+  task_complete: true
 evidence:
   - 'Branch: agent/catalyst-microservice-engineering-skill'
+  - 'PR: #5 Add Zoho Catalyst Microservice Engineering Skill'
   - 'Skill: SKL-CAT-MICROSVC-ENG-001 v0.1'
   - 'Service specification template created.'
   - '15 acceptance tests defined.'
+  - 'GitHub Actions run 32163719639: KongoniApp Change Log Control = success.'
+  - 'Regression exception: Agent Workspace Validation run 32163719682 failed on untouched WRK-ZCRM-BP-001/mandate.yaml.'
 commit_sha: null
-pull_request: null
-notes: 'T2 task remains open pending CHECK/STUDY evidence and ACT decision.'
+pull_request: 5
+notes: 'ACT decision ADOPT recorded by Group CEO on 2026-08-18. Skill adoption is approved; unrelated pre-existing workspace-schema defect remains outside this change set.'
