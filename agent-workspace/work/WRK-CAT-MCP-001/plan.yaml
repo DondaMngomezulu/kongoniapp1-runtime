@@ -1,0 +1,30 @@
+work_id: WRK-CAT-MCP-001
+plan_version: "1.0"
+status: AUTHORISED
+steps:
+  - id: P1
+    action: Verify active architecture, environment authority, Agent Contract and MCP tool governance.
+    owner: Claude
+  - id: P2
+    action: Create or reuse AppSail service kongoni_mcp_execution_gateway in Development.
+    owner: Claude
+  - id: P3
+    action: Configure CRM_CONNECTION_LINK_NAME from the actual Zoho CRM Write Connection link name.
+    owner: Claude
+  - id: P4
+    action: Deploy the existing appsail/kongoni_mcp_execution_gateway source.
+    owner: Claude
+  - id: P5
+    action: Run health, fail-closed, valid-preflight and CRM read tests.
+    owner: Claude
+  - id: P6
+    action: Record objective evidence and update handoff.
+    owner: Claude
+  - id: P7
+    action: Perform independent CHECK/STUDY and regression assessment.
+    owner: ChatGPT
+  - id: P8
+    action: Record ACT and authoritative Catalyst status update.
+    owner: Reandra / authorised governance agent
+rollback:
+  rule: Do not promote to Production. If deployment fails, retain previous Development state and record the failure.
