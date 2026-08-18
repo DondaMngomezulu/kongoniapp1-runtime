@@ -1,0 +1,61 @@
+assessment_id: ASMT-ARCH-HO-SRV-BIAN-LEASING-001
+profile_ref: PRF-ARCH-MICROSVC-HO-001
+microservice_id: SRV-BIAN-LEASING-001
+assessment_date: '2026-08-18'
+owner_skill: SKL-GH-MICROSVC-ARCH-001
+consumer_skill: SKL-CAT-MICROSVC-ENG-001
+task_class: T2
+status: AUTHORISED_FOR_ENGINEERING
+handover_gate: GATE-ARCH-TO-ENG-001
+result: PASS_FOR_DEVELOPMENT_WITH_CONTROLLED_EXCEPTION
+register_binding:
+  register_ref: REG-ARCH-MICROSVC-001#MS-VS02-LEASING-001
+  lifecycle_state: ARCHITECTED
+  service_specification_id: SRV-BIAN-LEASING-001
+source_specification:
+  ref: agent-workspace/services/SRV-BIAN-LEASING-001/service-specification.yaml
+  version: '0.2'
+  status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
+mandatory_gate_checks:
+  register_entry: {status: PASS, finding: 'Exact Leasing register entry is MS-VS02-LEASING-001.'}
+  service_specification: {status: PASS, finding: 'Architecture-owned v0.2 specification is approved for Development engineering.'}
+  architecture_description: {status: PASS, finding: 'architecture.yaml provides the architecture description and ADR set.'}
+  architecture_decisions: {status: PASS, finding: 'AppSail, Python, API Gateway and authority decisions are recorded.'}
+  process_traceability: {status: PASS_WITH_CONTROLLED_EXCEPTION, finding: 'EXC-APQC-LEASING-DEV-001 permits Development engineering because exact APQC Banking L3-L5 content is absent from governed sources; Production remains blocked on resolution or separate exception.'}
+  domain_semantics: {status: PASS, finding: 'BIAN 14.0.0 Leasing and LeasingFacility remain the semantic boundary.'}
+  canonical_data_model: {status: PASS, finding: 'data-model.yaml defines LeasingFacility and I/O validation requirements.'}
+  input_contract: {status: PASS, finding: 'Input contracts are defined in data-model.yaml and openapi.yaml.'}
+  output_contract: {status: PASS, finding: 'Output contracts are defined in data-model.yaml and openapi.yaml.'}
+  data_quality_rules: {status: PASS, finding: 'Required identifiers, authority references, idempotency and validation constraints are defined.'}
+  lineage_and_provenance: {status: PASS, finding: 'BIAN/Catalyst source provenance and application authority are explicitly recorded.'}
+  synchronous_api_contract: {status: PASS, finding: 'OpenAPI 3.1 contract covers Initiate, Retrieve and Update.'}
+  asynchronous_event_contract: {status: NOT_APPLICABLE_CURRENT_CANARY, rationale: 'No asynchronous event channel is in the three-operation canary.'}
+  business_rules: {status: PASS_FOR_CANARY, finding: 'Authority, idempotency, audit and state-ownership rules are bound; specialist accounting/tax/legal decisions remain external dependencies.'}
+  application_authority_mapping: {status: PASS, finding: 'Catalyst Leasing state, CRM commercial state, Books accounting state and GitHub architecture authority are separated.'}
+  security_design: {status: PASS, finding: 'Authentication, authorisation, least privilege, secret handling and threat controls are defined.'}
+  nfr_slo_profile: {status: PASS_FOR_DEVELOPMENT_BASELINE, finding: 'Development measurement targets and resilience/recovery requirements are defined; Production SLO adoption remains separate.'}
+  audit_evidence_contract: {status: PASS, finding: 'CTL-SYS-WRITE-AUDIT-001 is reconstructed as APPROVED_ACTIVE on the current branch and CTL-DEV-CHG-LOG-001 remains the GitHub implementation control.'}
+  dependency_manifest: {status: PASS, finding: 'Business, application and Catalyst dependencies are listed.'}
+  runtime_constraints: {status: PASS, finding: 'Zoho Catalyst Development, AppSail/Python candidate and API Gateway constraints are architecture-owned.'}
+  test_specification: {status: PASS, finding: 'Required test classes and objective canary acceptance criteria are defined.'}
+  deployment_and_rollback_requirements: {status: PASS, finding: 'Development-only deployment, smoke, rollback and reconciliation requirements are defined.'}
+  operational_runbook_requirements: {status: NOT_APPLICABLE_PRE_PRODUCTION, rationale: 'Runbook remains mandatory before Production handover.'}
+  acceptance_criteria: {status: PASS, finding: 'Canary acceptance criteria are objective and independently checkable.'}
+  engineering_authority_ref: {status: PASS, finding: 'Catalyst EnvironmentExecutionAuthority ENV-AUTH-CAT-KONGONIAPP1-DEV is active and custodian-authorized.'}
+controlled_exceptions:
+  - EXC-APQC-LEASING-DEV-001
+production_blockers:
+  - Exact APQC Banking L3-L5 traceability or separately approved permanent exception.
+  - Production runbook and adopted Production SLOs.
+  - Separate Production execution authority.
+regression_assessment:
+  service_boundary: PASS_NO_CHANGE
+  authority_model: PASS_NO_CONFLICT
+  BIAN_semantics: PASS_PRESERVED
+  application_state_ownership: PASS_NO_COMPETING_MASTER
+  production_safety: PASS_PRODUCTION_REMAINS_BLOCKED
+act_decision: ADOPT_FOR_DEVELOPMENT_ENGINEERING
+next_state: HANDOVER_TO_CATALYST_ENGINEER
+engineering_allowed: true
+production_allowed: false
+closure_rule: DO_COMPLETE != TASK_COMPLETE

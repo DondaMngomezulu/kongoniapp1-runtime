@@ -1,0 +1,35 @@
+artifact_id: ART-DAT-001-SRV-BIAN-LEASING-001
+version: '0.1'
+status: DRAFT
+canonical_object: LeasingFacility
+identity:
+  leasing_id: required immutable service identifier
+attributes:
+  customer_ref: {type: string, authority: Zoho CRM, required: true}
+  offer_ref: {type: string, authority: Zoho CRM, required: false}
+  agreement_ref: {type: string, authority: governed agreement service, required: false}
+  asset_refs: {type: array, items: string, required: true}
+  facility_status: {type: string, authority: Leasing Service, required: true}
+  currency: {type: string, format: ISO-4217, required: true}
+  effective_date: {type: string, format: date, required: true}
+  maturity_date: {type: string, format: date, required: true}
+  accounting_refs: {type: array, items: string, authority: Zoho Books, required: false}
+  created_at: {type: string, format: date-time, required: true}
+  updated_at: {type: string, format: date-time, required: true}
+input_contracts:
+  Initiate: [customer_ref, asset_refs, currency, effective_date, maturity_date]
+  Update: [leasing_id, authorised_patch]
+output_contracts:
+  Retrieve: LeasingFacility
+data_quality_rules:
+  - leasing_id is unique and immutable
+  - maturity_date must be later than effective_date
+  - customer_ref must resolve to an authoritative CRM record
+  - accounting_refs may reference Zoho Books but may not redefine ledger state
+  - mutating requests must carry correlation_id and idempotency_key
+lineage:
+  BIAN_semantics: Catalyst BIANServiceDomain and BIANServiceArtifact records
+  customer_state: Zoho CRM
+  accounting_state: Zoho Books
+  architecture_contract: GitHub
+retention: TO_BE_BOUND_TO_ENTERPRISE_RETENTION_POLICY

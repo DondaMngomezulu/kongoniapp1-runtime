@@ -1,0 +1,35 @@
+architecture_id: ART-BLD-001-SRV-BIAN-LEASING-001
+version: '0.1'
+status: DRAFT
+service_id: SRV-BIAN-LEASING-001
+boundary: BIAN Leasing Service Domain
+responsibility: Own leasing-facility lifecycle state and servicing commands without owning CRM relationship state or the accounting ledger.
+components:
+  ingress: Catalyst API Gateway
+  runtime: Catalyst AppSail
+  implementation_language: Python
+  service: Leasing Service
+  persistence: Governed Catalyst service-state projection only after duplicate/system-of-record assessment
+  external_systems:
+    Zoho_CRM: customer, opportunity, commercial relationship and offer references
+    Zoho_Books: accounting ledger and committed accounting transaction references
+    GitHub: architecture, service specification, source code, tests and engineering history
+trust_boundaries:
+  - API consumer -> API Gateway
+  - API Gateway -> AppSail
+  - AppSail -> Catalyst Data Store
+  - AppSail -> Zoho CRM
+  - AppSail -> Zoho Books
+architecture_decisions:
+  - id: ADR-LEASING-001
+    decision: Use BIAN Leasing as the service boundary; APQC is process assurance, not the deployable boundary.
+  - id: ADR-LEASING-002
+    decision: Use AppSail/Python as the preferred implementation target for the multi-operation service.
+  - id: ADR-LEASING-003
+    decision: Do not create a competing accounting ledger in Catalyst.
+  - id: ADR-LEASING-004
+    decision: Mutating operations require idempotency, execution authority, correlation IDs and system-write audit evidence.
+dependencies:
+  business: [Customer Agreement, Customer Offer, Collateral Allocation Management, Customer Credit Rating, Underwriting]
+  applications: [Zoho CRM, Zoho Books]
+  platform: [Catalyst API Gateway, Catalyst AppSail, Catalyst Authentication, Catalyst Data Store, Catalyst Logs]

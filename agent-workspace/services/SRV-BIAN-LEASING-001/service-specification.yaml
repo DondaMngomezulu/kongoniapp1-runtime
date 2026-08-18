@@ -1,0 +1,48 @@
+service_specification:
+  id: SRV-BIAN-LEASING-001
+  version: '0.2'
+  status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
+  name: Leasing Service
+  architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+  engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+  value_stream_id: VS02
+  value_stream_name: Asset Finance & Capital Provision
+  business_owner: VS02
+  task_class: T2
+  purpose: Manage the governed lifecycle and servicing state of a leasing facility for financed equipment.
+  service_domain:
+    standard: BIAN
+    version: '14.0.0'
+    name: Leasing
+    domain_id: urn:bian:14.0.0:service-domain:leasing
+    primary_resource: LeasingFacility
+    behaviour_qualifiers: [AmountBlock, Charge, CollateralAllocation, CorporateAction, DebitandCredit, Deposit, FinancialStatusTracking, Interest, IssuedDevice, Payment, Sweep]
+    operation_count: 44
+  canary_scope:
+    - {operation: Initiate, method: POST, path: /v1/leasing}
+    - {operation: Retrieve, method: GET, path: /v1/leasing/{leasing_id}}
+    - {operation: Update, method: PUT, path: /v1/leasing/{leasing_id}}
+  runtime_constraints:
+    platform: Zoho Catalyst
+    project: Kongoniapp1
+    project_id: '86824000000020001'
+    environment: Development
+    engineering_authority_ref: ENV-AUTH-CAT-KONGONIAPP1-DEV
+    preferred_runtime: AppSail
+    preferred_language: Python
+    production_write_allowed: false
+  artifact_refs:
+    architecture_description: architecture.yaml
+    canonical_data_model: data-model.yaml
+    api_contract: openapi.yaml
+    engineering_handover: handover.yaml
+    apqc_traceability: apqc-traceability.yaml
+    system_write_audit_control: ../../governance/CTL-SYS-WRITE-AUDIT-001.yaml
+  process_traceability:
+    status: DEVELOPMENT_EXCEPTION_APPROVED
+    exception_ref: EXC-APQC-LEASING-DEV-001
+    production_rule: exact APQC Banking L3-L5 traceability remains required or must receive separate permanent exception before Production handover
+  engineering_rule: Engineer SHALL implement this approved architecture package and SHALL return material design defects to SKL-GH-MICROSVC-ARCH-001 as ADAPT rather than silently redesigning the service.
+  approval_state: APPROVED_DEVELOPMENT_ONLY
+  approval_ref: 'Group CEO ACT ADAPT and instruction to complete on 2026-08-18'
+  production_authority: NOT_GRANTED

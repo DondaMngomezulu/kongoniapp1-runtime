@@ -1,0 +1,88 @@
+handover_id: HO-SRV-BIAN-LEASING-001
+profile: PRF-ARCH-MICROSVC-HO-001
+version: '0.2'
+status: AUTHORISED_FOR_ENGINEERING
+microservice_id: SRV-BIAN-LEASING-001
+register_entry_ref: REG-ARCH-MICROSVC-001#MS-VS02-LEASING-001
+service_specification_ref: agent-workspace/services/SRV-BIAN-LEASING-001/service-specification.yaml
+architecture_version: '0.2'
+target_environment: Development
+engineering_authority_ref: ENV-AUTH-CAT-KONGONIAPP1-DEV
+engineering_authority_evidence:
+  active_flag: true
+  enforcement_status: POLICY_ACTIVE_CUSTODIAN_AUTHORIZED
+  platform: ZOHO_CATALYST
+  project_id: '86824000000020001'
+  environment: Development
+  custodian_agent_urn: urn:kongoni:agent:catalyst-platform-delivery
+  coordinator_direct_mutation_allowed: false
+  mcp_gateway_required: true
+source_refs:
+  - Catalyst BIANServiceDomain/BIANServiceArtifact — BIAN 14.0.0 Leasing
+  - MAP-APQC-SRV-BIAN-LEASING-001 v0.2 — controlled Development exception
+  - PRF-ARCH-MICROSVC-HO-001
+  - CTL-APP-AUTH-BOUNDARY-001
+  - CTL-SYS-WRITE-AUDIT-001
+required_artifact_refs:
+  architecture_description: architecture.yaml
+  canonical_data_model: data-model.yaml
+  api_contract: openapi.yaml
+  apqc_traceability: apqc-traceability.yaml
+application_authority:
+  leasing_facility_service_state: Catalyst Leasing Service
+  customer_relationship_state: Zoho CRM
+  opportunity_offer_state: Zoho CRM
+  accounting_ledger_and_transactions: Zoho Books
+  architecture_and_code: GitHub
+security_design:
+  authentication: REQUIRED
+  authorisation: operation_level_and_environment_execution_authority
+  least_privilege: REQUIRED
+  secrets: governed_connection_or_secret_mechanism_only
+  threat_model:
+    threats: [unauthorised_facility_mutation, duplicate_write, cross-system_state_conflict, sensitive_customer_data_exposure, forged_accounting_reference]
+    controls: [authentication, authorisation, idempotency, correlation_id, state_authority_validation, audit_evidence, input_validation]
+nfr_slo_profile:
+  availability: DEVELOPMENT_BASELINE_TO_BE_MEASURED
+  latency: p95 target to be established by Development baseline test
+  capacity: horizontal AppSail scaling candidate; validate under load test
+  resilience: fail closed on authority/audit failure; external dependency failure shall not create partial authoritative state
+  timeout_retry: operation-specific; no blind retry of non-idempotent writes
+  recovery: Development rollback plus service-state reconciliation test required
+  observability: structured logs, correlation IDs, error metrics, health endpoint, audit-event evidence
+audit_evidence_contract:
+  controls: [CTL-SYS-WRITE-AUDIT-001, CTL-DEV-CHG-LOG-001]
+  required: [actor, mandate, authority, correlation_id, idempotency_key, target_resource, requested_change, result, before_ref_when_applicable, after_ref, native_transaction_ref_when_available]
+dependency_manifest:
+  business_services: [Customer Agreement, Customer Offer, Collateral Allocation Management, Customer Credit Rating, Underwriting]
+  applications: [Zoho CRM, Zoho Books]
+  catalyst_services: [API Gateway, AppSail, Authentication, Data Store, Logs]
+test_specification:
+  required: [schema, contract, authentication, authorisation, idempotency, negative_input, data_integrity, integration, audit_event, health_check, regression, deployment_smoke, recovery]
+deployment_and_rollback:
+  deployment_scope: Development only
+  production_authority: NOT_GRANTED
+  pre_deploy: [schema_validation, contract_tests, security_tests, duplicate_data_store_check, audit_control_check]
+  smoke: [health_check, Initiate, Retrieve, Update, unauthorised_write_rejection, duplicate_idempotency_test]
+  rollback: revert deployment and reconcile any Development service-state writes using correlation/audit evidence
+operational_runbook:
+  production_intended: true
+  status: REQUIRE_BEFORE_PRODUCTION_NOT_REQUIRED_FOR_DEVELOPMENT_HANDOVER
+acceptance_criteria:
+  - Initiate creates exactly one valid LeasingFacility for one idempotency key and emits audit evidence.
+  - Retrieve returns the authoritative service state without mutation.
+  - Update changes only authorised fields and records before/after evidence.
+  - Unauthorised writes fail closed.
+  - CRM and Books references are validated without copying their authoritative state into a competing master.
+  - All canary operations preserve BIAN semantic intent.
+development_exceptions:
+  - EXC-APQC-LEASING-DEV-001
+production_blockers:
+  - Resolve exact APQC Banking L3-L5 traceability or approve a separate permanent exception.
+  - Complete production operational runbook and production SLO adoption.
+  - Obtain separate Production execution authority.
+unresolved_nonblocking_assumptions:
+  - AppSail/Python remains preferred subject to current Catalyst documentation confirmation at engineering start.
+gate_result: PASS_FOR_DEVELOPMENT_WITH_CONTROLLED_EXCEPTION
+act_decision: ADOPT_FOR_DEVELOPMENT_ENGINEERING
+closure_rule: DO_COMPLETE != TASK_COMPLETE
