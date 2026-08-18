@@ -1,0 +1,30 @@
+change_id: CHG-20260818-MICROSVC-ARCH-CONSOLIDATION
+timestamp_utc: '2026-08-18T19:32:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved reconstruction of validated PR #9 net-new architecture artifacts from current main.'
+task_class: T2
+change_type: governance
+summary: Create the Microservice Engineering Handover Profile and consolidated application authority boundary control on a fresh branch from current main.
+reason: Preserve validated architecture content from closed divergent PR #9 without reintroducing superseded or conflicting architecture rules.
+affected_paths:
+  - agent-workspace/architecture/PRF-ARCH-MICROSVC-HO-001/profile.yaml
+  - agent-workspace/architecture/PRF-ARCH-MICROSVC-HO-001/application-authority.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: DO
+  do_complete: true
+  check_study_result: null
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Fresh branch created from current main.'
+  - 'Historical PR #9 was closed without merge after divergence and architecture conflict were identified.'
+  - 'POL-ARCH-MICROSVC-APQC-001 remains authoritative for APQC decomposition.'
+  - 'GitHub/Catalyst authority reconciliation remains authoritative.'
+  - 'Engineering handover now explicitly requires architecture-complete artifact package.'
+notes: 'This change does not deploy or configure Catalyst runtime resources.'
