@@ -1,0 +1,28 @@
+change_id: CHG-YYYYMMDD-UNIQUE-ID
+timestamp_utc: 'YYYY-MM-DDTHH:MM:SSZ'
+actor:
+  type: ChatGPT
+  name: agent-name
+  agent_contract_ref: null
+mandate_ref: mandate-or-approved-instruction
+accountability_task_ref: null
+task_class: T2
+change_type: source_code
+summary: concise description of the change
+reason: business or technical reason for the change
+affected_paths:
+  - path/to/changed/file
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: approval-or-authority-reference
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: null
+  act_decision: null
+  task_complete: false
+evidence: []
+commit_sha: null
+pull_request: null
+notes: null

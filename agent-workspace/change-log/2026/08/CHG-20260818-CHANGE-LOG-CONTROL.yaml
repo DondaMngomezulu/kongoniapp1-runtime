@@ -1,0 +1,41 @@
+change_id: CHG-20260818-CHANGE-LOG-CONTROL
+timestamp_utc: '2026-08-18T14:56:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'User instruction: create a GitHub control that logs changes made to KongoniApp by any agent.'
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Implement mandatory repository change logging for KongoniApp agents and automations.
+reason: Ensure every material KongoniApp mutation has an attributable, reviewable and PDCA-aligned audit record.
+affected_paths:
+  - agent-workspace/AGENTS.md
+  - agent-workspace/governance/CTL-DEV-CHG-LOG-001.yaml
+  - agent-workspace/schemas/change-log.schema.json
+  - agent-workspace/templates/change-log-entry.yaml
+  - agent-workspace/scripts/validate_change_log.py
+  - .github/workflows/change-log-control.yml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CLOSE_OR_REPLAN
+  do_complete: true
+  check_study_result: 'CTL-DEV-CHG-LOG-001 passed GitHub Actions runs 2 and 3. Regression review found a separate pre-existing Agent Workspace Validation failure in WRK-ZCRM-BP-001/mandate.yaml because its required architecture property is missing; this PR does not modify that work item.'
+  act_decision: ADOPT
+  task_complete: true
+evidence:
+  - 'GitHub branch: agent/change-log-control'
+  - 'PR: #2 Add mandatory KongoniApp change log control'
+  - 'Control: CTL-DEV-CHG-LOG-001 v1.0'
+  - 'Validator: agent-workspace/scripts/validate_change_log.py'
+  - 'Workflow: .github/workflows/change-log-control.yml'
+  - 'GitHub Actions run 32151853838: KongoniApp Change Log Control = success'
+  - 'GitHub Actions run 32151878398: KongoniApp Change Log Control = success'
+  - 'Regression exception: Agent Workspace Validation run 32151854008 failed on untouched WRK-ZCRM-BP-001/mandate.yaml'
+commit_sha: null
+pull_request: 2
+notes: 'ACT decision ADOPT recorded by Group CEO on 2026-08-18. Control implementation is verified; unrelated pre-existing workspace-schema defect is recorded separately as a regression exception.'
