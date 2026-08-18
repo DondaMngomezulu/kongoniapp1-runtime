@@ -1,0 +1,28 @@
+change_id: CHG-20260818-APQC-L3-L5-MICROSERVICE-TRACEABILITY
+timestamp_utc: '2026-08-18T17:50:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO instructed that APQC sector-specific Level 3, 4 and 5 content be considered in the Enterprise Microservice Register.'
+task_class: T2
+change_type: governance
+summary: Add APQC sector-specific L3-L5 process traceability and handover controls to REG-ARCH-MICROSVC-001.
+reason: Provide process decomposition evidence below the Service Domain boundary without incorrectly treating APQC process levels as deployable microservices.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/schema.yaml
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/apqc-mapping-policy.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Register schema now requires APQC applicability and applicable L3-L5 process traceability before engineering handover. Sector profile selection remains subject to domain-by-domain assurance.'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'APQC official site confirms Cross-Industry PCF v8.0 as current and provides industry-specific PCFs.'
+  - 'APQC official industry catalogue includes Banking, Automotive, Property and Casualty Insurance, Aerospace and Defense, Upstream Petroleum and other sector profiles.'
+  - 'No mining-specific APQC PCF is listed in the current official industry-specific catalogue; VS06 therefore records a sector-profile gap and retains GMG as mining-domain source.'
+notes: 'No Catalyst runtime change. Exact APQC L3-L5 process IDs and titles must be mapped from the applicable licensed/public PCF source before a service is marked handover-ready.'
