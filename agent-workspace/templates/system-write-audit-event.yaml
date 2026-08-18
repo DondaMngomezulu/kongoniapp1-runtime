@@ -1,0 +1,26 @@
+event_id: WAE-YYYYMMDD-UNIQUE-ID
+correlation_id: TASK-OR-REQUEST-ID
+timestamp_utc: 'YYYY-MM-DDTHH:MM:SSZ'
+actor:
+  type: specialist_agent
+  id: agent-name-or-user-id
+  agent_contract_ref: null
+mandate_ref: mandate-or-authorisation-reference
+accountability_task_ref: null
+task_class: T2
+target:
+  system: target-system
+  environment: sandbox
+  type: object-or-resource-type
+  id: object-or-resource-id
+operation: update
+authority_ref: authority-reference
+before_ref: null
+requested_change: concise description of intended write
+result: SUCCESS
+after_ref: null
+native_transaction_ref: null
+evidence_refs: []
+pdca_phase: EVIDENCE
+error_code: null
+notes: null
