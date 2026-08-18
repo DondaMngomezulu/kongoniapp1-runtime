@@ -1,6 +1,6 @@
 register_id: REG-LEGAL-REF-INGEST-001
-version: 0.1
-status: DO_COMPLETE_CHECK_PENDING
+version: 0.2
+status: ACT_PENDING
 as_of: 2026-08-18
 purpose: >-
   Controlled ingestion register for external and internal artifacts used to support
@@ -90,4 +90,22 @@ artifacts:
     role: Handoff schema
     treatment: ADOPT_REUSE
     licence_status: INTERNAL_GOVERNED
-next_gate: Crosswalk each artifact to the Agreement codification process and run overlap, licence, provenance, and implementation-fit tests.
+local_samples:
+  - source: accordproject/cicero-template-library/src/acceptance-of-delivery/model/model.cto
+    local_path: agent-workspace/reference-artifacts/legal/accord/acceptance-of-delivery/model.cto
+    source_blob_sha: 9573fe4da2367e191dd357592c8fa6887a56ebe8
+    licence: Apache-2.0
+  - source: accordproject/cicero-template-library/src/acceptance-of-delivery/sample.json
+    local_path: agent-workspace/reference-artifacts/legal/accord/acceptance-of-delivery/sample.json
+    source_blob_sha: 54abf0b1ee9b6ec5c9be7f68682f9ee0431a5616
+    licence: Apache-2.0
+check_study:
+  provenance: PASS
+  licence_control: PASS_WITH_CONTROL
+  repository_readback: PASS
+  overlap: PASS
+  open_standards_alignment: PASS
+  custom_build_reduction: PASS
+  legalruleml_xsd_conformance: OPEN
+recommended_act: ADAPT
+next_gate: Approve ADAPT and use the ingested artifacts to define the governed clause package profile and template validation profile.
