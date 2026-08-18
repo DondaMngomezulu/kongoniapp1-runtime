@@ -1,7 +1,7 @@
 artifact:
   id: REG-ARCH-MICROSVC-001
   name: Enterprise Microservice Register
-  version: '0.3'
+  version: '0.4'
   status: APPROVED_CONTROLLED_ADOPTION
   artifact_class: ARCHITECTURE_REGISTER
   owner_skill: SKL-GH-MICROSVC-ARCH-001
@@ -10,6 +10,19 @@ artifact:
   purpose: >-
     Govern the enterprise microservice landscape across all Value Streams and provide
     sufficient architecture information for controlled engineering handover.
+
+physical_representation:
+  canonical_root: agent-workspace/architecture/REG-ARCH-MICROSVC-001/register.yaml
+  modular_entries_directory: agent-workspace/architecture/REG-ARCH-MICROSVC-001/entries/
+  rule: >-
+    REG-ARCH-MICROSVC-001 is one authoritative architecture register whose physical representation
+    may comprise the legacy consolidated register.yaml plus atomic entry files under entries/.
+    Atomic entry files are part of the same register, not a second register. New entries SHOULD be
+    created atomically to reduce merge contention. A future controlled compaction MAY regenerate
+    register.yaml from the atomic entries after regression validation.
+  duplicate_rule: A microservice_id SHALL appear authoritatively in only one active entry location.
+  legacy_root_entries: authoritative_until_migrated
+  new_entries: authoritative_in_modular_entries_directory
 
 canonical_handover_rule: >-
   A microservice SHALL NOT enter engineering unless its register entry is architecture-complete
@@ -33,9 +46,9 @@ migration_control:
     SHALL be progressively enriched with service_class and APQC L3/L4/L5 fields when they are
     materially revised or prepared for engineering handover. The APQC-spine adoption SHALL NOT
     invalidate existing entries solely because migration fields are absent.
-  new_or_materially_revised_entries: MUST_CONFORM_TO_V0_3_FIELDS
+  new_or_materially_revised_entries: MUST_CONFORM_TO_V0_4_FIELDS
   legacy_entries: VALID_PENDING_CONTROLLED_ENRICHMENT
-  regression_rule: No legacy entry may advance to engineering handover without satisfying the v0.3 completeness gate.
+  regression_rule: No legacy entry may advance to engineering handover without satisfying the v0.4 completeness gate.
 
 service_classes:
   - BUSINESS_PROCESS
