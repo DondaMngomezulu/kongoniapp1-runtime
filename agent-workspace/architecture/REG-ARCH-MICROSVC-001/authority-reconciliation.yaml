@@ -1,0 +1,69 @@
+artifact_id: REC-ARCH-MICROSVC-AUTH-001
+version: '0.1'
+status: DRAFT
+purpose: Reconcile the authority location of microservice architecture sources and implementation-supporting artifacts after merge of REG-ARCH-MICROSVC-001.
+repository_commit: 55490524a5f3bbd352ae635035da1f96306c4011
+catalyst:
+  project: Kongoniapp1
+  project_id: '86824000000020001'
+  environment: Development
+  organisation_id: '931013629'
+classification_rule:
+  GITHUB_AUTHORITATIVE: GitHub main contains the governed architecture definition and Catalyst has no equivalent authoritative register or normalized catalogue.
+  CATALYST_AUTHORITATIVE: Catalyst Data Store contains the authoritative structured catalogue or source records; GitHub consumes or maps those records.
+  REFERENCE_ONLY: The source is retained for comparison or provenance and is not an authoritative Kongoni catalogue.
+reconciliation:
+  - artifact: REG-ARCH-MICROSVC-001
+    classification: GITHUB_AUTHORITATIVE
+    evidence: No MicroserviceRegister or equivalent microservice architecture table was found in the Catalyst Development table inventory.
+    catalyst_action: Do not duplicate the architecture register in Catalyst until an explicit runtime-registration use case is approved.
+  - artifact: CAT-ARCH-SD-VS04-MIMOSA-001
+    classification: GITHUB_AUTHORITATIVE
+    source_authority: CATALYST_AUTHORITATIVE
+    evidence: Kongoni-derived Service Domain boundaries live in GitHub; Catalyst contains MIMOSA_CCOM_SchemaRelease, MIMOSA_CCOM_SchemaObject and MIMOSA_CCOM_SchemaRelation as the structured MIMOSA source model.
+    catalyst_action: Engineer consumes GitHub service boundaries and Catalyst MIMOSA source semantics.
+  - artifact: CAT-ARCH-SD-VS06-GMG-001
+    classification: GITHUB_AUTHORITATIVE
+    source_authority: REFERENCE_ONLY
+    evidence: No normalized GMG Service Domain table or matching GMG standards record was found in the Catalyst Development inventory/query used for this reconciliation.
+    catalyst_action: Keep GMG-derived boundaries in GitHub until a governed GMG source catalogue is ingested.
+  - artifact: APQC Cross-Industry process hierarchy
+    classification: CATALYST_AUTHORITATIVE
+    evidence: Catalyst contains APQC_ProcessElementReference, CapabilityAPQCCrosswalk and APQC_BIAN_Crosswalk.
+    catalyst_action: Use Catalyst process IDs and hierarchy records for microservice decomposition traceability.
+  - artifact: BIAN Service Domain and Semantic API records
+    classification: CATALYST_AUTHORITATIVE
+    evidence: Catalyst contains BIANServiceDomain, BIANServiceArtifact, BIANServiceDomainAdoption and BIANImportBatch.
+    catalyst_action: Use Catalyst BIAN records as the structured source for BIAN-derived microservice architecture.
+  - artifact: SRC-APQC-UPSTREAM-7.2.2
+    classification: REFERENCE_ONLY
+    evidence: No Upstream Petroleum record was found in StandardsCatalogue and no dedicated Upstream Petroleum process table was found in Catalyst Development.
+    catalyst_action: Do not assert exact normative L3-L5 sector mapping until licensed source ingestion is completed.
+  - artifact: MAP-VS06-PETROLEUM-UPSTREAM-GITHUB-001
+    classification: REFERENCE_ONLY
+    evidence: Public GitHub Petroleum Upstream corpus is pinned and crosswalked as secondary evidence; it is not proven equivalent to official APQC Upstream Petroleum v7.2.2.
+    catalyst_action: Do not ingest as normative APQC data.
+  - artifact: Engine architecture and runtime profiles
+    classification: CATALYST_AUTHORITATIVE
+    evidence: Catalyst contains EngineArchitectureRule, EngineArchitectureProfile, EngineArchitectureLayer, EngineRuntimeBinding and EnterpriseEngineCatalog.
+    catalyst_action: Use these records to constrain engineering implementation and runtime selection.
+  - artifact: Enterprise standards catalogue
+    classification: CATALYST_AUTHORITATIVE
+    evidence: Catalyst contains StandardsCatalogue, StandardsRegister, StandardsAdoptionCrosswalk, StandardValueStreamMap and related provenance tables.
+    catalyst_action: Resolve applicable standards from Catalyst before engineering handover.
+  - artifact: Microservice Service Specifications
+    classification: GITHUB_AUTHORITATIVE
+    evidence: Service Specification files are version-controlled architecture/build contracts in GitHub; no dedicated Catalyst ServiceSpecification table exists in the reconciled Development inventory.
+    catalyst_action: Catalyst runtime records should reference, not redefine, the approved GitHub specification.
+conclusion:
+  architecture_source_of_truth: GitHub
+  structured_reference_catalogue_source_of_truth: Catalyst where a governed catalogue exists
+  runtime_source_of_truth: Catalyst
+  external_secondary_sources: Reference-only unless separately adopted and ingested
+  duplicate_state_rule: Do not create a parallel Catalyst copy of GitHub architecture artifacts unless an approved runtime-registration requirement exists.
+pdca:
+  phase: CHECK_STUDY
+  result: PASS_WITH_EXPLICIT_SOURCE_GAPS
+  regression_result: No new architecture conflict identified.
+  act_recommendation: ADOPT
+  task_complete: false
