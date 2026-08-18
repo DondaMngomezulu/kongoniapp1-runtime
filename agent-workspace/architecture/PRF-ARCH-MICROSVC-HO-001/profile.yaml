@@ -1,0 +1,153 @@
+profile_id: PRF-ARCH-MICROSVC-HO-001
+version: '0.1'
+status: DRAFT
+name: Microservice Engineering Handover Profile
+owner_skill: SKL-GH-MICROSVC-ARCH-001
+consumer_skill: SKL-CAT-MICROSVC-ENG-001
+methodology: MET-PDCA-001
+purpose: >-
+  Define the mandatory completeness gate between the GitHub Microservice Architect and the
+  Zoho Catalyst Microservice Engineer so that engineering begins only from an architecture-complete,
+  traceable and testable handover package.
+
+entry_requirements:
+  register_entry:
+    required: true
+    artifact: REG-ARCH-MICROSVC-001
+  service_specification:
+    required: true
+    rule: Must be approved and architecture-owned in GitHub before engineering begins.
+  architecture_description:
+    required: true
+    source_type: ART-BLD-001_or_equivalent
+  architecture_decisions:
+    required: conditional
+    condition: Material design choices, exceptions, trade-offs or authority decisions exist.
+  process_traceability:
+    required: conditional
+    condition: APQC mapping is applicable.
+    requirements:
+      - APQC profile and version
+      - L3 process mapping
+      - L4 process mapping
+      - L5 activity/task mapping or justified gap
+      - mapping rationale and verification state
+    authority_rule: >-
+      APQC is the process spine and decomposition/assurance source. APQC hierarchy levels do not
+      become deployable microservices solely because of their level. The governed Service Domain
+      remains the candidate microservice boundary.
+  domain_semantics:
+    required: true
+    rule: Preserve applicable domain authority such as BIAN, MIMOSA, GMG, TM Forum or another adopted source.
+  canonical_data_model:
+    required: true
+    source_type: ART-DAT-001_or_equivalent
+  input_contract:
+    required: true
+  output_contract:
+    required: true
+  data_quality_rules:
+    required: conditional
+    condition: Persistent or externally supplied business data is used.
+  lineage_and_provenance:
+    required: true
+  synchronous_api_contract:
+    required: conditional
+    condition: HTTP/API ingress or egress exists.
+    standard: OpenAPI
+  asynchronous_event_contract:
+    required: conditional
+    condition: Events, signals or message channels are used.
+    standards: [AsyncAPI, CloudEvents]
+  business_rules:
+    required: conditional
+    condition: Deterministic policy, decision or compliance logic exists.
+  application_authority_mapping:
+    required: true
+    rule: Each state dimension must have one authoritative system; projections may not become competing masters.
+  security_design:
+    required: true
+    requirements:
+      - authentication
+      - authorisation
+      - least privilege
+      - secret handling
+      - trust boundary mapping where applicable
+      - threat model for material exposure
+  nfr_slo_profile:
+    required: true
+    requirements:
+      - availability target or justified non-applicability
+      - latency target or justified non-applicability
+      - capacity/scaling expectation
+      - resilience and failure isolation
+      - timeout and retry policy
+      - recovery objective where material
+      - observability requirements
+  audit_evidence_contract:
+    required: true
+    controls:
+      - CTL-SYS-WRITE-AUDIT-001
+      - CTL-DEV-CHG-LOG-001
+  dependency_manifest:
+    required: true
+  runtime_constraints:
+    required: true
+    rule: Define allowed Catalyst runtime/service classes and language constraints without performing implementation design.
+  test_specification:
+    required: true
+    minimum:
+      - schema
+      - contract
+      - authentication
+      - authorisation
+      - negative input
+      - data integrity where applicable
+      - integration
+      - audit event for writes
+      - health check
+      - regression
+      - deployment smoke
+      - recovery for material changes
+  deployment_and_rollback_requirements:
+    required: true
+  operational_runbook_requirements:
+    required: conditional
+    condition: Production operation is intended.
+  acceptance_criteria:
+    required: true
+    rule: Must be objective and independently checkable by CHECK/STUDY.
+
+handover_gate:
+  gate_id: GATE-ARCH-TO-ENG-001
+  pass_condition: >-
+    All mandatory items are COMPLETE or explicitly NOT_APPLICABLE with approved rationale; the
+    Service Specification is approved; application authority is unambiguous; required source
+    provenance is resolved; and no blocking architecture gap remains.
+  fail_actions:
+    - BLOCK_ENGINEERING_HANDOVER
+    - RETURN_TO_ARCHITECT
+  engineer_rule: >-
+    The Catalyst Engineer SHALL implement the approved handover and SHALL NOT silently redesign
+    service boundaries, state authority, contracts or NFRs. Material design defects return as ADAPT
+    to SKL-GH-MICROSVC-ARCH-001.
+
+handover_record:
+  required_fields:
+    - microservice_id
+    - register_entry_ref
+    - service_specification_ref
+    - architecture_version
+    - source_refs
+    - required_artifact_refs
+    - unresolved_nonblocking_assumptions
+    - target_environment
+    - engineering_authority_ref
+    - handover_status
+  allowed_status:
+    - DRAFT
+    - ARCHITECTURE_COMPLETE
+    - AUTHORISED_FOR_ENGINEERING
+    - RETURNED_FOR_ADAPTATION
+
+closure_rule: 'DO_COMPLETE != TASK_COMPLETE'
