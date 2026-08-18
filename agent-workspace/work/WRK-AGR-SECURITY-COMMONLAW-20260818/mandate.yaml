@@ -1,0 +1,38 @@
+work_id: WRK-AGR-SECURITY-COMMONLAW-20260818
+title: South African collateral-specific common-law security validation
+task_class: T2
+status: OPEN
+parent_control: AGR-XWALK-011
+control_id: AGR-XWALK-011-C
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+scope:
+  initial_collateral_classes:
+    - certificated shares
+    - uncertificated securities where applicable
+    - movable equipment
+    - receivables and contractual rights
+validation_topics:
+  - creation
+  - attachment
+  - possession_or_control
+  - registration_or_perfection
+  - priority
+  - enforcement
+  - proceeds
+  - release_and_discharge
+rules:
+  - "Do not infer perfection from execution of a generic Security Agreement."
+  - "Each collateral class must have its own evidence checklist and legal-review provenance."
+  - "Self-help remedies are prohibited unless expressly lawful for the relevant collateral and facts."
+approval_ref: "Group CEO ACT=ADAPT for AGR-XWALK-011 — 2026-08-18"
+pdca:
+  stage: PLAN
+  do_complete: false
+  task_complete: false
+  act_decision: null
+next_action:
+  assigned_to: ChatGPT
+  instruction: "Validate the Kiboko-Venduo share-security package first, then extend the control pattern to equipment and receivables."
