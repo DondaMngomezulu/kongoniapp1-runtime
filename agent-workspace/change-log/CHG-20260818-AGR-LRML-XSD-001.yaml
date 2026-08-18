@@ -4,15 +4,17 @@ actor:
   type: ChatGPT
   name: ChatGPT Agreement Codification Agent
   agent_contract_ref: null
-mandate_ref: "Group CEO instruction: Next — proceed from approved Agreement Artifact Crosswalk ADAPT to AGR-XWALK-010 — 2026-08-18"
+mandate_ref: "Group CEO ACT decision REPEAT for AGR-XWALK-010 — 2026-08-18"
 accountability_task_ref: WRK-AGR-LRML-XSD-20260818
 task_class: T2
 change_type: governance
-summary: "Codified the official OASIS LegalRuleML compact XSD validator and CI gate, created the controlled conformance work item, recorded blocked pre-validation evidence, and reconciled the prior crosswalk mandate with its approved ADAPT ACT."
-reason: "Execute AGR-XWALK-010 without treating XML well-formedness as schema conformance and fail closed until exact governed LegalRuleML sources are present in the GitHub engineering tree."
+summary: "Codified the official OASIS LegalRuleML compact XSD validator and CI gate, ingested governed LegalRuleML sources into the engineering tree, remediated schema serialization defects in the facility artifact, and reran conformance testing."
+reason: "Execute AGR-XWALK-010 without treating XML well-formedness as schema conformance; use the official OASIS compact XSD as the conformance source and fail closed on errors."
 affected_paths:
   - agent-workspace/scripts/validate_legalruleml.py
   - .github/workflows/legalruleml-xsd-validate.yml
+  - agent-workspace/legalruleml/Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml
+  - agent-workspace/legalruleml/Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.1.xml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/plan.yaml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/evidence/EVD-AGR-LRML-XSD-001.json
@@ -21,19 +23,18 @@ affected_paths:
 environment: repository
 authority:
   status: AUTHORISED
-  reference: "Group CEO instruction: Next — 2026-08-18"
+  reference: "Group CEO ACT decision REPEAT — 2026-08-18"
 pdca:
-  phase: CHECK_STUDY
+  phase: DO
   do_complete: false
-  check_study_result: BLOCKED_PRECONDITION
-  act_decision: null
+  check_study_result: null
+  act_decision: REPEAT
   task_complete: false
 evidence:
   - EVD-AGR-LRML-XSD-001
 commit_sha: null
 pull_request: 10
 notes: >-
-  Current LegalRuleML artifacts were found in the governed Library and are XML well formed,
-  but they are not yet active GitHub engineering sources. AGR-XWALK-010 remains open and no
-  Agreement Template is promoted. Recommended next ACT for this gate is REPEAT after controlled
-  source ingestion and CI execution.
+  Facility v0.2 has reached OASIS compact XSD PASS after controlled serialization remediation.
+  Enterprise rule set v0.1 is now ingested and remains subject to the same conformance gate.
+  No Agreement Template is promoted by this change.
