@@ -2,7 +2,8 @@
 	"functions": {
 		"source": "functions",
 		"targets": [
-			"kongoniapp1_health"
+			"kongoniapp1_health",
+			"kongoni_crm_connection_test"
 		],
 		"ignore": []
 	},
