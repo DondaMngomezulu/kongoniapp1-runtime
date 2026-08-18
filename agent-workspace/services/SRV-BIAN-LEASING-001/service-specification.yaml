@@ -1,7 +1,7 @@
 service_specification:
   id: SRV-BIAN-LEASING-001
   version: '0.2'
-  status: ARCHITECTURE_CANDIDATE
+  status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
   name: Leasing Service
   architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
   engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
@@ -25,7 +25,9 @@ service_specification:
   runtime_constraints:
     platform: Zoho Catalyst
     project: Kongoniapp1
+    project_id: '86824000000020001'
     environment: Development
+    engineering_authority_ref: ENV-AUTH-CAT-KONGONIAPP1-DEV
     preferred_runtime: AppSail
     preferred_language: Python
     production_write_allowed: false
@@ -35,5 +37,12 @@ service_specification:
     api_contract: openapi.yaml
     engineering_handover: handover.yaml
     apqc_traceability: apqc-traceability.yaml
+    system_write_audit_control: ../../governance/CTL-SYS-WRITE-AUDIT-001.yaml
+  process_traceability:
+    status: DEVELOPMENT_EXCEPTION_APPROVED
+    exception_ref: EXC-APQC-LEASING-DEV-001
+    production_rule: exact APQC Banking L3-L5 traceability remains required or must receive separate permanent exception before Production handover
   engineering_rule: Engineer SHALL implement this approved architecture package and SHALL return material design defects to SKL-GH-MICROSVC-ARCH-001 as ADAPT rather than silently redesigning the service.
-  approval_state: PENDING_ARCHITECTURE_CHECK_STUDY
+  approval_state: APPROVED_DEVELOPMENT_ONLY
+  approval_ref: 'Group CEO ACT ADAPT and instruction to complete on 2026-08-18'
+  production_authority: NOT_GRANTED
