@@ -20,7 +20,7 @@ authority:
   status: AUTHORISED
   reference: "Group CEO ACT=ADOPT — 2026-08-18"
 pdca:
-  phase: CLOSE_REPLAN
+  phase: CLOSE_OR_REPLAN
   do_complete: true
   check_study_result: PASS_PROFILE_WITH_BLOCKING_EVIDENCE_GAPS
   act_decision: ADOPT
