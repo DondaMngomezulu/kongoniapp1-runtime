@@ -1,0 +1,33 @@
+change_id: CHG-20260818-LEASING-SERVICE-SPEC
+timestamp_utc: '2026-08-18T17:10:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'Group CEO confirmed proceeding with the first BIAN Leasing Catalyst service specification.'
+accountability_task_ref: null
+task_class: T2
+change_type: architecture
+summary: Create SRV-BIAN-LEASING-001 as the first Kongoni Service Specification generated with SKL-CAT-MICROSVC-ENG-001.
+reason: Establish the governed bridge from BIAN Leasing to a Zoho Catalyst microservice before runtime implementation.
+affected_paths:
+  - agent-workspace/services/SRV-BIAN-LEASING-001/service-specification.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: PLAN
+  do_complete: false
+  check_study_result: null
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'BIAN 14.0.0 Leasing domain verified live in Catalyst.'
+  - 'LeasingFacility Control Record verified live in Catalyst.'
+  - '11 Behaviour Qualifiers verified live in Catalyst.'
+  - '44 Service Operations verified live in Catalyst.'
+  - 'Canary scope limited to Initiate, Retrieve and Update.'
+commit_sha: null
+pull_request: null
+notes: 'No Catalyst runtime resource is created by this specification change. Runtime implementation remains a separate DO stage.'
