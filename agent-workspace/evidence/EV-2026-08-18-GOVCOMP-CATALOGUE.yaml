@@ -1,0 +1,21 @@
+evidence_id: EV-2026-08-18-GOVCOMP-CATALOGUE
+work: Governance and Compliance microservice catalogue codification
+task_class: T2
+authority: Group CEO approval in active conversation
+do:
+  status: complete
+  artifact: agent-workspace/governance/CAT-GOVCOMP-MS-001.yaml
+check_study:
+  status: pending_detailed_APQC_binding_and_normative_clause_ingestion
+  checks:
+    - IFRS separated from Zoho Books execution: PASS
+    - SARS separated from Zoho Books execution: PASS
+    - Zoho Books sole accounting system of record: PASS_BY_ARCHITECTURE_DECISION
+    - Catalyst competing ledger prohibited: PASS
+    - APQC declared process spine: PASS
+    - value-stream inheritance of obligations: PASS
+    - detailed APQC L3/L4/L5 references: OPEN
+    - detailed IFRS/SARS clause-to-rule traceability: OPEN
+act_recommendation: ADAPT
+production_changed: false
+task_complete: false
