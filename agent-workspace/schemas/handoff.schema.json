@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"urn:kongoni:schema:agent-handoff:1.0",
+  "title":"Kongoni Agent Handoff",
+  "type":"object",
+  "required":["work_id","from_agent","to_agent","pdca_stage","completed","next_action","evidence_refs"],
+  "properties":{
+    "work_id":{"type":"string"},
+    "from_agent":{"type":"string"},
+    "to_agent":{"type":"string"},
+    "pdca_stage":{"type":"string"},
+    "completed":{"type":"array","items":{"type":"string"}},
+    "blocked":{"type":"array","items":{"type":"string"}},
+    "next_action":{"type":"string"},
+    "evidence_refs":{"type":"array","items":{"type":"string"}},
+    "architecture_id":{"type":"string"},
+    "architecture_hash":{"type":"string"},
+    "approval_ref":{"type":["string","null"]}
+  },
+  "additionalProperties":true
+}
