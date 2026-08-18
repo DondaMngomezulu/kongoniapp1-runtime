@@ -1,0 +1,30 @@
+work_id: WRK-AGR-SA-LEGAL-20260818
+title: Substantive South African agreement legal validation
+task_class: T2
+status: DO_IN_PROGRESS
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+environment:
+  platform: GITHUB
+  project: kongoniapp1-runtime
+  environment: controlled-candidate
+assigned_to: Reandra
+coordinators:
+  - ChatGPT
+  - Jane Seaward
+required_controls:
+  - MET-PDCA-001
+  - BR-PDCA-001
+  - AGR-XWALK-011
+  - CTL-DEV-CHG-LOG-001
+approval_ref: "Group CEO instruction: proceed to AGR-XWALK-011 — 2026-08-18"
+pdca:
+  stage: DO
+  do_complete: false
+  task_complete: false
+  act_decision: null
+next_action:
+  assigned_to: ChatGPT
+  instruction_file: plan.yaml
