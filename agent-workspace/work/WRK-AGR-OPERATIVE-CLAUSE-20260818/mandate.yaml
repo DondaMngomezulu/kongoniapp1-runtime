@@ -1,7 +1,7 @@
 work_id: WRK-AGR-OPERATIVE-CLAUSE-20260818
 title: South African Approved Operative Clause Library
 task_class: T2
-status: ACT_PENDING
+status: CLOSED_ADOPTED
 parent_control: AGR-XWALK-011
 control_id: AGR-XWALK-011-B
 architecture:
@@ -19,12 +19,12 @@ rules:
   - "No clause becomes APPROVED until substantive South African legal review evidence is attached."
   - "Clause variants must state their applicability conditions and prohibited use cases."
   - "Template promotion consumes only approved clause variants."
-approval_ref: "Group CEO ACT=ADAPT for AGR-XWALK-011 — 2026-08-18"
+approval_ref: "Group CEO ACT=ADOPT for AGR-XWALK-011-B — 2026-08-18"
 pdca:
-  stage: ACT
+  stage: CLOSE_OR_REPLAN
   do_complete: true
-  task_complete: false
-  act_decision: null
+  task_complete: true
+  act_decision: ADOPT
 next_action:
-  assigned_to: Group CEO
-  instruction: "Decide ACT on LIB-SA-AGR-CLAUSE-001 v0.1 governance architecture; recommended ADOPT for the library/control structure only. No operative clause text is approved."
+  assigned_to: Reandra
+  instruction: "Operate AGR-XWALK-011-B-LEGAL-REVIEW as the mandatory clause-specific review gate. Zero operative clauses are approved by this ACT."
