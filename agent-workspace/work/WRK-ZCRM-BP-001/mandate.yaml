@@ -16,6 +16,7 @@ environment:
   platform: Zoho CRM
   project: Kongoni Group CRM
   environment: Production
+approval_ref: Group CEO authorisation recorded in WRK-ZCRM-BP-001 mandate history
 pdca:
   stage: AUTHORISATION
   do_complete: false
