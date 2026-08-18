@@ -1,0 +1,194 @@
+service_specification:
+  id: SRV-BIAN-LEASING-001
+  version: '0.1'
+  status: DRAFT
+  name: Leasing Service
+  purpose: Manage the lifecycle and financial servicing of a leasing facility for financed equipment.
+  business_owner: VS02 Asset Finance & Capital Provision
+  value_stream_id: VS02
+  mandate_ref: 'Group CEO approval to proceed with the first Leasing service specification on 2026-08-18.'
+  task_class: T2
+
+semantic_source:
+  type: BIAN
+  framework_version: '14.0.0'
+  service_domain: Leasing
+  domain_id: urn:bian:14.0.0:service-domain:leasing
+  definition: 'The leasing products enables customers to finance equipment purchases using the leased item as collateral when necessary.'
+  control_record: LeasingFacility
+  behaviour_qualifiers:
+    - AmountBlock
+    - Charge
+    - CollateralAllocation
+    - CorporateAction
+    - DebitandCredit
+    - Deposit
+    - FinancialStatusTracking
+    - Interest
+    - IssuedDevice
+    - Payment
+    - Sweep
+  service_operation_count: 44
+  source_ref: 'Catalyst BIANServiceDomain and BIANServiceArtifact; BIAN 14.0.0 Leasing Semantic API.'
+
+runtime:
+  platform: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+  runtime_type: AppSail
+  language: Python
+  language_decision_reason: 'Default Kongoni implementation language. AppSail is selected because Leasing is a stable service boundary with multiple related API operations.'
+
+service_contract:
+  base_path: /v1/leasing
+  version: v1
+  canary_operations:
+    - operation_id: Initiate
+      bian_action_term: Initiate
+      method: POST
+      bian_path: /Leasing/Initiate
+      kongoni_path: /v1/leasing
+      purpose: Create a LeasingFacility resource.
+      mutating: true
+    - operation_id: Retrieve
+      bian_action_term: Retrieve
+      method: GET
+      bian_path: /Leasing/{leasingid}/Retrieve
+      kongoni_path: /v1/leasing/{leasing_id}
+      purpose: Retrieve a LeasingFacility resource.
+      mutating: false
+    - operation_id: Update
+      bian_action_term: Update
+      method: PUT
+      bian_path: /Leasing/{leasingid}/Update
+      kongoni_path: /v1/leasing/{leasing_id}
+      purpose: Update an authorised LeasingFacility resource.
+      mutating: true
+  deferred_operations:
+    - Control
+    - Execute
+    - Exchange
+    - Request
+    - InitiateAmountBlock
+    - RetrieveAmountBlock
+    - UpdateAmountBlock
+    - InitiateCharge
+    - RetrieveCharge
+    - UpdateCharge
+    - RequestCharge
+    - ExchangeCharge
+    - InitiateCollateralAllocation
+    - RetrieveCollateralAllocation
+    - UpdateCollateralAllocation
+    - RequestCollateralAllocation
+    - InitiateCorporateAction
+    - RetrieveCorporateAction
+    - UpdateCorporateAction
+    - InitiateDebitandCredit
+    - RetrieveDebitandCredit
+    - UpdateDebitandCredit
+    - InitiateDeposit
+    - RetrieveDeposit
+    - UpdateDeposit
+    - InitiateFinancialStatusTracking
+    - RetrieveFinancialStatusTracking
+    - UpdateFinancialStatusTracking
+    - RetrieveInterest
+    - UpdateInterest
+    - InitiateIssuedDevice
+    - RetrieveIssuedDevice
+    - UpdateIssuedDevice
+    - InitiatePayment
+    - RetrievePayment
+    - UpdatePayment
+    - ExchangePayment
+    - InitiateSweep
+    - RetrieveSweep
+    - UpdateSweep
+    - ExchangeSweep
+  authentication: REQUIRED
+  authorisation: 'Resolve EnvironmentExecutionAuthority and operation-level authority before mutating calls.'
+  idempotency: 'Required for POST, PUT and other mutating operations. Client-supplied idempotency key must be correlated to the audit event.'
+  timeout: 'TO_BE_SET_AFTER_DEVELOPMENT_PERFORMANCE_TEST'
+  retry: 'No blind retry of non-idempotent writes. Retry policy must be operation-specific.'
+  correlation_id_required: true
+  error_contract_ref: ERR-CAT-MICROSVC-001-PROPOSED
+
+data:
+  primary_resource: LeasingFacility
+  datastore_objects: []
+  datastore_decision: 'Do not create a new table until the existing Catalyst Data Store has been searched for an authoritative leasing/facility object and duplicate risk has been assessed.'
+  external_systems_of_record:
+    - Zoho CRM where commercial opportunity or customer relationship data is authoritative
+    - Zoho Books or governed accounting ledger where accounting entries are authoritative
+  retention_rule_ref: TO_BE_RESOLVED
+
+integration:
+  api_gateway_required: true
+  routes:
+    - POST /v1/leasing
+    - GET /v1/leasing/{leasing_id}
+    - PUT /v1/leasing/{leasing_id}
+  catalyst_connections: []
+  signals: []
+  circuits: []
+  scheduled_jobs: []
+
+security:
+  least_privilege: true
+  execution_authority_ref: TO_BE_RESOLVED_BEFORE_DO
+  secrets_in_source_allowed: false
+  production_write_allowed: false
+
+audit:
+  system_write_control: CTL-SYS-WRITE-AUDIT-001
+  repository_change_control: CTL-DEV-CHG-LOG-001
+  native_transaction_refs_required_when_available: true
+  required_write_evidence:
+    - actor
+    - mandate
+    - authority
+    - correlation_id
+    - target_resource
+    - before_ref_when_applicable
+    - requested_change
+    - result
+    - after_ref
+    - native_transaction_ref_when_available
+
+testing:
+  schema_validation: REQUIRED
+  unit: REQUIRED
+  contract: REQUIRED
+  authentication: REQUIRED
+  authorisation: REQUIRED
+  idempotency: REQUIRED_FOR_WRITES
+  negative_input: REQUIRED
+  data_integrity: REQUIRED
+  integration: REQUIRED
+  audit_event: REQUIRED_FOR_WRITES
+  health_check: REQUIRED
+  regression: REQUIRED
+  smoke: REQUIRED_FOR_DEPLOYMENT
+  recovery: REQUIRED_FOR_MATERIAL_CHANGE
+  canary_acceptance:
+    - Initiate creates one valid LeasingFacility and emits audit evidence.
+    - Retrieve returns the created LeasingFacility without mutation.
+    - Update changes only authorised fields and emits before/after evidence.
+    - Duplicate Initiate with the same idempotency key does not create a second facility.
+    - Unauthorised mutation fails closed.
+
+deployment:
+  source_repository: DondaMngomezulu/kongoniapp1-runtime
+  development_deployment_ref: null
+  production_authority_ref: null
+  production_deployment_ref: null
+  deployment_rule: 'Development only until CHECK/STUDY and explicit production authority.'
+
+pdca:
+  phase: PLAN
+  do_complete: false
+  check_study_result: null
+  regression_result: null
+  act_decision: null
+  task_complete: false
