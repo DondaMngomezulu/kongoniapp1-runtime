@@ -1,6 +1,6 @@
 profile_id: PRF-AGR-CLAUSE-PKG-001
-version: 0.1
-status: CHECK_STUDY
+version: 0.2
+status: ACT_PENDING
 as_of: 2026-08-18
 name: Governed Agreement Clause Package Profile
 purpose: >-
@@ -10,6 +10,7 @@ authorities:
   template_register: REG-AGR-TPL-001
   execution_method: MET-PDCA-001
   normative_rule_reference: OASIS LegalRuleML
+  legalruleml_xsd_control: CTL-LEGALRULEML-XSD-001
   package_pattern_reference: Accord Project Cicero
   evidence_schema: agent-workspace/schemas/evidence.schema.json
   change_schema: agent-workspace/schemas/change-log.schema.json
@@ -76,5 +77,6 @@ check_study:
   lifecycle_control: PASS
   legal_authority_separation: PASS
   machine_readability: PASS
-  legalruleml_xsd_conformance: OPEN
-recommended_act: ADOPT_AFTER_XSD_CONTROL_DEFINED
+  legalruleml_xsd_control_defined: PASS
+  implementation_validation: PENDING_FIRST_CLAUSE_PACKAGE
+recommended_act: ADOPT
