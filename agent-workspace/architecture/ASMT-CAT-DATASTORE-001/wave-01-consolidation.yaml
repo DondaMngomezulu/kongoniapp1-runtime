@@ -65,5 +65,10 @@ check_study:
     tool_registry_semantics: PASS_DISTINCT_ENTITIES_RETAINED
     semantic_envelope_successor: PASS_EMPTY_LEGACY_ONLY_RETIRED
     datastore_capacity_recovery: PASS_LEASINGFACILITY_CREATED
-act_recommendation: ADOPT_WAVE_01_AND_CONTINUE_CONTROLLED_RATIONALISATION
+act:
+  decision: ADOPT
+  authority: Group CEO
+  decision_date: '2026-08-18'
+  outcome: WAVE_01_CLOSED_CONTINUE_WAVE_02
+  standard_status: ADOPTED_MANDATORY_FOR_SUBSEQUENT_CATALYST_CONSOLIDATION
 closure_rule: DO_COMPLETE != TASK_COMPLETE
