@@ -21,8 +21,8 @@ act:
     - "Do not promote any Agreement Template until OASIS XSD validation, substantive South African clause validation, regression, final ACT, and authoritative record update pass."
 open_controls:
   - control_id: AGR-XWALK-010
-    status: OPEN
-    action: "Run official OASIS compact XSD conformance validation on current Kongoni LegalRuleML artifacts."
+    status: ACT_PENDING_AFTER_PASS_WITH_REMEDIATION
+    action: "Official OASIS compact XSD conformance is proven for 2/2 active LegalRuleML artifacts in GitHub Actions run 32174982874; Group CEO final ACT pending."
   - control_id: AGR-XWALK-011
     status: OPEN
     action: "Complete substantive South African legal clause crosswalk for the three VALIDATING templates."
@@ -35,8 +35,8 @@ closure:
   result: CONTROLLED_COMPLETE_WITH_OPEN_DOWNSTREAM_GATES
   note: >-
     This T2 crosswalk work item is complete because CHECK/STUDY and ACT are recorded.
-    The XSD conformance and substantive legal validation controls remain mandatory
-    downstream gates and no Agreement Template is authorised for transaction use.
+    AGR-XWALK-010 has reached technical PASS_WITH_REMEDIATION and awaits its own final ACT.
+    AGR-XWALK-011 remains mandatory and no Agreement Template is authorised for transaction use.
 next_action:
-  authority: Engineering and legal validation workstreams under existing governance
-  action: "Proceed to AGR-XWALK-010 OASIS compact XSD conformance validation before clause-profile implementation."
+  authority: Group CEO
+  action: "Decide ACT for AGR-XWALK-010; recommended ADOPT, then proceed to AGR-XWALK-011."
