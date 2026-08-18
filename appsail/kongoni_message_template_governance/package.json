@@ -1,0 +1,18 @@
+{
+  "name": "kongoni-message-template-governance",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Governed message template implementation resolver for Kongoniapp1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "zcatalyst-sdk-node": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
