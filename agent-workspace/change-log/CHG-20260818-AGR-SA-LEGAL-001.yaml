@@ -26,7 +26,7 @@ authority:
   status: AUTHORISED
   reference: "Group CEO ACT decision ADAPT — 2026-08-18"
 pdca:
-  phase: CLOSE_REPLAN
+  phase: CLOSE_OR_REPLAN
   do_complete: true
   check_study_result: PASS_ON_STATUTORY_CLAUSE_ARCHITECTURE_WITH_CONTROLLED_GAPS
   act_decision: ADAPT
