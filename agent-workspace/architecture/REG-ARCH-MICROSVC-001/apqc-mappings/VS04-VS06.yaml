@@ -1,0 +1,276 @@
+artifact_id: MAP-ARCH-APQC-VS04-VS06-001
+version: '0.1'
+status: DRAFT
+purpose: Map VS04 and VS06 Service Domains to APQC L3-L5 process references without treating APQC process elements as automatic microservice boundaries.
+
+mapping_rule: >-
+  Service Domain remains the candidate microservice boundary. APQC L3-L5 is used as process decomposition,
+  completeness evidence, operation discovery, and handover traceability. An APQC element SHALL NOT become a
+  microservice solely because it exists at L3, L4, or L5.
+
+source_controls:
+  governed_catalogue: Catalyst APQC_ProcessElementReference
+  capability_crosswalk: Catalyst CapabilityAPQCCrosswalk
+  cross_industry_profile:
+    name: APQC Cross-Industry PCF
+    version: '8.0'
+    status: ACTIVE_REFERENCE
+  sector_profile_vs06:
+    name: APQC Upstream Petroleum PCF
+    version: '7.2.2'
+    status: SECTOR_REFERENCE_SOURCE_INGESTION_REQUIRED
+    applicability_note: >-
+      APQC identifies this PCF with NAICS 21 Mining, Quarrying, and Oil and Gas Extraction, but the framework is
+      specialized for upstream petroleum. It is therefore a supporting sector comparator for VS06 and does not
+      override GMG mining semantics.
+
+vs04_mappings:
+  - service_domain: Asset Registry and Configuration
+    mapping_status: PARTIAL_EXACT
+    l3:
+      - reference: '10.1'
+        title: Plan and acquire assets
+        source: APQC Cross-Industry 8.0 public hierarchy
+    l4: []
+    l5: []
+    gap: Exact registry/configuration-specific L4-L5 mappings require controlled APQC source expansion.
+    boundary_result: RETAIN
+
+  - service_domain: Asset Structure and Network
+    mapping_status: PROCESS_GAP
+    l3: []
+    l4: []
+    l5: []
+    gap: No exact APQC process equivalence is validated. MIMOSA remains the semantic authority.
+    boundary_result: RETAIN
+
+  - service_domain: Asset Engineering Study
+    mapping_status: PROCESS_GAP
+    l3: []
+    l4: []
+    l5: []
+    gap: No exact APQC L3-L5 mapping is present in the governed catalogue.
+    boundary_result: RETAIN
+
+  - service_domain: Measurement and Condition Data
+    mapping_status: PARTIAL_EXACT
+    l3:
+      - reference: '10.3'
+        title: Maintain assets
+        reference_number: '19238'
+    l4:
+      - reference: '10.3.1'
+        title: Plan asset maintenance
+        reference_number: '19239'
+    l5:
+      - reference: '10.3.1.2'
+        title: Analyze assets and predict maintenance requirements
+        reference_number: '10967'
+    boundary_result: RETAIN
+
+  - service_domain: Asset Health and Prognostics
+    mapping_status: PARTIAL_EXACT
+    l3:
+      - reference: '10.3'
+        title: Maintain assets
+        reference_number: '19238'
+    l4:
+      - reference: '10.3.1'
+        title: Plan asset maintenance
+        reference_number: '19239'
+    l5:
+      - reference: '10.3.1.2'
+        title: Analyze assets and predict maintenance requirements
+        reference_number: '10967'
+    boundary_result: RETAIN
+
+  - service_domain: Maintenance Request and Planning
+    mapping_status: EXACT_PROCESS_FAMILY
+    l3:
+      - reference: '10.3'
+        title: Maintain assets
+        reference_number: '19238'
+    l4:
+      - reference: '10.3.1'
+        title: Plan asset maintenance
+        reference_number: '19239'
+      - reference: '10.3.2'
+        title: Manage asset maintenance
+        reference_number: '19245'
+    l5:
+      - {reference: '10.3.1.5', title: Identify work management tasks & priorities, reference_number: '19242'}
+      - {reference: '10.3.1.6', title: Conduct resource planning, reference_number: '19243'}
+      - {reference: '10.3.1.7', title: Create asset work plans, reference_number: '19244'}
+      - {reference: '10.3.2.1', title: Schedule maintenance work, reference_number: '19246'}
+      - {reference: '10.3.2.2', title: Obtain required resources, reference_number: '19247'}
+    boundary_result: RETAIN
+
+  - service_domain: Maintenance Work Execution
+    mapping_status: EXACT_PROCESS_FAMILY
+    l3:
+      - reference: '10.3'
+        title: Maintain assets
+        reference_number: '19238'
+    l4:
+      - reference: '10.3.3'
+        title: Perform asset maintenance
+        reference_number: '19253'
+    l5:
+      - {reference: '10.3.3.1', title: Perform preventative asset maintenance, reference_number: '10947'}
+      - {reference: '10.3.3.2', title: Perform routine asset maintenance, reference_number: '19254'}
+      - {reference: '10.3.3.3', title: Perform corrective asset maintenance and repairs, reference_number: '19255'}
+      - {reference: '10.3.3.4', title: Identify unplanned maintenance requirements, reference_number: '19256'}
+      - {reference: '10.3.3.5', title: Perform unplanned maintenance and repairs, reference_number: '19257'}
+    boundary_result: RETAIN
+
+  - service_domain: Maintenance Completion and History
+    mapping_status: EXACT_SUPPORTING_ACTIVITY
+    l3:
+      - reference: '10.3'
+        title: Maintain assets
+        reference_number: '19238'
+    l4:
+      - reference: '10.3.2'
+        title: Manage asset maintenance
+        reference_number: '19245'
+    l5:
+      - {reference: '10.3.2.3', title: Undertake quality control, reference_number: '19248'}
+      - {reference: '10.3.2.4', title: Update work and asset records, reference_number: '19249'}
+      - {reference: '10.3.2.7', title: Monitor maintenance performance against targets/contracts, reference_number: '19252'}
+    enterprise_extension:
+      reference: KNG-APQC-XI-10.3.2.7-T01
+      title: Assess and report physical asset management assurance
+      status: MAPPED_NOT_ACTIVE
+    boundary_result: RETAIN
+
+vs06_mappings:
+  sector_mapping_status: BLOCKED_EXACT_SECTOR_L3_L5_SOURCE_NOT_INGESTED
+  sector_profile: APQC Upstream Petroleum 7.2.2
+  governed_capability_crosswalk_status: GMG_PRIMARY_APQC_SUPPORTING_ONLY
+  rule: >-
+    Do not invent Upstream Petroleum L3-L5 references. Until the exact licensed/public framework hierarchy is
+    ingested into the governed APQC catalogue, use verified Cross-Industry 8.0 production elements only as
+    supporting process evidence. GMG remains the mining-domain authority.
+
+  supporting_cross_industry_mapping:
+    - service_domain: Production Plan and Shift Target
+      mapping_status: SUPPORTING_EXACT
+      l3:
+        - reference: '4.3'
+          title: Produce/Manufacture/Deliver product
+      l4:
+        - reference: '4.3.1'
+          title: Schedule production
+          reference_number: '10303'
+      l5:
+        - {reference: '4.3.1.2', title: Generate line level plan, reference_number: '10306'}
+        - {reference: '4.3.1.3', title: Generate detailed schedule, reference_number: '10307'}
+      boundary_result: RETAIN
+
+    - service_domain: Load and Haul Fleet Dispatch
+      mapping_status: SUPPORTING_PARTIAL
+      l3:
+        - reference: '4.3'
+          title: Produce/Manufacture/Deliver product
+      l4:
+        - reference: '4.3.1'
+          title: Schedule production
+          reference_number: '10303'
+      l5:
+        - {reference: '4.3.1.3', title: Generate detailed schedule, reference_number: '10307'}
+      boundary_result: RETAIN
+
+    - service_domain: Load and Haul Cycle Execution
+      mapping_status: SUPPORTING_PARTIAL
+      l3:
+        - reference: '4.3'
+          title: Produce/Manufacture/Deliver product
+      l4:
+        - reference: '4.3.2'
+          title: Produce/Assemble product
+          reference_number: '10304'
+      l5:
+        - {reference: '4.3.2.2', title: Execute detailed line schedule, reference_number: '10311'}
+      boundary_result: RETAIN
+
+    - service_domain: Fleet Time Usage Classification
+      mapping_status: NO_DIRECT_EQUIVALENCE
+      l3: []
+      l4: []
+      l5: []
+      boundary_result: RETAIN
+      note: GMG time-usage model is materially more specific than APQC Cross-Industry process taxonomy.
+
+    - service_domain: Fleet Availability and Utilization Performance
+      mapping_status: SUPPORTING_EXACT
+      l3:
+        - reference: '4.3'
+          title: Produce/Manufacture/Deliver product
+      l4:
+        - reference: '4.3.2'
+          title: Produce/Assemble product
+          reference_number: '10304'
+      l5:
+        - {reference: '4.3.2.6', title: Assess production performance, reference_number: '10314'}
+      boundary_result: RETAIN
+
+    - service_domain: Mobile Equipment Data Integration
+      mapping_status: SUPPORTING_EXACT
+      l3:
+        - reference: '4.3'
+          title: Produce/Manufacture/Deliver product
+      l4:
+        - reference: '4.3.2'
+          title: Produce/Assemble product
+          reference_number: '10304'
+      l5:
+        - {reference: '4.3.2.5.1', title: Automate and control plant, reference_number: '19567'}
+        - {reference: '4.3.2.5.3', title: Perform real-time optimization, reference_number: '19569'}
+      boundary_result: RETAIN
+
+    - service_domain: Production Event and Delay Management
+      mapping_status: SUPPORTING_PARTIAL
+      l3:
+        - reference: '4.3'
+          title: Produce/Manufacture/Deliver product
+      l4:
+        - reference: '4.3.2'
+          title: Produce/Assemble product
+          reference_number: '10304'
+      l5:
+        - {reference: '4.3.2.5.4', title: Manage plant alarms and alerts, reference_number: '19570'}
+        - {reference: '4.3.2.3', title: Report maintenance issues, reference_number: '10319'}
+      boundary_result: RETAIN
+
+    - service_domain: Fleet Productivity Benchmarking
+      mapping_status: SUPPORTING_EXACT_DEFERRED_DOMAIN
+      l3:
+        - reference: '4.3'
+          title: Produce/Manufacture/Deliver product
+      l4:
+        - reference: '4.3.2'
+          title: Produce/Assemble product
+          reference_number: '10304'
+      l5:
+        - {reference: '4.3.2.6', title: Assess production performance, reference_number: '10314'}
+      boundary_result: DEFERRED_RETAIN_CANDIDATE
+
+regression_test:
+  test_basis:
+    - single_coherent_business_responsibility
+    - common_canonical_resource_or_state
+    - common_owner
+    - shared_transaction_boundary
+    - shared_scaling_and_security_profile
+    - APQC_L3_L5_cohesion
+  result:
+    VS04: PASS_WITH_GAPS
+    VS06: PASS_WITH_SECTOR_SOURCE_GAP
+  findings:
+    - VS04 maintenance planning, execution, and completion remain distinct but cohesive service boundaries.
+    - Measurement/condition and health/prognostics overlap at APQC 10.3.1.2, but MIMOSA semantics justify separate candidate boundaries pending engineering-level load and ownership tests.
+    - VS06 GMG-derived service boundaries remain cohesive; APQC Cross-Industry supports operations but does not define mining-specific boundaries.
+    - Exact APQC Upstream Petroleum L3-L5 mapping cannot be asserted until the profile hierarchy is ingested into the governed catalogue.
+
+act_recommendation: ADAPT
+next_action: Ingest the exact APQC Upstream Petroleum 7.2.2 hierarchy under applicable licence terms, then rerun VS06 L3-L5 mapping and boundary regression.
