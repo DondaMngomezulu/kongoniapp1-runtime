@@ -22,6 +22,7 @@ affected_paths:
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/evidence/EVD-AGR-LRML-XSD-001.json
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/outcome.yaml
   - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/outcome.yaml
 environment: repository
 authority:
   status: AUTHORISED
