@@ -5,7 +5,7 @@ actor:
   name: GPT-5.6 Sol
 mandate_ref: 'Group CEO approved normalisation of VS04 MIMOSA and VS06 GMG source content for the Enterprise Microservice Register.'
 task_class: T2
-change_type: architecture
+change_type: governance
 summary: Add provenance-controlled Kongoni Service Domain catalogues for VS04 and VS06.
 reason: MIMOSA CCOM and GMG do not provide BIAN-style Service Domain catalogues, so an explicit architecture normalisation layer is required before microservice register generation.
 affected_paths:
