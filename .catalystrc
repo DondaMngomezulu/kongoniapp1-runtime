@@ -1,0 +1,36 @@
+{
+	"projects": [
+		{
+			"idx": 1,
+			"id": "86824000000020001",
+			"name": "Kongoniapp1",
+			"domain": {
+				"id": 10129466957,
+				"name": "kongoniapp1-931013629.development"
+			},
+			"timezone": "Africa/Johannesburg",
+			"env": [
+				{
+					"idx": 1,
+					"id": "931013629",
+					"name": "Development",
+					"type": 3
+				},
+				{
+					"idx": 2,
+					"id": "10131206251",
+					"name": "Production",
+					"type": 1
+				}
+			]
+		}
+	],
+	"defaults": {
+		"project": 1,
+		"env": 1
+	},
+	"actives": {
+		"project": 1,
+		"env": 1
+	}
+}

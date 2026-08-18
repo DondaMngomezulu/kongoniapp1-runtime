@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Catalyst CLI local artefacts
+catalyst-debug.log
+catalyst-http-log.json
+.command.log
+.build/
+output/
+
+# Local environment
+.env
+.env.local
+
+# OS
+.DS_Store

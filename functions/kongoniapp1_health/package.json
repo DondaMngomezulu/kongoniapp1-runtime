@@ -1,0 +1,7 @@
+{
+	"name": "kongoniapp1_health",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "Kongoni Group",
+	"dependencies": {}
+}

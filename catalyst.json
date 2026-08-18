@@ -1,0 +1,12 @@
+{
+	"functions": {
+		"source": "functions",
+		"targets": [
+			"kongoniapp1_health"
+		],
+		"ignore": []
+	},
+	"client": {
+		"source": "client"
+	}
+}
