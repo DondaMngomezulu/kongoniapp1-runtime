@@ -1,7 +1,7 @@
 work_id: WRK-AGR-LEGAL-APPLICABILITY-20260818
 title: Kiboko-Venduo Transaction Legal Applicability Profile
 task_class: T2
-status: OPEN
+status: ACT_PENDING
 parent_control: AGR-XWALK-011
 control_id: AGR-XWALK-011-A
 architecture:
@@ -26,10 +26,10 @@ required_inputs:
   - board/shareholder/signing approvals
 approval_ref: "Group CEO ACT=ADAPT for AGR-XWALK-011 — 2026-08-18"
 pdca:
-  stage: PLAN
-  do_complete: false
+  stage: ACT
+  do_complete: true
   task_complete: false
   act_decision: null
 next_action:
-  assigned_to: ChatGPT
-  instruction: "Bind the canary transaction facts to the adopted South African statutory applicability controls and fail closed on missing evidence."
+  assigned_to: Group CEO
+  instruction: "Decide ACT on LAP-KIB-VEN-001 v0.1; recommended ADOPT for the profile and fail-closed evidence-gap control only."
