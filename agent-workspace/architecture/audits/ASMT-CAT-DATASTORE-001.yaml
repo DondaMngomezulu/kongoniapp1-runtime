@@ -1,0 +1,91 @@
+assessment_id: ASMT-CAT-DATASTORE-001
+version: '0.1'
+status: CHECK_STUDY_COMPLETE
+assessment_date: '2026-08-18'
+task_class: T2
+scope:
+  platform: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+  destructive_actions: PROHIBITED
+objective: Determine why new Data Store table creation is blocked and identify safe architecture remediation candidates without deleting authoritative data.
+findings:
+  root_cause: TABLE_SCHEMA_PROLIFERATION
+  row_volume_primary_cause: false
+  data_size_primary_cause: false
+  evidence:
+    - New LeasingFacility table creation failed at table-creation stage with API_LIMIT_REACHED before Leasing rows existed.
+    - Live Data Store inventory contains well over 150 narrowly scoped tables across governance, semantic, methodology, standards, EDRMS, catalogue, evidence, finance and runtime concerns.
+    - EDRMS_MigrationCandidate read-back contains active migration/provenance records, so migration tables cannot be assumed empty or disposable.
+  high_density_families:
+    semantic_and_ontology: VERY_HIGH
+    methodology_and_routing: HIGH
+    governance_and_controls: HIGH
+    EDRMS_and_migration: HIGH
+    standards_and_reference_frameworks: HIGH
+    XCMG_catalogue_and_provenance: HIGH
+    LCC_model_and_evidence: MEDIUM_HIGH
+    BIAN_APQC_MIMOSA: MEDIUM
+    agent_tool_engine_runtime: HIGH
+    accounting_gl: MEDIUM
+architecture_assessment:
+  anti_pattern: ONE_GOVERNED_CONCEPT_ONE_DATASTORE_TABLE
+  consequence: Catalyst Data Store is being used as a metadata warehouse in addition to runtime state store.
+  adopted_authority_conflict: GitHub is authoritative for architecture artifacts, while many architecture/governance concepts are additionally materialized as separate Catalyst tables.
+  safe_direction: Separate runtime transactional state from architecture/governance/reference metadata and consolidate metadata around generic governed-object and relation patterns.
+no_delete_candidates_for_detailed_design:
+  - family: SemanticService*
+    recommendation: assess consolidation into core service, endpoint and relation records
+    expected_recovery: MULTIPLE_TABLES
+    confidence: MEDIUM
+  - family: EnterpriseMethodology* and Methodology*Binding/Rule
+    recommendation: assess typed governed-object + relation model
+    expected_recovery: MULTIPLE_TABLES
+    confidence: MEDIUM
+  - family: StandardDiscoverySource/StandardDiscoveryCandidate/StandardDiscoveryAssertion
+    recommendation: assess consolidation into discovery work-item plus evidence/relation model
+    expected_recovery: 1_TO_2_TABLES
+    confidence: HIGH
+  - family: MCP_Tools/MCP_Tool_Register/ToolRegister
+    recommendation: schema-crosswalk before deciding canonical register
+    expected_recovery: 1_TO_2_TABLES_POTENTIAL
+    confidence: MEDIUM
+  - family: XCMG catalogue normalized tables
+    recommendation: retain product identity and model semantics; assess folding listing/specification/revision provenance into generic catalogue-version/artifact relations
+    expected_recovery: MULTIPLE_TABLES
+    confidence: MEDIUM
+  - family: EDRMS_BinaryPayloadChunk
+    recommendation: verify migration to Stratus/object storage and retain only metadata pointer in Data Store
+    expected_recovery: 1_TABLE
+    confidence: HIGH
+  - family: migration control tables
+    recommendation: retain active records; consolidate only after lifecycle and read dependencies are mapped
+    expected_recovery: MULTIPLE_TABLES_POTENTIAL
+    confidence: LOW_MEDIUM
+retain_as_distinct_unless_further_evidence:
+  - runtime transactional business state
+  - accounting GL transactional and control tables
+  - BIAN/APQC/MIMOSA canonical source registries where actively queried at runtime
+  - EDRMS core record, retention and legal-hold controls
+  - EnvironmentExecutionAuthority
+  - PDCARegister and audit/evidence controls where they are runtime enforcement dependencies
+recommended_target_pattern:
+  runtime_data_store:
+    purpose: operational and transactional service state requiring indexed runtime access
+  governed_metadata_registry:
+    entities: [GovernedObject, GovernedRelation, GovernedVersion, GovernedEvidence]
+    purpose: consolidate low-volume architecture, governance, standards and semantic metadata where relational distinctions can be represented by type and relation fields
+  github:
+    purpose: architecture, service specifications, schemas, code, controlled engineering history
+  stratus:
+    purpose: binary payloads, source snapshots, large computational/reference artifacts
+controls:
+  no_table_deletion_without: [schema_crosswalk, row_count_and_sample, dependency_search, authority_classification, export_or_backup, readback_test, explicit_ACT]
+  new_table_gate: new Data Store table creation must prove runtime need and inability to reuse a governed generic registry safely.
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: ROOT_CAUSE_CONFIRMED_REMEDIATION_REQUIRED
+  act_recommendation: ADAPT
+  task_complete: false
+next_action: Produce a table-by-table authority and consolidation matrix, starting with high-confidence duplicate/consolidation families, then recover capacity through a separately authorised migration cycle.
