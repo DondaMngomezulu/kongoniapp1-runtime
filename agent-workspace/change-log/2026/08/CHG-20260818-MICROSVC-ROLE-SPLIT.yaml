@@ -1,0 +1,30 @@
+change_id: CHG-20260818-MICROSVC-ROLE-SPLIT
+timestamp_utc: '2026-08-18T17:20:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'Group CEO instruction: update both skills so GitHub owns the Microservice Architect role and Zoho Catalyst owns the Microservice Engineer role.'
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Create SKL-GH-MICROSVC-ARCH-001 and refocus SKL-CAT-MICROSVC-ENG-001 on implementation-only engineering.
+reason: Separate architecture authority from runtime implementation and prevent engineers from silently changing service design.
+affected_paths:
+  - agent-workspace/skills/SKL-GH-MICROSVC-ARCH-001/SKILL.md
+  - agent-workspace/skills/SKL-CAT-MICROSVC-ENG-001/SKILL.md
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Role split encoded on isolated branch. GitHub Architect produces the governed Service Specification. Catalyst Engineer implements the approved specification and returns material design defects to the Architect. CI/regression validation pending.'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Branch: agent/split-microservice-architect-engineer'
+  - 'New skill: SKL-GH-MICROSVC-ARCH-001 v1.0'
+  - 'Adapted skill: SKL-CAT-MICROSVC-ENG-001 v1.0'
+notes: 'No Catalyst runtime resource is changed. T2 work remains open pending CHECK/STUDY and ACT.'
