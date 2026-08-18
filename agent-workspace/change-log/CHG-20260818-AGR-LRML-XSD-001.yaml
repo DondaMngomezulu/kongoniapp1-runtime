@@ -36,7 +36,8 @@ evidence:
 commit_sha: null
 pull_request: 10
 notes: >-
-  Final official OASIS compact XSD CI run 32174982874 passed 2/2 active LegalRuleML targets.
-  Facility v0.2 and enterprise v0.2 are technically conformant. Enterprise v0.1 failed baseline
-  evidence remains preserved in Git history. Substantive South African legal validation remains
-  separate under AGR-XWALK-011. Recommended ACT is ADOPT. No Agreement Template is promoted.
+  Official OASIS compact XSD CI run 32174982874 passed 2/2 active LegalRuleML targets.
+  Facility v0.2 hash: 48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e.
+  Enterprise v0.2 hash: 81890d0580f139a68f38a78c15d653b44e09c9c08833076d966bdc7b285c9c40.
+  Enterprise v0.1 failed baseline evidence remains preserved in Git history. Substantive South African
+  legal validation remains separate under AGR-XWALK-011. Recommended ACT is ADOPT. No Agreement Template is promoted.
