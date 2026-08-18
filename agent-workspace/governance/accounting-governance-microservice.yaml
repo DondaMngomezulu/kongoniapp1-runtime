@@ -1,0 +1,56 @@
+specification_id: SPEC-GOVCOMP-ACCT-001
+version: "0.1"
+status: CANDIDATE
+microservice: Governance and Compliance Microservice
+purpose: Codify and execute accounting governance rules before authorised accounting treatment is posted to Zoho Books.
+spine:
+  process_framework: APQC
+  default_boundary: applicable APQC Level 3 governance/compliance/accounting process
+normative_authorities:
+  financial_reporting:
+    standard: IFRS
+    role: accounting recognition_measurement_presentation_disclosure_rules
+  tax_compliance:
+    authority: SARS
+    role: South African tax obligations_rates_returns_evidence_and_controls
+execution_boundary:
+  rule_engine: Catalyst Governance and Compliance Microservice
+  accounting_system_of_record: Zoho Books
+  financial_gateway: Books Financial Gateway
+  ledger_projection: Catalyst gl_* tables
+canonical_flow:
+  - business_event
+  - applicable_ifrs_and_sars_rule_resolution
+  - governance_and_compliance_validation
+  - authorised_accounting_instruction
+  - books_financial_gateway
+  - zoho_books_posting
+  - books_transaction_reference
+  - catalyst_projection_reconciliation_and_evidence
+required_rule_metadata:
+  - rule_id
+  - authority
+  - source_reference
+  - effective_date
+  - jurisdiction
+  - applicability_condition
+  - accounting_treatment
+  - tax_treatment
+  - evidence_requirement
+  - validation_test
+  - version
+  - approval_status
+controls:
+  - Zoho Books SHALL be the accounting system of record.
+  - Catalyst SHALL NOT operate a competing general ledger.
+  - Catalyst gl_* tables SHALL be projection, analytics, reconciliation, migration-support or provenance stores only.
+  - Accounting instructions SHALL be validated against applicable IFRS and SARS rules before posting where the governed workflow requires pre-post validation.
+  - Postings SHALL retain rule version, evidence reference and Zoho Books transaction identifier for traceability.
+  - Tax, legal, accounting and compliance obligations SHALL be applied within the owning value stream while common standards and canonical rule libraries remain governed.
+verification:
+  - rule_traceability_test
+  - accounting_instruction_contract_test
+  - books_posting_reference_test
+  - duplicate_ledger_master_test
+  - reconciliation_test
+  - regression_test
