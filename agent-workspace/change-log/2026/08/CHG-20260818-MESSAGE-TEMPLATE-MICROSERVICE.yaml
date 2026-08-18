@@ -20,6 +20,7 @@ affected_paths:
   - appsail/kongoni_message_template_governance/test/resolver.test.js
   - agent-workspace/work/WRK-MSG-TPL-SVC-001/mandate.yaml
   - agent-workspace/work/WRK-ZCRM-BP-001/mandate.yaml
+  - catalyst.json
 environment: Development
 authority:
   status: AUTHORISED
@@ -34,8 +35,9 @@ evidence:
   - 'Catalyst project: Kongoniapp1 / 86824000000020001 / Development.'
   - 'Existing physical table reused: TemplateGovernanceRegister / 86824000000184034.'
   - 'Development canary row: MSGIMPL-CHATGPT-INF-001-V1 / Catalyst ROWID 86824000000415008.'
+  - 'Local deterministic resolver regression: 6/6 tests PASS.'
   - 'Pre-existing WRK-ZCRM-BP-001 schema defect remediated on this branch to restore Agent Workspace validation.'
   - 'Production deployment explicitly prohibited until separate authorisation and valid CHECK/STUDY.'
 commit_sha: null
-pull_request: null
+pull_request: 12
 notes: 'DO_COMPLETE is not TASK_COMPLETE. Merge, Development runtime canary, regression evidence and ACT remain required.'
