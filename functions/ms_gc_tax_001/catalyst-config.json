@@ -1,0 +1,9 @@
+{
+  "name": "ms_gc_tax_001",
+  "type": "applogic",
+  "stack": "node20",
+  "memory": 256,
+  "entry": "index.js",
+  "deployment_authorised": false,
+  "notes": "Scaffold only. Do not deploy until CHECK/STUDY passes and approved atomic SARS rules are bound."
+}
