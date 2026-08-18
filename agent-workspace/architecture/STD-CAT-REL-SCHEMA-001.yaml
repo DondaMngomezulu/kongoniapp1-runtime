@@ -1,0 +1,61 @@
+artifact_id: STD-CAT-REL-SCHEMA-001
+version: '0.1'
+status: CANDIDATE_FOR_ADOPTION
+name: Catalyst Governed Relational Enterprise Schema Standard
+owner: Enterprise Architecture
+platform_scope: Zoho Catalyst Data Store
+purpose: Preserve a governed relational enterprise schema while rationalising Catalyst table count and reserving Data Store capacity for runtime persistence.
+principles:
+  - id: REL-01
+    rule: Independent business entities with distinct lifecycle, authority, cardinality or query semantics SHALL remain separate relations.
+  - id: REL-02
+    rule: Association and evidence relations SHALL be retained where they represent one-to-many or many-to-many relationships; consolidation SHALL NOT denormalize healthy relational models into wide tables.
+  - id: REL-03
+    rule: Every governed relation SHALL expose a stable business identifier in addition to Catalyst ROWID where the relation represents a persistent enterprise object.
+  - id: REL-04
+    rule: Logical foreign keys SHALL use stable business identifiers and SHALL be explicitly documented even where Catalyst does not provide physical foreign-key constraints.
+  - id: REL-05
+    rule: Referential integrity SHALL be enforced by service validation, migration reconciliation and regression tests before source relations are retired.
+  - id: REL-06
+    rule: Governed metadata relations SHALL carry, where applicable, authority state, lifecycle state, version, provenance or evidence reference, PDCA reference, environment and Production-authorisation state.
+  - id: REL-07
+    rule: A new physical table SHALL require an independent runtime persistence, lifecycle, cardinality, authority, performance, security or integrity justification. One governed concept SHALL NOT automatically equal one physical table.
+  - id: REL-08
+    rule: Runtime transactional state SHALL be preferentially retained in Data Store. Architecture and engineering source artifacts SHALL remain GitHub-authoritative. Binary and large immutable payloads SHALL use Stratus with governed metadata references.
+  - id: REL-09
+    rule: Consolidation SHALL be lossless. Before a populated source table is retired, row-count reconciliation, key reconciliation, relationship reconciliation and rollback evidence SHALL pass.
+  - id: REL-10
+    rule: Empty or superseded schema shells MAY be retired when absence of business rows is verified, successor authority is resolved where applicable, and the deletion is recorded in the governed change log.
+normalisation_target: 'Third-normal-form by default; deliberate denormalisation requires an ADR and measured runtime justification.'
+key_model:
+  technical_key: Catalyst ROWID
+  business_key: Stable governed identifier, unique where applicable
+  foreign_key: Stable business identifier of parent or referenced entity
+  relationship_rule: Parent-child and association cardinality SHALL be explicit in schema documentation.
+authority_partition:
+  catalyst_datastore: Runtime transactional state and structured reference state requiring relational access
+  github: Architecture, schemas-as-code, ADRs, service specifications and engineering history
+  stratus: Binary, large immutable and computational payload objects
+  external_sources: Provenance/reference until governed adoption
+assurance_gates:
+  pre_retirement:
+    - authority classification complete
+    - source row count established
+    - target model and key mapping established
+    - referential-integrity test defined
+    - rollback evidence captured
+  post_migration:
+    - row-count reconciliation PASS
+    - business-key reconciliation PASS
+    - relationship reconciliation PASS
+    - read-back PASS
+    - regression PASS
+    - ACT decision recorded
+protected_relational_examples:
+  StandardDiscoverySource:
+    role: parent source entity
+  StandardDiscoveryCandidate:
+    role: candidate entity
+  StandardDiscoveryAssertion:
+    role: evidence/association entity linking candidate and source
+  rationale: These relations are already normalized and SHALL NOT be collapsed merely to reduce table count.
