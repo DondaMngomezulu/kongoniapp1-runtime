@@ -14,3 +14,10 @@ acceptance_criteria:
   - "Every active target validates against the official OASIS compact XSD dependency graph."
   - "CI evidence is recorded and repeatable."
   - "No Agreement Template is promoted by technical XSD conformance alone."
+result:
+  do_complete: true
+  check_study_result: PASS_WITH_REMEDIATION
+  official_xsd_ci_run: 32174982874
+  active_targets_passed: 2
+  active_targets_failed: 0
+  recommended_act: ADOPT
