@@ -1,0 +1,28 @@
+change_id: CHG-20260818-APQC-UPSTREAM-SOURCE-GATE
+timestamp_utc: '2026-08-18T17:55:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved ingestion of the permitted APQC Upstream Petroleum 7.2.2 hierarchy and rerun of the VS06 L3-L5 crosswalk.'
+task_class: T2
+change_type: governance
+summary: Record the verified APQC Upstream Petroleum 7.2.2 source and block exact hierarchy ingestion until the licensed source file is available in the governed Library.
+reason: The official APQC resource is a gated download subject to specific APQC/IBM licence terms, and no licensed 7.2.2 source file is present in the governed Library.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/sources/APQC-UPSTREAM-PETROLEUM-7.2.2.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO approval in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Public source metadata verified. Exact sector L3-L5 ingestion could not be completed because the licensed hierarchy file is not available in the governed Library. Existing VS06 GMG + APQC Cross-Industry mapping remains the controlled interim model.'
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'Official APQC page confirms Upstream Petroleum PCF v7.2.2, published 2025-03-27.'
+  - 'Official APQC page states specific licence terms apply and are included with the download.'
+  - 'Official APQC page states v7.2.2 changed licence/attribution language with no material framework-element or definition changes.'
+  - 'Governed Library search found Cross-Industry 8.0 concepts but no Upstream Petroleum 7.2.2 source file.'
+notes: 'Do not reconstruct sector-specific L3-L5 identifiers. Resume ingestion only from a lawfully obtained source file under reviewed licence terms.'
