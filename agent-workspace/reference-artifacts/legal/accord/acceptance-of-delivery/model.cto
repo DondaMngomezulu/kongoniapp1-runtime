@@ -1,0 +1,37 @@
+// Source: accordproject/cicero-template-library
+// Path: src/acceptance-of-delivery/model/model.cto
+// Source blob SHA: 9573fe4da2367e191dd357592c8fa6887a56ebe8
+// Licence: Apache-2.0
+// Purpose: controlled engineering reference only; not South African legal authority.
+
+namespace org.accordproject.acceptanceofdelivery@0.1.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
+
+transaction InspectDeliverable extends Request {
+  o DateTime deliverableReceivedAt
+  o Boolean inspectionPassed
+}
+
+enum InspectionStatus {
+  o PASSED_TESTING
+  o FAILED_TESTING
+  o OUTSIDE_INSPECTION_PERIOD
+}
+
+transaction InspectionResponse extends Response {
+  o InspectionStatus status
+  o String shipper
+  o String receiver
+}
+
+@template
+asset TemplateModel extends Clause {
+  o String shipper
+  o String receiver
+  o String deliverable
+  o Long businessDays
+  o String attachment
+}
