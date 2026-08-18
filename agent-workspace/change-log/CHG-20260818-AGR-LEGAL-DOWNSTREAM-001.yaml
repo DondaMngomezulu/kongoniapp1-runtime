@@ -5,10 +5,7 @@ actor:
   name: ChatGPT Agreement Codification Agent
   agent_contract_ref: null
 mandate_ref: "Group CEO instruction: Let's proceed — 2026-08-18"
-accountability_task_refs:
-  - WRK-AGR-LEGAL-APPLICABILITY-20260818
-  - WRK-AGR-OPERATIVE-CLAUSE-20260818
-  - WRK-AGR-SECURITY-COMMONLAW-20260818
+accountability_task_ref: WRK-AGR-OPERATIVE-CLAUSE-20260818
 task_class: T2
 change_type: governance
 summary: >-
@@ -23,7 +20,9 @@ affected_paths:
   - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/operative-clause-library-v0.1.yaml
   - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/outcome.yaml
+  - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/share-pledge-validation-v0.1.yaml
+  - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/outcome.yaml
 environment: repository
 authority:
   status: AUTHORISED
