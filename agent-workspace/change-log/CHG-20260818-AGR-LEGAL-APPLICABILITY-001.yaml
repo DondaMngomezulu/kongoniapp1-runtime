@@ -1,15 +1,15 @@
 change_id: CHG-20260818-AGR-LEGAL-APPLICABILITY-001
-timestamp_utc: "2026-08-18T20:07:00Z"
+timestamp_utc: "2026-08-18T20:13:00Z"
 actor:
   type: ChatGPT
   name: ChatGPT Agreement Codification Agent
   agent_contract_ref: null
-mandate_ref: "Group CEO instruction: proceed to AGR-XWALK-011-A — 2026-08-18"
+mandate_ref: "Group CEO ACT decision ADOPT for AGR-XWALK-011-A — 2026-08-18"
 accountability_task_ref: WRK-AGR-LEGAL-APPLICABILITY-20260818
 task_class: T2
 change_type: governance
-summary: "Created and checked the Kiboko-Venduo Transaction Legal Applicability Profile and fail-closed evidence-gap register."
-reason: "Bind the controlled canary transaction to adopted South African legal applicability controls without converting unverified assumptions into transaction authority."
+summary: "Recorded ADOPT for LAP-KIB-VEN-001 v0.1 and closed AGR-XWALK-011-A while preserving all blocking evidence gaps as mandatory fail-closed preconditions."
+reason: "Adopt the transaction legal applicability profile and evidence-gap control without authorising the facility, share transfer, security package or any Agreement Template for execution."
 affected_paths:
   - agent-workspace/work/WRK-AGR-LEGAL-APPLICABILITY-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-LEGAL-APPLICABILITY-20260818/kiboko-venduo-legal-applicability-profile-v0.1.yaml
@@ -18,20 +18,18 @@ affected_paths:
 environment: repository
 authority:
   status: AUTHORISED
-  reference: "Group CEO instruction: Yes — proceed to AGR-XWALK-011-A — 2026-08-18"
+  reference: "Group CEO ACT=ADOPT — 2026-08-18"
 pdca:
-  phase: ACT
+  phase: CLOSE_REPLAN
   do_complete: true
   check_study_result: PASS_PROFILE_WITH_BLOCKING_EVIDENCE_GAPS
-  act_decision: null
-  task_complete: false
+  act_decision: ADOPT
+  task_complete: true
 evidence:
   - "Kiboko_Position_Paper_Fingroup — June 2026"
   - "Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml"
   - "GN 713 of 2006 NCA thresholds"
-commit_sha: null
 pull_request: 10
 notes: >-
-  The profile classifies NCA, FIC, Companies Act, securities-transfer, STT, Competition Act,
-  ECTA and share-pledge security applicability. Twelve blocking evidence gaps remain. Recommended ACT
-  is ADOPT for the profile and fail-closed gap control only; no transaction or Agreement Template is approved.
+  LAP-KIB-VEN-001 v0.1 is adopted as the controlled applicability profile. Twelve blocking evidence gaps remain open.
+  AGR-XWALK-011-B and AGR-XWALK-011-C remain mandatory downstream gates. No transaction or template is approved for execution.
