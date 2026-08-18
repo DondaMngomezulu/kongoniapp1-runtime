@@ -7,7 +7,7 @@ actor:
 mandate_ref: 'Group CEO instruction 2026-08-18: modify and integrate the adopted message-template architecture into Kongoniapp1 as a microservice.'
 accountability_task_ref: WRK-MSG-TPL-SVC-001
 task_class: T2
-change_type: architecture_and_implementation
+change_type: integration
 summary: Implement the governed Message Template Resolution Service and bind REG-MSG-TPL-001 to the existing Catalyst TemplateGovernanceRegister without creating a duplicate physical register.
 reason: Enforce CAT-BMP-001 -> CAT-MSG-001 -> REG-MSG-TPL-001 resolution at runtime while preserving Catalogue/Register semantic separation and fail-closed message governance.
 affected_paths:
@@ -21,7 +21,7 @@ affected_paths:
   - agent-workspace/work/WRK-MSG-TPL-SVC-001/mandate.yaml
   - agent-workspace/work/WRK-ZCRM-BP-001/mandate.yaml
   - catalyst.json
-environment: Development
+environment: development
 authority:
   status: AUTHORISED
   reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
@@ -36,7 +36,7 @@ evidence:
   - 'Existing physical table reused: TemplateGovernanceRegister / 86824000000184034.'
   - 'Development canary row: MSGIMPL-CHATGPT-INF-001-V1 / Catalyst ROWID 86824000000415008.'
   - 'Local deterministic resolver regression: 6/6 tests PASS.'
-  - 'Pre-existing WRK-ZCRM-BP-001 schema defect remediated on this branch to restore Agent Workspace validation.'
+  - 'Agent Workspace Validation run 32173514534 PASS after WRK-ZCRM-BP-001 schema remediation.'
   - 'Production deployment explicitly prohibited until separate authorisation and valid CHECK/STUDY.'
 commit_sha: null
 pull_request: 12
