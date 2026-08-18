@@ -1,0 +1,100 @@
+artifact:
+  id: REG-ARCH-MICROSVC-001
+  name: Enterprise Microservice Register
+  version: '0.1'
+  status: DRAFT
+  artifact_class: ARCHITECTURE_REGISTER
+  owner_skill: SKL-GH-MICROSVC-ARCH-001
+  engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+  methodology: MET-PDCA-001
+  purpose: >-
+    Govern the enterprise microservice landscape across all Value Streams and provide
+    sufficient architecture information for controlled engineering handover.
+
+canonical_handover_rule: >-
+  A microservice SHALL NOT enter engineering unless its register entry is architecture-complete
+  and references an approved Service Specification. Engineering SHALL implement the approved
+  architecture and SHALL return material design defects to the Microservice Architect.
+
+lifecycle_states:
+  - IDENTIFIED
+  - ARCHITECTED
+  - AUTHORISED
+  - BUILDING
+  - DEVELOPMENT_DEPLOYED
+  - VERIFIED
+  - ADOPTED
+  - PRODUCTION_DEPLOYED
+  - ACTIVE
+  - RETIRED
+
+coverage_states:
+  - VERIFIED_SOURCE
+  - PROPOSED_MAPPING
+  - SOURCE_CATALOGUE_GAP
+  - ARCHITECTURE_GAP
+  - NOT_APPLICABLE
+
+required_fields:
+  identity:
+    - microservice_id
+    - microservice_name
+    - value_stream_id
+    - value_stream_name
+    - lifecycle_state
+  architecture:
+    - service_domain_name
+    - reference_standard
+    - reference_version
+    - source_domain_id
+    - service_boundary
+    - canonical_business_object
+    - service_owner
+    - architecture_owner_skill
+  contract_handover:
+    - service_specification_id
+    - service_specification_status
+    - key_operations
+    - api_intent
+    - data_ownership
+    - dependencies
+    - security_class
+    - nonfunctional_requirements
+    - acceptance_criteria
+    - engineering_handover_status
+  implementation:
+    - target_platform
+    - catalyst_project
+    - preferred_runtime
+    - preferred_language
+    - github_source_ref
+    - catalyst_runtime_ref
+    - development_status
+    - production_status
+  assurance:
+    - source_provenance
+    - mapping_basis
+    - coverage_state
+    - test_status
+    - audit_status
+    - pdca_stage
+    - act_decision
+
+architecture_completeness_gate:
+  mandatory_before_engineering:
+    - value_stream_id_resolved
+    - service_boundary_resolved
+    - canonical_business_object_resolved
+    - reference_source_resolved
+    - approved_service_specification_exists
+    - key_operations_resolved
+    - data_ownership_resolved
+    - security_requirements_resolved
+    - acceptance_criteria_resolved
+  failure_action: BLOCK_HANDOVER_AND_RETURN_TO_ARCHITECT
+
+provenance_rules:
+  - External reference facts SHALL retain source standard, version, source ID, and provenance.
+  - Adopted Kongoni mappings SHALL be marked separately from external normative content.
+  - Proposed mappings SHALL NOT be represented as approved architecture.
+  - Missing Service Domain catalogues SHALL create explicit coverage gaps; they SHALL NOT be invented.
