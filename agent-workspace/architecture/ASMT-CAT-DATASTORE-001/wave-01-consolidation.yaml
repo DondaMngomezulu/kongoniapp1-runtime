@@ -42,6 +42,13 @@ capacity_result:
   populated_tables_retired: 0
   rows_deleted: 0
   net_slots_recovered_before_new_runtime_tables: 2
+  regression_provisioning:
+    table: LeasingFacility
+    table_id: '86824000000413021'
+    environment: Development
+    scope: ORG
+    result: PASS_CREATED_AFTER_CONSOLIDATION
+  estimated_net_headroom_after_regression_table: 1
 assurance:
   normalized_relationships_preserved: true
   business_data_loss: false
@@ -49,12 +56,14 @@ assurance:
   destructive_scope_limited_to_verified_empty_tables: true
   accounting_tables_modified: false
   edrms_core_modified: false
-  runtime_transaction_tables_modified: false
+  runtime_transaction_tables_modified_before_regression: false
+  intended_runtime_capacity_restored: true
 check_study:
   result: PASS_WAVE_01
   regression:
     standards_discovery_relational_integrity: PASS_UNCHANGED
     tool_registry_semantics: PASS_DISTINCT_ENTITIES_RETAINED
     semantic_envelope_successor: PASS_EMPTY_LEGACY_ONLY_RETIRED
+    datastore_capacity_recovery: PASS_LEASINGFACILITY_CREATED
 act_recommendation: ADOPT_WAVE_01_AND_CONTINUE_CONTROLLED_RATIONALISATION
 closure_rule: DO_COMPLETE != TASK_COMPLETE
