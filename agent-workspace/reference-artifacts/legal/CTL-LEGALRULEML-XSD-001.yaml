@@ -1,0 +1,36 @@
+control_id: CTL-LEGALRULEML-XSD-001
+version: 1.0
+status: ADOPTED
+as_of: 2026-08-18
+name: LegalRuleML XSD Conformance Control
+purpose: Require machine-generated LegalRuleML used in governed Agreement codification to conform to an applicable official OASIS LegalRuleML XSD serialisation.
+authority:
+  standard: LegalRuleML Core Specification Version 1.0
+  publisher: OASIS
+  status: OASIS Standard
+  approval_date: 2021-08-30
+validation_profile:
+  default_serialisation: COMPACT_XSD
+  permitted_serialisations:
+    - BASIC_XSD
+    - COMPACT_XSD
+    - NORMAL_XSD
+  selection_rule: COMPACT_XSD SHALL be used unless a governed interoperability requirement requires another official serialisation.
+rules:
+  - id: LRML-XSD-001
+    rule: Produced LegalRuleML SHALL identify the applicable OASIS LegalRuleML version and serialisation.
+  - id: LRML-XSD-002
+    rule: Produced LegalRuleML SHALL pass validation against the applicable official OASIS XSD before ADOPTED or transaction-usable status.
+  - id: LRML-XSD-003
+    rule: Validation Evidence SHALL record schema version, serialisation, validation result, source Rule ID, Clause ID, and artifact hash.
+  - id: LRML-XSD-004
+    rule: A failed XSD validation SHALL block Clause or Template promotion.
+  - id: LRML-XSD-005
+    rule: OASIS schemas and examples SHALL retain source provenance and applicable IPR controls.
+pdca:
+  check_study: PASS_CONTROL_DEFINED
+  act: ADOPT
+  authority: Group CEO
+  date: 2026-08-18
+  record: COMPLETE
+implementation_gate: First generated LegalRuleML instance SHALL be validated before implementation conformance is marked PASS.
