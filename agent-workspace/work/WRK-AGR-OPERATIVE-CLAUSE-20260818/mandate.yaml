@@ -1,7 +1,7 @@
 work_id: WRK-AGR-OPERATIVE-CLAUSE-20260818
 title: South African Approved Operative Clause Library
 task_class: T2
-status: OPEN
+status: ACT_PENDING
 parent_control: AGR-XWALK-011
 control_id: AGR-XWALK-011-B
 architecture:
@@ -21,10 +21,10 @@ rules:
   - "Template promotion consumes only approved clause variants."
 approval_ref: "Group CEO ACT=ADAPT for AGR-XWALK-011 — 2026-08-18"
 pdca:
-  stage: PLAN
-  do_complete: false
+  stage: ACT
+  do_complete: true
   task_complete: false
   act_decision: null
 next_action:
-  assigned_to: ChatGPT
-  instruction: "Create the governed clause-library schema/register and seed candidate clauses from the validated clause-source bindings without inventing unreviewed legal wording."
+  assigned_to: Group CEO
+  instruction: "Decide ACT on LIB-SA-AGR-CLAUSE-001 v0.1 governance architecture; recommended ADOPT for the library/control structure only. No operative clause text is approved."
