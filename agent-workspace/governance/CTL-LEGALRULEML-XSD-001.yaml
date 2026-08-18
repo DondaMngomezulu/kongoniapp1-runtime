@@ -1,0 +1,49 @@
+control_id: CTL-LEGALRULEML-XSD-001
+version: 0.1
+status: ACT_PENDING
+as_of: 2026-08-18
+name: LegalRuleML Schema Conformance Control
+purpose: >-
+  Require machine-produced LegalRuleML XML to conform to an authoritative OASIS LegalRuleML 1.0 schema before promotion or transaction use.
+authority:
+  organisation: OASIS
+  standard: LegalRuleML Core Specification Version 1.0
+  standard_status: OASIS Standard
+  approval_date: 2021-08-30
+  authoritative_specification: https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html
+schema_profiles:
+  default:
+    name: Compact LegalRuleML XSD
+    xsd: https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/compact/lrml-compact.xsd
+    companion_ruleml_xsd: https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/compact/ruleml.xsd
+  permitted_alternatives:
+    - name: Basic LegalRuleML XSD
+      xsd: https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/basic/lrml-basic.xsd
+    - name: Normal LegalRuleML XSD
+      xsd: https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/normal/lrml-normal.xsd
+rules:
+  - id: LRML-XSD-001
+    rule: LegalRuleML XML SHALL be well-formed XML.
+  - id: LRML-XSD-002
+    rule: The root element SHALL conform to the LegalRuleML specification.
+  - id: LRML-XSD-003
+    rule: Compact LegalRuleML XSD SHALL be the default validation profile.
+  - id: LRML-XSD-004
+    rule: A different OASIS LegalRuleML serialisation SHALL record the reason and schema used.
+  - id: LRML-XSD-005
+    rule: XSD validation SHALL produce governed Evidence containing schema identifier, source Rule ID, validation result, timestamp, and validator version.
+  - id: LRML-XSD-006
+    rule: A LegalRuleML representation that fails schema validation SHALL NOT be promoted to ADOPTED or used for transaction execution.
+  - id: LRML-XSD-007
+    rule: The OASIS schema SHALL remain the authority. A local copy, if used for build reliability, SHALL preserve provenance and version identity.
+validation_result_states:
+  - PASS
+  - FAIL
+  - BLOCKED
+check_study:
+  authoritative_source_verified: PASS
+  schema_profiles_verified: PASS
+  open_standard_alignment: PASS
+  overlap_with_existing_controls: PASS
+  implementation_test: PENDING_FIRST_LEGALRULEML_ARTIFACT
+recommended_act: ADOPT
