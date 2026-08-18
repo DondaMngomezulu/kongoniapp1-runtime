@@ -1,10 +1,9 @@
 profile_id: PRF-AGR-TPL-VAL-001
-version: 0.2
-status: ACT_PENDING
+version: 1.0
+status: ADOPTED
 as_of: 2026-08-18
 name: Agreement Template Validation Profile
-purpose: >-
-  Define the validation gates that an Agreement Template must pass before transaction use.
+purpose: Define the validation gates that an Agreement Template must pass before transaction use.
 authorities:
   legal_authority: CAT-SA-AGR-PREC-001
   template_register: REG-AGR-TPL-001
@@ -15,61 +14,37 @@ authorities:
   test_pattern_reference: Accord Project Cicero
   evidence_schema: agent-workspace/schemas/evidence.schema.json
 validation_gates:
-  - gate_id: ATV-001
-    name: Agreement Class binding
-    requirement: Template SHALL bind to an adopted Agreement Class.
-  - gate_id: ATV-002
-    name: Source provenance
-    requirement: Each material Clause SHALL trace to a governed source precedent or legal authority.
-  - gate_id: ATV-003
-    name: Clause lifecycle
-    requirement: Each transaction-usable Clause SHALL be ADOPTED.
-  - gate_id: ATV-004
-    name: Variable validation
-    requirement: Template variables SHALL be explicit, typed, and validated against sample data.
-  - gate_id: ATV-005
-    name: Legal applicability
-    requirement: Jurisdiction, Entity, effective date, and other applicability conditions SHALL be validated.
-  - gate_id: ATV-006
-    name: LegalRuleML binding
-    requirement: Normative Clauses SHALL bind to governed LegalRuleML Rule IDs where applicable.
-  - gate_id: ATV-007
-    name: LegalRuleML schema conformance
-    requirement: Produced LegalRuleML SHALL pass CTL-LEGALRULEML-XSD-001.
-  - gate_id: ATV-008
-    name: Render test
-    requirement: Template SHALL render successfully from governed sample data.
-  - gate_id: ATV-009
-    name: Regression test
-    requirement: Template changes SHALL not remove required Clauses, Controls, or bindings without authorised change.
-  - gate_id: ATV-010
-    name: Evidence
-    requirement: Validation results SHALL be stored as governed Evidence.
-  - gate_id: ATV-011
-    name: ACT decision
-    requirement: Material template promotion SHALL have an explicit ACT decision under MET-PDCA-001.
-  - gate_id: ATV-012
-    name: Register update
-    requirement: REG-AGR-TPL-001 SHALL be updated before a Template becomes transaction-usable.
+  - {gate_id: ATV-001, name: Agreement Class binding, requirement: 'Template SHALL bind to an adopted Agreement Class.'}
+  - {gate_id: ATV-002, name: Source provenance, requirement: 'Each material Clause SHALL trace to a governed source precedent or legal authority.'}
+  - {gate_id: ATV-003, name: Clause lifecycle, requirement: 'Each transaction-usable Clause SHALL be ADOPTED.'}
+  - {gate_id: ATV-004, name: Variable validation, requirement: 'Template variables SHALL be explicit, typed, and validated against sample data.'}
+  - {gate_id: ATV-005, name: Legal applicability, requirement: 'Jurisdiction, Entity, effective date, and other applicability conditions SHALL be validated.'}
+  - {gate_id: ATV-006, name: LegalRuleML binding, requirement: 'Normative Clauses SHALL bind to governed LegalRuleML Rule IDs where applicable.'}
+  - {gate_id: ATV-007, name: LegalRuleML schema conformance, requirement: 'Produced LegalRuleML SHALL pass CTL-LEGALRULEML-XSD-001.'}
+  - {gate_id: ATV-008, name: Render test, requirement: 'Template SHALL render successfully from governed sample data.'}
+  - {gate_id: ATV-009, name: Regression test, requirement: 'Template changes SHALL not remove required Clauses, Controls, or bindings without authorised change.'}
+  - {gate_id: ATV-010, name: Evidence, requirement: 'Validation results SHALL be stored as governed Evidence.'}
+  - {gate_id: ATV-011, name: ACT decision, requirement: 'Material template promotion SHALL have an explicit ACT decision under MET-PDCA-001.'}
+  - {gate_id: ATV-012, name: Register update, requirement: 'REG-AGR-TPL-001 SHALL be updated before a Template becomes transaction-usable.'}
 accord_test_mapping:
   model_compile: ADAPT
   sample_data_validation: ADAPT
   render_validation: ADAPT
   logic_unit_test: ADAPT_WHERE_EXECUTABLE_LOGIC_EXISTS
   legal_wording_authority: REJECT
-result_states:
-  - PASS
-  - PASS_WITH_CONTROL
-  - FAIL
-  - BLOCKED
-promotion_rule: >-
-  A Template SHALL NOT be marked transaction-usable unless all mandatory validation gates pass,
-  an ACT decision permits promotion, and the authoritative Template Register is updated.
-check_study:
-  overlap_with_REG_AGR_TPL_001: PASS
-  accord_test_reuse: PASS
-  legal_authority_separation: PASS
-  evidence_fit: PASS
-  legalruleml_xsd_control_defined: PASS
-  implementation_validation: PENDING_FIRST_TEMPLATE
-recommended_act: ADOPT
+result_states: [PASS, PASS_WITH_CONTROL, FAIL, BLOCKED]
+promotion_rule: A Template SHALL NOT be marked transaction-usable unless all mandatory validation gates pass, an ACT decision permits promotion, and the authoritative Template Register is updated.
+pdca:
+  check_study:
+    overlap_with_REG_AGR_TPL_001: PASS
+    accord_test_reuse: PASS
+    legal_authority_separation: PASS
+    evidence_fit: PASS
+    legalruleml_xsd_control_defined: PASS
+    implementation_validation: PENDING_FIRST_TEMPLATE
+  act: ADOPT
+  authority: Group CEO
+  date: 2026-08-18
+  record: COMPLETE
+closure: CONTROL_DESIGN_CLOSED_IMPLEMENTATION_TEST_OPEN
+next_action: Apply all 12 gates to the first promoted Agreement Template and retain validation Evidence.
