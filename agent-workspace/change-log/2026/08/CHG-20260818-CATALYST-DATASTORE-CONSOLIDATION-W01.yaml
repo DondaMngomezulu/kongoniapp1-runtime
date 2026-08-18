@@ -11,9 +11,10 @@ reason: Recover constrained Data Store table capacity without loss of governed b
 affected_paths:
   - agent-workspace/architecture/STD-CAT-REL-SCHEMA-001.yaml
   - agent-workspace/architecture/ASMT-CAT-DATASTORE-001/wave-01-consolidation.yaml
-environment: Development
+  - agent-workspace/architecture/audits/ASMT-CAT-DATASTORE-001.yaml
+environment: development
 authority:
-  status: ADOPTED
+  status: AUTHORISED
   reference: 'Group CEO explicit ACT decision ADOPT in active ChatGPT conversation on 2026-08-18.'
 pdca:
   phase: ACT
@@ -30,12 +31,4 @@ evidence:
   - 'StandardDiscoverySource, StandardDiscoveryCandidate and StandardDiscoveryAssertion were retained as a healthy normalized relational submodel.'
   - 'Wave 1 retired two empty tables and deleted zero business rows.'
   - 'LeasingFacility table 86824000000413021 was successfully created after consolidation, proving Data Store schema capacity was recovered.'
-act_record:
-  decision: ADOPT
-  decision_authority: Group CEO
-  decision_date: '2026-08-18'
-  effect:
-    - 'Wave 1 consolidation outcome is adopted.'
-    - 'STD-CAT-REL-SCHEMA-001 is adopted as the mandatory relational-schema control for subsequent Catalyst consolidation work.'
-    - 'Wave 2 may proceed under the adopted control.'
-notes: 'Wave 1 is closed following verified CHECK/STUDY and explicit ACT=ADOPT. The overall Catalyst consolidation programme remains OPEN and proceeds to Wave 2. No accounting, EDRMS core, populated transactional, or Production tables were modified by Wave 1 consolidation.'
+notes: 'Wave 1 is closed following verified CHECK/STUDY and explicit ACT=ADOPT. STD-CAT-REL-SCHEMA-001 is adopted as the mandatory relational-schema control for subsequent Catalyst consolidation. The overall programme remains OPEN and proceeds to Wave 2. No accounting, EDRMS core, populated transactional, or Production tables were modified by Wave 1 consolidation.'
