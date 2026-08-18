@@ -1,0 +1,32 @@
+work_id: WRK-AGR-OPERATIVE-CLAUSE-20260818
+pdca_stage: ACT
+check_study:
+  result: PASS_LIBRARY_ARCHITECTURE_ZERO_APPROVED_CLAUSES
+  findings:
+    - "LIB-SA-AGR-CLAUSE-001 v0.1 provides a governed schema for South African operative clause variants."
+    - "Six candidate clause requirements are seeded across facility, security and share-purchase families."
+    - "Each seed binds to authoritative-source controls, applicability conditions and prohibited-use cases."
+    - "No operative clause wording is present or approved."
+    - "No market precedent is treated as South African legal authority."
+    - "Template promotion remains prohibited until clause-specific substantive legal review and Group CEO ACT are recorded."
+recommended_act:
+  decision: ADOPT
+  rationale: >-
+    Adopt the clause-library governance structure and approval rule as the mandatory control for future South African operative
+    agreement clauses. This ACT must not approve any seeded clause wording because operative_text is null for all current entries.
+open_controls:
+  - control_id: AGR-XWALK-011-B-LEGAL-REVIEW
+    status: OPEN
+    action: "Draft and obtain substantive South African legal review for operative clause variants before any clause is approved."
+  - control_id: AGR-XWALK-011-A-EVIDENCE
+    status: OPEN_FAIL_CLOSED
+    action: "Close transaction evidence gaps that drive clause applicability."
+  - control_id: AGR-XWALK-011-C
+    status: OPEN
+    action: "Complete collateral-specific security validation for share pledge and other collateral classes."
+record_state:
+  library_schema_created: true
+  seeded_clause_requirements: 6
+  approved_operative_clauses: 0
+  template_promotion_allowed: false
+  task_complete: false
