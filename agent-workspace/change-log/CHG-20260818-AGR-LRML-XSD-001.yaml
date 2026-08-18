@@ -16,6 +16,7 @@ affected_paths:
   - agent-workspace/legalruleml/Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml
   - agent-workspace/legalruleml/Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.1.xml
   - agent-workspace/legalruleml/Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.2.xml
+  - agent-workspace/governance/agreement-artifact-crosswalk-v0.2.yaml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/plan.yaml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/evidence/EVD-AGR-LRML-XSD-001.json
