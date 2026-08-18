@@ -7,6 +7,13 @@
 		],
 		"ignore": []
 	},
+	"appsail": {
+		"source": "appsail",
+		"targets": [
+			"kongoni_mcp_execution_gateway",
+			"kongoni_message_template_governance"
+		]
+	},
 	"client": {
 		"source": "client"
 	}
