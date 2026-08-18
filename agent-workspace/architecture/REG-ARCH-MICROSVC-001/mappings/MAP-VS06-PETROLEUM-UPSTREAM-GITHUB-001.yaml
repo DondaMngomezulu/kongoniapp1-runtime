@@ -1,0 +1,135 @@
+artifact:
+  id: MAP-VS06-PETROLEUM-UPSTREAM-GITHUB-001
+  name: VS06 Petroleum Upstream GitHub Secondary Crosswalk
+  version: '0.1'
+  status: DRAFT
+  artifact_class: ARCHITECTURE_CROSSWALK
+  value_stream_id: VS06
+  purpose: >-
+    Use the public dot-org-ai/business.org.ai Petroleum Upstream corpus as a secondary
+    sector reference for VS06 process-boundary assurance without representing it as
+    the normative APQC Upstream Petroleum PCF v7.2.2 source.
+
+source:
+  repository: dot-org-ai/business.org.ai
+  commit: f8d1a3c80c5ea45695212dba76fa12acdfa5a3e8
+  repository_license: CC0-1.0
+  source_classification: SECONDARY_REFERENCE
+  normative_apqc_equivalence: UNVERIFIED
+  scope_path: processes/industries/petroleum-upstream
+
+control_rules:
+  - This source SHALL NOT be labelled normative APQC v7.2.2.
+  - APQC-style codes and PCF IDs SHALL retain repository provenance.
+  - GMG remains the primary mining-domain authority for VS06.
+  - Exact APQC Upstream Petroleum v7.2.2 equivalence remains unresolved until an authorised source is available.
+  - A secondary-reference match may support boundary assurance but SHALL NOT override a GMG mining-domain requirement.
+
+verified_sector_records:
+  - name: Define production planning
+    code: '4.5.2.2'
+    pcf_id: '13109'
+    subject: PetroleumUpstreamCompanies
+    level_interpretation: L4_ACTIVITY_CANDIDATE
+    source_file: petroleum-upstream_PetroleumUpstreamCompanies_DefineProductionPlanning.mdx
+  - name: Execute production
+    code: '4.5.2.3'
+    pcf_id: '13110'
+    subject: PetroleumUpstreamCompanies
+    level_interpretation: L4_ACTIVITY_CANDIDATE
+    source_file: petroleum-upstream_PetroleumUpstreamCompanies_ExecuteProduction.mdx
+  - name: Optimize production
+    code: '4.5.2.5'
+    pcf_id: '13112'
+    subject: PetroleumUpstreamCompanies
+    level_interpretation: L4_ACTIVITY_CANDIDATE
+    source_file: petroleum-upstream_PetroleumUpstreamCompanies_OptimizeProduction.mdx
+  - name: Assess production performance
+    code: '4.3.2.6'
+    pcf_id: '10314'
+    subject: PetroleumUpstreamCompanies
+    level_interpretation: L4_ACTIVITY_CANDIDATE
+    source_file: petroleum-upstream_PetroleumUpstreamCompanies_AssessProductionPerformance.mdx
+
+vs06_crosswalk:
+  - service_domain: Production Plan and Shift Target
+    mapping_state: SUPPORTED_SECONDARY_MATCH
+    secondary_refs:
+      - code: '4.5.2.2'
+        name: Define production planning
+    boundary_result: PASS
+    rationale: Production planning is a direct sector analogue for planning and setting controlled production targets; mining semantics remain GMG-controlled.
+
+  - service_domain: Load and Haul Fleet Dispatch
+    mapping_state: PARTIAL_SECONDARY_MATCH
+    secondary_refs:
+      - code: '4.5.2.2'
+        name: Define production planning
+      - code: '4.5.2.5'
+        name: Optimize production
+    boundary_result: PASS_WITH_DOMAIN_DIFFERENCE
+    rationale: Dispatch is consistent with planning and optimisation but is mining-specific and requires GMG fleet semantics.
+
+  - service_domain: Load and Haul Cycle Execution
+    mapping_state: SUPPORTED_SECONDARY_MATCH
+    secondary_refs:
+      - code: '4.5.2.3'
+        name: Execute production
+    boundary_result: PASS
+    rationale: Execute production supports the execution boundary; load-haul cycle semantics remain mining-specific.
+
+  - service_domain: Fleet Time Usage Classification
+    mapping_state: NO_DIRECT_SECONDARY_EQUIVALENCE
+    secondary_refs: []
+    boundary_result: PASS_GMG_PRIMARY
+    rationale: Time-usage classification is governed more directly by GMG surface-mining guidance than by the verified Petroleum Upstream records.
+
+  - service_domain: Fleet Availability and Utilization Performance
+    mapping_state: SUPPORTED_SECONDARY_MATCH
+    secondary_refs:
+      - code: '4.3.2.6'
+        name: Assess production performance
+      - code: '4.5.2.5'
+        name: Optimize production
+    boundary_result: PASS
+    rationale: Performance assessment and optimisation support the domain while mining KPI definitions remain GMG-controlled.
+
+  - service_domain: Mobile Equipment Data Integration
+    mapping_state: NO_DIRECT_SECONDARY_EQUIVALENCE
+    secondary_refs: []
+    boundary_result: PASS_GMG_PRIMARY
+    rationale: Mobile-equipment interoperability is governed directly by GMG and enterprise interoperability standards.
+
+  - service_domain: Production Event and Delay Management
+    mapping_state: PARTIAL_SECONDARY_MATCH
+    secondary_refs:
+      - code: '4.3.2.6'
+        name: Assess production performance
+    boundary_result: PASS_WITH_DOMAIN_DIFFERENCE
+    rationale: Performance assessment supports delay/event analysis but does not define mining event taxonomies.
+
+  - service_domain: Fleet Productivity Benchmarking
+    mapping_state: DEFERRED_CANDIDATE
+    secondary_refs:
+      - code: '4.3.2.6'
+        name: Assess production performance
+    boundary_result: DEFERRED
+    rationale: Benchmarking remains a candidate until GMG KPI and enterprise benchmarking responsibilities are fully separated.
+
+l3_l5_status:
+  repository_sector_corpus_found: true
+  verified_l4_like_records_for_vs06: 4
+  exact_l3_parent_records: NOT_YET_VERIFIED_FROM_SOURCE
+  exact_l5_child_records: NOT_YET_VERIFIED_FROM_SOURCE
+  full_sector_hierarchy_extraction: PARTIAL_VS06_RELEVANT_SUBSET
+  blocking_rule: >-
+    Do not infer missing parent or child codes from code structure alone. Exact L3 and L5
+    records require direct source-file verification.
+
+check_study:
+  boundary_regression_result: PASS_WITH_SOURCE_LIMITATION
+  split_required: false
+  merge_required: false
+  finding: >-
+    The verified sector records support the existing VS06 service boundaries but do not
+    provide sufficient evidence to replace GMG or to assert exact APQC v7.2.2 L3-L5 lineage.
