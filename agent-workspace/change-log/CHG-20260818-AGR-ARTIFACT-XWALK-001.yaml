@@ -1,0 +1,33 @@
+change_id: CHG-20260818-AGR-ARTIFACT-XWALK-001
+timestamp_utc: "2026-08-18T18:06:32Z"
+actor:
+  type: automation
+  name: ChatGPT Agreement Artifact Crosswalk
+  agent_contract_ref: null
+mandate_ref: "Group CEO approval: controlled ingestion and crosswalk of OASIS LegalRuleML, Accord Project Cicero, and existing Kongoni GitHub schemas — 2026-08-18"
+accountability_task_ref: WRK-AGR-ARTIFACT-CROSSWALK-20260818
+task_class: T2
+change_type: governance
+summary: "Created a controlled candidate crosswalk for reusable agreement-codification artifacts and recorded CHECK/STUDY evidence."
+reason: "Apply ADOPT -> ADAPT -> BUILD before further clause codification and prevent duplicate contract, catalogue, template, and evidence frameworks."
+affected_paths:
+  - agent-workspace/governance/agreement-artifact-crosswalk-v0.1.yaml
+  - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/plan.yaml
+  - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/evidence/EVD-AGR-ARTIFACT-CROSSWALK-001.json
+  - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/outcome.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: "Group CEO approval — 2026-08-18"
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: "PASS WITH CONTROLLED GAPS"
+  act_decision: null
+  task_complete: false
+evidence:
+  - EVD-AGR-ARTIFACT-CROSSWALK-001
+commit_sha: null
+pull_request: null
+notes: "Recommended ACT is ADAPT. OASIS XSD conformance and substantive South African legal validation remain open controls; no template is promoted for transaction use."
