@@ -33,9 +33,5 @@ evidence:
   - 'Catalyst EnvironmentExecutionAuthority contains active ENV-AUTH-CAT-KONGONIAPP1-DEV with POLICY_ACTIVE_CUSTODIAN_AUTHORIZED.'
   - 'CTL-SYS-WRITE-AUDIT-001 reconstructed on the current main-derived branch rather than merging stale PR #4.'
   - 'GATE-ARCH-TO-ENG-001 reassessed as PASS_FOR_DEVELOPMENT_WITH_CONTROLLED_EXCEPTION.'
-regression:
-  service_boundary: PASS_NO_CHANGE
-  bian_semantics: PASS_PRESERVED
-  application_authority: PASS_NO_COMPETING_MASTER
-  production_safety: PASS_PRODUCTION_NOT_AUTHORISED
+  - 'Regression: service boundary PASS_NO_CHANGE; BIAN semantics PASS_PRESERVED; application authority PASS_NO_COMPETING_MASTER; production safety PASS_PRODUCTION_NOT_AUTHORISED.'
 notes: 'This authorises architecture handover to the Catalyst Engineer for Development only. Implementation, runtime testing, CHECK/STUDY and final service ACT remain open; DO_COMPLETE != TASK_COMPLETE.'
