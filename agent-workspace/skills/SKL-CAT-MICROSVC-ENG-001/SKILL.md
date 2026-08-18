@@ -1,297 +1,143 @@
 ---
-name: zoho-catalyst-microservice-engineering
+name: zoho-catalyst-microservice-engineer
 governed_id: SKL-CAT-MICROSVC-ENG-001
-version: '0.1'
-status: PROPOSED
+version: '1.0'
+status: ADOPTED
 owner: Chief of Accountability
-technical_domain: Zoho Catalyst microservice engineering
+technical_domain: Zoho Catalyst microservice implementation
 methodology: MET-PDCA-001
 inherits:
   - CTL-DEV-CHG-LOG-001
   - CTL-SYS-WRITE-AUDIT-001
 references:
-  - Zoho Catalyst official development conventions
-  - BIAN Service Landscape and Semantic APIs when BIAN is the service source
+  - approved Kongoni Service Specification
+  - current Zoho Catalyst official documentation and installed Catalyst engineering references
 ---
 
-# Zoho Catalyst Microservice Engineering Skill
+# Zoho Catalyst Microservice Engineer Skill
 
 ## 1. Purpose
 
-Use this skill to design, build, test, deploy, change, or assess a microservice on Zoho Catalyst.
+Use this skill to implement an approved Kongoni Service Specification on Zoho Catalyst.
 
-The skill converts a governed business service specification into a Catalyst implementation.
+The Engineer answers: how do we build the approved service correctly on Catalyst?
 
-The skill SHALL keep these layers separate:
+The Engineer SHALL NOT redefine the service boundary, business semantics, canonical object, or value-stream ownership. Architecture changes SHALL be returned to `SKL-GH-MICROSVC-ARCH-001` as an ADAPT request.
 
-1. Business semantics.
-2. Service contract.
-3. Runtime implementation.
-4. Security and authority.
-5. Data persistence.
-6. Observability and audit.
-7. Deployment and validation.
+## 2. Authoritative input
 
-## 2. Trigger
+The mandatory build input is an approved or authorised Kongoni Service Specification produced under `SKL-GH-MICROSVC-ARCH-001` or an equivalent governed architecture process.
 
-Use this skill when a task asks an agent to:
+The specification SHALL provide enough information to resolve:
 
-- create a Catalyst microservice;
-- convert a BIAN Service Domain into a Catalyst service;
-- create an AppSail service;
-- create or modify a Catalyst Function that forms part of a microservice;
-- expose a service through Catalyst API Gateway;
-- define a Catalyst service API;
-- implement a service operation;
-- change an existing Catalyst microservice;
-- test or deploy a Catalyst microservice.
+- service ID and version;
+- target environment;
+- primary resource;
+- required operations;
+- API contract requirements;
+- data/system-of-record decisions;
+- security and authority requirements;
+- audit requirements;
+- non-functional requirements;
+- acceptance criteria.
 
-Do not use this skill for a read-only Catalyst administration question that does not change or design a service.
+If a material architecture input is missing or contradictory, stop implementation and return an architecture gap.
 
-## 3. Mandatory inputs
+## 3. Catalyst documentation gate
 
-Before implementation, resolve these inputs:
+Before Catalyst design-detail, code, configuration, test, or deployment work, load the relevant current Zoho Catalyst technical reference.
 
-- `service_id`
-- `service_name`
-- `service_purpose`
-- `business_owner`
-- `value_stream_id`
-- `task_class`
-- `mandate_ref`
-- `target_environment`
-- `runtime_type`
-- `runtime_language`
-- `primary_resource`
-- `service_operations`
-- `data_requirements`
-- `security_requirements`
-- `audit_requirements`
-- `test_requirements`
+Use the current official Catalyst documentation and the installed Catalyst-by-Zoho reference set for the specific service being changed. Typical references include AppSail, Functions and SDKs, Python/Java/Node SDKs, Data Store and ZCQL, Authentication, API Gateway, deployment SOPs, CLI, observability, DevOps, and troubleshooting.
 
-When BIAN is the semantic source, also resolve:
+Do not rely only on memory for a material Catalyst platform detail when a current reference is available.
 
-- `bian_version`
-- `bian_service_domain`
-- `bian_control_record`
-- `bian_behaviour_qualifiers`
-- `bian_service_operations`
-- `bian_semantic_api_source`
+Record material documentation references in engineering evidence.
 
-Missing material inputs SHALL cause a PLAN gap. The agent SHALL NOT invent normative business semantics.
+## 4. Project pre-flight gate
 
-## 4. Catalyst pre-flight gate
+Before writing application code, verify that `.catalystrc` and `catalyst.json` exist and read them.
 
-Before writing service code, the agent SHALL verify that the target Catalyst project is already initialized.
+Do not manually create `.catalystrc`, `catalyst.json`, a Catalyst-managed `functions/` root, or a legacy `client/` implementation for a new frontend.
 
-The working project SHALL contain:
+If the project is not initialized, stop at the provisioning gate. Interactive `catalyst login`, `catalyst init`, and interactive function registration remain human-controlled unless an approved non-interactive method exists.
 
-- `.catalystrc`
-- `catalyst.json`
+## 5. Runtime implementation
 
-The agent SHALL read both files before code changes.
+Select the Catalyst runtime that best implements the approved specification.
 
-The agent SHALL NOT manually create:
+Use AppSail for a stable service with multiple related routes or richer middleware. Use a Function for a narrow HTTP, event, scheduled, asynchronous, or integration workload. Use Circuits for governed multi-step orchestration, Job Scheduling for scheduled execution, and Signals for event-driven integration.
 
-- `.catalystrc`
-- `catalyst.json`
-- a Catalyst-managed `functions/` root created by interactive initialization
-- a legacy `client/` implementation for a new frontend
+The Engineer SHALL record the runtime decision and technical reason. If the selected runtime would change a material architecture property, return the decision to the Architect before implementation.
 
-If the required project files are missing, the engineering task SHALL stop at the provisioning gate. Interactive `catalyst login`, `catalyst init`, and interactive function registration remain human-controlled steps unless an approved non-interactive method is available.
+## 6. Language and SDK
 
-## 5. Service boundary rule
+Use one primary server language per deployable microservice unless an approved exception exists.
 
-A microservice SHALL have one coherent business responsibility.
+Python is the Kongoni default unless current Catalyst support, SDK coverage, performance, library maturity, security, maintainability, or interoperability gives a material reason to use another supported runtime.
 
-For a BIAN-derived service, the default mapping is:
+Load the applicable SDK documentation before using a Catalyst SDK.
 
-- BIAN Service Domain = candidate microservice boundary.
-- BIAN Control Record = primary managed resource.
-- BIAN Behaviour Qualifier = subordinate resource or functional component.
-- BIAN Service Operation = API operation or application command.
+## 7. Implementation conformance
 
-A Service Operation SHALL NOT automatically become a separate deployable microservice.
+Implement the approved service contract without changing its business meaning.
 
-Split a Service Domain into more than one microservice only when there is objective evidence for a separate scaling, security, ownership, failure-isolation, data-sovereignty, or deployment boundary.
+The implementation SHALL conform to the approved operation semantics, route intent, request/response schemas, error contract, authentication, authorisation, idempotency, timeout, retry, correlation, and audit requirements.
 
-## 6. Runtime selection
+For BIAN-derived services, preserve the approved BIAN/Kongoni semantic mapping in the Service Specification.
 
-Use `AppSail` as the default runtime when the service:
+## 8. Data implementation
 
-- has multiple related API routes;
-- requires a web framework;
-- has a stable long-lived service boundary;
-- needs independent service packaging;
-- requires richer middleware or routing.
+Before creating a new Catalyst Data Store object, verify the Service Specification system-of-record decision and search for existing canonical or overlapping objects.
 
-Use a `Function` when the workload is small and event-oriented, scheduled, asynchronous, integration-focused, or a narrow HTTP operation.
+Do not create a new table merely because an operation or Behaviour Qualifier exists.
 
-Use `Circuits` for governed orchestration when a multi-step workflow needs explicit state, retries, branching, or compensation.
+Implement keys, relationships, validation, retention, migration, and access controls required by the specification.
 
-Use `Job Scheduling` for scheduled execution.
+If implementation reveals a duplicate or conflicting canonical object, stop and return an architecture gap.
 
-Use `Signals` when event publication and subscription are the correct integration pattern.
+## 9. Integration and API Gateway
 
-The runtime choice SHALL be recorded in the service specification with its reason.
+Implement API Gateway only when required by the approved specification or approved platform pattern.
 
-## 7. Language selection
+Before enabling or changing API Gateway, test routes, authentication, authorisation, request validation, throttling where required, errors, CORS where applicable, and regression impact.
 
-Select one primary server language for each deployable microservice unless there is a documented exception.
+Use approved Catalyst Connections or governed secret mechanisms for external credentials.
 
-Supported Catalyst server runtimes include Node.js, Java, and Python where the selected Catalyst service supports them.
+## 10. Security and authority
 
-The default Kongoni language is Python unless a material technical reason requires another supported language.
+Apply least privilege.
 
-The language decision SHALL consider:
+Do not place secrets in source, logs, test fixtures, audit records, or GitHub change records.
 
-- Catalyst runtime support;
-- required SDK support;
-- library maturity;
-- performance;
-- maintainability;
-- security;
-- team support;
-- interoperability.
+Resolve execution authority before every material write. T2 and T3 writes SHALL fail closed when authority or audit evidence is insufficient.
 
-Do not select a language only because an agent prefers it.
+Production requires separate explicit authority.
 
-## 8. Service contract
+## 11. Write audit
 
-Every microservice SHALL have an explicit service contract before implementation.
+Every material system write SHALL comply with `CTL-SYS-WRITE-AUDIT-001` when active.
 
-The contract SHALL define:
+Preserve the correlation ID, actor, mandate/task reference, target, requested change, before-state reference where applicable, result, after-state reference, native transaction/event reference where available, timestamp, and evidence reference.
 
-- service identifier and version;
-- API base path;
-- operations;
-- HTTP method where applicable;
-- request schema;
-- response schema;
-- error schema;
-- authentication requirement;
-- authorisation requirement;
-- idempotency rule for write operations;
-- timeout rule;
-- retry rule where applicable;
-- correlation identifier;
-- audit requirement.
+Repository changes SHALL comply with `CTL-DEV-CHG-LOG-001`.
 
-When a BIAN Semantic API exists, preserve BIAN operation semantics unless a governed Kongoni profile explicitly changes them.
+## 12. Observability
 
-## 9. Data design
+Every production candidate SHALL have structured logs, correlation IDs, secret-safe error logging, health checks, operational metrics where supported, material-failure alerts, and evidence that can support CHECK/STUDY.
 
-The microservice SHALL own or clearly reference the data needed for its responsibility.
+## 13. Engineering workflow
 
-Before creating a new Catalyst Data Store table, the agent SHALL:
+Use:
 
-1. search for an existing canonical object;
-2. check for duplicate or overlapping tables;
-3. identify the system of record;
-4. define keys and relationships;
-5. define lifecycle and retention requirements;
-6. define access controls;
-7. define migration impact.
+MANDATE -> PLAN -> AUTHORISATION -> DO -> EVIDENCE -> CHECK/STUDY -> ACT -> RECORD -> CLOSE OR REPLAN.
 
-Do not create one table for every process step or Behaviour Qualifier unless the data model requires it.
+At PLAN, read the approved Service Specification, Catalyst project files, and required Catalyst documentation. At AUTHORISATION, verify environment execution authority. At DO, implement only the authorised scope. At EVIDENCE, record code and configuration changes, tests, runtime IDs, deployment IDs, logs, audit events, and documentation references. At CHECK/STUDY, compare the implementation with the approved Service Specification and perform regression assessment. At ACT, record ADOPT, ADAPT, REPEAT, REJECT, or ESCALATE.
 
-## 10. API Gateway
+DO_COMPLETE does not mean TASK_COMPLETE.
 
-External or cross-application HTTP access SHOULD use Catalyst API Gateway when it is the approved ingress layer.
+## 14. Minimum test set
 
-Before enabling or changing API Gateway, define and test:
-
-- routes;
-- authentication;
-- authorisation;
-- rate or throttle controls where required;
-- request validation;
-- error responses;
-- CORS where applicable;
-- regression impact on existing routes.
-
-API Gateway activation is a controlled change because it can affect existing access paths.
-
-## 11. Security
-
-The service SHALL apply least privilege.
-
-The service SHALL NOT contain secrets in source code, logs, audit records, test fixtures, or GitHub change records.
-
-Use approved Catalyst Connections or other governed secret mechanisms for external credentials.
-
-Every write operation SHALL resolve execution authority before mutation.
-
-T2 and T3 writes SHALL fail closed when authority or audit evidence is insufficient.
-
-## 12. Write audit
-
-Every material system write SHALL comply with `CTL-SYS-WRITE-AUDIT-001` when that control is active.
-
-The service SHALL preserve, where available:
-
-- correlation ID;
-- actor or calling principal;
-- mandate or task reference;
-- target resource;
-- requested change;
-- before-state reference;
-- result;
-- after-state reference;
-- native Catalyst transaction or event reference;
-- timestamp;
-- evidence reference.
-
-Repository changes SHALL also comply with `CTL-DEV-CHG-LOG-001`.
-
-## 13. Observability
-
-Every production candidate SHALL define:
-
-- structured application logs;
-- correlation IDs;
-- error logging without secrets;
-- health check;
-- operational metrics where supported;
-- alert conditions for material failures;
-- evidence source for CHECK/STUDY.
-
-A service without sufficient operational evidence SHALL NOT be promoted as production-ready.
-
-## 14. Engineering workflow
-
-Use this sequence:
-
-### MANDATE
-Confirm the authorised outcome, scope, service owner, value stream, task class, and environment.
-
-### PLAN
-Resolve the service specification. Map business semantics, operations, data, security, runtime, dependencies, tests, deployment, and rollback.
-
-### AUTHORISATION
-Verify execution authority for the target environment. Production requires separate authority.
-
-### DO
-Implement only the authorised scope. Keep business logic separate from transport, persistence, and platform adapters where practical.
-
-### EVIDENCE
-Record code changes, configuration changes, test results, runtime IDs, deployment IDs, logs, and audit events.
-
-### CHECK/STUDY
-Run the required tests and compare expected with actual behaviour. Include regression assessment.
-
-### ACT
-Record one decision: `ADOPT`, `ADAPT`, `REPEAT`, `REJECT`, or `ESCALATE`.
-
-### RECORD
-Update the authoritative service specification, change log, runtime registry, and evidence references.
-
-### CLOSE OR REPLAN
-Do not close material work at `DO_COMPLETE`.
-
-## 15. Minimum test set
-
-A production candidate SHALL pass, where applicable:
+Where applicable, run:
 
 - schema validation;
 - unit tests;
@@ -304,78 +150,55 @@ A production candidate SHALL pass, where applicable:
 - data-integrity tests;
 - integration tests;
 - audit-event tests;
-- health-check test;
+- health-check tests;
 - regression tests;
-- deployment smoke test;
-- rollback or recovery test for material changes.
+- deployment smoke tests;
+- rollback or recovery tests for material changes.
 
-## 16. BIAN implementation workflow
+The Engineer SHALL also run an implementation-conformance test against the approved Service Specification.
 
-When the source is BIAN:
+## 15. Required outputs
 
-1. Read the governed BIAN Service Domain record.
-2. Confirm the BIAN version and provenance.
-3. Read the Control Record.
-4. Read the Behaviour Qualifiers.
-5. Read the Service Operations.
-6. Read the Semantic API contract where available.
-7. Select only the operations needed for the authorised Kongoni scope.
-8. Create or update the Kongoni Service Specification.
-9. Add Kongoni technical requirements that BIAN does not define.
-10. Implement in Catalyst.
-11. Test semantic conformance and technical conformance separately.
+The primary output is a tested Zoho Catalyst microservice implementation.
 
-Do not modify the normative BIAN source records to hold Catalyst-specific implementation details.
+The engineering cycle SHALL produce or update:
 
-## 17. Required outputs
-
-A completed engineering cycle SHALL produce or update:
-
-- governed Service Specification;
 - source code;
-- API contract;
+- Catalyst runtime configuration;
+- implemented API contract;
 - data schema or mapping;
-- runtime configuration;
+- integration configuration;
 - security and authority mapping;
 - automated tests;
-- deployment manifest references;
-- change-log record;
-- system-write audit records for material writes;
+- deployment references;
+- runtime IDs;
+- logs and operational evidence;
+- system-write audit records;
+- repository change records;
+- implementation-conformance result;
 - CHECK/STUDY evidence;
 - ACT decision;
 - handoff or closure record.
 
-## 18. Failure conditions
+The approved Service Specification remains the architecture authority. The Engineer may update implementation evidence in it only as allowed by its governance rules.
 
-Stop or fail closed when:
+## 16. Failure and return-to-architect conditions
 
-- the Catalyst project is not correctly initialized;
-- the service boundary is ambiguous;
-- normative business semantics are missing;
-- the target environment is not authorised;
-- credentials would need to be committed to source control;
-- a T2/T3 write cannot be audited;
-- a new datastore object duplicates an existing canonical object;
-- the API contract and implementation do not match;
-- required tests fail;
-- production promotion lacks explicit authority.
+Stop implementation and return `ADAPT -> SKL-GH-MICROSVC-ARCH-001` when:
 
-## 19. Canary implementation
+- the service boundary is not implementable as specified;
+- the canonical resource or system of record is unclear;
+- required operations conflict;
+- a target platform limit changes the architecture materially;
+- the required security model cannot be implemented;
+- a duplicate canonical object is found;
+- acceptance criteria are not testable;
+- implementation would require a change to normative business semantics.
 
-The first recommended canary is the BIAN `Leasing` Service Domain.
+Fail closed when the project is not initialized, target environment is not authorised, secrets would need to be committed, a T2/T3 write cannot be audited, required tests fail, or production promotion lacks authority.
 
-Candidate service:
+## 17. Current canary
 
-`SRV-BIAN-LEASING-001 — Leasing Service`
+The first canary is `SRV-BIAN-LEASING-001 — Leasing Service`.
 
-Default mapping:
-
-- Service Domain: Leasing.
-- Primary resource: `LeasingFacility`.
-- Candidate runtime: AppSail.
-- Default language: Python, subject to runtime and SDK validation.
-- Ingress: Catalyst API Gateway when approved.
-- Persistence: governed Catalyst data model.
-- Audit: enterprise system-write audit control.
-
-Start with a small operation subset. Recommended first operations are `Initiate`, `Retrieve`, and `Update`. Add Behaviour Qualifier operations only after the core resource contract passes its tests.
+The Engineer receives the approved Service Specification from the GitHub Architect. The first implementation scope is `Initiate`, `Retrieve`, and `Update` for `LeasingFacility`. The remaining BIAN operations are later controlled increments unless the Architect changes the authorised scope.
