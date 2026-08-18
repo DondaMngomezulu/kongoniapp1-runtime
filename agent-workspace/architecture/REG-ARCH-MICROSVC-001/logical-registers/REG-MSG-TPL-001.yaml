@@ -1,0 +1,58 @@
+register:
+  id: REG-MSG-TPL-001
+  name: Governed Message Template Register
+  version: "0.1.0"
+  status: CONTROLLED_CANDIDATE
+  artifact_class: Register
+  value_stream_id: VS00
+  purpose: >-
+    Record controlled implementations, versions, runtime bindings, release state and
+    conformance evidence for canonical message templates defined by CAT-MSG-001.
+  semantic_authority:
+    canonical_catalogue: CAT-MSG-001
+    rule: The register SHALL reference but SHALL NOT redefine canonical message intent.
+  physical_binding:
+    platform: Zoho Catalyst Data Store
+    project_id: "86824000000020001"
+    environment: Development
+    table: TemplateGovernanceRegister
+    table_id: "86824000000184034"
+    discriminator:
+      field: EntryType
+      value: MessageTemplateImplementation
+  field_mapping:
+    Register_Record_ID: EntryID
+    CAT_MSG_Template_ID: TemplateID
+    Implementation_Version: TemplateVersion
+    Implementation_Status: Status
+    Channel_Rendering_Binding: ApplicationScope
+    Authority: Authority
+    Effective_From: EffectiveDate
+    Owning_Value_Stream_ID: OwningValueStreamID
+    Conformance_Status: ConformanceStatus
+    Conformance_Evidence_Ref: ConformanceEvidenceRef
+    Rule_Expression: RuleExpression
+  lifecycle:
+    implementation_status_values:
+      - DRAFT
+      - VALIDATION_PENDING
+      - ACTIVE
+      - RELEASED
+      - SUSPENDED
+      - SUPERSEDED
+      - RETIRED
+    canonical_template_status_source: CAT-MSG-001
+    rule: Canonical template lifecycle and implementation lifecycle are separate controlled states.
+  controls:
+    - exactly one active or released implementation may resolve for the same CAT_MSG_Template_ID + Channel_Profile + Rendering_Profile + environment
+    - superseded and retired implementations SHALL NOT resolve for new communications
+    - zero matching implementation SHALL return MESSAGE_TEMPLATE_GAP
+    - more than one matching implementation SHALL return CONTROL_EXCEPTION
+    - production implementation status requires separate production authorisation
+  canary:
+    entry_id: MSGIMPL-CHATGPT-INF-001-V1
+    template_id: MSG-INF-001
+    environment: Development
+    catalyst_row_id: "86824000000415008"
+    status: ACTIVE
+    conformance_status: CANARY_PENDING_RUNTIME_CHECK
