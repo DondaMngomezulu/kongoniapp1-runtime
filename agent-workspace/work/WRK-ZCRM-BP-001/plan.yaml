@@ -1,0 +1,33 @@
+work_id: WRK-ZCRM-BP-001
+plan_status: AUTHORISED
+steps:
+  - id: P1
+    action: Read governance and work-item files
+    status: pending
+  - id: P2
+    action: Discover available Claude agent and MCP tools for Zoho CRM
+    status: pending
+  - id: P3
+    action: Read Blueprint and canary transition before-state
+    status: pending
+  - id: P4
+    action: Attempt one idempotent canary transition update
+    status: pending
+  - id: P5
+    action: Read back Blueprint and transition
+    status: pending
+  - id: P6
+    action: Record evidence and perform CHECK/STUDY
+    status: pending
+  - id: P7
+    action: Record ACT decision and handoff
+    status: pending
+controls:
+  production_mutation_authorised: true
+  mutation_scope: one_blueprint_transition_canary_only
+  blueprint_activation_authorised: false
+  crm_business_record_mutation_authorised: false
+  secret_exposure_authorised: false
+rollback: >-
+  The canary must preserve the existing transition semantics. If the selected tool proposes
+  a material transition change rather than an idempotent normalisation update, do not execute it.
