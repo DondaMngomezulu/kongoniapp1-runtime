@@ -1,0 +1,7 @@
+architecture_id: KEA-MOD-HS-001
+version: "0.1"
+sha256: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+state: ACTIVE_G2_BASELINE_CANDIDATE
+authoritative_source: Zoho Catalyst CatalystRepositoryIndex
+required_before_material_change: true
+rule: Rule-14
