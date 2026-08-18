@@ -8,7 +8,7 @@ mandate_ref: "Group CEO approval: controlled ingestion and crosswalk of OASIS Le
 accountability_task_ref: WRK-AGR-ARTIFACT-CROSSWALK-20260818
 task_class: T2
 change_type: governance
-summary: "Created a controlled candidate crosswalk for reusable agreement-codification artifacts and recorded CHECK/STUDY evidence."
+summary: "Created a controlled agreement-codification artifact crosswalk, completed CHECK/STUDY, and recorded the Group CEO ACT decision ADAPT."
 reason: "Apply ADOPT -> ADAPT -> BUILD before further clause codification and prevent duplicate contract, catalogue, template, and evidence frameworks."
 affected_paths:
   - agent-workspace/governance/agreement-artifact-crosswalk-v0.1.yaml
@@ -19,15 +19,18 @@ affected_paths:
 environment: repository
 authority:
   status: AUTHORISED
-  reference: "Group CEO approval — 2026-08-18"
+  reference: "Group CEO ACT decision ADAPT — 2026-08-18"
 pdca:
-  phase: CHECK_STUDY
+  phase: ACT
   do_complete: true
   check_study_result: "PASS WITH CONTROLLED GAPS"
-  act_decision: null
-  task_complete: false
+  act_decision: ADAPT
+  task_complete: true
 evidence:
   - EVD-AGR-ARTIFACT-CROSSWALK-001
 commit_sha: null
 pull_request: 10
-notes: "Recommended ACT is ADAPT. OASIS XSD conformance and substantive South African legal validation remain open controls; no template is promoted for transaction use."
+notes: >-
+  ACT ADAPT is approved and recorded. OASIS compact XSD conformance and substantive
+  South African legal validation remain mandatory downstream controls. No Agreement
+  Template is promoted for transaction use by this change.
