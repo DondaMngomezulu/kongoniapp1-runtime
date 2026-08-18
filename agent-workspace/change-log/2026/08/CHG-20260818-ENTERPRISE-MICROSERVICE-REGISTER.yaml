@@ -7,7 +7,7 @@ actor:
 mandate_ref: 'Group CEO approved creation of an architectural Microservice Register covering all Value Stream Service Domains with sufficient information for engineering handover.'
 accountability_task_ref: null
 task_class: T2
-change_type: architecture
+change_type: governance
 summary: Create REG-ARCH-MICROSVC-001 schema and initial enterprise candidate register for VS00-VS06.
 reason: Establish one governed architecture register that links Value Streams and Service Domains to engineering-ready microservice specifications and Catalyst implementation status.
 affected_paths:
