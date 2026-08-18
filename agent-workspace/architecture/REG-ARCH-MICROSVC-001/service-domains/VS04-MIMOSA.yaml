@@ -1,0 +1,89 @@
+catalogue_id: CAT-ARCH-SD-VS04-MIMOSA-001
+version: '0.1'
+status: PROPOSED_DERIVED
+value_stream_id: VS04
+value_stream_name: Asset Lifecycle Performance
+architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+source_authority:
+  primary_standard: MIMOSA CCOM
+  normative_baseline: '4.0.0'
+  structural_reference: '4.1.0-RC1'
+  structural_reference_status: NONNORMATIVE_REFERENCE
+  catalyst_sources:
+    - MIMOSA_CCOM_SchemaRelease
+    - MIMOSA_CCOM_SchemaObject
+  external_source_notes: 'MIMOSA CCOM is an asset-lifecycle information model, not a BIAN-style Service Domain catalogue. These Service Domains are Kongoni architecture boundaries derived from MIMOSA information scope and model groupings.'
+normalisation_rule: 'Do not represent these names as native MIMOSA Service Domains. Preserve MIMOSA classes as semantic source objects and use Kongoni Service Domain IDs for microservice architecture.'
+service_domains:
+  - service_domain_id: KSD-VS04-ASSET-REGISTRY-001
+    name: Asset Registry and Configuration
+    status: PROPOSED_DERIVED
+    purpose: Maintain canonical asset identity, model, type, configuration, criticality, and lifecycle references.
+    source_concepts: [Asset, Entity, Criticality, ActualEvent]
+    source_groupings: ['05 - Registry', '06 - Registry Configuration']
+    canonical_resource: Asset
+    microservice_candidate_id: MS-VS04-ASSET-REGISTRY-001
+  - service_domain_id: KSD-VS04-ASSET-STRUCTURE-001
+    name: Asset Structure and Network
+    status: PROPOSED_DERIVED
+    purpose: Maintain asset breakdown structures, functional segments, component relationships, and network connections.
+    source_concepts: [BreakdownStructure, BreakdownStructureTemplate, AssetComponent, AssetConnection, Function]
+    source_groupings: ['10 - Networks', '11 - Network Connections', '12 - Functions']
+    canonical_resource: BreakdownStructure
+    microservice_candidate_id: MS-VS04-ASSET-STRUCTURE-001
+  - service_domain_id: KSD-VS04-ENGINEERING-STUDY-001
+    name: Asset Engineering Study
+    status: PROPOSED_DERIVED
+    purpose: Manage engineering studies and study entries for assets, models, segments, and types.
+    source_concepts: [EngineeringStudy, EngineeringStudyEntry, EngineeringStudyEntryForAsset, EngineeringStudyEntryForModel, EngineeringStudyEntryForSegment]
+    source_groupings: ['13 - Engineering Studies']
+    canonical_resource: EngineeringStudy
+    microservice_candidate_id: MS-VS04-ENGINEERING-STUDY-001
+  - service_domain_id: KSD-VS04-MEASUREMENT-CONDITION-001
+    name: Measurement and Condition Data
+    status: PROPOSED_DERIVED
+    purpose: Capture and expose governed asset measurements, measurement quality, locations, and signal-processing results.
+    source_concepts: [DataQualityType, CPBMeasurement, FFTMeasurement, CPBSetup, FFTSetup]
+    source_groupings: ['09 - Measurement Locations', '15 - Signal Processing Setups', '18 - Measurements']
+    canonical_resource: Measurement
+    microservice_candidate_id: MS-VS04-MEASUREMENT-CONDITION-001
+  - service_domain_id: KSD-VS04-HEALTH-PROGNOSTICS-001
+    name: Asset Health and Prognostics
+    status: PROPOSED_DERIVED
+    purpose: Manage health, condition, and prognostic assessments with evidence and responsible-agent references.
+    source_concepts: [Assessment, Evidence, AgentRoleWithAssessment]
+    source_groupings: ['21 - Events', '25 - Health and Prognostic Assessments']
+    canonical_resource: Assessment
+    microservice_candidate_id: MS-VS04-HEALTH-PROGNOSTICS-001
+  - service_domain_id: KSD-VS04-WORK-REQUEST-001
+    name: Maintenance Request and Planning
+    status: PROPOSED_DERIVED
+    purpose: Manage maintenance requests, planned work, calendars, and solution-package planning inputs.
+    source_concepts: [CalendaredWork, ActiveWork, Cycle]
+    source_groupings: ['27 - Solution Packages', '28 - Requests']
+    canonical_resource: WorkRequest
+    microservice_candidate_id: MS-VS04-WORK-REQUEST-001
+  - service_domain_id: KSD-VS04-WORK-EXECUTION-001
+    name: Maintenance Work Execution
+    status: PROPOSED_DERIVED
+    purpose: Manage active maintenance execution state and links to asset, agent, event, and evidence records.
+    source_concepts: [ActiveWork, AgentRoleWithWork, Event, Evidence]
+    source_groupings: ['21 - Events', '28 - Requests']
+    canonical_resource: ActiveWork
+    microservice_candidate_id: MS-VS04-WORK-EXECUTION-001
+  - service_domain_id: KSD-VS04-WORK-HISTORY-001
+    name: Maintenance Completion and History
+    status: PROPOSED_DERIVED
+    purpose: Record completed work and lifecycle evidence without replacing enterprise document governance.
+    source_concepts: [CompletedWork, Event, Evidence, DocumentForAsset]
+    source_groupings: ['21 - Events', '30 - Completed Work', '31 - Documents']
+    canonical_resource: CompletedWork
+    microservice_candidate_id: MS-VS04-WORK-HISTORY-001
+architecture_notes:
+  - 'Document binary lifecycle remains governed through VS00 document and records controls. VS04 stores asset-lifecycle references and evidence links.'
+  - 'The stable MIMOSA 4.0.0 release is the normative baseline. The imported 4.1.0-RC1 class structure is used only as a reference candidate until reconciled to the stable release.'
+pdca:
+  stage: CHECK_STUDY
+  do_complete: true
+  task_complete: false
+  act_decision: null
