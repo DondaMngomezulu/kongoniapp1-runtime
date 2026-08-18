@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:schema:enterprise-handover:1.0",
+  "title": "Kongoni Enterprise Handover",
+  "type": "object",
+  "required": ["handover_id", "handover_type", "from_locus", "to_locus", "pdca_stage", "package_manifest", "validation_status", "acceptance_status", "evidence_refs"],
+  "properties": {
+    "handover_id": {"type": "string"},
+    "handover_type": {"enum": ["agent", "process", "system_application", "commercial_to_financial", "other"]},
+    "from_locus": {"type": "string"},
+    "to_locus": {"type": "string"},
+    "pdca_stage": {"type": "string"},
+    "related_object_refs": {"type": "array", "items": {"type": "string"}},
+    "package_manifest": {"type": "array", "items": {"type": "string"}},
+    "workdrive_folder_id": {"type": ["string", "null"]},
+    "outstanding_actions": {"type": "array", "items": {"type": "string"}},
+    "validation_status": {"enum": ["pending", "passed", "failed"]},
+    "acceptance_status": {"enum": ["pending", "accepted", "rejected", "returned_for_correction"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "architecture_id": {"type": ["string", "null"]},
+    "approval_ref": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
