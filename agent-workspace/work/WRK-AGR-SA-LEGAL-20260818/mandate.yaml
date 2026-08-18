@@ -1,7 +1,7 @@
 work_id: WRK-AGR-SA-LEGAL-20260818
 title: Substantive South African agreement legal validation
 task_class: T2
-status: DO_IN_PROGRESS
+status: ACT_PENDING
 architecture:
   id: KEA-MOD-HS-001
   version: "0.1"
@@ -21,10 +21,10 @@ required_controls:
   - CTL-DEV-CHG-LOG-001
 approval_ref: "Group CEO instruction: proceed to AGR-XWALK-011 — 2026-08-18"
 pdca:
-  stage: DO
-  do_complete: false
+  stage: ACT
+  do_complete: true
   task_complete: false
   act_decision: null
 next_action:
-  assigned_to: ChatGPT
-  instruction_file: plan.yaml
+  assigned_to: Group CEO
+  instruction_file: outcome.yaml
