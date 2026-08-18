@@ -1,7 +1,7 @@
 work_id: WRK-AGR-ARTIFACT-CROSSWALK-20260818
 title: Controlled agreement artifact ingestion and crosswalk
 task_class: T2
-status: ACT_PENDING
+status: CLOSED
 architecture:
   id: KEA-MOD-HS-001
   version: "0.1"
@@ -24,10 +24,10 @@ required_controls:
   - CTL-DEV-CHG-LOG-001
 approval_ref: "Group CEO approval: controlled ingestion and crosswalk of OASIS LegalRuleML, Accord Project Cicero, and existing Kongoni GitHub schemas — 2026-08-18"
 pdca:
-  stage: ACT
+  stage: RECORD
   do_complete: true
-  task_complete: false
-  act_decision: null
+  task_complete: true
+  act_decision: ADAPT
 next_action:
-  assigned_to: Group CEO
+  assigned_to: Reandra
   instruction_file: outcome.yaml
