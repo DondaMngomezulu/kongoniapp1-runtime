@@ -8,26 +8,32 @@ mandate_ref: "Group CEO instruction: proceed to AGR-XWALK-011 — 2026-08-18"
 accountability_task_ref: WRK-AGR-SA-LEGAL-20260818
 task_class: T2
 change_type: governance
-summary: "Opened AGR-XWALK-011 and created the first controlled South African legal validation matrix for the three VALIDATING Agreement Templates."
-reason: "Move from OASIS technical conformance to substantive South African legal validation without promoting structural templates to transaction use."
+summary: "Completed AGR-XWALK-011 statutory clause-architecture validation for the three VALIDATING Agreement Templates and moved the work item to ACT pending."
+reason: "Establish section-level South African legal-source bindings and transaction applicability gates without promoting structural templates to transaction use."
 affected_paths:
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/plan.yaml
   - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/legal-validation-matrix-v0.1.yaml
+  - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/clause-source-binding-v0.1.yaml
+  - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/clause-source-binding-v0.2.yaml
+  - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/evidence/EVD-AGR-SA-LEGAL-001.json
+  - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/outcome.yaml
 environment: repository
 authority:
   status: AUTHORISED
-  reference: "Group CEO instruction: Yes — proceed to AGR-XWALK-011 — 2026-08-18"
+  reference: "Group CEO instruction: proceed to AGR-XWALK-011 — 2026-08-18"
 pdca:
-  phase: DO
-  do_complete: false
-  check_study_result: null
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PASS_ON_STATUTORY_CLAUSE_ARCHITECTURE_WITH_CONTROLLED_GAPS
   act_decision: null
   task_complete: false
-evidence: []
+evidence:
+  - EVD-AGR-SA-LEGAL-001
 commit_sha: null
 pull_request: 10
 notes: >-
-  The three templates remain VALIDATING structural profiles. The initial matrix establishes statutory
-  applicability and fail-closed legal gates. Operative clause text and transaction-specific South African
-  legal review remain outstanding; no template is promoted.
+  NCA section 4/6 applicability, Companies Act sections 44/45 and 50-53, ECTA, FIC Item 11,
+  STT and Competition Act merger-control gates are now bound to the relevant template profiles.
+  Approved operative clause text, collateral-specific common-law validation and a bound transaction canary
+  remain outstanding. Recommended ACT is ADAPT. No Agreement Template is promoted.
