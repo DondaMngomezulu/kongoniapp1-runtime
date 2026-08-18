@@ -37,7 +37,7 @@
     },
     "final_ci": {
       "workflow": "LegalRuleML OASIS XSD Conformance",
-      "run_id": 32174982874,
+      "latest_confirmed_run_id": 32175444168,
       "result": "PASS",
       "targets": [
         {
@@ -53,7 +53,7 @@
       ]
     },
     "regression": {
-      "change_log_control": "PASS",
+      "change_log_control": "PASS_RUN_32175444190",
       "agent_workspace_validation": "FAIL_UNRELATED_PRE_EXISTING_WRK_ZCRM_BP_001_SCHEMA_DEFECT",
       "transaction_template_state_changed": false,
       "substantive_south_african_legal_validation": "NOT_PROVEN_AND_REMAINS_SEPARATE"
@@ -61,5 +61,5 @@
     "control_position": "AGR-XWALK-010 technical XSD conformance is proven for the active repository LegalRuleML artifacts. This does not establish substantive legal validity."
   },
   "artifact_hash": null,
-  "external_ref": "GitHub Actions run 32174982874"
+  "external_ref": "GitHub Actions run 32175444168"
 }
