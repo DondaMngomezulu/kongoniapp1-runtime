@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Kongoni Leasing Service API
+  version: 0.1.0
+  description: Canary API contract for SRV-BIAN-LEASING-001 derived from BIAN Leasing semantics.
+servers:
+  - url: /v1
+paths:
+  /leasing:
+    post:
+      operationId: Initiate
+      summary: Initiate a LeasingFacility
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: {type: string}
+        - in: header
+          name: X-Correlation-Id
+          required: true
+          schema: {type: string}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/InitiateLeasingFacilityRequest'}
+      responses:
+        '201':
+          description: LeasingFacility initiated
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/LeasingFacility'}
+        '400': {description: Invalid request}
+        '401': {description: Authentication required}
+        '403': {description: Not authorised}
+        '409': {description: Idempotency or state conflict}
+  /leasing/{leasing_id}:
+    parameters:
+      - in: path
+        name: leasing_id
+        required: true
+        schema: {type: string}
+    get:
+      operationId: Retrieve
+      summary: Retrieve a LeasingFacility
+      responses:
+        '200':
+          description: LeasingFacility
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/LeasingFacility'}
+        '404': {description: Not found}
+    put:
+      operationId: Update
+      summary: Update authorised LeasingFacility fields
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: {type: string}
+        - in: header
+          name: X-Correlation-Id
+          required: true
+          schema: {type: string}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/UpdateLeasingFacilityRequest'}
+      responses:
+        '200':
+          description: Updated LeasingFacility
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/LeasingFacility'}
+        '400': {description: Invalid request}
+        '401': {description: Authentication required}
+        '403': {description: Not authorised}
+        '404': {description: Not found}
+        '409': {description: Idempotency or state conflict}
+components:
+  schemas:
+    InitiateLeasingFacilityRequest:
+      type: object
+      required: [customer_ref, asset_refs, currency, effective_date, maturity_date]
+      properties:
+        customer_ref: {type: string}
+        asset_refs: {type: array, minItems: 1, items: {type: string}}
+        currency: {type: string, minLength: 3, maxLength: 3}
+        effective_date: {type: string, format: date}
+        maturity_date: {type: string, format: date}
+    UpdateLeasingFacilityRequest:
+      type: object
+      properties:
+        facility_status: {type: string}
+        asset_refs: {type: array, items: {type: string}}
+        maturity_date: {type: string, format: date}
+      minProperties: 1
+    LeasingFacility:
+      type: object
+      required: [leasing_id, customer_ref, asset_refs, facility_status, currency, effective_date, maturity_date, created_at, updated_at]
+      properties:
+        leasing_id: {type: string}
+        customer_ref: {type: string}
+        offer_ref: {type: [string, 'null']}
+        agreement_ref: {type: [string, 'null']}
+        asset_refs: {type: array, items: {type: string}}
+        facility_status: {type: string}
+        currency: {type: string}
+        effective_date: {type: string, format: date}
+        maturity_date: {type: string, format: date}
+        accounting_refs: {type: array, items: {type: string}}
+        created_at: {type: string, format: date-time}
+        updated_at: {type: string, format: date-time}
