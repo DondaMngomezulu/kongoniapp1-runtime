@@ -1,0 +1,8 @@
+work_id: WRK-ZCRM-BP-001
+pdca_state: DO_NOT_STARTED
+check_study: pending
+act_decision: pending
+task_complete: false
+result: pending
+notes: >-
+  Claude Agent must update this file after the canary test. DO_COMPLETE does not close the task.
