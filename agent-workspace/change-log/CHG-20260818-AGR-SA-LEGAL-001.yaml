@@ -1,0 +1,33 @@
+change_id: CHG-20260818-AGR-SA-LEGAL-001
+timestamp_utc: "2026-08-18T19:32:00Z"
+actor:
+  type: ChatGPT
+  name: ChatGPT Agreement Codification Agent
+  agent_contract_ref: null
+mandate_ref: "Group CEO instruction: proceed to AGR-XWALK-011 — 2026-08-18"
+accountability_task_ref: WRK-AGR-SA-LEGAL-20260818
+task_class: T2
+change_type: governance
+summary: "Opened AGR-XWALK-011 and created the first controlled South African legal validation matrix for the three VALIDATING Agreement Templates."
+reason: "Move from OASIS technical conformance to substantive South African legal validation without promoting structural templates to transaction use."
+affected_paths:
+  - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/plan.yaml
+  - agent-workspace/work/WRK-AGR-SA-LEGAL-20260818/legal-validation-matrix-v0.1.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: "Group CEO instruction: Yes — proceed to AGR-XWALK-011 — 2026-08-18"
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: null
+  act_decision: null
+  task_complete: false
+evidence: []
+commit_sha: null
+pull_request: 10
+notes: >-
+  The three templates remain VALIDATING structural profiles. The initial matrix establishes statutory
+  applicability and fail-closed legal gates. Operative clause text and transaction-specific South African
+  legal review remain outstanding; no template is promoted.
