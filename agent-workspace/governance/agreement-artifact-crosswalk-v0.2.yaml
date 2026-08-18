@@ -23,13 +23,16 @@ controlled_architecture:
   authoritative_source: "South African authoritative source governed through CAT-SA-AGR-PREC-001"
   sequence:
     - CAT-SA-AGR-PREC-001.Source_and_TermsAndConditions
+    - South_African_Statutory_Applicability_Control
+    - Transaction_Legal_Applicability_Profile
     - Governed_Agreement_Clause
+    - Approved_Operative_Clause_Variant
     - LegalRuleML_representation_where_normative_execution_is_required
     - Artifact_Contract
     - Accord_compatible_typed_template_model_where_useful
     - REG-AGR-TPL-001.Governed_Agreement_Template
     - Technical_compile_data_render_logic_tests
-    - Substantive_South_African_legal_validation
+    - Transaction_specific_legal_validation
     - Evidence
     - ACT
 
@@ -38,17 +41,23 @@ act:
   adopt:
     - "OASIS LegalRuleML 1.0 semantics and official schema family as the machine-readable normative-rule representation and conformance source."
     - "Existing Kongoni work-item, evidence, change-log, and handoff schemas as the execution and governance envelope."
+    - "Validated South African statutory source-binding architecture from AGR-XWALK-011."
   adapt:
     - "Accord Cicero/Concerto typed model, variable binding, deterministic rendering, and automated technical test patterns beneath existing Artifact Contract and Agreement Template governance."
+    - "Substantive legal validation into a transaction Legal Applicability Profile plus approved operative Clause Library, rather than embedding transaction assumptions in generic templates."
   build_only_the_gap:
     - "Thin Kongoni Agreement Clause Profile linking CAT source provenance and T&C normative effect to LegalRuleML rule IDs, REG template bindings, and technical test cases."
-    - "Thin validator/orchestrator for source traceability, OASIS XSD conformance, template data validation, render/logic tests, and governed evidence output."
+    - "Thin validator/orchestrator for source traceability, OASIS XSD conformance, legal applicability, template data validation, render/logic tests, and governed evidence output."
+    - "Transaction Legal Applicability Profile for the Kiboko-Venduo canary."
+    - "Approved South African Operative Clause Library with applicability conditions and legal-review provenance."
+    - "Collateral-specific security/perfection/enforcement control profiles."
   prohibited:
     - "Parallel Agreement Catalogue."
     - "Parallel Agreement Template Register."
     - "New proprietary contract language."
     - "New generic evidence framework."
     - "Use of Accord wording or technical tests as South African substantive legal authority."
+    - "Promotion of structural templates before transaction applicability and approved operative-clause validation."
 
 controls:
   - control_id: AGR-XWALK-010
@@ -58,17 +67,30 @@ controls:
       governed LegalRuleML targets and the repeatable GitHub CI gate is adopted as the
       mandatory technical conformance control for future LegalRuleML changes.
   - control_id: AGR-XWALK-011
+    status: CLOSED_ADAPTED
+    gate: >-
+      South African statutory clause architecture and section-level applicability controls are validated.
+      Group CEO ACT=ADAPT preserves that layer and moves execution to transaction applicability,
+      operative clause approval and collateral-specific common-law validation.
+  - control_id: AGR-XWALK-011-A
     status: OPEN
-    gate: "Complete substantive South African legal clause validation for the three VALIDATING Agreement Templates."
+    gate: "Create and validate the Kiboko-Venduo Transaction Legal Applicability Profile."
+  - control_id: AGR-XWALK-011-B
+    status: OPEN
+    gate: "Create and approve South African operative clause variants with source and legal-review provenance."
+  - control_id: AGR-XWALK-011-C
+    status: OPEN
+    gate: "Complete collateral-specific common-law security, perfection and enforcement validation."
 
 transaction_use:
   agreement_templates_promoted: false
-  reason: "AGR-XWALK-011 remains a mandatory substantive legal promotion gate."
+  reason: "AGR-XWALK-011-A/B/C remain mandatory promotion gates."
 
 closure:
   crosswalk_pdca_complete: true
   act_recorded: true
   decision: ADAPT
   xsd_conformance_gate_complete: true
+  statutory_legal_architecture_gate_complete: true
   downstream_validation_complete: false
-  next_gate: AGR-XWALK-011
+  next_gate: AGR-XWALK-011-A
