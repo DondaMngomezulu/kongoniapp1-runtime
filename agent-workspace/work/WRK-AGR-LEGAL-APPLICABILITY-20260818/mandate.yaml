@@ -1,7 +1,7 @@
 work_id: WRK-AGR-LEGAL-APPLICABILITY-20260818
 title: Kiboko-Venduo Transaction Legal Applicability Profile
 task_class: T2
-status: ACT_PENDING
+status: CLOSED_ADOPTED
 parent_control: AGR-XWALK-011
 control_id: AGR-XWALK-011-A
 architecture:
@@ -24,12 +24,12 @@ required_inputs:
   - merger-control turnover/asset facts
   - STT facts and exemption analysis
   - board/shareholder/signing approvals
-approval_ref: "Group CEO ACT=ADAPT for AGR-XWALK-011 — 2026-08-18"
+approval_ref: "Group CEO ACT=ADOPT for AGR-XWALK-011-A — 2026-08-18"
 pdca:
-  stage: ACT
+  stage: CLOSE_REPLAN
   do_complete: true
-  task_complete: false
-  act_decision: null
+  task_complete: true
+  act_decision: ADOPT
 next_action:
-  assigned_to: Group CEO
-  instruction: "Decide ACT on LAP-KIB-VEN-001 v0.1; recommended ADOPT for the profile and fail-closed evidence-gap control only."
+  assigned_to: ChatGPT
+  instruction: "Preserve LAP-KIB-VEN-001 v0.1 as the controlled applicability profile; close all evidence gaps before transaction execution and continue AGR-XWALK-011-B/C."
