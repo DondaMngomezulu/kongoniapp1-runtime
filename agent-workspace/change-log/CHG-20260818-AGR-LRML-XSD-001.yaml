@@ -1,0 +1,39 @@
+change_id: CHG-20260818-AGR-LRML-XSD-001
+timestamp_utc: "2026-08-18T18:52:00Z"
+actor:
+  type: ChatGPT
+  name: ChatGPT Agreement Codification Agent
+  agent_contract_ref: null
+mandate_ref: "Group CEO instruction: Next — proceed from approved Agreement Artifact Crosswalk ADAPT to AGR-XWALK-010 — 2026-08-18"
+accountability_task_ref: WRK-AGR-LRML-XSD-20260818
+task_class: T2
+change_type: governance
+summary: "Codified the official OASIS LegalRuleML compact XSD validator and CI gate, created the controlled conformance work item, recorded blocked pre-validation evidence, and reconciled the prior crosswalk mandate with its approved ADAPT ACT."
+reason: "Execute AGR-XWALK-010 without treating XML well-formedness as schema conformance and fail closed until exact governed LegalRuleML sources are present in the GitHub engineering tree."
+affected_paths:
+  - agent-workspace/scripts/validate_legalruleml.py
+  - .github/workflows/legalruleml-xsd-validate.yml
+  - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/plan.yaml
+  - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/evidence/EVD-AGR-LRML-XSD-001.json
+  - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/outcome.yaml
+  - agent-workspace/work/WRK-AGR-ARTIFACT-CROSSWALK-20260818/mandate.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: "Group CEO instruction: Next — 2026-08-18"
+pdca:
+  phase: CHECK_STUDY
+  do_complete: false
+  check_study_result: BLOCKED_PRECONDITION
+  act_decision: null
+  task_complete: false
+evidence:
+  - EVD-AGR-LRML-XSD-001
+commit_sha: null
+pull_request: 10
+notes: >-
+  Current LegalRuleML artifacts were found in the governed Library and are XML well formed,
+  but they are not yet active GitHub engineering sources. AGR-XWALK-010 remains open and no
+  Agreement Template is promoted. Recommended next ACT for this gate is REPEAT after controlled
+  source ingestion and CI execution.
