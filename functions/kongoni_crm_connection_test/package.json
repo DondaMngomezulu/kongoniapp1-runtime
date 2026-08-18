@@ -1,0 +1,9 @@
+{
+  "name": "kongoni_crm_connection_test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kongoni Group",
+  "dependencies": {
+    "zcatalyst-sdk-node": "^3.2.0"
+  }
+}
