@@ -38,7 +38,7 @@ evidence:
 commit_sha: null
 pull_request: 10
 notes: >-
-  OASIS XSD conformance is proven for 2/2 active targets. Facility v0.2 SHA-256:
-  48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e.
+  OASIS XSD conformance is proven for 2/2 active targets and the evidence record carries the final ACT disposition.
+  Facility v0.2 SHA-256: 48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e.
   Enterprise v0.2 SHA-256: 81890d0580f139a68f38a78c15d653b44e09c9c08833076d966bdc7b285c9c40.
-  AGR-XWALK-010 is closed and adopted. AGR-XWALK-011 remains open. No Agreement Template is promoted.
+  AGR-XWALK-010 is CLOSED_ADOPTED. AGR-XWALK-011 remains OPEN. No Agreement Template is promoted.
