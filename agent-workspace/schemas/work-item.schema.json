@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:schema:agent-work-item:1.0",
+  "title": "Kongoni Agent Work Item",
+  "type": "object",
+  "required": ["work_id","title","task_class","status","architecture","environment","pdca","assigned_to"],
+  "properties": {
+    "work_id": {"type":"string","pattern":"^WRK-[A-Z0-9-]+$"},
+    "title": {"type":"string","minLength":1},
+    "task_class": {"enum":["T0","T1","T2","T3"]},
+    "status": {"enum":["PLANNING","AWAITING_AUTHORISATION","AUTHORISED","DO_IN_PROGRESS","DO_COMPLETE","CHECK_STUDY","ACT_PENDING","CLOSED","BLOCKED","REPLAN"]},
+    "architecture": {
+      "type":"object",
+      "required":["id","version","hash"],
+      "properties":{"id":{"type":"string"},"version":{"type":"string"},"hash":{"type":"string","minLength":64,"maxLength":64}}
+    },
+    "environment": {
+      "type":"object",
+      "required":["platform","project","environment"],
+      "properties":{"platform":{"type":"string"},"project":{"type":"string"},"environment":{"type":"string"}}
+    },
+    "assigned_to": {"type":"string"},
+    "coordinators": {"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "required_controls": {"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "approval_ref": {"type":["string","null"]},
+    "pdca": {
+      "type":"object",
+      "required":["stage","do_complete","task_complete"],
+      "properties":{"stage":{"enum":["MANDATE","PLAN","AUTHORISATION","DO","EVIDENCE","CHECK_STUDY","ACT","RECORD","CLOSE_REPLAN"]},"do_complete":{"type":"boolean"},"task_complete":{"type":"boolean"},"act_decision":{"enum":["ADOPT","ADAPT","REPEAT","REJECT","ESCALATE",null]}}
+    },
+    "next_action": {"type":"object","properties":{"assigned_to":{"type":"string"},"instruction_file":{"type":"string"}}}
+  },
+  "additionalProperties": true
+}
