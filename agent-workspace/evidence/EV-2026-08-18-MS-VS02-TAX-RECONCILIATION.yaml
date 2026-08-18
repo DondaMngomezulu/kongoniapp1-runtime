@@ -1,0 +1,85 @@
+evidence_id: EV-2026-08-18-MS-VS02-TAX-RECONCILIATION
+work: Reconcile APQC-spine tax microservice design with current main and rerun regression
+task_class: T2
+branch: agent/apqc-microservice-reconciled-working
+base: main
+base_commit: 51ed06cb512a572db89af52124e84d528a8173fc
+microservice_id: MS-VS02-TAX-COMPLIANCE-001
+legacy_candidate_id: MS-GC-TAX-001
+service_specification_id: SRV-APQC-VS02-TAX-001
+
+reconciliation_findings:
+  - id: REC-01
+    finding: Current main had advanced beyond draft PR 9 and contained REG-ARCH-MICROSVC-001 plus authority reconciliation.
+    treatment: Rebased the work by creating a fresh branch from current main; old divergent history is not replayed.
+  - id: REC-02
+    finding: Current main APQC policy defined Service Domain as the candidate microservice boundary, conflicting with approved APQC-spine decision.
+    treatment: Policy v0.2 and schema v0.3 make APQC Level 3 the default candidate business microservice boundary while preserving domain semantic crosswalks.
+  - id: REC-03
+    finding: Existing register entries lack the new APQC-spine fields.
+    treatment: Added backward-compatible migration control; legacy entries remain valid but cannot advance to engineering handover without v0.3 enrichment.
+  - id: REC-04
+    finding: Central MS-GC-TAX-001 candidate conflicted with value-stream-embedded compliance ownership.
+    treatment: Adapted first deployable instance to MS-VS02-TAX-COMPLIANCE-001 and retained legacy ID traceability.
+
+checks:
+  - id: T-01
+    test: Branch freshness
+    result: PASS
+    evidence: compare main..branch returned ahead_by=11 and behind_by=0 at CHECK time.
+  - id: T-02
+    test: APQC spine governance
+    result: PASS
+    evidence: APQC Level 3 is default candidate business microservice boundary; L4 operations and L5 tasks; semantic frameworks are crosswalks.
+  - id: T-03
+    test: Legacy register regression
+    result: PASS_WITH_MIGRATION_CONTROL
+    evidence: Existing entries are grandfathered until materially revised or prepared for engineering handover.
+  - id: T-04
+    test: Bounded-context design
+    result: PASS_WITH_OPEN_L5_BINDING
+    evidence: APQC 9.9 mapping and bounded-context tests recorded; stable Level 5 binding remains open.
+  - id: T-05
+    test: SARS authority preservation
+    result: PASS
+    evidence: SARS remains normative authority; atomic rule schema requires authority class, effective dates, status and legal verification reference.
+  - id: T-06
+    test: Unapproved-rule execution
+    result: PASS
+    evidence: Scaffold contains no embedded tax logic and approvedRuleRegistryBound returns false.
+  - id: T-07
+    test: Fail-closed behavior
+    result: PASS
+    evidence: Local Node execution returned HTTP 409 PENDING_RULES and posting_authorised=false for a valid request.
+  - id: T-08
+    test: Request validation
+    result: PASS
+    evidence: Local Node execution returned HTTP 400 for missing required fields and HTTP 405 for unsupported method.
+  - id: T-09
+    test: Zoho Books boundary
+    result: PASS
+    evidence: Service specification prohibits direct ledger posting; Zoho Books remains accounting system of record through a governed gateway.
+  - id: T-10
+    test: Accidental Catalyst deployment
+    result: PASS
+    evidence: New function directory is not added to catalyst.json targets and service specification sets deployment_authorised=false.
+  - id: T-11
+    test: Register integration
+    result: OPEN
+    evidence: Service specification and APQC mapping exist, but consolidated register.yaml has not yet been updated with the new entry.
+  - id: T-12
+    test: Approved atomic SARS rules
+    result: OPEN
+    evidence: REG-SARS-RULE-001 executable approved scope is not yet bound.
+
+check_study: PARTIAL_PASS_OPEN_CONDITIONS
+open_conditions:
+  - integrate MS-VS02-TAX-COMPLIANCE-001 into the consolidated Enterprise Microservice Register
+  - verify stable APQC Level 5 bindings or approve a documented decomposition exception
+  - create and legally verify the first scoped atomic SARS rules before any rule execution
+  - approve service specification before engineering handover
+  - rerun contract, security, integration and deployment tests before Development deployment
+act_recommendation: ADAPT
+production_changed: false
+development_deployed: false
+task_complete: false
