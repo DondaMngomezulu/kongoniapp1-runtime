@@ -1,13 +1,8 @@
 control_id: CTL-APP-AUTH-BOUNDARY-001
 version: "0.2"
-status: REPEAT_VALIDATED_CANDIDATE
+status: CANDIDATE
 rule: Each governed state dimension has one authoritative application; projections shall not become competing masters.
-current_authority_evidence:
-  catalyst_structured_records: APPROVED_ACTIVE
-  catalyst_stratus_enterprise_shared_content: APPROVED_ACTIVE
-  catalyst_stratus_value_stream_object_repositories: APPROVED_ACTIVE
-  source: EnterpriseRepositoryAuthority in Kongoniapp1 Development
-target_authority:
+authority:
   zoho_catalyst:
     owns:
       - canonical_party_identity
@@ -15,6 +10,7 @@ target_authority:
       - orchestration
       - handover_lifecycle_state
       - cross_system_identity_mapping
+      - governance_and_compliance_rule_execution
   zoho_crm:
     owns:
       - customer_relationship_state
@@ -22,25 +18,41 @@ target_authority:
       - commercial_relationship_transactions
     gateway: CRM Commercial Gateway
   zoho_books:
-    proposed_owns:
-      - accounting_state
-      - committed_financial_transactions
+    owns:
+      - authoritative_accounting_ledger
+      - accounting_transactions
       - invoice
       - payment
       - credit_note
       - financially_committed_sales_order
+      - chart_of_accounts_execution
     gateway: Books Financial Gateway
-    open_control: Existing Catalyst gl_* tables SHALL be classified as authoritative ledger, projection, staging, analytics, or migration data before this ownership change is adopted.
   zoho_workdrive:
-    proposed_owns:
-      - governed_document_content
-      - handover_package_files
-      - controlled_evidence_files
+    target_owns:
+      - governed_document_content_for_designated_document_classes
+      - handover_package_files_for_designated_document_classes
+      - controlled_evidence_files_for_designated_document_classes
     gateway: WorkDrive Document Gateway
-    open_control: Current approved Stratus repository authorities SHALL be migrated or reclassified through governed repository-authority change before WorkDrive becomes authoritative.
+    activation_condition: Controlled repository-authority migration and approval from existing approved repositories.
+accounting_governance:
+  normative_frameworks:
+    - IFRS
+    - SARS
+  rule_owner: Governance and Compliance Microservice
+  execution_system: Zoho Books
+  principle: IFRS and SARS obligations, interpretations, controls and validation rules SHALL be codified as governed rules and controls. Zoho Books SHALL execute the authorised accounting treatment and remain the accounting system of record.
+  catalyst_gl_tables:
+    classification: projection_analytics_and_reconciliation
+    authoritative_ledger: false
+    permitted_uses:
+      - consolidation
+      - analytics
+      - reconciliation
+      - migration_support
+      - provenance
+    prohibited_use: competing_accounting_master
 storage_rule:
-  target_governed_documents: zoho_workdrive
-  current_governed_content_authority: catalyst_stratus
-  catalyst_stratus_target_role: application_objects_non_governed_binary_storage_and_explicitly_approved_repository_exceptions
+  governed_documents_target: zoho_workdrive_for_designated_classes
+  current_approved_content_authority: catalyst_stratus_until_migrated
+  catalyst_stratus: application_objects_computational_artifacts_and_non_migrated_content
   duplicate_authoritative_document_copy: prohibited
-migration_rule: Target authority statements do not revoke current approved repository authorities until CHECK/STUDY, ACT, and authoritative Catalyst records are updated.
