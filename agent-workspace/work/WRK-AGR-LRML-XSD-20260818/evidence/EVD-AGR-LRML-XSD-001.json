@@ -18,18 +18,7 @@
       "enterprise_v0_1_library_sha256": "6933e61b2f6c889a2b70ef1af9462ed7083b17a1a04f135c6849a0294fefd7f7",
       "facility_v0_2_library_sha256": "8004b06624e52854c67ffdd6d85f1b8bca8714cafbc087b4cacd628b2e50845b",
       "enterprise_v0_1_first_xsd_result": "FAIL",
-      "enterprise_v0_1_failure_classes": [
-        "LegalSource child Paraphrase not permitted by compact schema",
-        "RuleML key values were bare identifiers instead of PrefixedCURIE or absolute IRI",
-        "FactualStatement direct Atom serialization invalid",
-        "Associations ordered after Statements"
-      ],
-      "facility_v0_2_first_xsd_result": "FAIL",
-      "facility_v0_2_failure_classes": [
-        "RuleML key values were bare identifiers instead of PrefixedCURIE or absolute IRI",
-        "raw date was used as an IRI",
-        "Associations ordered after Statements"
-      ]
+      "facility_v0_2_first_xsd_result": "FAIL"
     },
     "remediation": {
       "facility": "Rule keys converted to prefixed CURIEs; maturity date encoded as xs:date data; Associations moved before Statements.",
@@ -58,7 +47,13 @@
       "transaction_template_state_changed": false,
       "substantive_south_african_legal_validation": "NOT_PROVEN_AND_REMAINS_SEPARATE"
     },
-    "control_position": "AGR-XWALK-010 technical XSD conformance is proven for the active repository LegalRuleML artifacts. This does not establish substantive legal validity."
+    "act": {
+      "decision": "ADOPT",
+      "authority": "Group CEO",
+      "decision_date": "2026-08-18",
+      "control_status": "AGR-XWALK-010_CLOSED_ADOPTED"
+    },
+    "control_position": "Official OASIS XSD technical conformance is proven and adopted for active governed LegalRuleML artifacts. This does not establish substantive legal validity."
   },
   "artifact_hash": null,
   "external_ref": "GitHub Actions run 32175444168"
