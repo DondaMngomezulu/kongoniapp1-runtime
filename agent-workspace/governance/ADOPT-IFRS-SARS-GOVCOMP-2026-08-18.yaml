@@ -1,0 +1,31 @@
+decision_id: ADOPT-IFRS-SARS-GOVCOMP-2026-08-18
+status: APPROVED_CONTROLLED_ADOPTION
+date: 2026-08-18
+approval_authority: Group CEO
+scope:
+  artifact: IFRS_SARS_Digital_Catalogue_Merged_v0.3_GovComp_Crosswalk.xlsx
+  purpose: Govern APQC to IFRS/SARS to Rule to Control to Test to Zoho Books operation crosswalk
+adoption_effect:
+  - merged IFRS/SARS digital catalogue is the governed baseline for Governance & Compliance microservice design
+  - APQC remains the process spine
+  - IFRS Foundation/IASB remain normative accounting authorities
+  - SARS remains normative South African tax authority within source hierarchy
+  - Zoho Books is the accounting system of record
+  - Catalyst gl_* structures are non-ledger projection/reconciliation/analytics/provenance stores
+controlled_conditions:
+  - clause_level_IFRS_bindings_require_verified_source_traceability
+  - SARS_atomic_rules_require_legal_verification_before_executable_status
+  - effective_dates_versions_and_supersession_must_be preserved
+  - no community_or_GitHub_artifact_may_override_normative_authority
+  - posting_to_Zoho_Books_requires_valid_governance_and_compliance_authorisation
+pdca:
+  mandate: complete
+  plan: complete
+  authorisation: complete
+  do: complete
+  evidence: controlled adoption record plus governed catalogue
+  check_study: structural crosswalk passed; normative clause binding remains controlled implementation work
+  act: ADOPT
+  record: complete
+  close: false
+closure_note: Controlled adoption closes the catalogue/crosswalk adoption decision but does not close future T2 rule-codification or executable-binding work.
