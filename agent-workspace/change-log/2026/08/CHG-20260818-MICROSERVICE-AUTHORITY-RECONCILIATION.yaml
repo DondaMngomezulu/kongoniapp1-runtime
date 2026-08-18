@@ -1,0 +1,33 @@
+change_id: CHG-20260818-MICROSERVICE-AUTHORITY-RECONCILIATION
+timestamp_utc: '2026-08-18T18:18:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved completion of PR #8 validation, merge and GitHub/Catalyst authority reconciliation, and approved adoption of the resulting authority reconciliation.'
+task_class: T2
+change_type: governance
+summary: Record the authoritative locus for the Enterprise Microservice Register, its source catalogues and supporting engineering artifacts after PR #8 merge.
+reason: Prevent duplicate or conflicting authoritative state between GitHub and Zoho Catalyst.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/authority-reconciliation.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO approval in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: ACT
+  do_complete: true
+  check_study_result: PASS_WITH_EXPLICIT_SOURCE_GAPS
+  act_decision: ADOPT
+  task_complete: false
+evidence:
+  - 'PR #8 merged to main at 55490524a5f3bbd352ae635035da1f96306c4011.'
+  - 'KongoniApp Change Log Control passed on PR #8 head.'
+  - 'Agent Workspace Validation failure traced to pre-existing WRK-ZCRM-BP-001 missing architecture property.'
+  - 'Catalyst Development table inventory inspected.'
+  - 'BIAN, APQC, MIMOSA, standards and engine architecture tables found in Catalyst.'
+  - 'No Microservice Register table found in Catalyst.'
+  - 'No normalized GMG Service Domain catalogue found in Catalyst.'
+  - 'No APQC Upstream Petroleum catalogue record found in StandardsCatalogue.'
+  - 'Group CEO approved the authority reconciliation on 2026-08-18.'
+notes: 'Authority matrix is a governance record. It does not create or modify Catalyst runtime resources. Closure remains subject to successful change-log validation and record merge.'
