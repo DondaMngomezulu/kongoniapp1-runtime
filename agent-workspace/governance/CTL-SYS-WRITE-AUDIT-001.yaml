@@ -1,0 +1,124 @@
+control_id: CTL-SYS-WRITE-AUDIT-001
+version: '1.0'
+title: Mandatory Auditable System Write Control
+status: PROPOSED
+owner: Chief of Accountability
+record_lifecycle_owner: Document Controller
+methodology: MET-PDCA-001
+business_rule: BR-PDCA-001
+purpose: >-
+  Ensure every material write to an enterprise system is attributable, authorised,
+  traceable, reconstructable and supported by objective before/after evidence.
+scope:
+  actors:
+    - human
+    - ChatGPT
+    - Claude
+    - Codex
+    - Zia
+    - specialist_agent
+    - automation
+    - application
+    - integration
+  systems:
+    - GitHub
+    - Zoho Catalyst
+    - Zoho CRM
+    - Zoho Books
+    - Zoho Projects
+    - Zoho FSM
+    - Google Drive
+    - Google Docs
+    - Google Sheets
+    - Google Slides
+    - Gmail
+    - Google Calendar
+    - other_enterprise_systems
+  write_operations:
+    - create
+    - update
+    - delete
+    - activate
+    - deactivate
+    - publish
+    - deploy
+    - approve
+    - reject
+    - transition
+    - permission_change
+    - configuration_change
+    - schema_change
+    - data_import
+    - data_export_with_state_change
+canonical_rule: >-
+  No material enterprise system write SHALL be treated as governed execution unless
+  an immutable audit event records who or what performed the write, under which mandate
+  and authority, against which system/object/environment, the intended change, the
+  before-state or reproducible reference, the resulting after-state or reproducible
+  reference, the system response/transaction identifier where available, timestamp,
+  evidence, and PDCA/task correlation.
+requirements:
+  pre_write:
+    - resolve_actor_identity
+    - resolve_agent_contract_when_applicable
+    - resolve_mandate
+    - resolve_task_class
+    - resolve_target_system
+    - resolve_target_environment
+    - resolve_execution_authority
+    - capture_or_reference_before_state
+    - assign_correlation_id
+  write:
+    - use_authorised_tool_or_gateway
+    - preserve_native_system_transaction_or_event_id_when_available
+    - prohibit_secret_material_in_audit_record
+  post_write:
+    - capture_result_status
+    - capture_or_reference_after_state
+    - record_timestamp_utc
+    - record_changed_fields_or_resource_paths_when_available
+    - record_objective_evidence
+    - link_pdca_and_accountability_task
+    - record_error_without_secrets_when_write_fails
+  failure_mode: FAIL_CLOSED_FOR_T2_T3
+minimum_audit_event:
+  - event_id
+  - correlation_id
+  - timestamp_utc
+  - actor_type
+  - actor_id
+  - agent_contract_ref
+  - mandate_ref
+  - accountability_task_ref
+  - task_class
+  - system
+  - environment
+  - operation
+  - target_type
+  - target_id
+  - authority_ref
+  - before_ref
+  - requested_change
+  - result
+  - after_ref
+  - native_transaction_ref
+  - evidence_refs
+  - pdca_phase
+controls:
+  - Agents SHALL NOT perform T2/T3 writes through an unlogged path.
+  - Direct writes that cannot produce sufficient audit evidence SHALL be routed through an auditable gateway or blocked.
+  - Audit records SHALL be append-only after creation; corrections SHALL create a superseding event.
+  - Secrets, passwords, access tokens, refresh tokens and private keys SHALL NOT be written to audit records.
+  - Failed write attempts SHALL be logged where technically possible.
+  - DO_COMPLETE SHALL NOT imply TASK_COMPLETE.
+relationship_to_existing_controls:
+  CTL-DEV-CHG-LOG-001: >-
+    Repository change logging remains the GitHub-specific implementation control.
+    CTL-SYS-WRITE-AUDIT-001 is the enterprise parent control for writes across all systems.
+evidence_strategy:
+  primary: native_system_audit_or_transaction_identifier
+  secondary: governed_enterprise_audit_event
+  tertiary: before_after_snapshot_hash_or_reference
+implementation_pattern: >-
+  Agent or user -> Write Gateway/authorised tool -> target system -> native result ->
+  Enterprise Write Audit Event -> evidence store -> CHECK/STUDY.
