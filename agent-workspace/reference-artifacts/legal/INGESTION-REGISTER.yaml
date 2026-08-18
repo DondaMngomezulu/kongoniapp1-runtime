@@ -1,6 +1,6 @@
 register_id: REG-LEGAL-REF-INGEST-001
-version: 0.2
-status: ACT_PENDING
+version: 0.3
+status: ACT_ADAPT_RECORDED
 as_of: 2026-08-18
 purpose: >-
   Controlled ingestion register for external and internal artifacts used to support
@@ -107,5 +107,15 @@ check_study:
   open_standards_alignment: PASS
   custom_build_reduction: PASS
   legalruleml_xsd_conformance: OPEN
-recommended_act: ADAPT
-next_gate: Approve ADAPT and use the ingested artifacts to define the governed clause package profile and template validation profile.
+act:
+  decision: ADAPT
+  authority: Group CEO
+  date: 2026-08-18
+  scope: >-
+    Use Kongoni schemas as the governance shell; use OASIS LegalRuleML artifacts as the normative-rule reference;
+    adapt Accord Project clause-package and test patterns for LIB-AGR-CLAUSE-001 and REG-AGR-TPL-001;
+    do not adopt Accord wording as South African legal authority.
+record:
+  status: COMPLETE
+  repository: DondaMngomezulu/kongoniapp1-runtime
+next_action: Define the governed Clause Package Profile and Agreement Template Validation Profile; keep LegalRuleML XSD conformance as an open validation gate.
