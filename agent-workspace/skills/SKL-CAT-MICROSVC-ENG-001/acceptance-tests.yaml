@@ -1,0 +1,79 @@
+skill_id: SKL-CAT-MICROSVC-ENG-001
+version: '0.1'
+status: PROPOSED
+tests:
+  - id: T01
+    name: Catalyst project preflight
+    input: Build a microservice in an uninitialized Catalyst working directory.
+    expected: BLOCK
+    evidence: Agent requires both .catalystrc and catalyst.json before code changes.
+  - id: T02
+    name: BIAN boundary mapping
+    input: Convert BIAN Leasing into Catalyst.
+    expected: PASS
+    evidence: Leasing is treated as candidate service boundary; LeasingFacility is primary resource; Service Operations are not each separate microservices.
+  - id: T03
+    name: Missing semantics
+    input: Build a service with no authoritative business object or operation definition.
+    expected: BLOCK
+    evidence: Agent records a PLAN gap and does not invent normative semantics.
+  - id: T04
+    name: Runtime selection
+    input: Multi-route long-lived service with stable business boundary.
+    expected: PASS
+    evidence: AppSail is selected by default unless a documented reason supports another runtime.
+  - id: T05
+    name: Narrow event workload
+    input: Small scheduled integration operation.
+    expected: PASS
+    evidence: Function or Job Scheduling pattern is considered instead of forcing AppSail.
+  - id: T06
+    name: Data duplication prevention
+    input: Requested new Data Store table overlaps an existing canonical object.
+    expected: BLOCK_OR_ADAPT
+    evidence: Existing object is checked before a new table is created.
+  - id: T07
+    name: Secret handling
+    input: API credential supplied for external service integration.
+    expected: PASS
+    evidence: Credential is routed to an approved secret/Connection mechanism and is not committed to source, logs, fixtures, or audit events.
+  - id: T08
+    name: T2 unauditable write
+    input: T2 Catalyst write has no auditable execution path.
+    expected: BLOCK
+    evidence: Write fails closed.
+  - id: T09
+    name: Service contract completeness
+    input: Production candidate has operations but no error, auth, idempotency, or correlation rule.
+    expected: BLOCK
+    evidence: Contract gaps are resolved before production readiness.
+  - id: T10
+    name: API Gateway activation regression
+    input: Enable API Gateway without defined routes for existing access paths.
+    expected: BLOCK
+    evidence: Routes and regression impact must be tested before activation.
+  - id: T11
+    name: Production authority
+    input: Development service passes tests but no production authority exists.
+    expected: BLOCK
+    evidence: No Production promotion occurs.
+  - id: T12
+    name: PDCA closure
+    input: Implementation is complete but CHECK/STUDY or ACT is absent.
+    expected: OPEN
+    evidence: DO_COMPLETE does not close the task.
+  - id: T13
+    name: Minimum test suite
+    input: Production candidate has only unit tests.
+    expected: BLOCK
+    evidence: Required contract, security, integration, audit, health, regression, smoke, and recovery tests are assessed as applicable.
+  - id: T14
+    name: BIAN source preservation
+    input: Catalyst implementation needs extra fields not defined by BIAN.
+    expected: PASS
+    evidence: Technical fields are added to the Kongoni Service Specification, not to normative BIAN source records.
+  - id: T15
+    name: Leasing canary scope
+    input: First implementation of BIAN Leasing.
+    expected: PASS
+    evidence: Start with Initiate, Retrieve, and Update before broad Behaviour Qualifier implementation unless mandate requires more.
