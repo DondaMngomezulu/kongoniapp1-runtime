@@ -1,6 +1,6 @@
 mapping_id: MAP-APQC-MS-VS02-TAX-001
-version: '0.1'
-status: PROPOSED_PENDING_CHECK_STUDY
+version: '0.2'
+status: PROPOSED_WITH_VERIFIED_RULE_CANDIDATE
 microservice_id: MS-VS02-TAX-COMPLIANCE-001
 service_specification_id: SRV-APQC-VS02-TAX-001
 value_stream_id: VS02
@@ -15,6 +15,7 @@ apqc:
     id: '9.9'
     title: Manage taxes
     mapping_type: EXACT_CANDIDATE
+    role: DEFAULT_CANDIDATE_BUSINESS_MICROSERVICE_BOUNDARY
   level_4:
     - id: '9.9.2.1'
       title: Perform tax planning/strategy
@@ -61,4 +62,12 @@ semantic_crosswalks:
   IFRS: accounting_dependency
   BIAN: optional_financial_services_semantics
   TM_Forum: optional_API_information_semantics
-verification_status: PENDING_CHECK_STUDY
+first_atomic_rule_candidate:
+  rule_id: AR-SARS-VAT-STD-001
+  domain: VAT
+  purpose: Apply the current 15 percent standard VAT rate only after governed supply classification and VAT-registration status are established.
+  legal_verification_evidence: EV-2026-08-18-SARS-VAT-STD-001
+  source_verification_status: PASS
+  execution_status: NOT_EXECUTABLE
+  executive_adoption_status: PENDING
+verification_status: PARTIAL_PASS_OPEN_L5_AND_EXECUTION_ADOPTION
