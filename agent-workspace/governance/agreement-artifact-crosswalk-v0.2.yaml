@@ -53,7 +53,7 @@ act:
 open_controls:
   - control_id: AGR-XWALK-010
     status: ACT_PENDING_AFTER_PASS_WITH_REMEDIATION
-    gate: "Official OASIS compact XSD conformance proven for active LegalRuleML targets in GitHub Actions run 32174982874; Group CEO final ACT pending."
+    gate: "Official OASIS compact XSD conformance proven for 2/2 active LegalRuleML targets in GitHub Actions run 32174982874; Group CEO final ACT pending."
   - control_id: AGR-XWALK-011
     status: OPEN
     gate: "Complete substantive South African legal clause validation for the three VALIDATING Agreement Templates."
