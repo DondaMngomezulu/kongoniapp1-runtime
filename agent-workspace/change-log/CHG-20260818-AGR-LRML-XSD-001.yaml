@@ -4,12 +4,12 @@ actor:
   type: ChatGPT
   name: ChatGPT Agreement Codification Agent
   agent_contract_ref: null
-mandate_ref: "Group CEO ACT decision REPEAT for AGR-XWALK-010 — 2026-08-18"
+mandate_ref: "Group CEO ACT decision ADOPT for AGR-XWALK-010 — 2026-08-18"
 accountability_task_ref: WRK-AGR-LRML-XSD-20260818
 task_class: T2
 change_type: governance
-summary: "Completed the AGR-XWALK-010 repeat cycle through official OASIS LegalRuleML compact XSD validation, controlled remediation, regression evidence, and CHECK/STUDY PASS_WITH_REMEDIATION."
-reason: "Prove LegalRuleML technical serialization conformance against the official OASIS schema before clause-profile implementation and substantive legal validation."
+summary: "Completed AGR-XWALK-010 through official OASIS LegalRuleML compact XSD validation, controlled remediation, CHECK/STUDY PASS_WITH_REMEDIATION, and final Group CEO ACT ADOPT."
+reason: "Adopt the official OASIS compact-XSD CI gate as the standing technical conformance control for governed LegalRuleML artifacts before substantive legal validation."
 affected_paths:
   - agent-workspace/scripts/validate_legalruleml.py
   - .github/workflows/legalruleml-xsd-validate.yml
@@ -26,21 +26,19 @@ affected_paths:
 environment: repository
 authority:
   status: AUTHORISED
-  reference: "Group CEO ACT decision REPEAT — 2026-08-18"
+  reference: "Group CEO ACT decision ADOPT — 2026-08-18"
 pdca:
-  phase: CHECK_STUDY
+  phase: ACT
   do_complete: true
   check_study_result: PASS_WITH_REMEDIATION
-  act_decision: null
-  task_complete: false
+  act_decision: ADOPT
+  task_complete: true
 evidence:
   - EVD-AGR-LRML-XSD-001
 commit_sha: null
 pull_request: 10
 notes: >-
-  Latest confirmed OASIS XSD conformance run 32175444168 passed; Change Log Control run 32175444190 passed.
-  Facility v0.2 hash: 48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e.
-  Enterprise v0.2 hash: 81890d0580f139a68f38a78c15d653b44e09c9c08833076d966bdc7b285c9c40.
-  Enterprise v0.1 failed baseline evidence remains preserved in Git history. Agent Workspace Validation remains
-  red only because of the unrelated pre-existing WRK-ZCRM-BP-001 schema defect. AGR-XWALK-011 remains open.
-  Recommended ACT is ADOPT. No Agreement Template is promoted.
+  OASIS XSD conformance is proven for 2/2 active targets. Facility v0.2 SHA-256:
+  48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e.
+  Enterprise v0.2 SHA-256: 81890d0580f139a68f38a78c15d653b44e09c9c08833076d966bdc7b285c9c40.
+  AGR-XWALK-010 is closed and adopted. AGR-XWALK-011 remains open. No Agreement Template is promoted.
