@@ -1,0 +1,54 @@
+test_plan_id: TST-MS-GC-TAX-001
+microservice_id: MS-GC-TAX-001
+status: CONTROLLED_DESIGN_CANDIDATE
+purpose: Verify that Tax Determination and Compliance can be implemented as an independently deployable APQC-spine microservice without becoming a tax-law authority or accounting ledger.
+tests:
+  - id: TAX-MS-001
+    requirement: APQC boundary coherence
+    method: Verify all operations are within APQC 9.9 Manage Taxes or are explicitly referenced dependencies.
+    expected: PASS
+  - id: TAX-MS-002
+    requirement: SARS authority preservation
+    method: Verify every executable rule has source authority class, source locator, effective dates, version, and approval state.
+    expected: PASS
+  - id: TAX-MS-003
+    requirement: Rule precedence
+    method: Verify lower-ranked SARS guidance cannot override legislation, regulations, binding rulings or judgments in scope.
+    expected: PASS
+  - id: TAX-MS-004
+    requirement: Atomic-rule gate
+    method: Attempt execution of SOURCE_ONLY or unverified rule.
+    expected: REJECT
+  - id: TAX-MS-005
+    requirement: Zoho Books boundary
+    method: Verify service produces decisions/authorisations only and cannot directly post to Books ledger outside Financial Gateway controls.
+    expected: PASS
+  - id: TAX-MS-006
+    requirement: IFRS boundary
+    method: Submit event requiring both tax and accounting treatment.
+    expected: Tax decision emitted; final posting remains blocked until IFRS control decision is valid.
+  - id: TAX-MS-007
+    requirement: Idempotency
+    method: Repeat same governed request with same idempotency key.
+    expected: Same decision/case reference; no duplicate state.
+  - id: TAX-MS-008
+    requirement: Effective-date regression
+    method: Run identical transaction context across superseded and current rule effective periods.
+    expected: Applicable rule version changes only according to controlled effective dates.
+  - id: TAX-MS-009
+    requirement: Failure isolation
+    method: Simulate Books/CRM/WorkDrive dependency unavailability.
+    expected: Service fails closed where posting authorisation is affected and records dependency failure evidence.
+  - id: TAX-MS-010
+    requirement: Observability
+    method: Execute each operation and inspect logs/evidence.
+    expected: execution_id, correlation_id, rule_version, source_authority_version, outcome and error_class recorded.
+  - id: TAX-MS-011
+    requirement: Independent deployment
+    method: Deploy candidate service without redeploying unrelated domain services and rerun contracts.
+    expected: PASS
+  - id: TAX-MS-012
+    requirement: Security
+    method: Exercise unauthenticated, unauthorized and excessive-data requests.
+    expected: Requests rejected; tax/PII data minimized and controlled.
+release_condition: All mandatory tests PASS and MET-PDCA-001 reaches valid ACT decision. DO_COMPLETE is not TASK_COMPLETE.
