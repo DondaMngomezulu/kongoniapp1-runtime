@@ -7,6 +7,8 @@ entries:
     path: agent-workspace/architecture/REG-ARCH-MICROSVC-001/entries/MS-VS02-TAX-COMPLIANCE-001.yaml
     state: ARCHITECTED
     service_specification_id: SRV-APQC-VS02-TAX-001
+    first_rule_candidate: AR-SARS-VAT-STD-001
+    rule_verification_evidence: EV-2026-08-18-SARS-VAT-STD-001
     pdca_stage: CHECK_STUDY
     act_decision: ADAPT
 rules:
