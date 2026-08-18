@@ -26,6 +26,17 @@ process_decomposition_rule: >-
   Service Domains and external frameworks provide semantic, information-model, API, and domain
   crosswalks and SHALL NOT automatically override the APQC process spine.
 
+migration_control:
+  baseline_register_version: '0.1'
+  rule: >-
+    Existing register entries created before schema version 0.3 remain valid legacy entries and
+    SHALL be progressively enriched with service_class and APQC L3/L4/L5 fields when they are
+    materially revised or prepared for engineering handover. The APQC-spine adoption SHALL NOT
+    invalidate existing entries solely because migration fields are absent.
+  new_or_materially_revised_entries: MUST_CONFORM_TO_V0_3_FIELDS
+  legacy_entries: VALID_PENDING_CONTROLLED_ENRICHMENT
+  regression_rule: No legacy entry may advance to engineering handover without satisfying the v0.3 completeness gate.
+
 service_classes:
   - BUSINESS_PROCESS
   - DOMAIN_STATE_SERVICE
@@ -58,7 +69,7 @@ apqc_mapping_states:
   - NOT_APPLICABLE
   - SECTOR_PROFILE_GAP
 
-required_fields:
+required_fields_for_new_or_materially_revised_entries:
   identity:
     - microservice_id
     - microservice_name
