@@ -1,8 +1,8 @@
 artifact:
   id: REG-ARCH-MICROSVC-001
   name: Enterprise Microservice Register
-  version: '0.2'
-  status: DRAFT
+  version: '0.3'
+  status: APPROVED_CONTROLLED_ADOPTION
   artifact_class: ARCHITECTURE_REGISTER
   owner_skill: SKL-GH-MICROSVC-ARCH-001
   engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
@@ -17,11 +17,20 @@ canonical_handover_rule: >-
   architecture and SHALL return material design defects to the Microservice Architect.
 
 process_decomposition_rule: >-
-  The Service Domain defines the candidate microservice boundary. APQC Process Classification
-  Framework mappings refine and validate the business-process scope below that boundary. Where
-  APQC is applicable, sector-specific L3, L4 and L5 process elements SHALL be traced before
-  engineering handover. An APQC process element SHALL NOT automatically become a separate
-  deployable microservice.
+  APQC is the primary process spine. For business microservices, APQC Level 3 is the default
+  candidate boundary, Level 4 is the default candidate service-operation layer, and Level 5 is
+  the default candidate executable task/workflow layer. The Level 3 candidate SHALL pass a
+  bounded-context test covering outcome cohesion, state ownership, accountability, coupling,
+  security, failure isolation, scaling, lifecycle, and independent deployment. A failed candidate
+  MAY be merged with adjacent Level 3 processes or decomposed to Level 4/5 with recorded rationale.
+  Service Domains and external frameworks provide semantic, information-model, API, and domain
+  crosswalks and SHALL NOT automatically override the APQC process spine.
+
+service_classes:
+  - BUSINESS_PROCESS
+  - DOMAIN_STATE_SERVICE
+  - INTEGRATION_GATEWAY
+  - PLATFORM_SERVICE
 
 lifecycle_states:
   - IDENTIFIED
@@ -53,9 +62,18 @@ required_fields:
   identity:
     - microservice_id
     - microservice_name
+    - service_class
     - value_stream_id
     - value_stream_name
     - lifecycle_state
+  process_spine:
+    - apqc_mapping_status
+    - apqc_profile
+    - apqc_profile_version
+    - apqc_level_3
+    - apqc_level_4
+    - apqc_level_5
+    - apqc_mapping_basis
   architecture:
     - service_domain_name
     - reference_standard
@@ -65,14 +83,6 @@ required_fields:
     - canonical_business_object
     - service_owner
     - architecture_owner_skill
-  process_traceability:
-    - apqc_mapping_status
-    - apqc_profile
-    - apqc_profile_version
-    - apqc_level_3
-    - apqc_level_4
-    - apqc_level_5
-    - apqc_mapping_basis
   contract_handover:
     - service_specification_id
     - service_specification_status
@@ -105,11 +115,13 @@ required_fields:
 architecture_completeness_gate:
   mandatory_before_engineering:
     - value_stream_id_resolved
+    - service_class_resolved
+    - apqc_applicability_resolved
+    - applicable_apqc_l3_l4_l5_mapping_resolved_or_exception_approved
+    - bounded_context_test_passed
     - service_boundary_resolved
     - canonical_business_object_resolved
     - reference_source_resolved
-    - apqc_applicability_resolved
-    - applicable_apqc_l3_l4_l5_mapping_resolved
     - approved_service_specification_exists
     - key_operations_resolved
     - data_ownership_resolved
@@ -121,10 +133,18 @@ apqc_profile_rules:
   - Prefer the most applicable current APQC industry-specific PCF when an industry profile exists.
   - Use the cross-industry PCF to close common-process gaps and to provide an enterprise comparison baseline.
   - Preserve the APQC process ID, title, level, profile name, and profile version for each mapping.
-  - L3-L5 mappings are process-decomposition evidence and SHALL NOT by themselves create microservice boundaries.
+  - APQC Level 3 is the default candidate business microservice boundary; it is not an automatic deployable boundary.
+  - APQC Level 4 normally maps to candidate service operations and Level 5 normally maps to executable tasks/workflow steps.
+  - Domain-state, integration-gateway, and platform services may use exception classes but SHALL retain APQC linkage to the business processes they enable.
   - When more than one APQC sector profile is applicable, record the primary profile and any secondary profiles with mapping rationale.
   - When no suitable APQC industry-specific profile exists, mark SECTOR_PROFILE_GAP and use the cross-industry PCF only where the mapping is supportable.
   - Proposed APQC mappings require CHECK/STUDY before they can be marked VERIFIED.
+
+semantic_reference_rules:
+  - BIAN and TM Forum may provide service-domain, information-model, and API semantics crosswalked to the APQC spine.
+  - MIMOSA remains applicable to asset-lifecycle information semantics where adopted.
+  - GMG remains applicable to surface-mining domain semantics where adopted.
+  - No external semantic framework SHALL silently replace the approved APQC process spine.
 
 provenance_rules:
   - External reference facts SHALL retain source standard, version, source ID, and provenance.
