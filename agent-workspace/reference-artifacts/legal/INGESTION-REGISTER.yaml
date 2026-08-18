@@ -1,0 +1,93 @@
+register_id: REG-LEGAL-REF-INGEST-001
+version: 0.1
+status: DO_COMPLETE_CHECK_PENDING
+as_of: 2026-08-18
+purpose: >-
+  Controlled ingestion register for external and internal artifacts used to support
+  Agreement clause codification, LegalRuleML validation, template engineering, and evidence.
+sourcing_rule: ADOPT -> ADAPT -> BUILD
+controls:
+  - Preserve authoritative source provenance.
+  - Do not treat external template wording as South African legal authority.
+  - Do not copy source artifacts unless licence or IPR terms permit reuse.
+  - Use immutable Git blob SHA or equivalent source version identifier.
+  - External artifacts support CAT-SA-AGR-PREC-001 and REG-AGR-TPL-001; they do not replace them.
+artifacts:
+  - artifact_id: REF-OASIS-LRML-001
+    source_repository: oasis-tcs/legalruleml
+    source_path: usecases/usecase1.md
+    source_blob_sha: 64827945a046fc23a74199590c1c0262d4e842b2
+    authority: OASIS LegalRuleML Technical Committee
+    role: LegalRuleML use-case and modelling reference
+    treatment: ADOPT_REFERENCE
+    licence_status: OASIS_IPR_CONTROLLED
+    copy_status: REFERENCE_ONLY
+  - artifact_id: REF-OASIS-LRML-LIC-001
+    source_repository: oasis-tcs/legalruleml
+    source_path: LICENSE.md
+    source_blob_sha: 002fc7719946b3aa8dc5103a5328e712ef67e856
+    authority: OASIS
+    role: IPR and reuse control
+    treatment: ADOPT_CONTROL
+    licence_status: RF_ON_LIMITED_TERMS_MODE
+    copy_status: REFERENCE_ONLY
+  - artifact_id: REF-ACCORD-CICERO-001
+    source_repository: accordproject/cicero-template-library
+    source_path: README.md
+    source_blob_sha: 1febe5faf8edf2ef2631c0a696314b3835c30f58
+    authority: Accord Project / Linux Foundation
+    role: Smart legal contract template architecture and test model
+    treatment: ADAPT
+    licence_status: APACHE-2.0_SOURCE
+    copy_status: SELECTIVE_REUSE_ALLOWED_SUBJECT_TO_LICENCE
+  - artifact_id: REF-ACCORD-CLAUSE-001
+    source_repository: accordproject/cicero-template-library
+    source_path: src/acceptance-of-delivery/package.json
+    source_blob_sha: df42eb0ea64b5be3c47e8184b655714202af34d2
+    authority: Accord Project
+    role: Representative clause package metadata and executable-template pattern
+    treatment: ADAPT_SAMPLE
+    licence_status: APACHE-2.0
+    copy_status: SELECTIVE_REUSE_ALLOWED_SUBJECT_TO_LICENCE
+  - artifact_id: REF-ACCORD-LIC-001
+    source_repository: accordproject/cicero-template-library
+    source_path: LICENSE
+    source_blob_sha: 8dada3edaf50dbc082c9a125058f25def75e625a
+    authority: Accord Project
+    role: Licence control
+    treatment: ADOPT_CONTROL
+    licence_status: APACHE-2.0
+    copy_status: REFERENCE_ONLY
+  - artifact_id: REF-KNG-SCHEMA-EVIDENCE-001
+    source_repository: DondaMngomezulu/kongoniapp1-runtime
+    source_path: agent-workspace/schemas/evidence.schema.json
+    source_blob_sha: 8c3eef5b0bdeb05695740da0c54ca62afb40dd3e
+    authority: Kongoni Group
+    role: Evidence schema
+    treatment: ADOPT_REUSE
+    licence_status: INTERNAL_GOVERNED
+  - artifact_id: REF-KNG-SCHEMA-WORK-001
+    source_repository: DondaMngomezulu/kongoniapp1-runtime
+    source_path: agent-workspace/schemas/work-item.schema.json
+    source_blob_sha: 85adcbe1638d8b20af98b5ff4c9be47258ca0b8c
+    authority: Kongoni Group
+    role: Work item schema
+    treatment: ADOPT_REUSE
+    licence_status: INTERNAL_GOVERNED
+  - artifact_id: REF-KNG-SCHEMA-CHANGE-001
+    source_repository: DondaMngomezulu/kongoniapp1-runtime
+    source_path: agent-workspace/schemas/change-log.schema.json
+    source_blob_sha: 080250d518b021670c06184070a1594857227cbc
+    authority: Kongoni Group
+    role: Change record schema
+    treatment: ADOPT_REUSE
+    licence_status: INTERNAL_GOVERNED
+  - artifact_id: REF-KNG-SCHEMA-HANDOFF-001
+    source_repository: DondaMngomezulu/kongoniapp1-runtime
+    source_path: agent-workspace/schemas/handoff.schema.json
+    source_blob_sha: 70587d3599b886bdbd9889dcb69278934b94ecb3
+    authority: Kongoni Group
+    role: Handoff schema
+    treatment: ADOPT_REUSE
+    licence_status: INTERNAL_GOVERNED
+next_gate: Crosswalk each artifact to the Agreement codification process and run overlap, licence, provenance, and implementation-fit tests.
