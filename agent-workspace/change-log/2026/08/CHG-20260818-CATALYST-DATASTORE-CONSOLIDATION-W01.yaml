@@ -13,14 +13,14 @@ affected_paths:
   - agent-workspace/architecture/ASMT-CAT-DATASTORE-001/wave-01-consolidation.yaml
 environment: Development
 authority:
-  status: AUTHORISED
-  reference: 'Group CEO instruction in active ChatGPT conversation.'
+  status: ADOPTED
+  reference: 'Group CEO explicit ACT decision ADOPT in active ChatGPT conversation on 2026-08-18.'
 pdca:
-  phase: CHECK_STUDY
+  phase: ACT
   do_complete: true
   check_study_result: PASS_WAVE_01
-  act_decision: null
-  task_complete: false
+  act_decision: ADOPT
+  task_complete: true
 evidence:
   - 'MCP_Tools had zero business columns and zero rows immediately before deletion.'
   - 'MCP_Tools was deleted from Catalyst Development and absence confirmed by List All Tables read-back.'
@@ -30,4 +30,12 @@ evidence:
   - 'StandardDiscoverySource, StandardDiscoveryCandidate and StandardDiscoveryAssertion were retained as a healthy normalized relational submodel.'
   - 'Wave 1 retired two empty tables and deleted zero business rows.'
   - 'LeasingFacility table 86824000000413021 was successfully created after consolidation, proving Data Store schema capacity was recovered.'
-notes: 'CHECK/STUDY is complete for Wave 1. ACT remains pending explicit Group CEO decision. No accounting, EDRMS core, populated transactional, or Production tables were modified by consolidation. Further consolidation remains open. DO_COMPLETE != TASK_COMPLETE.'
+act_record:
+  decision: ADOPT
+  decision_authority: Group CEO
+  decision_date: '2026-08-18'
+  effect:
+    - 'Wave 1 consolidation outcome is adopted.'
+    - 'STD-CAT-REL-SCHEMA-001 is adopted as the mandatory relational-schema control for subsequent Catalyst consolidation work.'
+    - 'Wave 2 may proceed under the adopted control.'
+notes: 'Wave 1 is closed following verified CHECK/STUDY and explicit ACT=ADOPT. The overall Catalyst consolidation programme remains OPEN and proceeds to Wave 2. No accounting, EDRMS core, populated transactional, or Production tables were modified by Wave 1 consolidation.'
