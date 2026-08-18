@@ -1,0 +1,112 @@
+control_id: CTL-GOV-CEO-APPROVAL-001
+version: 1.0
+status: adopted
+name: Group CEO Approval Gate for Governed Messages and Objects
+owner: Group CEO
+approver: Donda Khumalo
+execution_governance_owner: Reandra - Chief of Accountability
+document_control_owner: Jane Seaward - Document Controller
+effective_date: 2026-08-18
+methodology: MET-PDCA-001
+business_rule: BR-PDCA-001
+
+purpose: >-
+  Prevent any governed message template or governed business object from becoming
+  approved, active, published, production-usable, or authoritative without explicit
+  approval by the Group CEO.
+
+scope:
+  governed_message_templates: true
+  governed_business_objects: true
+  governed_catalogues: true
+  governed_registers: true
+  governed_schemas: true
+  governed_portal_objects: true
+  governed_customer_facing_templates: true
+
+approval_authority:
+  role: Group CEO
+  named_approver: Donda Khumalo
+  delegation_allowed: false
+  approval_must_be_explicit: true
+  permitted_decisions:
+    - ADOPT
+    - ADAPT
+    - REPEAT
+    - REJECT
+    - ESCALATE
+
+state_model:
+  pre_approval_states:
+    - DRAFT
+    - PROPOSED
+    - UNDER_REVIEW
+    - AWAITING_CEO_APPROVAL
+  protected_states:
+    - APPROVED
+    - ACTIVE
+    - PUBLISHED
+    - PRODUCTION
+    - AUTHORITATIVE
+  transition_rule: >-
+    Any transition from a pre-approval state into a protected state SHALL fail closed
+    unless a valid CEO approval evidence record is present.
+
+approval_evidence_required:
+  fields:
+    - object_or_template_id
+    - object_or_template_version
+    - object_class
+    - decision
+    - approver_role
+    - approver_identity
+    - approval_timestamp
+    - approval_source_reference
+    - pdca_cycle_reference
+    - evidence_reference
+  approver_role_value: Group CEO
+  approver_identity_value: Donda Khumalo
+
+runtime_enforcement:
+  mode: fail_closed
+  checks:
+    - validate_governed_status
+    - validate_current_version
+    - validate_explicit_ceo_approval
+    - validate_approval_matches_object_id_and_version
+    - validate_pdca_evidence
+    - block_default_vendor_templates_when_not_governed
+  on_failure:
+    state: AWAITING_CEO_APPROVAL
+    publish: false
+    activate: false
+    production_use: false
+    send_customer_message: false
+    error_code: CEO_APPROVAL_REQUIRED
+
+message_specific_rules:
+  governed_template_required: true
+  default_vendor_template_use: prohibited_unless_explicitly_approved
+  customer_facing_send_gate: CEO approval must exist for the exact template version
+  template_change_invalidates_prior_approval: true
+
+object_specific_rules:
+  governed_object_required: true
+  schema_or_semantic_change_invalidates_prior_approval: true
+  production_activation_gate: CEO approval must exist for the exact object version
+  authoritative_record_promotion_gate: CEO approval must exist for the exact object version
+
+inheritance:
+  applies_to_all_agents: true
+  applies_to_all_skills: true
+  applies_to_all_workflows: true
+  applies_to_all_value_streams: true
+  applies_to_zoho_crm: true
+  applies_to_zoho_catalyst: true
+  applies_to_customer_portal: true
+  applies_to_github_engineering_pipeline: true
+
+pdca_closure_rule: >-
+  DO_COMPLETE does not equal TASK_COMPLETE. For T2/T3 changes, the work item remains
+  open until CHECK/STUDY evidence exists, the Group CEO has issued an ACT decision,
+  and authoritative records have been updated.
