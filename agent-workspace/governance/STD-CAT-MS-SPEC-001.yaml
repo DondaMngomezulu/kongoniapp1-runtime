@@ -1,0 +1,49 @@
+standard_id: STD-CAT-MS-SPEC-001
+version: "0.2"
+status: ADOPTED_BASELINE
+purpose: Govern Zoho Catalyst microservice specification and decomposition.
+spine:
+  framework: APQC
+  rule: APQC Level 3 is the default candidate business microservice boundary.
+  hierarchy:
+    - value_stream
+    - apqc_level_2
+    - apqc_level_3_candidate_microservice
+    - apqc_level_4_service_operation
+    - apqc_level_5_executable_task
+boundary_controls:
+  - bounded_business_outcome
+  - authoritative_state_owner
+  - coherent_rules
+  - accountable_owner
+  - low_coupling
+  - independent_versioning
+  - independent_deployment
+  - measurable_outcome
+exceptions:
+  - domain_state_service
+  - integration_gateway
+  - platform_service
+crosswalks:
+  tm_forum: semantic_domain_and_api_contract
+  zoho_crm: customer_and_commercial_transaction_binding
+  zoho_books: accounting_and_committed_financial_transaction_binding
+  zoho_workdrive: governed_document_content_binding
+  zoho_catalyst: execution_orchestration_semantic_identity_and_integration
+required_sections:
+  - identity_and_ownership
+  - bounded_context
+  - data_sovereignty
+  - service_operations
+  - interface_contracts
+  - catalyst_runtime_and_deployment
+  - dependencies_and_integration
+  - security_and_resilience
+  - observability_and_operations
+  - verification_and_release
+canonical_rules:
+  - one_authoritative_owner_per_state_dimension
+  - projections_must_not_become_competing_masters
+  - cross_service_state_change_via_governed_api_command_or_event
+  - api_is_not_microservice
+  - do_complete_is_not_task_complete
