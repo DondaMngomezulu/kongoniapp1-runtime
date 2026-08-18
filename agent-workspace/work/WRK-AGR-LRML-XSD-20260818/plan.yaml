@@ -1,0 +1,16 @@
+work_id: WRK-AGR-LRML-XSD-20260818
+method: MET-PDCA-001
+control: AGR-XWALK-010
+plan:
+  - "Use the official OASIS LegalRuleML 1.0 compact XSD as the conformance source; do not create a Kongoni substitute schema."
+  - "Identify the current governed LegalRuleML source artifacts and preserve their SHA-256 provenance."
+  - "Ingest current LegalRuleML engineering sources into agent-workspace/legalruleml before claiming schema conformance."
+  - "Run the reusable GitHub CI validator against all governed .xml and .lrml targets."
+  - "Record every XSD error by artifact and line; adapt serialization only where required by the official schema."
+  - "Repeat validation after remediation and perform CHECK/STUDY before ACT."
+acceptance_criteria:
+  - "Current governed LegalRuleML source artifacts are present in the GitHub engineering tree with provenance hashes."
+  - "Every active target is XML well formed."
+  - "Every active target validates against the official OASIS compact XSD dependency graph."
+  - "CI evidence is recorded and repeatable."
+  - "No Agreement Template is promoted by technical XSD conformance alone."
