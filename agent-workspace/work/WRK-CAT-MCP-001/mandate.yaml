@@ -1,0 +1,34 @@
+work_id: WRK-CAT-MCP-001
+title: Deploy and validate Kongoni MCP Execution Gateway
+task_class: T2
+status: AUTHORISED
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+environment:
+  platform: ZOHO_CATALYST
+  project: Kongoniapp1
+  project_id: "86824000000020001"
+  environment: Development
+assigned_to: Claude
+coordinators:
+  - ChatGPT
+  - Claude
+execution_agent_urn: urn:kongoni:agent:catalyst-platform-delivery
+required_controls:
+  - MET-PDCA-001
+  - Rule-14
+  - CTL-AGT-CONTRACT-001
+  - CTL-AGT-TOOL-001
+  - CTL-ENV-EXEC-001
+  - CTL-SE-GATE-001
+approval_ref: "Group CEO instruction: Implement / continue MCP gateway deployment — 2026-08-18"
+pdca:
+  stage: DO
+  do_complete: false
+  task_complete: false
+  act_decision: null
+next_action:
+  assigned_to: Claude
+  instruction_file: instruction.md
