@@ -1,16 +1,17 @@
 standard_id: STD-CAT-MS-SPEC-001
-version: "0.3"
-status: REPEAT_VALIDATED_CANDIDATE
+version: "0.4"
+status: RECONCILED_CANDIDATE
 purpose: Govern Zoho Catalyst microservice specification and decomposition.
 spine:
   framework: APQC
-  rule: APQC Level 3 is the default candidate business microservice boundary.
+  rule: A governed Service Domain is the default candidate microservice boundary. APQC remains the process spine and SHALL be used to decompose, assure and trace the Service Domain.
   hierarchy:
     - value_stream
-    - apqc_level_2
-    - apqc_level_3_candidate_microservice
-    - apqc_level_4_service_operation
-    - apqc_level_5_executable_task
+    - service_domain_candidate_microservice
+    - apqc_level_3_process_scope_assurance
+    - apqc_level_4_operation_group_candidate
+    - apqc_level_5_executable_task_or_workflow_step
+    - service_operation
   semantic_authority_rule: APQC is the process spine and SHALL NOT displace approved sector or domain semantic authorities.
   domain_authority_examples:
     VS04: MIMOSA may remain primary asset-lifecycle semantic/interoperability authority.
@@ -24,6 +25,8 @@ boundary_controls:
   - independent_versioning
   - independent_deployment
   - measurable_outcome
+  - apqc_l3_l5_traceability_where_applicable
+boundary_exception_rule: APQC L3, L4 or L5 SHALL NOT become an independent deployable microservice solely because of hierarchy level. A separate microservice requires an independent architecture reason such as ownership, scaling, security, failure isolation, data sovereignty or deployment autonomy.
 exceptions:
   - domain_state_service
   - integration_gateway
@@ -32,10 +35,12 @@ crosswalks:
   tm_forum: semantic_domain_and_api_contract
   zoho_crm: customer_and_commercial_transaction_binding
   zoho_books: accounting_and_committed_financial_transaction_binding
-  zoho_workdrive: target_governed_document_content_binding_subject_to_repository_authority_migration
-  zoho_catalyst: execution_orchestration_semantic_identity_and_integration
+  zoho_workdrive: governed_document_content_binding_for_designated_classes_subject_to_repository_authority_control
+  zoho_catalyst: execution_orchestration_semantic_identity_integration_and_runtime
 required_sections:
   - identity_and_ownership
+  - service_domain_and_reference_authority
+  - apqc_l3_l4_l5_traceability
   - bounded_context
   - data_sovereignty
   - service_operations
@@ -45,14 +50,26 @@ required_sections:
   - security_and_resilience
   - observability_and_operations
   - verification_and_release
+  - engineering_handover
 canonical_rules:
   - one_authoritative_owner_per_state_dimension
   - projections_must_not_become_competing_masters
   - cross_service_state_change_via_governed_api_command_or_event
   - api_is_not_microservice
+  - service_domain_is_candidate_microservice_boundary
+  - apqc_is_process_spine_not_automatic_deployment_boundary
   - do_complete_is_not_task_complete
   - repository_authority_changes_require_controlled_migration_and_authoritative_record_update
+authority_alignment:
+  architecture_source_of_truth: GitHub
+  runtime_and_structured_execution_authority: Zoho Catalyst
+  external_sources: reference_or_provenance_until_governed_ingestion_and_adoption
+references:
+  microservice_register: REG-ARCH-MICROSVC-001
+  apqc_mapping_policy: POL-ARCH-MICROSVC-APQC-001
+  architect_skill: SKL-GH-MICROSVC-ARCH-001
+  engineer_skill: SKL-CAT-MICROSVC-ENG-001
 validation_basis:
   catalyst_architecture_id: KEA-MOD-HS-001
   catalyst_architecture_state: ACTIVE_G2_BASELINE_CANDIDATE
-  catalyst_architecture_pdca: CHECK_STUDY_INCOMPLETE
+  reconciliation_state: CHECK_STUDY
