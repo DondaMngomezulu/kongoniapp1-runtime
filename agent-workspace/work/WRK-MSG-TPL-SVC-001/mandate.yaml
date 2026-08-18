@@ -1,7 +1,7 @@
 work_id: WRK-MSG-TPL-SVC-001
 title: Integrate governed message template resolution as Kongoniapp1 microservice
 task_class: T2
-status: DO_IN_PROGRESS
+status: DO_BLOCKED_FIRST_APPSAIL_DEPLOYMENT
 methodology: MET-PDCA-001
 owner: Group CEO
 assigned_to: SKL-CAT-MICROSVC-ENG-001
@@ -42,7 +42,15 @@ prohibited_scope:
   - render or send enterprise communications from this resolver
   - create a parallel physical template register
   - bypass failed CI or merge controls
+evidence:
+  - Draft PR #12 contains the service specification, AppSail source, logical register and Catalyst project wiring.
+  - Resolver deterministic regression tests PASS 6/6.
+  - Agent Workspace Validation run 32173573483 PASS.
+  - KongoniApp Change Log Control run 32173573406 PASS.
+  - Development canary MSGIMPL-CHATGPT-INF-001-V1 exists in TemplateGovernanceRegister at ROWID 86824000000415008.
+  - Catalyst Development List All AppSail read-back on 2026-08-18 returned an empty list; first AppSail deployment remains outstanding.
 next_action:
-  assigned_to: SKL-CAT-MICROSVC-ENG-001
+  assigned_to: Catalyst deployment specialist
   instruction_file: agent-workspace/architecture/REG-ARCH-MICROSVC-001/service-specifications/SRV-VS00-MSG-TPL-001.yaml
+  instruction: Deploy kongoni_message_template_governance to Kongoniapp1 Development from PR #12, then execute health and canary resolution read-back before CHECK/STUDY and ACT.
 closure_rule: DO_COMPLETE != TASK_COMPLETE
