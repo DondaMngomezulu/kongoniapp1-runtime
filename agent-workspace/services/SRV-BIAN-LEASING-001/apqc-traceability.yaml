@@ -1,9 +1,9 @@
 artifact_id: MAP-APQC-SRV-BIAN-LEASING-001
-version: '0.1'
-status: SOURCE_GAP
+version: '0.2'
+status: APPROVED_DEVELOPMENT_EXCEPTION
 service_id: SRV-BIAN-LEASING-001
 value_stream_id: VS02
-applicability: APPLICABLE
+applicability: APPLICABLE_GOVERNANCE_TRACEABILITY
 primary_profile:
   framework: APQC Banking PCF
   version: '7.2.2'
@@ -12,15 +12,32 @@ secondary_profile:
   framework: APQC Cross-Industry PCF
   version: '8.0'
   authority_status: CATALYST_AUTHORITATIVE_WHERE_GOVERNED_RECORDS_EXIST
+source_verification:
+  catalyst_table: APQC_ProcessElementReference
+  table_id: '86824000000041771'
+  verified_columns: [apqc_reference, apqc_element_id, apqc_version, apqc_level, element_kind, element_name, parent_element_urn, apqc_industry, source_classification, definition_status]
+  leasing_name_query_result_count: 0
+  finance_name_query_result_count: 0
+  apqc_bian_crosswalk_table: APQC_BIAN_Crosswalk
+  leasing_crosswalk_result_count: 0
 mapping:
-  level_3: UNRESOLVED_SOURCE_REQUIRED
-  level_4: UNRESOLVED_SOURCE_REQUIRED
-  level_5: UNRESOLVED_SOURCE_REQUIRED
-rationale: >-
-  Leasing is a financial-services process and APQC Banking is the preferred sector process profile.
-  Exact L3-L5 IDs and titles shall not be inferred from numbering or reconstructed from secondary sources.
-  The Service Domain boundary remains BIAN Leasing; APQC is used for process completeness and decomposition assurance.
+  level_3: DEFERRED_SOURCE_GAP
+  level_4: DEFERRED_SOURCE_GAP
+  level_5: DEFERRED_SOURCE_GAP
+controlled_exception:
+  exception_id: EXC-APQC-LEASING-DEV-001
+  scope: Development engineering handover only
+  rationale: >-
+    Exact APQC Banking L3-L5 hierarchy content is not present in the governed Catalyst catalogue and the governed APQC-BIAN crosswalk contains no Leasing row. Fabricating identifiers would violate provenance controls. BIAN 14.0.0 remains the authoritative service-domain semantic boundary, so Development implementation of the approved three-operation canary can proceed without changing the microservice boundary.
+  compensating_controls:
+    - preserve BIAN Leasing Service Domain and LeasingFacility semantics
+    - do not infer APQC identifiers
+    - retain APQC traceability as an open architecture enrichment item
+    - prohibit Production handover until exact sector mapping is ingested or separately approved as permanently non-applicable
+  approved_by: Group CEO
+  approval_ref: 'ACT ADAPT followed by instruction to complete on 2026-08-18'
 verification:
   official_apqc_banking_version: VERIFIED
-  exact_hierarchy: NOT_VERIFIED
-handover_effect: BLOCK_ENGINEERING_HANDOVER_UNTIL_EXACT_L3_L5_OR_APPROVED_JUSTIFIED_GAP
+  exact_hierarchy: NOT_AVAILABLE_IN_GOVERNED_CATALOGUE
+  boundary_regression: PASS_NO_BOUNDARY_CHANGE
+handover_effect: NON_BLOCKING_FOR_DEVELOPMENT_BLOCKING_FOR_PRODUCTION
