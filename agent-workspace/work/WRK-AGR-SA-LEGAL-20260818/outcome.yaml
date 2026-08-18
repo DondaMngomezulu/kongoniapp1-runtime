@@ -1,36 +1,42 @@
 work_id: WRK-AGR-SA-LEGAL-20260818
-pdca_stage: ACT
+pdca_stage: CLOSE_REPLAN
 check_study:
   result: PASS_ON_STATUTORY_CLAUSE_ARCHITECTURE_WITH_CONTROLLED_GAPS
   evidence_ref: EVD-AGR-SA-LEGAL-001
   findings:
     - "The three VALIDATING Agreement Templates have been mapped to South African statutory clause controls at section level."
-    - "NCA, Companies Act, ECTA, FIC, STT and Competition Act applicability controls are now separated and fail closed where transaction facts are missing."
-    - "The legal-source architecture is sufficient to proceed to transaction-level applicability and clause drafting."
+    - "NCA, Companies Act, ECTA, FIC, STT and Competition Act applicability controls are separated and fail closed where transaction facts are missing."
+    - "The legal-source architecture is sufficient to proceed to transaction-level applicability and operative clause drafting."
     - "Operative clause wording and collateral-specific common-law validation are not yet approved."
     - "No Agreement Template is transaction-ready."
-recommended_act:
+act:
   decision: ADAPT
+  authority: Group CEO
+  decision_date: "2026-08-18"
+  status: APPROVED
   rationale: >-
-    Preserve the statutory legal-source architecture and clause-source bindings, but adapt the next layer into a
-    transaction-specific Legal Applicability Profile and approved operative Clause Library. Use the Kiboko-Venduo
-    facility/share/security transaction as the controlled canary before any template promotion.
+    Preserve the validated statutory legal-source architecture and clause-source bindings, and adapt the next
+    layer into transaction-specific Legal Applicability Profiles plus an approved South African Operative Clause
+    Library. Use the Kiboko-Venduo facility/share/security transaction as the controlled canary before any template promotion.
 open_controls:
   - control_id: AGR-XWALK-011-A
     status: OPEN
-    action: "Create and validate a transaction Legal Applicability Profile for the Kiboko-Venduo canary."
+    action: "Create and validate a Transaction Legal Applicability Profile for the Kiboko-Venduo canary."
   - control_id: AGR-XWALK-011-B
     status: OPEN
-    action: "Create/approve South African operative clause wording with source and legal-review provenance."
+    action: "Create and approve South African operative clause wording with source and legal-review provenance."
   - control_id: AGR-XWALK-011-C
     status: OPEN
-    action: "Complete collateral-specific common-law security/perfection/enforcement validation."
+    action: "Complete collateral-specific common-law security, perfection and enforcement validation."
 record_state:
   statutory_architecture_validated: true
   clause_source_binding_created: true
   operative_clause_validation_complete: false
   transaction_instance_validation_complete: false
-  task_complete: false
+  task_complete: true
 transaction_use:
   agreement_templates_promoted: false
-  reason: "Operative clause and transaction-specific legal validation remain outstanding."
+  reason: "Downstream operative-clause, collateral and transaction-specific validation gates remain open."
+closure:
+  result: CONTROLLED_COMPLETE_WITH_ADAPTED_DOWNSTREAM_GATES
+  next_gate: AGR-XWALK-011-A
