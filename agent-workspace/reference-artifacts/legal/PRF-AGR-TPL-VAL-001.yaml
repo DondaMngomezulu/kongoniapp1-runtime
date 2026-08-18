@@ -1,6 +1,6 @@
 profile_id: PRF-AGR-TPL-VAL-001
-version: 0.1
-status: CHECK_STUDY
+version: 0.2
+status: ACT_PENDING
 as_of: 2026-08-18
 name: Agreement Template Validation Profile
 purpose: >-
@@ -11,6 +11,7 @@ authorities:
   execution_method: MET-PDCA-001
   clause_profile: PRF-AGR-CLAUSE-PKG-001
   normative_rule_reference: OASIS LegalRuleML
+  legalruleml_xsd_control: CTL-LEGALRULEML-XSD-001
   test_pattern_reference: Accord Project Cicero
   evidence_schema: agent-workspace/schemas/evidence.schema.json
 validation_gates:
@@ -34,7 +35,7 @@ validation_gates:
     requirement: Normative Clauses SHALL bind to governed LegalRuleML Rule IDs where applicable.
   - gate_id: ATV-007
     name: LegalRuleML schema conformance
-    requirement: Produced LegalRuleML SHALL pass the applicable OASIS XSD conformance test.
+    requirement: Produced LegalRuleML SHALL pass CTL-LEGALRULEML-XSD-001.
   - gate_id: ATV-008
     name: Render test
     requirement: Template SHALL render successfully from governed sample data.
@@ -69,5 +70,6 @@ check_study:
   accord_test_reuse: PASS
   legal_authority_separation: PASS
   evidence_fit: PASS
-  legalruleml_xsd_conformance: OPEN
-recommended_act: ADOPT_AFTER_XSD_CONTROL_DEFINED
+  legalruleml_xsd_control_defined: PASS
+  implementation_validation: PENDING_FIRST_TEMPLATE
+recommended_act: ADOPT
