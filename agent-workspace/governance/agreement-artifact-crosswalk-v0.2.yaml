@@ -50,10 +50,13 @@ act:
     - "New generic evidence framework."
     - "Use of Accord wording or technical tests as South African substantive legal authority."
 
-open_controls:
+controls:
   - control_id: AGR-XWALK-010
-    status: ACT_PENDING_AFTER_PASS_WITH_REMEDIATION
-    gate: "Official OASIS compact XSD conformance proven for 2/2 active LegalRuleML targets in GitHub Actions run 32174982874; Group CEO final ACT pending."
+    status: CLOSED_ADOPTED
+    gate: >-
+      Official OASIS LegalRuleML 1.0 compact-XSD conformance is proven for 2/2 active
+      governed LegalRuleML targets and the repeatable GitHub CI gate is adopted as the
+      mandatory technical conformance control for future LegalRuleML changes.
   - control_id: AGR-XWALK-011
     status: OPEN
     gate: "Complete substantive South African legal clause validation for the three VALIDATING Agreement Templates."
@@ -66,5 +69,6 @@ closure:
   crosswalk_pdca_complete: true
   act_recorded: true
   decision: ADAPT
+  xsd_conformance_gate_complete: true
   downstream_validation_complete: false
-  next_gate: "AGR-XWALK-010 final ACT, then AGR-XWALK-011"
+  next_gate: AGR-XWALK-011
