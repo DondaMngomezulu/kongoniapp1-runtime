@@ -1,0 +1,35 @@
+work_id: WRK-AGR-LEGAL-APPLICABILITY-20260818
+title: Kiboko-Venduo Transaction Legal Applicability Profile
+task_class: T2
+status: OPEN
+parent_control: AGR-XWALK-011
+control_id: AGR-XWALK-011-A
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+scope:
+  canary_transaction: Kiboko-Venduo facility/share/security transaction
+  agreement_templates:
+    - TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001
+    - TPL-VS02-SECURITY-AGREEMENT-001
+    - TPL-VS05-SHARE-PURCHASE-AGREEMENT-001
+required_inputs:
+  - party legal identities and capacities
+  - MOI and shareholder arrangements
+  - facility amount, borrower status and NCA classification facts
+  - FIC accountable-institution classification facts
+  - collateral type, ownership, location and perfection facts
+  - share class, target company status and securities-register facts
+  - merger-control turnover/asset facts
+  - STT facts and exemption analysis
+  - board/shareholder/signing approvals
+approval_ref: "Group CEO ACT=ADAPT for AGR-XWALK-011 — 2026-08-18"
+pdca:
+  stage: PLAN
+  do_complete: false
+  task_complete: false
+  act_decision: null
+next_action:
+  assigned_to: ChatGPT
+  instruction: "Bind the canary transaction facts to the adopted South African statutory applicability controls and fail closed on missing evidence."
