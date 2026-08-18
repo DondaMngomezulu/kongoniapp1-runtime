@@ -6,16 +6,17 @@ actor:
 mandate_ref: 'Group CEO authorised Catalyst Data Store consolidation and required assurance of a governed relational enterprise schema on 2026-08-18.'
 task_class: T2
 change_type: governance
-summary: Execute Wave 1 Catalyst Data Store schema rationalisation and codify the relational enterprise schema guardrail.
-reason: Recover constrained Data Store table capacity without loss of governed business data or degradation of relational integrity.
+summary: Execute Wave 1 Catalyst Data Store schema rationalisation, codify the relational enterprise schema guardrail, and remediate the pre-existing workspace validation defect required to close the governance gate.
+reason: Recover constrained Data Store table capacity without loss of governed business data or degradation of relational integrity, and restore repository validation integrity.
 affected_paths:
   - agent-workspace/architecture/STD-CAT-REL-SCHEMA-001.yaml
   - agent-workspace/architecture/ASMT-CAT-DATASTORE-001/wave-01-consolidation.yaml
   - agent-workspace/architecture/audits/ASMT-CAT-DATASTORE-001.yaml
+  - agent-workspace/work/WRK-ZCRM-BP-001/mandate.yaml
 environment: development
 authority:
   status: AUTHORISED
-  reference: 'Group CEO explicit ACT decision ADOPT in active ChatGPT conversation on 2026-08-18.'
+  reference: 'Group CEO explicit ACT decision ADOPT for Wave 1 and subsequent authorisation to remediate WRK-ZCRM-BP-001 in active ChatGPT conversation on 2026-08-18.'
 pdca:
   phase: ACT
   do_complete: true
@@ -31,4 +32,5 @@ evidence:
   - 'StandardDiscoverySource, StandardDiscoveryCandidate and StandardDiscoveryAssertion were retained as a healthy normalized relational submodel.'
   - 'Wave 1 retired two empty tables and deleted zero business rows.'
   - 'LeasingFacility table 86824000000413021 was successfully created after consolidation, proving Data Store schema capacity was recovered.'
+  - 'WRK-ZCRM-BP-001 was normalised to the current Agent Work Item schema by adding architecture, environment, PDCA and assigned_to fields while preserving its mandate and authorised scope.'
 notes: 'Wave 1 is closed following verified CHECK/STUDY and explicit ACT=ADOPT. STD-CAT-REL-SCHEMA-001 is adopted as the mandatory relational-schema control for subsequent Catalyst consolidation. The overall programme remains OPEN and proceeds to Wave 2. No accounting, EDRMS core, populated transactional, or Production tables were modified by Wave 1 consolidation.'
