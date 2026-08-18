@@ -1,5 +1,5 @@
 work_id: WRK-AGR-OPERATIVE-CLAUSE-20260818
-pdca_stage: ACT
+pdca_stage: CLOSE_OR_REPLAN
 check_study:
   result: PASS_LIBRARY_ARCHITECTURE_ZERO_APPROVED_CLAUSES
   findings:
@@ -9,11 +9,13 @@ check_study:
     - "No operative clause wording is present or approved."
     - "No market precedent is treated as South African legal authority."
     - "Template promotion remains prohibited until clause-specific substantive legal review and Group CEO ACT are recorded."
-recommended_act:
+act:
   decision: ADOPT
-  rationale: >-
-    Adopt the clause-library governance structure and approval rule as the mandatory control for future South African operative
-    agreement clauses. This ACT must not approve any seeded clause wording because operative_text is null for all current entries.
+  authority: Group CEO
+  decision_date: "2026-08-18"
+  status: APPROVED
+  scope: "Library governance and approval-control architecture only."
+  explicit_exclusion: "No operative clause text, agreement, transaction, or template is approved by this ACT."
 open_controls:
   - control_id: AGR-XWALK-011-B-LEGAL-REVIEW
     status: OPEN
@@ -26,7 +28,11 @@ open_controls:
     action: "Complete collateral-specific security validation for share pledge and other collateral classes."
 record_state:
   library_schema_created: true
+  library_control_adopted: true
   seeded_clause_requirements: 6
   approved_operative_clauses: 0
   template_promotion_allowed: false
-  task_complete: false
+  task_complete: true
+transaction_use:
+  authorised: false
+  reason: "Zero operative clauses are approved and transaction evidence/security gates remain open."
