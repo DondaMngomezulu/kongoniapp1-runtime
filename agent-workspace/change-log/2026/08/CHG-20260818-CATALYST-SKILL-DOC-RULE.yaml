@@ -1,0 +1,27 @@
+change_id: CHG-20260818-CATALYST-SKILL-DOC-RULE
+timestamp_utc: '2026-08-18T17:12:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'Group CEO approved adding an explicit Zoho Catalyst documentation-loading rule to SKL-CAT-MICROSVC-ENG-001.'
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Require microservice engineering agents to load the relevant official Catalyst engineering reference before design, code, configuration, test, or deployment work.
+reason: Prevent implementation from relying on stale or assumed Catalyst platform behaviour.
+affected_paths:
+  - agent-workspace/skills/SKL-CAT-MICROSVC-ENG-001/SKILL.md
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO approval in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: null
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Explicit approval received.'
+notes: 'This change is included on the open Leasing service specification branch so it can pass the existing repository change-log gate before merge.'
