@@ -1,0 +1,72 @@
+{
+  "work_id": "WRK-CAT-MCP-001",
+  "evidence_id": "EVD-WRK-CAT-MCP-001-001",
+  "evidence_type": "CONFORMANCE",
+  "created_by": "Claude (coordinator class CLAUDE; NOT the execution custodian)",
+  "created_at": "2026-08-18T11:30:23Z",
+  "source": "Zoho Catalyst MCP read-only queries against Kongoniapp1 Development (ZCQL)",
+  "result": "PASS",
+  "artifact_hash": "e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526",
+  "external_ref": "Rule-14 architecture preflight",
+  "details": {
+    "control_CTL_SE_GATE_001_rule14": {
+      "result": "PASS",
+      "architecture_id": "KEA-MOD-HS-001",
+      "artifact_version": "0.1",
+      "catalyst_rowid": "86824000000409703",
+      "content_hash_in_catalyst": "e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526",
+      "content_hash_in_mandate": "e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526",
+      "hash_match": true,
+      "active_flag": true,
+      "lifecycle_status": "ACTIVE_G2_BASELINE_CANDIDATE",
+      "approval_status": "PROPOSED",
+      "note": "Hash matches the mandate exactly. approval_status is PROPOSED, not APPROVED; lifecycle is baseline-candidate. Flagged for CHECK/STUDY."
+    },
+    "control_CTL_ENV_EXEC_001": {
+      "result": "FAIL_FOR_THIS_ACTOR",
+      "authority_id": "ENV-AUTH-CAT-KONGONIAPP1-DEV",
+      "catalyst_rowid": "86824000000105331",
+      "active_flag": true,
+      "enforcement_status": "POLICY_ACTIVE_CUSTODIAN_AUTHORIZED",
+      "custodian_agent_urn": "urn:kongoni:agent:catalyst-platform-delivery",
+      "custodian_registration_status": "AGENT_ACTIVE_CONTRACT_APPROVED",
+      "credential_binding_mode": "CUSTODIAN_AGENT_WORKLOAD_IDENTITY",
+      "coordinator_direct_mutation_allowed": false,
+      "mcp_gateway_required": true,
+      "architecture_preflight_required": true,
+      "note": "Authority is valid and active. It does not authorise mutation by a coordinator identity."
+    },
+    "control_CTL_AGT_CONTRACT_001": {
+      "result": "PASS_FOR_CUSTODIAN_BLOCKS_COORDINATOR",
+      "contract_urn": "urn:kongoni:agent-contract:catalyst-platform-delivery:1.0",
+      "catalyst_rowid": "86824000000105439",
+      "contract_hash": "94902d78d81ddef8b3f8efd2a981120f68a01cfce526edc04229b4e3f70c79fa",
+      "approval_state": "APPROVED",
+      "lifecycle_state": "ACTIVE",
+      "decision_rights": "EXECUTE_APPROVED_PLATFORM_CHANGES_ONLY",
+      "prohibited_actions_engaged": [
+        "treat OpenAI, Claude or another coordinator as execution authority",
+        "use coordinator-owned privileged mutation credentials"
+      ],
+      "note": "Contract names catalyst-platform-delivery as the SOLE governed execution identity. Claude is a coordinator and does not inherit execution authority."
+    },
+    "control_CTL_AGT_TOOL_001": {
+      "result": "GATEWAY_REQUIRED_CONFIRMED",
+      "capabilities_engaged": [
+        {"rowid": "86824000000390463", "server": "Zoho_Catalyst", "group": "Catalyst - data store tables and rows", "enforcement_mode": "GATEWAY_REQUIRED", "approved_for_use": true},
+        {"rowid": "86824000000390464", "server": "Zoho_Catalyst", "group": "Catalyst - functions, circuits, cron and job execution", "enforcement_mode": "GATEWAY_REQUIRED", "approved_for_use": true},
+        {"rowid": "86824000000390466", "server": "Zoho_Catalyst", "group": "Catalyst - project and project user administration", "enforcement_mode": "HARD_BLOCKED", "approved_for_use": false}
+      ],
+      "note": "All material Catalyst write/execute capabilities are GATEWAY_REQUIRED with explicit FAIL CLOSED instruction."
+    },
+    "sbb_source_readback": {
+      "artifact_id": "SBB-KNG-MCP-GW-001",
+      "catalyst_rowid": "86824000000412046",
+      "lifecycle_status": "SOURCE_READY_DEPLOYMENT_PENDING",
+      "approval_status": "APPROVED",
+      "repository_path": "github:DondaMngomezulu/kongoniapp1-runtime/appsail/kongoni_mcp_execution_gateway",
+      "source_present_in_repo": true
+    },
+    "production_touched": false
+  }
+}

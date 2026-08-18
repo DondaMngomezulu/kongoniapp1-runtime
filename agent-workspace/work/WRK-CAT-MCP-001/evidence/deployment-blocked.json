@@ -1,0 +1,53 @@
+{
+  "work_id": "WRK-CAT-MCP-001",
+  "evidence_id": "EVD-WRK-CAT-MCP-001-002",
+  "evidence_type": "EXECUTION",
+  "created_by": "Claude (coordinator class CLAUDE; NOT the execution custodian)",
+  "created_at": "2026-08-18T11:30:47Z",
+  "source": "Attempted execution of plan steps P2-P5 in Kongoniapp1 Development",
+  "result": "BLOCKED",
+  "artifact_hash": null,
+  "external_ref": "instruction.md stop conditions",
+  "details": {
+    "appsail_service_state": {
+      "list_all_appsail_development": [],
+      "existing_service_found": false,
+      "conclusion": "No kongoni_mcp_execution_gateway service exists. P2 requires first creation, not reuse."
+    },
+    "block_1_governance": {
+      "severity": "BLOCKING",
+      "controls_breached_if_executed": ["CTL-ENV-EXEC-001", "CTL-AGT-CONTRACT-001", "CTL-AGT-TOOL-001"],
+      "statement": "AppSail creation is a material Catalyst platform mutation. EnvironmentExecutionAuthority ENV-AUTH-CAT-KONGONIAPP1-DEV sets coordinator_direct_mutation_allowed=false and mcp_gateway_required=true. The Catalyst Platform Delivery Agent Contract prohibits treating a coordinator as execution authority and prohibits use of coordinator-owned privileged mutation credentials. The Catalyst MCP connection available to Claude is coordinator-held, not the custodian workload identity.",
+      "bootstrap_paradox": "mcp_gateway_required=true directs material Catalyst mutations through kongoni_mcp_execution_gateway. That gateway is the artifact this work item deploys. The control therefore forbids the action that would satisfy the control. Breaking this requires a governed exception or execution under the custodian workload identity; it cannot be resolved by an agent acting within the controls."
+    },
+    "block_2_capability": {
+      "severity": "BLOCKING",
+      "statement": "No AppSail create or first-deploy operation exists in the Catalyst MCP surface available to Claude.",
+      "available_appsail_operations": ["Get_AppSail", "List_All_AppSail", "Get_Deployment", "List_All_Deployments", "Redeploy_a_deployment", "Cancel_Build", "Rollback_Build"],
+      "absent_operations": ["create AppSail", "first deployment of AppSail source"],
+      "corroboration": "Matches the blocker previously recorded by ChatGPT in handoff.md; the constraint is not coordinator-specific."
+    },
+    "instruction_step_6_not_performed": {
+      "step": "Record Rule 14 preflight evidence in MCP_Governance_Log",
+      "performed": false,
+      "reason": "Writing to MCP_Governance_Log is a Catalyst datastore write governed by MCP_Tool_Register ROWID 86824000000390463 (GATEWAY_REQUIRED, FAIL CLOSED) and prohibited to a coordinator identity by CTL-ENV-EXEC-001. Preflight evidence recorded in this governed work item instead.",
+      "outstanding": true
+    },
+    "runtime_tests_not_executed": {
+      "reason": "No deployed runtime exists. Tests 1-7 in instruction.md cannot be run.",
+      "tests": ["GET /health", "HARD_BLOCKED capability returns HOLD", "valid T2 preflight returns CONFORMANT", "/v1/execute rejects missing/mismatched preflight", "CRM_ACCOUNT_READ_TEST after valid preflight", "CRM 2xx via Connections", "no credential material returned or logged"],
+      "crm_http_status": null,
+      "preflight_rowid": null,
+      "appsail_url": null
+    },
+    "connection_link_name": {
+      "value": "zoho_crm_writer",
+      "source": "supplied by Group CEO in session 2026-08-18",
+      "applied_to_runtime": false,
+      "note": "P3 not executed; no runtime exists to configure."
+    },
+    "production_touched": false,
+    "rollback_required": false,
+    "rollback_reason": "No mutation was attempted; prior Development state is unchanged."
+  }
+}
