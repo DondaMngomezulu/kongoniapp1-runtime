@@ -8,13 +8,14 @@ mandate_ref: "Group CEO ACT decision REPEAT for AGR-XWALK-010 — 2026-08-18"
 accountability_task_ref: WRK-AGR-LRML-XSD-20260818
 task_class: T2
 change_type: governance
-summary: "Codified the official OASIS LegalRuleML compact XSD validator and CI gate, ingested governed LegalRuleML sources into the engineering tree, remediated schema serialization defects in the facility artifact, and reran conformance testing."
-reason: "Execute AGR-XWALK-010 without treating XML well-formedness as schema conformance; use the official OASIS compact XSD as the conformance source and fail closed on errors."
+summary: "Codified the official OASIS LegalRuleML compact XSD validator and CI gate, ingested governed LegalRuleML sources, remediated facility serialization, preserved enterprise v0.1 failure evidence, and created enterprise v0.2 for repeat conformance testing."
+reason: "Execute AGR-XWALK-010 using the official OASIS compact XSD as the conformance source and fail closed on serialization errors."
 affected_paths:
   - agent-workspace/scripts/validate_legalruleml.py
   - .github/workflows/legalruleml-xsd-validate.yml
   - agent-workspace/legalruleml/Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml
   - agent-workspace/legalruleml/Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.1.xml
+  - agent-workspace/legalruleml/Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.2.xml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/plan.yaml
   - agent-workspace/work/WRK-AGR-LRML-XSD-20260818/evidence/EVD-AGR-LRML-XSD-001.json
@@ -36,5 +37,6 @@ commit_sha: null
 pull_request: 10
 notes: >-
   Facility v0.2 has reached OASIS compact XSD PASS after controlled serialization remediation.
-  Enterprise rule set v0.1 is now ingested and remains subject to the same conformance gate.
+  Enterprise v0.1 failed the official XSD and has been retired from the active validation set while
+  remaining preserved in Git history. Enterprise v0.2 is the remediated active candidate.
   No Agreement Template is promoted by this change.
