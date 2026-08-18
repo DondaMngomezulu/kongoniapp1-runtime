@@ -15,6 +15,7 @@ reason: >-
   Establish the mandatory governance structure for future South African operative clauses without treating structural requirements,
   market precedents, or unreviewed wording as approved legal content.
 affected_paths:
+  - agent-workspace/governance/agreement-artifact-crosswalk-v0.2.yaml
   - agent-workspace/work/WRK-AGR-LEGAL-APPLICABILITY-20260818/evidence-gap-register-v0.2.yaml
   - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/mandate.yaml
   - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/operative-clause-library-v0.1.yaml
