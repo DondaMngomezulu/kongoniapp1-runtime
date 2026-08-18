@@ -1,0 +1,31 @@
+baseline_id: BAS-CAT-RUNTIME-001
+version: "0.1"
+status: CANDIDATE
+new_build_defaults:
+  stateless_http: Advanced I/O Functions
+  persistent_service: AppSail
+  node_runtime: node20
+  frontend: Slate
+  object_storage: Stratus
+  event_bus: Signals
+  background_execution: Job Scheduling
+  orchestration: Circuits
+  api_ingress: API Gateway
+  zoho_api_integration: Connections
+legacy_components:
+  node18:
+    state: legacy_existing_runtime
+    rule: do_not_use_for_new_microservices
+  client:
+    state: deprecated_pattern
+    replacement: Slate
+  filestore:
+    state: deprecated_pattern
+    replacement: Stratus
+  event_listeners:
+    state: deprecated_pattern
+    replacement: Signals
+  cron:
+    state: deprecated_pattern
+    replacement: Job Scheduling
+migration_rule: Existing runtime components shall be assessed and migrated under controlled change; this baseline does not authorize production migration by itself.
