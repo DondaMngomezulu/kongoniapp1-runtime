@@ -14,19 +14,22 @@ reconciliation_findings:
     treatment: Rebased the work by creating a fresh branch from current main; old divergent history is not replayed.
   - id: REC-02
     finding: Current main APQC policy defined Service Domain as the candidate microservice boundary, conflicting with approved APQC-spine decision.
-    treatment: Policy v0.2 and schema v0.3 make APQC Level 3 the default candidate business microservice boundary while preserving domain semantic crosswalks.
+    treatment: Policy v0.2 and schema v0.4 make APQC Level 3 the default candidate business microservice boundary while preserving domain semantic crosswalks.
   - id: REC-03
     finding: Existing register entries lack the new APQC-spine fields.
-    treatment: Added backward-compatible migration control; legacy entries remain valid but cannot advance to engineering handover without v0.3 enrichment.
+    treatment: Added backward-compatible migration control; legacy entries remain valid but cannot advance to engineering handover without v0.4 enrichment.
   - id: REC-04
     finding: Central MS-GC-TAX-001 candidate conflicted with value-stream-embedded compliance ownership.
     treatment: Adapted first deployable instance to MS-VS02-TAX-COMPLIANCE-001 and retained legacy ID traceability.
+  - id: REC-05
+    finding: Rewriting the consolidated 49 KB register for each new service creates avoidable merge contention.
+    treatment: Schema v0.4 defines atomic files under entries/ as part of the same authoritative REG-ARCH-MICROSVC-001 artifact; legacy register.yaml remains authoritative for unmigrated entries.
 
 checks:
   - id: T-01
     test: Branch freshness
     result: PASS
-    evidence: compare main..branch returned ahead_by=11 and behind_by=0 at CHECK time.
+    evidence: latest compare main..branch returned ahead_by=17 and behind_by=0.
   - id: T-02
     test: APQC spine governance
     result: PASS
@@ -64,19 +67,18 @@ checks:
     result: PASS
     evidence: New function directory is not added to catalyst.json targets and service specification sets deployment_authorised=false.
   - id: T-11
-    test: Register integration
-    result: OPEN
-    evidence: Service specification and APQC mapping exist, but consolidated register.yaml has not yet been updated with the new entry.
+    test: Authoritative Microservice Register integration
+    result: PASS
+    evidence: MS-VS02-TAX-COMPLIANCE-001 is registered under REG-ARCH-MICROSVC-001/entries and schema v0.4 defines modular entries as part of the same authoritative register.
   - id: T-12
-    test: Approved atomic SARS rules
-    result: OPEN
-    evidence: REG-SARS-RULE-001 executable approved scope is not yet bound.
+    test: First legally verified SARS atomic-rule candidate
+    result: PASS_FOR_CANDIDATE_NOT_EXECUTION
+    evidence: AR-SARS-VAT-STD-001 plus EV-2026-08-18-SARS-VAT-STD-001 verify the current 15 percent standard VAT rate from SARS/primary-legislation sources; execution binding remains disabled.
 
-check_study: PARTIAL_PASS_OPEN_CONDITIONS
+check_study: PARTIAL_PASS_OPEN_EXECUTION_GATES
 open_conditions:
-  - integrate MS-VS02-TAX-COMPLIANCE-001 into the consolidated Enterprise Microservice Register
   - verify stable APQC Level 5 bindings or approve a documented decomposition exception
-  - create and legally verify the first scoped atomic SARS rules before any rule execution
+  - obtain explicit controlled adoption of AR-SARS-VAT-STD-001 before executable registry binding
   - approve service specification before engineering handover
   - rerun contract, security, integration and deployment tests before Development deployment
 act_recommendation: ADAPT
