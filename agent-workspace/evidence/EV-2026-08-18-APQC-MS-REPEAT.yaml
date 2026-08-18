@@ -1,0 +1,55 @@
+evidence_id: EV-2026-08-18-APQC-MS-REPEAT
+work: APQC-spine microservice architecture reconciliation
+task_class: T2
+cycle: REPEAT
+sources:
+  catalyst_project: Kongoniapp1
+  catalyst_project_id: "86824000000020001"
+  catalyst_environment: Development
+  architecture_id: KEA-MOD-HS-001
+  architecture_state: ACTIVE_G2_BASELINE_CANDIDATE
+  github_pr: 9
+checks:
+  - id: R-01
+    test: Catalyst command-centre and loose-coupling alignment
+    result: PASS
+    evidence: KEA-MOD-HS-001 principles PRN-HS-001 through PRN-HS-005
+  - id: R-02
+    test: APQC process spine compatibility
+    result: PASS_WITH_QUALIFICATION
+    evidence: APQC_ProcessElementReference and CapabilityAPQCCrosswalk exist; VS04 and VS06 preserve domain semantic authorities.
+  - id: R-03
+    test: APQC overrides sector semantic authority
+    result: FAIL_IF_UNQUALIFIED
+    remediation: STD-CAT-MS-SPEC-001 v0.3 explicitly states APQC is process spine and does not displace MIMOSA or GMG semantic authorities.
+  - id: R-04
+    test: Zoho WorkDrive can immediately replace current governed content repository authority
+    result: FAIL
+    evidence: EnterpriseRepositoryAuthority records Stratus authorities as APPROVED_ACTIVE.
+    remediation: WorkDrive is target authority subject to controlled repository migration/reclassification.
+  - id: R-05
+    test: Zoho Books can immediately be asserted as sole accounting master
+    result: OPEN
+    evidence: Catalyst contains gl_account, gl_transactions, gl_entity and related gl_* tables; sample gl_transactions query returned no rows but table purpose/authority is not yet classified.
+    remediation: classify gl_* tables before adopting Books accounting authority.
+  - id: R-06
+    test: existing agent handoff architecture remains compatible
+    result: PASS
+    evidence: PAT-AGT-COLLAB-001 references handoff.schema.json; enterprise handover is additive and does not replace agent handoff.
+  - id: R-07
+    test: runtime modernisation is authorised production migration
+    result: PASS_AS_TARGET_ONLY
+    evidence: baseline explicitly states no production migration authority.
+summary:
+  pass: 3
+  pass_with_qualification: 2
+  fail_remediated_in_pr: 1
+  open: 1
+check_study: PARTIAL_PASS_OPEN_CONDITIONS
+act_recommendation: ADAPT
+open_conditions:
+  - classify Catalyst gl_* tables and reconcile against proposed Zoho Books authority
+  - define and approve repository-authority migration from Stratus to WorkDrive before authority switch
+  - update authoritative Catalyst architecture/repository records only after valid ACT authority
+production_changed: false
+task_complete: false
