@@ -5,6 +5,22 @@ status: AUTHORISED
 methodology: MET-PDCA-001
 owner: Group CEO
 governance_coordinator: Reandra
+assigned_to: Zoho CRM implementation specialist
+coordinators:
+  - Reandra
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+environment:
+  platform: Zoho CRM
+  project: Kongoni Group CRM
+  environment: Production
+pdca:
+  stage: AUTHORISATION
+  do_complete: false
+  task_complete: false
+  act_decision: null
 objective: >-
   Determine whether a Claude agent can use the available agent/MCP tools to complete
   the required Zoho CRM Blueprint transition update that is blocked in the ChatGPT
