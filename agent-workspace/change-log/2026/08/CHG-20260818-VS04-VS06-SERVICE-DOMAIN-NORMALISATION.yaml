@@ -1,0 +1,29 @@
+change_id: CHG-20260818-VS04-VS06-SERVICE-DOMAIN-NORMALISATION
+timestamp_utc: '2026-08-18T17:42:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved normalisation of VS04 MIMOSA and VS06 GMG source content for the Enterprise Microservice Register.'
+task_class: T2
+change_type: architecture
+summary: Add provenance-controlled Kongoni Service Domain catalogues for VS04 and VS06.
+reason: MIMOSA CCOM and GMG do not provide BIAN-style Service Domain catalogues, so an explicit architecture normalisation layer is required before microservice register generation.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/service-domains/VS04-MIMOSA.yaml
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/service-domains/VS06-GMG.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO approval in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'VS04 has 8 proposed MIMOSA-derived architecture domains. VS06 has 7 proposed core GMG-aligned domains plus 1 deferred benchmarking candidate. All are explicitly labelled as Kongoni-derived and do not misrepresent MIMOSA or GMG as native service-domain standards.'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Catalyst MIMOSA_CCOM_SchemaRelease confirms CCOM 4.0.0 as normative baseline and 4.1.0-RC1 as non-normative structural reference.'
+  - 'Catalyst MIMOSA_CCOM_SchemaObject confirms registry, engineering-study, measurement, event, work, and related class groupings.'
+  - 'Official MIMOSA material confirms CCOM is an asset-lifecycle information model and BOD/message integration source.'
+  - 'Official GMG material confirms guidelines are non-prescriptive and provides surface time-usage, interoperability, mobile-equipment-data, and fleet-performance guidance.'
+notes: 'Register entries remain subject to architecture assurance. No Catalyst runtime resource is changed.'
