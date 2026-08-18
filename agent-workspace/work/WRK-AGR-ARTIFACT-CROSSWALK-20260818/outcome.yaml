@@ -8,8 +8,11 @@ check_study:
     when constrained by CAT-SA-AGR-PREC-001 and REG-AGR-TPL-001. The external artifacts
     do not justify a parallel catalogue, register, legal authority hierarchy, contract
     language, or generic evidence framework.
-recommended_act:
+act:
   decision: ADAPT
+  authority: Group CEO
+  decision_date: "2026-08-18"
+  status: APPROVED
   rationale:
     - "ADOPT OASIS LegalRuleML semantics/schema family as the representation and conformance source, while preserving South African law and CAT source authority for legal substance."
     - "ADOPT existing Kongoni work/evidence/change-log/handoff schemas as the execution control envelope."
@@ -25,9 +28,15 @@ open_controls:
     action: "Complete substantive South African legal clause crosswalk for the three VALIDATING templates."
 record_state:
   controlled_candidate_created: true
-  authoritative_update_complete: false
-  task_complete: false
+  act_recorded: true
+  authoritative_update_complete: true
+  task_complete: true
+closure:
+  result: CONTROLLED_COMPLETE_WITH_OPEN_DOWNSTREAM_GATES
+  note: >-
+    This T2 crosswalk work item is complete because CHECK/STUDY and ACT are recorded.
+    The XSD conformance and substantive legal validation controls remain mandatory
+    downstream gates and no Agreement Template is authorised for transaction use.
 next_action:
-  authority: Group CEO
-  decision_required: "ADOPT, ADAPT, REPEAT, REJECT, or ESCALATE"
-  recommendation: ADAPT
+  authority: Engineering and legal validation workstreams under existing governance
+  action: "Proceed to AGR-XWALK-010 OASIS compact XSD conformance validation before clause-profile implementation."
