@@ -1,6 +1,6 @@
 crosswalk_id: XW-LEGAL-AGR-COD-001
-version: 0.1
-status: CHECK_STUDY
+version: 0.2
+status: ACT_ADAPT_RECORDED
 as_of: 2026-08-18
 scope:
   - Agreement clause codification
@@ -53,7 +53,7 @@ rows:
     supporting_artifact: REF-KNG-SCHEMA-HANDOFF-001
     decision: ADOPT
     residual_gap: add Agreement Class, Clause IDs, Rule IDs, and template version to handoff profile
-preliminary_check_study:
+check_study:
   overlap: PASS
   provenance: PASS
   licence_control: PASS_WITH_CONTROL
@@ -61,8 +61,13 @@ preliminary_check_study:
   custom_build_reduction: PASS
   transaction_ready_agreement_status: NOT_AFFECTED
   legalruleml_xsd_conformance: OPEN
-recommended_act: ADAPT
-recommended_adaptation: >-
+act:
+  decision: ADAPT
+  authority: Group CEO
+  date: 2026-08-18
+adaptation: >-
   Use Kongoni schemas as the governance shell; use OASIS LegalRuleML artifacts as the normative-rule reference;
   adapt Accord Project clause-package and test patterns for LIB-AGR-CLAUSE-001 and REG-AGR-TPL-001.
   Do not adopt Accord wording as South African legal authority.
+record_status: COMPLETE
+next_action: Define the governed Clause Package Profile and Agreement Template Validation Profile; retain LegalRuleML XSD conformance as an open validation gate.
