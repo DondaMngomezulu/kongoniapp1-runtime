@@ -1,0 +1,118 @@
+assessment_id: ASMT-ARCH-HO-SRV-BIAN-LEASING-001
+profile_ref: PRF-ARCH-MICROSVC-HO-001
+microservice_id: SRV-BIAN-LEASING-001
+assessment_date: '2026-08-18'
+owner_skill: SKL-GH-MICROSVC-ARCH-001
+consumer_skill: SKL-CAT-MICROSVC-ENG-001
+task_class: T2
+status: RETURNED_FOR_ADAPTATION
+handover_gate: GATE-ARCH-TO-ENG-001
+result: FAIL_BLOCK_ENGINEERING_HANDOVER
+source_specification:
+  ref: agent/leasing-service-specification:agent-workspace/services/SRV-BIAN-LEASING-001/service-specification.yaml
+  version: '0.1'
+  status: DRAFT
+strengths:
+  - BIAN 14.0.0 Leasing Service Domain and LeasingFacility Control Record resolved.
+  - 11 Behaviour Qualifiers and 44 Service Operations retained.
+  - Canary scope limited to Initiate, Retrieve and Update.
+  - Catalyst Development target, AppSail candidate runtime and Python default recorded.
+  - Authentication, authorisation, idempotency, correlation ID and audit requirements recorded.
+  - Minimum test classes and objective canary acceptance criteria recorded.
+  - Production write is prohibited pending separate authority.
+mandatory_gate_checks:
+  register_entry:
+    status: PARTIAL
+    finding: Enterprise Microservice Register exists, but exact Leasing entry and architecture status require read-back/reference binding in the handover record.
+  service_specification:
+    status: FAIL
+    finding: Specification remains DRAFT and predates the adopted Architect/Engineer split.
+  architecture_description:
+    status: FAIL
+    finding: No ART-BLD-001-equivalent architecture description is referenced.
+  architecture_decisions:
+    status: FAIL
+    finding: AppSail, API Gateway, Python and data-authority decisions are material and require ADR references or approved equivalents.
+  process_traceability:
+    status: FAIL
+    finding: No APQC profile/version or L3-L5 mapping is recorded for the Leasing service boundary and canary operations.
+  domain_semantics:
+    status: PASS
+    finding: BIAN 14.0.0 Leasing semantics and Control Record are explicitly retained.
+  canonical_data_model:
+    status: FAIL
+    finding: LeasingFacility is named but no governed canonical data model/schema is referenced.
+  input_contract:
+    status: FAIL
+    finding: Request schemas are not defined.
+  output_contract:
+    status: FAIL
+    finding: Response schemas are not defined.
+  data_quality_rules:
+    status: FAIL
+    finding: Persistent/external data is intended but validation/data-quality rules are not defined.
+  lineage_and_provenance:
+    status: FAIL
+    finding: Source provenance is described textually but no governed lineage/provenance artifact is referenced.
+  synchronous_api_contract:
+    status: FAIL
+    finding: Routes are listed but no OpenAPI contract is referenced.
+  asynchronous_event_contract:
+    status: NOT_APPLICABLE_CURRENT_CANARY
+    rationale: No Signals/events are included in the three-operation canary.
+  business_rules:
+    status: PARTIAL
+    finding: Write/idempotency/authority rules exist, but operating-lease accounting/tax/legal/compliance rules are not bound to this canary specification.
+  application_authority_mapping:
+    status: FAIL
+    finding: CRM and Books are mentioned, but authoritative state dimensions are not explicitly mapped under CTL-APP-AUTH-BOUNDARY-001.
+  security_design:
+    status: PARTIAL
+    finding: Authentication, authorisation and least privilege are present; trust boundaries and threat model are absent.
+  nfr_slo_profile:
+    status: FAIL
+    finding: Timeout is unresolved and availability, latency, capacity, resilience, recovery objective and observability targets are not defined.
+  audit_evidence_contract:
+    status: PASS_WITH_DEPENDENCY
+    finding: CTL-SYS-WRITE-AUDIT-001 and CTL-DEV-CHG-LOG-001 are referenced; authoritative status of CTL-SYS-WRITE-AUDIT-001 must be reconciled before engineering write execution.
+  dependency_manifest:
+    status: FAIL
+    finding: No governed dependency manifest is referenced.
+  runtime_constraints:
+    status: PASS_WITH_ADAPTATION
+    finding: AppSail/Python/API Gateway are recorded but must be confirmed as architecture constraints, not engineer-owned redesign.
+  test_specification:
+    status: PARTIAL
+    finding: Required test classes and canary acceptance criteria exist, but no standalone governed test specification references schemas/contracts/NFRs.
+  deployment_and_rollback_requirements:
+    status: FAIL
+    finding: Development-only rule exists, but deployment, rollback and recovery requirements are not specified.
+  operational_runbook_requirements:
+    status: NOT_APPLICABLE_PRE_PRODUCTION
+    rationale: Production operation is not yet authorised; runbook becomes mandatory before production handover.
+  acceptance_criteria:
+    status: PASS
+    finding: Five objective canary criteria are defined.
+  engineering_authority_ref:
+    status: FAIL
+    finding: execution_authority_ref remains TO_BE_RESOLVED_BEFORE_DO.
+blocking_gaps:
+  - Approve and reissue the Service Specification under SKL-GH-MICROSVC-ARCH-001.
+  - Bind exact Microservice Register entry and status.
+  - Create architecture description and ADR set.
+  - Add APQC L3-L5 traceability with applicable sector/cross-industry profile and provenance.
+  - Create canonical LeasingFacility data model, request/response contracts and data-quality rules.
+  - Create OpenAPI contract for Initiate, Retrieve and Update.
+  - Create lineage/provenance artifact.
+  - Create explicit application-authority mapping for Leasing state, CRM commercial state and Books accounting state.
+  - Complete security trust-boundary/threat model.
+  - Create NFR/SLO profile.
+  - Create dependency manifest.
+  - Create governed test specification tied to contracts and NFRs.
+  - Define deployment/rollback/recovery requirements.
+  - Resolve engineering execution authority.
+  - Reconcile authoritative status of CTL-SYS-WRITE-AUDIT-001 before any mutating engineering test.
+act_recommendation: ADAPT
+next_state: RETURN_TO_ARCHITECT
+engineering_allowed: false
+closure_rule: DO_COMPLETE != TASK_COMPLETE
