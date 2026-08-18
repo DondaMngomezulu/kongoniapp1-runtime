@@ -1,0 +1,80 @@
+profile_id: PRF-AGR-CLAUSE-PKG-001
+version: 0.1
+status: CHECK_STUDY
+as_of: 2026-08-18
+name: Governed Agreement Clause Package Profile
+purpose: >-
+  Define the minimum governed structure for a Clause that can be promoted into an Agreement Template.
+authorities:
+  legal_authority: CAT-SA-AGR-PREC-001
+  template_register: REG-AGR-TPL-001
+  execution_method: MET-PDCA-001
+  normative_rule_reference: OASIS LegalRuleML
+  package_pattern_reference: Accord Project Cicero
+  evidence_schema: agent-workspace/schemas/evidence.schema.json
+  change_schema: agent-workspace/schemas/change-log.schema.json
+sourcing_rule: ADOPT -> ADAPT -> BUILD
+required_fields:
+  - clause_id
+  - clause_name
+  - agreement_class_id
+  - source_precedent_id
+  - source_authority_tier
+  - source_reference
+  - source_version_or_hash
+  - clause_text
+  - clause_type
+  - variables
+  - applicability
+  - constraints
+  - legalruleml_rule_ids
+  - template_bindings
+  - lifecycle_status
+  - validation_status
+  - evidence_refs
+  - change_ref
+  - owner
+  - approval_authority
+lifecycle_states:
+  - CANDIDATE
+  - VERIFIED
+  - VALIDATING
+  - ADOPTED
+  - SUPERSEDED
+  - WITHDRAWN
+rules:
+  - id: CLP-001
+    rule: A Clause SHALL map to exactly one primary Agreement Class.
+  - id: CLP-002
+    rule: A Clause SHALL record source provenance and authority tier.
+  - id: CLP-003
+    rule: External template wording SHALL NOT become South African legal authority.
+  - id: CLP-004
+    rule: A Clause that expresses a normative Rule SHALL bind to one or more LegalRuleML Rule IDs.
+  - id: CLP-005
+    rule: Variables SHALL be explicit and machine-readable.
+  - id: CLP-006
+    rule: Applicability and Constraints SHALL be explicit before ADOPTED status.
+  - id: CLP-007
+    rule: A Clause SHALL NOT be usable in a transaction while status is CANDIDATE, VERIFIED, or VALIDATING.
+  - id: CLP-008
+    rule: Clause promotion requires Evidence, CHECK/STUDY, ACT, and Record update under MET-PDCA-001.
+  - id: CLP-009
+    rule: LegalRuleML XSD conformance is mandatory where a LegalRuleML representation is produced.
+  - id: CLP-010
+    rule: Accord Project structure may be adapted for package metadata and testing but SHALL NOT determine legal wording authority.
+accord_pattern_mapping:
+  package_metadata: ADAPT
+  typed_model: ADAPT
+  sample_data: ADAPT
+  executable_logic: OPTIONAL_ADAPT
+  clause_text: DO_NOT_ADOPT_AS_LEGAL_AUTHORITY
+  automated_tests: ADAPT
+check_study:
+  semantic_overlap: PASS
+  provenance_control: PASS
+  lifecycle_control: PASS
+  legal_authority_separation: PASS
+  machine_readability: PASS
+  legalruleml_xsd_conformance: OPEN
+recommended_act: ADOPT_AFTER_XSD_CONTROL_DEFINED
