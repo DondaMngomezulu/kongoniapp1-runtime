@@ -11,16 +11,19 @@ check_study:
     - "Competition merger control, Companies Act sections 44/45, FIC Item 11, ECTA execution and share-pledge perfection remain conditional or blocked pending evidence."
     - "Twelve blocking evidence gaps have been registered."
     - "No Agreement Template or transaction is legally ready for execution."
-recommended_act:
+act:
   decision: ADOPT
-  rationale: >-
-    Adopt LAP-KIB-VEN-001 v0.1 as the controlled transaction applicability profile and use its evidence-gap
-    register as the fail-closed precondition set. This adopts the profile/control result only and does not approve
-    the facility, share transfer, security package or any Agreement Template for execution.
+  authority: Group CEO
+  decision_date: "2026-08-18"
+  status: APPROVED
+  scope: >-
+    Adopt LAP-KIB-VEN-001 v0.1 as the controlled transaction applicability profile and its evidence-gap
+    register as the fail-closed precondition set. This does not approve the facility, share transfer,
+    security package or any Agreement Template for execution.
 open_controls:
   - control_id: AGR-XWALK-011-A-EVIDENCE
     status: OPEN
-    action: "Close or classify each blocking evidence gap in REG-KIB-VEN-LEGAL-EVIDENCE-GAP-001."
+    action: "Close or classify each blocking evidence gap in REG-KIB-VEN-LEGAL-EVIDENCE-GAP-001 before execution."
   - control_id: AGR-XWALK-011-B
     status: OPEN
     action: "Create and legally approve operative South African clause variants."
@@ -33,4 +36,8 @@ record_state:
   blocking_evidence_gap_count: 12
   transaction_ready: false
   template_promotion_allowed: false
-  task_complete: false
+  act_recorded: true
+  task_complete: true
+closure:
+  result: CLOSED_ADOPTED_WITH_BLOCKING_EVIDENCE_GAPS
+  next_gate: "AGR-XWALK-011-B and AGR-XWALK-011-C; evidence gaps remain mandatory preconditions."
