@@ -1,0 +1,30 @@
+work_id: WRK-AGR-OPERATIVE-CLAUSE-20260818
+title: South African Approved Operative Clause Library
+task_class: T2
+status: OPEN
+parent_control: AGR-XWALK-011
+control_id: AGR-XWALK-011-B
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+scope:
+  agreement_templates:
+    - TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001
+    - TPL-VS02-SECURITY-AGREEMENT-001
+    - TPL-VS05-SHARE-PURCHASE-AGREEMENT-001
+rules:
+  - "Each clause must bind to an adopted legal control and authoritative source provenance."
+  - "Market precedent wording is comparative only unless separately licensed and legally approved."
+  - "No clause becomes APPROVED until substantive South African legal review evidence is attached."
+  - "Clause variants must state their applicability conditions and prohibited use cases."
+  - "Template promotion consumes only approved clause variants."
+approval_ref: "Group CEO ACT=ADAPT for AGR-XWALK-011 — 2026-08-18"
+pdca:
+  stage: PLAN
+  do_complete: false
+  task_complete: false
+  act_decision: null
+next_action:
+  assigned_to: ChatGPT
+  instruction: "Create the governed clause-library schema/register and seed candidate clauses from the validated clause-source bindings without inventing unreviewed legal wording."
