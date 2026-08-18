@@ -1,0 +1,32 @@
+work_id: WRK-ZCRM-BP-001
+title: Zoho CRM Blueprint agent-tool permission test
+task_class: T2
+status: AUTHORISED
+methodology: MET-PDCA-001
+owner: Group CEO
+governance_coordinator: Reandra
+objective: >-
+  Determine whether a Claude agent can use the available agent/MCP tools to complete
+  the required Zoho CRM Blueprint transition update that is blocked in the ChatGPT
+  Zoho CRM plugin by OAUTH_SCOPE_MISMATCH.
+target_system: Zoho CRM
+target_environment: Production
+blueprint:
+  name: BP-BIAN-AGR-001
+  id: '5643538000008286023'
+  status: draft
+canary_transition:
+  name: Submit for Review
+  id: '5643538000008286001'
+authorised_scope:
+  - inspect available Claude agent, MCP, and Zoho CRM tools
+  - inspect tool authentication and effective capabilities without exposing secrets
+  - attempt one idempotent transition-normalisation update on the canary transition
+  - read back the Blueprint and transition if the update succeeds
+prohibited_scope:
+  - activate or publish BP-BIAN-AGR-001
+  - create, update, or delete CRM business records
+  - delete or recreate the Blueprint
+  - change other Blueprint transitions unless the canary succeeds and further execution is separately authorised
+  - expose, print, or commit credentials, tokens, or secrets
+closure_rule: DO_COMPLETE != TASK_COMPLETE
