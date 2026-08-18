@@ -1,0 +1,132 @@
+catalogue_id: CAT-GOVCOMP-MS-001
+version: "0.1"
+status: APPROVED_CANDIDATE
+purpose: Govern enterprise compliance microservices with APQC as the process spine and normative authorities mapped to executable controls.
+architecture:
+  process_spine: APQC
+  default_boundary: APQC Level 3 candidate business microservice
+  execution_platform: Zoho Catalyst
+  accounting_system_of_record: Zoho Books
+  accounting_normative_authorities:
+    - IFRS
+    - SARS
+service_classes:
+  - business_process
+  - domain_state
+  - integration_gateway
+  - platform_service
+microservices:
+  - id: MS-GOVCOMP-001
+    name: Accounting Policy and Treatment Governance
+    class: business_process
+    purpose: Resolve and govern accounting treatment before posting.
+    normative_authorities:
+      - IFRS
+    outputs:
+      - accounting_treatment_decision
+      - accounting_policy_reference
+      - posting_instruction
+      - evidence_reference
+    downstream:
+      - Books Financial Gateway
+      - Zoho Books
+  - id: MS-GOVCOMP-002
+    name: Tax Determination and Compliance
+    class: business_process
+    purpose: Resolve tax treatment, tax obligations and evidence requirements.
+    normative_authorities:
+      - SARS
+    outputs:
+      - tax_treatment_decision
+      - tax_code_instruction
+      - filing_obligation
+      - evidence_reference
+    downstream:
+      - Books Financial Gateway
+      - Zoho Books
+  - id: MS-GOVCOMP-003
+    name: Legal and Regulatory Obligation Governance
+    class: business_process
+    purpose: Resolve applicable legal and regulatory obligations for enterprise transactions and activities.
+    normative_authorities:
+      - applicable_legislation
+      - adopted_regulatory_standards
+    outputs:
+      - obligation_set
+      - required_controls
+      - evidence_requirements
+      - exception_or_escalation
+  - id: MS-GOVCOMP-004
+    name: Compliance Control Execution
+    class: business_process
+    purpose: Execute and evidence compliance controls before and after governed transactions.
+    normative_authorities:
+      - enterprise_controls
+      - adopted_external_requirements
+    outputs:
+      - compliance_result
+      - control_evidence
+      - exception_record
+      - remediation_instruction
+  - id: MS-GOVCOMP-005
+    name: Governance Rule Registry
+    class: domain_state
+    purpose: Maintain canonical codified rules, obligations, effective dates, provenance and applicability.
+    authoritative_system: catalyst
+    objects:
+      - rule
+      - obligation
+      - control
+      - authority_reference
+      - applicability_condition
+      - effective_period
+      - version
+  - id: MS-GOVCOMP-006
+    name: Governance and Compliance Decision Service
+    class: orchestration
+    purpose: Evaluate rules and controls against a business event and return an authorised decision package.
+    inputs:
+      - business_event
+      - entity
+      - value_stream
+      - product_or_service
+      - agreement
+      - jurisdiction
+      - transaction_context
+    outputs:
+      - decision
+      - required_actions
+      - posting_constraints
+      - evidence_requirements
+      - exceptions
+integration_rules:
+  - IFRS and SARS are normative authorities and are not replaced by Zoho Books.
+  - Zoho Books is the authoritative accounting system of record.
+  - Catalyst gl_* tables are projection, analytics, reconciliation, provenance or migration stores and shall not operate as a competing general ledger.
+  - Accounting entries shall be posted only after required Governance and Compliance decisions and controls have passed or an authorised exception exists.
+  - Each value stream shall inherit applicable accounting, tax, legal and compliance rules for its activities.
+  - Domain services shall call Governance and Compliance through governed APIs or events rather than duplicating rule logic.
+books_interface:
+  gateway: Books Financial Gateway
+  operations:
+    - validate_accounting_treatment
+    - validate_tax_treatment
+    - resolve_account_mapping
+    - resolve_tax_code
+    - authorise_posting_instruction
+    - validate_invoice_compliance
+    - validate_credit_note_compliance
+    - validate_payment_compliance
+    - reconcile_posting_evidence
+verification:
+  required_tests:
+    - authority_traceability
+    - rule_versioning
+    - applicability
+    - effective_date
+    - deterministic_decision
+    - negative_case
+    - exception_handling
+    - books_contract
+    - audit_evidence
+    - regression
