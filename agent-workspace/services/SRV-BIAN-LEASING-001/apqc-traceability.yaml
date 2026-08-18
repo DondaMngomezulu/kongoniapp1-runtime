@@ -1,0 +1,26 @@
+artifact_id: MAP-APQC-SRV-BIAN-LEASING-001
+version: '0.1'
+status: SOURCE_GAP
+service_id: SRV-BIAN-LEASING-001
+value_stream_id: VS02
+applicability: APPLICABLE
+primary_profile:
+  framework: APQC Banking PCF
+  version: '7.2.2'
+  authority_status: OFFICIAL_VERSION_VERIFIED_SOURCE_HIERARCHY_NOT_INGESTED
+secondary_profile:
+  framework: APQC Cross-Industry PCF
+  version: '8.0'
+  authority_status: CATALYST_AUTHORITATIVE_WHERE_GOVERNED_RECORDS_EXIST
+mapping:
+  level_3: UNRESOLVED_SOURCE_REQUIRED
+  level_4: UNRESOLVED_SOURCE_REQUIRED
+  level_5: UNRESOLVED_SOURCE_REQUIRED
+rationale: >-
+  Leasing is a financial-services process and APQC Banking is the preferred sector process profile.
+  Exact L3-L5 IDs and titles shall not be inferred from numbering or reconstructed from secondary sources.
+  The Service Domain boundary remains BIAN Leasing; APQC is used for process completeness and decomposition assurance.
+verification:
+  official_apqc_banking_version: VERIFIED
+  exact_hierarchy: NOT_VERIFIED
+handover_effect: BLOCK_ENGINEERING_HANDOVER_UNTIL_EXACT_L3_L5_OR_APPROVED_JUSTIFIED_GAP
