@@ -1,0 +1,164 @@
+microservice_id: MS-GC-TAX-001
+name: Tax Determination and Compliance
+version: "0.1"
+status: CONTROLLED_DESIGN_CANDIDATE
+service_class: business_process
+value_stream: enterprise_applicable_embedded_per_value_stream
+apqc:
+  level_2: "9.0 Manage Financial Resources"
+  level_3: "9.9 Manage Taxes"
+  level_4_operations:
+    - resolve_tax_obligations
+    - validate_tax_return_inputs
+    - determine_current_tax_treatment
+    - determine_deferred_tax_inputs
+    - monitor_tax_compliance
+    - open_tax_compliance_case
+  level_5_tasks: []
+bounded_context:
+  purpose: Determine and evidence South African tax obligations and compliance outcomes for governed business events before downstream financial execution.
+  includes:
+    - tax_applicability
+    - registration_and_filing_obligations
+    - tax_rate_and_effective_date_resolution
+    - return_and_declaration_validation
+    - payment_and_refund_obligation_checks
+    - compliance_monitoring
+    - dispute_and_information_request_case_opening
+  excludes:
+    - general_ledger_posting
+    - autonomous_sars_filing
+    - legal_advice
+    - accounting_recognition_and_measurement_under_ifrs
+normative_authorities:
+  primary:
+    - SARS
+  related:
+    - applicable_South_African_legislation
+    - IFRS_for_accounting_consequences_only
+governance_dependencies:
+  - CAT-SARS-DIG-001
+  - CAT-SARS-RULE-001
+  - CAT-SARS-TPL-001
+  - REG-SARS-RULE-001_when_approved
+  - SPEC-GOVCOMP-ACCT-001
+  - STD-CAT-MS-SPEC-001
+canonical_objects:
+  owned:
+    - TaxObligationDecision
+    - TaxComplianceAssessment
+    - TaxComplianceCase
+  referenced:
+    - Party
+    - LegalEntity
+    - BusinessEvent
+    - Agreement
+    - FinancialTransaction
+    - Document
+    - Handover
+state_ownership:
+  authoritative_system: catalyst
+  note: Catalyst owns decision/evidence state only. Zoho Books remains the accounting system of record. SARS remains the external tax authority.
+interfaces:
+  api_style: governed_http_and_events
+  operations:
+    - name: ResolveTaxObligations
+      method: POST
+      idempotent: true
+      input: BusinessEventTaxContext
+      output: TaxObligationDecision
+    - name: ValidateTaxReturnInputs
+      method: POST
+      idempotent: true
+      input: TaxReturnContext
+      output: ValidationResult
+    - name: DetermineCurrentTaxTreatment
+      method: POST
+      idempotent: true
+      input: TaxAccountingContext
+      output: TaxTreatmentDecision
+    - name: CheckTaxCompliance
+      method: POST
+      idempotent: true
+      input: EntityComplianceContext
+      output: TaxComplianceAssessment
+    - name: OpenTaxComplianceCase
+      method: POST
+      idempotent: true
+      input: TaxCaseContext
+      output: TaxComplianceCase
+  events:
+    publishes:
+      - TaxObligationResolved
+      - TaxCompliancePassed
+      - TaxComplianceFailed
+      - TaxCaseOpened
+    consumes:
+      - BusinessEventReadyForCompliance
+      - FinancialTransactionProposed
+integration:
+  zoho_books:
+    role: downstream_accounting_system_of_record
+    path: Books Financial Gateway
+    write_rule: No Books posting is authorised by this service alone where IFRS accounting treatment is also required; cross-standard posting gate must pass.
+  zoho_crm:
+    role: source_of_customer_and_commercial_context_where_applicable
+    path: CRM Commercial Gateway
+  zoho_workdrive:
+    role: controlled_supporting_document_content_target_subject_to_repository_authority_controls
+    path: WorkDrive Document Gateway
+  sars:
+    role: normative_external_authority_and_submission_target
+    autonomous_submission: false
+runtime:
+  catalyst_pattern: Advanced I/O Function
+  preferred_runtime: node20
+  api_ingress: API Gateway
+  eventing: Signals
+  persistence: Catalyst Data Store
+  external_connections: Connections
+  long_running_work: Job Scheduling_or_Circuits_if_required
+security:
+  authentication: required
+  authorization: least_privilege
+  service_identity: required
+  pii_tax_data: minimise_and_control
+resilience:
+  timeout_policy: platform_bounded
+  retries: only_for_safe_idempotent_dependencies
+  idempotency_key: required_for_mutating_or_case_creation_operations
+  failure_mode: fail_closed_for_posting_authorisation
+observability:
+  required:
+    - service_id
+    - operation
+    - execution_id
+    - correlation_id
+    - rule_version
+    - source_authority_version
+    - outcome
+    - error_class
+verification:
+  required_tests:
+    - unit
+    - schema
+    - rule_effective_date
+    - authority_precedence
+    - contract
+    - integration
+    - security
+    - idempotency
+    - regression
+    - deployment
+  release_gate:
+    - approved_atomic_sars_rules_for_scope
+    - source_version_and_effective_date_traceability
+    - no_unverified_legal_rule_execution
+    - no_direct_books_ledger_mutation
+    - objective_check_study_evidence
+    - act_decision
+implementation_state:
+  design_complete: true
+  code_complete: false
+  deployed: false
+  production_authorised: false
