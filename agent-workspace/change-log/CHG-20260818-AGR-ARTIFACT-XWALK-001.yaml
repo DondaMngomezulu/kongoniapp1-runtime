@@ -29,5 +29,5 @@ pdca:
 evidence:
   - EVD-AGR-ARTIFACT-CROSSWALK-001
 commit_sha: null
-pull_request: null
+pull_request: 10
 notes: "Recommended ACT is ADAPT. OASIS XSD conformance and substantive South African legal validation remain open controls; no template is promoted for transaction use."
