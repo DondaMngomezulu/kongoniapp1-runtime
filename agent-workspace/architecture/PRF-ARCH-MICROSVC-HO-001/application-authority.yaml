@@ -1,0 +1,64 @@
+control_id: CTL-APP-AUTH-BOUNDARY-001
+version: '0.3'
+status: DRAFT
+purpose: Define one authoritative application per governed state dimension for microservice architecture and engineering handover.
+rule: >-
+  Each governed state dimension SHALL have one authoritative application. Projections, caches,
+  analytical stores and integration copies SHALL NOT become competing masters.
+authority:
+  github:
+    owns:
+      - enterprise_microservice_register
+      - service_specifications
+      - architecture_handover_artifacts
+      - source_code_and_engineering_history
+  zoho_catalyst:
+    owns:
+      - deployed_runtime_state_for_catalyst_services
+      - structured_reference_catalogues_where_governed_tables_exist
+      - orchestration_state_not_natively_owned_elsewhere
+      - governance_rule_execution_where_implemented
+      - cross_system_identity_mapping_where_implemented
+  zoho_crm:
+    owns:
+      - customer_relationship_state
+      - prospect_and_deal_state
+      - commercial_relationship_transactions
+    gateway: CRM Commercial Gateway
+  zoho_books:
+    owns:
+      - authoritative_accounting_ledger
+      - accounting_transactions
+      - invoice
+      - payment
+      - credit_note
+      - financially_committed_sales_order
+      - chart_of_accounts_execution
+    gateway: Books Financial Gateway
+  zoho_workdrive:
+    target_owns:
+      - governed_document_content_for_designated_document_classes
+      - handover_package_files_for_designated_document_classes
+      - controlled_evidence_files_for_designated_document_classes
+    gateway: WorkDrive Document Gateway
+    activation_condition: Controlled repository-authority migration and approval from current approved repositories.
+accounting_governance:
+  normative_authorities: [IFRS, SARS]
+  rule_owner: Governance and Compliance Microservice
+  execution_system: Zoho Books
+  catalyst_gl_tables:
+    authoritative_ledger: false
+    permitted_roles:
+      - projection
+      - analytics
+      - reconciliation
+      - migration_support
+      - provenance
+    prohibited_role: competing_accounting_master
+storage_rule:
+  current_authority: Preserve current approved repository authority until controlled migration.
+  workdrive_target: Applies only to designated governed document classes after migration approval.
+  duplicate_authoritative_document_copy: prohibited
+handover_requirement: >-
+  Every microservice handover SHALL identify authoritative systems for each state dimension it reads,
+  writes or projects and SHALL define integration behaviour at each authority boundary.
