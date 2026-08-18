@@ -1,0 +1,76 @@
+control_id: CTL-DEV-CHG-LOG-001
+version: 1.0
+status: PROPOSED_FOR_ADOPTION
+name: Mandatory KongoniApp Change Log Control
+owner: Chief of Accountability
+record_controller: Document Controller
+applies_to:
+  repository: kongoniapp1-runtime
+  actors:
+    - human
+    - ChatGPT
+    - Claude
+    - Codex
+    - Zia
+    - specialist_agent
+    - automation
+  change_classes:
+    - source_code
+    - configuration
+    - schema
+    - workflow
+    - infrastructure
+    - integration
+    - governance
+    - agent_contract
+    - prompt_or_instruction
+    - deployment
+rule:
+  statement: >-
+    Every material repository mutation SHALL have at least one immutable change-log
+    record committed in the same change set. The record SHALL identify the actor,
+    mandate, affected paths, intended outcome, authority, PDCA state and evidence.
+  fail_mode: CLOSED
+  business_rule: BR-DEV-CHG-LOG-001
+  pdca_method: MET-PDCA-001
+requirements:
+  before_change:
+    - resolve_actor_identity
+    - resolve_mandate_or_task_reference
+    - resolve_task_class
+    - resolve_execution_authority
+  during_change:
+    - record_affected_paths
+    - record_change_summary
+    - record_change_reason
+  after_change:
+    - record_validation_evidence
+    - record_check_study_result
+    - record_act_decision_when_available
+    - keep_task_open_for_T2_T3_until_valid_act_outcome
+log_design:
+  path_pattern: agent-workspace/change-log/YYYY/MM/CHG-*.yaml
+  append_only: true
+  immutable_after_merge: true
+  one_or_more_records_per_change_set: true
+  canonical_schema: agent-workspace/schemas/change-log.schema.json
+  template: agent-workspace/templates/change-log-entry.yaml
+enforcement:
+  github_action: .github/workflows/change-log-control.yml
+  validator: agent-workspace/scripts/validate_change_log.py
+  protected_change_requires_log: true
+  exemptions:
+    - agent-workspace/change-log/**
+    - .github/workflows/change-log-control.yml
+    - agent-workspace/scripts/validate_change_log.py
+    - agent-workspace/schemas/change-log.schema.json
+    - agent-workspace/templates/change-log-entry.yaml
+    - agent-workspace/governance/CTL-DEV-CHG-LOG-001.yaml
+closure:
+  do_complete_is_task_complete: false
+  valid_act_decisions:
+    - ADOPT
+    - ADAPT
+    - REPEAT
+    - REJECT
+    - ESCALATE
