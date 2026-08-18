@@ -1,0 +1,34 @@
+change_id: CHG-20260818-CATALYST-MICROSERVICE-SKILL
+timestamp_utc: '2026-08-18T17:04:36Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'Group CEO instruction: start developing a Zoho Catalyst Microservice Engineering Skill.'
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Develop the first governed Zoho Catalyst Microservice Engineering Skill and its service specification and acceptance-test artefacts.
+reason: Provide a repeatable engineering method that converts governed business service specifications, including BIAN-derived services, into controlled Zoho Catalyst microservices.
+affected_paths:
+  - agent-workspace/skills/SKL-CAT-MICROSVC-ENG-001/SKILL.md
+  - agent-workspace/skills/SKL-CAT-MICROSVC-ENG-001/service-specification.template.yaml
+  - agent-workspace/skills/SKL-CAT-MICROSVC-ENG-001/acceptance-tests.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Initial skill, service specification template and 15 acceptance tests created on an isolated branch. CI and regression validation pending.'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Branch: agent/catalyst-microservice-engineering-skill'
+  - 'Skill: SKL-CAT-MICROSVC-ENG-001 v0.1'
+  - 'Service specification template created.'
+  - '15 acceptance tests defined.'
+commit_sha: null
+pull_request: null
+notes: 'T2 task remains open pending CHECK/STUDY evidence and ACT decision.'
