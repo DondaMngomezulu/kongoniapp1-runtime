@@ -1,0 +1,41 @@
+change_id: CHG-20260818-MESSAGE-TEMPLATE-MICROSERVICE
+timestamp_utc: '2026-08-18T18:50:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+  agent_contract_ref: null
+mandate_ref: 'Group CEO instruction 2026-08-18: modify and integrate the adopted message-template architecture into Kongoniapp1 as a microservice.'
+accountability_task_ref: WRK-MSG-TPL-SVC-001
+task_class: T2
+change_type: architecture_and_implementation
+summary: Implement the governed Message Template Resolution Service and bind REG-MSG-TPL-001 to the existing Catalyst TemplateGovernanceRegister without creating a duplicate physical register.
+reason: Enforce CAT-BMP-001 -> CAT-MSG-001 -> REG-MSG-TPL-001 resolution at runtime while preserving Catalogue/Register semantic separation and fail-closed message governance.
+affected_paths:
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/service-specifications/SRV-VS00-MSG-TPL-001.yaml
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/logical-registers/REG-MSG-TPL-001.yaml
+  - appsail/kongoni_message_template_governance/app.js
+  - appsail/kongoni_message_template_governance/resolver.js
+  - appsail/kongoni_message_template_governance/package.json
+  - appsail/kongoni_message_template_governance/app-config.json
+  - appsail/kongoni_message_template_governance/test/resolver.test.js
+  - agent-workspace/work/WRK-MSG-TPL-SVC-001/mandate.yaml
+  - agent-workspace/work/WRK-ZCRM-BP-001/mandate.yaml
+environment: Development
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in ChatGPT conversation on 2026-08-18.'
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: PENDING_CI_AND_RUNTIME_CANARY
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Catalyst project: Kongoniapp1 / 86824000000020001 / Development.'
+  - 'Existing physical table reused: TemplateGovernanceRegister / 86824000000184034.'
+  - 'Development canary row: MSGIMPL-CHATGPT-INF-001-V1 / Catalyst ROWID 86824000000415008.'
+  - 'Pre-existing WRK-ZCRM-BP-001 schema defect remediated on this branch to restore Agent Workspace validation.'
+  - 'Production deployment explicitly prohibited until separate authorisation and valid CHECK/STUDY.'
+commit_sha: null
+pull_request: null
+notes: 'DO_COMPLETE is not TASK_COMPLETE. Merge, Development runtime canary, regression evidence and ACT remain required.'
