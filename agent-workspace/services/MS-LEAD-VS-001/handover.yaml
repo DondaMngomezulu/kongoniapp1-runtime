@@ -1,0 +1,35 @@
+handover:
+  service_id: MS-LEAD-VS-001
+  status: ENGINEERING_SPEC_COMPLETE_RUNTIME_REGISTRATION_PENDING
+  repository: DondaMngomezulu/kongoniapp1-runtime
+  branch: agent/ms-lead-vs-001
+  target_environment: Development
+  source_artifacts:
+    - service-specification.yaml
+    - architecture.yaml
+    - data-model.yaml
+    - openapi.yaml
+    - tests.yaml
+  implementation_decisions:
+    - microservice_is_orchestrator
+    - mapping_logic_is_reusable_engine
+    - legal_and_compliance_are_external_services
+    - deal_engine_owns_commercial_bid_no_bid
+    - primary_mapping_is_business_outcome_based_not_keyword_based
+  runtime_gate:
+    requirement: Register a new Catalyst function target through Catalyst CLI functions:add before runtime source/deployment.
+    reason: Catalyst MCP exposes list, execute and update operations but does not expose function creation; manual fabrication of Catalyst function registration is prohibited by the Catalyst engineering skill.
+    proposed_function_name: lead_value_stream_classifier
+    proposed_type: Advanced I/O
+    proposed_stack: Python
+    environment: Development
+  check_plan:
+    - validate_openapi_schema
+    - run_TVS_001_load_and_haul
+    - run_TVS_002_maintenance_separation
+    - run_TVS_003_finance_lease
+    - run_TVS_004_mandatory_eligibility_override
+    - verify_no_production_change
+  act_gate:
+    allowed_outcomes: [ADOPT, ADAPT, REPEAT, REJECT, ESCALATE]
+    closure_rule: DO_COMPLETE != TASK_COMPLETE
