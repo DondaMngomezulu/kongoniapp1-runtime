@@ -1,0 +1,77 @@
+artifact_id: REGRESSION-MIMOSA-CONCEPT-001
+name: Reusable MIMOSA Concept Regression Assessment
+version: 0.1.0
+status: CHECK_STUDY_COMPLETE
+assessment_date: 2026-08-19
+methodology: MET-PDCA-001
+task_class: T2
+baseline:
+  reusable_register: REG-MIMOSA-CONCEPT-001
+  native_catalogue: REG-MIMOSA-001
+  vs04_mapping: CAT-ARCH-SD-VS04-MIMOSA-001
+  lcc_tco_mapping: MAP-MIMOSA-LCC-TCO-001
+  crm_module: ProductSpecifications
+summary:
+  semantic_conflicts: 0
+  github_traceability_defects: 2
+  crm_records_with_mimosa_library_reference: 34
+  crm_records_with_machine_model_lookup: 15
+  crm_records_without_machine_model_lookup: 19
+  overall_result: PASS_WITH_REMEDIATION
+checks:
+  - check_id: RG-MIM-001
+    scope: REG-MIMOSA-CONCEPT-001 to native MIMOSA catalogue
+    result: PASS
+    evidence: 26 reusable concepts each bind to a named native MIMOSA source object; native 438-object catalogue remains authoritative and unchanged.
+  - check_id: RG-MIM-002
+    scope: VS04 MIMOSA architecture
+    result: TRACEABILITY_DEFECT
+    finding: Existing service-domain mappings use native MIMOSA names in source_concepts but do not yet carry reusable concept IDs.
+    semantic_conflict: false
+    remediation: Apply MAP-MIMOSA-REUSE-BINDINGS-001 service_domain_bindings.
+  - check_id: RG-MIM-003
+    scope: MIMOSA LCC/TCO semantic crosswalk
+    result: TRACEABILITY_DEFECT
+    finding: Existing semantic_mappings use native MIMOSA names but do not yet carry reusable concept IDs.
+    semantic_conflict: false
+    remediation: Apply MAP-MIMOSA-REUSE-BINDINGS-001 lcc_tco_bindings.
+  - check_id: RG-MIM-004
+    scope: Zoho CRM ProductSpecifications
+    result: PARTIAL
+    finding: 34 Equipment-profile records reference the domain library string 'IDTA AAS; MIMOSA CCOM; XCMG', but ProductSpecifications do not presently expose a field for reusable MIMOSA concept IDs.
+    machine_model_lookup_population:
+      populated: 15
+      null: 19
+    semantic_conflict: false
+    remediation: Do not overload Domain_Content_Library. Add a governed reusable-concept relationship only after CRM relationship design is approved; separately reconcile the 19 missing Machine_Model lookups.
+  - check_id: RG-MIM-005
+    scope: Product taxonomy separation
+    result: PASS
+    finding: Reusable MIMOSA concepts remain separate from Product, Product Type, Product Specification, engine, microservice, and economic-extension semantics.
+regression_assertions:
+  - id: RA-MIM-001
+    assertion: Native MIMOSA object names remain unchanged.
+    result: PASS
+  - id: RA-MIM-002
+    assertion: No Kongoni economic concept is represented as native MIMOSA.
+    result: PASS
+  - id: RA-MIM-003
+    assertion: LCC/TCO remain EngineeringStudy-derived Kongoni study types, not MIMOSA Product Types.
+    result: PASS
+  - id: RA-MIM-004
+    assertion: AssetCo products remain lifecycle products and machines remain eligible or underlying asset references.
+    result: PASS
+  - id: RA-MIM-005
+    assertion: Existing VS04 and LCC/TCO mappings reference reusable MIMOSA IDs directly or through a governed binding artifact.
+    result: PASS_AFTER_BINDING_ARTIFACT
+remaining_gaps:
+  - CRM has no approved first-class reusable MIMOSA concept relationship on ProductSpecifications.
+  - 19 of 34 MIMOSA-referencing CRM ProductSpecifications have null Machine_Model lookup values.
+  - Reusable register covers 26 of 438 native MIMOSA objects by design; future promotion remains demand-driven.
+pdca:
+  stage: CHECK_STUDY
+  do_complete: true
+  check_complete: true
+  regression_complete: true
+  act_decision: ADAPT
+  task_complete: false
