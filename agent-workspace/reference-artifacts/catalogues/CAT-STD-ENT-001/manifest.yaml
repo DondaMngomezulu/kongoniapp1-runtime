@@ -1,0 +1,18 @@
+catalogue_id: CAT-STD-ENT-001
+name: Enterprise Standards Catalogue
+status: RECONCILED_MANIFEST
+version: 1.0.0
+authority:
+  drive: CONTROLLED_HUMAN_READABLE_STANDARDS_ARTIFACTS
+  catalyst: AUTHORITATIVE_STRUCTURED_DEVELOPMENT_RECORD
+  github: ENGINEERING_MANIFEST
+catalyst_tables:
+  - StandardsCatalogue
+  - StandardsRegister
+  - StandardsAdoptionCrosswalk
+  - StandardLibraryArtifact
+  - StandardRelationship
+  - StandardEvidenceLink
+  - StandardValueStreamMap
+observed_standards_catalogue_rows: 174
+production_status: NOT_VERIFIED
