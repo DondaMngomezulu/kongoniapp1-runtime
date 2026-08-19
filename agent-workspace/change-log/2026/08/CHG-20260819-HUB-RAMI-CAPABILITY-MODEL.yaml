@@ -1,0 +1,27 @@
+change_id: CHG-20260819-HUB-RAMI-CAPABILITY-MODEL
+timestamp_utc: '2026-08-19T07:24:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO instructed use of RAMI layers as the guide for decomposing the adopted Enterprise Hub brain-and-nervous-system architecture on 2026-08-19.'
+task_class: T2
+change_type: architecture
+summary: Add a RAMI-guided Enterprise Hub Capability Catalogue beneath STD-ARCH-HUB-SPOKE-001.
+reason: Provide a standards-grounded capability decomposition for the logical Hub while preventing technology platforms or RAMI layers from becoming accidental deployment boundaries.
+affected_paths:
+  - agent-workspace/architecture/CAT-HUB-CAP-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation on 2026-08-19.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PENDING_CAPABILITY_AND_SERVICE_GAP_VALIDATION
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'STD-ARCH-HUB-SPOKE-001 v1.0 is merged on main and defines Hub = Brain + Nervous System.'
+  - 'Plattform Industrie 4.0 describes RAMI 4.0 as a layered reference architecture and orientation framework for structured description and interoperability.'
+  - 'The catalogue uses the RAMI Business, Functional, Information, Communication, Integration and Asset layers as classification guidance, not mandatory technical tiers.'
+notes: 'Next CHECK/STUDY step is to map current Kongoni services/platforms to these capabilities and identify missing or duplicated Hub capabilities before ACT. DO_COMPLETE != TASK_COMPLETE.'
