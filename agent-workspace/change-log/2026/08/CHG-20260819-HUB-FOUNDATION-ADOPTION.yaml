@@ -7,9 +7,10 @@ mandate_ref: 'Group CEO approved ADOPT of the four-foundation Hub Foundation Pro
 task_class: T1
 change_type: governance
 summary: Record the adopted Enterprise Hub Foundation Programme as the parent architecture and engineering programme for the microservice workstream.
+reason: Preserve the approved Hub Foundation Programme as an authoritative architecture record and bind successor microservice engineering to the adopted Brain-and-Nervous-System architecture.
 affected_paths:
   - governance/architecture/ADR-HUB-FOUNDATION-001.md
-environment: Repository
+environment: repository
 authority:
   status: AUTHORISED
   reference: 'Group CEO decision in active ChatGPT conversation on 2026-08-19.'
@@ -26,7 +27,3 @@ evidence:
   - 'Microservice Register inherits the Hub foundations and remains platform-neutral at logical architecture level.'
   - 'Zoho Catalyst, Google Cloud, OpenAI/MCP and other approved services remain implementation bindings rather than the Hub itself.'
   - 'Successor implementation work remains separate controlled PDCA cycles.'
-controls:
-  - MET-PDCA-001
-  - BR-PDCA-001
-  - STD-ARCH-HUB-SPOKE-001
