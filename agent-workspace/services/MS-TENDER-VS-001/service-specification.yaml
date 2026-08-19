@@ -1,49 +1,54 @@
 service:
   id: MS-TENDER-VS-001
   name: Tender-to-Value-Stream Classification Microservice
-  version: 0.2.0
+  version: 0.3.0
   status: CONTROLLED_CANDIDATE
   task_class: T2
   methodology: MET-PDCA-001
+  bounded_context: Tender Management
   purpose: >-
     Classify a governed tender opportunity to its primary and supporting Kongoni value streams
     using the tender scope, contracted outcome, capability and service mappings, and eligibility evidence.
-  scope:
-    includes:
-      - public and private tenders
-      - RFPs
-      - RFQs
-      - RFIs where opportunity classification is required
-      - EOIs where opportunity classification is required
-      - tender addenda that materially change scope
-    excludes:
-      - generic sales leads that are not tender-derived
-      - prospect scoring
-      - legal interpretation
-      - compliance determination
-      - bid/no-bid authorisation
-      - pricing and commercial structuring
+  applies_to:
+    - public tenders
+    - private tenders
+    - RFPs
+    - RFQs
+    - RFIs that enter the tender workflow
+    - EOIs that enter the tender workflow
+    - tender addenda that materially change scope
+  excludes:
+    - generic sales leads
+    - prospecting
+    - non-tender CRM lead scoring
+    - legal interpretation
+    - compliance determination
+    - bid/no-bid authorisation
+    - pricing and commercial structuring
   canonical_flow:
-    - Tender source and controlled tender pack
-    - Tender requirement decomposition
-    - Buyer outcome identification
-    - Capability resolution
-    - Service resolution
-    - Value stream ownership resolution
-    - Eligibility override check
-    - Classification evidence
-    - Tender Workflow handoff
-    - Deal Engine handoff after qualification
+    - Tender discovered
+    - Tender source documents controlled
+    - Tender requirements decomposed
+    - Buyer contracted outcome identified
+    - Capability resolved
+    - Service resolved
+    - Primary and supporting value streams resolved
+    - Eligibility result consumed
+    - Classification evidence recorded
+    - Tender Workflow state returned
+    - Deal Engine handoff only after qualification
   decision_rule: >-
     The primary value stream is the value stream that owns the dominant contracted output.
-    Supporting value streams may be returned where they supply material capabilities.
+    Supporting value streams may be returned where they provide material delivery capabilities.
   prohibitions:
     - keyword-only classification
     - classification without source provenance
     - bypass of mandatory eligibility failures
     - direct Deal creation before Tender Workflow qualification
+    - use for non-tender Lead processing
   downstream:
     - Tender Workflow
     - Tender Requirements Register
-    - Deal Engine
+    - Legal and Compliance services
+    - Deal Engine after qualification
     - MY Task List
