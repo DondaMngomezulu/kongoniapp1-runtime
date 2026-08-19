@@ -1,0 +1,88 @@
+control_id: MAT-PRD-ARTIFACT-001
+name: Product Level to Governed Artifact Matrix
+version: 1.0.0
+status: ADOPTED
+effective_date: 2026-08-19
+change_set_id: PRD-ARTIFACT-ADAPT-2026-08-19
+methodology: MET-PDCA-001
+parent_control: CTL-PRD-TAX-001
+purpose: Bind each L1-L6 product concept to the governed artifacts required to define, approve, commercialise, contract, fulfil, and evidence it.
+provenance_rule:
+  id: BR-PRD-ART-PROV-001
+  statement: Every product artifact SHALL carry provenance to the governing product-domain or value-stream standard applicable to its owning Product Type. Generic enterprise references MAY supplement but SHALL NOT replace domain provenance.
+  inheritance:
+    - L1 establishes the governing domain/value-stream standard set.
+    - L2 SHALL inherit the L1 governing standard set and MAY add family-specific standards.
+    - L3 SHALL inherit L1/L2 provenance and SHALL identify the canonical Product Type semantic/reference standard.
+    - L4 SHALL inherit its L3 provenance and SHALL add authoritative commercial source content.
+    - L5 SHALL inherit the selected L4/L3 provenance and SHALL add customer-specific offer evidence.
+    - L6 SHALL inherit the accepted L5/L4/L3 provenance and SHALL add the authoritative agreement, policy, asset, service, or account evidence that realises the product instance.
+  approval_gate: No artifact may be promoted to Approved or In Force where Governing_Standard_Reference or Provenance_Source is absent.
+levels:
+  L1:
+    concept: Value Stream Product Domain
+    mandatory_artifacts:
+      - Product Domain Definition
+      - Domain Reference Standard Profile
+    provenance: governing value-stream/product-domain standard
+  L2:
+    concept: Product Family
+    mandatory_artifacts:
+      - Product Family Definition
+      - Classification Rule
+    provenance: inherited L1 standard plus family-specific reference where applicable
+  L3:
+    concept: Product Type
+    mandatory_artifacts:
+      - Product Type Definition
+      - Product Specification Profile
+      - Reference Content Library Binding
+    provenance: inherited L1/L2 plus canonical domain semantic standard
+  L4:
+    concept: Sales Product
+    mandatory_artifacts:
+      - Sales Product Specification
+      - Product Card
+      - Pricing and Eligibility Rules
+    provenance: inherited L3 plus authoritative commercial/product source content
+  L5:
+    concept: Customer Offer
+    mandatory_artifacts:
+      - Customer Offer or Quote Record
+      - Offer Terms and Pricing Schedule
+      - Validity and Customer Configuration Evidence
+    provenance: inherited L4/L3 plus customer-specific quote/approval evidence
+  L6:
+    concept: Customer Product Instance
+    mandatory_artifacts:
+      - Customer Product Record
+      - Sales Product Agreement or equivalent governing legal instrument
+      - Fulfilment or Entitlement Record
+      - Asset, Policy, Service, Account, or Portfolio Instance Evidence where applicable
+    provenance: inherited L5/L4/L3 plus executed/in-force authoritative evidence
+reference_profiles:
+  Equipment:
+    governing_standards: [IDTA_AAS_02003, MIMOSA_CCOM]
+    semantic_references: [ECLASS, IEC_CDD]
+    authoritative_sources: [OEM_catalogue, OEM_technical_manual, approved_commercial_policy]
+  Financial_Services:
+    governing_standards: [BIAN, FIBO]
+    catalogue_model: TM_Forum_ProductSpecification
+    authoritative_sources: [Sales_Product_Agreement, credit_policy, pricing_policy, legal_source_package]
+  Insurance:
+    governing_standards: [ACORD]
+    authoritative_sources: [policy_wording, underwriting_rules, approved_insurer_product_source]
+  Aftermarket:
+    governing_standards: [MIMOSA_CCOM, IDTA_AAS]
+    authoritative_sources: [OEM_parts_catalogue, maintenance_manual, service_policy]
+  Contract_Mining:
+    governing_standards: [APQC, MIMOSA]
+    authoritative_sources: [tender_specification, operating_plan, service_scope]
+  Investment_Portfolio:
+    governing_standards: [FIBO, BIAN]
+    authoritative_sources: [transaction_documents, investment_mandate, funding_terms]
+repository_roles:
+  crm: Operational artifact register, product relationships, status, and provenance references
+  github: Governed matrix, inheritance rules, schemas, and validation logic
+  drive: Controlled source standards, executed/source documents, and provenance evidence
+  portal: Rendered Product Cards and customer-facing views only; never authoritative master
