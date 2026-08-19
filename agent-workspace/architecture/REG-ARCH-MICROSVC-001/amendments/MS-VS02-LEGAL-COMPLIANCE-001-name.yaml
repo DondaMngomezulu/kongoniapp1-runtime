@@ -1,0 +1,30 @@
+amendment_id: AMD-MICROSVC-NAME-20260819-001
+register_id: REG-ARCH-MICROSVC-001
+microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+change_type: CANONICAL_NAME_CHANGE
+previous_microservice_name: Operating Lease Legal Compliance Service
+new_microservice_name: Legal and Compliance Service
+service_domain_name: Legal Compliance
+reference_standard: BIAN
+reference_version: '14.0.0'
+value_stream_id: VS02
+value_stream_name: Asset Finance & Capital Provision
+scope_effect:
+  - Canonical microservice name is broadened from an Operating-Lease-specific label to Legal and Compliance Service.
+  - Existing BIAN Legal Compliance service-domain binding is retained.
+  - Existing microservice identifier is retained.
+  - Existing service boundary remains authoritative until the service specification is adapted.
+  - Operating Lease becomes an initial use case, not the microservice name.
+reason: >-
+  The microservice combines the governed legal/compliance workflow and rule-engine execution pattern
+  used for LegalRuleML/LegalML reference work. The canonical service should therefore be reusable
+  across FinCo legal and compliance use cases rather than named for one product.
+governance:
+  methodology: MET-PDCA-001
+  pdca_stage: DO
+  status: CONTROLLED_DRAFT
+  requested_by: Group CEO
+consolidation_rule: >-
+  On adoption, replace the microservice_name for MS-VS02-LEGAL-COMPLIANCE-001 in register.yaml with
+  'Legal and Compliance Service'. Do not change service_domain_name, source_domain_id, or microservice_id
+  unless a separate architecture decision authorises that change.
