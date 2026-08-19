@@ -1,0 +1,90 @@
+register_id: REG-ENT-CAT-RECON-001
+version: 1.0.0
+status: CONTROLLED_RECONCILIATION_BASELINE
+date: 2026-08-19
+methodology: MET-PDCA-001
+task_class: T2
+authority_model:
+  google_drive: CONTROLLED_HUMAN_READABLE_SOURCE_AND_EVIDENCE
+  github: ENGINEERING_SOURCE_SCHEMA_AND_RECONCILIATION
+  catalyst_development: AUTHORITATIVE_STRUCTURED_RECORD_DEVELOPMENT
+  catalyst_production: AUTHORITATIVE_EXECUTABLE_RECORD_AFTER_PROMOTION
+  transactional_systems: DOWNSTREAM_PROJECTIONS
+catalogues:
+  - id: CAT-XCMG-DIG-001
+    name: XCMG Digital Catalogue
+    drive: PRESENT_MULTIPLE_SOURCE_AND_EVIDENCE_ARTIFACTS
+    github: RECONCILED
+    github_manifest: agent-workspace/reference-artifacts/catalogues/CAT-XCMG-DIG-001/reconciliation.yaml
+    catalyst: PRESENT
+    catalyst_release: CAT-XCMG-DIG-001-R0.2
+    catalyst_state: DRAFT_PASS_WITH_GAPS
+    crm_projection: 26_PRODUCT_ADOPTED_BASELINE
+    reconciliation: PARTIAL_13_DIRECT_13_LEGACY_OR_REGIONAL
+    production: BLOCKED
+  - id: BA-VS-001
+    name: Enterprise Value Stream Catalogue and Capability Mapping
+    drive: CEO_ADOPTED_BASELINE_PRESENT
+    github: NO_EXACT_CATALOGUE_ARTIFACT_FOUND
+    catalyst: PRESENT_AS_ENTERPRISE_VALUE_STREAM
+    catalyst_rows: 7
+    reconciliation: STRUCTURED_COUNTERPART_PRESENT_ENGINEERING_MANIFEST_GAP
+    production: NOT_VERIFIED
+  - id: CAT-APQC-CAP-OWN
+    name: Kongoni APQC L3 Capability Ownership Catalogue
+    drive: PRESENT
+    github: NO_EXACT_CATALOGUE_ARTIFACT_FOUND
+    catalyst: PRESENT_PARTIAL_AS_APQC_PROCESS_ELEMENT_REFERENCE_AND_CROSSWALKS
+    catalyst_process_reference_rows: 19
+    reconciliation: PARTIAL
+    production: NOT_VERIFIED
+  - id: BA-PRO-001
+    name: Enterprise Process Architecture Catalogue
+    drive: MULTIPLE_BASELINE_AND_WORKING_VARIANTS_PRESENT
+    github: NO_EXACT_CATALOGUE_ARTIFACT_FOUND
+    catalyst: NO_EXACT_BA_PRO_CATALOGUE_TABLE_CONFIRMED
+    reconciliation: GAP_DUPLICATE_AND_AUTHORITY_REVIEW_REQUIRED
+    production: NOT_VERIFIED
+  - id: REG-MIMOSA-001
+    name: MIMOSA CCOM Object Content Catalogue
+    drive: GOVERNED_CATALOGUE_PRESENT
+    github: NO_EXACT_CATALOGUE_ARTIFACT_FOUND
+    catalyst: PRESENT_AS_SCHEMA_RELEASE_OBJECT_RELATION
+    catalyst_schema_object_rows: 438
+    reconciliation: STRUCTURED_COUNTERPART_PRESENT_ENGINEERING_MANIFEST_GAP
+    production: NOT_VERIFIED
+  - id: KON-OL-GOV-CAT-001
+    name: Operating Lease Governed Catalogue and Artifact Register
+    drive: WORKING_V1_2_PRESENT
+    github: NO_EXACT_CATALOGUE_ARTIFACT_FOUND
+    catalyst: PROGRAM_LOCI_AND_STRUCTURED_COMPONENTS_PRESENT_NO_SINGLE_CATALOGUE_COUNTERPART_CONFIRMED
+    reconciliation: PARTIAL
+    production: NOT_VERIFIED
+  - id: CAT-STD-ENT
+    name: Enterprise Standards Catalogue
+    drive: SABS_AND_STANDARDS_PROJECT_ARTIFACTS_PRESENT
+    github: NO_EXACT_FULL_CATALOGUE_ARTIFACT_FOUND
+    catalyst: PRESENT_AS_STANDARDS_CATALOGUE_REGISTER_AND_CROSSWALKS
+    catalyst_standards_catalogue_rows: 174
+    reconciliation: STRUCTURED_COUNTERPART_PRESENT_ENGINEERING_MANIFEST_GAP
+    production: NOT_VERIFIED
+controls:
+  - Each governed catalogue SHALL have one stable catalogue ID.
+  - Drive SHALL retain controlled human-readable source/evidence, not become an executable source of truth.
+  - GitHub SHALL contain schema, transformation logic and a reconciliation manifest for executable catalogues.
+  - Catalyst Development SHALL contain the authoritative structured development record.
+  - Production promotion SHALL require CHECK/STUDY evidence and an explicit ACT decision.
+  - CRM and other applications SHALL consume qualified projections and SHALL NOT redefine catalogue identity.
+check_study:
+  result: PASS_WITH_GAPS
+  material_gap: Catalyst Production currently returned no datastore tables through the connected interface.
+  duplicate_risk: Drive contains multiple working/superseded catalogue variants.
+act:
+  decision: ADAPT
+  next_priority:
+    - complete 13 XCMG legacy/regional source mappings
+    - bind BA-VS-001 to EnterpriseValueStream identities
+    - bind APQC catalogue to APQC_ProcessElementReference and ownership crosswalk
+    - resolve BA-PRO-001 duplicate/authority variants
+    - add GitHub engineering manifests for MIMOSA, Operating Lease and Standards
+    - verify controlled promotion path to Catalyst Production
