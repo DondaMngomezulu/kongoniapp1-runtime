@@ -1,0 +1,48 @@
+data_model:
+  id: DM-VS04-LCC-001
+  version: '0.1'
+  status: DEVELOPMENT_BASELINE
+  semantic_anchor:
+    standard: MIMOSA CCOM
+    version: '4.0.0'
+    analytical_container: EngineeringStudy
+    analytical_entry: EngineeringStudyEntry
+    subject_bindings:
+      - EngineeringStudyEntryForAsset
+      - EngineeringStudyEntryForModel
+      - EngineeringStudyEntryForSegment
+  entities:
+    LCCScenario:
+      key: scenario_id
+      fields: [engineering_study_id, asset_id, model_id, segment_id, analysis_start, analysis_horizon, currency_code, discount_rate, utilisation_profile_id, assumption_set_id, reference_model_id, state]
+    CostAssumption:
+      key: assumption_id
+      fields: [scenario_id, cost_category, cost_element, driver_type, quantity, unit, rate, currency_code, escalation_rule, effective_from, effective_to, provenance_ref]
+    CostFactProjection:
+      key: fact_projection_id
+      fields: [scenario_id, source_fact_ref, source_fact_type, period, cost_category, cost_element, amount, currency_code, actual_or_forecast, provenance_ref]
+    LCCCalculation:
+      key: calculation_id
+      fields: [scenario_id, calculation_version, calculation_timestamp, discount_rate, fixed_cost_pv, variable_cost_pv, residual_value_pv, productive_hours_pv, reconciliation_status]
+    LCCResult:
+      key: result_id
+      fields: [calculation_id, nominal_lcc, present_value_lcc, currency_code]
+    LCOHResult:
+      key: lcoh_result_id
+      fields: [calculation_id, lcoh_fixed, lcoh_variable, lcoh_total, currency_per_productive_hour, productive_hours_pv]
+  cost_decomposition:
+    L1: [LCOH]
+    L2: [FIXED_OWNERSHIP, VARIABLE_OPERATING]
+    L3_fixed: [CAPITAL_RECOVERY, FINANCING, INSURANCE, FIXED_MAINTENANCE_SERVICE_PLAN, LICENSING_STATUTORY, FIXED_ASSET_OVERHEAD]
+    L3_variable: [FUEL_ENERGY, LUBRICANTS, PLANNED_MAINTENANCE, CORRECTIVE_MAINTENANCE, MAJOR_COMPONENTS, TYRES_GET, OPERATOR_LABOUR, OTHER_USAGE]
+    L4: COST_ELEMENT
+    L5: [QUANTITY, RATE, FREQUENCY, LIFE, UTILISATION]
+  utilisation_profile:
+    dimensions: [calendar_hours, scheduled_hours, available_hours, operating_hours, productive_hours]
+    denominator_default: productive_hours
+  controls:
+    - Asset and maintenance master data remain external source-of-truth objects.
+    - Actual, assumption, forecast and calculated values SHALL carry distinct states.
+    - Every calculated result SHALL retain model version, source references and assumption-set provenance.
+    - Source currency and reporting currency SHALL be distinguishable.
+    - The aviation reference model SHALL be used as an economic-pattern anchor only, not as mining semantics.
