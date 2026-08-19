@@ -15,19 +15,23 @@ authority:
   status: AUTHORISED
   reference: 'Group CEO instruction in active ChatGPT conversation on 2026-08-19.'
 pdca:
-  phase: DO
-  do_complete: false
-  check_study_result: PENDING
-  act_decision: PENDING
-  task_complete: false
+  phase: ACT
+  do_complete: true
+  check_study_result: PASS
+  act_decision: ADOPT
+  task_complete: true
 evidence:
-  - 'EAMSemanticEnvelope row count = 0.'
-  - 'GovernedArtifactSemanticEnvelope row count = 19.'
+  - 'Pre-delete EAMSemanticEnvelope row count = 0.'
+  - 'Pre-delete GovernedArtifactSemanticEnvelope row count = 19.'
   - 'GovernedArtifactSemanticEnvelope preserves WHO/WHY/WHAT/HOW/WHERE/WHEN semantics and extends them with canonical identity, provenance, governance, validation, lifecycle and decomposition controls.'
   - 'GitHub code search found no repository reference to EAMSemanticEnvelope.'
   - 'Catalyst Function inventory recheck returned a transient internal server error; previous live inventory showed only undeployed kongoni_crm_connection_test and no AppSail runtime.'
+  - 'Catalyst Delete_Table completed successfully for EAMSemanticEnvelope table_id 86824000000076747.'
+  - 'Post-delete query of EAMSemanticEnvelope returned No such Table with the given name exists.'
+  - 'Post-delete GovernedArtifactSemanticEnvelope row count remained 19.'
+  - 'No business row was deleted.'
 controls:
-  - 'Delete only EAMSemanticEnvelope.'
-  - 'Verify GovernedArtifactSemanticEnvelope remains present with 19 rows after deletion.'
-  - 'Verify EAMSemanticEnvelope no longer appears in live table inventory.'
-  - 'No populated table or source row may be modified as part of this change.'
+  - 'Only EAMSemanticEnvelope was retired.'
+  - 'GovernedArtifactSemanticEnvelope remains the governed successor.'
+  - 'SemanticChangeProposal was retained despite zero rows because proposal-state semantics remain distinct.'
+  - 'No populated table or source row was modified as part of this change.'
