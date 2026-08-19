@@ -1,0 +1,116 @@
+product_specification_package:
+  id: PSP-FINCO-ASSET-FINANCE-001
+  version: '0.1'
+  status: CONTROLLED_DRAFT_ADAPT
+  microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+  semantic_rule_package_ref: RPK-FINCO-PRODUCT-SEM-001
+  agreement_mapping_ref: MAP-FINCO-PRODUCT-AGREEMENT-001
+  design_principle: >-
+    Product and agreement names shall describe the commercial/legal construct without claiming an accounting or tax outcome that must be determined from facts. Legal, SARS tax and IFRS accounting classifications are mandatory overlays and qualification gates.
+  naming_recommendations:
+    - product_code: FINCO-EQUIPMENT-LOAN
+      recommended_product_name: Equipment Loan
+      recommended_agreement_name: Equipment Loan Agreement
+      rationale: Loan is the stable legal/commercial construct; IFRS 9 and SARS debt treatment are overlays rather than names.
+    - product_code: FINCO-EQUIPMENT-FINANCE-LEASE
+      recommended_product_name: Equipment Finance Lease
+      recommended_agreement_name: Equipment Lease Agreement - Finance Lease
+      rationale: Preserve the lease legal form and make Finance Lease an explicit product/classification qualifier; final IFRS lessor classification remains fact-dependent.
+    - product_code: FINCO-EQUIPMENT-OPERATING-LEASE
+      recommended_product_name: Equipment Operating Lease
+      recommended_agreement_name: Equipment Lease Agreement - Operating Lease
+      rationale: Preserve the lease legal form and operating-lease commercial/tax intent while requiring independent SARS and IFRS qualification.
+    - product_code: FINCO-EQUIPMENT-RENTAL
+      recommended_product_name: Equipment Rental
+      recommended_agreement_name: Equipment Rental Agreement
+      rationale: Rental is the commercial/legal access construct; IFRS 16 contains-a-lease assessment remains mandatory and may identify a lease component without renaming the commercial product.
+  common_mandatory_specification_fields:
+    identity: [product_code, product_name, agreement_type, version, effective_date]
+    parties: [provider_role, customer_role, legal_entity_refs]
+    equipment: [asset_or_asset_class, identification_rule, substitution_rights, supplier_control_rights]
+    economics: [asset_cost_or_value_basis, upfront_amount, term, payment_basis, payment_frequency, fees, taxes, end_of_term_amount_or_residual_if_applicable]
+    legal: [governing_law, rights_granted, ownership_or_title_position, security_or_collateral_if_applicable, termination, default, remedies, end_of_term_rights]
+    tax: [SARS_classification_status, VAT_treatment_status, connected_person_status_if_applicable, tax_source_refs]
+    accounting: [IFRS_standard, accounting_classification_status, identified_asset_test_if_applicable, control_of_use_test_if_applicable, lessor_classification_if_applicable]
+    evidence: [authoritative_source_refs, rule_package_version, assessment_id, exceptions, approval_state]
+  products:
+    - product_code: FINCO-EQUIPMENT-LOAN
+      product_name: Equipment Loan
+      agreement_type: Equipment Loan Agreement
+      legal_construct:
+        provider_role: Lender
+        customer_role: Borrower
+        ownership_intent: Customer acquisition/ownership; title and security mechanics specified per transaction.
+        core_obligation: Borrower repays advanced principal/value plus contractually agreed finance charges and amounts.
+        equipment_role: financed asset and, where agreed, security/collateral; equipment does not create a lease by itself.
+      tax_specification:
+        SARS_semantic_class: debt_or_loan
+        mandatory_tests: [debt_character, interest_and_finance_charge_tax_treatment, VAT_scope_where_applicable]
+      accounting_specification:
+        primary_standard: IFRS 9
+        provider_instrument: financial_asset
+        mandatory_tests: [contractual_cash_flow_terms, business_model_classification, SPPI_where_applicable, expected_credit_loss]
+      commercial_pricing_inputs: [purchase_price, deposit, financed_amount, interest_or_yield, term, repayment_profile, fees, credit_risk]
+      prohibited_designs: [calling_security_interest_a_lease, embedding_unverified_tax_or_IFRS_outcome_in_product_name]
+    - product_code: FINCO-EQUIPMENT-FINANCE-LEASE
+      product_name: Equipment Finance Lease
+      agreement_type: Equipment Lease Agreement - Finance Lease
+      legal_construct:
+        provider_role: Lessor
+        customer_role: Lessee
+        ownership_position: Lessor legal title during lease unless agreement/law provides otherwise.
+        core_right: Lessee receives contractual right to use identified equipment for term against lease payments.
+        end_of_term: Must specify return, purchase, transfer, renewal or other permitted rights.
+      tax_specification:
+        SARS_semantic_class: lease_other_than_operating_lease_where_applicable
+        mandatory_tests: [applicable_Income_Tax_Act_lease_rules, capitalised_leased_asset_reporting_where_applicable, VAT_lease_treatment]
+      accounting_specification:
+        primary_standard: IFRS 16
+        mandatory_tests: [contains_lease, identified_asset, control_of_use, lessor_finance_lease_test]
+        lessor_target_classification: Finance Lease
+        classification_gate: substantially_all_risks_and_rewards_transfer
+      commercial_pricing_inputs: [equipment_cost, upfront_amount, term, lessor_yield, payment_profile, purchase_or_terminal_amount, credit_risk, fees]
+      prohibited_designs: [guaranteeing_IFRS_finance_lease_classification_from_title_only]
+    - product_code: FINCO-EQUIPMENT-OPERATING-LEASE
+      product_name: Equipment Operating Lease
+      agreement_type: Equipment Lease Agreement - Operating Lease
+      legal_construct:
+        provider_role: Lessor
+        customer_role: Lessee
+        ownership_position: Lessor retains legal title during lease.
+        core_right: Lessee receives contractual right to use identified equipment for term against rentals.
+        residual_position: Lessor retains material residual/end-of-term asset interest unless transaction terms provide otherwise.
+        end_of_term: Must specify return, renewal, extension, purchase offer or other permitted rights without presuming ownership transfer.
+      tax_specification:
+        SARS_semantic_class: operating_lease_subject_to_qualification
+        mandatory_tests: [section_23A_or_other_applicable_operating_lease_definition, operating_lease_payment_classification, connected_or_non_connected_status, VAT_lease_treatment]
+      accounting_specification:
+        primary_standard: IFRS 16
+        mandatory_tests: [contains_lease, identified_asset, control_of_use, lessor_operating_lease_test]
+        lessor_target_classification: Operating Lease
+        classification_gate: does_not_transfer_substantially_all_risks_and_rewards
+      commercial_pricing_inputs: [equipment_cost, term, lessor_yield, expected_residual_value, residual_value_risk, utilisation_or_condition_constraints, payment_profile, credit_risk, fees]
+      prohibited_designs: [treating_residual_percentage_as_classification_test, assuming_SARS_and_IFRS_operating_lease_results_are_identical]
+    - product_code: FINCO-EQUIPMENT-RENTAL
+      product_name: Equipment Rental
+      agreement_type: Equipment Rental Agreement
+      legal_construct:
+        provider_role: Rental Provider
+        customer_role: Renter
+        ownership_position: Provider retains title.
+        core_right: Temporary access/use subject to rental terms, fleet/substitution rights and return obligation.
+        equipment_identification: May be a specific asset or equipment class; contract must state provider substitution rights.
+      tax_specification:
+        SARS_semantic_class: rental_or_letting_and_hiring_subject_to_facts
+        mandatory_tests: [rental_income_or_expense_character, VAT_rental_treatment, any_applicable_lease_reclassification]
+      accounting_specification:
+        primary_standard: IFRS 16_contains_a_lease_assessment
+        mandatory_tests: [identified_asset, substantive_substitution_right, control_of_use]
+        outcome_rule: If lease definition is met, attach applicable IFRS lease-component accounting; otherwise apply relevant non-lease/service accounting.
+      commercial_pricing_inputs: [equipment_value, rental_period, time_or_usage_basis, utilisation, maintenance_if_included, insurance_if_included, mobilisation, availability_risk, residual_value, fleet_overhead, margin]
+      prohibited_designs: [assuming_Rental_is_automatically_outside_IFRS16]
+  composition_rules:
+    - Maintenance, insurance, telematics, availability and other services shall be separate components/schedules unless separately approved as products.
+    - Full Maintenance Operating Lease = Equipment Operating Lease plus governed Maintenance Service component; it is not a new base financing class by default.
+    - Full Maintenance Rental = Equipment Rental plus governed Maintenance Service component; it is not a new base financing class by default.
+    - Product specification shall carry target classifications and mandatory tests; executed agreement facts determine final legal/tax/accounting outcomes.
