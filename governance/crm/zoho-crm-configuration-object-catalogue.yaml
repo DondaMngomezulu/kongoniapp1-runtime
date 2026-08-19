@@ -1,0 +1,218 @@
+artifact_id: CAT-ZCRM-CONFIG-001
+name: Zoho CRM Configuration Object Catalogue and Engineering Decision Rules
+version: 1.0.0
+status: ADOPTED
+owner: Chief of Accountability
+document_controller: Jane Seaward
+methodology: MET-PDCA-001
+source_authority:
+  primary: Zoho CRM V8 official developer documentation
+  principle: Current CRM tenant configuration SHALL NOT define the canonical configuration-object model.
+reference_architecture:
+  structural: TM Forum ODA / SID
+  financial_services: BIAN
+  insurance: ACORD
+configuration_classes:
+  - id: ZC01
+    name: Module
+    zoho_meaning: Persistent standard or custom CRM entity container; includes parent, subform and linking module structures.
+    engineering_use: Use for a durable business object with independent identity, lifecycle, relationships and persisted records.
+    oda_mapping: SID entity / component-owned information object
+    bian_mapping: Business object or service-domain control-record information
+    acord_mapping: Insurance business entity where applicable
+    anti_pattern: Do not create a module for a status, classification, screen, workflow step or derived view.
+  - id: ZC02
+    name: Field
+    zoho_meaning: Typed attribute of a module, including lookup, picklist, subform and other supported data types.
+    engineering_use: Use for an intrinsic property of one business object.
+    oda_mapping: Attribute / characteristic
+    bian_mapping: Business-object property or qualifier data
+    acord_mapping: Data element / property
+  - id: ZC03
+    name: Lookup Relationship
+    zoho_meaning: Reference from one module record to another module record.
+    engineering_use: Use for a persistent relationship where the relationship has no independent lifecycle.
+    oda_mapping: Entity relationship
+    bian_mapping: Business-object relationship
+    acord_mapping: Association
+  - id: ZC04
+    name: Linking Module
+    zoho_meaning: Associative module supporting many-to-many or relationship records.
+    engineering_use: Use only when the relationship itself needs attributes, governance or lifecycle.
+    oda_mapping: Association entity
+    bian_mapping: Relationship object where independently meaningful
+    acord_mapping: Association entity
+  - id: ZC05
+    name: Subform
+    zoho_meaning: Repeating dependent child structure under a parent record.
+    engineering_use: Use for owned repeating detail that cannot exist independently of the parent.
+    oda_mapping: Composite / dependent information structure
+    bian_mapping: Nested control-record detail
+    acord_mapping: Repeating aggregate
+  - id: ZC06
+    name: Picklist / Global Picklist
+    zoho_meaning: Controlled option set; global picklists can be reused across modules.
+    engineering_use: Use for controlled vocabulary, state or classification values.
+    oda_mapping: Enumeration / value set
+    bian_mapping: Controlled semantic values
+    acord_mapping: Code list / controlled vocabulary
+  - id: ZC07
+    name: Layout
+    zoho_meaning: Module-specific record composition and presentation, including sections, field configuration and profile access.
+    engineering_use: Use when business context changes presentation or required record composition without changing object identity.
+    oda_mapping: Application/presentation configuration
+    bian_mapping: No direct semantic equivalent
+    acord_mapping: No direct semantic equivalent
+  - id: ZC08
+    name: Related List
+    zoho_meaning: Configured presentation of related records for a module.
+    engineering_use: Use to expose an existing relationship; not as an independent master object.
+    oda_mapping: Relationship projection
+    bian_mapping: Relationship projection
+    acord_mapping: Relationship projection
+  - id: ZC09
+    name: Custom View / Kanban / Chart View
+    zoho_meaning: Filtered or alternative projection of module records.
+    engineering_use: Use for operational projections and work queues.
+    oda_mapping: Query / projection
+    bian_mapping: Reporting or work-list projection
+    acord_mapping: Reporting projection
+    anti_pattern: A view SHALL NOT become the authoritative source of a business object.
+  - id: ZC10
+    name: Wizard
+    zoho_meaning: Multi-screen guided record-entry configuration that can span layouts and support draft progression.
+    engineering_use: Use for guided capture where the underlying business object already exists.
+    oda_mapping: Interaction / experience implementation
+    bian_mapping: Interaction/process implementation
+    acord_mapping: Transaction/user interaction
+  - id: ZC11
+    name: Kiosk
+    zoho_meaning: Guided application flow containing screens, decisions, actions and record retrieval steps.
+    engineering_use: Use for bounded guided user journeys; do not treat as the canonical business process model.
+    oda_mapping: Experience/application orchestration
+    bian_mapping: Interaction implementation
+    acord_mapping: Interaction implementation
+  - id: ZC12
+    name: Blueprint
+    zoho_meaning: CRM implementation of a business process as states and transitions with validations and actions.
+    engineering_use: Use for stateful lifecycle control of a CRM record.
+    oda_mapping: Application process/state orchestration
+    bian_mapping: Service-operation lifecycle implementation
+    acord_mapping: Insurance transaction/process state implementation
+    anti_pattern: Blueprint is not an ODA Component and is not the enterprise process taxonomy.
+  - id: ZC13
+    name: Validation / Layout / Dependency Rule
+    zoho_meaning: Constraint or conditional configuration applied to fields, layouts or record updates.
+    engineering_use: Use for deterministic local business constraints.
+    oda_mapping: Constraint / business rule
+    bian_mapping: Business constraint
+    acord_mapping: Validation / underwriting rule where applicable
+  - id: ZC14
+    name: Workflow / Approval / Review / Cadence / Connected Workflow
+    zoho_meaning: Automated actions, approvals, follow-up sequences and cross-record orchestration.
+    engineering_use: Use for CRM-contained automation; cross-system domain logic should be externalised behind a governed service boundary.
+    oda_mapping: Behaviour / orchestration
+    bian_mapping: Service-operation automation
+    acord_mapping: Transaction automation
+  - id: ZC15
+    name: Function
+    zoho_meaning: Server-side executable custom logic.
+    engineering_use: Use for bounded CRM logic; prefer Catalyst microservice when logic is reusable, cross-system, independently deployable or materially governed.
+    oda_mapping: Application/component logic
+    bian_mapping: Service-operation implementation
+    acord_mapping: Processing logic
+  - id: ZC16
+    name: Client Script
+    zoho_meaning: Browser-executed JavaScript bound to CRM pages, layouts and events.
+    engineering_use: Use for UI behaviour, immediate validation and form assistance only.
+    oda_mapping: Experience/UI logic
+    bian_mapping: No direct domain equivalent
+    acord_mapping: No direct domain equivalent
+  - id: ZC17
+    name: Widget / Custom Button / Custom Link / Web Tab
+    zoho_meaning: CRM user-interface extension and embedded external functionality.
+    engineering_use: Use to extend experience without creating new canonical data objects.
+    oda_mapping: Experience component
+    bian_mapping: No direct semantic equivalent
+    acord_mapping: No direct semantic equivalent
+  - id: ZC18
+    name: Connection / Webhook / Notification / Query / Data Source
+    zoho_meaning: Integration, event and external-data configuration.
+    engineering_use: Use for system integration; published enterprise interfaces should conform to governed API contracts.
+    oda_mapping: API / event / integration implementation
+    bian_mapping: Service interaction implementation
+    acord_mapping: Transaction/interface implementation
+  - id: ZC19
+    name: Profile / Role / Group / Sharing / Territory
+    zoho_meaning: User authorisation, organisational access and record-sharing configuration.
+    engineering_use: Use for access control and organisational partitioning, not business-domain classification.
+    oda_mapping: Security / governance
+    bian_mapping: Party/access role where applicable
+    acord_mapping: Party/producer role plus access control where applicable
+  - id: ZC20
+    name: Portal Configuration
+    zoho_meaning: External-user types, permissions and access to CRM functions.
+    engineering_use: Use for governed external-party engagement.
+    oda_mapping: External engagement channel
+    bian_mapping: Customer interaction channel
+    acord_mapping: Insured/producer engagement channel
+  - id: ZC21
+    name: Template Configuration
+    zoho_meaning: Email, inventory and mail-merge templates and folders.
+    engineering_use: Use for presentation/communication artifacts; content governance remains separate from CRM configuration governance.
+    oda_mapping: Experience / communication implementation
+    bian_mapping: Communication artifact implementation
+    acord_mapping: Communication/document implementation
+  - id: ZC22
+    name: Analytics Configuration
+    zoho_meaning: Reports, dashboards, charts, forecasts, segmentation and analytical views.
+    engineering_use: Use for derived analytics; never as the system of record for operational entities.
+    oda_mapping: Intelligence / analytics
+    bian_mapping: Analytics objects where defined
+    acord_mapping: Reporting/analytics
+  - id: ZC23
+    name: Environment / Change Configuration
+    zoho_meaning: Sandbox, deployment, audit, backup and configuration lifecycle controls.
+    engineering_use: Use for controlled change, release and recovery.
+    oda_mapping: Deployment/runtime governance
+    bian_mapping: Implementation concern
+    acord_mapping: Implementation concern
+engineering_decision_rules:
+  - rule_id: BR-ZCRM-ENG-001
+    statement: A requirement SHALL become a Module only when it represents a durable business object with independent identity, lifecycle, ownership, relationships and persisted population.
+  - rule_id: BR-ZCRM-ENG-002
+    statement: An intrinsic property SHALL be implemented as a Field, not a Module.
+  - rule_id: BR-ZCRM-ENG-003
+    statement: A relationship without independent lifecycle SHALL use a Lookup or Related List; a relationship with its own attributes or lifecycle MAY use a Linking Module.
+  - rule_id: BR-ZCRM-ENG-004
+    statement: Dependent repeating detail owned by one parent SHALL use a Subform unless independent identity or cross-parent reuse requires a Module.
+  - rule_id: BR-ZCRM-ENG-005
+    statement: Classification, state and controlled vocabulary SHALL use governed Picklists or Global Picklists with reference-standard provenance where available.
+  - rule_id: BR-ZCRM-ENG-006
+    statement: Presentation differences SHALL first use Layouts, Views, Wizards, Kiosks or UI extensions before new data entities are introduced.
+  - rule_id: BR-ZCRM-ENG-007
+    statement: Record lifecycle enforcement MAY use Blueprint, but the authoritative enterprise process model SHALL remain outside Blueprint and be traceable to the adopted process standard.
+  - rule_id: BR-ZCRM-ENG-008
+    statement: Cross-system, independently deployable, reusable or materially governed business logic SHALL be implemented behind a Catalyst service or microservice boundary rather than embedded only in CRM Functions or workflows.
+  - rule_id: BR-ZCRM-ENG-009
+    statement: Zoho native APIs and connectors are implementation interfaces; where an ODA/Open API contract is adopted, the enterprise interface SHALL be mediated through the governed integration/component layer.
+  - rule_id: BR-ZCRM-ENG-010
+    statement: ODA determines generic structural class; BIAN governs Financial Services semantics; ACORD governs Insurance semantics; the applicable product/value-stream standard SHALL provide provenance.
+canonical_decision_sequence:
+  - identify_business_requirement
+  - identify_product_or_value_stream_domain
+  - resolve_domain_semantic_concept
+  - classify_oda_information_or_component_concept
+  - test_identity_and_lifecycle
+  - select_zoho_configuration_object
+  - determine_authoritative_system
+  - define_relationships_and_controls
+  - implement
+  - verify_regression_and_traceability
+prohibited_shortcuts:
+  - current_tenant_module_list_as_reference_metamodel
+  - one_module_per_taxonomy_level
+  - one_module_per_value_stream
+  - one_module_per_status
+  - blueprint_as_enterprise_process_master
+  - crm_function_as_default_cross_system_service
