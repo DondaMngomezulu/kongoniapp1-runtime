@@ -1,0 +1,53 @@
+amendment:
+  id: AMD-ARCH-MS-VS04-LCC-001
+  version: '0.1'
+  status: APPROVED_DEVELOPMENT_ONLY
+  register: REG-ARCH-MICROSVC-001
+  action: ADD
+  entry:
+    microservice_id: MS-VS04-LCC-001
+    microservice_name: Asset Lifecycle Cost Service
+    value_stream_id: VS04
+    value_stream_name: Asset Lifecycle Performance
+    lifecycle_state: ENGINEERING_STARTED
+    service_domain_name: Asset Engineering Study / Lifecycle Cost Analysis
+    reference_standard: MIMOSA CCOM
+    reference_version: '4.0.0'
+    source_domain_id: CAT-ARCH-SD-VS04-MIMOSA-001/KSD-VS04-ENGINEERING-STUDY-001
+    service_boundary: Compute governed LCC and Levelised Cost of Ownership per Productive Hour without owning or duplicating canonical asset, configuration, maintenance, accounting or CRM records.
+    canonical_business_object: EngineeringStudy
+    service_owner: VS04
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: SRV-VS04-LCC-001
+    service_specification_status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
+    key_operations: [CalculateLCOH, RetrieveModel, Health]
+    api_intent: Provide deterministic and provenance-preserving lifecycle cost calculations for project costing and asset economic decisions.
+    data_ownership: LCC scenarios, assumptions, calculation records and results; consumes MIMOSA-aligned lifecycle evidence and existing LCC source datasets.
+    dependencies: [Asset Registry and Configuration, Asset Engineering Study, Maintenance Completion and History, Measurement and Condition Data]
+    security_class: CONFIDENTIAL_FINANCE_ASSET
+    nonfunctional_requirements: [determinism, provenance, auditability, versioning, idempotent calculation, no semantic duplication]
+    acceptance_criteria:
+      - identical governed inputs and model version produce identical LCOH outputs
+      - fixed and variable cost components reconcile to total LCOH
+      - productive-hours denominator is explicit and non-zero
+      - source facts and assumptions remain distinguishable
+      - aviation reference-model discrepancy remains surfaced rather than silently normalised
+      - no write is made to canonical MIMOSA asset or maintenance source objects
+    engineering_handover_status: STARTED_DEVELOPMENT_BASELINE
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: agent-workspace/services/SRV-VS04-LCC-001/service-specification.yaml
+    catalyst_runtime_ref: null
+    development_status: STARTED
+    production_status: NOT_AUTHORISED
+    source_provenance: LIB-REF-AVI-LCOH-001 plus MIMOSA CCOM 4.0.0 and existing LCC data stores
+    mapping_basis: APPROVED_USER_MANDATE_2026-08-19
+    coverage_state: DEVELOPMENT_BASELINE
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: DO
+    act_decision: null
+  approval_ref: Group CEO instruction on 2026-08-19
+  rule: DO_COMPLETE != TASK_COMPLETE
