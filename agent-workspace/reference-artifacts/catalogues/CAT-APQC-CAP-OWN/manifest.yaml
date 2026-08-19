@@ -1,0 +1,15 @@
+catalogue_id: CAT-APQC-CAP-OWN
+name: Kongoni APQC L3 Capability Ownership Catalogue
+status: RECONCILED_PARTIAL
+version: 1.0.0
+authority:
+  drive: HUMAN_READABLE_CATALOGUE_SOURCE
+  catalyst: STRUCTURED_REFERENCE_AND_CROSSWALK
+  github: ENGINEERING_MANIFEST
+catalyst_tables:
+  - APQC_ProcessElementReference
+  - CapabilityAPQCCrosswalk
+  - APQC_BIAN_Crosswalk
+observed_process_reference_rows: 19
+gap: FULL_DRIVE_TO_CATALYST_ROW_LEVEL_RECONCILIATION_PENDING
+production_status: NOT_VERIFIED
