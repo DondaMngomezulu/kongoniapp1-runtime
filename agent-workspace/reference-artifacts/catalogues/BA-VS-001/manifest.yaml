@@ -1,0 +1,12 @@
+catalogue_id: BA-VS-001
+name: Enterprise Value Stream Catalogue and Capability Mapping
+status: RECONCILED_MANIFEST
+version: 1.0.0
+authority:
+  drive: CEO_ADOPTED_HUMAN_READABLE_BASELINE
+  catalyst: AUTHORITATIVE_STRUCTURED_DEVELOPMENT_RECORD
+  github: ENGINEERING_MANIFEST
+catalyst_table: EnterpriseValueStream
+catalyst_row_count: 7
+production_status: NOT_VERIFIED
+control: NO_PRODUCTION_PROMOTION_WITHOUT_PDCA_CHECK_ACT
