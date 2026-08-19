@@ -1,11 +1,12 @@
 service:
   id: MS-TENDER-VS-001
   name: Tender-to-Value-Stream Classification Microservice
-  version: 0.3.0
+  version: 0.3.1
   status: CONTROLLED_CANDIDATE
   task_class: T2
   methodology: MET-PDCA-001
   bounded_context: Tender Management
+  runtime_function: tender_value_stream_classifier
   purpose: >-
     Classify a governed tender opportunity to its primary and supporting Kongoni value streams
     using the tender scope, contracted outcome, capability and service mappings, and eligibility evidence.
