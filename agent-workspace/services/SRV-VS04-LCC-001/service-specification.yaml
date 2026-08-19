@@ -1,0 +1,76 @@
+service_specification:
+  id: SRV-VS04-LCC-001
+  microservice_id: MS-VS04-LCC-001
+  version: '0.1'
+  status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
+  name: Asset Lifecycle Cost Service
+  architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+  engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+  value_stream_id: VS04
+  value_stream_name: Asset Lifecycle Performance
+  business_owner: VS04
+  task_class: T2
+  purpose: Compute governed life-cycle cost and levelised cost of ownership per productive hour from MIMOSA-aligned lifecycle evidence and governed economic assumptions.
+  service_domain:
+    semantic_standard: MIMOSA CCOM
+    normative_version: '4.0.0'
+    extension: Kongoni LCOH
+    primary_resource: EngineeringStudy
+    engineering_study_type: LIFE_CYCLE_COST_ANALYSIS
+    reference_model: LIB-REF-AVI-LCOH-001
+  boundaries:
+    owns:
+      - LCCScenario
+      - CostAssumption
+      - CostFactProjection
+      - LCCCalculation
+      - LCCResult
+      - LCOHResult
+    consumes:
+      - Asset
+      - ProductModel
+      - Segment
+      - EngineeringStudyEntry
+      - Measurement
+      - Assessment
+      - CompletedWork
+      - LCC_SourceInstance
+      - LCC_ModelVariant
+    does_not_own:
+      - Asset identity
+      - Asset configuration
+      - Maintenance work history
+      - Accounting ledger transactions
+      - CRM product records
+  canary_scope:
+    - {operation: CalculateLCOH, method: POST, path: /v1/asset-lifecycle/lcoh/calculate}
+    - {operation: RetrieveModel, method: GET, path: /v1/asset-lifecycle/lcoh/models/{model_id}}
+    - {operation: Health, method: GET, path: /v1/asset-lifecycle/health}
+  calculation_rule:
+    total_lcoh: PV(FixedOwnershipCosts + VariableOperatingCosts - ResidualValue) / PV(ProductiveHours)
+    fixed_component: PV(FixedOwnershipCosts) / PV(ProductiveHours)
+    variable_component: PV(VariableOperatingCosts) / PV(ProductiveHours)
+    control: Observed facts, assumptions, forecasts and calculated results SHALL remain distinguishable.
+  runtime_constraints:
+    platform: Zoho Catalyst
+    project: Kongoniapp1
+    project_id: '86824000000020001'
+    environment: Development
+    engineering_authority_ref: ENV-AUTH-CAT-KONGONIAPP1-DEV
+    preferred_runtime: AppSail
+    preferred_language: Python
+    production_write_allowed: false
+  artifact_refs:
+    canonical_data_model: data-model.yaml
+    api_contract: openapi.yaml
+    architecture_amendment: ../../architecture/REG-ARCH-MICROSVC-001/amendments/MS-VS04-LCC-001-add.yaml
+    aviation_reference_model: ../../reference-models/LIB-REF-AVI-LCOH-001/model.json
+  engineering_rule: Engineer SHALL implement this architecture package without duplicating MIMOSA asset or maintenance source-of-truth objects; material design defects SHALL return to architecture as ADAPT.
+  approval_state: APPROVED_DEVELOPMENT_ONLY
+  approval_ref: Group CEO instruction to register the aviation anchor and start the Asset Lifecycle microservice on 2026-08-19
+  production_authority: NOT_GRANTED
+  pdca:
+    stage: DO
+    do_complete: false
+    task_complete: false
+    act_decision: null
