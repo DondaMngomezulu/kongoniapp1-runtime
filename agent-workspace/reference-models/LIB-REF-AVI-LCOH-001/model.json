@@ -1,0 +1,97 @@
+{
+  "artifact_id": "LIB-REF-AVI-LCOH-001",
+  "title": "Aviation Ownership Cost and Performance Reference Model",
+  "version": "0.1",
+  "status": "PROPOSED_DERIVED",
+  "artifact_class": "Reference Model / Library Ingestion Package",
+  "purpose": "Anchor reference for Kongoni Levelised Cost of Ownership per Productive Hour (LCOH) and FAST project-costing integration.",
+  "source": {
+    "repository": "RISCfuture/sf50-pfpx-profiles",
+    "commit_sha": "35a4765cd2ebf3631f6ee5a69c7584bc52c62d4d",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2021 Tim Morgan",
+    "source_role": "EXTERNAL_REFERENCE",
+    "source_files": [
+      {"path":"README.md","sha":"ffb08ac8d4cad59146c2d757347179fda25c4d3f","role":"narrative/provenance"},
+      {"path":"LICENSE","sha":"71843f0b2f418af54397539f0b6084db696bca57","role":"licence"},
+      {"path":"PFPX Data/Aircraft/N300DG.txt","sha":"bd58c65b9965e1a868a1ebf06d9dc7728b3a3967","role":"serialized aircraft instance"},
+      {"path":"PFPX Data/AircraftTemplates/Cirrus SF50 VisionJet G1.txt","sha":"85e3ac6a879027b3dc8cc8b1ce2dd33430d80197","role":"G1 aircraft template"},
+      {"path":"PFPX Data/AircraftTemplates/Cirrus SF50 VisionJet G2.txt","sha":"934fb76809be14a7f8d0c3e9aa820f049d7ca65d","role":"G2 aircraft template"},
+      {"path":"PFPX Data/AircraftTypes/Cirrus SF50 VisionJet G1.txt","sha":"976c1b6a060dcb0ad41d21739cc78e07d8c6191f","role":"G1 performance model"},
+      {"path":"PFPX Data/AircraftTypes/Cirrus SF50 VisionJet G2.txt","sha":"980befdeaef81eb5e7c9a6d48b84d29668ec1bd1","role":"G2 performance model"}
+    ]
+  },
+  "source_model": {
+    "entity_hierarchy": ["AircraftType","AircraftTemplate","SerializedAircraft","Configuration","PerformanceProfile","OperatingCostProfile","DispatchPlan"],
+    "aircraft_type": {
+      "models": ["Cirrus SF50 VisionJet G1","Cirrus SF50 VisionJet G2"],
+      "engine_type": "Williams FJ33-5A",
+      "engines": 1,
+      "passenger_capacity": 7,
+      "performance_dimensions": ["weight","altitude","ISA deviation","climb mode","cruise mode","descent mode","hold profile","fuel burn","time","speed"]
+    },
+    "serialized_aircraft_example": {
+      "registration": "N300DG",
+      "generation": "G1",
+      "fixed_flight_hour_source_value": 485,
+      "fixed_flight_hour_currency": "USD",
+      "source_value_status": "AUTHORITATIVE_SOURCE_FIELD",
+      "fuel_cost": "Calculated separately by PFPX from dispatch fuel burn and fuel price.",
+      "variable_cost_source_value": 0
+    },
+    "ownership_cost_logic": {
+      "utilisation_basis_hours_per_year": 250,
+      "fixed_cost_components_from_source_narrative": [
+        {"element":"JetStream Concierge","amount_usd":270000,"period_years":3,"annualised_usd":90000},
+        {"element":"Insurance","annualised_usd":27000},
+        {"element":"Hangar","monthly_usd":250,"annualised_usd":3000}
+      ],
+      "narrative_implied_fixed_annual_usd": 120000,
+      "narrative_implied_fixed_hour_usd": 480,
+      "pfpx_fixed_hour_usd": 485,
+      "reconciliation_gap_usd_per_hour": 5,
+      "control": "Preserve 485 as the source field; treat the narrative arithmetic difference as an unresolved reconciliation item."
+    },
+    "computational_pattern": {
+      "fixed_hourly_cost": "AnnualFixedOwnershipCost / AnnualOperatingHours",
+      "mission_cost": "FixedHourlyCost * FlightHours + FuelBurn * FuelPrice + OtherVariableCost",
+      "primary_cost_behaviour_split": ["Fixed Ownership Cost","Variable Operating Cost"],
+      "key_driver": "Annual utilisation hours"
+    }
+  },
+  "kongoni_adaptation": {
+    "metric_name": "Levelised Cost of Ownership per Productive Hour",
+    "metric_code": "LCOH",
+    "economic_formula": "LCOH = PV(FixedOwnershipCosts + VariableOperatingCosts - ResidualValue) / PV(ProductiveHours)",
+    "decomposition": {
+      "L1": ["LCOH"],
+      "L2": ["Fixed Ownership Cost per Hour","Variable Operating Cost per Hour"],
+      "L3_fixed": ["Capital Recovery","Financing","Insurance","Fixed Maintenance / Service Plan","Licensing / Statutory","Fixed Asset Overhead"],
+      "L3_variable": ["Fuel / Energy","Lubricants","Planned Maintenance","Corrective Maintenance","Major Components","Tyres / GET","Operator / Labour","Other Usage Costs"],
+      "L4": "Cost Element",
+      "L5": ["Quantity","Rate","Frequency","Life","Utilisation"]
+    },
+    "utilisation_profile": ["Calendar Hours","Scheduled Hours","Available Hours","Operating Hours","Productive Hours"],
+    "asset_lifecycle_interface": {
+      "semantic_authority": "MIMOSA CCOM",
+      "inputs": ["Asset identity","Asset/model configuration","Operating hours","Condition measurements","Maintenance history","Component changes","Failure/work history"]
+    },
+    "fast_project_cost_interface": {
+      "transfer_metric": "LCOH",
+      "formula": "ProjectEquipmentCost = RequiredProductiveHours * LCOH",
+      "project_structure": "Project -> WBS -> Activity -> ResourceAssignment -> EquipmentResource -> LCOH"
+    }
+  },
+  "governance": {
+    "task_class": "T2 Material Change",
+    "pdca": {"stage":"DO","do_complete":false,"task_complete":false,"act_recommendation":"ADAPT"},
+    "controls": [
+      "Preserve source and derived values separately.",
+      "Source PFPX FixedFlightHour=485 remains immutable reference evidence.",
+      "The USD 5/hour narrative reconciliation gap remains open until resolved.",
+      "Aviation performance data is reference evidence, not mining-equipment semantics.",
+      "Kongoni LCOH is a derived extension and shall not be attributed to the aviation source."
+    ],
+    "registration_state": "CATALYST_ENTERPRISE_LIBRARY_REGISTERED"
+  }
+}
