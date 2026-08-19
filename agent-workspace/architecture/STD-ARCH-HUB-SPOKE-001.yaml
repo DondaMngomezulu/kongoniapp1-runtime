@@ -1,0 +1,75 @@
+standard_id: STD-ARCH-HUB-SPOKE-001
+title: Enterprise Brain-and-Nervous-System Hub Architecture
+version: '1.0'
+status: APPROVED_FOR_ADOPTION
+owner: Group CEO
+methodology: MET-PDCA-001
+purpose: Define the logical Enterprise Hub as the enterprise brain and nervous system within the target hub-and-spoke architecture.
+principles:
+  - id: HUB-PR-001
+    rule: The Enterprise Hub is a logical architectural role and SHALL NOT be synonymous with any single technology platform, including Zoho Catalyst.
+  - id: HUB-PR-002
+    rule: The Hub SHALL provide enterprise cognition and control functions including sensing, interpretation, semantic resolution, policy evaluation, decisioning, planning, orchestration, optimisation, exception handling, model and agent routing, and cross-value-stream coordination.
+  - id: HUB-PR-003
+    rule: The Hub SHALL provide nervous-system functions including events, commands, APIs, MCP interfaces, queues, signals, telemetry, observability, identity propagation, execution evidence, and controlled cross-system state transmission.
+  - id: HUB-PR-004
+    rule: Authoritative spokes SHALL retain domain state and records for which they are the designated system of record; the Hub SHALL not duplicate authoritative state merely for convenience.
+  - id: HUB-PR-005
+    rule: Hub capabilities SHALL be logically separable, composable, interoperable, replaceable, and implementable by multiple services or platforms.
+  - id: HUB-PR-006
+    rule: Enterprise control loops SHALL support Sense -> Interpret -> Decide -> Act -> Observe -> Compare -> Adapt beneath the governing PDCA methodology.
+  - id: HUB-PR-007
+    rule: Canonical Kongoni enterprise identifiers SHALL be independent of vendor-specific object identifiers; platform IDs SHALL be treated as bindings.
+architecture_layers:
+  brain:
+    capabilities:
+      - reasoning
+      - policy_and_rules
+      - semantic_resolution
+      - authority_resolution
+      - decision_services
+      - planning
+      - orchestration
+      - optimisation
+      - agent_and_model_routing
+      - exception_management
+      - cross_value_stream_coordination
+  nervous_system:
+    capabilities:
+      - api_gateway
+      - mcp_services
+      - events_and_signals
+      - queues_and_commands
+      - integration_connectors
+      - identity_and_access_propagation
+      - observability
+      - telemetry
+      - audit_and_execution_evidence
+      - state_binding_and_synchronisation
+  spokes:
+    rule: Specialised systems SHALL own the authoritative domain state assigned to them by the enterprise authority matrix.
+implementation_examples:
+  hub_services:
+    - Zoho Catalyst runtime services
+    - API gateways
+    - MCP servers
+    - event and workflow services
+    - policy and semantic services
+    - agent runtimes
+    - identity and observability services
+    - GitHub engineering control services where applicable
+  spoke_examples:
+    - Zoho CRM
+    - Zoho Books
+    - Zoho WorkDrive
+    - domain operational systems
+    - external partner platforms
+persistence_rule: The Hub SHALL persist only the state, evidence, bindings, control metadata, and runtime data necessary to sense, decide, coordinate, execute, and evidence enterprise activity. It SHALL not become a universal duplicate system of record.
+subordinate_controls:
+  - CAT-HUB-SVC-001
+  - CAT-ENT-REPO-001
+  - MAT-INFO-REPO-AUTH-001
+  - CTL-DATA-REPO-ROUTE-001
+  - REG-REPO-BINDING-001
+  - STD-CAT-REL-SCHEMA-001
+closure_rule: DO_COMPLETE != TASK_COMPLETE
