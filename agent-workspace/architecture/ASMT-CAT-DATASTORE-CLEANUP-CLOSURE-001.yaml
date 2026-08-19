@@ -1,0 +1,90 @@
+assessment_id: ASMT-CAT-DATASTORE-CLEANUP-CLOSURE-001
+title: Catalyst Data Store Cleanup Closure Assessment
+version: '1.0'
+status: CHECK_STUDY_COMPLETE
+owner: Group CEO
+methodology: MET-PDCA-001
+parent_standard: STD-CAT-REL-SCHEMA-001
+environment: Development
+project:
+  name: Kongoniapp1
+  project_id: '86824000000020001'
+  catalyst_org_id: '931013629'
+objective: Complete the controlled cleanup of Catalyst Data Store while preserving a governed relational enterprise schema and preventing data loss.
+prior_completed_waves:
+  retired_tables:
+    - MCP_Tools
+    - LegacySemanticEnvelope
+    - EDRMS_BinaryPayloadChunk
+  business_rows_deleted: 0
+  capacity_regression_result: LeasingFacility was successfully provisioned after capacity recovery.
+current_live_review:
+  protected_live_tables:
+    - table: CatalystRepositoryIndex
+      row_count: 53
+      reason: Active repository index; populated and operationally relevant.
+    - table: EnterpriseCatalogue
+      row_count: 5
+      reason: Active enterprise catalogue; modified on 2026-08-19.
+    - table: Sessions
+      row_count: 5
+      reason: Populated runtime/session state.
+    - table: Alias
+      row_count: 29
+      reason: Populated semantic/reference relation.
+    - table: ReasonerMetric
+      row_count: 1
+      reason: Populated reasoning evidence/metric state.
+    - table: HitlApproval
+      row_count: 12
+      reason: Populated human-in-the-loop approval evidence.
+    - table: ProvAuditEvent
+      row_count: 34
+      reason: Populated provenance/audit evidence.
+    - table: ExecutionState
+      row_count: 1
+      reason: Populated execution state.
+    - table: PolicyRule
+      row_count: 18
+      reason: Populated policy-rule state; may not be retired without governed migration.
+  protected_sparse_relations:
+    - table: DealDiscount
+      row_count: 0
+      reason: Valid optional child relation in the normalized pricing model; emptiness alone is not redundancy.
+    - table: ClassEquivalence
+      row_count: 0
+      reason: Valid machine-equivalence relation with distinct business semantics; no verified successor exists.
+  protected_normalized_families:
+    - Standards Discovery Source/Candidate/Assertion
+    - BIAN service-domain and artifact model
+    - APQC process/crosswalk structures
+    - MIMOSA CCOM release/object/relation model
+    - accounting GL relations
+    - EDRMS core record/retention/legal-hold relations
+    - XCMG catalogue/product/provenance relations
+    - methodology and skill binding relations where lifecycle and cardinality are distinct
+    - semantic class/property/relation structures where the relation represents an independent business or governance fact
+residual_migration_exception:
+  exception_id: EXC-CAT-LCC-STRATUS-001
+  table: LCC_ModelDatasetChunk
+  row_count: 5
+  disposition: RETAIN_PENDING_LOSSLESS_STRATUS_MIGRATION
+  reason: The table stores compressed/base64 dataset payloads and therefore violates the preferred object-storage pattern, but it contains populated authoritative evidence. The exposed Catalyst toolset provides Stratus upload signatures and object-management operations but no direct governed object-upload action in the current connector. Destructive retirement is prohibited until payload reconstruction, upload, hash verification, read-back, binding update and rollback evidence are complete.
+  required_close_conditions:
+    - Reconstruct every dataset from the stored codec and chunks.
+    - Verify reconstructed SHA-256 against Dataset_SHA256.
+    - Upload each authoritative dataset object to a governed Stratus path.
+    - Read back the object and re-verify SHA-256 and byte length.
+    - Update the applicable relational binding/provenance record to reference the Stratus object.
+    - Preserve migration evidence and rollback copy until ACT.
+    - Retire LCC_ModelDatasetChunk only after zero-loss CHECK/STUDY passes.
+cleanup_rule:
+  - Empty does not mean redundant.
+  - A populated table SHALL NOT be deleted merely to recover schema capacity.
+  - A normalized relation SHALL be retained when it represents an independent entity, association, lifecycle, authority, integrity, security or evidence requirement.
+  - New tables remain governed by STD-CAT-REL-SCHEMA-001 and require a demonstrated runtime persistence need.
+check_study_result: PASS_CURRENT_CLEANUP_BASELINE_WITH_ONE_CONTROLLED_MIGRATION_EXCEPTION
+act_recommendation: ADOPT_CURRENT_BASELINE_AND_TRACK_LCC_STRATUS_MIGRATION_AS_SEPARATE_T2_CYCLE
+current_cleanup_status: COMPLETE_FOR_SAFE_SCHEMA_RATIONALISATION
+business_rows_deleted_in_current_closure_pass: 0
+closure_rule: DO_COMPLETE != TASK_COMPLETE

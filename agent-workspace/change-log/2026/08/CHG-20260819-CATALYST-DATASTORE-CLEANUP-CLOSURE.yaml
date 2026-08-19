@@ -1,0 +1,29 @@
+change_id: CHG-20260819-CATALYST-DATASTORE-CLEANUP-CLOSURE
+timestamp_utc: '2026-08-19T10:52:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO instructed completion of the Zoho Catalyst Data Store cleanup on 2026-08-19.'
+task_class: T2
+change_type: governance
+summary: Complete the safe Catalyst Data Store cleanup review and record the controlled residual LCC-to-Stratus migration exception.
+reason: Close the schema rationalisation exercise without deleting populated or correctly normalized relational state.
+affected_paths:
+  - agent-workspace/architecture/ASMT-CAT-DATASTORE-CLEANUP-CLOSURE-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation on 2026-08-19.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PASS_CURRENT_CLEANUP_BASELINE_WITH_ONE_CONTROLLED_MIGRATION_EXCEPTION
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'Live Catalyst Development Data Store inventory was read using Catalyst organization 931013629 and project 86824000000020001.'
+  - 'Prior waves retired MCP_Tools, LegacySemanticEnvelope and EDRMS_BinaryPayloadChunk with zero business-row deletion.'
+  - 'Live occupancy checks protected populated CatalystRepositoryIndex (53), EnterpriseCatalogue (5), Sessions (5), Alias (29), ReasonerMetric (1), HitlApproval (12), ProvAuditEvent (34), ExecutionState (1), and PolicyRule (18).'
+  - 'DealDiscount and ClassEquivalence were retained despite zero rows because each represents a valid distinct relational concept and no verified successor justified retirement.'
+  - 'LCC_ModelDatasetChunk contains 5 populated compressed/base64 dataset rows and remains protected pending a lossless Stratus migration and hash/read-back verification.'
+notes: 'No additional table was deleted in this closure pass. Safe schema rationalisation is complete for the current baseline; the populated LCC payload migration is a separate T2 material change and remains OPEN. ACT recommendation for the cleanup baseline is ADOPT after repository validation; the residual migration cycle should remain ADAPT/open until its own CHECK/STUDY and ACT.'
