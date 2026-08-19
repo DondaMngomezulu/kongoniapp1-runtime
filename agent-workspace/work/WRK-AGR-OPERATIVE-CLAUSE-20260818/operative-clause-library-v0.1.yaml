@@ -1,0 +1,147 @@
+artifact_id: LIB-SA-AGR-CLAUSE-001
+version: "0.1"
+status: CONTROLLED_CANDIDATE_ZERO_APPROVED_CLAUSES
+work_id: WRK-AGR-OPERATIVE-CLAUSE-20260818
+control_id: AGR-XWALK-011-B
+purpose: >-
+  Govern South African operative agreement clause variants with authoritative-source provenance,
+  transaction applicability conditions, legal-review evidence and template bindings. This version contains
+  no legally approved operative wording.
+entry_schema:
+  mandatory_fields:
+    - clause_id
+    - clause_family
+    - legal_effect
+    - applicable_template_ids
+    - source_control_ids
+    - authoritative_source_refs
+    - applicability_conditions
+    - prohibited_use_cases
+    - operative_text
+    - legal_review_status
+    - legal_reviewer
+    - legal_review_evidence_ref
+    - approval_status
+    - version
+    - effective_date
+    - supersedes
+    - legalruleml_binding
+    - transaction_profile_bindings
+  approval_rule: >-
+    approval_status may be APPROVED only when operative_text is present, authoritative-source refs are bound,
+    applicability conditions are complete, substantive South African legal review evidence is attached, and
+    Group CEO ACT is recorded. Market precedent alone cannot satisfy this rule.
+seed_entries:
+  - clause_id: CLA-SA-FAC-NCA-APPLICABILITY-001
+    clause_family: facility_regulatory_status
+    legal_effect: applicability_representation_and_condition
+    applicable_template_ids: [TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001]
+    source_control_ids: [SA-FAC-001]
+    authoritative_source_refs: ["National Credit Act 34 of 2005 section 4 and related applicable provisions"]
+    applicability_conditions: ["Borrower legal form confirmed", "arm's-length status confirmed", "section 4 exclusions and thresholds classified"]
+    prohibited_use_cases: ["Do not state NCA exclusion solely because borrower is called a company", "Do not import consumer-credit wording where NCA is classified not applicable"]
+    operative_text: null
+    legal_review_status: NOT_REVIEWED
+    legal_reviewer: null
+    legal_review_evidence_ref: null
+    approval_status: CANDIDATE_REQUIREMENT_ONLY
+    version: "0.1"
+    effective_date: null
+    supersedes: null
+    legalruleml_binding: null
+    transaction_profile_bindings: [LAP-KIB-VEN-001]
+  - clause_id: CLA-SA-FAC-CORP-AUTH-001
+    clause_family: corporate_authority_financial_assistance
+    legal_effect: condition_precedent_representation
+    applicable_template_ids: [TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001, TPL-VS02-SECURITY-AGREEMENT-001]
+    source_control_ids: [SA-FAC-002, SA-SEC-004]
+    authoritative_source_refs: ["Companies Act 71 of 2008 sections 44 and 45 as applicable"]
+    applicability_conditions: ["relationship and beneficiary classified", "section 44 and section 45 tested separately", "required resolutions and solvency/liquidity evidence available"]
+    prohibited_use_cases: ["Do not collapse sections 44 and 45 into one generic approval statement"]
+    operative_text: null
+    legal_review_status: NOT_REVIEWED
+    legal_reviewer: null
+    legal_review_evidence_ref: null
+    approval_status: CANDIDATE_REQUIREMENT_ONLY
+    version: "0.1"
+    effective_date: null
+    supersedes: null
+    legalruleml_binding: null
+    transaction_profile_bindings: [LAP-KIB-VEN-001]
+  - clause_id: CLA-SA-SEC-SHARE-PLEDGE-001
+    clause_family: certificated_share_pledge
+    legal_effect: security_creation_and_perfection
+    applicable_template_ids: [TPL-VS02-SECURITY-AGREEMENT-001]
+    source_control_ids: [SA-SEC-001, SA-SEC-003, SA-SEC-005]
+    authoritative_source_refs: ["Companies Act 71 of 2008 securities-register provisions", "South African common law of pledge", "applicable South African court decisions"]
+    applicability_conditions: ["shares confirmed certificated", "pledgor title confirmed", "share certificate and required transfer instrument available", "MOI/shareholder restrictions cleared", "possession/control mechanics implemented"]
+    prohibited_use_cases: ["Do not represent pledge as perfected from signature alone", "Do not register pledgee as owner merely to evidence a pledge absent lawful enforcement/transfer basis", "Do not assume self-help remedy is lawful"]
+    operative_text: null
+    legal_review_status: NOT_REVIEWED
+    legal_reviewer: null
+    legal_review_evidence_ref: null
+    approval_status: CANDIDATE_REQUIREMENT_ONLY
+    version: "0.1"
+    effective_date: null
+    supersedes: null
+    legalruleml_binding: "Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml#ps-security"
+    transaction_profile_bindings: [LAP-KIB-VEN-001]
+  - clause_id: CLA-SA-SPA-TRANSFER-001
+    clause_family: certificated_share_transfer
+    legal_effect: completion_transfer_and_register_update
+    applicable_template_ids: [TPL-VS05-SHARE-PURCHASE-AGREEMENT-001]
+    source_control_ids: [SA-SPA-001, SA-SPA-002, SA-SPA-003]
+    authoritative_source_refs: ["Companies Act 71 of 2008 sections 50-53 and applicable Companies Regulations"]
+    applicability_conditions: ["target MOI/shareholder restrictions cleared", "proper transfer instrument/evidence available", "securities register update authorised", "beneficial ownership obligations classified"]
+    prohibited_use_cases: ["Do not treat economic agreement as statutory register update", "Do not close completion without transfer/register evidence"]
+    operative_text: null
+    legal_review_status: NOT_REVIEWED
+    legal_reviewer: null
+    legal_review_evidence_ref: null
+    approval_status: CANDIDATE_REQUIREMENT_ONLY
+    version: "0.1"
+    effective_date: null
+    supersedes: null
+    legalruleml_binding: null
+    transaction_profile_bindings: [LAP-KIB-VEN-001]
+  - clause_id: CLA-SA-SPA-STT-001
+    clause_family: securities_transfer_tax
+    legal_effect: tax_allocation_and_completion_condition
+    applicable_template_ids: [TPL-VS05-SHARE-PURCHASE-AGREEMENT-001]
+    source_control_ids: [SA-SPA-004]
+    authoritative_source_refs: ["Securities Transfer Tax Act 25 of 2007", "Securities Transfer Tax Administration Act 26 of 2007", "SARS current guidance"]
+    applicability_conditions: ["security and transfer classified", "taxable amount determined", "exemption test completed", "payer and filing responsibility assigned"]
+    prohibited_use_cases: ["Do not assume exemption", "Do not leave STT responsibility unallocated at completion"]
+    operative_text: null
+    legal_review_status: NOT_REVIEWED
+    legal_reviewer: null
+    legal_review_evidence_ref: null
+    approval_status: CANDIDATE_REQUIREMENT_ONLY
+    version: "0.1"
+    effective_date: null
+    supersedes: null
+    legalruleml_binding: null
+    transaction_profile_bindings: [LAP-KIB-VEN-001]
+  - clause_id: CLA-SA-SPA-COMP-001
+    clause_family: merger_control
+    legal_effect: regulatory_condition_precedent
+    applicable_template_ids: [TPL-VS05-SHARE-PURCHASE-AGREEMENT-001]
+    source_control_ids: [SA-SPA-005]
+    authoritative_source_refs: ["Competition Act 89 of 1998", "current Competition Commission merger thresholds"]
+    applicability_conditions: ["control acquisition analysed", "target and acquiring-group turnover/assets calculated under current thresholds"]
+    prohibited_use_cases: ["Do not implement a notifiable merger before required approval"]
+    operative_text: null
+    legal_review_status: NOT_REVIEWED
+    legal_reviewer: null
+    legal_review_evidence_ref: null
+    approval_status: CANDIDATE_REQUIREMENT_ONLY
+    version: "0.1"
+    effective_date: null
+    supersedes: null
+    legalruleml_binding: null
+    transaction_profile_bindings: [LAP-KIB-VEN-001]
+summary:
+  seeded_clause_requirements: 6
+  approved_operative_clauses: 0
+  template_promotion_allowed: false
+next_gate: "Substantive legal drafting/review and Group CEO ACT for each operative clause variant or approved batch."

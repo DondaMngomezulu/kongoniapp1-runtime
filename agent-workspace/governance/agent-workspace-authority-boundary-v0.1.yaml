@@ -1,0 +1,60 @@
+artifact_id: CTL-AGT-WS-AUTH-001
+version: "0.1"
+status: ADOPTED_BY_GROUP_CEO
+adoption_date: "2026-08-18"
+authority: Group CEO
+purpose: >-
+  Prevent agent-workspace from becoming a competing enterprise system of record by separating
+  engineering execution/conformance from business and normative authority.
+scope:
+  path: agent-workspace/**
+  applies_to:
+    - agents
+    - humans
+    - automations
+    - validators
+    - engineering_work_items
+    - engineering_evidence
+rules:
+  - id: AWS-AUTH-001
+    rule: "agent-workspace SHALL be treated as an engineering execution, collaboration and evidence workspace."
+  - id: AWS-AUTH-002
+    rule: "agent-workspace SHALL NOT be treated as an enterprise system of record solely because an artifact is stored or validated there."
+  - id: AWS-AUTH-003
+    rule: "Validation SHALL establish conformance only and SHALL NOT confer legal, accounting, tax, commercial or business authority."
+  - id: AWS-AUTH-004
+    rule: "GitHub is the governed engineering repository for code, schemas, validators, engineering work items, engineering evidence and change history."
+  - id: AWS-AUTH-005
+    rule: "Zoho Catalyst authority is object-specific for designated runtime, execution-control and architecture records; it is not blanket authority over all enterprise records."
+  - id: AWS-AUTH-006
+    rule: "Governed Catalogues, Libraries, Registers and Matrices retain the authority assigned by their adopted governance records."
+  - id: AWS-AUTH-007
+    rule: "External normative sources retain their own source authority; machine-readable representations and crosswalks are controlled representations unless explicitly designated otherwise."
+  - id: AWS-AUTH-008
+    rule: "Copies, projections, caches and validation fixtures under agent-workspace SHALL reference their authoritative source and SHALL NOT silently supersede it."
+  - id: AWS-AUTH-009
+    rule: "Where authority is ambiguous, the workflow SHALL fail closed and resolve the authoritative locus before business reliance or promotion."
+validator_boundary:
+  validates:
+    - schema_conformance
+    - required_metadata
+    - engineering_PDCA_state
+    - engineering_change_control
+    - source_traceability
+    - technical_test_results
+  does_not_validate_by_itself:
+    - legal_validity
+    - legal_enforceability
+    - accounting_recognition
+    - tax_compliance
+    - commercial_approval
+    - transaction_authority
+    - enterprise_record_authority
+examples:
+  - artifact: LegalRuleML
+    authority_position: "Technical representation under GitHub engineering control; source legislation/agreement remains normative authority."
+  - artifact: Agreement_Template_Register
+    authority_position: "Authority follows REG-AGR-TPL-001 governance designation; an agent-workspace crosswalk does not replace it."
+  - artifact: engineering_work_item
+    authority_position: "GitHub agent-workspace is authoritative for its engineering execution/change history, not for the underlying business record."
+fail_closed: true
