@@ -1,0 +1,32 @@
+change_id: CHG-20260819-HUB-FOUNDATION-ADOPTION
+timestamp_utc: '2026-08-19T11:45:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved ADOPT of the four-foundation Hub Foundation Programme on 2026-08-19.'
+task_class: T1
+change_type: governance
+summary: Record the adopted Enterprise Hub Foundation Programme as the parent architecture and engineering programme for the microservice workstream.
+affected_paths:
+  - governance/architecture/ADR-HUB-FOUNDATION-001.md
+environment: Repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO decision in active ChatGPT conversation on 2026-08-19.'
+pdca:
+  phase: ACT
+  do_complete: true
+  check_study_result: PASS
+  act_decision: ADOPT
+  task_complete: true
+evidence:
+  - 'Parent architecture: STD-ARCH-HUB-SPOKE-001 — Enterprise Brain-and-Nervous-System Hub Architecture.'
+  - 'RAMI 4.0 retained as a classification/completeness guide, not a deployment topology.'
+  - 'Four foundations adopted: Identity & Authority; Nervous-System Contract; Connectivity; Observability.'
+  - 'Microservice Register inherits the Hub foundations and remains platform-neutral at logical architecture level.'
+  - 'Zoho Catalyst, Google Cloud, OpenAI/MCP and other approved services remain implementation bindings rather than the Hub itself.'
+  - 'Successor implementation work remains separate controlled PDCA cycles.'
+controls:
+  - MET-PDCA-001
+  - BR-PDCA-001
+  - STD-ARCH-HUB-SPOKE-001
