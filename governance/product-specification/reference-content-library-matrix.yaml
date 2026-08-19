@@ -1,0 +1,113 @@
+id: CTL-PRD-REF-LIB-001
+name: Enterprise Product Specification Reference Content Library Matrix
+version: 1.0.0
+status: ADOPTED
+effective_date: 2026-08-19
+governance_method: MET-PDCA-001
+rule: >-
+  Every governed Product Type and Product Specification SHALL identify
+  Catalogue_Model, Domain_Content_Library, Domain_Semantic_Reference,
+  and Authoritative_Source_Content before approval.
+crm:
+  module: ProductSpecifications
+  required_binding_fields:
+    - Catalogue Model
+    - Domain Content Library
+    - Domain Semantic Ref
+    - Authoritative Source
+catalogue_model:
+  primary: TM Forum
+  concepts:
+    - ProductCatalog
+    - ProductSpecification
+    - ProductOffering
+domains:
+  Equipment:
+    domain_content_library:
+      - IDTA Asset Administration Shell Submodel Library
+      - MIMOSA CCOM
+      - OEM technical catalogues
+    domain_semantic_reference:
+      - IDTA 02003 Generic Frame for Technical Data
+      - IDTA 02006 Digital Nameplate
+      - ECLASS
+      - IEC CDD
+    authoritative_source_content:
+      - OEM technical data sheets
+      - OEM catalogues
+      - OEM manuals
+  Financial_Services:
+    domain_content_library:
+      - BIAN Service Landscape
+      - FIBO
+    domain_semantic_reference:
+      - BIAN Sales Product
+      - BIAN Sales Product Agreement
+      - BIAN Corporate Loan
+      - BIAN Corporate Lease
+      - FIBO financial semantics
+    authoritative_source_content:
+      - Governed Sales Product Agreement
+      - Approved pricing and credit policy
+      - Product rules
+  Insurance:
+    domain_content_library:
+      - ACORD Property and Casualty Data Standards
+      - ACORD Reference Architecture
+    domain_semantic_reference:
+      - ACORD Coverage Codes
+      - Applicable FIBO risk semantics
+    authoritative_source_content:
+      - Approved policy wording
+      - Underwriting rules
+      - Insurer product documentation
+  Aftermarket:
+    domain_content_library:
+      - MIMOSA CCOM
+      - MIMOSA OSA-EAI
+      - MIMOSA OSA-CBM
+      - IDTA AAS
+      - OEM lifecycle content
+    domain_semantic_reference:
+      - MIMOSA asset lifecycle semantics
+      - ECLASS
+      - IEC CDD
+    authoritative_source_content:
+      - OEM parts catalogues
+      - Maintenance manuals
+      - Service bulletins
+      - Rebuild specifications
+  Contract_Mining:
+    domain_content_library:
+      - APQC Process Classification Framework
+      - MIMOSA CCOM
+    domain_semantic_reference:
+      - APQC process semantics
+      - MIMOSA asset and operations semantics
+    authoritative_source_content:
+      - Tender specification
+      - Scope of work
+      - Operating plan
+      - Site technical requirements
+  Portfolio_and_Structured_Finance:
+    domain_content_library:
+      - FIBO
+      - BIAN where bank-like servicing applies
+    domain_semantic_reference:
+      - FIBO financial instrument semantics
+      - BIAN service domains where applicable
+    authoritative_source_content:
+      - Transaction documents
+      - Funding agreements
+      - Investment mandate
+approval_gate:
+  product_specification_status: Approved
+  preconditions:
+    - Catalogue_Model populated
+    - Domain_Content_Library populated
+    - Domain_Semantic_Reference populated
+    - Authoritative_Source_Content traceable
+repository_roles:
+  Zoho_CRM: Operational master data and product-specification bindings
+  GitHub: Governed engineering schema, control and executable contract
+  Google_Drive: Controlled source documents, standards register and provenance evidence
