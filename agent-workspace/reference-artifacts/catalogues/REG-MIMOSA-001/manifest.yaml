@@ -1,0 +1,14 @@
+catalogue_id: REG-MIMOSA-001
+name: MIMOSA CCOM Object Content Catalogue
+status: RECONCILED_MANIFEST
+version: 1.0.0
+authority:
+  drive: GOVERNED_HUMAN_READABLE_CATALOGUE
+  catalyst: AUTHORITATIVE_STRUCTURED_DEVELOPMENT_RECORD
+  github: ENGINEERING_MANIFEST
+catalyst_tables:
+  - MIMOSA_CCOM_SchemaRelease
+  - MIMOSA_CCOM_SchemaObject
+  - MIMOSA_CCOM_SchemaRelation
+observed_schema_object_rows: 438
+production_status: NOT_VERIFIED
