@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: Asset Lifecycle Cost Service
+  version: 0.1.0
+  description: Development canary contract for governed LCC and LCOH calculations.
+servers:
+  - url: /v1/asset-lifecycle
+paths:
+  /health:
+    get:
+      operationId: health
+      responses:
+        '200':
+          description: Service health
+  /lcoh/calculate:
+    post:
+      operationId: calculateLcoh
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LCOHCalculationRequest'
+      responses:
+        '200':
+          description: Calculated LCOH result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LCOHCalculationResult'
+        '422':
+          description: Invalid or unreconciled calculation inputs
+  /lcoh/models/{model_id}:
+    get:
+      operationId: retrieveModel
+      parameters:
+        - in: path
+          name: model_id
+          required: true
+          schema: {type: string}
+      responses:
+        '200':
+          description: Governed lifecycle cost model metadata
+components:
+  schemas:
+    PeriodCost:
+      type: object
+      required: [period, fixed_ownership_cost, variable_operating_cost, productive_hours]
+      properties:
+        period: {type: integer, minimum: 0}
+        fixed_ownership_cost: {type: number}
+        variable_operating_cost: {type: number}
+        residual_value: {type: number, default: 0}
+        productive_hours: {type: number, minimum: 0}
+    LCOHCalculationRequest:
+      type: object
+      required: [scenario_id, currency_code, discount_rate, periods]
+      properties:
+        scenario_id: {type: string}
+        engineering_study_id: {type: string}
+        asset_id: {type: string}
+        model_id: {type: string}
+        segment_id: {type: string}
+        currency_code: {type: string, minLength: 3, maxLength: 3}
+        discount_rate: {type: number, minimum: -0.99}
+        reference_model_id: {type: string, default: LIB-REF-AVI-LCOH-001}
+        periods:
+          type: array
+          minItems: 1
+          items: {$ref: '#/components/schemas/PeriodCost'}
+    LCOHCalculationResult:
+      type: object
+      required: [scenario_id, fixed_cost_pv, variable_cost_pv, productive_hours_pv, lcoh_fixed, lcoh_variable, lcoh_total, currency_code]
+      properties:
+        scenario_id: {type: string}
+        fixed_cost_pv: {type: number}
+        variable_cost_pv: {type: number}
+        residual_value_pv: {type: number}
+        productive_hours_pv: {type: number}
+        lcoh_fixed: {type: number}
+        lcoh_variable: {type: number}
+        lcoh_total: {type: number}
+        currency_code: {type: string}
+        denominator_unit: {type: string, enum: [PRODUCTIVE_HOUR]}
+        calculation_version: {type: string}
+        reconciliation_status: {type: string}
