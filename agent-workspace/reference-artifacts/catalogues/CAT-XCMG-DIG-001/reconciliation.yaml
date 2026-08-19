@@ -1,0 +1,76 @@
+artifact_id: REC-CAT-XCMG-DIG-001
+catalogue_id: CAT-XCMG-DIG-001
+version: 1.0.0
+status: CONTROLLED_RECONCILIATION_BASELINE
+date: 2026-08-19
+methodology: MET-PDCA-001
+task_class: T2
+authority_model:
+  google_drive: CONTROLLED_SOURCE_AND_EVIDENCE
+  github: ENGINEERING_SOURCE_AND_RECONCILIATION_MANIFEST
+  catalyst_development: AUTHORITATIVE_STRUCTURED_CATALOGUE_DEVELOPMENT
+  catalyst_production: TARGET_AUTHORITATIVE_EXECUTABLE_CATALOGUE
+  zoho_crm: CUSTOMER_COMMERCIAL_PROJECTION
+catalyst:
+  project: Kongoniapp1
+  project_id: '86824000000020001'
+  environment: Development
+  catalogue_rowid: '86824000000286278'
+  release_rowid: '86824000000278838'
+  release_id: CAT-XCMG-DIG-001-R0.2
+  release_status: DRAFT_CROSS_REFERENCED
+  verification_status: PASS_WITH_GAPS
+  listings: 1153
+  models: 1115
+  categories: 19
+  production_authorized: false
+drive_sources:
+  - id: '1VwaeBll5HzgL_kG3LbCeONhe4S1AhlKys0MF2QzWTHA'
+    title: XCMG Mining Equipment Specification Register (KE-SPEC-2026-001)
+  - id: '1se-GqNLAeb8CQ-nWrr_iL8vbwFXmNTs6'
+    title: XCMG Product List, HQ, 01-04-2025.xlsx
+  - id: '1uzFU_UOWRsHWNxLBIKnS4JO43S_2dmAS'
+    title: XCMG Mining Product Sheet.pdf
+  - id: '1khUUWG-XkYkwqdp11elUyL8NekqNNy9GU1HtdSBphIQ'
+    title: Governed Document Metadata Register — XCMG Full Run
+crm_publication_baseline:
+  count: 26
+  publication_rule: Portal_Orderable=true
+  status: ADOPTED
+  records:
+    - {name: XE215C, crm_id: '5643538000004970348', category: Excavator, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-118320}
+    - {name: XE1350, crm_id: '5643538000004970349', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE2000, crm_id: '5643538000004970350', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE2000E, crm_id: '5643538000004970351', category: Excavator, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-122273}
+    - {name: XE3000, crm_id: '5643538000004970352', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE3000E, crm_id: '5643538000004970353', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE4000, crm_id: '5643538000004970354', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE4000E, crm_id: '5643538000004970355', category: Excavator, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-122277}
+    - {name: XE5600, crm_id: '5643538000004970356', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE7000, crm_id: '5643538000004970357', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XDA45, crm_id: '5643538000004970358', category: Articulated Dump Truck, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-122483}
+    - {name: XDE130, crm_id: '5643538000004970359', category: Rigid Dump Truck, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-122251}
+    - {name: XDE260, crm_id: '5643538000004970360', category: Rigid Dump Truck, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-122253}
+    - {name: XDE320, crm_id: '5643538000004970361', category: Rigid Dump Truck, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-122254}
+    - {name: 'GR3505T PRO', crm_id: '5643538000004970362', category: Grader, catalyst_match: DIRECT_CASE_NORMALIZED, catalyst_listing: XCMG-LIST-121640}
+    - {name: 'GR5505T PRO', crm_id: '5643538000004970363', category: Grader, catalyst_match: DIRECT_CASE_NORMALIZED, catalyst_listing: XCMG-LIST-121641}
+    - {name: GR2205T, crm_id: '5643538000004970364', category: Grader, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-121669}
+    - {name: GR2405T, crm_id: '5643538000004970365', category: Grader, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-1193466}
+    - {name: LW600KN, crm_id: '5643538000004970366', category: Front End Loader, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: LW700HV, crm_id: '5643538000004970367', category: Front End Loader, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: ZL50GN, crm_id: '5643538000004970368', category: Front End Loader, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-119001}
+    - {name: XC9108, crm_id: '5643538000004970370', category: Front End Loader, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE800GK, crm_id: '5643538000004970373', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE210WD, crm_id: '5643538000004970374', category: Excavator, catalyst_match: DIRECT, catalyst_listing: XCMG-LIST-121598}
+    - {name: XC9260, crm_id: '5643538000004970401', category: Front End Loader, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+    - {name: XE5600E ELECTRIC SHOVEL, crm_id: '5643538000004970403', category: Excavator, catalyst_match: LEGACY_OR_REGIONAL_EVIDENCE_BACKED}
+check_study:
+  crm_count_verified: 26
+  direct_current_catalyst_matches: 13
+  evidence_backed_reconciliation_required: 13
+  uncontrolled_publication_detected: false
+  catalyst_production_tables_detected: false
+act:
+  decision: ADAPT
+  rule: Preserve adopted CRM baseline; reconcile legacy/regional products into Catalyst before production promotion.
+  production_promotion: BLOCKED_PENDING_RECONCILIATION
