@@ -1,0 +1,174 @@
+artifact_id: AUD-ZCRM-RAT-001
+name: Zoho CRM Configuration Rationalisation Audit
+version: 0.1.0
+status: DRAFT_AUDIT
+methodology: MET-PDCA-001
+control_baseline:
+  - CAT-ZCRM-CONFIG-001
+  - TM Forum ODA / SID
+  - BIAN for Financial Services
+  - ACORD for Insurance
+source_environment: Zoho CRM live module metadata readback 2026-08-19
+scope: Current CRM configuration objects whose semantics or implementation type appear misaligned with the governed configuration metamodel.
+dispositions:
+  - object: AvailableProducts
+    current_type: Module
+    oda_class: Product offering availability projection / qualification result
+    domain_reference: TM Forum Product Catalog + Product Offering Qualification
+    disposition: VIEW
+    rationale: Availability is derived from Product, catalogue, eligibility and qualification context; no independent durable identity is required by default.
+    target: Custom View or governed projection over Products plus ProductQualifications
+  - object: CustomerFinanceStatuses
+    current_type: Module
+    oda_class: Characteristic / state
+    domain_reference: BIAN customer product/account state
+    disposition: ATTRIBUTE
+    rationale: Status is a property of a Customer Product, Agreement, Facility or Case unless a separate status-event ledger is explicitly required.
+    target: Governed picklist/status field on owning object; retain history through field tracking where needed.
+  - object: CustomerInsuranceStatuses
+    current_type: Module
+    oda_class: Characteristic / state
+    domain_reference: ACORD policy/product state
+    disposition: ATTRIBUTE
+    rationale: Insurance status is normally state of policy/customer product, not an independent master object.
+    target: Governed status field on Customer Product/Policy object with ACORD-derived value set.
+  - object: CustomerContractMiningStatuses
+    current_type: Module
+    oda_class: Characteristic / state
+    domain_reference: ODA characteristic; APQC/MIMOSA domain extension
+    disposition: ATTRIBUTE
+    rationale: Lifecycle status should attach to the contract-mining customer product/service or agreement unless an auditable event ledger is required.
+    target: Governed status field plus field history.
+  - object: CustomerOverviews
+    current_type: Module
+    oda_class: Projection / customer 360 view
+    domain_reference: ODA engagement/information projection
+    disposition: VIEW
+    rationale: Overview aggregates authoritative records and should not become a competing system of record.
+    target: Custom View, Canvas, dashboard, widget, or Catalyst projection.
+  - object: AvailableCustomerServices
+    current_type: Module
+    oda_class: Service availability / eligibility projection
+    domain_reference: TM Forum service/product catalogue and qualification concepts
+    disposition: VIEW
+    rationale: Availability should be derived from service specification, catalogue, entitlement and qualification context.
+    target: View/projection over ServiceSpecifications and CustomerProducts/ServiceEntitlements.
+  - object: CustomerServices
+    current_type: Module
+    oda_class: Realised Service instance
+    domain_reference: TM Forum Service Inventory semantics
+    disposition: KEEP_CONDITIONAL
+    rationale: Keep only if records represent independently lifecycle-managed realised service instances distinct from Customer Product and Service Entitlement.
+    check_required: Compare fields and records with CustomerProducts and ServiceEntitlements.
+  - object: ProductQualifications
+    current_type: Module
+    oda_class: Qualification assessment/result
+    domain_reference: TM Forum Product Offering Qualification
+    disposition: KEEP_CONDITIONAL
+    rationale: A persisted assessment can justify its own identity when evidence, decision date, criteria, result and expiry must be retained.
+    check_required: Confirm independent lifecycle and evidence requirements; otherwise convert to process/result fields.
+  - object: CustomerProducts
+    current_type: Module
+    oda_class: Product instance / Product Inventory
+    domain_reference: TM Forum Product Inventory; BIAN customer product/service relationship
+    disposition: KEEP
+    rationale: Realised customer product has independent identity, lifecycle and relationships.
+  - object: Agreements
+    current_type: Module
+    oda_class: Agreement
+    domain_reference: TM Forum Agreement; BIAN Sales Product Agreement; ACORD agreement/policy as applicable
+    disposition: KEEP
+    rationale: Canonical agreement master is a durable governed business object.
+  - object: CustomerAgreements
+    current_type: Module
+    oda_class: Agreement relationship or agreement instance
+    domain_reference: TM Forum Agreement; BIAN Customer Agreement / Sales Product Agreement
+    disposition: MERGE_OR_LINK
+    rationale: Likely overlaps canonical Agreements. Retain only if it is a relationship object carrying customer-agreement-specific attributes not suitable on Agreements.
+    target: Prefer Agreements plus Party/Customer lookup or linking module.
+  - object: MARC_Contract
+    current_type: Module
+    oda_class: Agreement subtype
+    domain_reference: Agreement domain extension
+    disposition: MERGE_OR_SPECIALISE
+    rationale: A contract subtype should normally be represented through Agreement Type, layout and subtype fields unless it has materially distinct lifecycle/schema.
+    target: Agreements module with MARC Agreement Type unless independent lifecycle test passes.
+  - object: Deals_X_Contacts2
+    current_type: Linking Module
+    oda_class: Association entity
+    disposition: MERGE
+    rationale: Duplicate linking module exists alongside Deals_X_Contacts.
+    target: One canonical Deal-Contact association structure after record/field comparison.
+  - object: Price_Books_X_Products2
+    current_type: Linking Module
+    oda_class: Association entity
+    disposition: MERGE
+    rationale: Duplicate linking module exists alongside Price_Books_X_Products.
+    target: One canonical Price Book-Product association structure after record/field comparison.
+  - object: Windscreen_claim
+    current_type: Module
+    oda_class: Claim subtype
+    domain_reference: ACORD Claim
+    disposition: MERGE_OR_SPECIALISE
+    rationale: ACORD supports Claim as the durable object; windscreen is ordinarily a claim type, not a separate canonical claim entity.
+    target: Claims module with Claim Type = Windscreen unless separate lifecycle/schema proves necessary.
+  - object: ProductTaxonomy
+    current_type: Module
+    oda_class: Classification / catalogue reference structure
+    disposition: KEEP
+    rationale: Governed hierarchy has persistent nodes, provenance, relationships and reuse across products.
+  - object: ProductCatalogues
+    current_type: Module
+    oda_class: Product Catalog
+    disposition: KEEP
+    rationale: Durable catalogue object with membership, lifecycle, market/channel scope and governance.
+  - object: ProductSpecifications
+    current_type: Module
+    oda_class: ProductSpecification
+    disposition: KEEP
+    rationale: Durable specification master with provenance and lifecycle.
+  - object: ProductArtifacts
+    current_type: Module
+    oda_class: Governance/evidence registry
+    disposition: KEEP
+    rationale: Independent artifact records, provenance, lifecycle and repository authority justify persistence.
+  - object: MachineModels
+    current_type: Module
+    oda_class: Resource specification/type
+    domain_reference: IDTA AAS / MIMOSA
+    disposition: KEEP
+    rationale: Durable model/type master distinct from serialized Equipment Asset.
+  - object: EquipmentAssets
+    current_type: Module
+    oda_class: Resource instance
+    domain_reference: IDTA AAS / MIMOSA
+    disposition: KEEP
+    rationale: Serialized asset has independent identity and lifecycle.
+  - object: ServiceSpecifications
+    current_type: Module
+    oda_class: ServiceSpecification
+    disposition: KEEP
+    rationale: Durable service definition.
+  - object: ServiceEntitlements
+    current_type: Module
+    oda_class: Entitlement / customer-product-service relationship
+    disposition: KEEP_CONDITIONAL
+    rationale: Keep if entitlement has its own effective dates, limits, status and evidence independent of Customer Product.
+  - object: PartyRoles
+    current_type: Module
+    oda_class: Party Role
+    disposition: KEEP_CONDITIONAL
+    rationale: Keep where roles are assigned records with effective dates/context; otherwise use controlled role values on relationships.
+  - object: PartyRelationships
+    current_type: Module
+    oda_class: Party Relationship
+    disposition: KEEP
+    rationale: Relationship can carry type, dates, provenance and governance and therefore justifies independent records.
+non_destructive_rule: No module SHALL be deleted, merged or converted until field schema, record population, lookups, workflows, blueprints, views, integrations and dependent configurations have been regression-assessed and migrated.
+act_recommendation: ADAPT
+next_check:
+  - compare field schemas for CustomerAgreements vs Agreements
+  - compare CustomerServices vs CustomerProducts vs ServiceEntitlements
+  - compare duplicate linking modules Deals_X_Contacts / Deals_X_Contacts2
+  - compare duplicate linking modules Price_Books_X_Products / Price_Books_X_Products2
+  - test record populations and dependency associations before change
