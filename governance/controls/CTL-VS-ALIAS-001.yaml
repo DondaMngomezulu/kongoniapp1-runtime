@@ -1,0 +1,76 @@
+control_id: CTL-VS-ALIAS-001
+name: Enterprise Value Stream Alias Control
+version: 1.0.0
+status: ADOPTED
+effective_date: 2026-08-19
+methodology: MET-PDCA-001
+purpose: Preserve one canonical value-stream identity while allowing one approved operational alias per active value stream.
+authoritative_identity_source:
+  system: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+  table: EnterpriseValueStream
+alias_store:
+  system: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+  table: Alias
+rules:
+  - Each active Value Stream SHALL have one immutable Value_Stream_ID.
+  - Each active Value Stream SHALL have one active Canonical_Name.
+  - Each active Value Stream MAY have one approved short operational alias under this control.
+  - An approved alias SHALL resolve to exactly one Value_Stream_ID.
+  - Authoritative relationships SHALL store the Value_Stream_ID, not a free-text alias or product-domain label.
+  - Product Domain names SHALL NOT be treated as Value Stream aliases unless explicitly registered under this control.
+  - Display surfaces MAY render Alias plus Canonical_Name, but machine-readable bindings SHALL use Value_Stream_ID.
+  - Superseded aliases SHALL remain traceable and SHALL NOT be silently reused for another Value_Stream_ID.
+canonical_aliases:
+  - value_stream_id: VS00
+    canonical_name: Enterprise Shared Content
+    alias: HoldCo
+  - value_stream_id: VS01
+    canonical_name: Asset Provision & Access
+    alias: DealerCo
+  - value_stream_id: VS02
+    canonical_name: Asset Finance & Capital Provision
+    alias: FinCo
+  - value_stream_id: VS03
+    canonical_name: Asset Risk Protection & Recovery
+    alias: RiskCo
+  - value_stream_id: VS04
+    canonical_name: Asset Lifecycle Performance
+    alias: AssetCo
+  - value_stream_id: VS05
+    canonical_name: Investment & Portfolio Value Realisation
+    alias: InvestCo
+  - value_stream_id: VS06
+    canonical_name: Mining Production & Delivery
+    alias: OpsCo
+product_domain_bindings:
+  - product_domain_code: PRD-L1-EQP
+    product_domain_name: Equipment Provision
+    owning_value_stream_id: VS01
+  - product_domain_code: PRD-L1-FIN
+    product_domain_name: Financial Services
+    owning_value_stream_id: VS02
+  - product_domain_code: PRD-L1-INS
+    product_domain_name: Insurance and Risk Protection
+    owning_value_stream_id: VS03
+  - product_domain_code: PRD-L1-AFT
+    product_domain_name: Aftermarket and Lifecycle Support
+    owning_value_stream_id: VS04
+  - product_domain_code: PRD-L1-INV
+    product_domain_name: Investment and Portfolio Products
+    owning_value_stream_id: VS05
+  - product_domain_code: PRD-L1-CMN
+    product_domain_name: Contract Mining and Operational Services
+    owning_value_stream_id: VS06
+repository_roles:
+  catalyst: Canonical value-stream identity and alias runtime records.
+  github: Governed schema, rules, mappings and engineering contract.
+  zoho_crm: Operational product taxonomy and transaction projections; SHALL reference canonical Value_Stream_ID.
+controls:
+  uniqueness_key: Value_Stream_ID
+  alias_uniqueness: alias -> exactly one active Value_Stream_ID
+  display_pattern: "{alias} — {canonical_name}"
+  machine_binding: Value_Stream_ID
