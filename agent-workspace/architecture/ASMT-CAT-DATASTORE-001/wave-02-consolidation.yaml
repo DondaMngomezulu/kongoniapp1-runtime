@@ -1,0 +1,71 @@
+assessment_id: ASMT-CAT-DATASTORE-001
+wave_id: CAT-DS-CONS-W02
+assessment_date: '2026-08-19'
+environment: Development
+project: Kongoniapp1
+project_id: '86824000000020001'
+standard_ref: STD-CAT-REL-SCHEMA-001
+objective: Complete schema rationalisation after Wave 1 while preserving a governed relational enterprise schema.
+executed_changes:
+  - table: EDRMS_BinaryPayloadChunk
+    table_id: '86824000000183975'
+    pre_delete_rows: 0
+    disposition: RETIRED
+    rationale: Binary payload chunks are not appropriate relational runtime state. STD-CAT-REL-SCHEMA-001 assigns binary and large immutable object storage to Stratus with relational metadata references in Data Store.
+    data_loss: NONE
+protected_relational_families:
+  - family: Standards Discovery
+    tables: [StandardDiscoverySource, StandardDiscoveryCandidate, StandardDiscoveryAssertion]
+    disposition: RETAIN_NORMALIZED
+  - family: Pricing
+    evidence:
+      PriceList_rows: 2
+      PriceLine_rows: 39
+      DealDiscount_rows: 0
+    disposition: RETAIN_NORMALIZED
+    rationale: DealDiscount is an optional normalized child relation; emptiness alone is not redundancy.
+  - family: LCC
+    evidence:
+      LCC_ModelDatasetChunk_rows: 5
+    disposition: RETAIN_PENDING_GOVERNED_STRATUS_MIGRATION
+    rationale: Populated payload-like state requires lossless migration and read-back evidence before retirement.
+  - family: BIAN_APQC_MIMOSA
+    disposition: RETAIN_NORMALIZED_REFERENCE_MODEL
+  - family: Accounting_GL
+    disposition: RETAIN_OPERATIONAL_RELATIONAL_MODEL
+  - family: EDRMS_Core
+    disposition: RETAIN_RECORDS_RELATIONAL_MODEL
+  - family: Microservice_Runtime
+    tables: [LeasingFacility, EnvironmentExecutionAuthority, ExecutionState]
+    disposition: RETAIN_RUNTIME_STATE
+completion_assurance:
+  relational_default: THIRD_NORMAL_FORM
+  explicit_business_keys_required: true
+  logical_foreign_keys_required: true
+  cardinality_required: true
+  provenance_and_versioning_required: true
+  denormalisation_requires_adr: true
+  destructive_retirement_requires_zero_rows_or_lossless_migration: true
+  binaries_target: Stratus
+  architecture_and_engineering_authority: GitHub
+  runtime_structured_state_authority: Catalyst
+check_study:
+  result: PASS_WAVE_02
+  regressions:
+    business_rows_deleted: 0
+    healthy_normalized_relations_collapsed: 0
+    accounting_modified: false
+    edrms_core_modified: false
+    production_modified: false
+    leasing_runtime_relation_preserved: true
+programme_result:
+  wave_01_tables_retired: 2
+  wave_02_tables_retired: 1
+  total_tables_retired: 3
+  total_business_rows_deleted: 0
+  table_limit_root_cause: SCHEMA_PROLIFERATION_CONFIRMED
+  immediate_capacity_blocker: RESOLVED
+  future_new_table_gate: STD-CAT-REL-SCHEMA-001
+act_decision: ADOPT
+programme_status: CLOSED_CONTROLLED_BASELINE_ESTABLISHED
+closure_rule: DO_COMPLETE != TASK_COMPLETE; verified CHECK/STUDY plus ACT and record required.

@@ -1,0 +1,32 @@
+change_id: CHG-20260819-CATALYST-DATASTORE-CONSOLIDATION-W02
+timestamp_utc: '2026-08-19T04:59:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO instructed completion of the Catalyst Data Store consolidation programme on 2026-08-19.'
+task_class: T2
+change_type: governance
+summary: Complete Wave 2 Catalyst Data Store rationalisation and close the current consolidation programme baseline.
+reason: Remove remaining high-confidence inappropriate persistence structures while preserving governed normalized relational models and runtime state.
+affected_paths:
+  - agent-workspace/architecture/ASMT-CAT-DATASTORE-001/wave-02-consolidation.yaml
+environment: development
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction: Please complete the work.'
+pdca:
+  phase: ACT
+  do_complete: true
+  check_study_result: PASS_WAVE_02
+  act_decision: ADOPT
+  task_complete: true
+evidence:
+  - 'EDRMS_BinaryPayloadChunk contained 0 rows before retirement.'
+  - 'EDRMS_BinaryPayloadChunk was retired from Catalyst Development; no business rows were deleted.'
+  - 'LCC_ModelDatasetChunk contained 5 rows and was retained pending lossless Stratus migration.'
+  - 'PriceList contained 2 rows and PriceLine contained 39 rows; pricing submodel retained.'
+  - 'DealDiscount contained 0 rows but was retained as a legitimate optional normalized child relation.'
+  - 'LeasingFacility remains provisioned as governed operational runtime state.'
+  - 'Wave 1 previously retired MCP_Tools and LegacySemanticEnvelope with zero business-row deletion.'
+  - 'STD-CAT-REL-SCHEMA-001 is the mandatory gate for future Catalyst Data Store table creation.'
+notes: 'The current consolidation programme is closed at a controlled baseline. Future table retirement or migration is a new PDCA cycle. Populated normalized relations are not collapsed merely to reduce table count. No Production change occurred.'
