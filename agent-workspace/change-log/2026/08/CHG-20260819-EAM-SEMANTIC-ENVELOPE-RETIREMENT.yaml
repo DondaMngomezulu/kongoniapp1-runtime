@@ -1,0 +1,33 @@
+change_id: CHG-20260819-EAM-SEMANTIC-ENVELOPE-RETIREMENT
+timestamp_utc: '2026-08-19T11:40:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO authorised continuation of Catalyst semantic crosswalk and consolidation on 2026-08-19.'
+task_class: T2
+change_type: governance
+summary: Retire empty EAMSemanticEnvelope table after semantic supersession by GovernedArtifactSemanticEnvelope.
+reason: Recover Catalyst Data Store table capacity without weakening the governed relational model.
+affected_paths:
+  - Catalyst Development Data Store table EAMSemanticEnvelope (table_id 86824000000076747)
+environment: Development
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation on 2026-08-19.'
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: PENDING
+  act_decision: PENDING
+  task_complete: false
+evidence:
+  - 'EAMSemanticEnvelope row count = 0.'
+  - 'GovernedArtifactSemanticEnvelope row count = 19.'
+  - 'GovernedArtifactSemanticEnvelope preserves WHO/WHY/WHAT/HOW/WHERE/WHEN semantics and extends them with canonical identity, provenance, governance, validation, lifecycle and decomposition controls.'
+  - 'GitHub code search found no repository reference to EAMSemanticEnvelope.'
+  - 'Catalyst Function inventory recheck returned a transient internal server error; previous live inventory showed only undeployed kongoni_crm_connection_test and no AppSail runtime.'
+controls:
+  - 'Delete only EAMSemanticEnvelope.'
+  - 'Verify GovernedArtifactSemanticEnvelope remains present with 19 rows after deletion.'
+  - 'Verify EAMSemanticEnvelope no longer appears in live table inventory.'
+  - 'No populated table or source row may be modified as part of this change.'
