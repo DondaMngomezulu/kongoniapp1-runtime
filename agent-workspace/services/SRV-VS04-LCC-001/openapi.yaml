@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Asset Lifecycle Cost Service
-  version: 0.1.0
+  version: 0.2.0
   description: Development canary contract for governed LCC and LCOH calculations.
 servers:
   - url: /v1/asset-lifecycle
@@ -10,8 +10,7 @@ paths:
     get:
       operationId: health
       responses:
-        '200':
-          description: Service health
+        '200': {description: Service health}
   /lcoh/calculate:
     post:
       operationId: calculateLcoh
@@ -19,17 +18,14 @@ paths:
         required: true
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/LCOHCalculationRequest'
+            schema: {$ref: '#/components/schemas/LCOHCalculationRequest'}
       responses:
         '200':
           description: Calculated LCOH result
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/LCOHCalculationResult'
-        '422':
-          description: Invalid or unreconciled calculation inputs
+              schema: {$ref: '#/components/schemas/LCOHCalculationResult'}
+        '422': {description: Invalid, unreconciled, or semantically unresolved calculation inputs}
   /lcoh/models/{model_id}:
     get:
       operationId: retrieveModel
@@ -39,35 +35,93 @@ paths:
           required: true
           schema: {type: string}
       responses:
-        '200':
-          description: Governed lifecycle cost model metadata
+        '200': {description: Governed lifecycle cost model metadata}
 components:
   schemas:
-    PeriodCost:
+    Provenance:
       type: object
-      required: [period, fixed_ownership_cost, variable_operating_cost, productive_hours]
+      required: [source_system, source_record_ref, evidence_state]
       properties:
-        period: {type: integer, minimum: 0}
-        fixed_ownership_cost: {type: number}
-        variable_operating_cost: {type: number}
-        residual_value: {type: number, default: 0}
+        source_system: {type: string}
+        source_instance_id: {type: string}
+        source_record_ref: {type: string}
+        source_file_id: {type: string}
+        source_row_id: {type: string}
+        source_version: {type: string}
+        source_hash: {type: string}
+        effective_from: {type: string, format: date}
+        effective_to: {type: string, format: date}
+        evidence_state: {type: string, enum: [AUTHORITATIVE, VERIFIED, PROVISIONAL, EXTERNAL_REFERENCE]}
+    SubjectReference:
+      type: object
+      required: [subject_type, subject_id]
+      properties:
+        subject_type: {type: string, enum: [ASSET, MODEL_REFERENCE, SEGMENT]}
+        subject_id: {type: string}
+        semantic_binding: {type: string}
+    CostElementInput:
+      type: object
+      required: [cost_element_id, cost_behaviour, cost_category, value_state, currency_code, provenance_ref]
+      properties:
+        cost_element_id: {type: string}
+        cost_behaviour: {type: string, enum: [FIXED_OWNERSHIP, VARIABLE_OPERATING]}
+        cost_category: {type: string}
+        cost_element: {type: string}
+        driver_type: {type: string}
+        quantity: {type: number}
+        unit: {type: string}
+        rate: {type: number}
+        frequency: {type: number}
+        first_due: {type: number}
+        life: {type: number}
+        duration_hours: {type: number}
+        labour_hours_per_unit: {type: number}
+        amount: {type: number}
+        currency_code: {type: string, minLength: 3, maxLength: 3}
+        escalation_rule: {type: string}
+        effective_from: {type: string, format: date}
+        effective_to: {type: string, format: date}
+        effective_from_smu: {type: number}
+        effective_to_smu: {type: number}
+        value_state: {type: string, enum: [OBSERVED, ASSUMPTION, FORECAST]}
+        provenance_ref: {type: string}
+    PeriodInput:
+      type: object
+      required: [period_index, productive_hours, cost_elements]
+      properties:
+        period_index: {type: integer, minimum: 0}
+        period_start: {type: string, format: date}
+        period_end: {type: string, format: date}
+        calendar_hours: {type: number, minimum: 0}
+        scheduled_hours: {type: number, minimum: 0}
+        available_hours: {type: number, minimum: 0}
+        operating_hours: {type: number, minimum: 0}
         productive_hours: {type: number, minimum: 0}
+        residual_value: {type: number, default: 0}
+        cost_elements:
+          type: array
+          items: {$ref: '#/components/schemas/CostElementInput'}
     LCOHCalculationRequest:
       type: object
-      required: [scenario_id, currency_code, discount_rate, periods]
+      required: [scenario_id, subject, analysis_start, analysis_horizon, reporting_currency, discount_rate, periods, provenance]
       properties:
         scenario_id: {type: string}
         engineering_study_id: {type: string}
-        asset_id: {type: string}
-        model_id: {type: string}
-        segment_id: {type: string}
-        currency_code: {type: string, minLength: 3, maxLength: 3}
+        subject: {$ref: '#/components/schemas/SubjectReference'}
+        analysis_start: {type: string, format: date}
+        analysis_horizon: {type: number, minimum: 0}
+        reporting_currency: {type: string, minLength: 3, maxLength: 3}
+        source_currency: {type: string, minLength: 3, maxLength: 3}
+        fx_rate: {type: number}
         discount_rate: {type: number, minimum: -0.99}
+        denominator_type: {type: string, enum: [PRODUCTIVE_HOUR], default: PRODUCTIVE_HOUR}
         reference_model_id: {type: string, default: LIB-REF-AVI-LCOH-001}
+        assumption_set_id: {type: string}
         periods:
           type: array
           minItems: 1
-          items: {$ref: '#/components/schemas/PeriodCost'}
+          items: {$ref: '#/components/schemas/PeriodInput'}
+        provenance: {$ref: '#/components/schemas/Provenance'}
     LCOHCalculationResult:
       type: object
       required: [scenario_id, fixed_cost_pv, variable_cost_pv, productive_hours_pv, lcoh_fixed, lcoh_variable, lcoh_total, currency_code]
@@ -84,3 +138,4 @@ components:
         denominator_unit: {type: string, enum: [PRODUCTIVE_HOUR]}
         calculation_version: {type: string}
         reconciliation_status: {type: string}
+        semantic_resolution_status: {type: string}
