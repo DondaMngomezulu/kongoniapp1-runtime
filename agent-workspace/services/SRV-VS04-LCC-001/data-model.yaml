@@ -1,26 +1,85 @@
 data_model:
   id: DM-VS04-LCC-001
-  version: '0.1'
-  status: DEVELOPMENT_BASELINE
+  version: '0.2'
+  status: DEVELOPMENT_BASELINE_CHECKED
   semantic_anchor:
     standard: MIMOSA CCOM
-    version: '4.0.0'
+    normative_version: '4.0.0'
+    catalyst_reference_import: '4.1.0-RC1'
     analytical_container: EngineeringStudy
     analytical_entry: EngineeringStudyEntry
     subject_bindings:
-      - EngineeringStudyEntryForAsset
-      - EngineeringStudyEntryForModel
-      - EngineeringStudyEntryForSegment
+      asset: EngineeringStudyEntryForAsset
+      model_reference: EngineeringStudyEntryForModel
+      segment: EngineeringStudyEntryForSegment
+    model_class_resolution:
+      state: OPEN_ADAPT
+      note: Catalyst reference import confirms EngineeringStudyEntryForModel but does not expose a standalone ProductModel/Model class under that name; model_reference_id therefore remains an external canonical reference pending schema-resolution evidence.
+  input_contract:
+    calculation_request:
+      required: [scenario, subject, economic_basis, periods, provenance]
+      fields:
+        scenario:
+          required: [scenario_id, analysis_start, analysis_horizon, reporting_currency, discount_rate]
+          fields: [scenario_id, engineering_study_id, analysis_start, analysis_horizon, reporting_currency, discount_rate, reference_model_id, assumption_set_id]
+        subject:
+          required: [subject_type, subject_id]
+          subject_type: [ASSET, MODEL_REFERENCE, SEGMENT]
+          bindings:
+            ASSET: MIMOSA EngineeringStudyEntryForAsset / Asset
+            MODEL_REFERENCE: MIMOSA EngineeringStudyEntryForModel; canonical product/model reference external pending class-resolution
+            SEGMENT: MIMOSA EngineeringStudyEntryForSegment / Segment
+        economic_basis:
+          required: [denominator_type]
+          denominator_type: [PRODUCTIVE_HOUR]
+          optional: [source_currency, reporting_currency, fx_rate, escalation_rule_id, residual_value_policy_id]
+        periods:
+          min_items: 1
+          item: PeriodInput
+        provenance:
+          required: [source_system, source_record_ref, evidence_state]
+          fields: [source_system, source_instance_id, source_record_ref, source_file_id, source_row_id, source_version, source_hash, effective_from, effective_to, evidence_state]
+    PeriodInput:
+      required: [period_index, productive_hours, cost_elements]
+      fields: [period_index, period_start, period_end, calendar_hours, scheduled_hours, available_hours, operating_hours, productive_hours, residual_value, cost_elements]
+    CostElementInput:
+      required: [cost_element_id, cost_behaviour, cost_category, value_state, currency_code, provenance_ref]
+      fields:
+        - cost_element_id
+        - cost_behaviour
+        - cost_category
+        - cost_element
+        - driver_type
+        - quantity
+        - unit
+        - rate
+        - frequency
+        - first_due
+        - life
+        - duration_hours
+        - labour_hours_per_unit
+        - amount
+        - currency_code
+        - escalation_rule
+        - effective_from
+        - effective_to
+        - effective_from_smu
+        - effective_to_smu
+        - value_state
+        - provenance_ref
+      enums:
+        cost_behaviour: [FIXED_OWNERSHIP, VARIABLE_OPERATING]
+        value_state: [OBSERVED, ASSUMPTION, FORECAST]
   entities:
     LCCScenario:
       key: scenario_id
-      fields: [engineering_study_id, asset_id, model_id, segment_id, analysis_start, analysis_horizon, currency_code, discount_rate, utilisation_profile_id, assumption_set_id, reference_model_id, state]
+      fields: [engineering_study_id, subject_type, subject_id, analysis_start, analysis_horizon, reporting_currency, discount_rate, utilisation_profile_id, assumption_set_id, reference_model_id, state]
     CostAssumption:
       key: assumption_id
-      fields: [scenario_id, cost_category, cost_element, driver_type, quantity, unit, rate, currency_code, escalation_rule, effective_from, effective_to, provenance_ref]
+      fields: [scenario_id, cost_behaviour, cost_category, cost_element, driver_type, quantity, unit, rate, frequency, first_due, life, currency_code, escalation_rule, effective_from, effective_to, effective_from_smu, effective_to_smu, provenance_ref]
     CostFactProjection:
       key: fact_projection_id
-      fields: [scenario_id, source_fact_ref, source_fact_type, period, cost_category, cost_element, amount, currency_code, actual_or_forecast, provenance_ref]
+      fields: [scenario_id, source_fact_ref, source_fact_type, period, cost_behaviour, cost_category, cost_element, amount, currency_code, value_state, provenance_ref]
     LCCCalculation:
       key: calculation_id
       fields: [scenario_id, calculation_version, calculation_timestamp, discount_rate, fixed_cost_pv, variable_cost_pv, residual_value_pv, productive_hours_pv, reconciliation_status]
@@ -30,6 +89,16 @@ data_model:
     LCOHResult:
       key: lcoh_result_id
       fields: [calculation_id, lcoh_fixed, lcoh_variable, lcoh_total, currency_per_productive_hour, productive_hours_pv]
+  catalyst_source_bindings:
+    LCC_SourceInstance:
+      purpose: provenance and source-instance authority
+      mapped_fields: [Instance_ID, Method, Machine_Model, File_Name, Resource_ID, Repository_URL, Is_Authoritative_Copy, Source_System, Canonical_Model_ID, Variant_Code, Currency_Code, Schema_Version, Normalisation_State, Evidence_Basis, Binary_SHA256, Structural_SHA256, Semantic_Variant_ID, Source_Defect_Flag, Authoritative_Rationale]
+    LCC_SourceModelRow:
+      purpose: existing detailed maintenance/component cost driver evidence
+      mapped_fields: [Source_Row_ID, Source_Instance_ID, Source_File_ID, Source_Sheet_Name, Source_Row_Number, Model, Component_Description, UOM, First_Due, Frequency, Job_Code, Quantity, Labour_Hours_Per_Unit, Duration_Hours, Parts_Unit_Cost, Labour_Rate, Misc_Unit_Cost, Total_Unit_Cost, Currency_Code, Schema_Version, Normalisation_State, Semantic_Variant_ID, Effective_From_SMU, Effective_To_SMU, Window_Policy_Code]
+    LCC_ModelVariant:
+      purpose: governed economic variant and regression authority
+      mapped_fields: [Variant_ID, Model, Variant_Type, Reporting_Currency, FX_Rate, Economic_Parent_Variant_ID, Canonical_Source_Instance_ID, Canonical_Source_File_ID, Component_Count, Regression_Status, Source_Summary_Defect, Governance_Status, Schema_Version]
   cost_decomposition:
     L1: [LCOH]
     L2: [FIXED_OWNERSHIP, VARIABLE_OPERATING]
@@ -40,9 +109,21 @@ data_model:
   utilisation_profile:
     dimensions: [calendar_hours, scheduled_hours, available_hours, operating_hours, productive_hours]
     denominator_default: productive_hours
+  validation_results:
+    catalyst_lcc_source_instance: PASS
+    catalyst_lcc_source_model_row: PASS
+    catalyst_lcc_model_variant: PASS
+    mimosa_engineering_study: PASS
+    mimosa_engineering_study_entry: PASS
+    mimosa_asset_binding: PASS
+    mimosa_segment_binding: PASS
+    mimosa_measurement_assessment_completed_work: PASS
+    mimosa_model_class_name: ADAPT_OPEN
   controls:
     - Asset and maintenance master data remain external source-of-truth objects.
-    - Actual, assumption, forecast and calculated values SHALL carry distinct states.
-    - Every calculated result SHALL retain model version, source references and assumption-set provenance.
+    - Observed facts, assumptions, forecasts and calculated values SHALL carry distinct states.
+    - Every calculated result SHALL retain calculation version, source references and assumption-set provenance.
     - Source currency and reporting currency SHALL be distinguishable.
+    - Productive hours SHALL remain distinct from calendar, scheduled, available and operating hours.
     - The aviation reference model SHALL be used as an economic-pattern anchor only, not as mining semantics.
+    - Product/model subject references SHALL not be falsely asserted as a MIMOSA ProductModel class until class-resolution evidence is recorded.
