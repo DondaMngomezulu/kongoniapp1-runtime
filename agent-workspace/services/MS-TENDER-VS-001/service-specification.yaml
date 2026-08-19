@@ -1,0 +1,49 @@
+service:
+  id: MS-TENDER-VS-001
+  name: Tender-to-Value-Stream Classification Microservice
+  version: 0.2.0
+  status: CONTROLLED_CANDIDATE
+  task_class: T2
+  methodology: MET-PDCA-001
+  purpose: >-
+    Classify a governed tender opportunity to its primary and supporting Kongoni value streams
+    using the tender scope, contracted outcome, capability and service mappings, and eligibility evidence.
+  scope:
+    includes:
+      - public and private tenders
+      - RFPs
+      - RFQs
+      - RFIs where opportunity classification is required
+      - EOIs where opportunity classification is required
+      - tender addenda that materially change scope
+    excludes:
+      - generic sales leads that are not tender-derived
+      - prospect scoring
+      - legal interpretation
+      - compliance determination
+      - bid/no-bid authorisation
+      - pricing and commercial structuring
+  canonical_flow:
+    - Tender source and controlled tender pack
+    - Tender requirement decomposition
+    - Buyer outcome identification
+    - Capability resolution
+    - Service resolution
+    - Value stream ownership resolution
+    - Eligibility override check
+    - Classification evidence
+    - Tender Workflow handoff
+    - Deal Engine handoff after qualification
+  decision_rule: >-
+    The primary value stream is the value stream that owns the dominant contracted output.
+    Supporting value streams may be returned where they supply material capabilities.
+  prohibitions:
+    - keyword-only classification
+    - classification without source provenance
+    - bypass of mandatory eligibility failures
+    - direct Deal creation before Tender Workflow qualification
+  downstream:
+    - Tender Workflow
+    - Tender Requirements Register
+    - Deal Engine
+    - MY Task List
