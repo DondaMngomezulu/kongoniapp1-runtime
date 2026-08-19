@@ -1,0 +1,27 @@
+change_id: CHG-20260819-ENTERPRISE-HUB-BRAIN-NERVOUS-SYSTEM
+timestamp_utc: '2026-08-19T07:10:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved the Enterprise Hub as the brain and nervous system of the enterprise on 2026-08-19.'
+task_class: T2
+change_type: governance
+summary: Codify the canonical Enterprise Hub definition under the target hub-and-spoke architecture.
+reason: Ensure the Hub is treated as a logical, multi-service cognition, control, sensing, and communication plane rather than as a synonym for Zoho Catalyst or any other single platform.
+affected_paths:
+  - agent-workspace/architecture/STD-ARCH-HUB-SPOKE-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO explicit approval in active ChatGPT conversation on 2026-08-19.'
+pdca:
+  phase: ACT
+  do_complete: true
+  check_study_result: PASS_ARCHITECTURAL_REFINEMENT
+  act_decision: ADOPT
+  task_complete: false
+evidence:
+  - 'Group CEO clarified that Catalyst is not the only service that can form the Hub.'
+  - 'Group CEO defined the Hub as the brain and nervous system of the enterprise.'
+  - 'Group CEO explicitly approved the resulting Brain + Nervous System definition.'
+notes: 'Record and merge remain pending repository validation. The standard is technology-neutral and subordinate repository/microservice controls must inherit it.'
