@@ -1,0 +1,49 @@
+tests:
+  service_id: MS-LEAD-VS-001
+  cases:
+    - id: TVS-001
+      name: Foskor North Pit load and haul
+      input:
+        buyer: Foskor
+        scope_text: Provision of load and haul services at North Pit for five years
+        contracted_output: tonnes moved and mining production output
+      expected:
+        primary_value_stream: Contract Mining / Load & Haul
+        must_not_classify_as: Equipment Dealership
+        rationale_contains: contracted production output
+    - id: TVS-002
+      name: Foskor loader and haul truck maintenance
+      input:
+        buyer: Foskor
+        scope_text: Long-term repair and maintenance for loaders and haul trucks
+        contracted_output: equipment availability and maintenance performance
+      expected:
+        primary_value_stream: Asset Lifecycle Performance
+        must_not_classify_as: Contract Mining / Load & Haul
+        rationale_contains: maintenance and availability
+    - id: TVS-003
+      name: Yellow fleet finance lease
+      input:
+        buyer: Municipality
+        scope_text: Supply yellow fleet under a five-year finance and maintenance lease
+        contracted_output: financed access to equipment
+      expected:
+        primary_value_stream: Asset Finance & Capital Provision
+        secondary_value_streams:
+          - Asset Provision & Access
+          - Asset Lifecycle Performance
+    - id: TVS-004
+      name: Mandatory eligibility override
+      input:
+        buyer: Public entity
+        scope_text: Equipment supply tender with compulsory briefing
+        contracted_output: equipment supply
+        eligibility: failed_compulsory_briefing
+      expected:
+        qualification_status: ELIGIBILITY_FAILED
+        rule: weighted_score_may_not_override_mandatory_failure
+  acceptance:
+    - all_cases_pass
+    - no_keyword_only_classification
+    - primary_value_stream_present_for_each_successful_classification
+    - mandatory_override_regression_passes
