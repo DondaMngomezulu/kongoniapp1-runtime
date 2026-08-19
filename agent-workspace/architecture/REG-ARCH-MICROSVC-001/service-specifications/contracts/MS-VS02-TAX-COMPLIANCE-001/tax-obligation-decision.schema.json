@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:ms-vs02-tax-compliance-001:TaxObligationDecision:1.0",
+  "title": "TaxObligationDecision",
+  "type": "object",
+  "required": ["decision_id", "request_id", "status", "posting_authorised", "rule_evidence"],
+  "properties": {
+    "decision_id": {"type": "string", "minLength": 1},
+    "request_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PASS", "FAIL", "PENDING_RULES", "ERROR"]},
+    "posting_authorised": {"type": "boolean"},
+    "applicable_tax_domains": {"type": "array", "items": {"type": "string"}},
+    "obligations": {"type": "array", "items": {"type": "object", "additionalProperties": true}},
+    "rule_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "authority", "effective_from", "result"],
+        "properties": {
+          "rule_id": {"type": "string"},
+          "authority": {"type": "string"},
+          "source_ref": {"type": ["string", "null"]},
+          "effective_from": {"type": "string"},
+          "effective_to": {"type": ["string", "null"]},
+          "result": {"enum": ["PASS", "FAIL", "NOT_APPLICABLE", "PENDING"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "errors": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

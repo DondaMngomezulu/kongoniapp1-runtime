@@ -1,0 +1,69 @@
+evidence_id: EV-2026-08-18-SARS-VAT-STD-001
+rule_id: AR-SARS-VAT-STD-001
+task_class: T2
+verification_date: '2026-08-18'
+verification_scope: Confirm the current standard VAT rate proposition for South Africa and the authority hierarchy required for a controlled atomic rule candidate.
+
+sources:
+  - id: SRC-01
+    authority: South African Revenue Service
+    title: Other Taxes - Value-added Tax
+    uri: https://www.sars.gov.za/tax-rates/other-taxes/
+    retrieved_state: Current 2026 page
+    proposition: SARS states that VAT is levied at the standard rate of 15 percent on the supply of goods and services by registered vendors; zero-rated and exempt supplies remain separate classes.
+  - id: SRC-02
+    authority: South African Revenue Service
+    title: Value-Added Tax
+    uri: https://www.sars.gov.za/types-of-tax/value-added-tax/
+    retrieved_state: Current 2026 page
+    proposition: SARS states that taxable supplies are standard-rated at 15 percent or zero-rated, with a limited range of exempt supplies.
+  - id: SRC-03
+    authority: South African Revenue Service
+    title: Amendment Acts
+    uri: https://www.sars.gov.za/legal-counsel/primary-legislation/amendment-acts/
+    proposition: Rates and Monetary Amounts and Amendment of Revenue Laws Act 3 of 2026 was promulgated in Government Gazette 54446 on 1 April 2026.
+  - id: SRC-04
+    authority: Government of South Africa
+    title: Value-Added Tax Act 89 of 1991
+    uri: https://www.gov.za/documents/value-added-tax-act-12-may-2015-0846
+    proposition: The Value-Added Tax Act 89 of 1991 is the governing primary Act for taxation of supplies of goods/services and imports.
+  - id: SRC-05
+    authority: South African Revenue Service
+    title: High Court judgments 2028-2026
+    uri: https://www.sars.gov.za/latest-news/legal-counsel-dispute-resolution-judgments-high-court-2028-2026-2/
+    proposition: A March 2026 High Court judgment addressed the constitutionality of section 7(4). This is recorded as legal context but is not used as the authority for the 15 percent rate proposition.
+
+verification_tests:
+  - id: LEG-VAT-01
+    test: Current SARS rate publication states 15 percent.
+    result: PASS
+  - id: LEG-VAT-02
+    test: Rule is limited to standard-rated supplies and does not override zero-rating or exemptions.
+    result: PASS
+  - id: LEG-VAT-03
+    test: Rule requires a registered-vendor status input rather than inferring registration from turnover.
+    result: PASS
+    rationale: Registration-threshold and registration-status rules are separate legal determinations.
+  - id: LEG-VAT-04
+    test: Rule does not decide place, time or value of supply, imports, reverse charge, deductions or special schemes.
+    result: PASS
+  - id: LEG-VAT-05
+    test: Rule does not authorise ledger posting.
+    result: PASS
+  - id: LEG-VAT-06
+    test: Promulgated 2026 amendment context is accounted for.
+    result: PASS
+    evidence: SARS lists Act 3 of 2026 as promulgated on 1 April 2026 and current 2026 SARS rate publications continue to state 15 percent.
+
+check_study:
+  result: PASS_FOR_SOURCE_VERIFIED_ATOMIC_RATE_CANDIDATE
+  limitations:
+    - This is not a complete VAT determination engine.
+    - Taxability classification and vendor registration status must be governed by separate rules/evidence.
+    - Transaction-specific legal interpretation remains subject to the full VAT Act and applicable binding authorities.
+    - Rule remains non-executable until explicit controlled adoption and registry binding.
+
+act_recommendation: ADOPT_FOR_CONTROLLED_RULE_REGISTRY_CANDIDATE_NOT_EXECUTION
+production_changed: false
+development_deployed: false
+task_complete: false
