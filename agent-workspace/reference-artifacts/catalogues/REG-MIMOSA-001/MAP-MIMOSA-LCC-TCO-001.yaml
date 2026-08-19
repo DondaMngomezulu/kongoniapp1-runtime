@@ -1,0 +1,276 @@
+artifact_id: MAP-MIMOSA-LCC-TCO-001
+name: MIMOSA CCOM to Kongoni LCC and TCO Semantic Crosswalk
+version: 0.1.0
+status: PROPOSED_CONTROLLED_MAPPING
+effective_date: 2026-08-19
+methodology: MET-PDCA-001
+task_class: T2
+value_stream:
+  id: VS04
+  name: Asset Lifecycle Performance
+source_authority:
+  primary_standard: MIMOSA CCOM
+  normative_baseline: 4.0.0
+  structural_reference: 4.1.0-RC1
+  structural_reference_status: NONNORMATIVE_REFERENCE
+  governed_catalogue: REG-MIMOSA-001
+  architecture_mapping: CAT-ARCH-SD-VS04-MIMOSA-001
+principle: >-
+  MIMOSA CCOM SHALL govern asset identity, model/configuration, asset structure,
+  lifecycle events, maintenance work, condition, measurements, engineering-study
+  structure and evidence. Kongoni SHALL own financial and economic extension
+  concepts required for Life Cycle Cost and Total Cost of Ownership calculations.
+  Kongoni economic concepts SHALL NOT be represented as native MIMOSA concepts.
+study_types:
+  - study_type_id: KNG-LCC-STUDY
+    name: Life Cycle Cost Study
+    parent_mimosa_concept: EngineeringStudy
+    engine_id: ENG-LCC-001
+    purpose: >-
+      Evaluate lifecycle costs for an asset model, machine configuration or
+      serialized asset over a defined operating and economic horizon.
+  - study_type_id: KNG-TCO-STUDY
+    name: Total Cost of Ownership Study
+    parent_mimosa_concept: EngineeringStudy
+    engine_id: ENG-LCC-001
+    purpose: >-
+      Evaluate total ownership economics by combining lifecycle operating,
+      maintenance and component costs with acquisition, financing, taxes,
+      insurance and residual-value economics where applicable.
+semantic_mappings:
+  - mapping_id: MLT-001
+    lcc_tco_concept: Study
+    semantic_role: STUDY_CONTAINER
+    mimosa_concept: EngineeringStudy
+    mimosa_domain: KSD-VS04-ENGINEERING-STUDY-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-002
+    lcc_tco_concept: Study Entry for Asset
+    semantic_role: STUDY_SUBJECT_SERIALIZED_ASSET
+    mimosa_concept: EngineeringStudyEntryForAsset
+    mimosa_domain: KSD-VS04-ENGINEERING-STUDY-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-003
+    lcc_tco_concept: Study Entry for Model
+    semantic_role: STUDY_SUBJECT_MODEL
+    mimosa_concept: EngineeringStudyEntryForModel
+    mimosa_domain: KSD-VS04-ENGINEERING-STUDY-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-004
+    lcc_tco_concept: Study Entry for Segment
+    semantic_role: STUDY_SUBJECT_SEGMENT
+    mimosa_concept: EngineeringStudyEntryForSegment
+    mimosa_domain: KSD-VS04-ENGINEERING-STUDY-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-005
+    lcc_tco_concept: Asset Identity
+    semantic_role: SUBJECT_IDENTITY
+    mimosa_concept: Asset
+    mimosa_domain: KSD-VS04-ASSET-REGISTRY-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-006
+    lcc_tco_concept: Model and Configuration
+    semantic_role: SUBJECT_CONFIGURATION
+    mimosa_concept: Asset / Entity / registry configuration
+    mimosa_domain: KSD-VS04-ASSET-REGISTRY-001
+    mapping_type: COMPOSITE
+    kongoni_extension: false
+  - mapping_id: MLT-007
+    lcc_tco_concept: Asset Component
+    semantic_role: COST_COMPONENT_IDENTITY
+    mimosa_concept: AssetComponent
+    mimosa_domain: KSD-VS04-ASSET-STRUCTURE-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-008
+    lcc_tco_concept: Breakdown Structure
+    semantic_role: COST_ROLLUP_STRUCTURE
+    mimosa_concept: BreakdownStructure / BreakdownStructureTemplate
+    mimosa_domain: KSD-VS04-ASSET-STRUCTURE-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-009
+    lcc_tco_concept: Usage / Meter Reading
+    semantic_role: UTILISATION_INPUT
+    mimosa_concept: Measurement
+    mimosa_domain: KSD-VS04-MEASUREMENT-CONDITION-001
+    mapping_type: DERIVED_FROM_MEASUREMENT
+    kongoni_extension: false
+  - mapping_id: MLT-010
+    lcc_tco_concept: Measurement Quality
+    semantic_role: INPUT_QUALITY
+    mimosa_concept: DataQualityType
+    mimosa_domain: KSD-VS04-MEASUREMENT-CONDITION-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-011
+    lcc_tco_concept: Condition Assessment
+    semantic_role: CONDITION_INPUT
+    mimosa_concept: Assessment
+    mimosa_domain: KSD-VS04-HEALTH-PROGNOSTICS-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-012
+    lcc_tco_concept: Maintenance Plan
+    semantic_role: PLANNED_MAINTENANCE_INPUT
+    mimosa_concept: CalendaredWork / Cycle
+    mimosa_domain: KSD-VS04-WORK-REQUEST-001
+    mapping_type: COMPOSITE
+    kongoni_extension: false
+  - mapping_id: MLT-013
+    lcc_tco_concept: Maintenance Work In Progress
+    semantic_role: ACTUAL_MAINTENANCE_INPUT
+    mimosa_concept: ActiveWork
+    mimosa_domain: KSD-VS04-WORK-EXECUTION-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-014
+    lcc_tco_concept: Completed Maintenance Work
+    semantic_role: ACTUAL_COST_EVIDENCE
+    mimosa_concept: CompletedWork
+    mimosa_domain: KSD-VS04-WORK-HISTORY-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-015
+    lcc_tco_concept: Lifecycle Event
+    semantic_role: FAILURE_REPLACEMENT_EVENT
+    mimosa_concept: Event / ActualEvent
+    mimosa_domain: KSD-VS04-WORK-HISTORY-001
+    mapping_type: COMPOSITE
+    kongoni_extension: false
+  - mapping_id: MLT-016
+    lcc_tco_concept: Evidence
+    semantic_role: PROVENANCE_EVIDENCE
+    mimosa_concept: Evidence
+    mimosa_domain: KSD-VS04-WORK-HISTORY-001
+    mapping_type: DIRECT
+    kongoni_extension: false
+  - mapping_id: MLT-017
+    lcc_tco_concept: Source Document for Asset
+    semantic_role: SOURCE_REFERENCE
+    mimosa_concept: DocumentForAsset
+    mimosa_domain: KSD-VS04-WORK-HISTORY-001
+    mapping_type: REFERENCE_ONLY
+    kongoni_extension: false
+    note: Binary document lifecycle remains under enterprise document governance.
+economic_extensions:
+  - extension_id: KNG-ECO-001
+    concept: Acquisition Cost
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-002
+    concept: Parts Unit Cost
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-003
+    concept: Labour Rate
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-004
+    concept: Fuel or Energy Unit Rate
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-005
+    concept: Currency
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-006
+    concept: Exchange Rate
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-007
+    concept: Discount Rate
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-008
+    concept: Inflation or Escalation Rate
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-009
+    concept: Insurance Cost
+    applies_to: [TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-010
+    concept: Tax Cost
+    applies_to: [TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-011
+    concept: Financing Cost
+    applies_to: [TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-012
+    concept: Residual Value
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-013
+    concept: Downtime Economic Cost
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-014
+    concept: Cost per SMU
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+    derivation: Total applicable lifecycle cost divided by governed usage basis.
+  - extension_id: KNG-ECO-015
+    concept: Net Present Cost
+    applies_to: [LCC, TCO]
+    native_mimosa: false
+  - extension_id: KNG-ECO-016
+    concept: Total Cost of Ownership
+    applies_to: [TCO]
+    native_mimosa: false
+    derivation: >-
+      Acquisition and ownership costs plus lifecycle operating and maintenance
+      costs less residual-value recovery, subject to governed TCO scope.
+engine_binding:
+  engine_id: ENG-LCC-001
+  required_native_inputs:
+    - Asset or model identity
+    - Configuration and component structure
+    - Usage/utilisation evidence
+    - Planned and completed maintenance information
+    - Condition/reliability evidence where available
+    - Lifecycle events and provenance
+  required_economic_extensions:
+    - Cost basis
+    - Currency and exchange-rate basis
+    - Labour and parts rates
+    - Energy/fuel rates where applicable
+    - Residual-value basis
+  tco_additional_extensions:
+    - Acquisition cost
+    - Financing cost
+    - Insurance cost
+    - Tax cost
+validation_rules:
+  - id: VR-MLT-001
+    rule: Every LCC/TCO study SHALL identify a MIMOSA-compatible study subject.
+  - id: VR-MLT-002
+    rule: Native MIMOSA concepts SHALL retain their MIMOSA semantic identity and SHALL NOT be renamed as financial concepts.
+  - id: VR-MLT-003
+    rule: Financial and economic fields not native to MIMOSA SHALL be marked as Kongoni extensions.
+  - id: VR-MLT-004
+    rule: Currency conversion SHALL create an economic view and SHALL NOT create a new machine or MIMOSA model variant.
+  - id: VR-MLT-005
+    rule: Physical configuration differences SHALL remain distinct from economic variants.
+  - id: VR-MLT-006
+    rule: LCC and TCO outputs SHALL retain traceability to source lifecycle evidence and economic assumptions.
+  - id: VR-MLT-007
+    rule: LCC/TCO SHALL NOT be treated as native MIMOSA Product Types.
+  - id: VR-MLT-008
+    rule: AssetCo commercial products MAY consume LCC/TCO study outputs but SHALL remain governed by the approved Product Taxonomy and Product Specification framework.
+repository_roles:
+  github: Authoritative semantic mapping, schemas, validation rules and engineering history
+  catalyst: Executable structured lifecycle and LCC/TCO datasets
+  zoho_crm: AssetCo commercial product and ProductSpecification bindings
+  google_drive: Controlled source documents and provenance evidence
+pdca:
+  stage: DO_COMPLETE
+  check_required: true
+  regression_required: true
+  act_decision: null
