@@ -1,0 +1,86 @@
+artifact_id: REG-ASSETCO-SEED-001
+name: AssetCo Cross-Repository Seed Manifest
+version: 0.1.0
+status: CONTROLLED_CHECK_PENDING
+methodology: MET-PDCA-001
+task_class: T2
+as_of: 2026-08-19
+scope: Somkhele Phase 1 AssetCo party and role master-data seeding
+canonical_party_rule: one legal entity one CRM Account
+canonical_role_rule: economic and contractual roles are effective-dated Party Role records and shall not create duplicate Accounts
+
+assetco_party:
+  legal_name: Somkhele Plant (Pty) Ltd
+  registration_number: 2007/004283/07
+  tax_number: 9696029157
+  phase_1_roles:
+    - DealerCo
+    - AssetCo
+    - Borrower
+    - Lessor
+  evidence_state: VERIFIED_FOR_PARTY_IDENTITY
+
+repository_state:
+  zoho_crm:
+    authority: canonical operational Party master
+    account_id: '5643538000008266001'
+    account_name: Somkhele Plant (Pty) Ltd
+    master_data_status: VALID
+    duplicate_check: PASS_ONE_ACCOUNT_FOUND
+    party_role_check: FAIL_NO_ROLE_RECORD_FOUND
+    schema_check: BLOCKED_ROLE_TYPE_VALUE_MISSING
+    current_role_type_values:
+      - OEM
+      - Supplier
+      - Manufacturer
+      - Warranty Provider
+      - Technical Support
+      - Dealer
+      - Customer
+      - Service Provider
+    required_role_value_for_current_assetco_use_case: Lessor
+    rule: Do not substitute Dealer Customer or Service Provider for the Lessor role.
+  google_drive:
+    authority: evidence and document provenance locus
+    evidence_found:
+      - Somkhele EquipmentCo Operating Lease Business Plan — Phase 1 — Controlled Draft v0.1
+      - VMG-CRP-2026-018 Joint AssetCo Proposal (VMG-BCM) v1.0
+    disposition: RETAIN_AS_PROVENANCE_NO_DUPLICATE_MASTER_RECORD
+  catalyst_development:
+    project: Kongoniapp1
+    project_id: '86824000000020001'
+    authority: governed application data and codification locus where a domain table is explicitly defined
+    table_sweep: COMPLETE
+    dedicated_party_or_party_role_table_found: false
+    gl_entity_somkhele_found: false
+    disposition: DO_NOT_CREATE_COMPETING_PARTY_MASTER
+  github:
+    repository: DondaMngomezulu/kongoniapp1-runtime
+    authority: governed engineering and configuration-control repository
+    disposition: THIS_MANIFEST_RECORDS_SCHEMA_AND_SEED_STATE
+
+controls:
+  duplicate_key_party: registration_number + jurisdiction
+  duplicate_key_equipment_asset: OEM + serial_number
+  prohibited_actions:
+    - create a second Somkhele Account to represent AssetCo
+    - classify Lessor or AssetCo as an unrelated Party Role value
+    - create an ungoverned Catalyst Party master that competes with CRM
+  required_remediation:
+    - extend the governed Party Role vocabulary and live CRM Role_Type picklist with the canonical Lessor role before role seeding
+    - seed Somkhele Lessor Party Role linked to CRM Account 5643538000008266001
+    - read back and verify the seeded Party Role
+    - update this manifest with CRM Party Role ID and validation evidence
+
+check:
+  party_identity: PASS
+  crm_duplicate_control: PASS
+  drive_provenance: PASS
+  github_governance_record: PASS_ON_MERGE
+  catalyst_duplicate_master_control: PASS
+  crm_role_semantics: FAIL
+  overall: CONDITIONAL_FAIL
+
+act_recommendation: ADAPT
+closure_rule: DO_COMPLETE_NE_TASK_COMPLETE
+task_status: OPEN_PENDING_ROLE_SCHEMA_REMEDIATION_AND_VERIFIED_ROLE_SEED
