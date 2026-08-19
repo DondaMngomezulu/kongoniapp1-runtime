@@ -1,0 +1,235 @@
+register_id: REG-MIMOSA-CONCEPT-001
+name: Reusable MIMOSA Enterprise Concept Register
+version: 0.1.0
+status: PROPOSED_CONTROLLED_REGISTER
+effective_date: 2026-08-19
+methodology: MET-PDCA-001
+task_class: T2
+source_authority:
+  governed_catalogue: REG-MIMOSA-001
+  primary_standard: MIMOSA CCOM
+  normative_baseline: 4.0.0
+  structural_reference: 4.1.0-RC1
+  structural_reference_status: NONNORMATIVE_REFERENCE
+  catalyst_tables:
+    - MIMOSA_CCOM_SchemaRelease
+    - MIMOSA_CCOM_SchemaObject
+    - MIMOSA_CCOM_SchemaRelation
+scope_rule: >-
+  This register SHALL expose reusable enterprise semantic concepts derived from
+  native MIMOSA CCOM source objects. It SHALL NOT replace, rename, or modify the
+  native MIMOSA catalogue. Domain, product, engine, microservice, CRM, and study
+  mappings SHALL reference a reusable concept ID when a listed concept applies.
+reuse_rule: >-
+  Reuse SHALL preserve the native MIMOSA semantic identity and source-object
+  provenance. Domain-specific meaning MAY extend a reusable concept only through
+  an explicit governed mapping or extension profile.
+concept_families:
+  - family_id: MIM-FAM-REGISTRY
+    name: Asset Identity and Registry
+  - family_id: MIM-FAM-STRUCTURE
+    name: Asset Structure and Configuration
+  - family_id: MIM-FAM-ENGINEERING
+    name: Engineering Studies
+  - family_id: MIM-FAM-MEASUREMENT
+    name: Measurement and Condition Data
+  - family_id: MIM-FAM-HEALTH
+    name: Health and Prognostics
+  - family_id: MIM-FAM-WORK
+    name: Maintenance and Work Management
+  - family_id: MIM-FAM-EVENT
+    name: Lifecycle Events and Evidence
+  - family_id: MIM-FAM-DOCUMENT
+    name: Asset Document References
+  - family_id: MIM-FAM-AGENT
+    name: Agent and Role Relationships
+concepts:
+  - concept_id: MIM-CPT-ASSET
+    name: Asset
+    family_id: MIM-FAM-REGISTRY
+    native_mimosa_object: Asset
+    canonical_role: Lifecycle subject identity
+    reusable_for: [asset_registry, product_eligibility, lcc_tco, maintenance, condition_monitoring, assetco]
+  - concept_id: MIM-CPT-ENTITY
+    name: Entity
+    family_id: MIM-FAM-REGISTRY
+    native_mimosa_object: Entity
+    canonical_role: General lifecycle entity identity
+    reusable_for: [registry, configuration, relationships]
+  - concept_id: MIM-CPT-CRITICALITY
+    name: Criticality
+    family_id: MIM-FAM-REGISTRY
+    native_mimosa_object: Criticality
+    canonical_role: Asset or component criticality classification
+    reusable_for: [maintenance, reliability, risk, prioritisation]
+  - concept_id: MIM-CPT-ASSET-COMPONENT
+    name: Asset Component
+    family_id: MIM-FAM-STRUCTURE
+    native_mimosa_object: AssetComponent
+    canonical_role: Component identity within an asset structure
+    reusable_for: [maintenance, rebuild, parts, lcc_tco, reliability]
+  - concept_id: MIM-CPT-BREAKDOWN-STRUCTURE
+    name: Breakdown Structure
+    family_id: MIM-FAM-STRUCTURE
+    native_mimosa_object: BreakdownStructure
+    canonical_role: Asset decomposition and cost roll-up structure
+    reusable_for: [asset_structure, maintenance, lcc_tco, configuration]
+  - concept_id: MIM-CPT-BREAKDOWN-STRUCTURE-TEMPLATE
+    name: Breakdown Structure Template
+    family_id: MIM-FAM-STRUCTURE
+    native_mimosa_object: BreakdownStructureTemplate
+    canonical_role: Reusable asset decomposition template
+    reusable_for: [product_model, configuration, asset_structure]
+  - concept_id: MIM-CPT-ASSET-CONNECTION
+    name: Asset Connection
+    family_id: MIM-FAM-STRUCTURE
+    native_mimosa_object: AssetConnection
+    canonical_role: Connection between assets or components
+    reusable_for: [configuration, network_structure, diagnostics]
+  - concept_id: MIM-CPT-FUNCTION
+    name: Function
+    family_id: MIM-FAM-STRUCTURE
+    native_mimosa_object: Function
+    canonical_role: Functional role of asset or component
+    reusable_for: [reliability, maintenance, configuration]
+  - concept_id: MIM-CPT-ENGINEERING-STUDY
+    name: Engineering Study
+    family_id: MIM-FAM-ENGINEERING
+    native_mimosa_object: EngineeringStudy
+    canonical_role: Governed engineering study container
+    reusable_for: [lcc_tco, reliability_study, maintenance_study, configuration_study]
+  - concept_id: MIM-CPT-STUDY-ENTRY
+    name: Engineering Study Entry
+    family_id: MIM-FAM-ENGINEERING
+    native_mimosa_object: EngineeringStudyEntry
+    canonical_role: Study observation, assumption, result, or evidence entry
+    reusable_for: [engineering_studies]
+  - concept_id: MIM-CPT-STUDY-ASSET
+    name: Engineering Study Entry for Asset
+    family_id: MIM-FAM-ENGINEERING
+    native_mimosa_object: EngineeringStudyEntryForAsset
+    canonical_role: Study entry bound to serialized asset
+    reusable_for: [lcc_tco, asset_assessment]
+  - concept_id: MIM-CPT-STUDY-MODEL
+    name: Engineering Study Entry for Model
+    family_id: MIM-FAM-ENGINEERING
+    native_mimosa_object: EngineeringStudyEntryForModel
+    canonical_role: Study entry bound to equipment model or variant
+    reusable_for: [lcc_tco, product_model, assetco]
+  - concept_id: MIM-CPT-STUDY-SEGMENT
+    name: Engineering Study Entry for Segment
+    family_id: MIM-FAM-ENGINEERING
+    native_mimosa_object: EngineeringStudyEntryForSegment
+    canonical_role: Study entry bound to functional or structural segment
+    reusable_for: [lcc_tco, reliability, maintenance]
+  - concept_id: MIM-CPT-MEASUREMENT
+    name: Measurement
+    family_id: MIM-FAM-MEASUREMENT
+    native_mimosa_object: Measurement
+    canonical_role: Governed asset measurement or usage observation
+    reusable_for: [condition_monitoring, utilisation, lcc_tco, performance]
+  - concept_id: MIM-CPT-DATA-QUALITY
+    name: Data Quality Type
+    family_id: MIM-FAM-MEASUREMENT
+    native_mimosa_object: DataQualityType
+    canonical_role: Measurement or evidence quality classification
+    reusable_for: [measurements, evidence, validation]
+  - concept_id: MIM-CPT-ASSESSMENT
+    name: Assessment
+    family_id: MIM-FAM-HEALTH
+    native_mimosa_object: Assessment
+    canonical_role: Condition, health, prognostic, or engineering assessment
+    reusable_for: [condition_monitoring, prognostics, reliability, lcc_tco]
+  - concept_id: MIM-CPT-CALENDAR-WORK
+    name: Calendared Work
+    family_id: MIM-FAM-WORK
+    native_mimosa_object: CalendaredWork
+    canonical_role: Planned or scheduled maintenance work
+    reusable_for: [planned_maintenance, lcc_tco, service_planning]
+  - concept_id: MIM-CPT-ACTIVE-WORK
+    name: Active Work
+    family_id: MIM-FAM-WORK
+    native_mimosa_object: ActiveWork
+    canonical_role: Maintenance or service work in execution
+    reusable_for: [field_service, repair, maintenance, lcc_tco]
+  - concept_id: MIM-CPT-COMPLETED-WORK
+    name: Completed Work
+    family_id: MIM-FAM-WORK
+    native_mimosa_object: CompletedWork
+    canonical_role: Completed maintenance or service lifecycle record
+    reusable_for: [maintenance_history, repair, rebuild, lcc_tco]
+  - concept_id: MIM-CPT-CYCLE
+    name: Cycle
+    family_id: MIM-FAM-WORK
+    native_mimosa_object: Cycle
+    canonical_role: Recurrence or maintenance-cycle basis
+    reusable_for: [planned_maintenance, usage_based_maintenance, lcc_tco]
+  - concept_id: MIM-CPT-EVENT
+    name: Event
+    family_id: MIM-FAM-EVENT
+    native_mimosa_object: Event
+    canonical_role: Lifecycle event record
+    reusable_for: [maintenance, failure, replacement, condition, lcc_tco]
+  - concept_id: MIM-CPT-ACTUAL-EVENT
+    name: Actual Event
+    family_id: MIM-FAM-EVENT
+    native_mimosa_object: ActualEvent
+    canonical_role: Observed lifecycle event
+    reusable_for: [failure_history, replacement, maintenance, evidence]
+  - concept_id: MIM-CPT-EVIDENCE
+    name: Evidence
+    family_id: MIM-FAM-EVENT
+    native_mimosa_object: Evidence
+    canonical_role: Evidence supporting lifecycle assertion or decision
+    reusable_for: [validation, lcc_tco, maintenance, condition, governance]
+  - concept_id: MIM-CPT-DOCUMENT-ASSET
+    name: Document for Asset
+    family_id: MIM-FAM-DOCUMENT
+    native_mimosa_object: DocumentForAsset
+    canonical_role: Asset-linked document reference
+    reusable_for: [manuals, service_records, source_provenance]
+    constraint: Binary document lifecycle remains under enterprise document governance.
+  - concept_id: MIM-CPT-AGENT-ASSESSMENT
+    name: Agent Role with Assessment
+    family_id: MIM-FAM-AGENT
+    native_mimosa_object: AgentRoleWithAssessment
+    canonical_role: Responsibility relationship for an assessment
+    reusable_for: [condition_monitoring, engineering_study, accountability]
+  - concept_id: MIM-CPT-AGENT-WORK
+    name: Agent Role with Work
+    family_id: MIM-FAM-AGENT
+    native_mimosa_object: AgentRoleWithWork
+    canonical_role: Responsibility relationship for lifecycle work
+    reusable_for: [maintenance, field_service, accountability]
+validation_rules:
+  - id: VR-MIM-CPT-001
+    rule: Every reusable concept SHALL bind to one or more native MIMOSA source objects.
+  - id: VR-MIM-CPT-002
+    rule: A reusable concept SHALL preserve the native MIMOSA semantic identity and provenance.
+  - id: VR-MIM-CPT-003
+    rule: Domain mappings SHALL reference a reusable concept ID where an applicable registered concept exists.
+  - id: VR-MIM-CPT-004
+    rule: A domain-specific extension SHALL NOT be represented as a native MIMOSA concept.
+  - id: VR-MIM-CPT-005
+    rule: Product, process, capability, engine, microservice, and CRM semantics SHALL remain separate from reusable MIMOSA concept semantics.
+  - id: VR-MIM-CPT-006
+    rule: The reusable register SHALL NOT replace REG-MIMOSA-001 or the authoritative Catalyst MIMOSA schema tables.
+  - id: VR-MIM-CPT-007
+    rule: Reuse mappings SHALL be versioned and traceable to the applicable MIMOSA release baseline.
+extension_policy:
+  candidate_source_population: 438
+  current_registered_reusable_concepts: 26
+  expansion_method: >-
+    Additional concepts SHALL be promoted from the 438-object native catalogue only
+    when at least one governed enterprise use case requires reuse and the semantic
+    identity has passed CHECK/STUDY against the adopted MIMOSA baseline.
+repository_roles:
+  github: Authoritative reusable-concept register, mappings, validation rules, and engineering history
+  catalyst: Authoritative native MIMOSA structured catalogue and executable mappings
+  google_drive: Governed source standards and provenance evidence
+  zoho_crm: Consumer of approved reusable concepts through ProductSpecification and lifecycle bindings
+pdca:
+  stage: DO_COMPLETE
+  check_required: true
+  regression_required: true
+  act_decision: null
