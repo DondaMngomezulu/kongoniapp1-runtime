@@ -1,0 +1,288 @@
+id: MAT-PRD-TYPE-STD-001
+name: Product Type to Governing Standard Matrix
+version: 1.0.0
+status: ADOPTED
+effective_date: '2026-08-19'
+governance_method: MET-PDCA-001
+parent_controls:
+- CTL-PRD-REF-LIB-001
+- CTL-PRD-TAX-001
+- MAT-PRD-ARTIFACT-001
+rule: Every L3 Product Type SHALL identify its governing standard, canonical standard concept, secondary semantic reference, Product Specification profile, authoritative source content, and applicable agreement type. L4-L6 SHALL inherit the L3 provenance unless a governed subtype adds stricter requirements.
+coverage:
+  l3_product_types: 29
+  source: Zoho CRM ProductTaxonomy readback 2026-08-19
+records:
+- product_type: New Equipment Sale
+  product_domain: Equipment Provision
+  product_family: Equipment Sales
+  primary_governing_standard: IDTA AAS 02003
+  canonical_standard_concept: Product type / equipment technical specification
+  secondary_semantic_reference: TM Forum ProductSpecification; MIMOSA CCOM
+  product_specification_profile: Equipment Product Specification
+  required_authoritative_source: OEM catalogue; OEM technical data sheet
+  applicable_agreement_type: Sale of Equipment Agreement
+- product_type: Used Equipment Sale
+  product_domain: Equipment Provision
+  product_family: Equipment Sales
+  primary_governing_standard: IDTA AAS 02003
+  canonical_standard_concept: Product type / equipment technical specification
+  secondary_semantic_reference: TM Forum ProductSpecification; MIMOSA CCOM
+  product_specification_profile: Equipment Product Specification
+  required_authoritative_source: OEM/source inspection and used-equipment record
+  applicable_agreement_type: Used Equipment Sale Agreement
+- product_type: Equipment Rental
+  product_domain: Equipment Provision
+  product_family: Equipment Rental
+  primary_governing_standard: TM Forum ProductSpecification
+  canonical_standard_concept: Product offering for rental
+  secondary_semantic_reference: IDTA AAS 02003; MIMOSA CCOM
+  product_specification_profile: Equipment Rental Product Specification
+  required_authoritative_source: OEM equipment specification; approved rental policy
+  applicable_agreement_type: Equipment Rental Agreement
+- product_type: Equipment Loan
+  product_domain: Financial Services
+  product_family: Lending
+  primary_governing_standard: BIAN Corporate Loan
+  canonical_standard_concept: Corporate Loan
+  secondary_semantic_reference: FIBO; TM Forum ProductSpecification
+  product_specification_profile: Financial Product Specification
+  required_authoritative_source: Sales Product Agreement; approved credit and pricing policy
+  applicable_agreement_type: Equipment Loan Sales Product Agreement
+- product_type: Instalment Sale
+  product_domain: Financial Services
+  product_family: Lending
+  primary_governing_standard: BIAN Corporate Loan
+  canonical_standard_concept: Corporate Loan / asset finance
+  secondary_semantic_reference: FIBO; TM Forum ProductSpecification
+  product_specification_profile: Financial Product Specification
+  required_authoritative_source: Sales Product Agreement; approved credit and pricing policy
+  applicable_agreement_type: Instalment Sale Sales Product Agreement
+- product_type: Finance Lease
+  product_domain: Financial Services
+  product_family: Leasing
+  primary_governing_standard: BIAN Corporate Lease
+  canonical_standard_concept: Corporate Lease
+  secondary_semantic_reference: FIBO; TM Forum ProductSpecification
+  product_specification_profile: Financial Product Specification
+  required_authoritative_source: Sales Product Agreement; approved pricing/credit policy
+  applicable_agreement_type: Finance Lease Sales Product Agreement
+- product_type: Operating Lease
+  product_domain: Financial Services
+  product_family: Leasing
+  primary_governing_standard: BIAN Corporate Lease
+  canonical_standard_concept: Corporate Lease
+  secondary_semantic_reference: FIBO; TM Forum ProductSpecification
+  product_specification_profile: Financial Product Specification
+  required_authoritative_source: Sales Product Agreement; approved pricing/credit policy
+  applicable_agreement_type: Operating Lease Sales Product Agreement
+- product_type: Sale and Leaseback
+  product_domain: Financial Services
+  product_family: Leasing
+  primary_governing_standard: BIAN Corporate Lease
+  canonical_standard_concept: Corporate Lease with asset transfer
+  secondary_semantic_reference: FIBO; TM Forum ProductSpecification
+  product_specification_profile: Financial Product Specification
+  required_authoritative_source: Sales Product Agreement; asset transfer documents
+  applicable_agreement_type: Sale and Leaseback Sales Product Agreement
+- product_type: Dealer Financing
+  product_domain: Financial Services
+  product_family: Dealer and Parts Finance
+  primary_governing_standard: BIAN Corporate Loan
+  canonical_standard_concept: Corporate Loan
+  secondary_semantic_reference: FIBO; TM Forum ProductSpecification
+  product_specification_profile: Financial Product Specification
+  required_authoritative_source: Dealer finance agreement; credit/pricing policy
+  applicable_agreement_type: Dealer Finance Sales Product Agreement
+- product_type: Parts Financing
+  product_domain: Financial Services
+  product_family: Dealer and Parts Finance
+  primary_governing_standard: BIAN Corporate Loan
+  canonical_standard_concept: Corporate Loan
+  secondary_semantic_reference: FIBO; TM Forum ProductSpecification
+  product_specification_profile: Financial Product Specification
+  required_authoritative_source: Parts finance agreement; credit/pricing policy
+  applicable_agreement_type: Parts Finance Sales Product Agreement
+- product_type: Asset Insurance
+  product_domain: Insurance and Risk Protection
+  product_family: Asset Protection
+  primary_governing_standard: ACORD P&C
+  canonical_standard_concept: Insurance product / coverage
+  secondary_semantic_reference: ACORD Coverage Codes; FIBO risk semantics
+  product_specification_profile: Insurance Product Specification
+  required_authoritative_source: Approved insurer product documentation; policy wording
+  applicable_agreement_type: Asset Insurance Policy
+- product_type: Credit Insurance
+  product_domain: Insurance and Risk Protection
+  product_family: Credit Protection
+  primary_governing_standard: ACORD P&C
+  canonical_standard_concept: Credit insurance coverage
+  secondary_semantic_reference: ACORD Coverage Codes; FIBO risk semantics
+  product_specification_profile: Insurance Product Specification
+  required_authoritative_source: Approved insurer product documentation; policy wording
+  applicable_agreement_type: Credit Insurance Policy
+- product_type: Residual Value Protection
+  product_domain: Insurance and Risk Protection
+  product_family: Residual and Warranty Protection
+  primary_governing_standard: ACORD P&C
+  canonical_standard_concept: Residual value protection coverage
+  secondary_semantic_reference: FIBO risk semantics
+  product_specification_profile: Insurance Product Specification
+  required_authoritative_source: Policy wording; underwriting rules
+  applicable_agreement_type: Residual Value Protection Policy
+- product_type: Extended Warranty
+  product_domain: Insurance and Risk Protection
+  product_family: Residual and Warranty Protection
+  primary_governing_standard: TM Forum ProductSpecification
+  canonical_standard_concept: Warranty product offering
+  secondary_semantic_reference: OEM warranty content; ACORD if legally insurance
+  product_specification_profile: Warranty Product Specification
+  required_authoritative_source: OEM warranty programme / policy wording if insured
+  applicable_agreement_type: Extended Warranty Agreement or Policy
+- product_type: Parts
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Parts and Components
+  primary_governing_standard: MIMOSA CCOM
+  canonical_standard_concept: Aftermarket part product type
+  secondary_semantic_reference: IDTA AAS; ECLASS; IEC CDD
+  product_specification_profile: Aftermarket Product Specification
+  required_authoritative_source: OEM parts catalogue
+  applicable_agreement_type: Parts Sale Agreement / Sales Terms
+- product_type: Components
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Parts and Components
+  primary_governing_standard: MIMOSA CCOM
+  canonical_standard_concept: Component product type
+  secondary_semantic_reference: IDTA AAS; ECLASS; IEC CDD
+  product_specification_profile: Aftermarket Product Specification
+  required_authoritative_source: OEM component catalogue/specification
+  applicable_agreement_type: Component Sale Agreement / Sales Terms
+- product_type: Planned Maintenance
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Maintenance and Repair
+  primary_governing_standard: MIMOSA CCOM / OSA-EAI
+  canonical_standard_concept: Maintenance service product type
+  secondary_semantic_reference: OEM maintenance content
+  product_specification_profile: Service Product Specification
+  required_authoritative_source: OEM maintenance manual; service policy
+  applicable_agreement_type: Maintenance Service Agreement
+- product_type: Repair
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Maintenance and Repair
+  primary_governing_standard: MIMOSA CCOM / OSA-EAI
+  canonical_standard_concept: Repair service product type
+  secondary_semantic_reference: OEM service content
+  product_specification_profile: Service Product Specification
+  required_authoritative_source: OEM repair manual; service policy
+  applicable_agreement_type: Repair Service Agreement
+- product_type: Rebuild
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Rebuild and Field Support
+  primary_governing_standard: MIMOSA CCOM
+  canonical_standard_concept: Rebuild service/product type
+  secondary_semantic_reference: IDTA AAS; OEM rebuild content
+  product_specification_profile: Service Product Specification
+  required_authoritative_source: OEM rebuild specification
+  applicable_agreement_type: Rebuild Agreement
+- product_type: Field Service
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Rebuild and Field Support
+  primary_governing_standard: MIMOSA CCOM / OSA-EAI
+  canonical_standard_concept: Field service product type
+  secondary_semantic_reference: OEM service content
+  product_specification_profile: Service Product Specification
+  required_authoritative_source: OEM field service policy/manual
+  applicable_agreement_type: Field Service Agreement
+- product_type: Technical Support
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Rebuild and Field Support
+  primary_governing_standard: MIMOSA CCOM / OSA-EAI
+  canonical_standard_concept: Technical support service type
+  secondary_semantic_reference: OEM technical support content
+  product_specification_profile: Service Product Specification
+  required_authoritative_source: OEM technical support policy
+  applicable_agreement_type: Technical Support Agreement
+- product_type: Condition Monitoring
+  product_domain: Aftermarket and Lifecycle Support
+  product_family: Maintenance and Repair
+  primary_governing_standard: MIMOSA OSA-CBM
+  canonical_standard_concept: Condition monitoring service type
+  secondary_semantic_reference: MIMOSA CCOM; IDTA AAS
+  product_specification_profile: Service Product Specification
+  required_authoritative_source: Condition monitoring specification; OEM sensor/data requirements
+  applicable_agreement_type: Condition Monitoring Service Agreement
+- product_type: Load and Haul Service
+  product_domain: Contract Mining and Operational Services
+  product_family: Load and Haul
+  primary_governing_standard: APQC + MIMOSA
+  canonical_standard_concept: Operational service product type
+  secondary_semantic_reference: Tender/service scope semantics
+  product_specification_profile: Contract Mining Service Specification
+  required_authoritative_source: Tender specification; scope of work; operating plan
+  applicable_agreement_type: Load and Haul Services Agreement
+- product_type: Material Movement Service
+  product_domain: Contract Mining and Operational Services
+  product_family: Load and Haul
+  primary_governing_standard: APQC + MIMOSA
+  canonical_standard_concept: Operational service product type
+  secondary_semantic_reference: Tender/service scope semantics
+  product_specification_profile: Contract Mining Service Specification
+  required_authoritative_source: Tender specification; scope of work; operating plan
+  applicable_agreement_type: Material Movement Services Agreement
+- product_type: Fleet Operations Service
+  product_domain: Contract Mining and Operational Services
+  product_family: Site and Fleet Services
+  primary_governing_standard: APQC + MIMOSA
+  canonical_standard_concept: Operational service product type
+  secondary_semantic_reference: MIMOSA asset operations semantics
+  product_specification_profile: Contract Mining Service Specification
+  required_authoritative_source: Operating plan; fleet scope; tender specification
+  applicable_agreement_type: Fleet Operations Services Agreement
+- product_type: Site Services
+  product_domain: Contract Mining and Operational Services
+  product_family: Site and Fleet Services
+  primary_governing_standard: APQC + MIMOSA
+  canonical_standard_concept: Operational service product type
+  secondary_semantic_reference: Site/tender semantics
+  product_specification_profile: Contract Mining Service Specification
+  required_authoritative_source: Site scope; tender specification; operating plan
+  applicable_agreement_type: Site Services Agreement
+- product_type: Structured Funding Product
+  product_domain: Investment and Portfolio Products
+  product_family: Structured and Portfolio Products
+  primary_governing_standard: FIBO
+  canonical_standard_concept: Structured finance product/instrument
+  secondary_semantic_reference: BIAN where servicing applies
+  product_specification_profile: Investment Product Specification
+  required_authoritative_source: Funding agreement; transaction documents; mandate
+  applicable_agreement_type: Structured Funding Agreement
+- product_type: Asset-backed Investment
+  product_domain: Investment and Portfolio Products
+  product_family: Structured and Portfolio Products
+  primary_governing_standard: FIBO
+  canonical_standard_concept: Asset-backed investment/instrument
+  secondary_semantic_reference: BIAN where servicing applies
+  product_specification_profile: Investment Product Specification
+  required_authoritative_source: Transaction documents; investment mandate
+  applicable_agreement_type: Asset-backed Investment Agreement
+- product_type: Portfolio Investment
+  product_domain: Investment and Portfolio Products
+  product_family: Structured and Portfolio Products
+  primary_governing_standard: FIBO
+  canonical_standard_concept: Investment product/instrument
+  secondary_semantic_reference: BIAN where servicing applies
+  product_specification_profile: Investment Product Specification
+  required_authoritative_source: Investment mandate; transaction documents
+  applicable_agreement_type: Portfolio Investment Agreement
+approval_gate:
+  product_type_status: Approved
+  preconditions:
+  - Primary governing standard populated
+  - Canonical standard concept populated
+  - Product specification profile populated
+  - Required authoritative source identified
+  - Applicable agreement type identified or explicitly marked not applicable
+repository_roles:
+  Zoho_CRM: Operational ProductTaxonomy and ProductSpecification bindings
+  GitHub: Authoritative engineering matrix and validation contract
+  Google_Drive: Controlled standards, source documents and provenance evidence
