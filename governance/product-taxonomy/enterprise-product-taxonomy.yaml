@@ -1,0 +1,60 @@
+control_id: CTL-PRD-TAX-001
+name: Enterprise Product Taxonomy
+version: 1.0.0
+status: ADOPTED
+effective_date: 2026-08-19
+change_set_id: PRD-TAX-ADAPT-2026-08-19
+methodology: MET-PDCA-001
+purpose: Govern product classification from enterprise domain to customer offer.
+levels:
+  L1:
+    name: Value Stream Product Domain
+    crm_object: ProductTaxonomy
+  L2:
+    name: Product Family
+    crm_object: ProductTaxonomy
+  L3:
+    name: Product Type
+    crm_object: ProductTaxonomy
+  L4:
+    name: Sales Product
+    crm_object: Products
+    relationship: Product_Type -> ProductTaxonomy(L3)
+  L5:
+    name: Customer Offer
+    crm_object: Quotes
+    relationship: Quoted Items -> Products(L4)
+rules:
+  - Every L2 node SHALL have exactly one L1 parent.
+  - Every L3 node SHALL have exactly one L2 parent.
+  - Every governed L4 Sales Product SHALL resolve to exactly one L3 Product Type.
+  - Every L5 Customer Offer SHALL reference one or more L4 Sales Products through quoted items.
+  - Product lifecycle stage SHALL NOT replace product taxonomy classification.
+  - Customer solutions MAY bundle Sales Products from multiple value streams, but each Sales Product SHALL retain one owning value stream and one canonical Product Type.
+reference_architecture:
+  catalogue_model: TM Forum
+  financial_services: [BIAN, FIBO]
+  equipment: [AAS_IDTA, MIMOSA]
+  insurance: [ACORD]
+  aftermarket: [MIMOSA, AAS_IDTA]
+  contract_mining: [APQC, MIMOSA]
+  investment_portfolio: [FIBO, BIAN]
+seeded_l1:
+  - {code: PRD-L1-EQP, name: Equipment Provision}
+  - {code: PRD-L1-FIN, name: Financial Services}
+  - {code: PRD-L1-INS, name: Insurance and Risk Protection}
+  - {code: PRD-L1-AFT, name: Aftermarket and Lifecycle Support}
+  - {code: PRD-L1-CMN, name: Contract Mining and Operational Services}
+  - {code: PRD-L1-INV, name: Investment and Portfolio Products}
+financial_services_l3:
+  - {code: PRD-L3-FIN-LOAN, name: Equipment Loan}
+  - {code: PRD-L3-FIN-INST, name: Instalment Sale}
+  - {code: PRD-L3-FIN-FLEASE, name: Finance Lease}
+  - {code: PRD-L3-FIN-OLEASE, name: Operating Lease}
+  - {code: PRD-L3-FIN-SLB, name: Sale and Leaseback}
+  - {code: PRD-L3-FIN-DEALER, name: Dealer Financing}
+  - {code: PRD-L3-FIN-PARTS, name: Parts Financing}
+repository_roles:
+  crm: Operational taxonomy master and product bindings
+  github: Governed schema, rules and engineering contract
+  drive: Controlled source standards and provenance; not authoritative for runtime taxonomy
