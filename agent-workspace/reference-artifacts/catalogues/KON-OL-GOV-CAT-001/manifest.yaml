@@ -1,0 +1,12 @@
+catalogue_id: KON-OL-GOV-CAT-001
+name: Operating Lease Governed Catalogue and Artifact Register
+status: RECONCILED_PARTIAL
+version: 1.0.0
+authority:
+  drive: WORKING_HUMAN_READABLE_CATALOGUE
+  catalyst: PROGRAMME_STRUCTURED_COMPONENTS_PRESENT
+  github: ENGINEERING_MANIFEST
+catalyst_locus: PRG-OL-001
+catalyst_index: CatalystRepositoryIndex
+gap: DRIVE_WORKING_CATALOGUE_NOT_YET_FULLY_NORMALISED_TO_STRUCTURED_CATALOGUE_RECORDS
+production_status: BLOCKED
