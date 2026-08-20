@@ -1,0 +1,55 @@
+amendment:
+  id: AMD-ARCH-MS-VS00-TENDER-MGMT-001
+  version: '0.1'
+  status: APPROVED_DEVELOPMENT_ONLY
+  register: REG-ARCH-MICROSVC-001
+  action: ADD
+  entry:
+    microservice_id: MS-VS00-TENDER-MGMT-001
+    microservice_name: Tender Management Service
+    value_stream_id: VS00
+    value_stream_name: Enterprise Shared Content
+    lifecycle_state: ARCHITECTURE_REGISTERED
+    service_domain_name: Tender and Bid Lifecycle Management
+    reference_standard: Kongoni Enterprise Governed Tender Workflow
+    reference_version: '0.1'
+    source_domain_id: CTL-TENDER-LIFECYCLE-001
+    service_boundary: Manage the procurement-opportunity lifecycle from discovery through requirements extraction, qualification, bid decision, submission, evaluation, award or loss, and controlled handover to contracting without owning downstream CRM opportunity, agreement, finance, asset, accounting or document source-of-truth records.
+    canonical_business_object: TenderOpportunity
+    service_owner: VS00
+    architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+    service_specification_id: SRV-VS00-TENDER-MGMT-001
+    service_specification_status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
+    key_operations: [Discover, Register, ExtractRequirements, Classify, Qualify, DecideBid, AssembleBid, ValidateCompliance, Submit, RecordClarification, RecordEvaluation, RecordAward, Handover, Retrieve, Health]
+    api_intent: Provide one governed enterprise service for tender lifecycle state, evidence, qualification gates and controlled handover to CRM and specialist value-stream services.
+    data_ownership: TenderOpportunity, TenderRequirement, TenderQualification, BidDecision, BidSubmission, TenderClarification, TenderEvaluation and TenderAward records with evidence references.
+    dependencies: [Party Reference Data Service, Legal Entity Directory Service, Lead and Opportunity Management Service, Product Directory Service, Legal and Compliance Services, Document and Evidence Repositories]
+    security_class: CONFIDENTIAL_COMMERCIAL
+    nonfunctional_requirements: [auditability, provenance, idempotent writes, versioning, evidence traceability, segregation of duties, deadline integrity, cross-value-stream routing]
+    acceptance_criteria:
+      - each tender has one canonical TenderOpportunity identifier
+      - mandatory tender requirements remain traceable to authoritative source evidence
+      - bid or no-bid decision cannot be recorded without qualification evidence and decision authority
+      - submission cannot be marked complete without evidence of submission and document-integrity checks
+      - CRM opportunity creation or linking preserves the TenderOpportunity identifier and does not duplicate tender lifecycle ownership
+      - addenda and clarifications are versioned and can invalidate prior requirement assessments
+      - award or loss outcome is recorded with evidence before lifecycle closure
+      - DO_COMPLETE does not equal TASK_COMPLETE and closure requires CHECK/STUDY plus an ACT decision
+    engineering_handover_status: READY_FOR_DEVELOPMENT_BASELINE
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    preferred_runtime: AppSail
+    preferred_language: Python
+    github_source_ref: agent-workspace/services/SRV-VS00-TENDER-MGMT-001/service-specification.yaml
+    catalyst_runtime_ref: null
+    development_status: NOT_STARTED
+    production_status: NOT_AUTHORISED
+    source_provenance: Group CEO instruction on 2026-08-20 following governed tender-management capability-gap assessment
+    mapping_basis: APPROVED_USER_MANDATE_2026-08-20
+    coverage_state: DEVELOPMENT_BASELINE
+    test_status: NOT_STARTED
+    audit_status: REQUIRED
+    pdca_stage: DO
+    act_decision: null
+  approval_ref: Group CEO instruction "Create" on 2026-08-20
+  rule: DO_COMPLETE != TASK_COMPLETE
