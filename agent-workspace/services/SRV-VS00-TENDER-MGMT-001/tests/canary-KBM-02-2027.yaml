@@ -1,0 +1,95 @@
+canary_test:
+  id: CANARY-MS-VS00-TENDER-MGMT-001-KBM-02-2027
+  version: '0.1'
+  status: CHECK_COMPLETE_PARTIAL_PASS
+  date: '2026-08-20'
+  service_id: SRV-VS00-TENDER-MGMT-001
+  microservice_id: MS-VS00-TENDER-MGMT-001
+  task_class: T2
+  test_instance:
+    tender_opportunity_id: TND-KBM-02-2027-001
+    tender_reference: KBM 02-2027
+    procuring_entity: Kareeberg Municipality
+    tender_type: MULTI_VALUE_STREAM
+    lead_value_stream: FinCo
+    participating_value_streams: [DealerCo, AssetCo, RiskCo]
+    crm:
+      module: Deals
+      record_id: '5643538000008349009'
+      deal_name: Kareeberg Yellow Fleet Finance Maintenance Lease KBM 02-2027
+      stage: Qualification
+      owning_value_stream: FinCo
+      evidence_reference: Kareeberg KBM 02-2027
+      closing_date: '2026-08-26'
+      catalyst_record_id: null
+  lifecycle_replay:
+    - state: DISCOVERED
+      result: PASS
+      evidence: Tender evidence reference exists in CRM and prior controlled assessment.
+    - state: REGISTERED
+      result: PASS
+      evidence: CRM Deal 5643538000008349009 exists and is unique in the tested scope.
+    - state: REQUIREMENTS_EXTRACTED
+      result: PARTIAL_PASS
+      evidence: Core commercial, technical, service and finance requirements have been extracted; authoritative page-by-page bid-pack verification remains outstanding.
+    - state: QUALIFICATION
+      result: PASS
+      evidence: CRM stage is Qualification and Decision_Status is Qualification - Tender Requirements Review.
+    - state: BID_NO_BID
+      result: PASS
+      evidence: Controlled decision is CONDITIONAL_GO; submission authority has not been granted.
+    - state: SOLUTION_DESIGN
+      result: NOT_REACHED
+      evidence: Blocked by unresolved technical, service-network, funding and authoritative-document gates.
+  control_tests:
+    - control: canonical_tender_identifier
+      result: PASS_DESIGN_ONLY
+      evidence: TND-KBM-02-2027-001 assigned in canary fixture; runtime persistence not yet implemented.
+    - control: crm_non_duplication
+      result: PASS
+      evidence: Existing CRM Deal is reused as downstream commercial opportunity; no duplicate Deal created.
+    - control: crm_correlation
+      result: FAIL
+      evidence: CRM Catalyst_Record_ID is null and no populated tender_opportunity_id correlation field is evidenced.
+      remediation: Add governed tender_opportunity_id correlation field or mapping contract before runtime integration.
+    - control: value_stream_routing
+      result: PASS_DESIGN_ONLY
+      evidence: FinCo lead with DealerCo, AssetCo and RiskCo participation is represented without transferring tender lifecycle ownership to CRM.
+    - control: legal_compliance_trigger
+      result: PARTIAL_PASS_DESIGN_ONLY
+      evidence: Service specification mandates Legal/Compliance invocation, but no executable trigger has yet been implemented or observed.
+      remediation: Implement trigger contract and test with a mandatory tender obligation.
+    - control: addendum_invalidation
+      result: PASS_DESIGN_ONLY
+      evidence: Service specification requires versioned addenda and invalidation of prior requirement assessments; no live addendum event tested.
+    - control: submission_terminal_control
+      result: PASS
+      evidence: Current state remains Qualification and service specification expressly prevents SUBMITTED from being terminal.
+    - control: pdca_closure_control
+      result: PASS
+      evidence: Canary is CHECK_COMPLETE_PARTIAL_PASS and task remains open; no false closure at DO_COMPLETE.
+  regression_assessment:
+    direct_finance_tender: NOT_TESTED_IN_THIS_CANARY
+    multi_value_stream_tender: PASS_WITH_REMEDIATIONS
+    crm_opportunity_ownership: NO_REGRESSION_OBSERVED
+    controlled_document_ownership: NO_REGRESSION_OBSERVED
+    material_findings:
+      - Runtime implementation does not yet exist; this is an architecture/integration canary.
+      - CRM correlation is the primary blocking defect.
+      - Legal/compliance trigger execution remains unverified.
+      - Authoritative tender-pack completeness remains a live qualification dependency, not a service defect.
+  check_summary:
+    overall_result: PARTIAL_PASS
+    blocking_defects:
+      - CRM tender correlation key not populated or evidenced.
+      - Executable Legal/Compliance trigger not implemented.
+      - Runtime persistence/API not implemented in Catalyst Development.
+    non_blocking_findings:
+      - Lifecycle ownership separation between Tender Management and CRM is valid for this test instance.
+      - CONDITIONAL_GO maps cleanly to BID_NO_BID without implying submission authority.
+  act:
+    recommended_decision: ADAPT
+    rationale: Preserve the service design, remediate correlation and executable trigger controls, then repeat the canary in Catalyst Development before any production consideration.
+    production_authority: NOT_GRANTED
+    task_complete: false
+  rule: DO_COMPLETE != TASK_COMPLETE
