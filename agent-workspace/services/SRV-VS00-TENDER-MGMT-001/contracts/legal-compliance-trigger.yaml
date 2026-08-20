@@ -1,0 +1,41 @@
+trigger_contract:
+  id: TRG-VS00-TENDER-LEGAL-COMPLIANCE-001
+  version: '0.1'
+  status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
+  source_service: MS-VS00-TENDER-MGMT-001
+  event: TenderRequirementsExtracted
+  condition: legal_or_compliance_obligation_present == true
+  target_service_class: Applicable value-stream Legal and Compliance microservice
+  payload:
+    required:
+      - tender_opportunity_id
+      - tender_reference
+      - requirement_id
+      - obligation_type
+      - authority_source
+      - evidence_reference
+      - owning_value_stream
+    optional:
+      - deadline
+      - counterparty_id
+      - crm_opportunity_id
+  response_contract:
+    required:
+      - assessment_id
+      - decision
+      - evidence_reference
+      - assessed_at
+    decisions: [PASS, CONDITIONAL_PASS, FAIL, ESCALATE]
+  transition_control:
+    rule: COMPLIANCE_READY SHALL NOT be reached while any mandatory Legal/Compliance assessment is missing, FAIL, or unresolved ESCALATE.
+  event_transport:
+    target: Zoho Catalyst Signals
+    development_fallback: direct service invocation through governed execution gateway until Signals provisioning is evidenced
+  idempotency_key: tender_opportunity_id + requirement_id + authority_source
+  audit:
+    retain_request: true
+    retain_response: true
+    retain_rule_version: true
+  pdca:
+    stage: DO
+    production_authority: NOT_GRANTED
