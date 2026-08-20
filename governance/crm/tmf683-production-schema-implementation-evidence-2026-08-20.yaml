@@ -1,0 +1,62 @@
+artifact_id: EVID-TMF683-CRM-PROD-001
+artifact_title: TMF683 Party Interaction Production CRM Schema Implementation Evidence
+status: IMPLEMENTED_READBACK_VERIFIED
+date: 2026-08-20
+environment: Zoho CRM Production
+source_crosswalk: XWALK-TMF683-CRM-001
+governing_standard: STD-TMF-OC-001
+governing_digital_artifact: ING-TMF683-001
+target_module:
+  label: Customer Communications
+  api_name: CustomerCommunications
+  module_id: '5643538000008297072'
+result:
+  fields_created: 21
+  create_success_count: 21
+  security_updates_success_count: 21
+  records_deleted_or_migrated: 0
+  existing_module_identity_preserved: true
+created_fields:
+  - {id: '5643538000008348028', api_name: Channel_ID, label: Channel ID, type: text}
+  - {id: '5643538000008348036', api_name: Channel_Role, label: Channel Role, type: text}
+  - {id: '5643538000008348045', api_name: Interaction_Direction, label: Interaction Direction, type: picklist, values: [Inbound, Outbound]}
+  - {id: '5643538000008348055', api_name: Interaction_Reason, label: Interaction Reason, type: text}
+  - {id: '5643538000008348063', api_name: Interaction_Date, label: Interaction Date, type: datetime}
+  - {id: '5643538000008348072', api_name: Interaction_Status, label: Interaction Status, type: picklist, values: [Open, In Progress, Completed]}
+  - {id: '5643538000008348083', api_name: Status_Change_Date, label: Status Change Date, type: datetime}
+  - {id: '5643538000008348091', api_name: Account, label: Account, type: lookup, target: Accounts}
+  - {id: '5643538000008348102', api_name: Party_Role, label: Party Role, type: lookup, target: PartyRoles}
+  - {id: '5643538000008348113', api_name: Party_Relationship, label: Party Relationship, type: lookup, target: PartyRelationships}
+  - {id: '5643538000008348124', api_name: Interaction_Item_Type, label: Interaction Item Type, type: text}
+  - {id: '5643538000008348132', api_name: Interaction_Resolution, label: Interaction Resolution, type: textarea}
+  - {id: '5643538000008348140', api_name: Related_Interaction, label: Related Interaction, type: lookup, target: CustomerCommunications}
+  - {id: '5643538000008348151', api_name: Governed_Msg_Template_ID, label: Governed Message Template ID, type: text}
+  - {id: '5643538000008348159', api_name: Channel_Rendering_ID, label: Channel Rendering ID, type: text}
+  - {id: '5643538000008348167', api_name: Provider_Impl_ID, label: Provider Implementation ID, type: text}
+  - {id: '5643538000008348175', api_name: External_Message_ID, label: External Message ID, type: text}
+  - {id: '5643538000008348183', api_name: Delivery_Status, label: Delivery Status, type: text}
+  - {id: '5643538000008348191', api_name: Delivery_Status_At, label: Delivery Status At, type: datetime}
+  - {id: '5643538000008348199', api_name: Consent_Evidence_Ref, label: Consent Evidence Ref, type: text}
+  - {id: '5643538000008348207', api_name: Party_Interaction_Ref, label: Party Interaction Ref, type: text}
+security_control:
+  write_profiles: [Administrator, CRM Data Steward, CRM Operational User, System Administrator, Sales Manager]
+  read_only_profiles: [Read Only, Executive Read and Approve]
+  hidden_profiles: [Standard, External_Share_Profile, External_Share_Profile_1, External_Share_Profile_2, External_Share_Profile_3, External_Share_Profile_6, External_Share_Profile_7, External_Share_Profile_8, External_Share_Profile_9, External Collaborator]
+architecture_controls_verified:
+  - Canonical Channel_ID is provider agnostic.
+  - Provider_Impl_ID is separate from Channel_ID.
+  - Publication_Status remains separate from Interaction_Status and Delivery_Status.
+  - Contact, Account, Party Role and Party Relationship are distinct Party context bindings.
+  - Related_Interaction is a self-lookup and does not overload Related_Record_ID.
+remaining_gaps:
+  - Bind Channel_ID to the governed Enterprise Channel Catalogue.
+  - Build runtime workflow/adapter population of interaction and delivery fields.
+  - Bind Message_Profile_ID to governed message templates and channel renderings.
+  - Complete WhatsApp/SMS channel onboarding and canary evidence.
+  - Complete Catalyst canonical schema binding.
+  - Full licensed GB994 requirement extraction remains pending source access.
+pdca:
+  do_complete: true
+  check: Production create and update responses returned SUCCESS for all 21 fields; metadata readback confirmed created fields, lookup targets and lifecycle separation.
+  act: ADAPT
+  task_complete: false
