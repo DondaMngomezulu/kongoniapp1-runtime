@@ -51,8 +51,8 @@ pdca:
   act_decision: ADAPT
   task_complete: false
 evidence:
-  - Tax service and ChatGPT trigger suite: 17 tests passed.
-  - Catalyst Signal handler suite: 7 tests passed.
+  - 'Tax service and ChatGPT trigger suite: 17 tests passed.'
+  - 'Catalyst Signal handler suite: 7 tests passed.'
   - No production tax rate is present in runtime source.
   - Catalyst project readback confirmed Kongoniapp1 project 86824000000020001 and an active Development environment.
   - Development function readback found no deployed tax function and no existing Circuits.
