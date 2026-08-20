@@ -1,0 +1,41 @@
+work_id: WRK-TAX-MICROSVC-001
+title: Develop the APQC 9.9 tax microservice and its ChatGPT and Catalyst Signal triggers
+task_class: T2
+status: REPLAN
+architecture:
+  id: KEA-MOD-HS-001
+  version: '0.1'
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+environment:
+  platform: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+assigned_to: Codex
+coordinators:
+  - Group CEO
+required_controls:
+  - MET-PDCA-001
+  - Fail closed
+  - Four-eyes rule approval
+  - API Gateway northbound boundary
+  - No Production change
+approval_ref: Group CEO instructions and approvals in ChatGPT on 2026-08-20
+pdca:
+  stage: CLOSE_REPLAN
+  do_complete: true
+  task_complete: false
+  act_decision: ADAPT
+next_action:
+  assigned_to: Group CEO
+  instruction_file: instruction.md
+authority:
+  repository_branch: feat/kng-svc-tax-001
+  commit_and_push: AUTHORIZED
+  draft_pull_request: AUTHORIZED
+  catalyst_deployment: NOT_AUTHORIZED
+  production_change: NOT_AUTHORIZED
+scope:
+  - Fail-closed APQC 9.9 tax decision microservice source
+  - ChatGPT action-intent trigger adapter
+  - Catalyst Signals event-function adapter and provisioning manifest
+  - Automated tests, CHECK evidence, handoff, and change record
