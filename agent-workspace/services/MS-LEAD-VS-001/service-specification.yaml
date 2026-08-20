@@ -1,0 +1,75 @@
+service:
+  id: MS-LEAD-VS-001
+  name: Lead-to-Value-Stream Classification Microservice
+  status: CANDIDATE_FOR_CONTROLLED_ADOPTION
+  owner: Chief of Accountability
+  execution_methodology: MET-PDCA-001
+  task_class: T2
+  purpose: >-
+    Classify a discovered lead or tender to one primary Kongoni value stream and
+    zero or more supporting value streams using governed capability and service mappings.
+  boundary:
+    owns:
+      - intake validation
+      - requirement and buyer-outcome normalization
+      - orchestration of capability, service and value-stream mapping
+      - confidence and rationale generation
+      - classification evidence output
+    does_not_own:
+      - tender legal interpretation
+      - compliance determination
+      - commercial bid/no-bid decision
+      - CRM deal lifecycle
+      - controlled-document lifecycle
+  reusable_engine:
+    name: Value Stream Mapping Engine
+    relationship: invoked_by_microservice
+    responsibilities:
+      - capability matching
+      - contracted-output matching
+      - service resolution
+      - value-stream ownership resolution
+      - weighted scoring
+      - mandatory override rules
+  canonical_trace:
+    - Lead_or_Tender_Requirement
+    - Capability_ID
+    - Service_ID
+    - Value_Stream_ID
+    - Legal_Entity
+    - Product_or_Service_Offering
+    - Opportunity
+  scoring:
+    capability_alignment: 0.30
+    contracted_output_alignment: 0.25
+    catalogue_fit: 0.15
+    delivery_capability: 0.10
+    regulatory_eligibility_feasibility: 0.10
+    strategic_economic_attractiveness: 0.10
+    rule: mandatory_eligibility_failure_overrides_score
+  outputs:
+    - primary_value_stream_id
+    - secondary_value_stream_ids
+    - capability_ids
+    - service_ids
+    - confidence_score
+    - rationale
+    - evidence_references
+    - qualification_status
+  integration:
+    source_systems:
+      - Zoho CRM Leads
+      - Tender Processing Service
+    consumers:
+      - Zoho CRM Tender workflow
+      - Deal Engine
+      - MY Task List
+    future_dependencies:
+      - Legal Engine
+      - Compliance Engine
+  controls:
+    - one_primary_value_stream_per_classification_unless_explicit_exception
+    - no_keyword_only_classification
+    - evidence_required_for_material_mapping
+    - classification_does_not_equal_bid_authorisation
+    - DO_COMPLETE_does_not_equal_TASK_COMPLETE
