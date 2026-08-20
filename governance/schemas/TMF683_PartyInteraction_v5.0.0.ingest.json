@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifact_id": "ING-TMF683-001",
+  "title": "TMF683 Party Interaction v5.0.0 — Governed Digital Artifact Ingest",
+  "status": "INGESTED_SOURCE_INDEX",
+  "governing_standard_id": "STD-TMF-OC-001",
+  "governing_parent_standard_id": "STD-TMF-ODA-001",
+  "source": {
+    "issuer": "TM Forum",
+    "github_organization": "tmforum-apis",
+    "repository": "tmforum-apis/TMF683_PartyInteraction",
+    "source_path": "TMF683-Party_Interaction-v5.0.0.oas.yaml",
+    "source_branch": "main",
+    "source_blob_sha": "ad22459677788e089e2f5615c5c452a60d98a349",
+    "source_url": "https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/main/TMF683-Party_Interaction-v5.0.0.oas.yaml",
+    "api_id": "TMF683",
+    "api_title": "Party Interaction",
+    "api_version": "5.0.0",
+    "openapi_version": "3.0.1",
+    "licence": "Apache-2.0",
+    "licence_source_path": "LICENSE",
+    "licence_blob_sha": "0c3c7420717f7c8830b07540aa8ab0a53eb990b7"
+  },
+  "provenance_control": {
+    "authority": "Official TM Forum GitHub organization tmforum-apis",
+    "immutable_source_identifier": "ad22459677788e089e2f5615c5c452a60d98a349",
+    "full_upstream_spec_vendored": false,
+    "reason": "The governed ingest stores the authoritative upstream identity and semantic index. The full source remains linked to the official TM Forum repository and may be vendored later if repository policy requires a local snapshot.",
+    "no_inferred_source_text": true
+  },
+  "source_supported_semantic_index": {
+    "PartyInteraction": {
+      "definition": "Captures information about past party interactions so it can be reused in future interactions.",
+      "source_properties": [
+        "relatedChannel",
+        "direction",
+        "reason",
+        "interactionDate",
+        "description",
+        "status",
+        "statusChangeDate",
+        "relatedParty",
+        "attachment",
+        "note",
+        "interactionItem",
+        "interactionRelationship"
+      ]
+    },
+    "ChannelRef": {
+      "definition": "Reference to the channel associated with a resource, for example a channel used for selling product offerings or opening a trouble ticket.",
+      "inherits": "EntityRef"
+    },
+    "RelatedChannel": {
+      "definition": "A channel related to another entity; source examples include online web, mobile app and social.",
+      "properties": ["role", "channel"],
+      "channel_type": "ChannelRef"
+    },
+    "InteractionDirection": {
+      "property": "direction",
+      "definition": "Specifies who started the interaction.",
+      "source_values": ["inbound", "outbound"]
+    },
+    "InteractionStatus": {
+      "property": "status",
+      "source_examples": ["open", "inProgress", "completed"]
+    },
+    "InteractionItem": {
+      "source_properties": [
+        "id",
+        "reason",
+        "itemDate",
+        "resolution",
+        "creationDate",
+        "item",
+        "interactionItemType"
+      ]
+    },
+    "ContactMedium": {
+      "definition": "Indicates the contact medium that could be used to contact the party.",
+      "source_properties": ["id", "preferred", "contactType", "validFor"]
+    }
+  },
+  "enterprise_binding": {
+    "canonical_concepts": {
+      "PartyInteraction": "TMF683 PartyInteraction",
+      "Channel": "TMF683 ChannelRef / RelatedChannel",
+      "ContactMedium": "TMF683 ContactMedium"
+    },
+    "channel_enumeration_policy": "Concrete enterprise channel values remain Kongoni-derived unless explicitly evidenced by TM Forum source artifacts.",
+    "provider_separation_policy": "Canonical channel semantics are service-provider agnostic. Provider/BSP/transport identifiers belong to implementation bindings, not canonical channel identity.",
+    "crm_target": "Zoho CRM Omnichannel / Party Relationship Lifecycle Management",
+    "implementation_use": [
+      "Channel catalogue semantic grounding",
+      "Party interaction data model",
+      "Omnichannel message routing",
+      "Cross-channel interaction history",
+      "CRM-to-Catalyst canonical interaction schema"
+    ]
+  },
+  "conformance_state": {
+    "source_provenance_verified": true,
+    "licence_verified": true,
+    "semantic_index_extracted": true,
+    "full_spec_snapshot_pending": true,
+    "crm_crosswalk_pending": true,
+    "catalyst_schema_binding_pending": true
+  }
+}
