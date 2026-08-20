@@ -1,0 +1,5 @@
+{
+  "command": "node app.js",
+  "build_path": ".",
+  "stack": "node20"
+}
