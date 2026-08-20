@@ -1,0 +1,26 @@
+change_id: CHG-20260820-CRM-MODULE-AUDIT
+timestamp_utc: '2026-08-20T05:29:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO requested audit of current CRM modules and recommendation on 2026-08-20.'
+task_class: T1
+change_type: governance
+summary: Record controlled audit of CRM module architecture against TM Forum SID, BIAN refinement and authoritative-spoke criteria.
+reason: Establish evidence-based target-state CRM module recommendations before any configuration rationalisation.
+affected_paths:
+  - governance/crm/AUD-ZCRM-MODULE-20260820.md
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation on 2026-08-20.'
+pdca:
+  phase: CHECK
+  do_complete: true
+  check_study_result: PASS_WITH_REMEDIATIONS
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'Source snapshot: AUD-ZCRM-RAT-001 from live Zoho CRM module metadata read-back on 2026-08-19.'
+  - 'Fresh CRM connector read-back unavailable on 2026-08-20; no configuration changes executed.'
+  - 'Audit classifies KEEP, CONVERT, MERGE/SPECIALISE and CONDITIONAL module candidates.'
