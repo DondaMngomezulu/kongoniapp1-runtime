@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: Kongoni Tax Microservice
+  version: 0.1.0
+  description: Fail-closed tax decisions that support APQC 9.9.
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      responses:
+        '200':
+          description: Service health.
+  /v1/capabilities:
+    get:
+      operationId: getCapabilities
+      responses:
+        '200':
+          description: Supported scope and controls.
+  /v1/evaluations:
+    post:
+      operationId: evaluateTax
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationCommand'
+      responses:
+        '200':
+          description: Valid decision or controlled review outcome.
+        '400':
+          description: Invalid command, facts, or rule.
+  /v1/posting-validations:
+    post:
+      operationId: validateTaxPosting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostingValidationCommand'
+      responses:
+        '200':
+          description: Posting gate result.
+        '400':
+          description: Invalid command.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API Gateway bearer credential. The gateway design and credential are pending approval.
+  schemas:
+    EvaluationCommand:
+      type: object
+      additionalProperties: false
+      required: [requestId, entityId, asOfDate, apqcActivity, taxType, ruleId, facts]
+      properties:
+        requestId: { type: string, minLength: 1 }
+        entityId: { type: string, minLength: 1 }
+        asOfDate: { type: string, format: date }
+        apqcActivity:
+          type: string
+          enum: [9.9.1.1, 9.9.1.2, 9.9.1.3, 9.9.2.1, 9.9.2.2, 9.9.2.3, 9.9.2.4, 9.9.2.5, 9.9.2.6, 9.9.2.7]
+        taxType:
+          type: string
+          enum: [VAT, CORPORATE_INCOME_TAX, CAPITAL_GAINS_TAX, DEFERRED_TAX, WITHHOLDING_TAX, PAYROLL_TAX, CUSTOMS_EXCISE, OTHER]
+        ruleId: { type: string, minLength: 1 }
+        facts:
+          type: object
+          description: Amounts must be integer strings in minor units.
+    EffectiveDecision:
+      type: object
+      required: [decision, evidenceId, effectiveFrom]
+      properties:
+        decision: { type: string, const: VALID }
+        evidenceId: { type: string, minLength: 1 }
+        effectiveFrom: { type: string, format: date }
+        effectiveTo: { type: [string, 'null'], format: date }
+    PostingValidationCommand:
+      type: object
+      required: [requestId, asOfDate, sarsDecision, ifrsDecision]
+      properties:
+        requestId: { type: string, minLength: 1 }
+        asOfDate: { type: string, format: date }
+        sarsDecision: { $ref: '#/components/schemas/EffectiveDecision' }
+        ifrsDecision: { $ref: '#/components/schemas/EffectiveDecision' }

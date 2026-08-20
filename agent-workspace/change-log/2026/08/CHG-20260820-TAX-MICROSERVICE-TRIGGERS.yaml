@@ -1,0 +1,62 @@
+change_id: CHG-20260820-TAX-MICROSERVICE-TRIGGERS
+timestamp_utc: '2026-08-20T18:26:47Z'
+actor:
+  type: Codex
+  name: Codex
+  agent_contract_ref: null
+mandate_ref: WRK-TAX-MICROSVC-001
+accountability_task_ref: null
+task_class: T2
+change_type: integration
+summary: Add a fail-closed APQC 9.9 tax microservice with ChatGPT and Catalyst Signals trigger adapters.
+reason: Provide a governed tax-decision boundary and canonical event intake without embedding unapproved tax rates or enabling Production.
+affected_paths:
+  - catalyst.json
+  - functions/kongoni_tax_service/catalyst-config.json
+  - functions/kongoni_tax_service/index.js
+  - functions/kongoni_tax_service/openapi.yaml
+  - functions/kongoni_tax_service/package.json
+  - functions/kongoni_tax_service/src/application.js
+  - functions/kongoni_tax_service/src/chatgpt-trigger.js
+  - functions/kongoni_tax_service/src/contracts.js
+  - functions/kongoni_tax_service/src/evaluate-tax.js
+  - functions/kongoni_tax_service/src/money.js
+  - functions/kongoni_tax_service/src/rule-control.js
+  - functions/kongoni_tax_service/src/rule-repository.js
+  - functions/kongoni_tax_service/src/validate-posting.js
+  - functions/kongoni_tax_service/test/chatgpt-trigger.test.js
+  - functions/kongoni_tax_service/test/tax-service.test.js
+  - functions/kongoni_tax_signal_handler/catalyst-config.json
+  - functions/kongoni_tax_signal_handler/index.js
+  - functions/kongoni_tax_signal_handler/package.json
+  - functions/kongoni_tax_signal_handler/src/handler.js
+  - functions/kongoni_tax_signal_handler/test/handler.test.js
+  - agent-workspace/services/KNG-SVC-TAX-001/catalyst-signals-trigger.yaml
+  - agent-workspace/services/KNG-SVC-TAX-001/chatgpt-trigger.yaml
+  - agent-workspace/services/KNG-SVC-TAX-001/event-schema.json
+  - agent-workspace/services/KNG-SVC-TAX-001/service-specification.yaml
+  - agent-workspace/work/WRK-TAX-MICROSVC-001/handoff.md
+  - agent-workspace/work/WRK-TAX-MICROSVC-001/instruction.md
+  - agent-workspace/work/WRK-TAX-MICROSVC-001/mandate.yaml
+  - agent-workspace/work/WRK-TAX-MICROSVC-001/outcome.yaml
+  - agent-workspace/work/WRK-TAX-MICROSVC-001/plan.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: Group CEO instructions and explicit source publication approval in ChatGPT on 2026-08-20.
+pdca:
+  phase: RECORD
+  do_complete: true
+  check_study_result: Twenty-four automated tests and syntax, JSON, YAML, contract, environment-boundary, four-eyes, and fail-closed checks passed. Live Catalyst Signals provisioning remains unavailable through the connected interface.
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - Tax service and ChatGPT trigger suite: 17 tests passed.
+  - Catalyst Signal handler suite: 7 tests passed.
+  - No production tax rate is present in runtime source.
+  - Catalyst project readback confirmed Kongoniapp1 project 86824000000020001 and an active Development environment.
+  - Development function readback found no deployed tax function and no existing Circuits.
+  - Catalyst source deployment and Production changes were not performed.
+commit_sha: null
+pull_request: null
+notes: The source increment is ready for review. Live Development provisioning, API security approval, rule-store approval, and integration readback remain open under ACT ADAPT.
