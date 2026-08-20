@@ -1,0 +1,145 @@
+service_specification:
+  id: SRV-VS00-TENDER-MGMT-001
+  microservice_id: MS-VS00-TENDER-MGMT-001
+  version: '0.1'
+  status: APPROVED_FOR_DEVELOPMENT_ENGINEERING
+  name: Tender Management Service
+  architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+  engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+  value_stream_id: VS00
+  value_stream_name: Enterprise Shared Content
+  business_owner: VS00
+  task_class: T2
+  purpose: Govern the full enterprise tender and bid lifecycle from discovery to award or loss while routing downstream commercial opportunities to CRM and specialist value-stream services without duplicating their source-of-truth records.
+  service_domain:
+    semantic_standard: Kongoni Enterprise Governed Tender Workflow
+    normative_version: '0.1'
+    extension: Cross-value-stream tender orchestration
+    primary_resource: TenderOpportunity
+  boundaries:
+    owns:
+      - TenderOpportunity
+      - TenderRequirement
+      - TenderQualification
+      - BidDecision
+      - BidPackageState
+      - BidSubmission
+      - TenderClarification
+      - TenderEvaluation
+      - TenderAward
+      - TenderLifecycleEvent
+    consumes:
+      - PartyReferenceDataDirectoryEntry
+      - LegalEntityDirectoryEntry
+      - CRMOpportunityReference
+      - ProductDirectoryEntry
+      - AssetSpecificationReference
+      - FundingRequirementReference
+      - RiskRequirementReference
+      - AgreementReference
+      - ControlledDocumentReference
+      - EvidenceReference
+    does_not_own:
+      - CRM deal or lead master records
+      - Product master records
+      - Asset master records
+      - Credit underwriting decisions
+      - Funding approvals
+      - Insurance policy records
+      - Legal agreements
+      - Controlled document lifecycle
+      - Accounting ledger transactions
+  lifecycle:
+    states:
+      - DISCOVERED
+      - REGISTERED
+      - REQUIREMENTS_EXTRACTED
+      - QUALIFICATION
+      - BID_NO_BID
+      - SOLUTION_DESIGN
+      - COMPLIANCE_READY
+      - APPROVED
+      - SUBMITTED
+      - CLARIFICATION
+      - EVALUATION
+      - AWARDED
+      - LOST
+      - CONTRACT_HANDOVER
+      - CLOSED
+    terminal_controls:
+      - CLOSED requires objective award/loss evidence
+      - CLOSED requires CHECK/STUDY completion
+      - CLOSED requires explicit ACT decision
+      - SUBMITTED is not a terminal state
+      - DO_COMPLETE does not equal TASK_COMPLETE
+  decision_model:
+    bid_decisions: [GO, CONDITIONAL_GO, NO_GO, ESCALATE]
+    act_decisions: [ADOPT, ADAPT, REPEAT, REJECT, ESCALATE]
+  minimum_gates:
+    - Tender authority and current version confirmed
+    - Closing date and submission channel confirmed
+    - Bidder eligibility assessed
+    - Mandatory requirements extracted with source evidence
+    - Commercial and technical scope classified
+    - Participating value streams identified
+    - Legal and compliance obligations assessed
+    - Funding and credit gates invoked where applicable
+    - Technical and asset compliance assessed where applicable
+    - Risk and insurance requirements assessed where applicable
+    - Returnables completeness checked
+    - Executive or delegated bid authority recorded
+    - Submission evidence retained
+  routing_rules:
+    - FinCo opportunities route to Lead and Opportunity Management Service after tender qualification
+    - DealerCo equipment requirements route to Product Directory and equipment solution processes
+    - AssetCo maintenance obligations route to lifecycle and maintenance services
+    - RiskCo requirements route to insurance and risk services
+    - OpsCo service-delivery requirements route to operating value-stream services
+    - InvestCo capital requirements route to investment and capital services
+    - legal and compliance obligations invoke the applicable legal/compliance microservice and cannot be bypassed
+  canary_scope:
+    - {operation: RegisterTender, method: POST, path: /v1/tenders}
+    - {operation: RetrieveTender, method: GET, path: /v1/tenders/{tender_id}}
+    - {operation: ExtractRequirements, method: POST, path: /v1/tenders/{tender_id}/requirements}
+    - {operation: RecordQualification, method: POST, path: /v1/tenders/{tender_id}/qualification}
+    - {operation: RecordBidDecision, method: POST, path: /v1/tenders/{tender_id}/bid-decision}
+    - {operation: RecordSubmission, method: POST, path: /v1/tenders/{tender_id}/submission}
+    - {operation: RecordOutcome, method: POST, path: /v1/tenders/{tender_id}/outcome}
+    - {operation: Health, method: GET, path: /v1/tenders/health}
+  integration_contracts:
+    crm:
+      system: Zoho CRM
+      rule: CRM owns the commercial opportunity; this service owns tender lifecycle state and evidence.
+      correlation_key: tender_opportunity_id
+    documents:
+      rule: Controlled document lifecycle remains under document governance; this service stores immutable references and required-returnable state only.
+    catalyst:
+      project: Kongoniapp1
+      preferred_runtime: AppSail
+      preferred_language: Python
+  runtime_constraints:
+    platform: Zoho Catalyst
+    project: Kongoniapp1
+    project_id: '86824000000020001'
+    environment: Development
+    engineering_authority_ref: ENV-AUTH-CAT-KONGONIAPP1-DEV
+    preferred_runtime: AppSail
+    preferred_language: Python
+    production_write_allowed: false
+  artifact_refs:
+    architecture_amendment: ../../architecture/REG-ARCH-MICROSVC-001/amendments/MS-VS00-TENDER-MGMT-001-add.yaml
+  engineering_rule: Engineer SHALL preserve separation between tender lifecycle ownership and CRM opportunity ownership; all material state transitions SHALL retain evidence and authority references; design defects SHALL return to architecture as ADAPT.
+  approval_state: APPROVED_DEVELOPMENT_ONLY
+  approval_ref: Group CEO instruction "Create" on 2026-08-20
+  production_authority: NOT_GRANTED
+  pdca:
+    stage: DO
+    do_complete: true
+    task_complete: false
+    check_required:
+      - validate schema and lifecycle against at least one live tender instance
+      - validate CRM correlation and non-duplication
+      - validate legal/compliance trigger behavior
+      - validate addendum/version invalidation behavior
+      - regression-test direct-finance and multi-value-stream tenders independently
+    act_decision: null
