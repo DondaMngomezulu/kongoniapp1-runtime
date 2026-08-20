@@ -1,0 +1,269 @@
+artifact_id: XWALK-TMF683-CRM-001
+artifact_title: TMF683 Party Interaction v5.0.0 to Zoho CRM Production Crosswalk
+version: 1.0.0
+status: DESIGNED_READBACK_VERIFIED
+created_date: 2026-08-20
+governing_standard:
+  id: STD-TMF-OC-001
+  name: TM Forum GB994 Omni Channel Guidebook R18.0.1
+governing_digital_artifact:
+  id: ING-TMF683-001
+  api: TMF683 Party Interaction
+  version: 5.0.0
+  upstream_repository: tmforum-apis/TMF683_PartyInteraction
+  upstream_path: TMF683-Party_Interaction-v5.0.0.oas.yaml
+  upstream_blob_sha: ad22459677788e089e2f5615c5c452a60d98a349
+  licence: Apache-2.0
+production_readback:
+  environment: Zoho CRM Production
+  readback_date: 2026-08-20
+  canonical_target_module:
+    label: Customer Communications
+    api_name: CustomerCommunications
+    module_id: '5643538000008297072'
+    assessment: BEST_EXISTING_SEMANTIC_FIT
+    rationale: >-
+      Existing governed custom module is API-supported, creatable, editable and blueprint-supported,
+      and already carries communication identity, Party contact, message-profile, content, publication,
+      related-record and evidence fields. It should be evolved into the CRM Party Interaction record
+      instead of creating a duplicate interaction module.
+  excluded_as_canonical_system_of_record:
+    - api_name: messages__s
+      label: Messages
+      treatment: RUNTIME_CHANNEL_EVIDENCE_ONLY
+      rationale: System module is not editable/creatable and is unsuitable as the governed canonical Party Interaction object.
+    - api_name: whatsappforzohocrmbyspellty__Whatsapp_messages
+      label: Whatsapp messages
+      treatment: LEGACY_PROVIDER_ADAPTER_DATA
+      rationale: Provider/vendor-specific custom module must not define canonical channel or Party Interaction semantics.
+    - api_name: whatsappforzohocrmbyspellty__Quick_Replies
+      label: Quick Replies
+      treatment: LEGACY_PROVIDER_ADAPTER_DATA
+      rationale: Provider-specific quick-reply implementation is not a canonical governed message-template catalogue.
+semantic_crosswalk:
+  - tmf683_concept: PartyInteraction.id
+    crm_target: CustomerCommunications.Name
+    crm_label: Communication ID
+    current_state: PRESENT
+    mapping: DIRECT_WITH_ENTERPRISE_IDENTIFIER
+    note: CRM autonumber uses CCOM- prefix; retain as enterprise interaction identifier and preserve Zoho record id separately.
+  - tmf683_concept: PartyInteraction.relatedParty
+    crm_target: CustomerCommunications.Contact
+    current_state: PARTIAL
+    mapping: PARTIAL
+    gap: Only Contact lookup is present; Accounts and governed Party Role/Relationship context are not directly bound.
+    remediation:
+      - Add Account lookup to Accounts.
+      - Add Party Role lookup to PartyRoles where role context is material.
+      - Add Party Relationship lookup to PartyRelationships where relationship context is material.
+  - tmf683_concept: PartyInteraction.relatedChannel / RelatedChannel.channel
+    crm_target: CustomerCommunications.Channel_ID
+    current_state: ABSENT
+    mapping: GAP
+    remediation: Add provider-agnostic canonical Channel reference. Do not encode provider name in Channel_ID.
+  - tmf683_concept: RelatedChannel.role
+    crm_target: CustomerCommunications.Channel_Role
+    current_state: ABSENT
+    mapping: GAP
+    remediation: Add role/usage field only where needed to distinguish channel role within an interaction.
+  - tmf683_concept: PartyInteraction.direction
+    crm_target: CustomerCommunications.Interaction_Direction
+    current_state: ABSENT
+    mapping: GAP
+    source_values:
+      - inbound
+      - outbound
+    remediation: Add governed picklist Inbound, Outbound preserving TMF683 semantics.
+  - tmf683_concept: PartyInteraction.reason
+    crm_target: CustomerCommunications.Interaction_Reason
+    current_state: ABSENT
+    mapping: GAP
+    remediation: Add text field; controlled vocabulary may be introduced later if source-supported business taxonomy is approved.
+  - tmf683_concept: PartyInteraction.interactionDate
+    crm_target: CustomerCommunications.Interaction_Date
+    current_state: ABSENT
+    mapping: GAP
+    remediation: Add datetime distinct from record creation and publication time.
+  - tmf683_concept: PartyInteraction.description
+    crm_target: CustomerCommunications.Customer_Content
+    current_state: PRESENT
+    mapping: SEMANTICALLY_COMPATIBLE
+    note: Customer_Content may contain rendered message/body; preserve distinction between business content and interaction metadata.
+  - tmf683_concept: PartyInteraction.status
+    crm_target: CustomerCommunications.Interaction_Status
+    current_state: ABSENT
+    mapping: GAP
+    source_examples:
+      - open
+      - inProgress
+      - completed
+    remediation: Add interaction-lifecycle field. Do not reuse Publication_Status because publication lifecycle is a different state machine.
+  - tmf683_concept: PartyInteraction.statusChangeDate
+    crm_target: CustomerCommunications.Status_Change_Date
+    current_state: ABSENT
+    mapping: GAP
+    remediation: Add datetime linked to Interaction_Status changes.
+  - tmf683_concept: PartyInteraction.interactionItem
+    crm_target: CustomerCommunications.Interaction_Item_Type and Interaction_Resolution
+    current_state: ABSENT
+    mapping: GAP
+    remediation: >-
+      Add lightweight item-type and resolution fields for simple interactions. If multiple interaction items per interaction
+      become operationally necessary, create a governed child object instead of repeating fields on the parent.
+  - tmf683_concept: PartyInteraction.interactionRelationship
+    crm_target: CustomerCommunications.Related_Interaction
+    current_state: ABSENT
+    mapping: GAP
+    remediation: Add self-reference or controlled external interaction reference; do not overload Related_Record_ID.
+  - tmf683_concept: PartyInteraction.attachment
+    crm_target: CRM attachment / CustomerDocuments linkage
+    current_state: PARTIAL
+    mapping: IMPLEMENTATION_BINDING
+    remediation: Use native attachment or governed CustomerDocuments relationship; evidence link remains separate.
+  - tmf683_concept: PartyInteraction.note
+    crm_target: CRM Notes related list
+    current_state: CAPABILITY_PRESENT
+    mapping: NATIVE_BINDING
+  - tmf683_concept: ContactMedium
+    crm_target: Contacts / Accounts / Party context
+    current_state: PARTIAL
+    mapping: SEPARATE_PARTY_CONTACT_CONCEPT
+    rule: >-
+      ContactMedium is a means by which a Party can be contacted. It SHALL NOT be conflated with the Channel used for a specific Party Interaction.
+    remediation: Govern preferred/contact type/validity on Party/contact records, not as canonical interaction Channel identity.
+existing_enterprise_fields:
+  Message_Profile_ID:
+    status: PRESENT
+    use: Bind Business Message Profile to the interaction.
+  Subject:
+    status: PRESENT
+    use: Channel-appropriate interaction subject where applicable.
+  Publication_Status:
+    status: PRESENT
+    use: Governed message publication lifecycle only; not TMF683 interaction status.
+  Published_At:
+    status: PRESENT
+    use: Publication timestamp only; not interactionDate unless explicitly identical for the event.
+  Related_Record_ID:
+    status: PRESENT
+    use: Business-object correlation; not interactionRelationship.
+  Catalyst_Evidence_Ref:
+    status: PRESENT
+    use: Evidence/provenance correlation.
+  Email_Opt_Out:
+    status: PRESENT
+    use: Email-specific preference/control; not enterprise-wide channel consent.
+proposed_production_fields:
+  - api_name: Channel_ID
+    label: Channel ID
+    type: text_or_lookup
+    mandatory_for_operational_interaction: true
+    source_basis: TMF683 RelatedChannel.channel / ChannelRef
+    control: Provider agnostic; values resolve to governed enterprise Channel catalogue.
+  - api_name: Channel_Role
+    label: Channel Role
+    type: text
+    mandatory_for_operational_interaction: false
+    source_basis: TMF683 RelatedChannel.role
+  - api_name: Interaction_Direction
+    label: Interaction Direction
+    type: picklist
+    values: [Inbound, Outbound]
+    source_basis: TMF683 PartyInteraction.direction
+  - api_name: Interaction_Reason
+    label: Interaction Reason
+    type: text
+    source_basis: TMF683 PartyInteraction.reason
+  - api_name: Interaction_Date
+    label: Interaction Date
+    type: datetime
+    source_basis: TMF683 PartyInteraction.interactionDate
+  - api_name: Interaction_Status
+    label: Interaction Status
+    type: picklist
+    values: [Open, In Progress, Completed]
+    source_basis: TMF683 PartyInteraction.status examples
+  - api_name: Status_Change_Date
+    label: Status Change Date
+    type: datetime
+    source_basis: TMF683 PartyInteraction.statusChangeDate
+  - api_name: Account
+    label: Account
+    type: lookup
+    target_module: Accounts
+    source_basis: TMF683 relatedParty enterprise binding
+  - api_name: Party_Role
+    label: Party Role
+    type: lookup
+    target_module: PartyRoles
+    source_basis: TMF683 relatedParty enterprise binding
+  - api_name: Party_Relationship
+    label: Party Relationship
+    type: lookup
+    target_module: PartyRelationships
+    source_basis: Enterprise relationship context supporting PartyInteraction
+  - api_name: Interaction_Item_Type
+    label: Interaction Item Type
+    type: text
+    source_basis: TMF683 InteractionItem.interactionItemType
+  - api_name: Interaction_Resolution
+    label: Interaction Resolution
+    type: textarea
+    source_basis: TMF683 InteractionItem.resolution
+  - api_name: Related_Interaction
+    label: Related Interaction
+    type: self_lookup_or_reference
+    source_basis: TMF683 interactionRelationship
+  - api_name: Governed_Message_Template_ID
+    label: Governed Message Template ID
+    type: text
+    source_basis: Kongoni governed messaging control
+    control: Must resolve to CAT-MSG-001.
+  - api_name: Channel_Rendering_ID
+    label: Channel Rendering ID
+    type: text
+    source_basis: Kongoni channel-specific rendering control
+    example: MSG-REQ-004-WA
+  - api_name: Provider_Implementation_ID
+    label: Provider Implementation ID
+    type: text
+    source_basis: Enterprise implementation binding
+    control: Runtime/provider metadata only; never canonical Channel identity.
+  - api_name: External_Message_ID
+    label: External Message ID
+    type: text
+    source_basis: Runtime correlation
+  - api_name: Delivery_Status
+    label: Delivery Status
+    type: picklist_or_text
+    source_basis: Runtime delivery evidence
+    control: Distinct from TMF683 Interaction_Status.
+  - api_name: Delivery_Status_At
+    label: Delivery Status At
+    type: datetime
+    source_basis: Runtime delivery evidence
+  - api_name: Consent_Evidence_Ref
+    label: Consent Evidence Ref
+    type: text
+    source_basis: Enterprise legal/compliance control
+    control: Not a TMF683 source property; governed extension.
+architecture_controls:
+  canonical_party_interaction_system_of_record: CustomerCommunications
+  canonical_channel_rule: Channel identity SHALL be provider agnostic and channel specific.
+  provider_rule: Provider/BSP/transport identifiers SHALL reside in implementation bindings only.
+  template_rule: Governed business template semantics SHALL resolve to CAT-MSG-001 before a channel rendering is selected.
+  contact_medium_rule: ContactMedium SHALL describe how a Party may be contacted; Channel SHALL describe where/how a specific interaction occurred.
+  lifecycle_rule: Publication_Status, Interaction_Status and Delivery_Status SHALL remain separate state variables.
+  legacy_rule: Vendor-specific WhatsApp modules SHALL NOT become authoritative Party Interaction or Channel sources.
+implementation_sequence:
+  - Approve this crosswalk and exact Production schema change set.
+  - Add source-supported interaction fields to CustomerCommunications.
+  - Bind canonical channel IDs to the governed Channel catalogue.
+  - Bind Message_Profile_ID to Governed_Message_Template_ID and Channel_Rendering_ID.
+  - Configure channel-provider adapters separately.
+  - Migrate/correlate legacy vendor WhatsApp records without making provider-specific identifiers canonical.
+  - Test inbound and outbound interaction capture, status, Party linkage, evidence and channel portability.
+  - Record conformance evidence and close or replan under MET-PDCA-001.
+production_write_gate:
+  status: AWAITING_EXPLICIT_SCHEMA_CHANGE_AUTHORISATION
+  reason: Current CEO instruction authorized the TMF683-to-Production crosswalk and identification of required schema changes; this artifact does not itself alter the Production schema.
