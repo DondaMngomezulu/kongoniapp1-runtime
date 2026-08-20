@@ -1,0 +1,8 @@
+{
+  "name": "tender-management-service",
+  "version": "0.1.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {"start": "node app.js"},
+  "dependencies": {"express": "^4.21.2"}
+}
