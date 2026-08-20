@@ -1,0 +1,34 @@
+canary_repeat:
+  id: CANARY-MS-VS00-TENDER-MGMT-001-KBM-02-2027-R1
+  date: '2026-08-20'
+  service_id: SRV-VS00-TENDER-MGMT-001
+  tender_opportunity_id: TND-KBM-02-2027-001
+  crm_record_id: '5643538000008349009'
+  result: PARTIAL_PASS
+  remediations:
+    crm_correlation:
+      result: PASS
+      evidence: Dedicated Deals field Tender_Opportunity_ID created and populated with TND-KBM-02-2027-001; read-back verified.
+    legal_compliance_trigger:
+      result: PASS_SOURCE_BASELINE
+      evidence:
+        - contracts/legal-compliance-trigger.yaml created
+        - AppSail source emits TenderRequirementsExtracted legal/compliance events and blocks COMPLIANCE_READY when required assessments are missing, FAIL, or ESCALATE
+      runtime_execution: NOT_VERIFIED
+    catalyst_runtime:
+      result: PARTIAL_PASS_SOURCE_ONLY
+      evidence:
+        - appsail/tender_management_service/app.js
+        - appsail/tender_management_service/app-config.json
+        - appsail/tender_management_service/package.json
+      catalyst_development_inventory: NO_APPSAIL_DEPLOYED
+      interpretation: Source baseline exists but deployment is not evidenced. Runtime defect remains open.
+  regression:
+    crm_non_duplication: PASS
+    lifecycle_ownership_separation: PASS
+    production_authority: NOT_GRANTED
+  act:
+    recommended_decision: ADAPT
+    rationale: CRM correlation is resolved and executable source contracts exist; deploy the AppSail baseline to Catalyst Development and repeat runtime canary before promotion or closure.
+    task_complete: false
+  rule: DO_COMPLETE != TASK_COMPLETE
