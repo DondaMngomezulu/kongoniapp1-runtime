@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: Legal and Compliance Service API
+  version: 0.1.0
+paths:
+  /v1/legal-compliance/assessments:
+    post:
+      operationId: EvaluateLegalCompliance
+      summary: Evaluate a governed legal/compliance assessment.
+      responses:
+        '200': {description: Assessment result}
+        '400': {description: Invalid or incomplete controlled input}
+        '409': {description: Conflicting authority or rule package state}
+  /v1/legal-compliance/assessments/{assessment_id}:
+    get:
+      operationId: RetrieveLegalComplianceAssessment
+      parameters:
+        - in: path
+          name: assessment_id
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: Assessment found}
+        '404': {description: Assessment not found}
+    put:
+      operationId: UpdateLegalComplianceAssessment
+      parameters:
+        - in: path
+          name: assessment_id
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: Assessment updated with audit evidence}
+        '409': {description: Version or authority conflict}
+components:
+  schemas:
+    AssessmentRequest:
+      type: object
+      required: [assessment_id, subject_type, subject_id, value_stream_id, use_case, authoritative_source_refs, requested_assessment_scope, rule_package_version]
+      properties:
+        assessment_id: {type: string}
+        subject_type: {type: string}
+        subject_id: {type: string}
+        value_stream_id: {type: string, const: VS02}
+        use_case: {type: string}
+        authoritative_source_refs: {type: array, items: {type: string}, minItems: 1}
+        requested_assessment_scope: {type: array, items: {type: string}, minItems: 1}
+        rule_package_version: {type: string}
+        facts: {type: object, additionalProperties: true}
+    AssessmentResult:
+      type: object
+      required: [assessment_id, findings, source_bindings, rule_bindings, exceptions, evidence_refs, execution_mode, pass_flag, rule_package_version]
+      properties:
+        assessment_id: {type: string}
+        classification: {type: string}
+        findings: {type: array, items: {type: object}}
+        source_bindings: {type: array, items: {type: object}}
+        rule_bindings: {type: array, items: {type: object}}
+        exceptions: {type: array, items: {type: object}}
+        evidence_refs: {type: array, items: {type: string}}
+        execution_mode: {type: string, enum: [REFERENCE_SIMULATION, DEPLOYED_RUNTIME]}
+        pass_flag: {type: boolean}
+        rule_package_version: {type: string}
+security:
+  - catalystAuth: []

@@ -1,0 +1,68 @@
+agreement_mapping:
+  id: MAP-FINCO-PRODUCT-AGREEMENT-001
+  version: '0.1'
+  status: CONTROLLED_DRAFT
+  microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+  semantic_rule_package_ref: RPK-FINCO-PRODUCT-SEM-001
+  mapping_principle: >-
+    Product class identifies the commercial financing proposition. Agreement type identifies the
+    legal contract archetype used to create enforceable rights and obligations. Accounting and tax
+    classifications are overlays and do not rename the agreement.
+
+  mappings:
+    - product_code: FINCO-EQUIPMENT-LOAN
+      product_name: Equipment Loan
+      canonical_agreement_type: Equipment Loan Agreement
+      agreement_supertype: Loan Agreement
+      related_legal_concepts: [lender, borrower, principal, repayment_obligation, interest_or_finance_charge, maturity, security_if_applicable]
+      authority_overlays:
+        SARS: debt_or_loan_arrangement
+        IFRS: IFRS_9_financial_instrument
+        ELFA: loan_or_debt_documentation
+      exclusions:
+        - Shall not be classified as a lease merely because equipment secures repayment.
+
+    - product_code: FINCO-EQUIPMENT-FINANCE-LEASE
+      product_name: Equipment Finance Lease
+      canonical_agreement_type: Equipment Finance Lease Agreement
+      agreement_supertype: Equipment Lease Agreement
+      related_legal_concepts: [lessor, lessee, identified_equipment, right_to_use, lease_term, lease_payments, end_of_term_rights]
+      authority_overlays:
+        SARS: lease_other_than_operating_lease_where_applicable
+        IFRS: finance_lease_lessor_classification
+        ELFA: finance_lease_documentation
+      exclusions:
+        - Accounting classification shall not be inferred solely from the agreement title.
+
+    - product_code: FINCO-EQUIPMENT-OPERATING-LEASE
+      product_name: Equipment Operating Lease
+      canonical_agreement_type: Equipment Operating Lease Agreement
+      agreement_supertype: Equipment Lease Agreement
+      related_legal_concepts: [lessor, lessee, identified_equipment, controlled_right_of_use, lease_term, rentals, return_or_end_of_term_rights]
+      authority_overlays:
+        SARS: operating_lease_where_applicable
+        IFRS: operating_lease_lessor_classification
+        ELFA: operating_lease_documentation
+      exclusions:
+        - Operating Lease shall not be renamed Rental solely because payments are called rentals.
+
+    - product_code: FINCO-EQUIPMENT-RENTAL
+      product_name: Equipment Rental
+      canonical_agreement_type: Equipment Rental Agreement
+      agreement_supertype: Rental_or_Hire_Agreement
+      related_legal_concepts: [rental_provider, renter, equipment_or_equipment_class, rental_period, rental_charge, substitution_or_fleet_rights, return_obligation]
+      authority_overlays:
+        SARS: rental_agreement_or_letting_and_hiring
+        IFRS: contains_lease_test_required
+        ELFA: rental_documentation
+      conditional_accounting_mapping:
+        - IF IFRS_16_lease_definition_met THEN attach lease_component_accounting_classification.
+        - IF IFRS_16_lease_definition_not_met THEN account_as_applicable_service_or_other_contract under relevant IFRS requirements.
+      exclusions:
+        - Commercial Rental classification does not guarantee non-lease treatment under IFRS 16.
+
+  relationship_rules:
+    - One Product Class MAY map to one canonical Agreement Type and multiple authority-specific classification overlays.
+    - One Agreement MAY contain multiple components; each potential lease component shall be assessed separately where IFRS 16 requires.
+    - Maintenance, insurance, telematics and availability services are components or schedules unless separately governed as products; they do not create a new base financing agreement type by default.
+    - Master agreement plus transaction schedule MAY be used operationally, but each schedule/transaction must retain the canonical product and agreement-type mapping.
