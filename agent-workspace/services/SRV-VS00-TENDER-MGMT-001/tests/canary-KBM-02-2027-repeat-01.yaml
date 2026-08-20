@@ -16,19 +16,34 @@ canary_repeat:
         - AppSail source emits TenderRequirementsExtracted legal/compliance events and blocks COMPLIANCE_READY when required assessments are missing, FAIL, or ESCALATE
       runtime_execution: NOT_VERIFIED
     catalyst_runtime:
-      result: PARTIAL_PASS_SOURCE_ONLY
-      evidence:
+      result: FAIL_DEPLOYMENT_GATE
+      source_evidence:
         - appsail/tender_management_service/app.js
         - appsail/tender_management_service/app-config.json
         - appsail/tender_management_service/package.json
-      catalyst_development_inventory: NO_APPSAIL_DEPLOYED
-      interpretation: Source baseline exists but deployment is not evidenced. Runtime defect remains open.
+      catalyst_development_inventory_before_attempt: NO_APPSAIL_DEPLOYED
+      deployment_pipeline:
+        pipeline_id: '86824000000437011'
+        name: Tender-Mgmt-Dev-Canary
+        branch: feature/ms-vs00-tender-mgmt-001
+        environment: Development
+        status: Active
+      deployment_attempt:
+        result: FAIL
+        error_code: INVALID_INPUT
+        error_message: 'Invalid input value for java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0'
+      interpretation: Dedicated pipeline registration succeeded, but Catalyst rejected manual execution before deployment. No runtime endpoint exists and runtime execution cannot be claimed.
   regression:
     crm_non_duplication: PASS
     lifecycle_ownership_separation: PASS
+    unrelated_pipeline_reuse: NOT_PERFORMED
+    rationale: Existing XCMG-CRM-Git-Canary pipeline was not reused because its service scope is unrelated.
     production_authority: NOT_GRANTED
+  check:
+    result: PARTIAL_PASS_WITH_BLOCKER
+    blocker: Catalyst Development pipeline execution/configuration defect prevents AppSail deployment.
   act:
     recommended_decision: ADAPT
-    rationale: CRM correlation is resolved and executable source contracts exist; deploy the AppSail baseline to Catalyst Development and repeat runtime canary before promotion or closure.
+    rationale: Preserve validated CRM correlation and source controls; repair or replace the Development deployment path, deploy AppSail, then repeat the runtime canary before promotion or closure.
     task_complete: false
   rule: DO_COMPLETE != TASK_COMPLETE
