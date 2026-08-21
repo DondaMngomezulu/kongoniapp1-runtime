@@ -1,0 +1,79 @@
+id: REG-SEM-CONCEPT-001
+name: Enterprise Semantic Concept Registry
+version: 1.0.0
+status: PROPOSED
+change_set_id: SEM-OL-ADAPT-2026-08-21
+methodology: MET-PDCA-001
+purpose: Govern reusable enterprise semantic concepts and prevent product-specific duplicate definitions.
+root_primitives:
+  - Agent
+  - Mandate
+  - Asset
+  - Capability
+  - Locus
+  - Stage
+  - Counterparty
+rules:
+  - Every governed concept SHALL have one canonical identifier.
+  - Every promoted concept SHALL declare its derivation path from a governed parent.
+  - Product-specific concepts SHALL reference canonical enterprise concepts rather than redefine them.
+  - External standards SHALL provide semantic bindings and SHALL NOT silently replace enterprise parent concepts.
+  - Lifecycle stage and product taxonomy classification SHALL remain separate dimensions.
+concepts:
+  - concept_id: SEM-AGR-OPTION-001
+    preferred_label: Agreement Option
+    definition: A governed contractual choice that permits an entitled party to cause a defined agreement state transition or contractual outcome when specified conditions are met.
+    root_primitive: Mandate
+    derivation_path: Mandate > Agreement > Agreement Term > Agreement Option
+    status: PROMOTED
+    reusable_domains: [Financial Services, Insurance and Risk Protection, Aftermarket and Lifecycle Support, Contract Mining and Operational Services, Investment and Portfolio Products]
+    narrower_concepts: [Purchase Option, Extension Option, Renewal Option, Return Option, Termination Option, Conversion Option]
+    external_bindings: [FIBO contract semantics, LegalRuleML obligation and permission semantics]
+  - concept_id: SEM-RESERVE-001
+    preferred_label: Reserve
+    definition: A controlled allocation of economic resources designated for a specified future obligation, risk, expenditure, or contingency.
+    root_primitive: Asset
+    derivation_path: Asset > Economic Resource > Reserve
+    status: PROMOTED
+    reusable_domains: [Financial Services, Insurance and Risk Protection, Aftermarket and Lifecycle Support, Investment and Portfolio Products]
+    narrower_concepts: [Maintenance Reserve, Working Capital Reserve, Debt Service Reserve, Insurance Reserve, Repair Reserve, Lifecycle Reserve]
+    external_bindings: [FIBO financial resource semantics, IFRS accounting semantics where applicable]
+  - concept_id: SEM-ASSET-RV-001
+    preferred_label: Residual Value
+    definition: The value attributed to an asset at a specified future valuation point under a stated valuation basis and set of assumptions.
+    root_primitive: Asset
+    derivation_path: Asset > Valuation > Residual Value
+    status: PROMOTED
+    reusable_domains: [Equipment Provision, Financial Services, Insurance and Risk Protection, Aftermarket and Lifecycle Support, Investment and Portfolio Products]
+    narrower_concepts: [Expected Residual Value, Guaranteed Residual Value, Contractual Residual Value, Insured Residual Value]
+    required_dimensions: [valuation_point, valuation_basis, currency, assumptions]
+    external_bindings: [MIMOSA asset semantics, FIBO valuation semantics, IFRS measurement semantics]
+  - concept_id: SEM-ASSET-USAGE-001
+    preferred_label: Usage
+    definition: The quantified consumption, operation, or productive employment of an asset over a defined locus or period.
+    root_primitive: Asset
+    derivation_path: Asset > Usage
+    status: PROMOTED
+    reusable_domains: [Equipment Provision, Financial Services, Insurance and Risk Protection, Aftermarket and Lifecycle Support, Contract Mining and Operational Services]
+    external_bindings: [MIMOSA asset operation semantics, IDTA AAS operational data semantics]
+  - concept_id: SEM-ASSET-USAGE-MEASURE-001
+    preferred_label: Usage Measure
+    definition: A governed quantity and unit used to measure asset usage.
+    root_primitive: Asset
+    derivation_path: Asset > Usage > Usage Measure
+    status: PROMOTED
+    broader_concept: SEM-ASSET-USAGE-001
+    narrower_concepts: [Operating Hours, Distance, Cycles, Production Quantity]
+    required_dimensions: [quantity, unit, measurement_period, source]
+    external_bindings: [MIMOSA measurement semantics, IDTA AAS property semantics]
+governance:
+  owner: Semantic Architecture
+  execution_governance: Chief of Accountability
+  records_governance: Document Controller
+  authoritative_repository: GitHub
+  runtime_binding_targets: [Zoho CRM, Zoho Catalyst]
+check_requirements:
+  - No duplicate preferred_label with incompatible definition.
+  - Every narrower concept resolves to exactly one canonical promoted parent unless explicitly modelled as polyhierarchical.
+  - Operating Lease remains PRD-L3-FIN-OLEASE and SHALL NOT be promoted to an enterprise primitive.
+  - Product-specific charges, events, roles, and terms SHALL remain specialisations of existing enterprise concepts.
