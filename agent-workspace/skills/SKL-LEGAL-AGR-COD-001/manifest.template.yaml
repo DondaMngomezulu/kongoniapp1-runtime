@@ -1,0 +1,61 @@
+package_id: AGRPKG-<agreement-id>-<run-id>
+agreement_id: <governed-agreement-id>
+agreement_type: <governed-agreement-type>
+package_status: DRAFT
+skill:
+  id: SKL-LEGAL-AGR-COD-001
+  version: '1.0'
+source:
+  artifact_id: <authoritative-artifact-id>
+  filename: <source-filename>
+  sha256: <sha256>
+  authority_status: authoritative|working_copy|unknown
+  execution_status: draft|executed|amended|terminated|expired|superseded|unknown
+agreement:
+  title: <title>
+  execution_date: null
+  effective_date: null
+  governing_law: null
+  parties: []
+  related_agreements: []
+outputs:
+  legal_document:
+    format: OASIS LegalDocML/Akoma Ntoso 1.0
+    path: agreement.akn.xml
+    validation_status: NOT_RUN
+  legal_rules:
+    format: OASIS LegalRuleML 1.0
+    path: agreement.rules.lrml.xml
+    validation_status: NOT_RUN
+  semantic_projection:
+    format: application/ld+json
+    path: agreement.jsonld
+    validation_status: NOT_RUN
+  provenance:
+    format: application/ld+json
+    path: provenance.jsonld
+    validation_status: NOT_RUN
+validation:
+  p0_open: 0
+  p1_open: 0
+  exceptions: []
+  overall_status: NOT_RUN
+legal_review:
+  required: true
+  reviewer_role: Company Secretary & Legal Counsel
+  status: NOT_STARTED
+  reviewed_at: null
+publication:
+  operative_use_allowed: false
+  published_at: null
+provenance:
+  codified_at: <iso-8601>
+  codified_by: <agent-or-user-id>
+  methodology: MET-PDCA-001
+  standards:
+    - OASIS LegalDocML / Akoma Ntoso 1.0
+    - OASIS LegalRuleML 1.0
+    - W3C JSON-LD 1.1
+    - W3C PROV-O
+    - W3C SKOS
+    - W3C SHACL
