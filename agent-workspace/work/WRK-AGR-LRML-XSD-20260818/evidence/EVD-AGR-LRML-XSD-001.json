@@ -1,0 +1,60 @@
+{
+  "work_id": "WRK-AGR-LRML-XSD-20260818",
+  "evidence_id": "EVD-AGR-LRML-XSD-001",
+  "evidence_type": "CONFORMANCE",
+  "created_by": "ChatGPT automation",
+  "created_at": "2026-08-18T19:09:05Z",
+  "source": "AGR-XWALK-010 official OASIS compact XSD CI",
+  "result": "PASS",
+  "details": {
+    "official_schema": {
+      "family": "OASIS LegalRuleML 1.0 compact XSD",
+      "entrypoint": "https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/compact/lrml-compact.xsd",
+      "archive_lrml_compact_sha": "c2672badd7c47bba27e5411b5fa40cafc7d5ddc2",
+      "archive_ruleml_sha": "03af3aeec15ccc00f38d7ccd1395313386892826"
+    },
+    "repeat_authority": "Group CEO ACT decision REPEAT — 2026-08-18",
+    "baseline_ingestion": {
+      "enterprise_v0_1_library_sha256": "6933e61b2f6c889a2b70ef1af9462ed7083b17a1a04f135c6849a0294fefd7f7",
+      "facility_v0_2_library_sha256": "8004b06624e52854c67ffdd6d85f1b8bca8714cafbc087b4cacd628b2e50845b",
+      "enterprise_v0_1_first_xsd_result": "FAIL",
+      "facility_v0_2_first_xsd_result": "FAIL"
+    },
+    "remediation": {
+      "facility": "Rule keys converted to prefixed CURIEs; maturity date encoded as xs:date data; Associations moved before Statements.",
+      "enterprise": "Invalid LegalSource paraphrases removed; Rule keys converted to prefixed CURIEs; invalid metadata FactualStatement removed; Associations consolidated and moved before Statements; enterprise candidate version advanced to v0.2."
+    },
+    "final_ci": {
+      "workflow": "LegalRuleML OASIS XSD Conformance",
+      "latest_confirmed_run_id": 32175444168,
+      "result": "PASS",
+      "targets": [
+        {
+          "path": "agent-workspace/legalruleml/Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml",
+          "sha256": "48e3e2690247c2aae60e0dc846842bd7e98cbaf41f196dda3aef9685622ef09e",
+          "xsd_result": "PASS"
+        },
+        {
+          "path": "agent-workspace/legalruleml/Kongoni_Enterprise_Rule_Set_LegalRuleML_v0.2.xml",
+          "sha256": "81890d0580f139a68f38a78c15d653b44e09c9c08833076d966bdc7b285c9c40",
+          "xsd_result": "PASS"
+        }
+      ]
+    },
+    "regression": {
+      "change_log_control": "PASS_RUN_32175444190",
+      "agent_workspace_validation": "FAIL_UNRELATED_PRE_EXISTING_WRK_ZCRM_BP_001_SCHEMA_DEFECT",
+      "transaction_template_state_changed": false,
+      "substantive_south_african_legal_validation": "NOT_PROVEN_AND_REMAINS_SEPARATE"
+    },
+    "act": {
+      "decision": "ADOPT",
+      "authority": "Group CEO",
+      "decision_date": "2026-08-18",
+      "control_status": "AGR-XWALK-010_CLOSED_ADOPTED"
+    },
+    "control_position": "Official OASIS XSD technical conformance is proven and adopted for active governed LegalRuleML artifacts. This does not establish substantive legal validity."
+  },
+  "artifact_hash": null,
+  "external_ref": "GitHub Actions run 32175444168"
+}

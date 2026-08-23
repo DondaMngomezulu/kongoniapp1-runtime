@@ -1,0 +1,46 @@
+{
+  "work_id": "WRK-AGR-SA-LEGAL-20260818",
+  "evidence_id": "EVD-AGR-SA-LEGAL-001",
+  "evidence_type": "CONFORMANCE",
+  "created_by": "ChatGPT Agreement Codification Agent",
+  "created_at": "2026-08-18T19:35:00Z",
+  "source": "AGR-XWALK-011 South African statutory clause architecture validation",
+  "result": "PASS",
+  "details": {
+    "check_study_result": "PASS_ON_STATUTORY_CLAUSE_ARCHITECTURE_WITH_CONTROLLED_GAPS",
+    "templates_reviewed": [
+      "TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001",
+      "TPL-VS02-SECURITY-AGREEMENT-001",
+      "TPL-VS05-SHARE-PURCHASE-AGREEMENT-001"
+    ],
+    "template_state": "VALIDATING_STRUCTURAL_PROFILE",
+    "authorities_validated": [
+      "National Credit Act 34 of 2005 sections 4 and 6 and related applicable provisions",
+      "Companies Act 71 of 2008 sections 44, 45 and 50-53 plus takeover provisions",
+      "Companies Amendment Act 16 of 2024 section 45(2A) amendment effective 27 December 2024",
+      "Electronic Communications and Transactions Act 25 of 2002 sections 11-14",
+      "Financial Intelligence Centre Act Schedule 1 Item 11",
+      "Securities Transfer Tax Act 25 of 2007 and Administration Act 26 of 2007",
+      "Competition Act 89 of 1998 and Competition Commission merger thresholds effective 1 May 2026"
+    ],
+    "material_findings": [
+      "NCA applicability must be classified; a bilateral corporate facility is not automatically subject to the full NCA clause regime.",
+      "FIC Item 11 can cover credit-provider business even where certain credit agreements are excluded from NCA application.",
+      "Companies Act sections 44 and 45 require separate applicability tests; section 45(2A) excludes financial assistance to or for the benefit of subsidiaries from section 45.",
+      "A certificated securities transfer requires a proper instrument of transfer or operation of law before securities-register entry.",
+      "STT applies to listed and unlisted securities at the current 0.25% rate subject to statutory exemptions and has specific unlisted-transfer notification/payment timing.",
+      "SPA promotion requires a current Competition Act merger-control test; thresholds changed effective 1 May 2026.",
+      "Electronic execution requires an ECTA formality check rather than a blanket e-signature assumption."
+    ],
+    "controlled_gaps": [
+      "No operative South African clause wording has yet been approved for any of the three templates.",
+      "Collateral-specific common-law pledge, cession, perfection and enforcement validation remains outstanding.",
+      "No controlled transaction instance has yet bound the statutory applicability facts and corporate records to the templates."
+    ],
+    "transaction_ready": false,
+    "recommended_act": "ADAPT",
+    "recommended_next_canary": "Kiboko-Venduo facility/share/security transaction"
+  },
+  "artifact_hash": null,
+  "external_ref": "BND-AGR-SA-CLAUSE-001 v0.2"
+}

@@ -1,0 +1,252 @@
+artifact_id: XWALK-AGR-ARTIFACT-001
+version: "0.1"
+date: "2026-08-18"
+status: CHECK_COMPLETE_ACT_PENDING
+task_class: T2
+authority:
+  mandate: "Group CEO approved controlled ingestion and crosswalk of OASIS LegalRuleML, Accord Project Cicero, and existing Kongoni GitHub schemas — 2026-08-18"
+  act_authority: Group CEO
+execution_owner: Reandra
+record_controller: Jane Seaward
+architecture:
+  id: KEA-MOD-HS-001
+  version: "0.1"
+  hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+method: "ADOPT -> ADAPT -> BUILD"
+
+purpose: >-
+  Establish the controlled reuse boundary for external and existing engineering artifacts
+  that support South African agreement clause codification without creating a parallel
+  Agreement Catalogue, Agreement Template Register, legal authority hierarchy, or
+  contract-template technology stack.
+
+canonical_enterprise_objects:
+  agreement_catalogue:
+    id: CAT-SA-AGR-PREC-001
+    version: "1.0"
+    role: "Sole canonical South African Agreements Catalogue and source-authority spine"
+    treatment: PRESERVE
+  agreement_template_register:
+    id: REG-AGR-TPL-001
+    version: "1.1"
+    role: "Authoritative governed Agreement Template Register and promotion lifecycle"
+    treatment: PRESERVE
+  legalruleml_enterprise_rule:
+    rule_ids:
+      - LEGALRULEML-R01
+      - LEGALRULEML-R02
+      - LEGALRULEML-R03
+    role: >-
+      LegalRuleML is the enterprise machine-readable representation for normative rules;
+      it does not replace authoritative source objects and must retain source traceability.
+    treatment: PRESERVE
+
+source_manifest:
+  - source_id: SRC-XWALK-KNG-001
+    source: DondaMngomezulu/kongoniapp1-runtime
+    artifact: agent-workspace/schemas/evidence.schema.json
+    git_sha: 8c3eef5b0bdeb05695740da0c54ca62afb40dd3e
+    provenance_class: KONGONI_NATIVE
+    licence_treatment: KONGONI_NATIVE
+    decision: ADOPT
+    permitted_use: "Base evidence envelope for agreement-codification conformance, test, readback, and approval evidence"
+    boundary: "Do not create a duplicate agreement-specific evidence framework unless a proven gap exists."
+  - source_id: SRC-XWALK-KNG-002
+    source: DondaMngomezulu/kongoniapp1-runtime
+    artifact: agent-workspace/schemas/work-item.schema.json
+    git_sha: 85adcbe1638d8b20af98b5ff4c9be47258ca0b8c
+    provenance_class: KONGONI_NATIVE
+    licence_treatment: KONGONI_NATIVE
+    decision: ADOPT
+    permitted_use: "T2 work-item and PDCA control envelope"
+  - source_id: SRC-XWALK-KNG-003
+    source: DondaMngomezulu/kongoniapp1-runtime
+    artifact: agent-workspace/schemas/change-log.schema.json
+    git_sha: 080250d518b021670c06184070a1594857227cbc
+    provenance_class: KONGONI_NATIVE
+    licence_treatment: KONGONI_NATIVE
+    decision: ADOPT
+    permitted_use: "Controlled repository change and PDCA evidence"
+  - source_id: SRC-XWALK-KNG-004
+    source: DondaMngomezulu/kongoniapp1-runtime
+    artifact: agent-workspace/schemas/handoff.schema.json
+    git_sha: 70587d3599b886bdbd9889dcb69278934b94ecb3
+    provenance_class: KONGONI_NATIVE
+    licence_treatment: KONGONI_NATIVE
+    decision: ADOPT
+    permitted_use: "Controlled legal-to-engineering and engineering-to-governance handoff"
+
+  - source_id: SRC-XWALK-OASIS-001
+    source: oasis-tcs/legalruleml
+    artifact: README.md
+    git_sha: 9e168c5d22deb7b658c148a0d461f61d8b93567f
+    provenance_class: OASIS_TC_CHARTERED_WORK
+    licence_treatment: "OASIS IPR Policy; LegalRuleML TC RF on Limited Terms Mode; preserve provenance and applicable OASIS terms"
+    decision: ADOPT
+    permitted_use: "Authoritative technical reference for LegalRuleML purpose, semantics, and representation role"
+    boundary: "Technical/normative representation authority only; not South African substantive legal authority."
+  - source_id: SRC-XWALK-OASIS-002
+    source: oasis-tcs/legalruleml
+    artifact: usecases/usecase1.md
+    git_sha: 64827945a046fc23a74199590c1c0262d4e842b2
+    provenance_class: OASIS_TC_EXAMPLE
+    licence_treatment: "OASIS IPR Policy; reference-controlled use"
+    decision: ADOPT
+    permitted_use: "Conformance design examples for permission, obligation, and rule serialization"
+    boundary: "Example logic is not a Kongoni legal source or clause precedent."
+  - source_id: SRC-XWALK-OASIS-003
+    source: OASIS-Docs/svn-archive-legalruleml
+    artifact: xsd-schema/compact
+    git_sha: cc0c966f4cc8756c97a78aa05286eed86b2f11bd
+    provenance_class: OASIS_SCHEMA_ARCHIVE
+    licence_treatment: "Preserve OASIS provenance and applicable specification/IPR terms"
+    decision: ADOPT
+    permitted_use: "XSD conformance validation source for compact LegalRuleML serialization"
+    boundary: "Actual validation of current Kongoni LegalRuleML artifacts remains a required gate."
+
+  - source_id: SRC-XWALK-ACCORD-001
+    source: accordproject/cicero-template-library
+    artifact: README.md
+    git_sha: 1febe5faf8edf2ef2631c0a696314b3835c30f58
+    provenance_class: OPEN_SOURCE_REFERENCE
+    licence_treatment: "Source code Apache-2.0; documentation CC-BY-4.0"
+    decision: ADAPT
+    permitted_use: "Template package architecture, parse/render workflow, and automated template testing pattern"
+    boundary: "Accord content is not South African legal authority and must not become a parallel Kongoni template register."
+  - source_id: SRC-XWALK-ACCORD-002
+    source: accordproject/cicero-template-library
+    artifact: package.json
+    git_sha: dcdcfef7ca63114afe0fdfd0d09e52c7eb0724d3
+    provenance_class: OPEN_SOURCE_REFERENCE
+    licence_treatment: Apache-2.0
+    decision: ADAPT
+    permitted_use: "Reference implementation stack for Cicero/Concerto/template-engine testing"
+  - source_id: SRC-XWALK-ACCORD-003
+    source: accordproject/cicero-template-library
+    artifact: src/fixed-interests/model/model.cto
+    git_sha: 722c2daf99d0e0dd8d618b8fe89dad7867dad019
+    provenance_class: OPEN_SOURCE_EXAMPLE
+    licence_treatment: Apache-2.0
+    decision: ADAPT
+    permitted_use: "Example of typed clause/template model with finance variables"
+    boundary: "Data/model pattern only; no presumption that its loan clause wording or logic is suitable for South Africa."
+  - source_id: SRC-XWALK-ACCORD-004
+    source: accordproject/cicero-template-library
+    artifact: src/fixed-interests/text/grammar.tem.md
+    git_sha: 3462a9d83c2ca676571b30eac6ad8ffda83e88f1
+    provenance_class: OPEN_SOURCE_EXAMPLE
+    licence_treatment: Apache-2.0
+    decision: ADAPT
+    permitted_use: "Variable-binding and deterministic rendering pattern"
+  - source_id: SRC-XWALK-ACCORD-005
+    source: accordproject/cicero-template-library
+    artifact: src/fixed-interests/logic/logic.test.ts
+    git_sha: d5a32af68c31ac66bdebe99e783f738cd61bb7d2
+    provenance_class: OPEN_SOURCE_EXAMPLE
+    licence_treatment: Apache-2.0
+    decision: ADAPT
+    permitted_use: "Unit-test pattern for executable clause/template behavior"
+
+crosswalk:
+  - kongoni_object: CAT-SA-AGR-PREC-001.TermsAndConditions.NormativeEffect
+    external_artifact: OASIS LegalRuleML deontic and statement constructs
+    mapping: "OBLIGATION / PERMISSION / PROHIBITION / CONSTITUTIVE -> LegalRuleML representation where machine-readable rule treatment is justified"
+    ownership: CAT-SA-AGR-PREC-001
+    duplication_risk: LOW
+  - kongoni_object: CAT-SA-AGR-PREC-001.SourceID_and_Provenance
+    external_artifact: "LegalRuleML LegalSource + Association"
+    mapping: "Authoritative source identifier remains external source of authority; LegalRuleML retains traceability"
+    ownership: CAT-SA-AGR-PREC-001
+    duplication_risk: LOW
+  - kongoni_object: REG-AGR-TPL-001.ArtifactContract
+    external_artifact: Accord Concerto/template model pattern
+    mapping: "Typed template variables and constraints can implement the Artifact Contract"
+    ownership: REG-AGR-TPL-001
+    duplication_risk: LOW_IF_PROFILED
+  - kongoni_object: REG-AGR-TPL-001.AgreementTemplate
+    external_artifact: Accord template text/rendering package
+    mapping: "Optional implementation profile below the governed Template ID; never a replacement registry"
+    ownership: REG-AGR-TPL-001
+    duplication_risk: MEDIUM_WITHOUT_CONTROL
+  - kongoni_object: REG-AGR-TPL-001.PromotionValidation
+    external_artifact: "Accord sample data + compile/render/unit tests"
+    mapping: "Technical validation evidence supplements, but does not replace, source sufficiency and substantive legal validation"
+    ownership: REG-AGR-TPL-001
+    duplication_risk: LOW
+  - kongoni_object: MET-PDCA-001.ExecutionEvidence
+    external_artifact: Kongoni evidence/work-item/change-log/handoff schemas
+    mapping: "Existing schemas remain the control envelope for clause and template promotion work"
+    ownership: KONGONI_AGENT_WORKSPACE
+    duplication_risk: NONE
+
+checks:
+  - test_id: AGR-XWALK-001
+    test: "All ingested artifacts have identifiable repository/path and immutable Git SHA or canonical governed identifier"
+    result: PASS
+  - test_id: AGR-XWALK-002
+    test: "Licence and IPR treatment is explicit"
+    result: PASS_WITH_CONTROL
+    note: "OASIS TC content remains subject to OASIS IPR terms; do not treat it as Apache-licensed source code."
+  - test_id: AGR-XWALK-003
+    test: "No external artifact creates a second South African Agreements Catalogue"
+    result: PASS
+  - test_id: AGR-XWALK-004
+    test: "No external artifact creates a second Agreement Template Register"
+    result: PASS
+  - test_id: AGR-XWALK-005
+    test: "South African law and adopted CAT-SA-AGR-PREC-001 authority hierarchy remain controlling for substantive legal content"
+    result: PASS
+  - test_id: AGR-XWALK-006
+    test: "LegalRuleML can represent existing CAT normative-effect categories while retaining source traceability"
+    result: PASS
+  - test_id: AGR-XWALK-007
+    test: "Accord technical model can support typed template variables, rendering, and automated technical tests"
+    result: PASS
+  - test_id: AGR-XWALK-008
+    test: "Existing Kongoni schemas cover PDCA work, evidence, change logging, and handoff without a new generic framework"
+    result: PASS
+  - test_id: AGR-XWALK-009
+    test: "Current REG-AGR-TPL-001 v1.1 transaction-readiness states are unchanged"
+    result: PASS
+  - test_id: AGR-XWALK-010
+    test: "Existing Kongoni LegalRuleML artifacts have passed official OASIS XSD conformance validation"
+    result: OPEN_CONTROLLED_GAP
+  - test_id: AGR-XWALK-011
+    test: "The three VALIDATING agreement templates have completed substantive South African clause/legal validation"
+    result: OPEN_CONTROLLED_GAP
+
+check_study:
+  result: PASS_WITH_CONTROLLED_GAPS
+  findings:
+    - "The three artifact families are complementary rather than duplicative when kept within existing governance boundaries."
+    - "OASIS LegalRuleML is the correct representation/conformance layer, not the legal source of clause substance."
+    - "Accord provides a reusable implementation and testing pattern, but cannot promote a Kongoni Agreement Template by itself."
+    - "Existing Kongoni schemas should be reused as the execution/evidence envelope."
+    - "No new contract language, parallel catalogue, parallel register, or generic evidence framework is justified."
+
+recommended_act:
+  decision: ADAPT
+  adopt:
+    - "OASIS LegalRuleML 1.0 semantics and official schema family as the machine-readable normative-rule conformance source."
+    - "Existing Kongoni work-item, evidence, change-log, and handoff schemas as the control envelope."
+  adapt:
+    - "Accord Cicero/Concerto template-model, variable-binding, render-test, and unit-test patterns below the Kongoni Artifact Contract and Template layers."
+  build_only_if_needed:
+    - "Thin Kongoni Agreement Clause Profile linking CAT source provenance, T&C normative effect, LegalRuleML rule IDs, REG template bindings, and technical test cases."
+    - "Thin validator/orchestrator that checks source traceability, XSD conformance, template data validation, render tests, and evidence output."
+  reject:
+    - "Use of Accord template wording as South African legal authority."
+    - "Any parallel Agreement Catalogue or Agreement Template Register."
+    - "Any claim that technical template tests establish substantive legal validity."
+
+next_gates:
+  - "Validate existing Kongoni LegalRuleML artifacts against the official OASIS compact XSD family and record errors/conformance evidence."
+  - "Define the thin Agreement Clause Profile only after schema reuse is confirmed against the first Bilateral Facility clause set."
+  - "Run Bilateral Facility substantive crosswalk: CAT T&C + South African sources -> governed clause candidate -> LegalRuleML representation -> optional Accord-compatible technical tests."
+  - "Run regression and final ACT before any template is marked usable for transactions."
+
+closure:
+  do_complete: true
+  check_study_complete: true
+  task_complete: false
+  reason: "ACT decision and authoritative record update remain pending."

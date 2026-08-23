@@ -1,0 +1,94 @@
+artifact_id: BND-AGR-SA-CLAUSE-001
+version: "0.2"
+status: CHECK_STUDY_CANDIDATE
+supersedes: clause-source-binding-v0.1.yaml
+work_id: WRK-AGR-SA-LEGAL-20260818
+normative_rule: >-
+  South African legislation, regulations and transaction-specific common law govern legal substance.
+  Template headings and market precedents are controlled projections only.
+source_refinements:
+  - source_id: SRC-SA-NCA-001
+    authority: "National Credit Act 34 of 2005"
+    section_level_rule: >-
+      Section 4 applicability must be resolved from arm's-length status, consumer type, related-juristic-person
+      asset/turnover facts, threshold status and agreement size. Section 6 limits some NCA provisions where the
+      consumer is a juristic person. No NCA clause set may be applied merely because the document is a loan.
+  - source_id: SRC-SA-COACT-001
+    authority: "Companies Act 71 of 2008, as amended"
+    section_level_rule: >-
+      Section 44 is a transaction-specific financial-assistance test for subscription/acquisition of securities.
+      Section 45 is a separate financial-assistance test; section 45(2A), effective under the 2024 amendment regime,
+      excludes assistance by a company to or for the benefit of its subsidiaries from section 45. Sections 50-53
+      govern securities-register and certificated/uncertificated transfer mechanics.
+  - source_id: SRC-SA-ECTA-001
+    authority: "Electronic Communications and Transactions Act 25 of 2002"
+    section_level_rule: "Sections 11-14 must be checked before relying on electronic form, writing, signature or original records."
+  - source_id: SRC-SA-FIC-001
+    authority: "Financial Intelligence Centre Act 38 of 2001, Schedule 1 Item 11"
+    section_level_rule: >-
+      A person carrying on credit-provider business can be an accountable institution even where the relevant
+      credit agreement is excluded from the NCA under section 4(1)(a) or (b); FIC applicability therefore survives
+      some NCA exclusions and must be tested separately.
+  - source_id: SRC-SA-STT-001
+    authority: "Securities Transfer Tax Act 25 of 2007; Securities Transfer Tax Administration Act 26 of 2007; SARS"
+    section_level_rule: >-
+      STT applies to listed and unlisted securities at the current 0.25% rate, subject to statutory exemptions.
+      For an unlisted transfer, the transferee must notify the issuer within 30 days and the tax is due within two
+      months from the end of the month in which transfer occurs.
+  - source_id: SRC-SA-COMP-001
+    authority: "Competition Act 89 of 1998 and Competition Commission merger-threshold determination"
+    section_level_rule: >-
+      Every acquisition that may constitute a merger must be classified as small, intermediate or large before
+      implementation. As at 1 May 2026, the Commission states the intermediate threshold as combined turnover/assets
+      of R1 billion plus target turnover/assets of R200 million, and the large threshold as R9.5 billion plus target
+      turnover/assets of R280 million. Intermediate and large mergers require notification/approval before implementation;
+      small mergers remain subject to sections 13(2) and 13(3).
+
+binding_deltas_from_v0_1:
+  - template_id: TPL-VS05-SHARE-PURCHASE-AGREEMENT-001
+    add_controls:
+      - id: SA-SPA-006
+        topic: competition_merger_control
+        clauses:
+          - "Conditions Precedent"
+          - "Authority, Capacity and Required Approvals"
+          - "Commercial Terms"
+        sources: [SRC-SA-COMP-001]
+        requirement: >-
+          Determine whether the acquisition constitutes a merger and calculate the current merger thresholds before
+          completion. If intermediate or large, make Competition Commission/Tribunal approval a condition precedent
+          and prohibit implementation before approval. For a small merger, preserve the Commission's statutory call-in risk.
+        status: MANDATORY_APPLICABILITY_TEST
+
+full_template_gate_status:
+  - template_id: TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001
+    statute_architecture: PASS_WITH_TRANSACTION_FACT_DEPENDENCIES
+    operative_clause_text: NOT_VALIDATED
+    transaction_ready: false
+  - template_id: TPL-VS02-SECURITY-AGREEMENT-001
+    statute_architecture: PASS_WITH_COLLATERAL_AND_COMMON_LAW_DEPENDENCIES
+    operative_clause_text: NOT_VALIDATED
+    transaction_ready: false
+  - template_id: TPL-VS05-SHARE-PURCHASE-AGREEMENT-001
+    statute_architecture: PASS_WITH_TRANSACTION_FACT_DEPENDENCIES
+    operative_clause_text: NOT_VALIDATED
+    transaction_ready: false
+
+check_study:
+  result: PASS_ON_STATUTORY_CLAUSE_ARCHITECTURE_WITH_CONTROLLED_GAPS
+  material_findings:
+    - "NCA applicability is not universal for bilateral corporate facilities; section 4 must be resolved first."
+    - "FIC Item 11 can apply even where certain corporate credit is excluded from NCA application."
+    - "Companies Act sections 44 and 45 must not be collapsed into one generic corporate-approval control."
+    - "Share transfers require securities-register/instrument mechanics and STT controls."
+    - "SPA completion must include a current Competition Act merger-control applicability test."
+    - "Electronic execution requires an ECTA formality test rather than a blanket e-signature assumption."
+  controlled_gaps:
+    - "Approved operative South African clause wording is absent in all three templates."
+    - "Collateral-specific common-law pledge, cession, perfection and enforcement opinions/precedents remain unresolved."
+    - "No transaction instance has yet bound borrower, lender, target, collateral, MOI, shareholder agreement, turnover/assets, NCA thresholds, FIC status, merger thresholds, tax facts or approvals."
+  recommended_act: ADAPT
+  recommended_act_reason: >-
+    Keep the legal architecture and source-binding model, but do not promote templates. Build the next layer as a
+    transaction legal-applicability profile plus approved operative clause library, starting with the Kiboko-Venduo
+    facility/share/security transaction as the controlled canary.
