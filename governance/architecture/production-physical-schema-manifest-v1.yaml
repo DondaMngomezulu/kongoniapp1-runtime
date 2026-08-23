@@ -1,0 +1,161 @@
+manifest_id: MAN-DB-PROD-001
+version: 1.0
+name: Production Physical Schema Manifest
+status: development_baseline_check_pending
+environment_source: Development
+target_environment: Production
+parent_standard: STD-DB-001
+capability_profile: PRF-CAT-SQL-001
+production_authorised: false
+data_migration_authorised: false
+principle: >-
+  Production is allow-listed. Only tables explicitly classified PROMOTE or ADAPT may be activated.
+  Every other Development table is DEVELOPMENT_ONLY by default until a governed disposition changes it.
+default_disposition: DEVELOPMENT_ONLY
+dispositions:
+  PROMOTE:
+    - EnterpriseAction
+    - PDCARegister
+    - ActionContextBinding
+    - DecisionRegister
+    - DeviationRegister
+    - EnterpriseValueStream
+    - EnterpriseRepositoryAuthority
+    - SourceReleaseRegister
+    - StandardsCatalogue
+    - StandardLibraryArtifact
+    - StandardsRegister
+    - StandardsAdoptionCrosswalk
+    - StandardValueStreamMap
+    - StandardEvidenceLink
+    - StandardRelationship
+    - StandardMutationLedger
+    - EnterpriseSemanticClass
+    - EnterpriseSemanticProperty
+    - SemanticPropertyConstraint
+    - SemanticPredicate
+    - SemanticRelation
+    - GovernedSemanticAssertion
+    - GovernedArtifactSemanticEnvelope
+    - EnterpriseRootConcept
+    - EnterpriseHierarchyLevel
+    - EnterpriseSemanticDimension
+    - ReferenceVocabulary
+    - ReferenceTerm
+    - Alias
+    - EnterpriseGovernanceControl
+    - EnterpriseGovernanceBinding
+    - EnterpriseGovernanceAudit
+    - EnvironmentExecutionAuthority
+  ADAPT:
+    - Product
+    - ProductVersion
+    - Machine
+    - EnterpriseAssetInstance
+    - gl_entity
+    - gl_account
+    - gl_period_status
+    - gl_transactions
+    - gl_ingestion_batch
+    - gl_source_files
+    - EDRMS_Record
+    - EDRMS_RecordClass
+    - EDRMS_RecordRelation
+    - EDRMS_RecordEvent
+    - EDRMS_RetentionRule
+    - EDRMS_LegalHold
+  CONSOLIDATE:
+    - Sessions
+    - EnterpriseCatalogue
+    - CatalystRepositoryIndex
+    - ToolRegister
+    - MCP_Tool_Register
+  DEVELOPMENT_ONLY:
+    - EDRMS_MigrationCandidate
+    - EDRMS_MigrationWave
+    - EDRMS_MigrationSource
+    - EDRMS_MigrationReconciliation
+    - EDRMS_MigrationException
+    - StandardDiscoveryAssertion
+    - StandardDiscoveryCandidate
+    - StandardDiscoverySource
+    - XCMG_IngestionBatch
+    - XCMG_ReconciliationControl
+    - LCC_SweepEvidence
+    - LCC_ValidationEvidence
+    - EngineSimulationEvidence
+    - RoutingAgentMethodologyAssessmentEvidence
+    - RoutingAgentMethodologyAssessmentCase
+  RETIRE: []
+adapt_requirements:
+  Product:
+    - align physical naming profile without destructive Development rename
+    - bind product_class and lifecycle_status to governed value domains
+  ProductVersion:
+    - verify business identifier, parent relationship and uniqueness semantics
+  Machine:
+    - review mandatory FK delete action because ON-DELETE-SET-NULL may conflict with mandatory=true
+    - replace owner_ref, custodian_ref and current_location_ref free text with governed relationships where feasible
+  EnterpriseAssetInstance:
+    - reconcile with Machine and canonical Asset primitive to prevent duplicate physical-asset identity
+  gl_transactions:
+    - retain mandatory unique group_transaction_id
+    - retain mandatory entity_id relationship
+    - remove GLOBAL App User visibility in Production
+    - review nullable source provenance fields and controlled value domains
+  gl_entity:
+    - bind every legal entity to the canonical Entity Register
+  gl_account:
+    - bind accounts to governed accounting taxonomy and legal entity context
+  EDRMS_Record:
+    - verify records classification, retention and access controls
+  EDRMS_RecordClass:
+    - align classification semantics with records governance
+security_baseline:
+  default_role: App User
+  default_production_access: NONE
+  rules:
+    EnterpriseAction: ROLE_SCOPED_READ
+    PDCARegister: ROLE_SCOPED_READ
+    gl_transactions: FINANCE_ROLE_ONLY
+    gl_account: FINANCE_ROLE_ONLY
+    gl_entity: FINANCE_AND_GOVERNANCE_ROLE
+    EDRMS_Record: RECORD_CLASS_AND_ROLE_SCOPED
+    StandardsRegister: ENTERPRISE_READ_GOVERNANCE_WRITE
+    EnterpriseGovernanceAudit: GOVERNANCE_AND_ASSURANCE_READ
+architecture_traceability:
+  required_links:
+    - governed_concept_to_logical_entity
+    - logical_entity_to_physical_table
+    - business_identifier_to_unique_constraint
+    - governed_relationship_to_foreign_key
+    - table_to_owner_and_value_stream
+    - table_to_security_classification
+    - table_to_records_rule_where_applicable
+    - table_to_production_disposition
+naming_profile:
+  authority: ISO/IEC 11179-5:2015
+  approach: MAP_NOT_DESTRUCTIVELY_RENAME
+  rule: >-
+    Existing Development names may remain as compatibility names. Production manifest metadata SHALL
+    provide the canonical governed name. New schema objects SHALL use the governed naming profile.
+activation_sequence:
+  - governance_and_reference_tables
+  - semantic_core
+  - canonical_registers_and_pdca
+  - domain_master_data
+  - domain_transaction_tables
+  - permissions_and_scopes
+  - structural_read_back
+  - regression_check
+  - ACT
+control_gates:
+  - no Production data rows are migrated by this manifest
+  - no table is activated unless its disposition is PROMOTE or ADAPT and its adapt requirements are satisfied
+  - permissions and scopes are applied after structural creation and before user access
+  - structural regression and audit must pass before Production baseline declaration
+provenance:
+  source_audit: DB-AUD-20260822-001
+  source_pdca: PDCA-DB-REMEDIATION-20260822-001
+  source_branch: feature/database-governance-baseline
+  production_changed: false
