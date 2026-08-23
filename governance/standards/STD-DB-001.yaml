@@ -1,0 +1,117 @@
+standard_id: STD-DB-001
+version: 1.0
+name: Enterprise Database Design and Integrity Standard
+status: development_implemented_act_pending
+owner: urn:kongoni:role:chief-of-accountability
+approval_authority: urn:kongoni:role:group-ceo
+data_steward: urn:kongoni:role:document-controller
+scope:
+  environments: [Development, Production]
+  systems: [Kongoniapp1]
+  value_streams: [VS00, VS01, VS02, VS03, VS04, VS05, VS06]
+objective: >-
+  Ensure that enterprise databases are governed, semantically traceable, metadata-controlled,
+  relationally coherent, secure, testable, and suitable for controlled production use.
+reference_stack:
+  governance:
+    - REG-STD-0009 # ISO/IEC 38505-1:2017
+  data_quality:
+    - REG-STD-0010 # ISO 8000-61:2016
+    - REG-STD-0011 # ISO 8000-110:2021
+  architecture:
+    - REG-STD-0012 # ISO/IEC/IEEE 42010:2022
+  product_quality:
+    - REG-STD-0013 # ISO/IEC 25010:2023
+  metadata:
+    - REG-STD-0014 # ISO/IEC 11179-1:2023
+    - REG-STD-0015 # ISO/IEC 11179-3:2023 + Amd1:2026
+    - REG-STD-0016 # ISO/IEC 11179-5:2015 lifecycle watch
+    - REG-STD-0017 # ISO/IEC 11179-6:2023
+    - REG-STD-0018 # ISO/IEC 11179-30:2023
+    - REG-STD-0019 # ISO/IEC 11179-31:2023
+  sql:
+    - REG-STD-0020 # ISO/IEC 9075-1:2023 + Cor1:2026
+    - REG-STD-0021 # ISO/IEC 9075-2:2023 + Cor1:2026
+    - REG-STD-0022 # ISO/IEC 9075-11:2023 + Cor1:2026
+  notation:
+    - REG-STD-0023 # ISO/IEC/IEEE 31320-2:2012 IDEF1X97
+semantic_authority:
+  rule: >-
+    Physical database names and structures SHALL implement governed enterprise concepts;
+    database tables SHALL NOT become independent semantic authorities.
+  inherited_standards:
+    - REG-STD-0008 # ISO/IEC 21838-2 BFO
+    - REG-STD-0004 # W3C SKOS
+    - REG-STD-0005 # W3C RDF 1.1
+    - REG-STD-0006 # W3C JSON-LD 1.1
+    - REG-STD-0007 # W3C SHACL
+logical_model:
+  notation: ISO/IEC/IEEE 31320-2:2012 IDEF1X97
+  requirements:
+    - every governed entity has a stable business identifier
+    - candidate keys and uniqueness rules are explicit
+    - cardinality and optionality are explicit
+    - identifying and non-identifying relationships are explicit
+    - normalization exceptions are documented
+    - controlled value domains are preferred to unconstrained free text
+physical_model:
+  platform: Zoho Catalyst Datastore
+  capability_profile: PRF-CAT-SQL-001
+  requirements:
+    - system ROWID SHALL NOT replace governed business identity
+    - CREATEDTIME and MODIFIEDTIME SHALL be retained as platform audit metadata
+    - foreign keys SHALL be used where the platform supports the required integrity semantics
+    - mandatory and uniqueness constraints SHALL be implemented where required by the logical model
+    - search indexing SHALL be justified by query and control needs
+    - platform deviations from ISO SQL SHALL be recorded in PRF-CAT-SQL-001
+metadata_profile:
+  required_for_production_candidate_tables:
+    - governed_entity_or_object_id
+    - canonical_table_name
+    - authoritative_business_identifier
+    - owner
+    - data_steward
+    - value_stream
+    - semantic_concept_reference
+    - description
+    - lifecycle_state
+    - security_classification
+    - retention_or_record_rule_where_applicable
+    - source_and_provenance_rule
+    - relationship_and_fk_summary
+    - production_disposition
+    - implementation_profile
+naming:
+  reference: ISO/IEC 11179-5:2015
+  rule: >-
+    New Production schema objects SHALL follow the governed physical naming profile.
+    Existing Development names SHALL be mapped or aliased where destructive renaming creates disproportionate risk.
+security:
+  rule: least_privilege
+  production_default: deny_unless_authorised
+  requirements:
+    - default App User GLOBAL access SHALL NOT be inherited into Production without explicit justification
+    - sensitive financial, task, legal, HR, customer, and risk data SHALL have role-appropriate scopes
+    - permissions and scopes SHALL be included in the Production schema manifest
+quality_gates:
+  production_candidate_dispositions: [PROMOTE, ADAPT, CONSOLIDATE, DEVELOPMENT_ONLY, RETIRE]
+  mandatory_gates:
+    - semantic_traceability
+    - metadata_completeness
+    - identifier_integrity
+    - relationship_integrity
+    - naming_assessment
+    - access_control_assessment
+    - architecture_traceability
+    - platform_profile_conformance
+    - structural_regression_test
+    - pdca_act_before_activation
+production_control:
+  production_write_requires_explicit_authorisation: true
+  schema_activation_is_separate_from_data_migration: true
+  data_migration_default: false
+provenance:
+  source_pdca: PDCA-DB-REMEDIATION-20260822-001
+  source_audit: DB-AUD-20260822-001
+  created_in: Development
+  production_changed: false
