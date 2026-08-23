@@ -1,0 +1,65 @@
+profile_id: PRF-LEGAL-AGR-COD-001
+version: 1.0
+name: Agreement Machine Codification Profile
+status: development_implemented_act_pending
+owner: Company Secretary & Legal Counsel
+skill: SKL-LEGAL-AGR-COD-001
+methodology: MET-PDCA-001
+scope:
+  includes:
+    - shareholder agreements
+    - sale agreements
+    - leases
+    - finance agreements
+    - service agreements
+    - mandates
+    - NDAs
+    - amendments and addenda
+    - deeds of adherence/accession
+    - side letters
+    - notices and elections issued under agreements
+  excludes_by_default:
+    - legislation
+    - court judgments
+    - policies not functioning as agreements
+reference_standards:
+  - OASIS LegalDocML / Akoma Ntoso 1.0
+  - OASIS LegalRuleML 1.0
+  - W3C JSON-LD 1.1
+  - W3C RDF 1.1
+  - W3C PROV-O
+  - W3C SKOS
+  - W3C SHACL
+  - ISO 704
+canonical_package:
+  source_evidence: immutable authoritative artifact reference + SHA-256
+  legal_document: agreement.akn.xml
+  legal_rules: agreement.rules.lrml.xml
+  semantic_projection: agreement.jsonld
+  provenance: provenance.jsonld
+  manifest: manifest.yaml
+  validation: validation.json
+rules:
+  - The executed or otherwise authoritative legal artifact remains the primary legal evidence source.
+  - Generated machine-readable representations SHALL preserve source meaning and SHALL NOT invent missing terms.
+  - Source-derived contractual norms SHALL be separated from facts, party interpretations and adjudicated determinations.
+  - Every LegalRuleML rule SHALL trace to one or more source clauses.
+  - Every material clause SHALL have a stable machine-addressable identifier.
+  - Supporting correspondence, minutes and registers SHALL be represented as evidence and SHALL NOT silently amend the agreement.
+  - P0 validation exceptions SHALL block operative use.
+  - Binding notices, defaults, payments, transfers, terminations or enforcement based on codified rules require legal review.
+enterprise_bindings:
+  agreement_chain:
+    - Value Stream
+    - Product Type
+    - Principal Agreement Type
+    - Contractual Role Type(s)
+    - Counterparty Relationship
+    - Entity/Agent
+  semantic_projection: JSON-LD
+  terminology_mapping: SKOS
+  validation: SHACL
+provenance:
+  source_decision: User instruction 2026-08-23 to build reusable skill for all agreements
+  environment: Development
+  production_changed: false
