@@ -1,0 +1,117 @@
+skill_id: SKL-LEGAL-AGR-COD-001
+version: '1.0'
+tests:
+  - id: AGR-COD-AT-001
+    name: Authoritative source required
+    given: no authoritative source artifact or source authority cannot be established
+    expect:
+      package_status: EXCEPTION
+      p0_exception: true
+      operative_use_allowed: false
+
+  - id: AGR-COD-AT-002
+    name: Clause traceability
+    given: an executed agreement with numbered clauses
+    expect:
+      every_material_clause_has_stable_id: true
+      every_legalruleml_rule_has_source_clause_reference: true
+
+  - id: AGR-COD-AT-003
+    name: No invented rule
+    given: source text is silent on a payment deadline
+    expect:
+      generated_payment_deadline: false
+      unsupported_inference_exception_if_attempted: P0
+
+  - id: AGR-COD-AT-004
+    name: Interpretation separation
+    given: correspondence contains a party interpretation of an ambiguous clause
+    expect:
+      source_contract_rule_separate_from_party_interpretation: true
+      party_interpretation_marked_assertion: true
+
+  - id: AGR-COD-AT-005
+    name: Temporal normalization
+    given: clause says election within 15 business days after valid notice
+    expect:
+      trigger_event_captured: true
+      duration_value: 15
+      duration_unit: business_day
+      absolute_deadline_calculated_only_if_service_date_known: true
+
+  - id: AGR-COD-AT-006
+    name: Amendment non-destructive handling
+    given: executed agreement plus signed amendment
+    expect:
+      original_expression_preserved: true
+      amendment_expression_preserved: true
+      consolidated_expression_marked_derived: true
+      clause_level_provenance_present: true
+
+  - id: AGR-COD-AT-007
+    name: Agreement-specific definition preservation
+    given: same defined term has different definitions in two agreements
+    expect:
+      definitions_not_overwritten: true
+      each_definition_bound_to_agreement: true
+
+  - id: AGR-COD-AT-008
+    name: Evidence does not amend contract
+    given: board minutes or email describe a commercial position not executed as amendment
+    expect:
+      agreement_text_unchanged: true
+      evidence_linked_as_supporting_artifact: true
+
+  - id: AGR-COD-AT-009
+    name: Operative legal review gate
+    given: machine record will be used to issue a binding notice, trigger default, payment, transfer, termination or enforcement
+    expect:
+      legal_review_required: true
+      operative_use_allowed_before_review: false
+
+  - id: AGR-COD-AT-010
+    name: Required package outputs
+    given: successful codification
+    expect:
+      files_present:
+        - agreement.akn.xml
+        - agreement.rules.lrml.xml
+        - agreement.jsonld
+        - provenance.jsonld
+        - manifest.yaml
+        - validation.json
+
+  - id: AGR-COD-AT-011
+    name: P0 fail closed
+    given: LegalRuleML rule contradicts the source clause
+    expect:
+      validation_status: FAILED
+      p0_exception: true
+      publication_blocked: true
+
+  - id: AGR-COD-AT-012
+    name: Repeat-run idempotency
+    given: same source hash and same skill/transformation version
+    expect:
+      semantically_equivalent_output: true
+
+  - id: AGR-COD-AT-013
+    name: Changed-source versioning
+    given: source artifact hash changes
+    expect:
+      new_codification_run_created: true
+      prior_record_preserved: true
+
+  - id: AGR-COD-AT-014
+    name: Party-role separation
+    given: one legal entity holds more than one contractual role
+    expect:
+      entity_identity_single: true
+      contractual_roles_multiple_and_contextual: true
+
+  - id: AGR-COD-AT-015
+    name: Undefined valuation method
+    given: agreement references a defined Valuation Method but no definition/formula is present
+    expect:
+      formula_invented: false
+      validation_exception: P1
