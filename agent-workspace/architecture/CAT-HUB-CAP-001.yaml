@@ -1,0 +1,171 @@
+catalogue_id: CAT-HUB-CAP-001
+title: Enterprise Hub Capability Catalogue — RAMI-Guided Brain and Nervous System
+version: '0.1'
+status: DRAFT_FOR_CHECK_STUDY
+owner: Group CEO
+parent_standard: STD-ARCH-HUB-SPOKE-001
+methodology: MET-PDCA-001
+reference_model:
+  name: RAMI 4.0
+  use: Classification and completeness guide only; RAMI layers SHALL NOT automatically become deployment or microservice boundaries.
+  authority_note: RAMI 4.0 is a layered reference architecture model; this Kongoni mapping adapts its six architecture layers to enterprise Hub capabilities.
+principles:
+  - id: HUB-RAMI-001
+    rule: Business, Functional and Information layers primarily classify Brain capabilities.
+  - id: HUB-RAMI-002
+    rule: Communication and Integration layers primarily classify Nervous System capabilities.
+  - id: HUB-RAMI-003
+    rule: Asset layer represents enterprise resources, digital/physical assets and authoritative spokes sensed, represented or influenced by the Hub; it is not itself the Hub brain.
+  - id: HUB-RAMI-004
+    rule: Cross-layer capabilities such as identity, security, observability, evidence and governance SHALL be mapped to all applicable layers rather than forced into one implementation tier.
+  - id: HUB-RAMI-005
+    rule: Every Hub service SHALL declare the capabilities and RAMI layers it realizes, its authoritative state, interfaces, dependencies and replaceability boundary.
+layers:
+  business:
+    hub_role: BRAIN
+    purpose: Enterprise intent, governance, authority and economic/business coordination.
+    capabilities:
+      - mandate_and_objective_management
+      - policy_and_rule_governance
+      - authority_and_accountability_resolution
+      - value_stream_coordination
+      - business_decision_governance
+      - risk_compliance_and_exception_governance
+      - repository_and_information_authority_governance
+      - performance_and_outcome_governance
+    candidate_current_services:
+      - governance controls and policy services
+      - PDCA/accountability services
+      - enterprise authority matrices
+    gaps_to_verify:
+      - unified enterprise policy decision service
+      - machine-executable repository routing authority
+  functional:
+    hub_role: BRAIN
+    purpose: Executable enterprise capabilities that interpret, decide, plan, coordinate and optimise.
+    capabilities:
+      - reasoning_and_decision_services
+      - agent_and_model_routing
+      - workflow_and_process_orchestration
+      - planning_and_scheduling
+      - optimisation
+      - exception_management
+      - service_composition
+      - digital_twin_behaviour_and_control
+    candidate_current_services:
+      - AI agent runtimes
+      - Zoho Catalyst Circuits and Functions/AppSail where applicable
+      - microservices
+      - workflow engines
+    gaps_to_verify:
+      - enterprise decision-service catalogue
+      - cross-platform orchestration abstraction
+  information:
+    hub_role: BRAIN
+    purpose: Enterprise meaning, context, knowledge, canonical identity and state representation.
+    capabilities:
+      - semantic_resolution
+      - canonical_identity_management
+      - ontology_and_taxonomy_services
+      - master_reference_context
+      - digital_twin_information_models
+      - information_authority_and_provenance
+      - state_and_repository_bindings
+      - evidence_and_lineage_models
+    candidate_current_services:
+      - Catalyst structured reference/runtime state
+      - semantic services
+      - GitHub schemas and architecture definitions
+      - repository binding registers
+    gaps_to_verify:
+      - canonical enterprise identity service
+      - unified information authority matrix runtime
+  communication:
+    hub_role: NERVOUS_SYSTEM
+    purpose: Standardized exchange of messages, commands, events and service interactions.
+    capabilities:
+      - api_exposure
+      - mcp_interfaces
+      - event_and_signal_exchange
+      - command_and_message_exchange
+      - queue_and_delivery_semantics
+      - protocol_contract_management
+      - service_discovery
+      - communication_security
+    candidate_current_services:
+      - API Gateway
+      - MCP servers
+      - Catalyst Signals/events where applicable
+      - OpenAPI and AsyncAPI contracts
+    gaps_to_verify:
+      - enterprise event backbone
+      - canonical message envelope and routing registry
+  integration:
+    hub_role: NERVOUS_SYSTEM
+    purpose: Connect heterogeneous systems/resources and translate between enterprise and platform interfaces.
+    capabilities:
+      - system_connectors_and_adapters
+      - protocol_mediation
+      - schema_and_data_transformation
+      - identity_binding_and_propagation
+      - transaction_and_state_synchronisation
+      - edge_and_spoke_connectivity
+      - integration_error_recovery
+      - integration_observability
+    candidate_current_services:
+      - Zoho Catalyst integration microservices
+      - Zoho APIs
+      - external MCP/API connectors
+      - integration bindings
+    gaps_to_verify:
+      - enterprise integration connector catalogue
+      - standard retry/idempotency/dead-letter control
+  asset:
+    hub_role: SENSE_AND_ACTUATE_BOUNDARY
+    purpose: Enterprise resources, systems, physical/digital assets and spokes that are represented, sensed or acted upon through the Hub.
+    capabilities:
+      - asset_and_spoke_registration
+      - resource_identity_and_binding
+      - capability_exposure
+      - telemetry_ingestion
+      - command_actuation_binding
+      - lifecycle_state_observation
+      - endpoint_health_and_availability
+      - digital_representation_binding
+    candidate_current_services_and_spokes:
+      - Zoho CRM
+      - Zoho Books
+      - Zoho WorkDrive
+      - Zoho Catalyst runtime resources
+      - Stratus objects
+      - equipment and operational systems
+      - external partner platforms
+    gaps_to_verify:
+      - canonical spoke/resource registry
+      - AAS-aligned digital representation where applicable
+cross_cutting_capabilities:
+  - security_and_identity
+  - audit_and_execution_evidence
+  - observability_and_telemetry
+  - resilience_and_recovery
+  - versioning_and_configuration
+  - privacy_and_data_governance
+  - interoperability_and_portability
+  - lifecycle_and_change_governance
+control_loop_mapping:
+  sense:
+    primary_layers: [asset, integration, communication]
+  interpret:
+    primary_layers: [information, functional]
+  decide:
+    primary_layers: [functional, business]
+  act:
+    primary_layers: [functional, communication, integration, asset]
+  observe:
+    primary_layers: [asset, integration, information]
+  compare:
+    primary_layers: [information, functional, business]
+  adapt:
+    primary_layers: [business, functional]
+engineering_rule: A Hub capability SHALL first be classified and governed independently of the platform or microservice chosen to implement it. Implementation selection occurs only after capability, authority, information and interface requirements are resolved.
+closure_rule: DO_COMPLETE != TASK_COMPLETE
