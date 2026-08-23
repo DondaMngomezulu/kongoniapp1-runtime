@@ -1,0 +1,66 @@
+profile_id: PRF-CAT-SQL-001
+version: 1.0
+name: Zoho Catalyst Datastore SQL Capability Profile
+status: development_implemented_act_pending
+parent_standard: STD-DB-001
+platform: Zoho Catalyst Datastore
+query_language: ZCQL
+reference_standards:
+  - REG-STD-0020 # ISO/IEC 9075-1:2023 + Cor1:2026
+  - REG-STD-0021 # ISO/IEC 9075-2:2023 + Cor1:2026
+  - REG-STD-0022 # ISO/IEC 9075-11:2023 + Cor1:2026
+profile_rule: >-
+  The ISO SQL standards are used as semantic and structural reference standards only to the extent
+  supported by Zoho Catalyst Datastore and ZCQL. This profile SHALL NOT be interpreted as a claim
+  that Catalyst implements all mandatory or optional features of ISO/IEC 9075.
+supported_platform_constructs_observed:
+  tables: true
+  platform_row_identifier: ROWID
+  platform_audit_fields: [CREATORID, CREATEDTIME, MODIFIEDTIME]
+  data_types_observed: [bigint, varchar, text, date, datetime, boolean, double, foreign_key]
+  constraints_observed:
+    mandatory: true
+    unique: true
+    foreign_key: true
+    search_index: true
+    default_value: true
+  referential_actions_observed: [ON_DELETE_SET_NULL]
+  query_operations_observed: [SELECT, INSERT, UPDATE, DELETE]
+  metadata_introspection:
+    tables: CatalystbyZoho_List_All_Tables
+    columns: CatalystbyZoho_List_All_Columns
+    permissions: CatalystbyZoho_Get_Table_Permissions
+    scopes: CatalystbyZoho_Get_Table_Scopes
+controlled_deviations:
+  - id: CATSQL-DEV-001
+    subject: ISO SQL feature completeness
+    disposition: PROFILE_ONLY
+    rule: Only Catalyst-supported constructs may be required by STD-DB-001.
+  - id: CATSQL-DEV-002
+    subject: system primary identifier
+    disposition: GOVERNED_BUSINESS_ID_REQUIRED
+    rule: ROWID is a platform identifier and SHALL NOT replace the governed business identifier.
+  - id: CATSQL-DEV-003
+    subject: schema information model
+    disposition: MANIFEST_BINDING_REQUIRED
+    rule: ISO/IEC 9075-11 concepts are represented through the Production Physical Schema Manifest and Catalyst metadata APIs.
+  - id: CATSQL-DEV-004
+    subject: table capacity
+    disposition: PLATFORM_LIMIT_CONTROL
+    rule: Development capacity limits SHALL NOT determine the long-term normalized Production design.
+  - id: CATSQL-DEV-005
+    subject: referential action semantics
+    disposition: EXPLICIT_REVIEW_REQUIRED
+    rule: FK delete behavior SHALL be reviewed for semantic compatibility; ON-DELETE-SET-NULL on mandatory relationships SHALL be treated as a potential contradiction requiring resolution.
+production_requirements:
+  - permissions and scopes must be explicitly read back after schema activation
+  - every Production table must appear in the Production Physical Schema Manifest
+  - every Production FK must be traceable to a governed relationship
+  - every unique constraint must be traceable to a candidate/business key rule
+  - every platform deviation must be recorded
+  - schema activation must pass structural regression before ACT
+provenance:
+  source_pdca: PDCA-DB-REMEDIATION-20260822-001
+  source_audit: DB-AUD-20260822-001
+  environment: Development
+  production_changed: false
