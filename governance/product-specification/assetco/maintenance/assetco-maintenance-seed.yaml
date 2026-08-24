@@ -1,0 +1,70 @@
+seed_id: SEED-AC-MNT-001
+version: 1.0.0
+status: SEEDED
+seeded_at: 2026-08-24
+methodology: MET-PDCA-001
+source_evidence:
+  maintenance_register: VMG-AIM-FCT-001_Maintenance_Demand_Register.xlsx
+  governed_crosswalk: VMG-AIM-FCT-001_Maintenance_Demand_Register_Governed_Crosswalk_v1.0.xlsx
+  source_service_plan: XCMG XE800GK 36 Month Service Plan
+crm_product_specifications:
+  - {code: AC-PS-MNT-FULL-001, crm_id: '5643538000008478004', status: Draft}
+  - {code: AC-PS-MNT-PM-001, crm_id: '5643538000008478005', status: Draft}
+  - {code: AC-PS-MNT-COR-001, crm_id: '5643538000008478006', status: Draft}
+  - {code: AC-PS-MNT-CMP-001, crm_id: '5643538000008478007', status: Draft}
+  - {code: AC-PS-MNT-LUB-001, crm_id: '5643538000008478008', status: Draft}
+  - {code: AC-PS-MNT-UG-001, crm_id: '5643538000008478009', status: Draft}
+  - {code: AC-PS-MNT-GET-001, crm_id: '5643538000008478010', status: Draft}
+  - {code: AC-PS-MNT-WEAR-001, crm_id: '5643538000008478011', status: Draft}
+  - {code: AC-PS-MNT-FIELD-001, crm_id: '5643538000008478012', status: Draft}
+  - {code: AC-PS-MNT-TECH-001, crm_id: '5643538000008478013', status: Draft}
+  - {code: AC-PS-MNT-CBM-001, crm_id: '5643538000008478014', status: Draft}
+crm_product_offerings:
+  - code: AC-OFR-ZIZ-MNT-54M-001
+    crm_id: '5643538000008464733'
+    name: Zizwe 54M Full Maintenance Program — RFQ Conforming
+    product_specification: AC-PS-MNT-FULL-001
+    term_months: 54
+    valid_from: 2027-03-01
+    valid_to: 2031-08-31
+    status: Draft
+  - code: AC-OFR-ZIZ-MNT-36M-001
+    crm_id: '5643538000008464734'
+    name: Zizwe 36M Full Maintenance Program — Purchase Option Alternative
+    product_specification: AC-PS-MNT-FULL-001
+    term_months: 36
+    valid_from: 2027-03-01
+    valid_to: 2030-02-28
+    status: Draft
+mimosa_seed_summary:
+  source_machine_identity: XE750GK in demand register; source note references XE800GK LCC
+  lifecycle_hours: 30000
+  task_count: 59
+  lube_demand_lines: 6
+  total_occurrences: 847
+  labour_hours_recorded: 1119
+  repair_lifecycle_cost_zar: 14597466.25366574
+  repair_cost_per_operating_hour_zar: 486.58220845552466
+  largest_cost_bucket: Undercarriage
+  mapping_counts:
+    MNT-PM-005_Filter_Replacement: 13
+    MNT-PM-006_Scheduled_Consumable_or_Service_Part: 8
+    MNT-PM-007_Minor_Wear_Part_Replacement: 3
+    MNT-FM-001_Corrective_Repair: 7
+    MNT-FM-002_Major_Component_Replacement: 20
+    MNT-FM-004_Undercarriage_Running_Gear: 8
+  lubricant_lines:
+    - Travel Reduction Gear Oil
+    - Swing Reduction Gear Oil
+    - Hydraulic Oil - Hydraulic System
+    - Hydraulic Oil - Hydraulic Oil Tank
+    - Engine Oil
+    - Antifreeze - Cooling System
+open_controls:
+  - Labour hours require governed occupational rate and burden mapping.
+  - Lubricant demand requires governed price bindings.
+  - GET scope requires confirmation.
+  - Condition-monitoring cost requires explicit treatment.
+  - XE750GK/XE800GK semantic identity requires reconciliation.
+  - Source row cost variances require reconciliation before final ACT.
+  - ProductOfferingPrices remain unseeded until term-specific LCC and approved pricing rules pass CHECK/STUDY.
