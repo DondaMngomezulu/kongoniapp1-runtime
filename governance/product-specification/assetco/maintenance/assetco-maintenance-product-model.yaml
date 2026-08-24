@@ -1,0 +1,60 @@
+control_id: AC-MNT-PROD-001
+name: AssetCo Maintenance Product Model
+version: 1.0.0
+status: ADOPTED
+effective_date: 2026-08-24
+methodology: MET-PDCA-001
+owner: AssetCo
+value_stream: VS04 Asset Lifecycle Performance
+purpose: Govern the semantic and information relationship between AssetCo maintenance products, TM Forum Product Management concepts, MIMOSA maintenance engineering objects, LCC economics and CRM projections.
+reference_stack:
+  primary_product_model: TM Forum Product Catalogue / TMF620
+  maintenance_engineering: MIMOSA CCOM 4.0
+  lifecycle_economics: AssetCo LCC
+canonical_chain:
+  - TMF ProductSpecification
+  - TMF ServiceSpecification
+  - MIMOSA SolutionPackage
+  - MIMOSA WorkStep
+  - MIMOSA Required Resources
+  - AssetCo LCC
+  - Maintenance Reserve
+  - Pricing Rule
+  - TMF ProductOfferingPrice
+  - TMF ProductOffering
+  - Quote
+  - ProductOrder
+  - Product
+rules:
+  - Maintenance Program SHALL be represented as a ProductSpecification-level construct.
+  - Customer-specific commercialisation SHALL occur through ProductOffering and ProductOfferingPrice.
+  - Detailed maintenance tasks SHALL NOT be represented as CRM Products.
+  - Maintenance task fulfilment SHALL resolve through ServiceSpecification to MIMOSA SolutionPackage and WorkStep.
+  - Material, labour, lubricant, tool and other direct maintenance requirements SHALL be represented as required resources of work.
+  - AssetCo LCC SHALL calculate cost and maintenance reserve; ProductOfferingPrice SHALL represent sell price.
+  - Each cost item SHALL be recovered once only and SHALL NOT be duplicated between AssetCo LCC and FinCo fixed-capacity economics.
+  - CRM SHALL hold the commercial/transactional projection and authoritative commercial identity bindings.
+  - Work execution actuals SHALL feed CHECK/STUDY variance analysis and future LCC model updates.
+maintenance_components:
+  - {code: AC-PS-MNT-PM-001, name: Preventive Maintenance, tmf: ProductSpecification, mimosa: SolutionPackage/WorkStep}
+  - {code: AC-PS-MNT-COR-001, name: Corrective Repair, tmf: ProductSpecification, mimosa: RequestForWork/SolutionPackage/WorkStep}
+  - {code: AC-PS-MNT-CMP-001, name: Lifecycle Component Replacement, tmf: ProductSpecification, mimosa: SolutionPackage/WorkStep}
+  - {code: AC-PS-MNT-LUB-001, name: Lubricants and Service Fluids, tmf: ProductSpecification, mimosa: Required Resource}
+  - {code: AC-PS-MNT-UG-001, name: Running Gear and Undercarriage, tmf: ProductSpecification, mimosa: SolutionPackage/WorkStep}
+  - {code: AC-PS-MNT-GET-001, name: Ground Engaging Tools, tmf: ProductSpecification, mimosa: Required Resource/WorkStep}
+  - {code: AC-PS-MNT-WEAR-001, name: Wear Parts and Consumables, tmf: ProductSpecification, mimosa: Required Resource}
+  - {code: AC-PS-MNT-FIELD-001, name: Field Maintenance Support, tmf: ProductSpecification, mimosa: Labor/Service Resource}
+  - {code: AC-PS-MNT-TECH-001, name: Technical Maintenance Support, tmf: ProductSpecification, mimosa: Labor/Service Resource}
+  - {code: AC-PS-MNT-CBM-001, name: Condition Monitoring and Intervention, tmf: ProductSpecification, mimosa: Condition/RequestForWork/SolutionPackage}
+composite_specification:
+  code: AC-PS-MNT-FULL-001
+  name: Full Maintenance Product Specification
+  composition: all applicable maintenance_components
+crm_projection:
+  product_specification: ProductSpecifications
+  product_offering: ProductOfferings
+  product_offering_price: ProductOfferingPrices
+  quote: Quotes
+  realised_product: Products
+  detailed_work: specialist AssetCo/MIMOSA information model; reference only in CRM
+compatibility_note: AssetCo maintenance component codes are ProductSpecification components in this profile and SHALL NOT be confused with the enterprise taxonomy's customer-offer level terminology.
