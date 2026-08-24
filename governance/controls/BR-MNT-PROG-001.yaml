@@ -1,0 +1,70 @@
+rule_id: BR-MNT-PROG-001
+version: 1.0.0
+status: ADAPTED_FOR_REVIEW
+title: Maintenance Program Composition and Costing Rule
+methodology: MET-PDCA-001
+catalogue: CAT-MNT-PROG-001
+
+normative_statement: >-
+  Every governed maintenance program SHALL be composed from CAT-MNT-PROG-001 item classes.
+  Each included item SHALL have a traceable maintenance strategy, trigger, source, cost basis,
+  AssetCo L5 product code, evidence reference and approval state before it may contribute to an
+  LCC-derived maintenance reserve or customer variable dry price.
+
+rules:
+  - id: BR-MNT-PROG-001-R1
+    statement: >-
+      OEM preventive-service-plan scope SHALL be distinguished from Kongoni full-maintenance scope.
+      An OEM exclusion SHALL NOT be silently treated as an OEM inclusion merely because Kongoni assumes
+      the cost under a broader full-maintenance product.
+  - id: BR-MNT-PROG-001-R2
+    statement: >-
+      Each maintenance item SHALL resolve to one maintenance strategy and one trigger basis for the
+      relevant machine and pricing horizon.
+  - id: BR-MNT-PROG-001-R3
+    statement: >-
+      Each maintenance item contributing to the LCC reserve SHALL be costed at event level and converted
+      to term cost and R/SMR-hour using expected occurrences within the contract horizon.
+  - id: BR-MNT-PROG-001-R4
+    statement: >-
+      Term-specific event occurrence SHALL be calculated from first-due and recurring interval rules;
+      events outside the contract horizon SHALL not be reserved in that horizon unless an approved
+      end-of-term or residual-condition provision requires them.
+  - id: BR-MNT-PROG-001-R5
+    statement: >-
+      No maintenance cost may be duplicated across preventive maintenance, corrective maintenance,
+      component replacement/rebuild, wear items, field support, or FinCo fixed-capacity charges.
+  - id: BR-MNT-PROG-001-R6
+    statement: >-
+      Fuel, asset acquisition, financing, insurance, tax, general administration, commercial margin,
+      mobilisation and residual-value economics SHALL not be classified as maintenance-program items.
+  - id: BR-MNT-PROG-001-R7
+    statement: >-
+      Customer-caused damage, misuse, negligence or unauthorised modification SHALL be excluded from the
+      standard maintenance reserve unless the applicable agreement expressly transfers that risk to the
+      service provider and pricing has been approved accordingly.
+  - id: BR-MNT-PROG-001-R8
+    statement: >-
+      A full-maintenance quote SHALL fail validation if a required catalogue class is marked TBC,
+      unresolved or lacks cost/evidence where that class is applicable to the offered machine.
+
+minimum_evidence:
+  - OEM maintenance/service schedule
+  - parts/service-kit or component price evidence
+  - lubricant/fluid price evidence where applicable
+  - labour-hour and labour-rate basis
+  - component-life or interval basis
+  - machine or asset-class applicability
+  - source/version provenance
+  - term-specific occurrence calculation
+  - LCC reserve record
+
+closure_control:
+  check_required: true
+  act_required: true
+  valid_act_decisions:
+    - ADOPT
+    - ADAPT
+    - REPEAT
+    - REJECT
+    - ESCALATE
