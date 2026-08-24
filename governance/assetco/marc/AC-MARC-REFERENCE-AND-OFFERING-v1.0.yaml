@@ -1,0 +1,147 @@
+id: AC-MARC-REFERENCE-AND-OFFERING-001
+version: 1.0.0
+owner: AssetCo
+status: ADOPTED
+purpose: Govern MARC/RAMP product-offering structure, benchmark hierarchy and contract-template alignment.
+semantic_stack:
+  product:
+    primary: TM Forum Product Management
+    chain:
+      - BundledProductOffering
+      - SimpleProductOffering
+      - ProductSpecification
+      - ServiceSpecification
+  maintenance_engineering:
+    primary: MIMOSA CCOM
+    chain:
+      - SolutionPackage
+      - WorkStep
+      - RequiredResources
+      - EstimatedWork
+      - CompletedWork
+  economics:
+    chain:
+      - LCC
+      - TermSpecificMaintenanceReserve
+      - ProductOfferingPrice
+contract_models:
+  - MARC
+  - RAMP
+  - MaintenanceAgreement
+  - ServiceAgreement
+  - CVA
+benchmark_policy:
+  primary_rate_taxonomy_source: PUBLIC_PROCUREMENT_TENDER
+  evidence_precedence:
+    - T1_TRANSACTIONAL
+    - T2_AWARDED_PUBLIC_CONTRACT
+    - T3_PROCUREMENT_SPECIFICATION
+    - T4_OEM_PUBLIC_PROGRAMME
+  procurement_benchmarks:
+    - id: FOSKOR-RAMP-2026
+      authority: Foskor / National Treasury eTenders
+      reference: FOSPHB-RFP-64-25/26
+      concepts:
+        - Full LCC
+        - Partial LCC
+        - Fixed Labour
+        - Fixed Operating Cost
+        - Fixed Asset Cost
+        - Lubricants R_per_hour
+        - Parts Base Rate R_per_hour
+        - Major Components
+        - GET
+        - Bucket Repairs
+        - Normal and Overtime Labour Reporting
+        - 24x7 Standby
+        - Job Cards
+    - id: KZN-DOH-HOH0526
+      authority: KwaZulu-Natal Department of Health
+      rates_ex_vat:
+        artisan_technician_normal_per_hour: 335.00
+        artisan_technician_ot_1_5_per_hour: 502.50
+        artisan_technician_ot_2_0_per_hour: 670.00
+        semi_skilled_normal_per_hour: 160.00
+        unskilled_normal_per_hour: 84.00
+      rate_scope: all-inclusive published procurement charge-out benchmark; normalize before comparison to internal employment cost
+  oem_comparators:
+    - id: HITACHI-ACTUAL-INVOICE
+      evidence_class: T1_TRANSACTIONAL
+      standard_labour_per_hour_ex_vat: 998.27
+      overtime_1_5_per_hour_ex_vat: 1497.40
+    - id: KOMATSU-MARC
+      evidence_class: T4_OEM_PUBLIC_PROGRAMME
+      concepts:
+        - Fixed Monthly Maintenance Labour and Management
+        - Parts at Fixed Rate per Operating Hour
+        - Condition Monitoring
+        - Tooling
+        - Maintenance Vehicles
+        - Planning and Scheduling
+        - Technical Support
+        - Warranty Management
+        - KPI Regime
+        - Optional Bucket Body and Undercarriage
+    - id: CAT-CVA
+      evidence_class: T4_OEM_PUBLIC_PROGRAMME
+      concepts:
+        - Preventive Maintenance
+        - Dealer Labour
+        - Fluids and Analysis
+        - Component Life Guarantees
+        - Shared Risk
+        - Equipment Health Support
+marc_product_offering:
+  offering_composition: Bundle
+  contract_model: MARC
+  coverage: Full LCC
+  price_mechanism: Fixed + R/SMR h
+  fixed_elements:
+    - Maintenance Labour and Management
+    - Fixed Operating Support
+    - Fixed Support Assets where applicable
+  usage_elements:
+    - Standard Parts
+    - Lubricants and Fluids
+    - Lifecycle Components
+    - Wear Systems
+  conditional_elements:
+    - GET
+    - Undercarriage
+    - Bucket and Body Repair
+  support_elements:
+    - Condition Monitoring
+    - Field Maintenance Support
+    - Technical Maintenance Support
+    - Warranty Management
+    - Standby
+pricing_controls:
+  no_double_recovery: true
+  procurement_tender_rates_are_benchmark_not_automatic_internal_cost: true
+  lcc_required_before_product_offering_price_release: true
+  term_specific_reserve_required: true
+contract_template:
+  id: TPL-AC-MARC-001
+  required_annexures:
+    - Equipment and Serial Number Schedule
+    - Maintenance Program and Service Specifications
+    - LCC Coverage Inclusion Exclusion Matrix
+    - Pricing and Rate Schedule
+    - Resource and Staffing Schedule
+    - Parts Lubricants Components and Critical Spares
+    - KPI SLA Schedule
+    - Condition Monitoring and Reporting Schedule
+    - Work Order Job Card and CMMS Requirements
+    - Warranty and Risk Sharing Schedule
+    - Site Responsibilities and Facilities
+    - Benchmark and Escalation Schedule
+pdca:
+  task_class: T2
+  do: COMPLETE
+  check: PASS_STRUCTURE_WITH_ECONOMIC_VALIDATION_OPEN
+  act: ADOPT
+  remaining_open_controls:
+    - Complete machine-specific LCCs
+    - Governed lubricant prices
+    - GET and undercarriage applicability
+    - Product Offering Price validation
