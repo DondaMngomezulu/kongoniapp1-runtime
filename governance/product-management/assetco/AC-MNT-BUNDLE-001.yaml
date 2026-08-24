@@ -70,8 +70,19 @@ zizwe_seed:
   conditional_components:
     - Running Gear and Undercarriage
     - Ground Engaging Tools
+regression:
+  tested_records: 22
+  bundles: 2
+  simple_offerings: 20
+  parent_child_relationships: PASS
+  product_specification_bindings: PASS
+  cardinality_rules: PASS
+  inclusion_rules: PASS
+  offering_status_control: PASS
 pdca:
   task_class: T2
   act_decision: ADAPT
   do_status: DO_COMPLETE
-  check_status: PENDING_REGRESSION
+  check_status: PASS
+  act_outcome: ADOPT
+  record_status: UPDATED
