@@ -1,5 +1,5 @@
 id: AC-MARC-MINING-BENCHMARK-REGISTER-001
-version: 1.0.0
+version: 1.0.1
 owner: AssetCo
 status: CHECK_OPEN
 purpose: Govern mining maintenance pricing structures and numeric benchmark evidence for MARC product pricing.
@@ -21,7 +21,13 @@ sources:
       fixed_operating_cost: fixed
       fixed_asset_cost: fixed
       wear_systems: separate
+    procurement_status_as_at_2026_08_24: CLOSED_REISSUED_NO_PUBLIC_AWARD_FOUND
+    chronology:
+      - original_close: 2026-02-03
+      - reissue_id: FOSPHB-RFP-64-25-26R
+      - reissue_close: 2026-04-21
     numeric_rate_status: NOT_PUBLICLY_DISCLOSED
+    benchmark_use: STRUCTURE_ONLY_PENDING_AWARD
   - id: AE-VLAK020-2021
     entity: AEMFC_Vlakfontein_Mine
     context: coal_mining
@@ -32,7 +38,9 @@ sources:
       - General_Labourer
     service_intervals_hours: [250, 500, 750, 1000, 2000]
     component_pricing: unit_price_and_total_price_by_component
+    award_search_status_as_at_2026_08_24: NO_PUBLIC_POPULATED_AWARD_SCHEDULE_FOUND
     numeric_rate_status: NOT_PUBLICLY_DISCLOSED
+    benchmark_use: STRUCTURE_ONLY_PENDING_AWARD_SCHEDULE
   - id: FOSPHB-RFP-34-25-26
     entity: Foskor
     context: phosphate_mine
@@ -65,11 +73,19 @@ band_rule:
   insufficient_evidence_status: INSUFFICIENT_NUMERIC_EVIDENCE
 pricing_rule: >-
   Product price SHALL be built from mining procurement pricing dimensions. A single blended R/SMR-hour maintenance price is a derived normalized output only, not the primary estimate.
+award_search_control:
+  as_at: 2026-08-24
+  conclusion: >-
+    No populated winning rate schedule was found in the public record for Foskor RAMP FOSPHB-RFP-64-25/26R or AEMFC AE/VLAK020/2021. Foskor's RAMP was reissued and closed on 21 April 2026; absence of a public award means it SHALL NOT be treated as an awarded-rate source yet.
+  allowed_use:
+    Foskor_RAMP: pricing_structure_benchmark_only
+    AEMFC_Vlakfontein: pricing_structure_benchmark_only
+    Hitachi_actual_invoices: numeric_external_oem_benchmark
 pdca:
   do: COMPLETE
   check: OPEN
   act: ADAPT
   open_items:
-    - obtain_populated_award_schedule_Foskor_RAMP
-    - obtain_populated_award_schedule_AEMFC
+    - monitor_or_obtain_public_award_Foskor_RAMP
+    - obtain_AEMFC_panel_award_and_populated_schedule
     - obtain_other_mining_OEM_winning_rate_schedules
