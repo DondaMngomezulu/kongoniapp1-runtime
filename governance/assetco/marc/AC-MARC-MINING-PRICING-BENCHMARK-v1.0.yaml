@@ -1,0 +1,61 @@
+id: AC-MARC-MINING-PRICING-BENCHMARK-001
+version: 1.0.0
+status: ADOPTED
+owner_value_stream: AssetCo
+purpose: Govern mining-specific MARC pricing structure and rate benchmarking.
+reference_policy:
+  primary_pricing_structure_sources:
+    - Foskor Komatsu RAMP procurement specification
+    - AEMFC Vlakfontein mobile mining machinery maintenance tender
+    - Foskor CAT 789D mining equipment award
+  primary_rate_benchmark_sources:
+    - published mining procurement tender rate schedules where disclosed
+    - awarded mining contract rate schedules where disclosed
+  comparator_sources:
+    - Hitachi actual mining-equipment service invoices
+  excluded_as_primary:
+    - municipal fleet maintenance tenders
+    - general construction equipment maintenance tenders
+    - statutory wage floors
+pricing_structure:
+  fixed_monthly:
+    - standing maintenance capacity
+    - supervision and maintenance management
+    - standby and field support
+    - support vehicles and tooling where contractually included
+    - condition monitoring administration where fixed
+  event_based:
+    - planned service events by OEM interval
+    - call-out where separately priced
+    - major component change-outs and rebuilds
+  hourly:
+    - corrective artisan labour
+    - overtime labour
+    - specialist technician labour
+    - assistants where separately priced
+  usage_based_r_per_smr_h:
+    - standard parts
+    - lubricants and service fluids
+    - lifecycle components where appropriate
+    - undercarriage where applicable
+    - GET where applicable
+  other:
+    - travel_per_km where separately priced
+    - parts_markup_percent where contractually disclosed
+    - bucket_body_attachment_repairs where applicable
+normalisation_rule: All observed rates SHALL be normalised to rate class, inclusion basis, equipment class, effective date, VAT basis and contract scope before comparison.
+benchmark_priority:
+  - M1_awarded_mining_contract_rate
+  - M2_mining_procurement_rate_schedule
+  - M3_actual_oem_mining_invoice
+  - M4_other_independent_mining_reference
+quote_control: Product Offering Price SHALL be constructed from the MARC pricing taxonomy and SHALL NOT use a single blended maintenance rate unless it is a derived normalised output.
+crm_binding:
+  module: ProductOfferings
+  bundle_ids:
+    - AC-OFR-ZIZ-MNT-54M-001
+    - AC-OFR-ZIZ-MNT-36M-001
+pdca:
+  check: PASS_FOR_STRUCTURE
+  act: ADOPT
+  pricing_validation: OPEN_PENDING_MACHINE_SPECIFIC_RATE_POPULATION
