@@ -1,0 +1,77 @@
+id: AC-MNT-BUNDLE-001
+version: 1.0.0
+status: ADOPTED
+value_stream: VS04 Asset Lifecycle Performance
+alias: AssetCo
+primary_standard: TM Forum TMF620 Product Catalog Management
+secondary_standard: MIMOSA CCOM
+business_rule: BR-AC-MNT-BUNDLE-001
+model:
+  product_specification_layer:
+    bundle_specification: AC-PS-MNT-FULL-001
+    components:
+      - AC-PS-MNT-PM-001
+      - AC-PS-MNT-COR-001
+      - AC-PS-MNT-CMP-001
+      - AC-PS-MNT-LUB-001
+      - AC-PS-MNT-UG-001
+      - AC-PS-MNT-GET-001
+      - AC-PS-MNT-WEAR-001
+      - AC-PS-MNT-FIELD-001
+      - AC-PS-MNT-TECH-001
+      - AC-PS-MNT-CBM-001
+  product_offering_layer:
+    parent_type: BundledProductOffering
+    child_type: SimpleProductOffering
+    child_to_parent_relation: Parent_Bundle
+    cardinality_fields:
+      min: Min_Cardinality
+      max: Max_Cardinality
+    inclusion_field: Inclusion_Rule
+    group_field: Bundle_Group
+  engineering_fulfilment_layer:
+    chain:
+      - TMF ServiceSpecification
+      - MIMOSA SolutionPackage
+      - MIMOSA WorkStep
+      - Required Resources
+  economics:
+    chain:
+      - MIMOSA Estimated Work
+      - AssetCo LCC
+      - Maintenance Reserve
+      - Pricing Rule
+      - TMF ProductOfferingPrice
+controls:
+  - detailed maintenance tasks SHALL NOT be CRM Products or Product Offerings
+  - each simple maintenance offering SHALL reference one governed Product Specification
+  - each bundle component SHALL declare inclusion rule and cardinality
+  - ProductOfferingPrice SHALL NOT be approved until the applicable LCC and maintenance reserve pass CHECK/STUDY
+  - LCC cost SHALL remain distinct from customer sell price
+zizwe_seed:
+  bundles:
+    - id: AC-OFR-ZIZ-MNT-54M-001
+      term_months: 54
+      crm_record_id: '5643538000008464733'
+      composition: Bundle
+    - id: AC-OFR-ZIZ-MNT-36M-001
+      term_months: 36
+      crm_record_id: '5643538000008464734'
+      composition: Bundle
+  mandatory_components:
+    - Preventive Maintenance
+    - Corrective Repair
+    - Lifecycle Component Replacement
+    - Lubricants and Service Fluids
+    - Wear Parts and Consumables
+    - Field Maintenance Support
+    - Technical Maintenance Support
+    - Condition Monitoring and Intervention
+  conditional_components:
+    - Running Gear and Undercarriage
+    - Ground Engaging Tools
+pdca:
+  task_class: T2
+  act_decision: ADAPT
+  do_status: DO_COMPLETE
+  check_status: PENDING_REGRESSION
