@@ -1,0 +1,189 @@
+id: AC-MNT-RESERVE-ALLOC-XE800GK-001
+version: 1.0.0
+status: ADAPTED
+value_stream: VS04 Asset Lifecycle Performance
+alias: AssetCo
+primary_standard: TM Forum TMF620 Product Catalog Management
+engineering_standard: MIMOSA CCOM
+source_model: XE750GK/XE800GK-family working crosswalk
+source_artifact: VMG-AIM-FCT-001 Maintenance Demand Register Governed Crosswalk v1.0
+crm:
+  module: MaintenanceReserves
+  module_id: '5643538000008467222'
+control:
+  rule: BR-OL-LCC-MAINT-RESERVE-001
+  principle: Maintenance reserve SHALL be derived from term-specific LCC events and SHALL remain distinct from ProductOfferingPrice.
+  pricing_gate: ProductOfferingPrice SHALL remain unapproved while any required reserve component is Partial or Blocked.
+terms:
+  - term_months: 36
+    expected_smr_hours: 8640
+    parent_bundle: AC-OFR-ZIZ-MNT-36M-001
+    costed_only_subtotal_zar: 3026021.1493
+    costed_only_r_per_smr_h: 350.2339293
+    components:
+      - code: AC-PS-MNT-PM-001
+        offering: AC-OFR-ZIZ-MNT-PM-36M-001
+        reserve_id: MR-ZIZ-XE8-PM-36M-001
+        crm_record_id: '5643538000008466126'
+        lcc_cost_zar: 344894.8743
+        lcc_r_per_smr_h: 39.9183882
+        status: Partial
+        basis: Event Based
+        includes: [MNT-PM-005, MNT-PM-006]
+      - code: AC-PS-MNT-COR-001
+        offering: AC-OFR-ZIZ-MNT-COR-36M-001
+        reserve_id: MR-ZIZ-XE8-COR-36M-001
+        crm_record_id: '5643538000008466127'
+        lcc_cost_zar: 233095.8912
+        lcc_r_per_smr_h: 26.9786911
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-CMP-001
+        offering: AC-OFR-ZIZ-MNT-CMP-36M-001
+        reserve_id: MR-ZIZ-XE8-CMP-36M-001
+        crm_record_id: '5643538000008466128'
+        lcc_cost_zar: 1205548.1152
+        lcc_r_per_smr_h: 139.5310319
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-LUB-001
+        offering: AC-OFR-ZIZ-MNT-LUB-36M-001
+        reserve_id: MR-ZIZ-XE8-LUB-36M-001
+        crm_record_id: '5643538000008466129'
+        status: Blocked
+        basis: Quantity Only
+        gap: Six lubricant demand lines are quantified but unpriced.
+      - code: AC-PS-MNT-UG-001
+        offering: AC-OFR-ZIZ-MNT-UG-36M-001
+        reserve_id: MR-ZIZ-XE8-UG-36M-001
+        crm_record_id: '5643538000008466130'
+        lcc_cost_zar: 1213042.3739
+        lcc_r_per_smr_h: 140.3984229
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-GET-001
+        offering: AC-OFR-ZIZ-MNT-GET-36M-001
+        reserve_id: MR-ZIZ-XE8-GET-36M-001
+        crm_record_id: '5643538000008466131'
+        status: Blocked
+        basis: Not Costed
+        gap: No governed GET demand/cost line confirmed.
+      - code: AC-PS-MNT-WEAR-001
+        offering: AC-OFR-ZIZ-MNT-WEAR-36M-001
+        reserve_id: MR-ZIZ-XE8-WEAR-36M-001
+        crm_record_id: '5643538000008466132'
+        lcc_cost_zar: 29439.8947
+        lcc_r_per_smr_h: 3.4073952
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-FIELD-001
+        offering: AC-OFR-ZIZ-MNT-FIELD-36M-001
+        reserve_id: MR-ZIZ-XE8-FIELD-36M-001
+        crm_record_id: '5643538000008466133'
+        status: Blocked
+        basis: Not Costed
+      - code: AC-PS-MNT-TECH-001
+        offering: AC-OFR-ZIZ-MNT-TECH-36M-001
+        reserve_id: MR-ZIZ-XE8-TECH-36M-001
+        crm_record_id: '5643538000008466134'
+        status: Blocked
+        basis: Not Costed
+      - code: AC-PS-MNT-CBM-001
+        offering: AC-OFR-ZIZ-MNT-CBM-36M-001
+        reserve_id: MR-ZIZ-XE8-CBM-36M-001
+        crm_record_id: '5643538000008466135'
+        status: Blocked
+        basis: Not Costed
+  - term_months: 54
+    expected_smr_hours: 12960
+    parent_bundle: AC-OFR-ZIZ-MNT-54M-001
+    costed_only_subtotal_zar: 6286739.01947
+    costed_only_r_per_smr_h: 485.0878873
+    components:
+      - code: AC-PS-MNT-PM-001
+        offering: AC-OFR-ZIZ-MNT-PM-54M-001
+        reserve_id: MR-ZIZ-XE8-PM-54M-001
+        crm_record_id: '5643538000008466136'
+        lcc_cost_zar: 838929.66925
+        lcc_r_per_smr_h: 64.7322276
+        status: Partial
+        basis: Event Based
+        includes: [MNT-PM-005, MNT-PM-006]
+      - code: AC-PS-MNT-COR-001
+        offering: AC-OFR-ZIZ-MNT-COR-54M-001
+        reserve_id: MR-ZIZ-XE8-COR-54M-001
+        crm_record_id: '5643538000008466137'
+        lcc_cost_zar: 349643.83685
+        lcc_r_per_smr_h: 26.9786911
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-CMP-001
+        offering: AC-OFR-ZIZ-MNT-CMP-54M-001
+        reserve_id: MR-ZIZ-XE8-CMP-54M-001
+        crm_record_id: '5643538000008466138'
+        lcc_cost_zar: 2713082.93706
+        lcc_r_per_smr_h: 209.3428192
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-LUB-001
+        offering: AC-OFR-ZIZ-MNT-LUB-54M-001
+        reserve_id: MR-ZIZ-XE8-LUB-54M-001
+        crm_record_id: '5643538000008466139'
+        status: Blocked
+        basis: Quantity Only
+        gap: Six lubricant demand lines are quantified but unpriced.
+      - code: AC-PS-MNT-UG-001
+        offering: AC-OFR-ZIZ-MNT-UG-54M-001
+        reserve_id: MR-ZIZ-XE8-UG-54M-001
+        crm_record_id: '5643538000008466140'
+        lcc_cost_zar: 2347632.70006
+        lcc_r_per_smr_h: 181.1444985
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-GET-001
+        offering: AC-OFR-ZIZ-MNT-GET-54M-001
+        reserve_id: MR-ZIZ-XE8-GET-54M-001
+        crm_record_id: '5643538000008466141'
+        status: Blocked
+        basis: Not Costed
+        gap: No governed GET demand/cost line confirmed.
+      - code: AC-PS-MNT-WEAR-001
+        offering: AC-OFR-ZIZ-MNT-WEAR-54M-001
+        reserve_id: MR-ZIZ-XE8-WEAR-54M-001
+        crm_record_id: '5643538000008466142'
+        lcc_cost_zar: 37449.87625
+        lcc_r_per_smr_h: 2.889651
+        status: Partial
+        basis: Event Based
+      - code: AC-PS-MNT-FIELD-001
+        offering: AC-OFR-ZIZ-MNT-FIELD-54M-001
+        reserve_id: MR-ZIZ-XE8-FIELD-54M-001
+        crm_record_id: '5643538000008466143'
+        status: Blocked
+        basis: Not Costed
+      - code: AC-PS-MNT-TECH-001
+        offering: AC-OFR-ZIZ-MNT-TECH-54M-001
+        reserve_id: MR-ZIZ-XE8-TECH-54M-001
+        crm_record_id: '5643538000008466144'
+        status: Blocked
+        basis: Not Costed
+      - code: AC-PS-MNT-CBM-001
+        offering: AC-OFR-ZIZ-MNT-CBM-54M-001
+        reserve_id: MR-ZIZ-XE8-CBM-54M-001
+        crm_record_id: '5643538000008466145'
+        status: Blocked
+        basis: Not Costed
+open_gaps:
+  - Labour hours are recorded but not yet monetised through the governed labour-rate schedule.
+  - Lubricant quantities are recorded but the six lubricant lines are not yet priced.
+  - GET demand/cost is not confirmed.
+  - Field Maintenance Support is not costed.
+  - Technical Maintenance Support is not costed.
+  - Condition Monitoring and Intervention is not costed.
+  - Source machine identity is XE750GK while the target commercial family is XE800GK; identity reconciliation remains open.
+pdca:
+  task_class: T2
+  do_status: DO_COMPLETE
+  check_status: PARTIAL
+  act_decision: ADAPT
+  closure: OPEN
