@@ -1,0 +1,49 @@
+control_id: CTL-CRM-AC-MNT-001
+name: AssetCo Maintenance Product CRM Binding
+version: 1.0.0
+status: IMPLEMENTED_FOR_DRAFT_DATA
+effective_date: 2026-08-24
+methodology: MET-PDCA-001
+semantic_owner: AssetCo
+transaction_layer: Zoho CRM
+bindings:
+  TMF_ProductSpecification:
+    crm_module: ProductSpecifications
+    seeded_codes:
+      - AC-PS-MNT-FULL-001
+      - AC-PS-MNT-PM-001
+      - AC-PS-MNT-COR-001
+      - AC-PS-MNT-CMP-001
+      - AC-PS-MNT-LUB-001
+      - AC-PS-MNT-UG-001
+      - AC-PS-MNT-GET-001
+      - AC-PS-MNT-WEAR-001
+      - AC-PS-MNT-FIELD-001
+      - AC-PS-MNT-TECH-001
+      - AC-PS-MNT-CBM-001
+  TMF_ProductOffering:
+    crm_module: ProductOfferings
+    seeded_codes:
+      - AC-OFR-ZIZ-MNT-54M-001
+      - AC-OFR-ZIZ-MNT-36M-001
+  TMF_ProductOfferingPrice:
+    crm_module: ProductOfferingPrices
+    status: NOT_SEEDED
+    gate: Complete term-specific AssetCo LCC, maintenance reserve, risk reserve and approved pricing rule first.
+  TMF_ServiceSpecification:
+    crm_representation: governed reference from ProductSpecification
+    detailed_authority: AssetCo/MIMOSA maintenance model
+  MIMOSA_SolutionPackage_and_WorkStep:
+    crm_representation: reference only
+    detailed_authority: specialist AssetCo maintenance/LCC information model
+  Quote:
+    crm_module: Quotes
+  Realised_Product:
+    crm_module: Products
+controls:
+  - CRM SHALL NOT store detailed MIMOSA work tasks as Products.
+  - ProductOffering SHALL reference ProductSpecification.
+  - ProductOfferingPrice SHALL NOT be activated from an unverified LCC cost floor.
+  - Draft offering records MAY exist before price approval, but SHALL remain Draft.
+  - The authoritative commercial sell price SHALL be ProductOfferingPrice after approval.
+  - MIMOSA actual work costs SHALL feed CHECK/STUDY and LCC recalibration, not overwrite ProductSpecification identity.
