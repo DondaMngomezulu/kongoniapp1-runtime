@@ -1,5 +1,5 @@
 id: AC-MARC-MINING-BENCHMARK-REGISTER-001
-version: 1.0.1
+version: 1.0.2
 owner: AssetCo
 status: CHECK_OPEN
 purpose: Govern mining maintenance pricing structures and numeric benchmark evidence for MARC product pricing.
@@ -7,8 +7,9 @@ benchmark_hierarchy:
   - M1_AWARDED_MINING_RATE_SCHEDULE
   - M2_MINING_PROCUREMENT_RATE_SCHEDULE
   - M3_ACTUAL_MINING_OEM_TRANSACTION
-  - M4_OTHER_MINING_REFERENCE
-  - M5_NON_MINING_SANITY_CHECK
+  - M4_INTERNAL_MINING_COMMERCIAL_EVIDENCE
+  - M5_OTHER_MINING_REFERENCE
+  - M6_NON_MINING_SANITY_CHECK
 sources:
   - id: FOSPHB-RFP-64-25-26R
     entity: Foskor
@@ -52,7 +53,39 @@ sources:
     evidence_class: M3_ACTUAL_MINING_OEM_TRANSACTION
     standard_labour_rate_zar_per_hour_ex_vat: 998.27
     overtime_1_5x_zar_per_hour_ex_vat: 1497.40
-    use: external_oem_numeric_comparator
+    use: external_oem_maintenance_labour_numeric_comparator
+  - id: FOSKOR-INTERNAL-COMMERCIAL-WORKBOOK-2026-08-20
+    evidence_class: M4_INTERNAL_MINING_COMMERCIAL_EVIDENCE
+    source_file: Foskor.xlsx
+    source_context: internal_email_attachment
+    agreement_status: NOT_AN_EXECUTED_MARC_AGREEMENT
+    plant_rates_operator_included_zar_per_hour:
+      CAT_777: 2385
+      Hitachi_1200: 2385
+      CAT_D9: 1750
+    plant_fuel_caps_litre_per_hour:
+      CAT_777: 45
+      Hitachi_1200: 85
+      CAT_D9: 65
+    historical_2022_operating_rate_decomposition_zar_per_hour:
+      Hitachi_1200: {dry: 1950, operator_labour: 150, combined: 2100}
+      CAT_395: {dry: 1550, operator_labour: 150, combined: 1700}
+      CAT_140K: {dry: 580, operator_labour: 150, combined: 730}
+      Watercart: {dry: 650, operator_labour: 150, combined: 800}
+      CAT_D9: {dry: 1650, operator_labour: 150, combined: 1800}
+      Bell_B25D: {dry: 750, operator_labour: 150, combined: 900}
+      CAT_773_777: {dry: 2050, operator_labour: 150, combined: 2200}
+    load_and_haul_source_tender_rate_ranges_zar_per_tonne:
+      ore: {low: 15.57, high: 17.08}
+      waste: {low: 17.04, high: 18.51}
+    modelled_sph_dry_rate_ranges_zar_per_tonne:
+      ore: {low: 18.6162872676, high: 24.2166098039}
+      waste: {low: 19.7477242941, high: 25.7977471102}
+    explicit_model_markup: 0.15
+    semantic_controls:
+      operator_labour_150_zar_per_hour: NOT_MAINTENANCE_TECHNICIAN_RATE
+      machine_hour_rates: OPERATING_OR_HIRE_BENCHMARK_ONLY
+      maintenance_labour_comparator: HITACHI_OEM_INVOICE_BENCHMARK
 pricing_dimensions:
   - Fixed_Maintenance_Capacity_R_per_month
   - Scheduled_Service_Event_R_per_event
@@ -76,16 +109,17 @@ pricing_rule: >-
 award_search_control:
   as_at: 2026-08-24
   conclusion: >-
-    No populated winning rate schedule was found in the public record for Foskor RAMP FOSPHB-RFP-64-25/26R or AEMFC AE/VLAK020/2021. Foskor's RAMP was reissued and closed on 21 April 2026; absence of a public award means it SHALL NOT be treated as an awarded-rate source yet.
+    No populated winning maintenance rate schedule was found in the public record for Foskor RAMP FOSPHB-RFP-64-25/26R or AEMFC AE/VLAK020/2021. The internal Foskor commercial workbook adds numeric operating/hire and load-and-haul evidence but does not constitute a populated MARC maintenance award schedule.
   allowed_use:
     Foskor_RAMP: pricing_structure_benchmark_only
     AEMFC_Vlakfontein: pricing_structure_benchmark_only
-    Hitachi_actual_invoices: numeric_external_oem_benchmark
+    Hitachi_actual_invoices: numeric_external_oem_maintenance_benchmark
+    Foskor_internal_workbook: mining_operating_hire_and_load_haul_numeric_benchmark
 pdca:
   do: COMPLETE
   check: OPEN
   act: ADAPT
   open_items:
-    - monitor_or_obtain_public_award_Foskor_RAMP
+    - obtain_populated_award_schedule_Foskor_RAMP
     - obtain_AEMFC_panel_award_and_populated_schedule
-    - obtain_other_mining_OEM_winning_rate_schedules
+    - obtain_second_comparable_mining_OEM_maintenance_labour_rate
