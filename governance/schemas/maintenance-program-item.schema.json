@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:schema:maintenance-program-item:1.0.0",
+  "title": "Maintenance Program Item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "maintenance_item_id",
+    "catalogue_code",
+    "machine_model_or_asset_class",
+    "source_reference",
+    "source_version",
+    "maintenance_strategy",
+    "trigger_type",
+    "total_cost_per_event",
+    "expected_occurrences_in_term",
+    "term_cost",
+    "cost_per_smr_hour",
+    "l5_product_code",
+    "inclusion_status",
+    "approval_status"
+  ],
+  "properties": {
+    "maintenance_item_id": {"type": "string", "minLength": 1},
+    "catalogue_code": {"type": "string", "pattern": "^MNT-(PM|FM)-[0-9]{3}$"},
+    "machine_model_or_asset_class": {"type": "string", "minLength": 1},
+    "source_reference": {"type": "string", "minLength": 1},
+    "source_version": {"type": "string", "minLength": 1},
+    "maintenance_strategy": {
+      "enum": ["PREVENTIVE", "PREDICTIVE_CONDITION_BASED", "CORRECTIVE", "REBUILD", "REPLACEMENT", "INSPECTION", "SUPPORT"]
+    },
+    "trigger_type": {"type": "string", "minLength": 1},
+    "first_due_smr_hours": {"type": ["number", "null"], "minimum": 0},
+    "interval_smr_hours": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "calendar_interval": {"type": ["string", "null"]},
+    "quantity_per_event": {"type": ["number", "null"], "minimum": 0},
+    "parts_cost_per_event": {"type": ["number", "null"], "minimum": 0},
+    "lubricant_or_fluid_cost_per_event": {"type": ["number", "null"], "minimum": 0},
+    "labour_hours_per_event": {"type": ["number", "null"], "minimum": 0},
+    "labour_rate": {"type": ["number", "null"], "minimum": 0},
+    "labour_cost_per_event": {"type": ["number", "null"], "minimum": 0},
+    "external_service_cost_per_event": {"type": ["number", "null"], "minimum": 0},
+    "total_cost_per_event": {"type": "number", "minimum": 0},
+    "expected_occurrences_in_term": {"type": "integer", "minimum": 0},
+    "term_cost": {"type": "number", "minimum": 0},
+    "cost_per_smr_hour": {"type": "number", "minimum": 0},
+    "l5_product_code": {"type": "string", "minLength": 1},
+    "evidence_reference": {"type": ["string", "null"]},
+    "inclusion_status": {
+      "enum": [
+        "INCLUDED_PREVENTIVE_PROGRAM",
+        "INCLUDED_FULL_MAINTENANCE_EXTENSION",
+        "EXCLUDED_CUSTOMER_CAUSED",
+        "EXCLUDED_FINCO_FIXED_COST",
+        "EXCLUDED_FUEL",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "approval_status": {"enum": ["DRAFT", "EVIDENCED", "CHECKED", "APPROVED", "REJECTED"]}
+  }
+}
