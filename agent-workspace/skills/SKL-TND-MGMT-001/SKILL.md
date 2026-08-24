@@ -1,13 +1,13 @@
 ---
 name: tender-management-b2b-tmforum-oasis
 governed_id: SKL-TND-MGMT-001
-version: '1.1'
+version: '1.2'
 status: ADAPTED_FOR_REVIEW
 owner: Chief of Accountability
 business_domain: B2B tender, bid and proposal management
 methodology: MET-PDCA-001
 primary_reference_model: TM Forum ODA / eTOM B2B commercial lifecycle
-normative_legal_reference_model: OASIS LegalDocML / Akoma Ntoso + OASIS LegalRuleML
+normative_legal_reference_model: Kongoni-adopted OASIS LegalDocML / Akoma Ntoso + OASIS LegalRuleML profile
 inherits:
   - BR-PDCA-001
 references:
@@ -37,7 +37,7 @@ Use this skill to govern business-to-business tender, RFQ, RFP, EOI, bid and pro
 
 The skill SHALL treat Tender Management as a B2B commercial-process specialization aligned to TM Forum ODA/eTOM and applicable TM Forum Open APIs. It SHALL NOT create a competing enterprise sales lifecycle.
 
-OASIS LegalDocML/Akoma Ntoso and LegalRuleML SHALL provide the legal-document and normative-rule semantics required for machine-readable procurement requirements, contractual clauses, obligations, prohibitions, permissions, authority, overrides and compliance evidence.
+Kongoni SHALL use its enterprise-adopted OASIS LegalDocML/Akoma Ntoso representation profile for machine-readable legal/procurement document structure and stable governed fragment referencing. OASIS LegalRuleML SHALL provide the normative-rule semantics used for obligations, prohibitions, permissions, authority, overrides and compliance evidence.
 
 A Tender is a Kongoni governed orchestration object for a customer procurement event and its evidence. It is not asserted to be a native TM Forum canonical resource. Its primary commercial anchor is the Sales Opportunity. Its legal and evidentiary anchors are governed Document, LegalDocumentFragment, LegalNorm and Agreement objects.
 
@@ -95,10 +95,11 @@ The mandatory mapping is:
 - underlying definition of what can be supplied -> Product Specification;
 - commercial price of an offering -> governed ProductOfferingPrice / pricing record and pricing rule;
 - feasibility / eligibility / technical fit -> TMF679 Product Offering Qualification or equivalent governed qualification result;
-- commercial response -> TMF648 Quote;
+- authoritative customer quotation transaction -> TMF648 Quote where TMF648 is implemented;
+- TMF699 Sales Quote semantics MAY represent the sales-management view/reference of the same quotation, but SHALL share identity or explicit cross-reference with TMF648 Quote and SHALL NOT create an independent commercial truth;
 - contract framework / award instrument -> TMF651 Agreement / Agreement Specification;
 - RFQ/RFP/addendum/submission evidence -> TMF667 Document plus enterprise controlled-record references;
-- legal-document internal structure and immutable fragment identity -> OASIS LegalDocML/Akoma Ntoso;
+- legal/procurement document internal structure and stable governed fragment identity -> Kongoni-adopted OASIS LegalDocML/Akoma Ntoso representation profile;
 - contractual/policy obligations, permissions, prohibitions and overrides -> OASIS LegalRuleML;
 - clarification, bidder communication and negotiation touchpoint -> TMF683 Party Interaction;
 - successful award / executable demand -> TMF622 Product Order or governed downstream order/contract execution object;
@@ -110,7 +111,15 @@ The Tender object SHALL retain cross-references to canonical objects and SHALL N
 
 The canonical Tender lifecycle is:
 
-`DISCOVERED -> QUALIFYING -> QUALIFIED -> BID_DECISION -> BID_IN_PREPARATION -> INTERNAL_REVIEW -> APPROVED_FOR_SUBMISSION -> SUBMITTED -> CLARIFICATION_NEGOTIATION -> AWARDED | LOST | WITHDRAWN | CANCELLED -> CONTRACTING -> ORDER_HANDOFF -> CLOSED`
+`DISCOVERED -> QUALIFYING -> QUALIFIED -> BID_DECISION -> BID_IN_PREPARATION -> INTERNAL_REVIEW -> APPROVED_FOR_SUBMISSION -> SUBMITTED -> CLARIFICATION_NEGOTIATION`
+
+Awarded path:
+
+`AWARDED -> CONTRACTING -> ORDER_HANDOFF -> CHECK_STUDY -> ACT -> CLOSED`
+
+Non-awarded terminal path:
+
+`LOST | WITHDRAWN | CANCELLED -> CHECK_STUDY -> ACT -> CLOSED`
 
 Lifecycle state, gate result and executive/operational decision SHALL be separate information objects or attributes.
 
@@ -155,7 +164,7 @@ Every requirement SHALL have at minimum:
 - `Requirement_ID`;
 - `Tender_ID`;
 - `Source_Document_ID`;
-- immutable `Source_Fragment_ID` where the source supports fragment identity;
+- stable governed `Source_Fragment_ID` where the source supports fragment identity;
 - human-readable source clause/page locator where useful;
 - requirement type;
 - mandatory / scored / informational classification;
@@ -166,7 +175,7 @@ Every requirement SHALL have at minimum:
 - related ProductOfferingQualification where applicable;
 - related LegalNorm / Agreement obligation where applicable.
 
-Page number or free-text clause reference SHALL NOT be the only machine-readable provenance mechanism when fragment-level identity is available.
+Page number or free-text clause reference SHALL NOT be the only machine-readable provenance mechanism when fragment-level identity is available. Fragment immutability/version persistence is an enterprise records-governance requirement, not an OASIS claim.
 
 Requirements SHALL be MECE at the level used for compliance checking.
 
@@ -186,7 +195,7 @@ If the required Product Specification, Product Offering or transactional Product
 
 ### G4 — Governed pricing and Quote construction
 
-The Quote is the authoritative commercial response transaction object.
+TMF648 Quote SHALL be the authoritative customer quotation transaction where TMF648 is implemented. A TMF699 Sales Quote representation MAY be maintained as a sales-management projection/reference but SHALL cross-reference the authoritative Quote identity and version.
 
 Every billable Quote Line SHALL reference:
 
@@ -258,7 +267,7 @@ Each material contractual obligation SHALL resolve, where applicable, to:
 
 Tender documents are governed records and SHALL be linked by controlled reference rather than duplicated as uncontrolled attachments where a governed repository object exists.
 
-TMF667 Document semantics SHALL govern business-document references/versioning/interchange. OASIS LegalDocML/Akoma Ntoso SHALL govern legal-document internal structure and fragment identity. Enterprise Records governance SHALL govern authoritative custody, retention and disposition.
+TMF667 Document semantics SHALL govern business-document references/versioning/interchange. Kongoni's adopted LegalDocML/Akoma Ntoso profile SHALL govern the legal/procurement document structure and stable governed fragment references used by this skill. Enterprise Records governance SHALL govern authoritative custody, version persistence, retention and disposition.
 
 Mandatory evidence includes, as applicable:
 
@@ -484,11 +493,12 @@ A Tender SHALL NOT close merely because it is Awarded, Lost, Withdrawn or Cancel
 Before submission or closure, perform as applicable:
 
 - source-document completeness check;
-- immutable source-fragment/provenance check;
+- stable governed source-fragment/provenance check;
 - requirement coverage and MECE check;
 - mandatory Tender Requirement compliance check;
 - Product Specification/Product Offering crosswalk;
 - Product Offering Qualification check;
+- TMF699 Sales Quote / TMF648 Quote identity and version reconciliation where both representations exist;
 - Quote completeness and arithmetic check;
 - CRM Product/Product Offering source check;
 - ProductOfferingPrice/PricingRule provenance check;
@@ -541,7 +551,7 @@ Draft or work-in-progress states MAY contain incomplete data where the incomplet
 
 TM Forum is the primary commercial-process, catalogue, qualification, quote, agreement, interaction and order interoperability reference.
 
-OASIS LegalDocML/Akoma Ntoso is the primary machine-readable legal-document structure and fragment-identity reference.
+Kongoni uses an enterprise-adopted OASIS LegalDocML/Akoma Ntoso profile for machine-readable legal/procurement document structure and stable fragment referencing. This is a Kongoni application of the OASIS standard; it is not asserted that OASIS prescribes a private B2B contract-management process.
 
 OASIS LegalRuleML is the primary normative-rule reference for obligations, permissions, prohibitions, authority, legal sources, compliance and overrides.
 
@@ -582,3 +592,88 @@ A completed Tender cycle SHALL produce or update, as applicable:
 - obligation/compliance evidence where applicable;
 - PDCA evidence, CHECK/STUDY result and ACT decision;
 - accountability task and authoritative record updates.
+
+## 20. Zoho CRM object mapping
+
+This section defines the required transactional mapping. CRM objects are tertiary execution/control representations and SHALL NOT become semantic parents.
+
+| Skill / reference object | Current Zoho CRM object | Mapping status | Required control |
+|---|---|---|---|
+| SalesLead | `Leads` | DIRECT | Retain Lead as pre-qualification commercial signal. |
+| SalesOpportunity | `Deals` | DIRECT | `Tenders.Qualified_Deal` SHALL reference the authoritative Deal/Opportunity. |
+| Tender | `Tenders` | DIRECT KONGONI EXTENSION | Retain as procurement-event orchestration object; do not duplicate Deal authoritative sales state. |
+| Customer / procuring organisation | `Accounts` via `Tenders.Procuring_Account` | DIRECT TRANSACTIONAL PROJECTION | Account is not the semantic parent of Party. |
+| Party / commercial PartyRole / relationship | `Accounts`, `Contacts`, `PartyRoles`, `PartyRelationships` | COMPOSITE | Bind buyer, OEM, partner, subcontractor, funder and other roles explicitly. |
+| TenderRequirement | `TenderRequirements` | DIRECT KONGONI EXTENSION | Keep `TR-*` identity; add governed source-fragment and downstream object relations. |
+| Source Document | controlled document record plus current `Document_Folder_ID` / `Source_Document_ID` references | PARTIAL | Replace free-text-only identifiers with governed Document lookup/reference where available. |
+| LegalDocumentFragment | no complete dedicated CRM object evidenced | GAP | Add governed fragment reference/object; retain clause/page only as human locator. |
+| ProductSpecification | `ProductSpecifications` | DIRECT | Requirement and Offering SHALL resolve to specification. |
+| ProductOffering | `ProductCatalogues` + `Products` currently approximate the transactional layer | GAP / ADAPT | Do not equate Product with Offering. Introduce explicit ProductOffering identity/object or governed relation without duplicating Product Master. |
+| ProductOfferingPrice | Price Books / Product pricing fields are implementation mechanisms | GAP | Add governed price identity/provenance object or relation with effective date/context/rule. |
+| ProductOfferingQualification | `ProductQualifications` | DIRECT / RELATIONSHIP GAP | Add direct binding from TenderRequirement and ProductOffering to qualification result. |
+| Product / realised or transactional product | `Products` | DIRECT TRANSACTIONAL | Billable lines SHALL resolve to active governed Product/ProductOffering representation. |
+| Quote | `Quotes` | DIRECT | Treat CRM Quote as authoritative TMF648-aligned commercial quotation transaction. |
+| QuoteItem | `Quotes.Quoted_Items` subform | DIRECT | Every billable line must bind Product/ProductOffering and approved price provenance. |
+| TMF699 Sales Quote view | no separate authoritative object required | DERIVED / REFERENCE | If represented, cross-reference `Quotes` identity/version; prohibit duplicate commercial truth. |
+| AgreementSpecification | `Agreement_Classes` / governed agreement-type/specification layer | PARTIAL | Bind Tender/Quote to applicable Agreement Specification before submission. |
+| Agreement | `Agreements` | DIRECT TRANSACTIONAL PROJECTION | Use as authoritative CRM transaction record, not sole legal-document representation. |
+| CustomerAgreement | `CustomerAgreements` | DUPLICATION RISK | Treat as relationship/view or retire/merge authority where it duplicates `Agreements`; do not maintain two authoritative agreement truths. |
+| AgreementObligation | `AgreementObligations` | DIRECT / SEMANTIC ADAPT | Add LegalNorm, Bearer, source fragment, applicability, compliance and override semantics. |
+| Agreement-Product relation | `Agreement_Products` | DIRECT | Preserve Product/Offering contractual binding. |
+| Agreement-Asset relation | `Agreement_Assets` | DIRECT | Use for machine/asset-specific contractual identity. |
+| Party Interaction | `CustomerCommunications` plus CRM Calls/Emails/Meetings/Messages | COMPOSITE | Material tender interactions SHALL link Tender, Deal, Quote and Requirement. |
+| Governed approval | `GovernedApprovals` | DIRECT / RELATIONSHIP GAP | Bind bid/no-bid and submission approval to Tender and Quote version. |
+| ProductOrder | `Sales_Orders` | DIRECT | Awarded path SHALL reconcile accepted Quote/Agreement before Order handoff. |
+| ProductOrderItem | `Sales_Orders.Ordered_Items` | DIRECT | Trace to accepted Quote Item and Product Offering. |
+| Task / accountability | `Tasks` | DIRECT | Material tasks SHALL reference Tender/Requirement and PDCA cycle. |
+| LegalNorm / machine-readable business rule | no single CRM module SHALL be assumed canonical | EXTERNAL/SHARED GOVERNED OBJECT | CRM may store rule references; canonical LegalRuleML/business-rule representation remains upstream. |
+| ComplianceEvidence | document/evidence references plus TenderRequirement evidence fields | PARTIAL | Evidence SHALL be governed, versioned and traceable to the applicable Requirement/Qualification/Obligation. |
+| PDCA_Cycle | task/evidence fields and governed execution records | GAP / ADAPT | Add explicit PDCA cycle reference and CHECK/STUDY/ACT closure bindings for material Tender work. |
+
+### 20.1 Current Tenders field remediation
+
+The current `Tenders.Workflow_Stage` contains useful operational values but mixes lifecycle state, process substate and gate/decision outcomes. It SHALL be normalised as follows:
+
+- `Discovered` -> `DISCOVERED`;
+- `Documents Acquired` -> `Process_Substate = DOCUMENTS_ACQUIRED` while lifecycle remains `QUALIFYING`;
+- `Requirements Under Review` -> `QUALIFYING`;
+- `Eligibility Hold` -> `GateStatus = HOLD`;
+- `Eligibility Passed` -> `QUALIFIED` with qualification `PASS`;
+- `Bid No Bid Review` -> `BID_DECISION`;
+- `Bid Approved` -> `BidDecision = BID` plus approval reference;
+- `Bid Preparation` -> `BID_IN_PREPARATION`;
+- `Compliance Check` -> `INTERNAL_REVIEW`;
+- `Ready for Submission` -> `APPROVED_FOR_SUBMISSION` only after G7 passes;
+- `Submitted` -> `SUBMITTED`;
+- `Clarification Evaluation` -> `CLARIFICATION_NEGOTIATION`;
+- `Awarded` -> `AWARDED`;
+- `Unsuccessful` -> `LOST`;
+- `Withdrawn` -> `WITHDRAWN`;
+- `Cancelled` -> `CANCELLED`;
+- add `CONTRACTING`, `ORDER_HANDOFF`, `CHECK_STUDY`, `ACT`, `CLOSED` or equivalent governed lifecycle/closure representation.
+
+`Tenders.Originating_Lead`, `Tenders.Qualified_Deal`, `Tenders.Procuring_Account`, `Closing_DateTime`, `Source_URL`, `Source_System`, `Primary_Value_Stream`, `Document_Folder_ID` and `Reissue_Of` SHALL remain useful transactional attributes/relationships, subject to the stronger governed relationships above.
+
+### 20.2 Current TenderRequirements field remediation
+
+Existing `TenderRequirements` controls for source document, source clause/page, requirement type, requirement class, mandatory flag, evaluation weight, responsible owner, required evidence, evidence status, compliance result, exception status, due date, response reference and evidence reference SHALL be retained.
+
+Add or bind the following governed relationships:
+
+`TenderRequirement -> SourceDocument -> SourceFragment`
+
+`TenderRequirement -> ProductSpecification -> ProductOffering -> ProductOfferingQualification`
+
+`TenderRequirement -> QuoteItem`
+
+`TenderRequirement -> AgreementSpecification / AgreementObligation -> LegalNorm`
+
+Separate the existing generic `Compliance_Result` use into the three governed semantics defined in section 10 rather than reusing one status for Requirement compliance, Product Offering Qualification and Legal Obligation compliance.
+
+### 20.3 CRM fail-closed submission rule
+
+The CRM Blueprint/workflow SHALL NOT permit Tender transition to `APPROVED_FOR_SUBMISSION` or `SUBMITTED` unless the following resolve true:
+
+`OpportunityQualified AND CustomerResolved AND MandatoryRequirementsResolved AND ProductOfferingQualificationsPassed AND RequiredQuoteLinesPriced AND QuoteLinesUseGovernedProducts AND PriceProvenanceValid AND AgreementAlignmentPassed AND ControlledEvidenceCurrent AND SubmissionApprovalRecorded`.
+
+This rule is a transactional implementation of the Skill. The machine-readable governing rule remains separately identifiable and version-controlled.
