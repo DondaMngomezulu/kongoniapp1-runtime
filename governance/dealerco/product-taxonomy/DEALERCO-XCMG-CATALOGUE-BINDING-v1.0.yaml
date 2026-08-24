@@ -1,0 +1,129 @@
+id: DEALERCO-XCMG-CATALOGUE-BINDING-001
+version: 1.0.0
+owner: DealerCo
+status: CHECK_OPEN
+effective_date: 2026-08-24
+methodology: MET-PDCA-001
+change_class: T2
+mandate: >-
+  Adapt DealerCo product governance to the current XCMG Global catalogue while preserving the enterprise L1-L5 commercial product taxonomy as a separate semantic dimension.
+source_of_truth:
+  operational_catalogue:
+    authority: XCMG Global Product Centre
+    top_level_category_count: 18
+    treatment: CURRENT_OEM_CATALOGUE_SOURCE
+  corporate_profile:
+    declared_category_count: 17
+    treatment: PROVENANCE_ONLY
+semantic_separation:
+  enterprise_product_taxonomy:
+    purpose: What DealerCo sells/provides commercially
+    existing_spine:
+      L1: Equipment Provision
+      L2: Equipment Sales
+      L3: New Equipment Sale
+      L4: DealerCo governed commercial offering/variant
+      L5: Saleable configured equipment product or billable product line
+  oem_catalogue_taxonomy:
+    purpose: What XCMG manufactures/catalogues
+    levels:
+      OEM: XCMG
+      OEM_Category: XCMG top-level category
+      OEM_Product_Type: XCMG product type
+      OEM_Model: XCMG model/designation
+  rule: >-
+    OEM categories and product types SHALL NOT be inserted as L1-L5 enterprise product-taxonomy parents. They SHALL be bound as a separate OEM catalogue classification dimension to the relevant DealerCo L4/L5 Product records.
+current_xcmg_top_level_categories:
+  - Hoisting Machinery
+  - Earthmoving Machinery
+  - Mining Machinery
+  - Underground Mining Machinery
+  - Road Building Machinery
+  - Sanitation Machinery
+  - Port Machinery
+  - Concrete Machinery
+  - Aerial Working Machinery
+  - Special Vehicles
+  - Truck
+  - Piling Machinery
+  - Trenchless Machinery
+  - Coal Mining Machinery
+  - Drilling Machinery
+  - Agricultural Machinery
+  - Powered Industrial Trucks
+  - Telehandler
+known_product_type_examples:
+  Mining Machinery:
+    - Mining Excavator
+    - Mining Truck
+    - Wide Body Truck
+    - Surface Down-The-Hole Drill Rig
+  Earthmoving Machinery:
+    - Excavator
+    - Loader
+  Road Building Machinery:
+    - Roller
+    - Paver
+    - Milling Machine
+    - Motor Grader
+    - Dozer
+    - Asphalt or Mixing Plant
+    - Truck-mounted Maintenance Products
+    - Cold Recycler
+    - Crushing Equipment
+    - Stabilized Soil Mixing Plant
+    - Slipform Paver
+crm_observations:
+  xcmg_catalogue_record_id: '5643538000008265002'
+  xcmg_catalogue_name: XCMG Product Catalogue
+  catalogue_status: Approved
+  migration_status: Validated
+  existing_enterprise_taxonomy_count: 97
+  canonical_equipment_spine_present: true
+  legacy_product_category_problem: >-
+    Products.Product_Category currently mixes machine classes, commercial concepts, material classes and model designations; examples include Excavator, Rigid Dump Truck (RDT), XE800G, XDE130, Capital Good and Replaceable Good. It SHALL NOT be the authoritative OEM classification field.
+  canonical_product_type_field: Products.Product_Type -> ProductTaxonomy
+  catalogue_lookup_field: Products.Product_Catalogue -> ProductCatalogues
+  gap: >-
+    CRM currently lacks a dedicated governed OEM_Category/OEM_Product_Type/OEM_Model classification relationship. ProductTaxonomy is a commercial product taxonomy and must not be polluted to compensate for this schema gap.
+binding_rule:
+  example:
+    OEM: XCMG
+    OEM_Category: Mining Machinery
+    OEM_Product_Type: Mining Excavator
+    OEM_Model: XE800GK
+    Enterprise_L1: Equipment Provision
+    Enterprise_L2: Equipment Sales
+    Enterprise_L3: New Equipment Sale
+    Product_Catalogue: XCMG Product Catalogue
+required_crm_remediation:
+  - create governed OEM catalogue classification object or equivalent fields/relationships for OEM_Category, OEM_Product_Type and OEM_Model
+  - bind every XCMG equipment Product to XCMG Product Catalogue
+  - bind every saleable XCMG equipment Product to the enterprise Equipment Provision -> Equipment Sales -> New Equipment Sale commercial taxonomy path
+  - preserve legacy Product_Category as non-authoritative migration evidence until retired
+  - do not classify spare-part SKU records as equipment models
+  - validate parent-child cardinality and source provenance before migration status becomes Validated
+check_controls:
+  - 18_of_18_current_XCMG_top_level_categories represented
+  - every OEM_Product_Type has exactly one current OEM_Category parent unless XCMG itself publishes cross-category membership
+  - every OEM_Model has a valid OEM_Product_Type parent
+  - every saleable DealerCo equipment Product has one commercial L1-L5 lineage and one OEM catalogue lineage
+  - model names do not appear as OEM_Category values
+  - Product_Category legacy field is not used as semantic authority
+pdca:
+  plan: COMPLETE
+  authorisation: ADAPT_APPROVED_BY_USER
+  do: PARTIAL
+  evidence:
+    - XCMG live catalogue count validated at 18
+    - corporate declaration retained at 17 as provenance
+    - CRM ProductTaxonomy read-back confirms commercial L1-L5 spine
+    - CRM Product_Category field inspection confirms semantic mixing
+    - XCMG Product Catalogue record exists and is Approved/Validated
+  check: OPEN
+  act: ADAPT
+  open_items:
+    - provision dedicated OEM catalogue classification relationship in CRM
+    - enumerate and bind all XCMG product types under the 18 current categories
+    - map existing XCMG equipment records and read back relationships
+    - regression test 18/18 category coverage and parent-child integrity
