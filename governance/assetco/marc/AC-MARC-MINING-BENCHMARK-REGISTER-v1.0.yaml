@@ -1,0 +1,75 @@
+id: AC-MARC-MINING-BENCHMARK-REGISTER-001
+version: 1.0.0
+owner: AssetCo
+status: CHECK_OPEN
+purpose: Govern mining maintenance pricing structures and numeric benchmark evidence for MARC product pricing.
+benchmark_hierarchy:
+  - M1_AWARDED_MINING_RATE_SCHEDULE
+  - M2_MINING_PROCUREMENT_RATE_SCHEDULE
+  - M3_ACTUAL_MINING_OEM_TRANSACTION
+  - M4_OTHER_MINING_REFERENCE
+  - M5_NON_MINING_SANITY_CHECK
+sources:
+  - id: FOSPHB-RFP-64-25-26R
+    entity: Foskor
+    context: Phalaborwa mining division
+    equipment: [Komatsu_loaders, Komatsu_haul_trucks]
+    structure:
+      oils_lubricants: R_per_operating_hour
+      parts_base_rate: R_per_operating_hour
+      fixed_labour: fixed
+      fixed_operating_cost: fixed
+      fixed_asset_cost: fixed
+      wear_systems: separate
+    numeric_rate_status: NOT_PUBLICLY_DISCLOSED
+  - id: AE-VLAK020-2021
+    entity: AEMFC_Vlakfontein_Mine
+    context: coal_mining
+    equipment: [CAT_745, CAT_374F, CAT_140K, CAT_D8R, CAT_D6R, KOMATSU_375A, CAT_966L]
+    labour_rate_classes:
+      - Diesel_Mechanic
+      - Semi_Skilled_Diesel_Mechanic_Assistant
+      - General_Labourer
+    service_intervals_hours: [250, 500, 750, 1000, 2000]
+    component_pricing: unit_price_and_total_price_by_component
+    numeric_rate_status: NOT_PUBLICLY_DISCLOSED
+  - id: FOSPHB-RFP-34-25-26
+    entity: Foskor
+    context: phosphate_mine
+    equipment: [CAT_789D, CAT_D10T, CAT_140K]
+    service_kit_intervals_hours: [250, 500, 1000]
+    price_structure: [complete_kit_price, individual_part_quantity, unit_price, total_price]
+    numeric_rate_status: NOT_PUBLICLY_DISCLOSED
+  - id: HITACHI-OEM-INVOICE-BENCHMARK
+    evidence_class: M3_ACTUAL_MINING_OEM_TRANSACTION
+    standard_labour_rate_zar_per_hour_ex_vat: 998.27
+    overtime_1_5x_zar_per_hour_ex_vat: 1497.40
+    use: external_oem_numeric_comparator
+pricing_dimensions:
+  - Fixed_Maintenance_Capacity_R_per_month
+  - Scheduled_Service_Event_R_per_event
+  - Diesel_Mechanic_R_per_hour
+  - Semi_Skilled_Assistant_R_per_hour
+  - General_Labour_R_per_hour
+  - Overtime_or_Specialist_R_per_hour
+  - Parts_Base_R_per_SMR_hour
+  - Lubricants_R_per_SMR_hour
+  - Lubricants_R_per_litre
+  - Component_Replacement_or_Rebuild_R_per_event
+  - GET_Undercarriage_BucketBody_R_per_SMR_hour_or_event
+  - Field_Support_Callout_Travel_Standby
+  - Condition_Monitoring_and_Technical_Support
+band_rule:
+  minimum_comparable_numeric_observations: 2
+  normalization_required: [effective_date, VAT_basis, labour_class, inclusions, equipment_class, application_class, unit]
+  insufficient_evidence_status: INSUFFICIENT_NUMERIC_EVIDENCE
+pricing_rule: >-
+  Product price SHALL be built from mining procurement pricing dimensions. A single blended R/SMR-hour maintenance price is a derived normalized output only, not the primary estimate.
+pdca:
+  do: COMPLETE
+  check: OPEN
+  act: ADAPT
+  open_items:
+    - obtain_populated_award_schedule_Foskor_RAMP
+    - obtain_populated_award_schedule_AEMFC
+    - obtain_other_mining_OEM_winning_rate_schedules
