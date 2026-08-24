@@ -1,0 +1,55 @@
+id: ZIZWE-LCC-RESERVE-PROFILE-001
+version: 0.1.0
+status: ADAPTED_FOR_REVIEW
+rule_ref: BR-OL-LCC-MAINT-RESERVE-001
+customer: Zizwe Opencast Mining (Pty) Ltd
+site: Seriti Khutala KLX
+rfq: ZIZ_KHU_MO_21072026 54 Month Mining Equipment Rental RFQ 001
+pricing_reference_hours_per_month: 240
+options:
+  A:
+    term_months: 54
+    expected_smr_hours: 12960
+    purpose: RFQ_CONFORMING
+  B:
+    term_months: 36
+    expected_smr_hours: 8640
+    purpose: COMMERCIAL_ALTERNATIVE_WITH_OPTIONAL_PURCHASE
+machines:
+  XE335G:
+    qty: 1
+    lcc_status: INCOMPLETE_FOR_FINAL_PRICING
+    reserve_status: BLOCKED_PENDING_LCC
+  XE800GK:
+    qty: 1
+    lcc_status: PARTIAL_EVIDENCE_AVAILABLE
+    evidenced_variable_cost_floor_per_hour: 519.84
+    floor_scope_note: >-
+      Current evidenced floor is not a complete approved LCC reserve; monetised labour,
+      GET and other unresolved support remain open.
+    option_A_floor_total: 6737126.40
+    option_B_floor_total: 4491417.60
+    reserve_status: CONDITIONAL_ONLY
+  XDA45:
+    qty: 4
+    lcc_status: INCOMPLETE_FOR_FINAL_PRICING
+    reserve_status: BLOCKED_PENDING_LCC
+  D8_CLASS:
+    qty: 1
+    lcc_status: MACHINE_IDENTITY_AND_LCC_UNRESOLVED
+    reserve_status: BLOCKED_PENDING_MODEL_AND_LCC
+legacy_15_percent_reserve:
+  status: SUPERSEDED_FOR_FINAL_UNDERWRITING
+  use: REGRESSION_COMPARATOR_ONLY
+submission_gate:
+  quote_valid: false
+  reasons:
+    - XE335G LCC reserve incomplete
+    - XE800GK reserve is only a cost floor, not complete LCC
+    - XDA45 LCC reserve incomplete
+    - D8 machine identity and LCC unresolved
+    - term-specific reserve schedules not fully populated
+pdca:
+  phase: CHECK_STUDY
+  result: CONDITIONAL_FAIL
+  act_recommendation: ADAPT
