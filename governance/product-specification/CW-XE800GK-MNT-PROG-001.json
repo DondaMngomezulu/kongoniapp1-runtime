@@ -1,0 +1,57 @@
+{
+  "artifact_id": "CW-XE800GK-MNT-PROG-001",
+  "version": "1.0.0",
+  "status": "CHECK_STUDY_OPEN",
+  "source_register": "VMG-AIM-FCT-001_Maintenance_Demand_Register.xlsx",
+  "source_machine_model": "XE750GK",
+  "source_note": "Source register references XE800GK LCC source; governed machine-family identity reconciliation remains required.",
+  "catalogue": "CAT-MNT-PROG-001",
+  "business_rule": "BR-MNT-PROG-001",
+  "summary": {
+    "repair_maintenance_task_rows": 59,
+    "lubricant_demand_rows": 6,
+    "repair_lifecycle_cost_r": 14597466.253665742,
+    "repair_cost_per_operating_hour_r": 486.5822084555247,
+    "recorded_labour_hours": 1119.0,
+    "unmonetised_labour_rows": 56,
+    "unpriced_lubricant_rows": 6,
+    "mapping_counts": {
+      "MNT-FM-001": 7,
+      "MNT-FM-002": 20,
+      "MNT-FM-004": 8,
+      "MNT-PM-005": 13,
+      "MNT-PM-006": 8,
+      "MNT-PM-007": 3
+    }
+  },
+  "mapping_policy": {
+    "scheduled_filters": "MNT-PM-005",
+    "scheduled_minor_service_parts": "MNT-PM-006",
+    "scheduled_minor_wear_parts": "MNT-PM-007",
+    "unscheduled_repairs": "MNT-FM-001",
+    "scheduled_major_components": "MNT-FM-002",
+    "undercarriage_running_gear": "MNT-FM-004",
+    "scheduled_labour": "MNT-PM-012",
+    "corrective_or_major_labour": "MNT-FM-012",
+    "lubricant_change": "MNT-PM-002",
+    "service_fluid_change": "MNT-PM-003"
+  },
+  "lubricant_mappings": [
+    {"task_id":"LUBE-001","component":"Gear Oil (Travel Reduction Gear)","catalogue_code":"MNT-PM-002","cost_status":"UNPRICED_IN_REGISTER"},
+    {"task_id":"LUBE-002","component":"Gear Oil (Swing Reduction Gear)","catalogue_code":"MNT-PM-002","cost_status":"UNPRICED_IN_REGISTER"},
+    {"task_id":"LUBE-003","component":"Hydraulic Oil (Hydraulic System)","catalogue_code":"MNT-PM-003","cost_status":"UNPRICED_IN_REGISTER"},
+    {"task_id":"LUBE-004","component":"Hydraulic Oil (Hydraulic Oil Tank)","catalogue_code":"MNT-PM-003","cost_status":"UNPRICED_IN_REGISTER"},
+    {"task_id":"LUBE-005","component":"Engine Oil","catalogue_code":"MNT-PM-002","cost_status":"UNPRICED_IN_REGISTER"},
+    {"task_id":"LUBE-006","component":"Antifreeze (Cooling System)","catalogue_code":"MNT-PM-003","cost_status":"UNPRICED_IN_REGISTER"}
+  ],
+  "gaps": [
+    {"id":"GAP-001","status":"OPEN","issue":"Labour hours recorded but labour rates/costs not monetised","control":"Bind governed labour rate and calculate MNT-PM-012/MNT-FM-012 cost."},
+    {"id":"GAP-002","status":"OPEN","issue":"Six lubricant demand lines unpriced in register","control":"Bind governed lubricant price and calculate term cost."},
+    {"id":"GAP-003","status":"OPEN","issue":"No explicit GET line identified","control":"Confirm GET scope and add MNT-FM-005 where applicable."},
+    {"id":"GAP-004","status":"OPEN","issue":"Condition monitoring/reporting obligations not separately monetised","control":"Confirm embedded cost or add MNT-PM-008/009/010."},
+    {"id":"GAP-005","status":"OPEN","issue":"XE750GK register identity vs XE800GK source LCC","control":"Resolve governed machine-family identity binding."},
+    {"id":"GAP-006","status":"OPEN","issue":"Some row-level source cost variances exist","control":"Investigate material variances before ACT."}
+  ],
+  "authoritative_detail": "See VMG-AIM-FCT-001_Maintenance_Demand_Register_Governed_Crosswalk_v1.0.xlsx for the full 59-row task mapping and six lubricant rows.",
+  "act_recommendation": "ADAPT"
+}
