@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:schema:lcc-maintenance-reserve:1.0.0",
+  "title": "LCC-Derived Maintenance Reserve Record",
+  "type": "object",
+  "required": [
+    "reserve_id",
+    "machine_product_id",
+    "lcc_model_id",
+    "lcc_model_version",
+    "contract_term_months",
+    "expected_smr_hours",
+    "reserve_total",
+    "reserve_rate_per_smr_hour",
+    "reserve_cash_flow_schedule",
+    "source_evidence_refs",
+    "check_result",
+    "act_decision"
+  ],
+  "properties": {
+    "reserve_id": {"type": "string", "minLength": 1},
+    "machine_product_id": {"type": "string", "minLength": 1},
+    "machine_model": {"type": ["string", "null"]},
+    "lcc_model_id": {"type": "string", "minLength": 1},
+    "lcc_model_version": {"type": "string", "minLength": 1},
+    "contract_term_months": {"type": "integer", "minimum": 1},
+    "expected_smr_hours": {"type": "number", "exclusiveMinimum": 0},
+    "reserve_total": {"type": "number", "minimum": 0},
+    "reserve_rate_per_smr_hour": {"type": "number", "minimum": 0},
+    "currency": {"const": "ZAR"},
+    "reserve_cash_flow_schedule": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["period", "amount"],
+        "properties": {
+          "period": {"type": "integer", "minimum": 1},
+          "amount": {"type": "number", "minimum": 0},
+          "event_ids": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "component_totals": {
+      "type": "object",
+      "properties": {
+        "planned_maintenance_consumption": {"type": "number", "minimum": 0},
+        "planned_maintenance_labour": {"type": "number", "minimum": 0},
+        "corrective_repair": {"type": "number", "minimum": 0},
+        "lifecycle_component_replacement": {"type": "number", "minimum": 0},
+        "lubricants_service_fluids": {"type": "number", "minimum": 0},
+        "running_gear_undercarriage": {"type": "number", "minimum": 0},
+        "ground_engaging_tools": {"type": "number", "minimum": 0},
+        "wear_parts_consumables": {"type": "number", "minimum": 0},
+        "field_maintenance_support": {"type": "number", "minimum": 0},
+        "technical_support": {"type": "number", "minimum": 0},
+        "condition_monitoring_intervention": {"type": "number", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "source_evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "legacy_percentage_proxy": {
+      "type": ["number", "null"],
+      "description": "Non-authoritative comparator only; prohibited as final reserve source."
+    },
+    "no_double_recovery": {"const": true},
+    "check_result": {"enum": ["PASS", "CONDITIONAL_PASS", "FAIL"]},
+    "act_decision": {"enum": ["ADOPT", "ADAPT", "REPEAT", "REJECT", "ESCALATE"]}
+  },
+  "allOf": [
+    {
+      "if": {"required": ["legacy_percentage_proxy"]},
+      "then": {"required": ["lcc_model_id", "reserve_total"]}
+    }
+  ],
+  "additionalProperties": false
+}
