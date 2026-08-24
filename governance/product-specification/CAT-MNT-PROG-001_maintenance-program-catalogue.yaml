@@ -1,0 +1,241 @@
+catalogue_id: CAT-MNT-PROG-001
+version: 0.1.0
+status: ADAPTED_FOR_REVIEW
+title: Governed Maintenance Program Item Catalogue
+methodology: MET-PDCA-001
+business_rule: BR-MNT-PROG-001
+purpose: >-
+  Define the mutually exclusive maintenance-program item classes that may be scheduled,
+  costed, evidenced and linked to AssetCo lifecycle economics and operating-lease pricing.
+
+scope_model:
+  preventive_maintenance_program:
+    authority: OEM_SERVICE_PLAN_SOURCE
+    description: >-
+      Scheduled preventive-maintenance scope evidenced by the XCMG XE800GK 36-month service plan.
+    includes:
+      - code: MNT-PM-001
+        name: Scheduled Service Event
+        definition: OEM-prescribed maintenance event at a defined service interval.
+        trigger_type: SMR_HOURS_OR_OEM_INTERVAL
+        evidence_required: true
+      - code: MNT-PM-002
+        name: Inspection
+        definition: Planned inspection of equipment condition at a scheduled service event.
+        trigger_type: SCHEDULED
+        evidence_required: true
+      - code: MNT-PM-003
+        name: Lubricant Change
+        definition: Scheduled change or replenishment of OEM-approved lubricants.
+        trigger_type: SMR_HOURS_OR_OEM_INTERVAL
+        evidence_required: true
+      - code: MNT-PM-004
+        name: Service Fluid Change
+        definition: Scheduled replacement or replenishment of OEM-approved service fluids.
+        trigger_type: SMR_HOURS_OR_OEM_INTERVAL
+        evidence_required: true
+      - code: MNT-PM-005
+        name: Filter Replacement
+        definition: Scheduled replacement of oil, fuel, air, hydraulic or other service filters.
+        trigger_type: SMR_HOURS_OR_OEM_INTERVAL
+        evidence_required: true
+      - code: MNT-PM-006
+        name: Consumable Replacement
+        definition: Scheduled replacement of maintenance consumables used in preventive maintenance.
+        trigger_type: SMR_HOURS_OR_OEM_INTERVAL
+        evidence_required: true
+      - code: MNT-PM-007
+        name: Minor Wear Part Replacement
+        definition: Scheduled replacement of minor wear parts within the preventive-maintenance scope.
+        trigger_type: CONDITION_OR_INTERVAL
+        evidence_required: true
+      - code: MNT-PM-008
+        name: Condition Monitoring
+        definition: Condition-monitoring activity necessary to assess equipment condition and support OEM compliance.
+        trigger_type: SCHEDULED_OR_CONDITION
+        evidence_required: true
+      - code: MNT-PM-009
+        name: Condition Report
+        definition: Recorded inspection or condition-monitoring result issued after a service event.
+        trigger_type: SERVICE_EVENT
+        evidence_required: true
+      - code: MNT-PM-010
+        name: Service Record
+        definition: Evidence record confirming execution of the planned maintenance event.
+        trigger_type: SERVICE_EVENT
+        evidence_required: true
+      - code: MNT-PM-011
+        name: Warranty Claim Support
+        definition: Maintenance evidence and support required for warranty claims where applicable.
+        trigger_type: WARRANTY_EVENT
+        evidence_required: true
+      - code: MNT-PM-012
+        name: Preventive Maintenance Labour
+        definition: Direct labour required to perform the scheduled preventive-maintenance event.
+        trigger_type: SERVICE_EVENT
+        evidence_required: true
+
+  full_maintenance_program_extension:
+    authority: KONGONI_LCC_APPLICATION_PROFILE
+    description: >-
+      Additional lifecycle-maintenance items required for a full-maintenance operating-lease product.
+      These items are not asserted to be included in the cited OEM preventive service plan; they are
+      separately governed AssetCo/LCC items and require their own source, cost and evidence.
+    includes:
+      - code: MNT-FM-001
+        name: Corrective Repair
+        definition: Unscheduled repair parts and directly attributable repair activity following a failure or defect.
+        trigger_type: FAILURE_OR_CONDITION
+        evidence_required: true
+      - code: MNT-FM-002
+        name: Major Component Replacement
+        definition: Hour-driven or condition-driven replacement of a major component.
+        trigger_type: SMR_HOURS_OR_CONDITION
+        evidence_required: true
+      - code: MNT-FM-003
+        name: Major Component Rebuild
+        definition: Planned or condition-driven overhaul or rebuild of a major component.
+        trigger_type: SMR_HOURS_OR_CONDITION
+        evidence_required: true
+      - code: MNT-FM-004
+        name: Undercarriage and Running Gear
+        definition: Tracks, rollers, idlers, sprockets, tensioners, tyres or equivalent running-gear maintenance.
+        trigger_type: SMR_HOURS_OR_CONDITION
+        evidence_required: true
+      - code: MNT-FM-005
+        name: Ground Engaging Tools
+        definition: Teeth, adaptors, cutting edges, shrouds and equivalent ground-engaging wear systems.
+        trigger_type: SMR_HOURS_OR_CONDITION
+        evidence_required: true
+      - code: MNT-FM-006
+        name: Wear Parts and Consumables
+        definition: Other identifiable hour-driven wear parts and consumables not already classified as preventive-maintenance consumables.
+        trigger_type: SMR_HOURS_OR_CONDITION
+        evidence_required: true
+      - code: MNT-FM-007
+        name: Field Maintenance Support
+        definition: Direct field-service support attributable to the operating machine.
+        trigger_type: SERVICE_OR_FAILURE_EVENT
+        evidence_required: true
+      - code: MNT-FM-008
+        name: Technical Maintenance Support
+        definition: Direct technical support attributable to diagnosis, maintenance or repair of the machine.
+        trigger_type: SERVICE_OR_FAILURE_EVENT
+        evidence_required: true
+      - code: MNT-FM-009
+        name: Condition-Based Intervention
+        definition: Maintenance intervention initiated by measured condition or diagnostic evidence.
+        trigger_type: CONDITION
+        evidence_required: true
+      - code: MNT-FM-010
+        name: Critical Spare Consumption
+        definition: Consumption of governed critical spares attributable to a maintenance or repair event.
+        trigger_type: SERVICE_OR_FAILURE_EVENT
+        evidence_required: true
+      - code: MNT-FM-011
+        name: Breakdown Recovery Support
+        definition: Maintenance-related recovery activity needed to restore the machine to service, excluding customer-caused damage unless separately accepted.
+        trigger_type: FAILURE_EVENT
+        evidence_required: true
+      - code: MNT-FM-012
+        name: Corrective Maintenance Labour
+        definition: Direct labour attributable to unscheduled corrective maintenance or repair.
+        trigger_type: FAILURE_OR_CONDITION
+        evidence_required: true
+
+explicit_oem_plan_exclusions:
+  source_scope: XCMG_XE800GK_36_MONTH_PREVENTIVE_SERVICE_PLAN
+  items:
+    - Unplanned breakdowns or accident-related repairs
+    - Major component overhauls or replacements
+    - Misuse, negligence or damage due to unauthorised modifications
+  control: >-
+    These exclusions apply to the cited OEM preventive service plan only. If a Kongoni full-maintenance
+    product assumes any of these costs, they SHALL be separately modelled, priced and contractually allocated.
+
+required_item_fields:
+  - maintenance_item_id
+  - catalogue_code
+  - machine_model_or_asset_class
+  - source_reference
+  - source_version
+  - maintenance_strategy
+  - trigger_type
+  - first_due_smr_hours
+  - interval_smr_hours
+  - calendar_interval
+  - quantity_per_event
+  - parts_cost_per_event
+  - lubricant_or_fluid_cost_per_event
+  - labour_hours_per_event
+  - labour_rate
+  - labour_cost_per_event
+  - external_service_cost_per_event
+  - total_cost_per_event
+  - expected_occurrences_in_term
+  - term_cost
+  - cost_per_smr_hour
+  - l5_product_code
+  - evidence_reference
+  - inclusion_status
+  - approval_status
+
+maintenance_strategy_values:
+  - PREVENTIVE
+  - PREDICTIVE_CONDITION_BASED
+  - CORRECTIVE
+  - REBUILD
+  - REPLACEMENT
+  - INSPECTION
+  - SUPPORT
+
+inclusion_status_values:
+  - INCLUDED_PREVENTIVE_PROGRAM
+  - INCLUDED_FULL_MAINTENANCE_EXTENSION
+  - EXCLUDED_CUSTOMER_CAUSED
+  - EXCLUDED_FINCO_FIXED_COST
+  - EXCLUDED_FUEL
+  - NOT_APPLICABLE
+
+anti_double_count_control:
+  rule: >-
+    Every maintenance cost SHALL map to exactly one catalogue item and one AssetCo L5 product code for a given
+    pricing horizon. No cost may be recovered simultaneously through the fixed-capacity component and the
+    variable maintenance/LCC component unless an explicit allocation rule splits the cost without duplication.
+
+source_provenance:
+  - source: XCMG XE800GK 36-month service plan
+    authority: OEM_SOURCE
+    supports:
+      - planned maintenance
+      - scheduled service intervals
+      - inspections
+      - consumables
+      - lubricant and fluid changes
+      - filter changes
+      - minor wear parts
+      - condition monitoring
+      - service records and reports
+      - warranty support
+      - OEM-approved spares and consumables
+  - source: VMG-AIM-FCT-001 Maintenance Demand Register
+    authority: GOVERNED_LCC_WORKING_SOURCE
+    supports:
+      - component-level repair tasks
+      - first-hours and interval-hours triggers
+      - occurrences
+      - labour hours
+      - lifetime cost
+      - cost per operating hour
+  - source: Zizwe revised quotation L5 methodology
+    authority: TRANSACTION_APPLICATION_PROFILE
+    supports:
+      - corrective repair
+      - lifecycle component replacement
+      - lubricants and service fluids
+      - running gear and undercarriage
+      - GET
+      - wear parts and consumables
+      - field maintenance support
+      - technical support
+      - condition monitoring and intervention
