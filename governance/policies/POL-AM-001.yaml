@@ -1,0 +1,207 @@
+policy_id: POL-AM-001
+name: Group Asset Management Policy
+version: 1.0.0
+status: ADOPTED_PENDING_MERGE
+effective_date: 2026-08-24
+methodology: MET-PDCA-001
+owner: Group CEO / Enterprise Governance
+accountability_owner: Chief of Accountability / Reandra
+records_owner: Document Controller / Jane Seaward
+primary_value_stream: VS04
+operational_alias: AssetCo
+purpose: >-
+  Establish the mandatory Group policy for managing assets and authoritative asset records across their life cycles so that Kongoni Group realises value, controls risk, preserves persistent asset identity, aligns financial and non-financial information, and maintains reliable lifecycle evidence.
+scope:
+  applies_to:
+    - all Kongoni Group entities and value streams
+    - all governed asset classes
+    - all enterprise asset records and lifecycle events
+    - all agents, applications and services that create or change asset information
+  excludes:
+    - purely financial instruments governed exclusively as financial assets unless they also reference a physical or other enterprise asset
+standards_precedence:
+  - order: 1
+    authority: applicable_law_regulation_and_executed_agreements
+    role: binding obligations and constraints
+  - order: 2
+    authority: ISO_55000_2024
+    role: asset management vocabulary, principles and value realisation
+  - order: 3
+    authority: ISO_55001_2024
+    role: asset management system requirements and policy authority
+  - order: 4
+    authority: ISO_55013_2024
+    role: management of data supporting asset management objectives
+  - order: 5
+    authority: ISO_TS_55010_2024
+    role: alignment of financial and non-financial asset management functions
+  - order: 6
+    authority: MIMOSA_CCOM_4_0_0
+    role: canonical lifecycle information and interoperability semantics
+  - order: 7
+    authority: MIMOSA_OIIE_OSA_EAI_OSA_CBM
+    role: lifecycle interoperability, maintenance and condition monitoring
+  - order: 8
+    authority: applicable_IFRS
+    role: accounting recognition, measurement, impairment, presentation and derecognition projection
+  - order: 9
+    authority: Kongoni_enterprise_controls
+    role: execution, evidence, semantic, records and repository governance
+principles:
+  - id: AM-P01
+    rule: Asset management SHALL be aligned to organisational objectives and shall optimise lifecycle value, performance, risk and cost rather than isolated acquisition cost or accounting value.
+  - id: AM-P02
+    rule: Every governed enterprise asset SHALL have one persistent canonical identity throughout its lifecycle unless the underlying asset identity substantively changes.
+  - id: AM-P03
+    rule: Changes to ownership, location, configuration, condition, state, financial measurement or lifecycle status SHALL be represented as governed temporal relationships or projections and SHALL NOT create duplicate canonical asset identities.
+  - id: AM-P04
+    rule: The Enterprise Asset Register SHALL be the canonical group register for enterprise assets. Downstream operational, financial, maintenance, insurance and CRM records SHALL reference the canonical asset identifier.
+  - id: AM-P05
+    rule: Asset lifecycle semantics SHALL use MIMOSA CCOM as the primary interoperability model for physical and lifecycle-managed assets, with governed enterprise extensions only where a documented semantic gap exists.
+  - id: AM-P06
+    rule: Financial and non-financial asset information SHALL remain reconcilable. Applicable IFRS treatment SHALL be a projection of the canonical asset identity and lifecycle evidence, not a competing asset master.
+  - id: AM-P07
+    rule: Asset data used for decisions SHALL have controlled provenance, quality, currency, authority, and evidence appropriate to the decision risk.
+  - id: AM-P08
+    rule: Material lifecycle decisions SHALL be evidence-based and shall consider value, performance, risk, condition, utilisation, cost, residual value, obligations and lifecycle alternatives.
+  - id: AM-P09
+    rule: Asset records and lifecycle evidence SHALL be retained and superseded through controlled history. Deletion or destructive overwrite of authoritative lifecycle history is prohibited except under approved records-disposition controls.
+  - id: AM-P10
+    rule: No material asset-register change is complete at DO_COMPLETE. Closure requires CHECK_STUDY evidence, an ACT decision, and update of required authoritative records.
+asset_register_requirements:
+  canonical_register_id: EAR-001
+  mandatory_core_objects:
+    - EnterpriseAsset
+    - AssetType
+    - AssetModel
+    - AssetModelEvent
+    - AssetComponent
+    - Site
+    - Segment
+    - AssetSegmentEvent
+    - AssetOwnerEvent
+    - AssetHealthAssessment
+    - Measurement
+    - AssetEvent
+    - WorkRequest
+    - WorkOrder
+    - CompletedWork
+    - AssetDocumentLink
+    - AssetSourceReference
+    - AssetDataQuality
+    - AssetFinancialProjection
+  identity_controls:
+    - asset_id_unique_immutable
+    - manufacturer_and_serial_number_duplicate_check_where_applicable
+    - model_instance_separation
+    - component_configuration_temporal_validity
+    - one_active_canonical_asset_record_per_asset_identity
+lifecycle_controls:
+  stages:
+    - IDENTIFY_DISCOVER
+    - CLASSIFY
+    - REGISTER
+    - CONFIGURE
+    - ESTABLISH_OWNER_AND_LOCUS
+    - ESTABLISH_FINANCIAL_PROJECTION
+    - OPERATE_AND_OBSERVE
+    - MAINTAIN_MODIFY
+    - RECONCILE
+    - ASSESS_LIFECYCLE_DECISION
+    - DISPOSE_DERECOGNISE
+    - PRESERVE_RECORD
+  required_gates:
+    - G1_IDENTITY
+    - G2_CLASSIFICATION
+    - G3_PROVENANCE
+    - G4_CONFIGURATION
+    - G5_LOCATION_OWNER
+    - G6_DATA_QUALITY
+    - G7_FINANCIAL_BINDING
+    - G8_LIFECYCLE_EVENT
+    - G9_DISPOSAL
+    - G10_PDCA_CLOSE
+financial_alignment:
+  rule: Applicable IFRS standards SHALL be selected by asset class and economic relationship.
+  examples:
+    IAS_16: property_plant_and_equipment
+    IAS_36: impairment
+    IFRS_5: qualifying_non_current_assets_held_for_sale
+    IFRS_16: leases_and_right_of_use_assets_where_applicable
+    IAS_38: qualifying_intangible_assets
+    IFRS_9: financial_assets_where_applicable
+  prohibition: Accounting records SHALL NOT replace the Enterprise Asset Register as the canonical asset identity source.
+decision_requirements:
+  material_decisions:
+    - acquire
+    - commission
+    - deploy
+    - transfer
+    - maintain
+    - rebuild
+    - modify_configuration
+    - redeploy
+    - impair
+    - replace
+    - classify_held_for_sale
+    - sell
+    - retire
+    - derecognise
+  minimum_evidence:
+    - canonical_asset_id
+    - asset_type_and_model
+    - current_owner_and_locus
+    - configuration_state_where_material
+    - condition_and_performance_evidence_where_applicable
+    - lifecycle_cost_and_economic_evidence_where applicable
+    - obligations_and_agreements_where_applicable
+    - financial_projection_where_applicable
+    - provenance_and_data_quality_status
+roles:
+  Group_CEO: approves policy and reserved material exceptions
+  Reandra_Chief_of_Accountability: owns execution governance, PDCA control, cross-value-stream accountability and closure assurance
+  Jane_Seaward_Document_Controller: owns controlled-document and records lifecycle, authoritative record declaration, retention and disposition evidence
+  AssetCo_VS04: owns asset lifecycle performance domain semantics and lifecycle-management operating model
+  Finance: owns applicable accounting projections and reconciliation under IFRS
+  Asset_Owner_or_Custodian: accountable for asset-specific operational accuracy and lifecycle decisions within mandate
+  Data_Steward: responsible for register data quality, provenance and semantic conformance
+repository_roles:
+  Catalyst_Development: authoritative structured runtime for governed asset identities, relationships, controls and lifecycle evidence during development
+  GitHub: governed schema, policy, rules and engineering contract
+  Zoho_CRM: operational projection and transactional references; SHALL NOT become a competing asset master
+  Google_Drive: controlled source documents and provenance artefacts; SHALL reference canonical asset IDs
+controls:
+  - CTL-AM-EAR-001
+  - CTL-OBL-AUTH-001
+  - CTL-ACT-CTX-001
+  - CTL-GOV-ENT-001
+  - CTL-ART-SEM-001
+  - CTL-EDRMS-REC-001
+  - CTL-STD-LIFECYCLE-001
+skill_binding:
+  skill_id: SKL-ASSET-REGISTER-001
+  status: DESIGN_REQUIRED
+  mandate: Enterprise Asset Register Lifecycle Management
+exceptions:
+  rule: Exceptions SHALL be explicit, evidence-backed, time-bounded, assigned to an owner, approved by competent authority and shall not rewrite canonical history or silently bypass law, contract or higher-order controls.
+assurance:
+  required_checks:
+    - duplicate_identity_check
+    - canonical_name_and_type_validation
+    - configuration_temporal_integrity
+    - current_owner_and_locus_resolvability
+    - data_quality_and_provenance_check
+    - financial_nonfinancial_reconciliation_where_applicable
+    - lifecycle_event_to_work_traceability_where_applicable
+    - disposal_and_derecognition_reconciliation
+    - regression_assessment_for_material_schema_or_rule_changes
+review:
+  frequency: at_least_annually_and_on_material_change
+  triggers:
+    - material_change_to_ISO_55000_series
+    - material_change_to_MIMOSA_CCOM_or_interoperability_profile
+    - material_change_to_applicable_IFRS
+    - material_enterprise_architecture_change
+    - significant_control_failure_or_audit_finding
+    - new_asset_class_with_unresolved_semantic_or_accounting_treatment
+act_state: ADOPT
