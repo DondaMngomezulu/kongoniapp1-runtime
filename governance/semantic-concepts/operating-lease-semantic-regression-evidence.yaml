@@ -1,0 +1,57 @@
+id: ER-SEM-OL-001
+name: Operating Lease Semantic Promotion Regression Evidence
+version: 1.0.0
+status: DO_COMPLETE
+change_set_id: SEM-OL-ADAPT-2026-08-21
+methodology: MET-PDCA-001
+scope:
+  product_type: PRD-L3-FIN-OLEASE
+  promoted_concepts:
+    - SEM-AGR-OPTION-001
+    - SEM-RESERVE-001
+    - SEM-ASSET-RV-001
+    - SEM-ASSET-USAGE-001
+    - SEM-ASSET-USAGE-MEASURE-001
+checks:
+  - check_id: CHK-OL-SEM-001
+    test: Product taxonomy preservation
+    expected: Operating Lease remains L3 under Financial Services / Leasing.
+    result: PASS
+    evidence: governance/product-taxonomy/enterprise-product-taxonomy.yaml
+  - check_id: CHK-OL-SEM-002
+    test: Governing standard preservation
+    expected: Operating Lease remains governed by BIAN Corporate Lease with FIBO and TM Forum secondary semantics.
+    result: PASS
+    evidence: governance/product-taxonomy/product-type-governing-standard-matrix.yaml
+  - check_id: CHK-OL-SEM-003
+    test: Canonical identifier uniqueness within change set
+    expected: Every promoted concept has a distinct SEM identifier and preferred label.
+    result: PASS
+    evidence: governance/semantic-concepts/enterprise-semantic-concept-registry.yaml
+  - check_id: CHK-OL-SEM-004
+    test: Lease specialisation binding
+    expected: Lease-specific options, reserves, residual values, and usage concepts reference promoted enterprise parents.
+    result: PASS
+    evidence: governance/product-specification/operating-lease-semantic-bindings.yaml
+  - check_id: CHK-OL-SEM-005
+    test: No product-specific primitive promotion
+    expected: Operating Lease, lease charges, party roles, lease term, and lease events remain specialisations rather than enterprise primitives.
+    result: PASS
+    evidence: governance/product-specification/operating-lease-semantic-bindings.yaml
+  - check_id: CHK-OL-SEM-006
+    test: Cross-domain reuse
+    expected: Promoted concepts support at least two value-stream/product domains without changing their identity.
+    result: PASS
+    evidence: governance/semantic-concepts/enterprise-semantic-concept-registry.yaml
+regression_assessment:
+  taxonomy_breaking_change: false
+  identifier_collision_detected: false
+  orphan_promoted_concepts_detected: false
+  product_type_reclassification: false
+  external_standard_boundary_violation: false
+remaining_checks_before_adopt:
+  - Runtime referential-integrity validation in Zoho Catalyst when semantic registry persistence is available.
+  - Zoho CRM binding/readback for Operating Lease ProductTaxonomy and ProductSpecification references.
+  - Enterprise-wide duplicate-label sweep beyond the currently governed GitHub semantic artifacts.
+act_status: PENDING
+closure_rule: DO_COMPLETE does not equal TASK_COMPLETE; ACT decision and authoritative record updates are required before closure.
