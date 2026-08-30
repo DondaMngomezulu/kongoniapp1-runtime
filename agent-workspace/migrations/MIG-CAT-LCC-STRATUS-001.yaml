@@ -1,0 +1,51 @@
+migration_id: MIG-CAT-LCC-STRATUS-001
+title: LCC Model Dataset Payload Migration — Catalyst Data Store to Stratus
+version: '0.1'
+status: DO_PARTIAL_FAIL_CLOSED
+task_class: T2
+methodology: MET-PDCA-001
+source:
+  environment: Development
+  project: Kongoniapp1
+  project_id: '86824000000020001'
+  table: LCC_ModelDatasetChunk
+  table_id: '86824000000177097'
+  row_count: 5
+  bulk_read_job_id: '86824000000424422'
+  bulk_read_status: Completed
+  records_processed: 5
+  more_records: false
+target:
+  service: Catalyst Stratus
+  environment: Development
+  bucket: vs04-asset-lifecycle-performance-dev
+  value_stream: VS04 Asset Lifecycle Performance
+  versioning: true
+  encryption: true
+  audit_consent: true
+  key_pattern: 'lcc/datasets/{Variant_ID}/{Dataset_Chunk_ID}.payload.b64'
+controls:
+  - preserve_exact_source_payload_before_transformation
+  - compute_and_record_source_payload_sha256
+  - read_back_uploaded_object
+  - verify_uploaded_bytes_equal_source_bytes
+  - preserve Dataset_SHA256 as source-declared dataset hash
+  - update relational binding before source payload retirement
+  - delete_source_payload_only_after_all_five_objects_pass
+  - rollback_source_rows_if_any_post-migration regression occurs
+execution_evidence:
+  - 'Catalyst bulk read job 86824000000424422 completed and processed all 5 rows.'
+  - 'VS04 Development Stratus bucket confirmed active with versioning, encryption and audit consent enabled.'
+  - 'Bucket upload signature successfully issued with GetObject and PutObject authority.'
+  - 'A signed upload URL was successfully generated for LCC-VAR-XDE260-USD-20240901-C01.'
+blocker:
+  code: TOOLCHAIN-UPLOAD-BODY-001
+  description: 'Current Catalyst MCP exposes upload-signature generation but no direct PutObject body upload. The local execution container has no outbound network route to the Catalyst bulk-read download endpoint, and no deployed Catalyst uploader runtime is currently available.'
+  treatment: 'FAIL CLOSED. Retain all 5 source rows. Execute transfer through an authorised Catalyst Function/AppSail or other network-enabled uploader using the recorded bulk job/download source and target bucket.'
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: NOT_YET_ELIGIBLE
+  act_decision: ADAPT
+  task_complete: false
+closure_rule: 'DO_COMPLETE != TASK_COMPLETE'
