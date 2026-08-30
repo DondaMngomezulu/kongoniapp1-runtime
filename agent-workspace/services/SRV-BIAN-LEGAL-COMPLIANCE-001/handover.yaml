@@ -1,0 +1,68 @@
+handover:
+  id: HO-SRV-BIAN-LEGAL-COMPLIANCE-001
+  version: '0.1'
+  profile_ref: PRF-ARCH-MICROSVC-HO-001
+  gate_ref: GATE-ARCH-TO-ENG-001
+  microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+  register_ref: REG-ARCH-MICROSVC-001
+  service_specification_ref: service-specification.yaml
+  architecture_version: '0.1'
+  source_refs:
+    - BIAN 14.0.0 Legal Compliance
+    - OASIS LegalRuleML 1.0
+    - WF-LEGAL-RULE-COD-001
+    - Kiboko/Venduo Secured Term Facility LegalRuleML reference package
+    - SABS Standards Division and SABS/TC 0168 Financial services
+    - SARS tax and VAT guidance applicable to debt, lease, operating lease and rental concepts
+    - IFRS 9 Financial Instruments
+    - IFRS 16 Leases
+    - ELFA equipment-finance commercial reference material
+  required_artifact_refs:
+    - service-specification.yaml
+    - architecture.yaml
+    - data-model.yaml
+    - openapi.yaml
+    - test-specification.yaml
+    - rules/product-finance-semantics-v0.1.yaml
+    - rules/product-agreement-mapping-v0.1.yaml
+    - reference-execution/product-finance-semantic-simulation-v0.1.yaml
+  target_environment: Zoho Catalyst Development
+  engineering_authority_ref: ENV-AUTH-CAT-KONGONIAPP1-DEV
+  execution_mode_current: REFERENCE_SIMULATION
+  handover_status: DRAFT
+  mandatory_gate_checks:
+    register_entry: PASS
+    service_specification: PASS_DRAFT_REQUIRES_ACT
+    architecture_description: PASS
+    architecture_decisions: PASS
+    domain_semantics: PASS
+    canonical_data_model: PASS
+    input_contract: PASS
+    output_contract: PASS
+    lineage_and_provenance: PASS
+    synchronous_api_contract: PASS
+    asynchronous_event_contract: NOT_APPLICABLE_CURRENT_CANARY
+    business_rules: PASS_WITH_PRODUCT_RULE_PACKAGE
+    application_authority_mapping: PASS
+    security_design: PASS
+    nfr_slo_profile: PASS_FOR_DEVELOPMENT_BASELINE
+    audit_evidence_contract: PASS_ARCHITECTURE_DEFINED
+    dependency_manifest: PASS
+    runtime_constraints: PASS
+    test_specification: PASS
+    product_semantic_rule_package: PASS_READBACK
+    product_agreement_mapping: PASS_READBACK
+    reference_execution: PASS_WITH_CONTROLLED_GAPS
+    deployment_and_rollback_requirements: PARTIAL_REQUIRES_ENGINEERING_PLAN
+    operational_runbook_requirements: NOT_APPLICABLE_PRE_PRODUCTION
+    acceptance_criteria: PASS
+    process_traceability: GAP_REQUIRES_APQC_MAPPING_OR_APPROVED_EXCEPTION
+  blocking_gaps:
+    - service specification and product rule package require governance ACT before engineering authorisation
+    - APQC L3-L5 process traceability has not yet been bound for this service
+    - exact OASIS LegalRuleML XSD/profile validation remains unresolved for Production use
+    - no publicly discoverable SANS product definition was identified for the four commercial product classes; the authority gap is retained explicitly and shall not be filled by inference
+  engineering_allowed: false
+  production_allowed: false
+  next_state_on_adopt: COMPLETE_APQC_TRACEABILITY_AND_GATE_ASSESSMENT
+  closure_rule: DO_COMPLETE != TASK_COMPLETE
