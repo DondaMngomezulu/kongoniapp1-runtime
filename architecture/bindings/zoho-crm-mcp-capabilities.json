@@ -1,0 +1,342 @@
+{
+  "registerId": "CRM-MCP-CAP-001",
+  "observedDate": "2026-10-03",
+  "service": "ZohoCRM",
+  "totalTools": 1309,
+  "featureGroups": [
+    {
+      "name": "Process Management",
+      "toolCount": 85
+    },
+    {
+      "name": "Automation",
+      "toolCount": 116
+    },
+    {
+      "name": "Customization",
+      "toolCount": 238
+    },
+    {
+      "name": "Related Records & Notes",
+      "toolCount": 28
+    },
+    {
+      "name": "Contact Roles",
+      "toolCount": 13
+    },
+    {
+      "name": "Record Actions",
+      "toolCount": 32
+    },
+    {
+      "name": "Emails",
+      "toolCount": 32
+    },
+    {
+      "name": "Bulk APIs",
+      "toolCount": 9
+    },
+    {
+      "name": "Company Settings",
+      "toolCount": 67
+    },
+    {
+      "name": "Calendar & Appointments",
+      "toolCount": 48
+    },
+    {
+      "name": "Records",
+      "toolCount": 228
+    },
+    {
+      "name": "Experience Center",
+      "toolCount": 38
+    },
+    {
+      "name": "Lead Conversion",
+      "toolCount": 11
+    },
+    {
+      "name": "Analytics & Reports",
+      "toolCount": 86
+    },
+    {
+      "name": "Security Control",
+      "toolCount": 124
+    },
+    {
+      "name": "Custom Buttons",
+      "toolCount": 10
+    },
+    {
+      "name": "Duplicate Management",
+      "toolCount": 10
+    },
+    {
+      "name": "Email Settings",
+      "toolCount": 65
+    },
+    {
+      "name": "Developer Hub",
+      "toolCount": 111
+    },
+    {
+      "name": "Channels",
+      "toolCount": 21
+    },
+    {
+      "name": "Notes & Attachments",
+      "toolCount": 17
+    },
+    {
+      "name": "Search & Query",
+      "toolCount": 10
+    },
+    {
+      "name": "Misc",
+      "toolCount": 4
+    },
+    {
+      "name": "Sandbox",
+      "toolCount": 19
+    },
+    {
+      "name": "Users & Roles",
+      "toolCount": 74
+    },
+    {
+      "name": "Zia",
+      "toolCount": 28
+    },
+    {
+      "name": "Recycle Bin",
+      "toolCount": 8
+    }
+  ],
+  "capabilities": [
+    {
+      "capabilityId": "CAP-CRM-001",
+      "featureGroup": "Records",
+      "label": "Generic record retrieval",
+      "status": "Direct",
+      "binding": "ZohoCRM_getRecord;ZohoCRM_getRecords"
+    },
+    {
+      "capabilityId": "CAP-CRM-002",
+      "featureGroup": "Records",
+      "label": "Create records",
+      "status": "Direct",
+      "binding": "ZohoCRM_createRecords"
+    },
+    {
+      "capabilityId": "CAP-CRM-003",
+      "featureGroup": "Records",
+      "label": "Update records",
+      "status": "Direct",
+      "binding": "ZohoCRM_updateRecord;ZohoCRM_updateRecords"
+    },
+    {
+      "capabilityId": "CAP-CRM-004",
+      "featureGroup": "Records",
+      "label": "Delete records",
+      "status": "Direct",
+      "binding": "ZohoCRM_deleteRecord;ZohoCRM_deleteRecords"
+    },
+    {
+      "capabilityId": "CAP-CRM-005",
+      "featureGroup": "Records",
+      "label": "Upsert records",
+      "status": "Direct",
+      "binding": "ZohoCRM_upsertRecords"
+    },
+    {
+      "capabilityId": "CAP-CRM-006",
+      "featureGroup": "Search & Query",
+      "label": "Search records",
+      "status": "Direct",
+      "binding": "ZohoCRM_searchRecords;ZohoCRM_bulkSearchRecords"
+    },
+    {
+      "capabilityId": "CAP-CRM-007",
+      "featureGroup": "Search & Query",
+      "label": "COQL query",
+      "status": "Direct",
+      "binding": "ZohoCRM_executeCOQLQuery"
+    },
+    {
+      "capabilityId": "CAP-CRM-008",
+      "featureGroup": "Customization",
+      "label": "Module metadata",
+      "status": "Direct",
+      "binding": "ZohoCRM_getModules;ZohoCRM_getModuleByApiName"
+    },
+    {
+      "capabilityId": "CAP-CRM-009",
+      "featureGroup": "Customization",
+      "label": "Field metadata/configuration",
+      "status": "Direct",
+      "binding": "ZohoCRM_getFields;ZohoCRM_createFields;ZohoCRM_updateField"
+    },
+    {
+      "capabilityId": "CAP-CRM-010",
+      "featureGroup": "Customization",
+      "label": "Layouts and layout rules",
+      "status": "Direct",
+      "binding": "ZohoCRM_getLayouts;ZohoCRM_getLayoutById"
+    },
+    {
+      "capabilityId": "CAP-CRM-011",
+      "featureGroup": "Customization",
+      "label": "Picklists and dependencies",
+      "status": "Direct",
+      "binding": "ZohoCRM_getPickListValues;ZohoCRM_createMapDependency"
+    },
+    {
+      "capabilityId": "CAP-CRM-012",
+      "featureGroup": "Related Records & Notes",
+      "label": "Related records",
+      "status": "Direct",
+      "binding": "ZohoCRM_getRelatedRecords;ZohoCRM_updateRelatedRecords"
+    },
+    {
+      "capabilityId": "CAP-CRM-013",
+      "featureGroup": "Bulk APIs",
+      "label": "Bulk read",
+      "status": "Direct",
+      "binding": "ZohoCRM_createBulkReadJob"
+    },
+    {
+      "capabilityId": "CAP-CRM-014",
+      "featureGroup": "Bulk APIs",
+      "label": "Bulk write",
+      "status": "Direct",
+      "binding": "ZohoCRM_createBulkWriteJob"
+    },
+    {
+      "capabilityId": "CAP-CRM-015",
+      "featureGroup": "Automation",
+      "label": "Workflow rules",
+      "status": "Direct",
+      "binding": "workflow rule contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-016",
+      "featureGroup": "Process Management",
+      "label": "Blueprints",
+      "status": "Direct",
+      "binding": "ZohoCRM_activateBlueprint"
+    },
+    {
+      "capabilityId": "CAP-CRM-017",
+      "featureGroup": "Automation",
+      "label": "Webhooks",
+      "status": "Direct",
+      "binding": "webhook contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-018",
+      "featureGroup": "Customization",
+      "label": "Variables and variable groups",
+      "status": "Direct",
+      "binding": "ZohoCRM_getVariables;ZohoCRM_getVariableGroups"
+    },
+    {
+      "capabilityId": "CAP-CRM-019",
+      "featureGroup": "Customization",
+      "label": "Webforms",
+      "status": "Direct",
+      "binding": "ZohoCRM_getWebforms;ZohoCRM_createWebforms"
+    },
+    {
+      "capabilityId": "CAP-CRM-020",
+      "featureGroup": "Company Settings",
+      "label": "Pipelines",
+      "status": "Direct",
+      "binding": "ZohoCRM_getPipelines;ZohoCRM_createPipeline"
+    },
+    {
+      "capabilityId": "CAP-CRM-021",
+      "featureGroup": "Users & Roles",
+      "label": "Users roles profiles",
+      "status": "Direct",
+      "binding": "users/roles/profiles contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-022",
+      "featureGroup": "Security Control",
+      "label": "Territories and sharing",
+      "status": "Direct",
+      "binding": "territory/sharing contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-023",
+      "featureGroup": "Analytics & Reports",
+      "label": "Reports and analytics",
+      "status": "Direct",
+      "binding": "report/analytics contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-024",
+      "featureGroup": "Emails",
+      "label": "CRM email operations",
+      "status": "Direct",
+      "binding": "email contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-025",
+      "featureGroup": "Sandbox",
+      "label": "Sandbox lifecycle",
+      "status": "Direct",
+      "binding": "sandbox contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-026",
+      "featureGroup": "Zia",
+      "label": "Zia capabilities",
+      "status": "Direct",
+      "binding": "Zia contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-027",
+      "featureGroup": "Recycle Bin",
+      "label": "Recycle-bin lifecycle",
+      "status": "Direct",
+      "binding": "recycle-bin contracts"
+    },
+    {
+      "capabilityId": "CAP-CRM-028",
+      "featureGroup": "Composite",
+      "label": "Composite API",
+      "status": "Not Exposed",
+      "binding": "No matching MCP contract in 1309-tool scan"
+    },
+    {
+      "capabilityId": "CAP-CRM-029",
+      "featureGroup": "GraphQL",
+      "label": "GraphQL API",
+      "status": "Not Exposed",
+      "binding": "No matching MCP contract in 1309-tool scan"
+    },
+    {
+      "capabilityId": "CAP-CRM-030",
+      "featureGroup": "Records",
+      "label": "External-ID operations",
+      "status": "Unresolved",
+      "binding": "No explicit external-ID contract; generic duplicate_check_fields is not treated as equivalent"
+    },
+    {
+      "capabilityId": "CAP-CRM-031",
+      "featureGroup": "Records",
+      "label": "Subform operations",
+      "status": "Covered via Generic Records",
+      "binding": "ZohoCRM_getFields + generic record additionalProperties payloads"
+    },
+    {
+      "capabilityId": "CAP-CRM-032",
+      "featureGroup": "Records",
+      "label": "Rich-text retrieval",
+      "status": "Direct",
+      "binding": "ZohoCRM_fetchFullDataForSingleRecord;ZohoCRM_fetchFullDataForMultipleRecords"
+    }
+  ]
+}
