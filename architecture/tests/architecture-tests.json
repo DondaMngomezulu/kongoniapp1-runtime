@@ -75,43 +75,50 @@
   ],
   "fieldTraceability": {
     "suite": "CRM-FIELD-TRACE-001",
+    "observedDate": "2026-10-03",
     "results": [
       {
         "id": "module-scope",
         "pass": true,
-        "observed": 12
+        "observed": 12,
+        "expected": 12
       },
       {
         "id": "governed-variable-scope",
         "pass": true,
-        "observed": 20
+        "observed": 20,
+        "expected": 20
       },
       {
         "id": "trace-count",
         "pass": true,
-        "observed": 8
+        "observed": 8,
+        "expected": 8
       },
       {
         "id": "no-invented-concept-ids",
         "pass": true,
-        "observed": 0
+        "observed": 0,
+        "expected": 0
       },
       {
         "id": "publication-gate",
         "pass": true,
-        "observed": true
+        "observed": true,
+        "expected": true
       },
       {
         "id": "stored-vs-config-separation",
         "pass": true,
-        "observed": true
+        "observed": true,
+        "expected": true
       }
     ],
     "overall": "PASS",
     "limitations": [
-      "Full field inventory captured live but only governance-critical representative bindings are projected in this increment.",
-      "Field-to-concept semantic publication remains open.",
-      "Variable values are blank and are not treated as approved governed values."
+      "Representative governance-critical bindings only; full field-to-concept coverage remains a later increment.",
+      "Field-to-concept semantic publication remains open pending approved dictionary identity or SCOPE-002 allocation evidence.",
+      "Blank CRM governance-variable values are not treated as approved governed values."
     ]
   }
 }
