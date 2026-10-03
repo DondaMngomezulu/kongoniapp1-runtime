@@ -1,0 +1,50 @@
+{
+  "suite": "CRM-SYSML-ARCH-001",
+  "tests": [
+    {
+      "id": "T01",
+      "assertion": "Standards register is authoritative and adopted",
+      "expected": "Adopted / Controlled"
+    },
+    {
+      "id": "T02",
+      "assertion": "Dictionary lifecycle is preserved",
+      "expected": "CHECK-STUDY CANDIDATE"
+    },
+    {
+      "id": "T03",
+      "assertion": "MCP is implementation layer, not semantic authority",
+      "expected": "SEM-010"
+    },
+    {
+      "id": "T04",
+      "assertion": "Schema and field specification are structurally distinct from semantic authority",
+      "expected": "SEM-011"
+    },
+    {
+      "id": "T05",
+      "assertion": "Composite API is not claimed as exposed",
+      "expected": "Not Exposed"
+    },
+    {
+      "id": "T06",
+      "assertion": "GraphQL API is not claimed as exposed",
+      "expected": "Not Exposed"
+    },
+    {
+      "id": "T07",
+      "assertion": "Rich-text retrieval is mapped as directly exposed",
+      "expected": "CAP-CRM-032"
+    },
+    {
+      "id": "T08",
+      "assertion": "Subforms are mapped through generic record capability",
+      "expected": "CAP-CRM-031"
+    },
+    {
+      "id": "T09",
+      "assertion": "Runtime deployment targets remain unchanged",
+      "expected": "architecture-only change"
+    }
+  ]
+}
