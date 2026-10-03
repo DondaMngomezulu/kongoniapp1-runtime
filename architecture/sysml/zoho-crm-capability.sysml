@@ -44,4 +44,10 @@ package KongoniZohoCRMArchitecture {
   requirement def MCPBinding { doc /* MCP contracts are implementation bindings under SEM-010. */ }
   requirement def LifecyclePreservation { doc /* Draft/proposed concepts retain source lifecycle state. */ }
   requirement def GapTruthfulness { doc /* Missing explicit MCP contracts SHALL NOT be represented as exposed. */ }
+  part def CRMFieldBinding { attribute moduleApiName : String; attribute fieldApiName : String; attribute governanceStatus : String; }
+  part leadValueStream : CRMFieldBinding { attribute moduleApiName = "Leads"; attribute fieldApiName = "Owning_Value_Stream"; attribute governanceStatus = "Binding candidate"; }
+  part leadLifecycle : CRMFieldBinding { attribute moduleApiName = "Leads"; attribute fieldApiName = "Lead_Lifecycle_State"; attribute governanceStatus = "Binding candidate"; }
+  part taskAuthority : CRMFieldBinding { attribute moduleApiName = "Tasks"; attribute fieldApiName = "Authority_System"; attribute governanceStatus = "Binding candidate"; }
+  requirement def FieldConceptPublicationGate { doc /* No field-to-concept mapping is approved without existing dictionary identity or SCOPE-002 allocation evidence. */ }
+
 }
