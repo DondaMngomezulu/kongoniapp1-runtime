@@ -1,50 +1,76 @@
 {
-  "suite": "CRM-SYSML-ARCH-001",
-  "tests": [
+  "suite": "CRM-SYSML-ARCH-002",
+  "observedDate": "2026-10-03",
+  "assertions": [
     {
       "id": "T01",
-      "assertion": "Standards register is authoritative and adopted",
-      "expected": "Adopted / Controlled"
+      "name": "canonical-capability-count",
+      "expected": 32
     },
     {
       "id": "T02",
-      "assertion": "Dictionary lifecycle is preserved",
-      "expected": "CHECK-STUDY CANDIDATE"
+      "name": "feature-group-count",
+      "expected": 27
     },
     {
       "id": "T03",
-      "assertion": "MCP is implementation layer, not semantic authority",
-      "expected": "SEM-010"
+      "name": "unique-mcp-contract-count",
+      "expected": 1309,
+      "note": "Feature groups overlap; group counts must not be summed as unique tools."
     },
     {
       "id": "T04",
-      "assertion": "Schema and field specification are structurally distinct from semantic authority",
-      "expected": "SEM-011"
+      "name": "rich-text",
+      "expected": "Direct",
+      "tools": [
+        "ZohoCRM_fetchFullDataForSingleRecord",
+        "ZohoCRM_fetchFullDataForMultipleRecords"
+      ]
     },
     {
       "id": "T05",
-      "assertion": "Composite API is not claimed as exposed",
-      "expected": "Not Exposed"
+      "name": "subforms",
+      "expected": "Covered via Generic Records",
+      "evidence": [
+        "ZohoCRM_getFields explicitly includes subform fields",
+        "generic create/update record items permit additionalProperties"
+      ]
     },
     {
       "id": "T06",
-      "assertion": "GraphQL API is not claimed as exposed",
-      "expected": "Not Exposed"
+      "name": "external-id",
+      "expected": "Unresolved",
+      "note": "No explicit external-ID MCP contract found; upsert duplicate_check_fields is not asserted equivalent."
     },
     {
       "id": "T07",
-      "assertion": "Rich-text retrieval is mapped as directly exposed",
-      "expected": "CAP-CRM-032"
+      "name": "composite",
+      "expected": "Not Exposed"
     },
     {
       "id": "T08",
-      "assertion": "Subforms are mapped through generic record capability",
-      "expected": "CAP-CRM-031"
+      "name": "graphql",
+      "expected": "Not Exposed"
     },
     {
       "id": "T09",
-      "assertion": "Runtime deployment targets remain unchanged",
-      "expected": "architecture-only change"
+      "name": "dictionary-lifecycle",
+      "expected": "CHECK-STUDY CANDIDATE"
+    },
+    {
+      "id": "T10",
+      "name": "standards-lifecycle",
+      "expected": "Adopted / Controlled"
+    },
+    {
+      "id": "T11",
+      "name": "runtime-isolation",
+      "expected": "Catalyst deployment targets unchanged"
+    },
+    {
+      "id": "T12",
+      "name": "semantic-precedence",
+      "expected": "SEM-010/SEM-011"
     }
   ]
 }
