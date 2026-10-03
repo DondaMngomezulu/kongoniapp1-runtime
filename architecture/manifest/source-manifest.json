@@ -1,0 +1,42 @@
+{
+  "manifestVersion": "1.0",
+  "project": "Zoho CRM SysML Capability Architecture",
+  "observedProjectId": null,
+  "authorityOrder": [
+    {
+      "role": "standards_register",
+      "id": "1tA7rKtgwkw57uROBC1Cht4rlOEjuQ60bLnhA-Daen6M",
+      "title": "REG-STD-001 Enterprise Reference Standards Register",
+      "status": "Adopted / Controlled",
+      "observedModified": "2026-10-01T08:34:42.382Z"
+    },
+    {
+      "role": "governed_dictionary",
+      "id": "1_yd1yYAXk40vZrAj20R6nY_lDmLB-oT85J4xD7Ic8ao",
+      "title": "GLO-VS02-FINCO-001 — FinCo Governed Glossary and Concept Register v0.3 — CHECK-STUDY CANDIDATE",
+      "status": "CHECK-STUDY CANDIDATE",
+      "observedModified": "2026-10-01T14:04:23.888Z"
+    },
+    {
+      "role": "executable_model",
+      "repository": "DondaMngomezulu/kongoniapp1-runtime",
+      "branch": "architecture/sysml-crm-capability-model"
+    }
+  ],
+  "bindings": {
+    "googleDrive": "verified",
+    "github": "verified_write",
+    "catalyst": "repository_binding_verified_from_README",
+    "zohoCRM": "MCP capability surface verified"
+  },
+  "controls": {
+    "semanticPrecedence": "REG-STD-014",
+    "mcpRule": "SEM-010",
+    "schemaRule": "SEM-011",
+    "dictionaryScope": "SCOPE-001",
+    "identifierScope": "SCOPE-002",
+    "schemaValidationScope": "SCOPE-004"
+  },
+  "businessRuleExecution": "not_verified",
+  "nativeProjectSourcesBinding": "pending_manual"
+}
