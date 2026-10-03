@@ -72,5 +72,46 @@
       "name": "semantic-precedence",
       "expected": "SEM-010/SEM-011"
     }
-  ]
+  ],
+  "fieldTraceability": {
+    "suite": "CRM-FIELD-TRACE-001",
+    "results": [
+      {
+        "id": "module-scope",
+        "pass": true,
+        "observed": 12
+      },
+      {
+        "id": "governed-variable-scope",
+        "pass": true,
+        "observed": 20
+      },
+      {
+        "id": "trace-count",
+        "pass": true,
+        "observed": 8
+      },
+      {
+        "id": "no-invented-concept-ids",
+        "pass": true,
+        "observed": 0
+      },
+      {
+        "id": "publication-gate",
+        "pass": true,
+        "observed": true
+      },
+      {
+        "id": "stored-vs-config-separation",
+        "pass": true,
+        "observed": true
+      }
+    ],
+    "overall": "PASS",
+    "limitations": [
+      "Full field inventory captured live but only governance-critical representative bindings are projected in this increment.",
+      "Field-to-concept semantic publication remains open.",
+      "Variable values are blank and are not treated as approved governed values."
+    ]
+  }
 }
