@@ -1,0 +1,139 @@
+{
+  "id": "CRM-FIELD-TRACE-001",
+  "observedDate": "2026-10-03",
+  "status": "CHECK-STUDY",
+  "authority": {
+    "standards": "REG-STD-001",
+    "semanticStack": [
+      "SEM-010",
+      "SEM-011"
+    ],
+    "scopes": [
+      "SCOPE-001",
+      "SCOPE-002",
+      "SCOPE-004"
+    ]
+  },
+  "liveSchema": {
+    "modules": [
+      "Leads",
+      "Accounts",
+      "Contacts",
+      "Deals",
+      "Products",
+      "Quotes",
+      "Sales_Orders",
+      "Purchase_Orders",
+      "Invoices",
+      "Vendors",
+      "Tasks",
+      "Events"
+    ],
+    "variableGroups": [
+      "CFG_GOV_ID_REPO",
+      "Value_Stream_Commercial_and_Pipeline_Classificatio",
+      "Party_Account_and_Role",
+      "CFG_PRODUCT_TECH",
+      "Pricing_Rental_and_Operating_Lease",
+      "Credit_Underwriting_Insurance_and_Risk",
+      "Finance_Treasury_and_Corporate_Programmes",
+      "Agreements_Legal_Terms_and_Business_Documents",
+      "Asset_Lifecycle_Maintenance_and_LCC_or_TCO"
+    ],
+    "governedVariables": [
+      "GOV_DICTIONARY_VERSION",
+      "GOV_STANDARDS_REGISTER_VERSION",
+      "GOV_CONCEPT_NAMESPACE",
+      "GOV_GENERICODE_VERSION",
+      "REPO_BASE_URI",
+      "REPO_SCHEMA_BASE_URI",
+      "GOV_PROVENANCE_SCHEME_VERSION",
+      "VS_REGISTER_VERSION",
+      "VS_NAMESPACE",
+      "VS_DEFAULT_CODE",
+      "COMM_CLASSIFICATION_VERSION",
+      "PIPELINE_GOVERNANCE_VERSION",
+      "PARTY_ROLE_SCHEME_VERSION",
+      "PRODUCT_SPEC_SCHEME_VERSION",
+      "PRICING_DEFAULT_CURRENCY",
+      "CREDIT_POLICY_VERSION",
+      "FIN_CLASSIFICATION_VERSION",
+      "LEGAL_AGREEMENT_SCHEMA_VERSION",
+      "ASSET_LIFECYCLE_MODEL_VERSION",
+      "CFG_WORKFLOW_SYS"
+    ]
+  },
+  "traces": [
+    {
+      "module": "Leads",
+      "field": "Owning_Value_Stream",
+      "capability": "CAP-CRM-009",
+      "variable": "VS_DEFAULT_CODE",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    },
+    {
+      "module": "Leads",
+      "field": "Supporting_Value_Streams",
+      "capability": "CAP-CRM-009",
+      "variable": "VS_REGISTER_VERSION",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    },
+    {
+      "module": "Leads",
+      "field": "Lead_Lifecycle_State",
+      "capability": "CAP-CRM-009",
+      "variable": "PIPELINE_GOVERNANCE_VERSION",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    },
+    {
+      "module": "Leads",
+      "field": "TMF_Interaction_Ref",
+      "capability": "CAP-CRM-009",
+      "variable": "INT_NAMESPACE",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    },
+    {
+      "module": "Tasks",
+      "field": "Authority_System",
+      "capability": "CAP-CRM-009",
+      "variable": "REPO_BASE_URI",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    },
+    {
+      "module": "Tasks",
+      "field": "Authority_Record_ID",
+      "capability": "CAP-CRM-009",
+      "variable": "GOV_CONCEPT_NAMESPACE",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    },
+    {
+      "module": "Tasks",
+      "field": "Conformance_Status",
+      "capability": "CAP-CRM-009",
+      "variable": "GOV_STANDARDS_REGISTER_VERSION",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    },
+    {
+      "module": "Tasks",
+      "field": "System_of_Record",
+      "capability": "CAP-CRM-009",
+      "variable": "REPO_BASE_URI",
+      "conceptId": null,
+      "status": "Binding candidate; concept ID not asserted"
+    }
+  ],
+  "controls": [
+    "Stored business facts remain CRM fields/records; reusable policy/configuration remains variables.",
+    "A variable binding does not establish semantic equivalence to a governed concept.",
+    "No new concept ID is allocated in this projection.",
+    "Field-to-concept publication remains open until dictionary evidence identifies an existing approved concept or SCOPE-002 allocates identity.",
+    "CRM writes are outside this architecture projection; this increment reads metadata and writes model source only."
+  ]
+}
