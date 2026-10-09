@@ -1,6 +1,6 @@
 # AI-Native Quote Generation Engine — ENG-S01-QUOTATION
 
-**Version:** 0.1.0, **Owner:** VS01 Asset Provision & Access, **State:** DEVELOPMENT PROTOTYPE / NOT DEPLOYED / NOT CUSTOMER ISSUABLE.
+**Version:** 0.2.0 DEVELOPMENT INTEGRATION BRANCH, **Owner:** VS01 Asset Provision & Access, **State:** DEVELOPMENT PROTOTYPE / NOT DEPLOYED / NOT CUSTOMER ISSUABLE.
 
 The existing registered `ENG-S01-QUOTATION` engine is reused. No new Enterprise Engine Catalogue row or competing price engine is introduced. This repository is **public**; commit only synthetic examples and code, no customer quotes, data, secrets, private policy parameters or CRM credentials.
 
@@ -23,6 +23,8 @@ The existing registered `ENG-S01-QUOTATION` engine is reused. No new Enterprise 
 - `lib/engine.cjs`: deterministic quote draft and versioned evidence manifest; strictly ZAR 2-decimal integer-minor-unit profile.
 - `lib/intent.cjs`: injectable approved-model intent interpreter + validation of all AI suggestions (untrusted by design).
 - `lib/crm.cjs`: header mapping to verified Quotes fields, with explicit `NOT_WRITE_READY` line-item mapping.
+- `lib/crm-source.cjs`: read-only CRM source resolver for deal/account, product/offering/price, managed OAuth, tenant/customer scoping, tax-policy injection and fail-closed pricing checks. **Library only: not wired to live endpoint.**
+- `lib/templates.cjs`: verified VS01 cash-sale and VS02 lease/rental template identifiers and merge-marker checks. Schema checks do not constitute legal approval.
 - `index.js`: Catalyst node20 Advanced I/O HTTP adapter for `GET /health`, `POST /preview`. It **never writes CRM**.
 - `schema/`: JSON Schema request/response contracts; `agent-workspace/services/SRV-VS01-QUOTE-001/openapi.yaml` records transport intent.
 - `test/`: synthetic regression tests runnable without credentials.
@@ -51,10 +53,14 @@ The LLM is a proposal-only component: it can interpret a customer brief and sugg
 ## Release gates still open
 
 1. Obtain approved AI model/provider, data-processing approval, identity, and tenant boundaries.
-2. Implement authoritative CRM read adapter (Deals, Accounts, Products, Prices, Terms, Taxes, template references), readback and effective-date checks. A bare client snapshot is NOT authoritative.
+2. Read-only CRM adapter created and synthetic tests submitted; verify runtime OAuth, source trust, tax authority, and tenant mapping in Development. A bare client snapshot is NOT authoritative.
 3. Verify Quotes `Quoted_Items` subform API metadata and line mapping, idempotency, error recovery and duplicate suppression. Never infer from a document template.
 4. Integrate approved quote rendering and UBL 2.4 profile with actual schema regression and approved source repository.
 5. Test CRM dry-run/create/readback and email evidence in a controlled environment; keep all customer issuance blocked until authorised.
 6. Resolve the reference standards/APQC process mapping, business owner acceptance, legal review, security controls and production authority.
 
 **Do not merge/deploy/activate by assuming local tests imply CRM or AI production conformance.**
+
+## Development integration evidence, 9 October 2026
+
+Live CRM metadata confirms Quotes `Quoted_Items` has Product_Name, Quantity, List_Price, Offering_Price, Pricing_Rule_ID, and Line_Tax. `ProductOfferingPrices` has `Price_Status`, `Currency`, `Effective_From`, and customer/product/offering lookups. **Price_Status Approved is not sufficient**: sampled approved Almar price `5643538000008487769` has `SOURCE_UNKNOWN` provenance and missing source evidence, its product remains Draft/Pending Review and offering terms are not approved. The adapter validates separately and holds these gaps. Formal VS02 template `5643538000009719005` and VS01 cash template `5643538000009802330` are available, but not legally approved or dispatched by this engine. `openai_api` is a CRM connection definition, **not proof of an approved deployed model API**. No live customer quote is created.

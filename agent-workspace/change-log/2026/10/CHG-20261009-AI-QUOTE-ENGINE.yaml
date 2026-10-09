@@ -34,6 +34,9 @@ affected_paths:
   - agent-workspace/architecture/REG-ARCH-MICROSVC-001/amendments/MS-VS01-QUOTATION-001-add.yaml
   - .github/workflows/quote-engine-contract-test.yml
   - catalyst.json
+  - functions/kongoni_quote_generation_engine/lib/crm-source.cjs
+  - functions/kongoni_quote_generation_engine/lib/templates.cjs
+  - functions/kongoni_quote_generation_engine/test/crm-source.test.cjs
 environment: repository
 authority:
   status: AUTHORISED
@@ -41,7 +44,7 @@ authority:
 pdca:
   phase: CHECK_STUDY
   do_complete: true
-  check_study_result: 'Offline Node 22 deterministic unit tests pass; Development/Production runtime, native CRM adapter and model integrations remain unverified. Await GitHub CI and architecture review.'
+  check_study_result: 'Initial offline tests passed; new read-only CRM source adapter and template binding tests submitted to GitHub CI. Live managed OAuth runtime and AI integration not verified.'
   act_decision: ADAPT
   task_complete: false
 evidence:
@@ -50,8 +53,10 @@ evidence:
   - 'Existing GitHub .catalystrc and catalyst.json linked to Catalyst project Kongoniapp1 86824000000020001.'
   - 'Eighteen offline synthetic Node unit and transport cases passed for cash, lease, rental, separation, AI authority, tenant mismatch, missing approvals, deterministic calculation and invalid data.'
   - 'Two synthetic scenario request/response pairs structurally validated against Draft 2020-12 JSON Schema.'
+  - 'Read-only CRM Quotes, Quoted_Items, ProductOfferingPrices and ProductOfferings metadata verified 9 October 2026; customer-specific price approval alone is not evidence of approved source or terms.'
   - 'No CRM writes, no customer communication and no Production deployment in this change.'
 notes: >-
   The repository is public: only synthetic examples and implementation code were committed.
-  CRM Quoted_Items subform and managed OAuth adapter remain intentionally unimplemented;
-  inbound preview data is always marked unverified. Do not promote without approval.
+  CRM Quoted_Items metadata and template identifiers were verified using live read-only CRM APIs.
+  A read-only CRM source adapter is now implemented as a testable library, but is NOT wired to a publicly callable endpoint or live credentials; live OAuth readback is unverified.
+  No CRM writes, customer issue or model processing permitted. Do not promote without approval.
