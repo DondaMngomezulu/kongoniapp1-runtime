@@ -6,6 +6,10 @@ target_environment: repository
 change_class: governance
 affected_paths:
   - .github/workflows/enterprise-route-gate.yml
+  - governance/controls/CTL-ENG-GH-ROUTE-001.yaml
+  - governance/configuration-routes/enterprise-platforms.yaml
+  - governance/schemas/configuration-change.schema.json
+  - agent-workspace/scripts/validate_enterprise_route.py
   - governance/configuration-routes/enterprise-platforms.yaml
 owner: Chief of Accountability
 before_state_ref: "PR #51 initial routing workflow and absent platform registry"
