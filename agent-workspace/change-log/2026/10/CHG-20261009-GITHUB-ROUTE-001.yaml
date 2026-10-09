@@ -8,23 +8,30 @@ mandate_ref: "User instruction 2026-10-09: require all enterprise systems develo
 accountability_task_ref: "https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/50"
 task_class: T2
 change_type: governance
-summary: Propose GitHub-first engineering routing control and PR metadata gate.
+summary: Adopt GitHub-first systems development and configuration routing policy with versioned platform register, redacted configuration manifest, and agent instructions.
 reason: Prevent unmanaged cross-platform engineering changes while preserving Catalyst runtime authority and native system-of-record transaction semantics.
 affected_paths:
   - governance/controls/CTL-ENG-GH-ROUTE-001.yaml
   - .github/workflows/enterprise-route-gate.yml
+  - governance/configuration-routes/enterprise-platforms.yaml
+  - governance/schemas/configuration-change.schema.json
+  - governance/configuration-changes/CFG-ENG-20261009-001.yaml
+  - .github/PULL_REQUEST_TEMPLATE.md
+  - AGENTS.md
+  - agent-workspace/AGENTS.md
+  - README.md
 environment: repository
 authority:
   status: AUTHORISED
   reference: "User explicit request 2026-10-09 to create mandatory GitHub route control; protected production activation requires separate CEO ACT and platform approval."
 pdca:
-  phase: DO
+  phase: CHECK_STUDY
   do_complete: true
-  check_study_result: null
-  act_decision: null
+  check_study_result: "Existing CI passed on prior proposal; expanded configuration changes require new CI validation and platform-level enforcement tests."
+  act_decision: ADAPT
   task_complete: false
 evidence:
   - "https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/50"
 commit_sha: null
-pull_request: null
+pull_request: 51
 notes: "Changes proposed for review. No branch ruleset, environmental enforcement, or production change has been activated."
