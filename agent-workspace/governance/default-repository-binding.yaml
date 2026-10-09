@@ -1,0 +1,50 @@
+# Machine-readable working repository selection (not an enterprise authority decision)
+profile: kongoni-github-working-repository-default/1
+record_type: WORKING_REPOSITORY_BINDING
+binding_status: USER_SELECTED_WORKING_DEFAULT
+selected_on: "2026-10-09"
+mandate_evidence: "Direct user instruction in this conversation to make the connected GitHub repository the default."
+scope:
+  applies_to:
+    - enterprise_architecture_as_code
+    - governed_engineering_schemas_and_contracts
+    - business_document_and_form_template_technical_definitions
+    - crm_and_catalyst_integration_engineering
+    - tests_ci_and_agent_workspace
+  only_when: NO_EXPLICIT_ALTERNATIVE_REPOSITORY_SELECTED
+  overrides:
+    - explicit_user_repository_selection
+    - approved_project_specific_repository_binding
+default_github_repository:
+  repository_full_name: DondaMngomezulu/kongoniapp1-runtime
+  repository_id: "1329642514"
+  browser_url: https://github.com/DondaMngomezulu/kongoniapp1-runtime
+  default_read_branch: main
+  default_write_method: GOVERNED_GIT_CHANGE_WITH_SAME_CHANGE_SET_LOG
+  visibility: public
+  verified_connected: true
+  verified_push_permission: true
+architectural_constraints:
+  parent: STD-ARCH-HUB-SPOKE-001
+  active_architecture_locator: Zoho Catalyst / CatalystRepositoryIndex / KEA-MOD-HS-001
+  architecture_version_at_selection: "0.1"
+  architecture_hash_at_selection: "e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526"
+  architecture_lifecycle_at_selection: ACTIVE_G2_BASELINE_CANDIDATE
+  architecture_approval_at_selection: PROPOSED
+  always_refresh_architecture_before_material_changes: true
+  change_control: CTL-DEV-CHG-LOG-001
+  agent_protocol: agent-workspace/AGENTS.md
+authority_boundaries:
+  github: engineering_source_and_technical_contracts
+  zoho_catalyst: designated_governance_execution_state_and_architecture_reference
+  google_drive: applicable_governed_business_documents_registers_and_standards_until_authorised_migration
+  zoho_crm: operational_customer_deal_and_commercial_records
+  zoho_books: accounting_and_financial_transaction_ledger
+  approved_document_repository: signed_instruments_and_record_copies_by_document_class
+safeguards:
+  never_store_restricted_live_business_content_in_public_github: true
+  no_change_to_github_default_branch: true
+  no_repository_authority_reassignment: true
+  no_production_deployment_from_this_selection: true
+  no_implicit_ceo_approval_or_formal_architecture_adoption: true
+  no_implicit_chatgpt_global_setting_change: true

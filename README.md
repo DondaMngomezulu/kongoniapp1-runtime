@@ -82,3 +82,22 @@ even when application dependencies fail to install.
 
 Functions are pinned to the `node18` stack in `catalyst-config.json`. Changing
 the stack is a one-line edit in that file, per function.
+
+## Default engineering repository
+
+The user-selected **default connected GitHub repository** for Kongoni enterprise
+architecture, governed schemas, document/form engineering contracts, integrations,
+agent collaboration, source code, and technical change management is
+[DondaMngomezulu/kongoniapp1-runtime](https://github.com/DondaMngomezulu/kongoniapp1-runtime),
+using \`main\` as the default baseline for reading. Explicit project instructions
+or an approved project-specific repository binding take precedence.
+
+Machine-readable selection: [agent-workspace/governance/default-repository-binding.yaml](agent-workspace/governance/default-repository-binding.yaml).
+Agent entrypoint: [AGENTS.md](AGENTS.md) and [agent-workspace/AGENTS.md](agent-workspace/AGENTS.md).
+
+This selection does not change GitHub's default branch or the authoritative
+systems for business records: the relevant approved records repository/Google
+Drive, Zoho CRM, Zoho Books and Zoho Catalyst retain their designated roles.
+Proposed architecture branches and models are not approved by repository
+selection. This repository is public; never commit customer data, signed
+agreements, credentials or restricted records.
