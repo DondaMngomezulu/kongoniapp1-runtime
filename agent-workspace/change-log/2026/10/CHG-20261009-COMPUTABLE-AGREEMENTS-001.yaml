@@ -1,0 +1,42 @@
+change_id: CHG-20261009-COMPUTABLE-AGREEMENTS-001
+timestamp_utc: '2026-10-09T07:10:00Z'
+actor:
+  type: ChatGPT
+  name: GitHub architecture assistant
+  agent_contract_ref: null
+mandate_ref: User instruction 2026-10-09 to update target architecture for all applicable agreements
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Introduce proposed computable-agreement architecture and governed handover for all applicable agreement classes.
+reason: >
+  Preserve executed instruments while separately codifying legal clauses, normative rules,
+  ACTUS financial events, typed executable logic, authorised actions and independent actuals.
+affected_paths:
+  - governance/architecture/ADR-COMP-AGR-001.md
+  - agent-workspace/reference-artifacts/legal/PRF-AGR-COMPUTABLE-001.yaml
+  - agent-workspace/architecture/PRF-ARCH-MICROSVC-HO-001/agreement-computability-handover.yaml
+  - agent-workspace/architecture/PRF-ARCH-MICROSVC-HO-001/application-authority.yaml
+  - agent-workspace/architecture/PRF-ARCH-MICROSVC-HO-001/profile.yaml
+  - agent-workspace/reference-artifacts/legal/README.md
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: Explicit user mandate for GitHub architecture update; adoption and runtime implementation remain pending
+pdca:
+  phase: DO
+  do_complete: true
+  check_study_result: null
+  act_decision: null
+  task_complete: false
+evidence:
+  - REG-STD-001 Enterprise Reference Standards Register
+  - PRF-AGR-CLAUSE-PKG-001
+  - PRF-AGR-TPL-VAL-001
+  - CTL-LEGALRULEML-XSD-001
+  - ADR-HUB-FOUNDATION-001
+commit_sha: null
+pull_request: null
+notes: >
+  Same-change-set architecture proposal on review branch; do not merge or represent
+  as an adopted Catalyst policy or production deployment without a recorded ACT decision.
