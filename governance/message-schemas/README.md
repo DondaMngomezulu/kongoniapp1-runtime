@@ -26,3 +26,13 @@ A schema is usable for production only when its governing source is adopted, a p
 **Open gates** (working IDs, not canonical IDs): MSG-GAP-01 register ID and authority; 02 UBL 2.4 vs 2.5; 03 ISO 20022 message-specific profiles; 04 UBL/CRM conformance; 05 event envelope and backbone; 06 TMF683/Catalyst; 07 covering email child templates; 08 FpML/ACTUS instrument fit; 09 Genericode status lists; 10 CI/deployment conformance.
 
 Do not silently promote source-adopted rows or infer approval from this inventory; use a reviewed changeset, evidence and authorised REG-REG-001 approval before declaring this register canonical.
+
+## 2026-10-09 Profile registration and remediation progress
+
+- Admitted working register into the governing [REG-REG-001](https://docs.google.com/spreadsheets/d/1AQm80yW-BAqaT5j2HYniNuJrwgH_FeBFaVqDdIm4rbk/edit), registry entry **ROR-0095**, governance state **GOVERNANCE REMEDIATION REQUIRED**. Register ID allocation and approval remain open.
+- Populated **Registered Profiles** with 39 preserved existing IDs: 29 BDT legal, financial, transaction, report, and enterprise-profile types, 5 SB-* bindings, the CEO-adopted MRG-CVR-001 merge schema, and 4 GitHub engineering/source-index records. Statuses retain their original source classifications; registration of a record does not approve the implementation.
+- Populated **UBL 2.5 Migration Check** with 93 **name-derived URI candidates**, explicitly marked unverified. These are comparison leads, not authority to replace UBL 2.4 bindings or claims that every 2.5 maindoc XSD exists.
+- Populated **Candidate Profiles** with four pending groups: bank-specific ISO 20022, finance-instrument FpML/ACTUS, TMF683 CRM/Catalyst binding, and canonical event envelope.
+- Added [canonical-event-envelope.candidate.schema.json](schemas/canonical-event-envelope.candidate.schema.json) and [candidate negative-case tests](tests/test_canonical_event_envelope.py), aligned to [ADR-HUB-FOUNDATION-001](../architecture/ADR-HUB-FOUNDATION-001.md). Engineering **candidate only**; do not deploy without review, security checks and integration tests. Local smoke validation is not evidence of GitHub CI or Catalyst production conformance.
+
+**Open approval gates:** official register ID and approving decision, adoption-level UBL version reconciliation, message-specific bank profile evidence, Zoho CRM/Catalyst bindings, canonical runtime selection and readback. Tracked in [#52](https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/52), [#53](https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/53) and [#54](https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/54).
