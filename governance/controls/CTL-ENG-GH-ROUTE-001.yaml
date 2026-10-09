@@ -1,0 +1,77 @@
+control_id: CTL-ENG-GH-ROUTE-001
+version: "0.1.0"
+status: PROPOSED_FOR_ADOPTION
+effective_date: null
+title: Enterprise GitHub Development and Execution Routing Control
+owner: Chief of Accountability
+approval_authority: Group CEO
+work_item: https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/50
+enterprise_scope:
+  systems: ALL_ENTERPRISE_SYSTEMS
+  actors: [human, ChatGPT, Claude, Codex, Zia, specialist_agent, automation]
+  material_changes: [source_code, configuration, schema, workflow, integration, infrastructure, agent_contract, prompt_or_instruction, deployment, release]
+authority_boundary:
+  github: engineering_change_control_and_release_evidence
+  catalyst: authoritative_execution_and_environment_authority
+  operational_systems: native_business_data_and_transactions
+  repository: DondaMngomezulu/kongoniapp1-runtime
+rule:
+  engineering_intent: github_issue_required
+  execution_route: github_pull_request_and_github_actions_or_approved_gateway
+  source_version: immutable_commit_sha_required
+  independent_review: required
+  change_log: CTL-DEV-CHG-LOG-001
+  system_write_audit: CTL-SYS-WRITE-AUDIT-001
+  approval: CTL-GOV-CEO-APPROVAL-001
+  architecture_preflight: Rule-14
+  fail_mode: CLOSED_FOR_UNAUTHORISED_T2_T3
+  release_authority: independent_catalyst_environment_execution_authority
+required_fields:
+  - work_item_url
+  - accountable_owner
+  - actor_and_agent_contract
+  - task_class
+  - target_system_and_environment
+  - architecture_id_version_hash
+  - change_and_affected_paths
+  - approving_authority
+  - review_and_required_checks
+  - commit_sha
+  - github_actions_run_id_or_governed_gateway_run_id
+  - native_transaction_reference
+  - objective_check_study_evidence
+  - pdca_act_decision
+release_gate:
+  do_not_deploy_without: [valid_authority, reviewed_pr, passing_checks, environment_approval, run_id, audit_correlation]
+  production_environment: protected
+  credentials: short_lived_scoped
+  direct_manual_mutations: blocked_unless_approved_emergency_route
+  do_complete_is_task_complete: false
+exceptions:
+  routine_approved_business_transactions: native_audit_only
+  emergency:
+    P0_only: true
+    prior_explicit_approval: true
+    time_bound: true
+    log_all_writes: true
+    retrospective_github_reconciliation: within_one_business_day
+    require_independent_review: true
+    CEO_reserved_authority_not_waived: true
+restrictions:
+  no_secrets_or_sensitive_records_in_repository: true
+  no_unverified_service_activation: true
+rollout:
+  - enable_branch_rulesets_and_required_reviews
+  - enforce_required_checks_and_environment_approvals
+  - register_authorised_deployment_gateways
+  - inventory_and_onboard_all_enterprise_repositories
+  - map_external_low_code_workflow_changes_to_git_release_routes
+  - test_positive_and_negative_paths
+  - record_CEO_ACT_decision_and_activate
+implementation_state:
+  specification_committed: false
+  ci_gate_proposed: true
+  required_branch_ruleset_active: false
+  production_environment_gate_verified: false
+  enterprise_repository_coverage_verified: false
+related_controls: [CTL-DEV-CHG-LOG-001, CTL-SYS-WRITE-AUDIT-001, CTL-GOV-CEO-APPROVAL-001, MET-PDCA-001]
