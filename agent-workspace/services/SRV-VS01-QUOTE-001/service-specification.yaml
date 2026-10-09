@@ -1,0 +1,110 @@
+service_specification:
+  id: SRV-VS01-QUOTE-001
+  proposed_microservice_id: MS-VS01-QUOTATION-001
+  engine_code: ENG-S01-QUOTATION
+  version: '0.1.0'
+  status: DEVELOPMENT_PROPOSAL_NOT_APPROVED_FOR_RELEASE
+  name: AI-Native Equipment Quote Generation Service
+  business_owner: VS01
+  value_stream_id: VS01
+  architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+  engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+  task_class: T2
+  purpose: >-
+    Assemble auditable candidate equipment-sale, operating-lease and dry-rental quotes from
+    approved product, pricing and policy references. Permit AI-assisted extraction of
+    customer requirements but never treat an AI answer as commercial or legal authority.
+  architecture_authority:
+    catalyst_record: CatalystRepositoryIndex/86824000000409703
+    architecture_id: KEA-MOD-HS-001
+    version: '0.1'
+    content_hash: e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526
+    state: ACTIVE_G2_BASELINE_CANDIDATE
+    review_outcome: DEVELOPMENT_ONLY_COMPATIBLE_RELEASE_HELD
+  systems_of_record:
+    quote_transaction: Zoho CRM Quotes
+    deal: Zoho CRM Deals
+    customer: Zoho CRM Accounts
+    equipment: Zoho CRM Products and governed product specification records
+    pricing: Approved commercial pricing engines and governed CRM ProductOfferingPrices where evidenced
+    accounting: Zoho Books; this service creates no invoice or ledger entry
+    documents: Existing approved repository per governed document class; no duplicate master
+    runtime_orchestration: Zoho Catalyst Kongoniapp1 Development
+  boundaries:
+    owns: [quote_assembly_result, draft_preview, source_evidence_manifest, review_gate_results]
+    consumes: [customer_requirements, crm_product_catalogue, dealer_price_result, lease_price_result, deal_terms, applicable_tax_rule, document_template_reference]
+    excludes: [dealer_pricing_calculation, lease_financing_calculation, asset_lcc_calculation, credit_underwriting, legal_advice, direct_invoice_booking, contract_execution, customer_issuance]
+  operations:
+    implemented:
+      - GET /health
+      - POST /preview
+    internal_library:
+      - ComposeQuoteDraft
+      - AssessAIProposal
+      - InterpretRequirementsWithApprovedAdapter
+    pending:
+      - CRM trusted read adapter for quote inputs
+      - CRM idempotent draft write adapter
+      - quote renderer and UBL 2.4 projection
+      - approved AI provider binding and data-processing authority
+      - event orchestration and approval workflow
+  inputs:
+    transport: application/json
+    contract: functions/kongoni_quote_generation_engine/schema/quote-request.schema.json
+    fields: [request_id, tenant_id, deal_id, account_id, quote_type, quote_date, valid_until, provenance, lines, gates, gate_evidence]
+    currency_profile: ZAR
+    monetary_precision: integer_minor_units
+    price_source_rule: Must be APPROVED and externally sourced; cannot be selected or modified by AI
+    ai_boundary: Model only extracts customer intent; cross-tenant suggestions or proposed price/approval changes fail closed
+  outputs:
+    contract: functions/kongoni_quote_generation_engine/schema/quote-response.schema.json
+    fields: [draft_id, quote_type, line_breakdown, separated_time_basis_totals, gate_checks, ai_review, provenance, crm_draft_candidate, release_blockers]
+    crm_write: PROHIBITED_UNTIL_ADAPTER_AND_AUTHORITY_VERIFIED
+    customer_issue: ALWAYS_FALSE_FOR_V0_1_0
+  api_contract: openapi.yaml
+  runtime:
+    platform: Zoho Catalyst
+    project: Kongoniapp1
+    project_id: '86824000000020001'
+    environment: Development
+    function: kongoni_quote_generation_engine
+    function_stack: node20
+    function_type: advancedio
+    deployed: false
+    production_authority: NOT_GRANTED
+    read_only_design: true
+    activation: disabled unless explicit development configuration and user allowlist
+  standards_and_mappings:
+    source_ids: [ENG-S01-QUOTATION, VS01]
+    tm_forum: candidate_concept_alignment_only_no_external_api_conformance_claim
+    oasis_ubl: Quotation_2.4_projection_not_implemented
+    apqc_level_3_4_5: PENDING_VERIFICATION
+    semantic_new_identifiers: NONE
+  dependencies:
+    - CRM commercial gateway with managed OAuth
+    - Governed product and price master references
+    - Dealer Pricing ENG-S01-DEALER-PRICE
+    - Lease Pricing ENG-S03-LEASE-PRICING
+    - Risk-Adjusted Deal Economics ENG-P09-DEAL-ECONOMICS
+    - CRM quote inventory templates
+  nonfunctional_requirements: [deterministic_minor_unit_arithmetic, tenant_isolation, fail_closed_authorisation, idempotency, source_provenance, auditability, no_customer_PII_in_public_repo]
+  acceptance_criteria:
+    - Same governed inputs yield the same draft ID and totals
+    - Source-unverified quotes cannot be issued or written to CRM
+    - Cash amounts are not mixed with monthly recurring or hourly usage amounts
+    - Tax rates are explicit from evidenced policy; no hardcoded statutory rate
+    - AI cannot change price, tax, release permission, legal rules or customer identity
+    - A Quote record is not an invoice or a customer-issued communication
+    - Regressions cover cash, lease, rental, negative cases, evidence gaps and tenant isolation
+    - CRM adapter and model connection must pass separately before activation
+  open_gates:
+    - CRM full line-item/subform contract verification
+    - approved AI provider/DPA/tenant-routing
+    - governed pricing source snapshots and rate effective dates
+    - document template and UBL rendering integration
+    - CRM OAuth readback and idempotent draft create integration
+    - deployment and security acceptance tests
+    - APQC and TM Forum mapping verification
+    - business, legal and engineering approval before any release
+  engineering_handover_status: DEVELOPMENT_PROTOTYPE_REVIEW_REQUIRED
+  pdca: { phase: DO, do_complete: true, check_study_result: LOCAL_TESTS_PENDING_GITHUB_CI, act_decision: null, task_complete: false }

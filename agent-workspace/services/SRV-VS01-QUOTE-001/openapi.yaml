@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Kongoni AI-Native Quote Generation Preview API
+  version: '0.1.0'
+  description: Development-only preview. No CRM write, customer issue, or standalone accounting.
+servers:
+  - url: /server/kongoni_quote_generation_engine
+security:
+  - CatalystAuthenticatedUser: []
+paths:
+  /health:
+    get:
+      operationId: quoteEngineHealth
+      summary: Return availability of governed preview (authorised users only)
+      responses:
+        '200': { description: Preview health status }
+        '401': { description: Authentication required }
+        '403': { description: User not allowlisted }
+        '503': { description: Development preview disabled }
+  /preview:
+    post:
+      operationId: composeQuotePreview
+      summary: Compose an untrusted source-snapshot quotation preview
+      description: >-
+        Never reads or writes CRM. The request snapshot is not authoritative regardless
+        of submitted evidence or caller-supplied verification flags. All outputs remain
+        held until an independent trusted CRM adapter and release workflow are implemented.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [quote_request]
+              properties:
+                quote_request:
+                  $ref: '../../../functions/kongoni_quote_generation_engine/schema/quote-request.schema.json'
+                ai_proposal: { type: object, description: Untrusted suggestion; no pricing/approval authority }
+      responses:
+        '200':
+          description: Calculated held preview; not approval or issuance
+          content:
+            application/json:
+              schema:
+                $ref: '../../../functions/kongoni_quote_generation_engine/schema/quote-response.schema.json'
+        '401': { description: Authentication required }
+        '403': { description: User not allowlisted }
+        '422': { description: Invalid controlled request }
+        '503': { description: Development preview disabled }
+components:
+  securitySchemes:
+    CatalystAuthenticatedUser:
+      type: http
+      scheme: bearer
+      description: >-
+        Catalyst application authentication required; exact session/token profile
+        must be verified in Development. Configuration also enforces an email allowlist.

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "request_id": "SYN-QUOTE-CASH_SALE",
+  "tenant_id": "SYNTHETIC-TENANT",
+  "deal_id": "SYNTHETIC-DEAL",
+  "account_id": "SYNTHETIC-ACCOUNT",
+  "quote_type": "CASH_SALE",
+  "currency": "ZAR",
+  "subject": "Synthetic training-only equipment quote",
+  "quote_date": "2026-10-09",
+  "valid_until": "2026-10-23",
+  "provenance": {
+    "source_system": "Zoho CRM",
+    "snapshot_id": "SYN-SNAPSHOT-001",
+    "catalogue_version": "SYN-1",
+    "policy_version": "SYN-1",
+    "document_template_id": "SYN-TEMPLATE-001"
+  },
+  "lines": [
+    {
+      "line_id": "SYN-L1",
+      "product_id": "SYN-EXC-101",
+      "quantity": 2,
+      "basis": "ONE_TIME",
+      "unit_price_minor": 15000000,
+      "price_status": "APPROVED",
+      "price_source_ref": "SYN-PRICE-01",
+      "price_rule_version": "SYN-1",
+      "tax_rate_bps": 1500,
+      "tax_source_ref": "SYN-TAX-01"
+    }
+  ],
+  "gates": {
+    "catalogue": true,
+    "pricing": true,
+    "tax": true,
+    "commercial_terms": true,
+    "counterparty": true,
+    "stock": true,
+    "issuer": true,
+    "document_template": true,
+    "credit": true,
+    "legal": true,
+    "lifecycle_cost": true,
+    "finance": true
+  },
+  "gate_evidence": {
+    "catalogue": "SYN-EVIDENCE-CATALOGUE",
+    "pricing": "SYN-EVIDENCE-PRICING",
+    "tax": "SYN-EVIDENCE-TAX",
+    "commercial_terms": "SYN-EVIDENCE-COMMERCIAL_TERMS",
+    "counterparty": "SYN-EVIDENCE-COUNTERPARTY",
+    "stock": "SYN-EVIDENCE-STOCK",
+    "issuer": "SYN-EVIDENCE-ISSUER",
+    "document_template": "SYN-EVIDENCE-DOCUMENT_TEMPLATE",
+    "credit": "SYN-EVIDENCE-CREDIT",
+    "legal": "SYN-EVIDENCE-LEGAL",
+    "lifecycle_cost": "SYN-EVIDENCE-LIFECYCLE_COST",
+    "finance": "SYN-EVIDENCE-FINANCE"
+  }
+}
