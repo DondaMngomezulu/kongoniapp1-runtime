@@ -106,5 +106,5 @@ test('CRM reader uses managed Zoho OAuth and strict domain validation', async ()
   assert.equal(acc.id,ids.account);
   assert.ok(requested.url.endsWith('/crm/v8/Accounts/'+ids.account));
   assert.equal(requested.config.method,'GET');
-  await assert.rejects(reader.getRecord('Users',ids.account),/CRM_MODULE_NOT_ALLOWED/);
+  assert.throws(() => reader.getRecord('Users',ids.account), /CRM_MODULE_NOT_ALLOWED/);
 });
