@@ -10,7 +10,6 @@ affected_paths:
   - governance/configuration-routes/enterprise-platforms.yaml
   - governance/schemas/configuration-change.schema.json
   - agent-workspace/scripts/validate_enterprise_route.py
-  - governance/configuration-routes/enterprise-platforms.yaml
 owner: Chief of Accountability
 before_state_ref: "PR #51 initial routing workflow and absent platform registry"
 desired_state_ref: "PR #51 hardened routing validator and platform onboarding register"
