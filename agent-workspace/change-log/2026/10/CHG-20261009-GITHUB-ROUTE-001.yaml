@@ -13,6 +13,7 @@ reason: Prevent unmanaged cross-platform engineering changes while preserving Ca
 affected_paths:
   - governance/controls/CTL-ENG-GH-ROUTE-001.yaml
   - .github/workflows/enterprise-route-gate.yml
+  - agent-workspace/scripts/validate_enterprise_route.py
   - governance/configuration-routes/enterprise-platforms.yaml
   - governance/schemas/configuration-change.schema.json
   - governance/configuration-changes/CFG-ENG-20261009-001.yaml
