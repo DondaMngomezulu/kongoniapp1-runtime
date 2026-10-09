@@ -82,3 +82,12 @@ even when application dependencies fail to install.
 
 Functions are pinned to the `node18` stack in `catalyst-config.json`. Changing
 the stack is a one-line edit in that file, per function.
+
+
+## Enterprise engineering and configuration routing
+
+**CTL-ENG-GH-ROUTE-001** is the adopted group policy requiring a GitHub Issue and reviewed, versioned PR for material systems development and configuration changes. This includes CRM modules/fields/workflows/Blueprints, Catalyst and cloud resources, identity and DNS settings, integrations, low-code tools, AI agent contracts, infrastructure and deployment changes. Routine approved sales/finance/CRM transactions remain in their operational system of record.
+
+Before authoring changes read `AGENTS.md`; use `.github/PULL_REQUEST_TEMPLATE.md`; commit configuration route records under `governance/configuration-changes/` and an auditable change log under `agent-workspace/change-log/`. CI executes `enterprise-route-gate`, `validate-change-log` and agent workspace validation.
+
+**Enforcement status:** the policy is adopted, but branch protection, independent review, environment restrictions and platform-native gateway controls require separate administrative configuration and successful live deployment/read-back tests. A green pull request does not authorise or prove deployment. Never commit access tokens, secrets, personal records or financial transaction data.

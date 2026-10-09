@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Controlled Enterprise System Configuration Change",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "config_change_id",
+    "route_id",
+    "issue_url",
+    "target_system",
+    "target_environment",
+    "change_class",
+    "affected_paths",
+    "owner",
+    "before_state_ref",
+    "desired_state_ref",
+    "authority_ref",
+    "execution_mode",
+    "approval_state",
+    "secret_values_committed",
+    "evidence_plan"
+  ],
+  "properties": {
+    "config_change_id": {
+      "type": "string",
+      "pattern": "^CFG-[A-Z0-9-]+$"
+    },
+    "route_id": {
+      "type": "string",
+      "minLength": 6
+    },
+    "issue_url": {
+      "type": "string",
+      "pattern": "^https://github\\.com/[^ ]+/issues/[0-9]+$"
+    },
+    "target_system": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_environment": {
+      "enum": [
+        "repository",
+        "development",
+        "sandbox",
+        "staging",
+        "production"
+      ]
+    },
+    "change_class": {
+      "enum": [
+        "configuration",
+        "workflow",
+        "infrastructure",
+        "integration",
+        "governance",
+        "deployment",
+        "schema"
+      ]
+    },
+    "affected_paths": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "before_state_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "desired_state_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "execution_mode": {
+      "enum": [
+        "GITHUB_ACTIONS",
+        "GITHUB_INITIATED_GATEWAY",
+        "GOVERNANCE_ONLY_NOT_DEPLOYED"
+      ]
+    },
+    "approval_state": {
+      "enum": [
+        "PENDING_INDEPENDENT_REVIEW",
+        "APPROVED_WITH_EVIDENCE",
+        "DEPLOYED_VERIFIED"
+      ]
+    },
+    "secret_values_committed": {
+      "const": false
+    },
+    "evidence_plan": {
+      "type": "string",
+      "minLength": 1
+    },
+    "native_audit_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "run_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
