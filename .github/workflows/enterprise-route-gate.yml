@@ -12,29 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate route and control metadata
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install PyYAML jsonschema
+      - name: Validate enterprise change route and configuration manifests
         env:
           EVENT_NAME: ${{ github.event_name }}
           PR_BODY: ${{ github.event.pull_request.body }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          python - <<'PY'
-          import os, pathlib, re, sys
-          p=pathlib.Path("governance/controls/CTL-ENG-GH-ROUTE-001.yaml")
-          if not p.exists():
-              sys.exit("Missing CTL-ENG-GH-ROUTE-001 control manifest")
-          s=p.read_text()
-          for token in ["control_id: CTL-ENG-GH-ROUTE-001","status: PROPOSED_FOR_ADOPTION","github_issue_required","github_pull_request_and_github_actions_or_approved_gateway","CTL-SYS-WRITE-AUDIT-001"]:
-              if token not in s: sys.exit("Missing enterprise route contract element: "+token)
-          if os.getenv("EVENT_NAME")=="pull_request":
-              text=os.getenv("PR_BODY","") or ""
-              if not re.search(r"(?:https://github\.com/[^\s]+/issues/\d+|(?:Closes|Fixes|Refs)\s+#\d+)",text,re.I):
-                  sys.exit("Enterprise change must reference a GitHub issue in PR description")
-              if "CTL-ENG-GH-ROUTE-001" not in text and "route-id:" not in text.lower():
-                  sys.exit("Enterprise change must reference CTL-ENG-GH-ROUTE-001 or route-id")
-          print("Enterprise route gate metadata PASS")
-          PY
-      - name: Deployment permission advisory
-        run: |
-          echo "This CI validates the route only. Production still requires protected environments,"
-          echo "required PR review, verified Catalyst execution authority, and native write receipts."
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python agent-workspace/scripts/validate_enterprise_route.py
