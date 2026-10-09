@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kongoni transport-neutral canonical event envelope — engineering candidate",
+  "description": "Engineering candidate under ADR-HUB-FOUNDATION-001, not enterprise-approved and not deployed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "occurredAt",
+    "producer",
+    "subject",
+    "schema",
+    "correlationId",
+    "data"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "eventType": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "service"
+      ],
+      "properties": {
+        "system": {
+          "type": "string",
+          "minLength": 1
+        },
+        "service": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objectType",
+        "objectId"
+      ],
+      "properties": {
+        "objectType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entityId": {
+          "type": "string"
+        }
+      }
+    },
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "uri"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "correlationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "causationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "traceId": {
+          "type": "string"
+        },
+        "spanId": {
+          "type": "string"
+        }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actorType",
+        "actorId"
+      ],
+      "properties": {
+        "actorType": {
+          "enum": [
+            "system",
+            "user",
+            "agent",
+            "service"
+          ]
+        },
+        "actorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authorityRef": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "string",
+      "format": "uri"
+    },
+    "data": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "boolean",
+          "null"
+        ]
+      }
+    }
+  }
+}
