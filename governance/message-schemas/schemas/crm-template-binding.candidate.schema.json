@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CRM message-template binding regression fixture — DEVELOPMENT CANDIDATE",
+  "description": "Engineering-only synthetic representation; authoritative mappings remain in Google Drive. No production permission implied.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bindingId",
+    "documentCode",
+    "schemaId",
+    "schemaVersion",
+    "crmModule",
+    "crmField",
+    "mappingKind",
+    "observedFieldType",
+    "releaseGate"
+  ],
+  "properties": {
+    "bindingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "documentCode": {
+      "type": "string",
+      "pattern": "^BDT-[0-9]{4}$"
+    },
+    "schemaId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "crmModule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "crmField": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mappingKind": {
+      "enum": [
+        "DIRECT_SCALAR",
+        "NATIVE_LOOKUP",
+        "IDENTITY_RESOLVER",
+        "DERIVED_VARIABLE",
+        "SUBFORM",
+        "ROLE_SPECIFIC"
+      ]
+    },
+    "observedFieldType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceRef": {
+      "type": "string",
+      "format": "uri"
+    },
+    "validatedBy": {
+      "type": "string"
+    },
+    "templateId": {
+      "type": "string"
+    },
+    "releaseGate": {
+      "const": "BLOCKED_PENDING_RUNTIME_AND_APPROVAL"
+    }
+  }
+}
