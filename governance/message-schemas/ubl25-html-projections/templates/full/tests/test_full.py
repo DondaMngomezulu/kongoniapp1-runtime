@@ -1,7 +1,7 @@
 import json,pathlib,unittest,tempfile,sys
 from lxml import etree
-ROOT=pathlib.Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT))
+ROOT=pathlib.Path(__file__).resolve().parents[3]
+sys.path.insert(0,str(ROOT/'templates/full'))
 from render_full import render,INDEX
 class FullSuite(unittest.TestCase):
  def test_exact_profiles(self):
