@@ -1,0 +1,110 @@
+catalogue_id: CAT-HUB-SVC-001
+title: Enterprise Hub Service Catalogue — Current State Crosswalk
+version: '0.1'
+status: DRAFT_FOR_CHECK_STUDY
+parent_capability_catalogue: CAT-HUB-CAP-001
+parent_standard: STD-ARCH-HUB-SPOKE-001
+methodology: MET-PDCA-001
+classification_rule: Services implement Hub capabilities; platforms SHALL NOT define capability boundaries.
+service_groups:
+  business_brain:
+    - service: Governance and policy controls
+      implementation: GitHub governed controls plus Catalyst structured governance/reference state
+      status: PARTIAL
+      capabilities: [policy_and_rule_governance, authority_and_accountability_resolution, risk_compliance_and_exception_governance]
+      gap: No single machine-executable enterprise policy decision service verified.
+    - service: PDCA and accountability control
+      implementation: MET-PDCA-001 plus governed registers/work items
+      status: IMPLEMENTED_GOVERNANCE_PARTIAL_RUNTIME
+      capabilities: [mandate_and_objective_management, performance_and_outcome_governance]
+    - service: Repository and information authority governance
+      implementation: architecture controls and repository authority records
+      status: PARTIAL
+      capabilities: [repository_and_information_authority_governance]
+      gap: Runtime repository-routing decision service not yet implemented.
+  functional_brain:
+    - service: Agent and model execution/routing
+      implementation: AI agent runtimes plus CTL-AI-MODEL-ROUTE-001 architecture
+      status: PARTIAL
+      capabilities: [reasoning_and_decision_services, agent_and_model_routing]
+      gap: Cross-platform runtime router ownership requires verification.
+    - service: Workflow orchestration
+      implementation: Catalyst Circuits, Functions and AppSail capabilities plus domain workflows
+      status: PLATFORM_AVAILABLE_PARTIAL_ENTERPRISE_ABSTRACTION
+      capabilities: [workflow_and_process_orchestration, service_composition]
+      gap: Cross-platform orchestration abstraction missing.
+    - service: Microservice runtime
+      implementation: Catalyst Functions/AppSail and governed Microservice Register
+      status: PARTIAL
+      capabilities: [service_composition, exception_management]
+  information_brain:
+    - service: Enterprise semantic services
+      implementation: Catalyst EnterpriseSemanticService and SemanticService* structured records; GitHub semantic architecture
+      status: PARTIAL
+      capabilities: [semantic_resolution, ontology_and_taxonomy_services, master_reference_context]
+      gap: Runtime semantic service conformance and ownership require consolidation.
+    - service: Enterprise identity and binding
+      implementation: Canonical identifiers required by architecture; Catalyst and spoke platform IDs exist as bindings
+      status: GAP
+      capabilities: [canonical_identity_management, state_and_repository_bindings]
+      gap: Canonical enterprise identity service not verified.
+    - service: Provenance and evidence
+      implementation: change logs, audit/evidence records, EDRMS provenance and repository bindings
+      status: PARTIAL
+      capabilities: [information_authority_and_provenance, evidence_and_lineage_models]
+  communication_nervous_system:
+    - service: API exposure
+      implementation: Catalyst API Gateway capability plus OpenAPI contracts
+      status: PLATFORM_AVAILABLE
+      capabilities: [api_exposure, protocol_contract_management, communication_security]
+    - service: MCP interfaces
+      implementation: MCP servers, MCP_Tool_Register and ToolRegister
+      status: PARTIAL
+      capabilities: [mcp_interfaces, service_discovery]
+      gap: Canonical enterprise MCP routing registry and authority model require completion.
+    - service: Event and message exchange
+      implementation: platform/event capabilities and domain messaging where available
+      status: GAP_PARTIAL
+      capabilities: [event_and_signal_exchange, command_and_message_exchange, queue_and_delivery_semantics]
+      gap: No verified enterprise event backbone or canonical message envelope.
+  integration_nervous_system:
+    - service: System connectors and adapters
+      implementation: Zoho APIs, Catalyst integration services and external connectors
+      status: PARTIAL
+      capabilities: [system_connectors_and_adapters, protocol_mediation, edge_and_spoke_connectivity]
+      gap: Enterprise Integration Connector Catalogue missing.
+    - service: State synchronisation
+      implementation: point integrations and repository/system bindings
+      status: PARTIAL
+      capabilities: [schema_and_data_transformation, identity_binding_and_propagation, transaction_and_state_synchronisation]
+      gap: Standard retry, idempotency and dead-letter controls not verified enterprise-wide.
+    - service: Integration observability
+      implementation: Catalyst Logs plus local audit/evidence mechanisms
+      status: PARTIAL
+      capabilities: [integration_error_recovery, integration_observability]
+      gap: Cross-platform observability plane missing.
+  asset_and_spoke_boundary:
+    - service: Authoritative business spokes
+      implementation: Zoho CRM, Zoho Books, Zoho WorkDrive and domain operational systems
+      status: IMPLEMENTED_AS_SPOKES
+      capabilities: [asset_and_spoke_registration, capability_exposure, lifecycle_state_observation]
+      gap: Canonical spoke/resource registry not yet verified.
+    - service: Hub runtime resources
+      implementation: Catalyst Data Store, Stratus, Functions/AppSail, Circuits, API Gateway and Authentication
+      status: IMPLEMENTED_PLATFORM_CAPABILITIES
+      capabilities: [resource_identity_and_binding, endpoint_health_and_availability, command_actuation_binding]
+    - service: Digital representation
+      implementation: RAMI/MIMOSA semantic structures and asset records
+      status: PARTIAL
+      capabilities: [digital_representation_binding, telemetry_ingestion]
+      gap: AAS-aligned representation requires targeted validation where applicable.
+cross_cutting:
+  security_and_identity: PARTIAL
+  audit_and_execution_evidence: IMPLEMENTED_PARTIAL_CROSS_PLATFORM
+  observability_and_telemetry: PARTIAL
+  resilience_and_recovery: PARTIAL
+  versioning_and_configuration: IMPLEMENTED_IN_ENGINEERING_PARTIAL_RUNTIME
+  privacy_and_data_governance: PARTIAL
+  interoperability_and_portability: IMPLEMENTED_AS_ARCHITECTURE_RULE_PARTIAL_RUNTIME
+  lifecycle_and_change_governance: IMPLEMENTED
+closure_rule: DO_COMPLETE != TASK_COMPLETE
