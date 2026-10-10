@@ -15,7 +15,10 @@ class FullSuite(unittest.TestCase):
     f=ROOT/p[key];self.assertTrue(f.exists(),str(f))
     etree.XSLT(etree.parse(str(f)))
  def test_strict_gate_before_any_xslt(self):
-  with self.assertRaises(ValueError):render("Invoice",ROOT/"fixtures/invoice-preview.xml",xsd_path=None)
+  with tempfile.TemporaryDirectory() as td:
+   f=pathlib.Path(td)/"sample.xml"
+   f.write_text('<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"/>')
+   with self.assertRaises(ValueError):render("Invoice",f,xsd_path=None)
  def test_wrong_root_denied(self):
   with tempfile.TemporaryDirectory() as t:
    x=pathlib.Path(t)
