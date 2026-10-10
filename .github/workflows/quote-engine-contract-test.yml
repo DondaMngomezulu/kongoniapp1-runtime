@@ -1,0 +1,29 @@
+name: AI Quote Engine Contract Tests
+on:
+  pull_request:
+    paths:
+      - 'functions/kongoni_quote_generation_engine/**'
+      - 'agent-workspace/services/SRV-VS01-QUOTE-001/**'
+      - '.github/workflows/quote-engine-contract-test.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'functions/kongoni_quote_generation_engine/**'
+      - 'agent-workspace/services/SRV-VS01-QUOTE-001/**'
+      - '.github/workflows/quote-engine-contract-test.yml'
+permissions:
+  contents: read
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate JS entry and engine contracts
+        run: |
+          node --check functions/kongoni_quote_generation_engine/index.js
+          node --check functions/kongoni_quote_generation_engine/lib/engine.cjs
+          node --check functions/kongoni_quote_generation_engine/lib/intent.cjs
+          node --test functions/kongoni_quote_generation_engine/test/*.test.cjs

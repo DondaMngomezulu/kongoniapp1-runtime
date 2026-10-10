@@ -1,0 +1,9 @@
+{
+  "name": "kongoni-quote-generation-engine",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": { "test": "node --test test/*.test.cjs" },
+  "dependencies": { "zcatalyst-sdk-node": "^3.2.0" },
+  "engines": { "node": ">=20" }
+}
