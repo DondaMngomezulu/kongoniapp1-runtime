@@ -1,0 +1,46 @@
+chatgpt_trigger:
+  id: KNG-TRG-CHATGPT-TAX-001
+  version: '1.0.0'
+  name: ChatGPT Tax Evaluation Trigger
+  event_type: kongoni.tax.evaluation.requested.v1
+  adapter: ../../../functions/kongoni_tax_service/src/chatgpt-trigger.js
+  activation:
+    current_approved_chat: ACTIVE
+    persistent_platform_registration: SOURCE_DEFINED_NOT_REGISTERED
+    constraint: Available ChatGPT automations do not support an arbitrary Catalyst Signals webhook as an event source.
+  match:
+    structured_command: '@tax evaluate'
+    action_terms:
+      - calculate
+      - compute
+      - evaluate
+      - assess
+      - determine
+    tax_terms:
+      - tax
+      - VAT
+      - deferred tax
+      - income tax
+      - withholding tax
+      - payroll tax
+      - customs
+      - excise
+  exclusions:
+    - General tax explanations
+    - APQC process listing
+    - APQC-to-SARS cross-walk requests
+    - Any request without a tax action
+  required_command_fields:
+    - requestId
+    - entityId
+    - asOfDate
+    - apqcActivity
+    - taxType
+    - ruleId
+    - facts
+  missing_input_action: Ask for one missing or invalid field. Do not estimate a tax result.
+  authority_gate:
+    calculations: Approved and effective-dated rule required
+    posting: Separate posting validation required
+    production: NOT_AUTHORIZED
+  output_schema: event-schema.json

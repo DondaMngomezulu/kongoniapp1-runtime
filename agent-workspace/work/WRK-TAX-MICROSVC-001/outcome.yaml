@@ -1,0 +1,12 @@
+outcome:
+  work_id: WRK-TAX-MICROSVC-001
+  timestamp_utc: '2026-08-20T18:26:47Z'
+  result: PARTIAL_SUCCESS
+  do_complete: true
+  check_study_result: ADAPT
+  act_decision: ADAPT
+  task_complete: false
+  source_publication: PENDING_COMMIT
+  chatgpt_trigger: SOURCE_DEFINED_AND_TESTED
+  catalyst_signal_trigger: SOURCE_DEFINED_NOT_PROVISIONED
+  production_change: NONE

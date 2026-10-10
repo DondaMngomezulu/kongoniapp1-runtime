@@ -1,0 +1,15 @@
+{
+  "name": "kongoni_tax_signal_handler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fail-closed Catalyst Signals adapter for KNG-SVC-TAX-001.",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "UNLICENSED"
+}

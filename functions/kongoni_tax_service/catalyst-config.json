@@ -1,0 +1,11 @@
+{
+  "deployment": {
+    "name": "kongoni_tax_service",
+    "stack": "node20",
+    "type": "advancedio"
+  },
+  "execution": {
+    "main": "index.js"
+  }
+}
+
