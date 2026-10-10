@@ -54,3 +54,8 @@ The GitHub repository is an **architecture and configuration-as-code** repositor
 
 ## Migration note
 Legacy operational content accidentally committed to GitHub must be removed from the current tree and relocated to its authoritative application/repository. Git commit and issue-edit histories may retain previous versions and must be assessed separately for repository-history purging, with impact review and authorised administrative action.
+
+## Change-control traceability
+The missing change record for the original ADR commit is addressed by
+[CHG-20261010-VS05-REPOSITORY-BOUNDARY-LOG](../../agent-workspace/change-log/2026/10/CHG-20261010-VS05-REPOSITORY-BOUNDARY-LOG.yaml).
+This corrective record preserves the original CI failure and the ADR's PROPOSED status.

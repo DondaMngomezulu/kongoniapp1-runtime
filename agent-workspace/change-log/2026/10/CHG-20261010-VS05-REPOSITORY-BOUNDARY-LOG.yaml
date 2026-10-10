@@ -1,0 +1,51 @@
+change_id: CHG-20261010-VS05-REPOSITORY-BOUNDARY-LOG
+timestamp_utc: '2026-10-10T11:34:00Z'
+actor:
+  type: Codex
+  name: Agent Jane
+  agent_contract_ref: null
+mandate_ref: 'Direct user request on 2026-10-10 to remediate the reported runtime change-log failure.'
+accountability_task_ref: 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/actions/runs/37986323468/job/114009099763'
+task_class: T1
+change_type: governance
+summary: Restore change-log traceability for the proposed VS05 repository-boundary ADR.
+reason: >-
+  Commit 72006d48ab122116f46076414dd020a515ac5059 added the ADR without a
+  same-change-set change record and failed CTL-DEV-CHG-LOG-001. This corrective
+  record documents that omission and accompanies an ADR traceability link.
+affected_paths:
+  - governance/architecture/ADR-VS05-REPOSITORY-BOUNDARY-001.md
+  - agent-workspace/change-log/2026/10/CHG-20261010-VS05-REPOSITORY-BOUNDARY-LOG.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: >-
+    Group CEO approved a one-time repository-only exception on 2026-10-10
+    for Agent Jane to publish this two-file repair on an isolated branch and
+    draft pull request. Independent review remains required. The exception
+    covers the unresolved GitHub execution-authority prerequisites only;
+    it grants no merge, deployment or access-permission authority.
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: >-
+    Local validation passed for the proposed two-file change set and the
+    original failing base through the corrected tree. Direct schema/PDCA
+    validation, Agent Workspace Validation and diff whitespace checks passed.
+    Negative tests confirmed that missing ADR coverage and premature T2
+    closure remain rejected. GitHub CI is pending authorised publication.
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'Original ADR commit: https://github.com/DondaMngomezulu/kongoniapp1-runtime/commit/72006d48ab122116f46076414dd020a515ac5059'
+  - 'Failed control job: https://github.com/DondaMngomezulu/kongoniapp1-runtime/actions/runs/37986323468/job/114009099763'
+  - 'Control and validator: CTL-DEV-CHG-LOG-001 v1.0; agent-workspace/scripts/validate_change_log.py'
+  - 'Local baseline reproduction: 0bdf84d5388200d44a95e35613b9522fe6a551b1...72006d48ab122116f46076414dd020a515ac5059 fails for the missing ADR change record.'
+commit_sha: null
+pull_request: null
+notes: >-
+  This is a prospective corrective record, not evidence that the original
+  commit met the same-change-set requirement. The historical failure remains
+  intact. The ADR remains PROPOSED; its decision and system-of-record boundaries
+  are unchanged. No formal adoption, merge, production deployment or
+  operational data change is authorised by this record.
