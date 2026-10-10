@@ -1,7 +1,7 @@
 """Offline UBL 2.5 projection renderer. No CRM or email calls."""
 import argparse,json,pathlib
 from lxml import etree
-ROOT=pathlib.Path(__file__).resolve().parent
+ROOT=pathlib.Path(__file__).resolve().parents[2]
 INDEX=json.loads((ROOT/"full-template-projection-index.candidate.json").read_text())
 
 def render(doc_type,xml_path,purpose="DOCUMENT",xsd_path=None):
