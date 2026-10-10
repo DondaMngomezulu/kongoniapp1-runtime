@@ -1,0 +1,78 @@
+data_model:
+  id: DAT-SRV-BIAN-LEGAL-COMPLIANCE-001
+  version: '0.1'
+  primary_resource: LegalComplianceAssessment
+  entities:
+    LegalComplianceAssessment:
+      key: assessment_id
+      fields:
+        assessment_id: {type: string, required: true}
+        subject_type: {type: string, required: true}
+        subject_id: {type: string, required: true}
+        value_stream_id: {type: string, required: true, allowed: [VS02]}
+        use_case: {type: string, required: true}
+        jurisdiction: {type: string, required: false}
+        effective_date: {type: date, required: false}
+        rule_package_id: {type: string, required: true}
+        rule_package_version: {type: string, required: true}
+        execution_mode: {type: string, required: true, allowed: [REFERENCE_SIMULATION, DEPLOYED_RUNTIME]}
+        classification: {type: string, required: false}
+        pass_flag: {type: boolean, required: true}
+        status: {type: string, required: true}
+    SourceBinding:
+      key: source_binding_id
+      fields:
+        source_binding_id: {type: string, required: true}
+        assessment_id: {type: string, required: true}
+        source_type: {type: string, required: true}
+        source_identifier: {type: string, required: true}
+        source_version: {type: string, required: true}
+        authority_rank: {type: integer, required: true}
+        effective_from: {type: date, required: false}
+        effective_to: {type: date, required: false}
+        provenance_ref: {type: string, required: true}
+    RuleBinding:
+      key: rule_binding_id
+      fields:
+        rule_binding_id: {type: string, required: true}
+        assessment_id: {type: string, required: true}
+        rule_id: {type: string, required: true}
+        rule_type: {type: string, required: true, allowed: [obligation, permission, prohibition, constitutive_statement]}
+        source_binding_id: {type: string, required: true}
+        legalruleml_ref: {type: string, required: true}
+        validation_status: {type: string, required: true}
+    Finding:
+      key: finding_id
+      fields:
+        finding_id: {type: string, required: true}
+        assessment_id: {type: string, required: true}
+        rule_id: {type: string, required: true}
+        outcome: {type: string, required: true}
+        rationale: {type: string, required: true}
+        source_binding_id: {type: string, required: true}
+        evidence_ref: {type: string, required: true}
+    Exception:
+      key: exception_id
+      fields:
+        exception_id: {type: string, required: true}
+        assessment_id: {type: string, required: true}
+        exception_type: {type: string, required: true}
+        severity: {type: string, required: true}
+        disposition: {type: string, required: true, allowed: [ADAPT, REPEAT, REJECT, ESCALATE]}
+    ExecutionEvidence:
+      key: evidence_id
+      fields:
+        evidence_id: {type: string, required: true}
+        assessment_id: {type: string, required: true}
+        input_hash: {type: string, required: true}
+        output_hash: {type: string, required: true}
+        rule_package_hash: {type: string, required: true}
+        assertions: {type: object, required: true}
+        pass_flag: {type: boolean, required: true}
+        created_at: {type: datetime, required: true}
+  integrity_rules:
+    - every Finding SHALL resolve to one RuleBinding and one SourceBinding
+    - every RuleBinding SHALL reference a governed LegalRuleML artifact
+    - DEPLOYED_RUNTIME SHALL NOT be accepted until Catalyst runtime adoption is recorded
+    - conflicting active source authorities SHALL create an Exception and block a final pass result
+    - immutable evidence hashes SHALL be retained after assessment completion

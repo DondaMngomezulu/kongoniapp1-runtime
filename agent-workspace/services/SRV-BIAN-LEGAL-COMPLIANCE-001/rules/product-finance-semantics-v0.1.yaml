@@ -1,0 +1,124 @@
+rule_package:
+  id: RPK-FINCO-PRODUCT-SEM-001
+  version: '0.1'
+  status: CONTROLLED_DRAFT
+  microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+  microservice_name: Legal and Compliance Service
+  workflow_id: WF-LEGAL-RULE-COD-001
+  execution_mode: REFERENCE_SIMULATION
+  scope:
+    - Equipment Loan
+    - Equipment Finance Lease
+    - Equipment Operating Lease
+    - Equipment Rental
+  semantic_precedence:
+    - authority: SABS/SANS
+      role: South African national standards and terminology authority
+      finding: No publicly discoverable SANS was identified that normatively defines the four commercial product classes.
+      control: Preserve SABS/SANS as national standards authority; record the product-definition gap and do not invent a SANS classification.
+      provenance:
+        - SABS Standards Division and SABS/TC 0168 Financial services
+    - authority: SARS
+      role: South African tax and statutory reporting semantics
+      precedence_rule: Apply SARS-specific tax classification independently from accounting and commercial labels.
+    - authority: IFRS Accounting Standards
+      role: accounting substance and recognition/classification semantics
+      precedence_rule: IFRS classification does not replace legal or tax classification.
+    - authority: ELFA
+      role: commercial equipment-finance industry cross-reference
+      precedence_rule: ELFA labels and documentation practice are commercial cross-references only and may not override South African law, SARS or IFRS.
+
+  products:
+    - product_code: FINCO-EQUIPMENT-LOAN
+      canonical_name: Equipment Loan
+      canonical_semantic_definition: >-
+        A financing arrangement under which a lender advances money to enable acquisition or financing of equipment and the borrower is contractually obliged to repay the amount advanced, together with agreed finance charges or other contractual amounts, over a determinable period.
+      sabs_binding:
+        status: AUTHORITY_GAP_RECORDED
+        rule: No SANS product definition identified; use controlled terminology and retain source provenance.
+      sars_binding:
+        concepts: [debt, loan, borrower, lender, repayment, specified_maturity]
+        semantic_test: Borrower receives cash or value and is obliged to return at least the amount or equivalent value at a determinable future date.
+      ifrs_binding:
+        primary_standard: IFRS 9
+        concepts: [financial_asset, financial_liability, contractual_cash_flows, principal, interest, amortised_cost]
+        semantic_test: Contract creates financial instrument rights/obligations; basic lending cash flows are principally principal and interest where applicable.
+      elfa_cross_reference:
+        class: Loan / Debt financing
+        evidence_role: Confirms equipment-finance industry distinction between lease and loan structures.
+      classification_rules:
+        - IF customer receives financing and FinCo's primary right is contractual repayment rather than retained right-of-use ownership THEN classify Equipment Loan.
+        - Equipment collateral or security does not by itself convert the loan into a lease.
+
+    - product_code: FINCO-EQUIPMENT-FINANCE-LEASE
+      canonical_name: Equipment Finance Lease
+      canonical_semantic_definition: >-
+        A lease of identified equipment that, from the lessor accounting perspective, transfers substantially all risks and rewards incidental to ownership to the lessee while legal title may remain with the lessor during the lease term.
+      sabs_binding:
+        status: AUTHORITY_GAP_RECORDED
+        rule: No SANS product definition identified; use controlled terminology and retain source provenance.
+      sars_binding:
+        concepts: [lease, lease_payment, capitalised_leased_asset, finance_lease_as_debt_equivalent]
+        semantic_test: SARS reporting distinguishes lease payments other than operating leases and treats finance leases as economically equivalent to debt in specified IFRS-based tax ratios.
+      ifrs_binding:
+        primary_standard: IFRS 16
+        perspective: lessor
+        concepts: [lease, identified_asset, right_to_control_use, finance_lease, risks_and_rewards, net_investment_in_lease]
+        semantic_test: Lessor classifies as finance lease when substantially all risks and rewards incidental to ownership transfer.
+      elfa_cross_reference:
+        class: Finance lease / equipment lease financing
+        evidence_role: Equipment-finance documentation and market practice distinguish finance leases from loans and operating leases.
+      classification_rules:
+        - IF arrangement contains a lease under IFRS 16 AND lessor classification transfers substantially all ownership risks and rewards THEN classify Equipment Finance Lease.
+        - Purchase option or title-transfer mechanics are indicators but shall not be the sole classification test.
+
+    - product_code: FINCO-EQUIPMENT-OPERATING-LEASE
+      canonical_name: Equipment Operating Lease
+      canonical_semantic_definition: >-
+        A lease of identified equipment in which the customer receives the controlled right to use the equipment for an agreed period in exchange for consideration and, from the lessor accounting perspective, the arrangement does not transfer substantially all risks and rewards incidental to ownership.
+      sabs_binding:
+        status: AUTHORITY_GAP_RECORDED
+        rule: No SANS product definition identified; use controlled terminology and retain source provenance.
+      sars_binding:
+        concepts: [operating_lease, operating_lease_payment, connected_person, non_connected_person]
+        semantic_test: Apply the applicable SARS operating-lease definition and reporting treatment independently; operating lease payments are separately reportable from other lease payments.
+      ifrs_binding:
+        primary_standard: IFRS 16
+        perspective: lessor
+        concepts: [lease, identified_asset, control_of_use, operating_lease, risks_and_rewards]
+        semantic_test: Arrangement contains a lease and, for lessor classification, does not transfer substantially all risks and rewards incidental to ownership.
+      elfa_cross_reference:
+        class: Operating Lease
+        evidence_role: Confirms Operating Lease as a distinct equipment-finance structure and agreement/documentation class.
+      classification_rules:
+        - IF contract conveys control of an identified asset for a period in exchange for consideration AND lessor retains substantial ownership risks and rewards THEN classify Equipment Operating Lease.
+        - Residual-value retention may support the classification but is not by itself determinative.
+
+    - product_code: FINCO-EQUIPMENT-RENTAL
+      canonical_name: Equipment Rental
+      canonical_semantic_definition: >-
+        A commercial arrangement that grants temporary access to equipment for rental consideration, normally with the provider retaining ownership and a high degree of asset-control or substitution flexibility; the arrangement must be tested to determine whether it contains a lease under IFRS 16.
+      sabs_binding:
+        status: AUTHORITY_GAP_RECORDED
+        rule: No SANS product definition identified; use controlled terminology and retain source provenance.
+      sars_binding:
+        concepts: [rental_agreement, rental, right_of_use, letting_and_hiring]
+        semantic_test: SARS materials distinguish rental agreements from instalment credit agreements and recognise rental/letting arrangements as separate agreement concepts for VAT and tax administration purposes.
+      ifrs_binding:
+        primary_standard: IFRS 16
+        perspective: contract_assessment
+        concepts: [identified_asset, substantive_substitution_right, right_to_control_use, service_contract]
+        semantic_test: IF supplier has substantive substitution rights or customer does not control use of an identified asset, contract does not contain a lease; otherwise apply IFRS 16 lease accounting to the lease component.
+      elfa_cross_reference:
+        class: Rental / Rental Agreement
+        evidence_role: Rental is used in equipment-finance practice as a separate commercial access structure; ELFA materials also distinguish rental-house arrangements from finance leases in documentation practice.
+      classification_rules:
+        - IF temporary equipment access is supplied and supplier retains substantive substitution/control such that IFRS 16 lease definition is not met THEN classify Equipment Rental / service-rental arrangement.
+        - IF a purported Rental conveys control of an identified asset and meets IFRS 16 lease definition THEN retain commercial label Rental but attach IFRS lease-component classification rather than forcing a false non-lease accounting result.
+
+  cross_authority_controls:
+    - Product commercial name SHALL be distinct from SARS tax classification and IFRS accounting classification.
+    - The same agreement MAY carry different authority-specific classifications; these SHALL be stored as overlays, not collapsed into one field.
+    - SABS/SANS authority gaps SHALL be explicit and SHALL NOT be filled by ELFA or vendor terminology.
+    - ELFA SHALL be used after South African and IFRS semantic anchoring as a commercial cross-reference only.
+    - LegalRuleML representation SHALL preserve every authority binding and source version.
