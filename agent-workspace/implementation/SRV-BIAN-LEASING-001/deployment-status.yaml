@@ -1,0 +1,32 @@
+implementation_id: IMP-SRV-BIAN-LEASING-001-DEV
+service_id: SRV-BIAN-LEASING-001
+environment: Development
+status: CODE_COMPLETE_DEPLOYMENT_BLOCKED
+runtime_target: Zoho Catalyst
+preferred_language: Python
+implemented_operations: [Initiate, Retrieve, Update]
+preflight:
+  catalystrc: PASS
+  catalyst_json: PASS
+  development_authority: ENV-AUTH-CAT-KONGONIAPP1-DEV
+  production_authority: NOT_GRANTED
+runtime_registration:
+  status: BLOCKED
+  finding: No Leasing Function or AppSail target exists and the exposed Catalyst MCP toolset cannot create or deploy a new Function/AppSail runtime.
+persistence:
+  requested_store: LeasingFacility
+  create_attempt: BLOCKED_API_LIMIT_REACHED
+  rule: Do not reuse an unrelated existing table solely to bypass the Catalyst table limit.
+engineering_result:
+  code: COMPLETE
+  unit_logic_smoke: PASS
+  catalyst_deployment: NOT_PERFORMED
+  runtime_contract_tests: NOT_PERFORMED
+  datastore_mutation_tests: NOT_PERFORMED
+next_required_actions:
+  - Register a Leasing runtime in the initialized Catalyst project using an authorised Catalyst provisioning path.
+  - Resolve Data Store capacity or approve an alternative governed persistence implementation.
+  - Deploy to Development only.
+  - Execute contract, auth, idempotency, audit, negative and recovery tests.
+closure_rule: DO_COMPLETE != TASK_COMPLETE
+act_recommendation: ADAPT
