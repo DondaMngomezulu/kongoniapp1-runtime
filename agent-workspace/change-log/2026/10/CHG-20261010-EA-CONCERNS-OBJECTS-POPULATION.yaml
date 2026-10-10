@@ -21,6 +21,12 @@ affected_paths:
   - governance/architecture/models/enterprise-conformance.candidate.json
   - governance/architecture/tests/validate_source_coverage.py
   - .github/workflows/enterprise-architecture-source-coverage.yml
+  - governance/architecture/models/archimate/baseline.exchange.xml
+  - governance/architecture/models/archimate/transition.exchange.xml
+  - governance/architecture/models/archimate/target.exchange.xml
+  - governance/architecture/models/archimate/model-population-manifest.candidate.json
+  - governance/architecture/tests/validate_archimate_models.py
+  - .github/workflows/enterprise-archimate-validation.yml
 environment: repository
 authority:
   status: AUTHORISED
@@ -28,7 +34,7 @@ authority:
 pdca:
   phase: DO
   do_complete: true
-  check_study_result: 'PENDING GitHub CI and source-owner conformance review; no normative ArchiMate exchange validation completed.'
+  check_study_result: 'PENDING independent CI/ArchiMate XSD and relationship checks plus source-owner review; not equivalent to certified enterprise completeness.'
   act_decision: ADAPT
   task_complete: false
 evidence:
@@ -36,5 +42,7 @@ evidence:
   - '12 governance areas; 7 VS entries including VS06; 18 platform capabilities; 48 application services; 15 EA requirements; 85 repository artifact rows; 93 proposed CRM module designs.'
   - 'Historical VS04/VS06 S02 mapping conflict and repository conformance defects retained as explicit gaps.'
   - 'Issue: https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/59'
+  - 'ArchiMate Exchange candidate: baseline 334 elements / 156 relationships; transition 479 / 280; target 448 / 243.'
+  - 'Pinned ArchiMate Exchange 3.1 XSD and ArchiMate 3.2 relationship matrix candidate checks; independent validation pending.'
   - 'Draft PR: https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/60'
 notes: 'Architecture and configuration only. No operational or customer business records in GitHub; no CRM/Catalyst production mutations.'
