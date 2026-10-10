@@ -1,0 +1,30 @@
+name: UBL 2.5 Normative XSD Compilation (101 Types)
+on:
+  pull_request:
+    paths:
+      - 'governance/message-schemas/ubl25-html-projections/**'
+      - '.github/workflows/ubl25-normative-xsd-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/message-schemas/ubl25-html-projections/**'
+      - '.github/workflows/ubl25-normative-xsd-validation.yml'
+jobs:
+  normative-ubl25-xsd:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions: {contents: read}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install 'lxml>=5,<7'
+      - name: Check official 101 XSDs and common dependencies
+        run: python governance/message-schemas/ubl25-html-projections/tests/validate_normative_ubl25.py
+      - name: Retain non-sensitive XSD checksum evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubl25-normative-xsd-validation
+          path: governance/message-schemas/ubl25-html-projections/normative-xsd-assurance.run.json
+          retention-days: 30

@@ -1,0 +1,17 @@
+name: UBL 2.5 Universal HTML Projection Candidate
+on:
+  pull_request:
+    paths: ['governance/message-schemas/ubl25-html-projections/**', '.github/workflows/ubl25-html-projection-regression.yml']
+  push:
+    branches: [main]
+    paths: ['governance/message-schemas/ubl25-html-projections/**', '.github/workflows/ubl25-html-projection-regression.yml']
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    permissions: {contents: read}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install 'jsonschema>=4,<5'
+      - run: python -m unittest discover -s governance/message-schemas/ubl25-html-projections/tests -p 'test_*.py' -v

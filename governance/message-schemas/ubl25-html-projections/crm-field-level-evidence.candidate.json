@@ -1,0 +1,324 @@
+{
+  "id": "UBL25-CRM-FIELD-LEVEL-MAP-20261010",
+  "status": "CHECK_STUDY_HOLD",
+  "evidence_date": "2026-10-10",
+  "verification_method": "ZohoCRM_getEmailTemplateById actual subject/body tokens compared to ZohoCRM_getFields primary module metadata",
+  "covered_document_types": 5,
+  "covered_templates": 5,
+  "all_tokens_exist": true,
+  "unverified_template_types": 14,
+  "live_send_enabled": false,
+  "templates": [
+    {
+      "ubl_type": "ApplicationResponse",
+      "crm_module": "Quotes",
+      "crm_template_id": "5643538000008795012",
+      "status": "FIELD_NAME_AND_METADATA_VERIFIED_NO_RENDERED_INSTANCE",
+      "merge_fields": [
+        {
+          "api_name": "Contact_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Contacts",
+          "read_only": false
+        },
+        {
+          "api_name": "Subject",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Owning_Legal_Entity",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Deal_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Deals",
+          "read_only": false
+        },
+        {
+          "api_name": "Quote_Number",
+          "exists": true,
+          "crm_data_type": "autonumber",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Account_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Accounts",
+          "read_only": false
+        }
+      ],
+      "required_release_evidence": [
+        "CRM_MERGED_INSTANCE_PREVIEW",
+        "EXACT_CONTRACTING_ENTITY_LOOKUP",
+        "CANONICAL_UBL_XML_SCHEMA_VALIDATION",
+        "BUSINESS_RULES_AND_SIGNOFF",
+        "MESSAGE_DELIVERY_AUDIT"
+      ],
+      "send_enabled": false
+    },
+    {
+      "ubl_type": "Quotation",
+      "crm_module": "Quotes",
+      "crm_template_id": "5643538000008802024",
+      "status": "FIELD_NAME_AND_METADATA_VERIFIED_NO_RENDERED_INSTANCE",
+      "merge_fields": [
+        {
+          "api_name": "Contact_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Contacts",
+          "read_only": false
+        },
+        {
+          "api_name": "Subject",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Quote_Number",
+          "exists": true,
+          "crm_data_type": "autonumber",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Account_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Accounts",
+          "read_only": false
+        },
+        {
+          "api_name": "Grand_Total",
+          "exists": true,
+          "crm_data_type": "formula",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Valid_Till",
+          "exists": true,
+          "crm_data_type": "date",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Owning_Legal_Entity",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Deal_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Deals",
+          "read_only": false
+        }
+      ],
+      "required_release_evidence": [
+        "CRM_MERGED_INSTANCE_PREVIEW",
+        "EXACT_CONTRACTING_ENTITY_LOOKUP",
+        "CANONICAL_UBL_XML_SCHEMA_VALIDATION",
+        "BUSINESS_RULES_AND_SIGNOFF",
+        "MESSAGE_DELIVERY_AUDIT"
+      ],
+      "send_enabled": false
+    },
+    {
+      "ubl_type": "Invoice",
+      "crm_module": "Invoices",
+      "crm_template_id": "5643538000008778024",
+      "status": "FIELD_NAME_AND_METADATA_VERIFIED_NO_RENDERED_INSTANCE",
+      "merge_fields": [
+        {
+          "api_name": "Contact_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Contacts",
+          "read_only": false
+        },
+        {
+          "api_name": "Invoice_Number",
+          "exists": true,
+          "crm_data_type": "autonumber",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Subject",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Grand_Total",
+          "exists": true,
+          "crm_data_type": "formula",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Due_Date",
+          "exists": true,
+          "crm_data_type": "date",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Account_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Accounts",
+          "read_only": false
+        }
+      ],
+      "required_release_evidence": [
+        "CRM_MERGED_INSTANCE_PREVIEW",
+        "EXACT_CONTRACTING_ENTITY_LOOKUP",
+        "CANONICAL_UBL_XML_SCHEMA_VALIDATION",
+        "BUSINESS_RULES_AND_SIGNOFF",
+        "MESSAGE_DELIVERY_AUDIT"
+      ],
+      "send_enabled": false
+    },
+    {
+      "ubl_type": "OrderResponse",
+      "crm_module": "Sales_Orders",
+      "crm_template_id": "5643538000008775025",
+      "status": "FIELD_NAME_AND_METADATA_VERIFIED_NO_RENDERED_INSTANCE",
+      "merge_fields": [
+        {
+          "api_name": "Contact_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Contacts",
+          "read_only": false
+        },
+        {
+          "api_name": "SO_Number",
+          "exists": true,
+          "crm_data_type": "autonumber",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Subject",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Grand_Total",
+          "exists": true,
+          "crm_data_type": "formula",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Purchase_Order",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Account_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Accounts",
+          "read_only": false
+        }
+      ],
+      "required_release_evidence": [
+        "CRM_MERGED_INSTANCE_PREVIEW",
+        "EXACT_CONTRACTING_ENTITY_LOOKUP",
+        "CANONICAL_UBL_XML_SCHEMA_VALIDATION",
+        "BUSINESS_RULES_AND_SIGNOFF",
+        "MESSAGE_DELIVERY_AUDIT"
+      ],
+      "send_enabled": false
+    },
+    {
+      "ubl_type": "Order",
+      "crm_module": "Purchase_Orders",
+      "crm_template_id": "5643538000008791051",
+      "status": "FIELD_NAME_AND_METADATA_VERIFIED_NO_RENDERED_INSTANCE",
+      "merge_fields": [
+        {
+          "api_name": "Contact_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Contacts",
+          "read_only": false
+        },
+        {
+          "api_name": "PO_Number",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Subject",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Grand_Total",
+          "exists": true,
+          "crm_data_type": "formula",
+          "crm_lookup_target": null,
+          "read_only": true
+        },
+        {
+          "api_name": "Due_Date",
+          "exists": true,
+          "crm_data_type": "date",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Requisition_No",
+          "exists": true,
+          "crm_data_type": "text",
+          "crm_lookup_target": null,
+          "read_only": false
+        },
+        {
+          "api_name": "Vendor_Name",
+          "exists": true,
+          "crm_data_type": "lookup",
+          "crm_lookup_target": "Vendors",
+          "read_only": false
+        }
+      ],
+      "required_release_evidence": [
+        "CRM_MERGED_INSTANCE_PREVIEW",
+        "EXACT_CONTRACTING_ENTITY_LOOKUP",
+        "CANONICAL_UBL_XML_SCHEMA_VALIDATION",
+        "BUSINESS_RULES_AND_SIGNOFF",
+        "MESSAGE_DELIVERY_AUDIT"
+      ],
+      "send_enabled": false
+    }
+  ]
+}
