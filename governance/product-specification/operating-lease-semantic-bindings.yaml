@@ -1,0 +1,93 @@
+id: MAP-OL-SEM-001
+name: Operating Lease Semantic Binding Map
+version: 1.0.0
+status: PROPOSED
+change_set_id: SEM-OL-ADAPT-2026-08-21
+methodology: MET-PDCA-001
+product_type:
+  code: PRD-L3-FIN-OLEASE
+  name: Operating Lease
+  product_domain: Financial Services
+  product_family: Leasing
+  governing_standard: BIAN Corporate Lease
+  secondary_references: [FIBO, TM Forum ProductSpecification]
+  agreement_type: Operating Lease Sales Product Agreement
+binding_rules:
+  - Operating Lease SHALL remain an L3 Product Type.
+  - Lease-specific concepts SHALL specialise or reference enterprise semantic concepts.
+  - BIAN Corporate Lease governs financial-services domain semantics and SHALL NOT become the ontological parent of asset, accounting, insurance, valuation, usage, or generic agreement concepts.
+  - Product lifecycle states SHALL NOT replace product taxonomy classification.
+bindings:
+  - lease_concept: Purchase Option
+    canonical_concept_id: SEM-AGR-OPTION-001
+    relationship: narrower_than
+  - lease_concept: Extension Option
+    canonical_concept_id: SEM-AGR-OPTION-001
+    relationship: narrower_than
+  - lease_concept: Return Option
+    canonical_concept_id: SEM-AGR-OPTION-001
+    relationship: narrower_than
+  - lease_concept: Early Termination Option
+    canonical_concept_id: SEM-AGR-OPTION-001
+    relationship: narrower_than
+  - lease_concept: Maintenance Reserve
+    canonical_concept_id: SEM-RESERVE-001
+    relationship: narrower_than
+  - lease_concept: Working Capital Reserve
+    canonical_concept_id: SEM-RESERVE-001
+    relationship: narrower_than
+  - lease_concept: Debt Service Reserve
+    canonical_concept_id: SEM-RESERVE-001
+    relationship: narrower_than
+  - lease_concept: Residual Value
+    canonical_concept_id: SEM-ASSET-RV-001
+    relationship: exact_reference
+  - lease_concept: Expected Residual Value
+    canonical_concept_id: SEM-ASSET-RV-001
+    relationship: narrower_than
+  - lease_concept: Guaranteed Residual Value
+    canonical_concept_id: SEM-ASSET-RV-001
+    relationship: narrower_than
+  - lease_concept: Contractual Residual Value
+    canonical_concept_id: SEM-ASSET-RV-001
+    relationship: narrower_than
+  - lease_concept: Insured Residual Value
+    canonical_concept_id: SEM-ASSET-RV-001
+    relationship: narrower_than
+  - lease_concept: Asset Usage
+    canonical_concept_id: SEM-ASSET-USAGE-001
+    relationship: exact_reference
+  - lease_concept: Monthly Hours
+    canonical_concept_id: SEM-ASSET-USAGE-MEASURE-001
+    relationship: narrower_than
+  - lease_concept: Contracted Hours
+    canonical_concept_id: SEM-ASSET-USAGE-MEASURE-001
+    relationship: agreement_constraint_on
+  - lease_concept: Excess Usage
+    canonical_concept_id: SEM-ASSET-USAGE-001
+    relationship: variance_from_agreement_constraint
+non_promoted_specialisations:
+  - {concept: Fixed Capacity Charge, parent: Charge}
+  - {concept: Variable Usage Charge, parent: Charge}
+  - {concept: Lease Rental, parent: Recurring Charge}
+  - {concept: Lease Term, parent: Agreement Term}
+  - {concept: Lease Asset, parent: Asset, modelling_note: contextual role rather than new asset class}
+  - {concept: Lessor, parent: Party Role}
+  - {concept: Lessee, parent: Party Role}
+  - {concept: Buy-back Value, parent: Valuation, modelling_note: combine valuation with contractual undertaking rather than promote}
+  - {concept: Maintenance Obligation, parent: Agreement Obligation}
+  - {concept: Insurance Obligation, parent: Agreement Obligation}
+  - {concept: Default, parent: Agreement Event}
+  - {concept: Cure Period, parent: Agreement Term}
+  - {concept: Asset Return, parent: Asset Lifecycle Event}
+regression_assertions:
+  - assertion_id: OL-SEM-001
+    statement: PRD-L3-FIN-OLEASE remains the unique canonical Operating Lease Product Type.
+  - assertion_id: OL-SEM-002
+    statement: No promoted concept changes the L1-L5 product taxonomy hierarchy.
+  - assertion_id: OL-SEM-003
+    statement: Usage facts may be consumed by leasing, maintenance, warranty, insurance, LCC/TCO, and operations without redefining the measured fact.
+  - assertion_id: OL-SEM-004
+    statement: Residual Value requires valuation point and basis to prevent conflation of expected, guaranteed, contractual, and insured values.
+  - assertion_id: OL-SEM-005
+    statement: End-of-lease options resolve through Agreement Option rather than forming independent enterprise primitives.
