@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UBL 2.5 HTML Email Projection candidate registry",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "normative_source",
+    "source_register",
+    "architecture",
+    "counts",
+    "contract",
+    "profiles"
+  ],
+  "properties": {
+    "status": {
+      "const": "CHECK_STUDY_HOLD"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "normative_total",
+        "prior_types",
+        "new_ids_pending",
+        "policies"
+      ],
+      "properties": {
+        "normative_total": {
+          "const": 101
+        },
+        "prior_types": {
+          "const": 93
+        },
+        "new_ids_pending": {
+          "const": 8
+        }
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 101,
+      "maxItems": 101,
+      "items": {
+        "type": "object",
+        "required": [
+          "projection_key",
+          "ubl_type",
+          "normative_xsd_uri",
+          "email_policy",
+          "approved_to_send",
+          "hold"
+        ],
+        "properties": {
+          "email_policy": {
+            "enum": [
+              "EMAIL_PRIMARY",
+              "EMAIL_WITH_CANONICAL_DOCUMENT",
+              "COVERING_EMAIL_ONLY"
+            ]
+          },
+          "approved_to_send": {
+            "const": false
+          },
+          "hold": {
+            "type": "array",
+            "minItems": 1
+          }
+        }
+      }
+    }
+  }
+}
