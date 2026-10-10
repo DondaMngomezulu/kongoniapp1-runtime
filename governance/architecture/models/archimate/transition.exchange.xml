@@ -7484,131 +7484,131 @@
     <view identifier="view-transition-domain-landscape" xsi:type="Diagram">
       <name xml:lang="en">TRANSITION — Enterprise Five-Domain and Six-Stream Landscape</name>
       <documentation xml:lang="en">Source-grounded snapshot; dotted status and incomplete domain objects require review. Selected view of larger element catalogue.</documentation>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-01" x="50" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-02" x="320" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-03" x="590" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-04" x="860" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-05" x="1130" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-vs-VS00" x="50" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-vs-VS01" x="320" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-vs-VS02" x="590" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-vs-VS03" x="860" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-vs-VS04" x="1130" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-vs-VS05" x="1400" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-vs-VS06" x="1670" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-req-REQ-EA-001" x="50" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-req-REQ-EA-003" x="320" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="590" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="860" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="1130" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-domain-landscape" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="1400" y="350" w="245" h="115"/>
-      <connection identifier="vc-transition-domain-landscape-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-transition-domain-landscape" target="vnode-transition-domain-landscape"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-domain-EA-DV-01" xsi:type="Element" elementRef="e-domain-EA-DV-01" x="50" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-domain-EA-DV-02" xsi:type="Element" elementRef="e-domain-EA-DV-02" x="320" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-domain-EA-DV-03" xsi:type="Element" elementRef="e-domain-EA-DV-03" x="590" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-domain-EA-DV-04" xsi:type="Element" elementRef="e-domain-EA-DV-04" x="860" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-domain-EA-DV-05" xsi:type="Element" elementRef="e-domain-EA-DV-05" x="1130" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-vs-VS00" xsi:type="Element" elementRef="e-vs-VS00" x="50" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-vs-VS01" xsi:type="Element" elementRef="e-vs-VS01" x="320" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-vs-VS02" xsi:type="Element" elementRef="e-vs-VS02" x="590" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-vs-VS03" xsi:type="Element" elementRef="e-vs-VS03" x="860" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-vs-VS04" xsi:type="Element" elementRef="e-vs-VS04" x="1130" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-vs-VS05" xsi:type="Element" elementRef="e-vs-VS05" x="1400" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-vs-VS06" xsi:type="Element" elementRef="e-vs-VS06" x="1670" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-req-REQ-EA-001" xsi:type="Element" elementRef="e-req-REQ-EA-001" x="50" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-req-REQ-EA-003" xsi:type="Element" elementRef="e-req-REQ-EA-003" x="320" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-data-CRM_TRANSACTION" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="590" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-app-APP-ICT-0003" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="860" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-app-GOOGLE_DRIVE" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="1130" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-domain-landscape-e-app-APP-ICT-0018" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="1400" y="350" w="245" h="115"/>
+      <connection identifier="vc-transition-domain-landscape-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-view-transition-domain-landscape-e-app-APP-ICT-0003" target="vnode-view-transition-domain-landscape-e-data-CRM_TRANSACTION"/>
     </view>
     <view identifier="view-transition-value-streams" xsi:type="Diagram">
       <name xml:lang="en">TRANSITION — Operating Value Streams and Specialist Capability Families</name>
       <documentation xml:lang="en">Source-grounded snapshot; dotted status and incomplete domain objects require review. Selected view of larger element catalogue.</documentation>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-vs-VS01" x="50" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-vs-VS02" x="320" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-vs-VS03" x="590" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-vs-VS04" x="860" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-vs-VS05" x="1130" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-vs-VS06" x="1400" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-family-S01" x="50" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-family-S03" x="320" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-family-S04" x="590" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-family-S05" x="860" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-family-S06" x="1130" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-family-S02" x="1400" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-cap-P04" x="50" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-cap-P07" x="320" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-cap-P08" x="590" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-cap-P06" x="860" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-cap-P05" x="1130" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-value-streams" xsi:type="Element" elementRef="e-cap-P14" x="1400" y="350" w="245" h="115"/>
-      <connection identifier="vc-transition-value-streams-r-vs-VS01-Association-family-S01" xsi:type="Relationship" relationshipRef="r-vs-VS01-Association-family-S01" source="vnode-transition-value-streams" target="vnode-transition-value-streams"/>
-      <connection identifier="vc-transition-value-streams-r-vs-VS02-Association-family-S03" xsi:type="Relationship" relationshipRef="r-vs-VS02-Association-family-S03" source="vnode-transition-value-streams" target="vnode-transition-value-streams"/>
-      <connection identifier="vc-transition-value-streams-r-cap-P07-Serving-vs-VS02" xsi:type="Relationship" relationshipRef="r-cap-P07-Serving-vs-VS02" source="vnode-transition-value-streams" target="vnode-transition-value-streams"/>
-      <connection identifier="vc-transition-value-streams-r-vs-VS03-Association-family-S04" xsi:type="Relationship" relationshipRef="r-vs-VS03-Association-family-S04" source="vnode-transition-value-streams" target="vnode-transition-value-streams"/>
-      <connection identifier="vc-transition-value-streams-r-vs-VS04-Association-family-S05" xsi:type="Relationship" relationshipRef="r-vs-VS04-Association-family-S05" source="vnode-transition-value-streams" target="vnode-transition-value-streams"/>
-      <connection identifier="vc-transition-value-streams-r-vs-VS05-Association-family-S06" xsi:type="Relationship" relationshipRef="r-vs-VS05-Association-family-S06" source="vnode-transition-value-streams" target="vnode-transition-value-streams"/>
-      <connection identifier="vc-transition-value-streams-r-vs-VS06-Association-family-S02" xsi:type="Relationship" relationshipRef="r-vs-VS06-Association-family-S02" source="vnode-transition-value-streams" target="vnode-transition-value-streams"/>
+      <node identifier="vnode-view-transition-value-streams-e-vs-VS01" xsi:type="Element" elementRef="e-vs-VS01" x="50" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-vs-VS02" xsi:type="Element" elementRef="e-vs-VS02" x="320" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-vs-VS03" xsi:type="Element" elementRef="e-vs-VS03" x="590" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-vs-VS04" xsi:type="Element" elementRef="e-vs-VS04" x="860" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-vs-VS05" xsi:type="Element" elementRef="e-vs-VS05" x="1130" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-vs-VS06" xsi:type="Element" elementRef="e-vs-VS06" x="1400" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-family-S01" xsi:type="Element" elementRef="e-family-S01" x="50" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-family-S03" xsi:type="Element" elementRef="e-family-S03" x="320" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-family-S04" xsi:type="Element" elementRef="e-family-S04" x="590" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-family-S05" xsi:type="Element" elementRef="e-family-S05" x="860" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-family-S06" xsi:type="Element" elementRef="e-family-S06" x="1130" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-family-S02" xsi:type="Element" elementRef="e-family-S02" x="1400" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-cap-P04" xsi:type="Element" elementRef="e-cap-P04" x="50" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-cap-P07" xsi:type="Element" elementRef="e-cap-P07" x="320" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-cap-P08" xsi:type="Element" elementRef="e-cap-P08" x="590" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-cap-P06" xsi:type="Element" elementRef="e-cap-P06" x="860" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-cap-P05" xsi:type="Element" elementRef="e-cap-P05" x="1130" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-value-streams-e-cap-P14" xsi:type="Element" elementRef="e-cap-P14" x="1400" y="350" w="245" h="115"/>
+      <connection identifier="vc-transition-value-streams-r-vs-VS01-Association-family-S01" xsi:type="Relationship" relationshipRef="r-vs-VS01-Association-family-S01" source="vnode-view-transition-value-streams-e-vs-VS01" target="vnode-view-transition-value-streams-e-family-S01"/>
+      <connection identifier="vc-transition-value-streams-r-vs-VS02-Association-family-S03" xsi:type="Relationship" relationshipRef="r-vs-VS02-Association-family-S03" source="vnode-view-transition-value-streams-e-vs-VS02" target="vnode-view-transition-value-streams-e-family-S03"/>
+      <connection identifier="vc-transition-value-streams-r-cap-P07-Serving-vs-VS02" xsi:type="Relationship" relationshipRef="r-cap-P07-Serving-vs-VS02" source="vnode-view-transition-value-streams-e-cap-P07" target="vnode-view-transition-value-streams-e-vs-VS02"/>
+      <connection identifier="vc-transition-value-streams-r-vs-VS03-Association-family-S04" xsi:type="Relationship" relationshipRef="r-vs-VS03-Association-family-S04" source="vnode-view-transition-value-streams-e-vs-VS03" target="vnode-view-transition-value-streams-e-family-S04"/>
+      <connection identifier="vc-transition-value-streams-r-vs-VS04-Association-family-S05" xsi:type="Relationship" relationshipRef="r-vs-VS04-Association-family-S05" source="vnode-view-transition-value-streams-e-vs-VS04" target="vnode-view-transition-value-streams-e-family-S05"/>
+      <connection identifier="vc-transition-value-streams-r-vs-VS05-Association-family-S06" xsi:type="Relationship" relationshipRef="r-vs-VS05-Association-family-S06" source="vnode-view-transition-value-streams-e-vs-VS05" target="vnode-view-transition-value-streams-e-family-S06"/>
+      <connection identifier="vc-transition-value-streams-r-vs-VS06-Association-family-S02" xsi:type="Relationship" relationshipRef="r-vs-VS06-Association-family-S02" source="vnode-view-transition-value-streams-e-vs-VS06" target="vnode-view-transition-value-streams-e-family-S02"/>
     </view>
     <view identifier="view-transition-repository-authority" xsi:type="Diagram">
       <name xml:lang="en">TRANSITION — Transaction, Content, Runtime and Engineering Authority</name>
       <documentation xml:lang="en">Source-grounded snapshot; dotted status and incomplete domain objects require review. Selected view of larger element catalogue.</documentation>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-bo-BUSINESS_TRANSACTION" x="50" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-bo-DOCUMENT_EVIDENCE" x="320" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-req-REQ-EA-011" x="590" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-req-CRM_AUTHORITY" x="860" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="50" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-data-DOC_REF" x="320" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-data-RUNTIME_METADATA" x="590" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="50" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="320" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-app-APP-ICT-0046" x="590" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-app-CATALYST_ORCHESTRATOR" x="860" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="50" y="505" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-node-CATALYST_RUNTIME" x="320" y="505" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-techsvc-IDENTITY" x="590" y="505" w="245" h="115"/>
-      <node identifier="vnode-transition-repository-authority" xsi:type="Element" elementRef="e-techsvc-OBS" x="860" y="505" w="245" h="115"/>
-      <connection identifier="vc-transition-repository-authority-r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" xsi:type="Relationship" relationshipRef="r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" xsi:type="Relationship" relationshipRef="r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-app-GOOGLE_DRIVE-Access-data-DOC_REF" xsi:type="Relationship" relationshipRef="r-app-GOOGLE_DRIVE-Access-data-DOC_REF" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-app-APP-ICT-0018-Serving-app-CATALYST_ORCHESTRATOR" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0018-Serving-app-CATALYST_ORCHESTRATOR" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-node-CATALYST_RUNTIME-Serving-app-CATALYST_ORCHESTRATOR" xsi:type="Relationship" relationshipRef="r-node-CATALYST_RUNTIME-Serving-app-CATALYST_ORCHESTRATOR" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-techsvc-OBS-Serving-app-CATALYST_ORCHESTRATOR" xsi:type="Relationship" relationshipRef="r-techsvc-OBS-Serving-app-CATALYST_ORCHESTRATOR" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-app-CATALYST_ORCHESTRATOR-Flow-app-APP-ICT-0003" xsi:type="Relationship" relationshipRef="r-app-CATALYST_ORCHESTRATOR-Flow-app-APP-ICT-0003" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
-      <connection identifier="vc-transition-repository-authority-r-req-CRM_AUTHORITY-Association-bo-BUSINESS_TRANSACTION" xsi:type="Relationship" relationshipRef="r-req-CRM_AUTHORITY-Association-bo-BUSINESS_TRANSACTION" source="vnode-transition-repository-authority" target="vnode-transition-repository-authority"/>
+      <node identifier="vnode-view-transition-repository-authority-e-bo-BUSINESS_TRANSACTION" xsi:type="Element" elementRef="e-bo-BUSINESS_TRANSACTION" x="50" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-bo-DOCUMENT_EVIDENCE" xsi:type="Element" elementRef="e-bo-DOCUMENT_EVIDENCE" x="320" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-req-REQ-EA-011" xsi:type="Element" elementRef="e-req-REQ-EA-011" x="590" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-req-CRM_AUTHORITY" xsi:type="Element" elementRef="e-req-CRM_AUTHORITY" x="860" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-data-CRM_TRANSACTION" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="50" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-data-DOC_REF" xsi:type="Element" elementRef="e-data-DOC_REF" x="320" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-data-RUNTIME_METADATA" xsi:type="Element" elementRef="e-data-RUNTIME_METADATA" x="590" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-app-APP-ICT-0003" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="50" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-app-GOOGLE_DRIVE" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="320" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-app-APP-ICT-0046" xsi:type="Element" elementRef="e-app-APP-ICT-0046" x="590" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-app-CATALYST_ORCHESTRATOR" xsi:type="Element" elementRef="e-app-CATALYST_ORCHESTRATOR" x="860" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-app-APP-ICT-0018" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="50" y="505" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-node-CATALYST_RUNTIME" xsi:type="Element" elementRef="e-node-CATALYST_RUNTIME" x="320" y="505" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-techsvc-IDENTITY" xsi:type="Element" elementRef="e-techsvc-IDENTITY" x="590" y="505" w="245" h="115"/>
+      <node identifier="vnode-view-transition-repository-authority-e-techsvc-OBS" xsi:type="Element" elementRef="e-techsvc-OBS" x="860" y="505" w="245" h="115"/>
+      <connection identifier="vc-transition-repository-authority-r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" xsi:type="Relationship" relationshipRef="r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" source="vnode-view-transition-repository-authority-e-data-CRM_TRANSACTION" target="vnode-view-transition-repository-authority-e-bo-BUSINESS_TRANSACTION"/>
+      <connection identifier="vc-transition-repository-authority-r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" xsi:type="Relationship" relationshipRef="r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" source="vnode-view-transition-repository-authority-e-data-DOC_REF" target="vnode-view-transition-repository-authority-e-bo-DOCUMENT_EVIDENCE"/>
+      <connection identifier="vc-transition-repository-authority-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-view-transition-repository-authority-e-app-APP-ICT-0003" target="vnode-view-transition-repository-authority-e-data-CRM_TRANSACTION"/>
+      <connection identifier="vc-transition-repository-authority-r-app-GOOGLE_DRIVE-Access-data-DOC_REF" xsi:type="Relationship" relationshipRef="r-app-GOOGLE_DRIVE-Access-data-DOC_REF" source="vnode-view-transition-repository-authority-e-app-GOOGLE_DRIVE" target="vnode-view-transition-repository-authority-e-data-DOC_REF"/>
+      <connection identifier="vc-transition-repository-authority-r-app-APP-ICT-0018-Serving-app-CATALYST_ORCHESTRATOR" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0018-Serving-app-CATALYST_ORCHESTRATOR" source="vnode-view-transition-repository-authority-e-app-APP-ICT-0018" target="vnode-view-transition-repository-authority-e-app-CATALYST_ORCHESTRATOR"/>
+      <connection identifier="vc-transition-repository-authority-r-node-CATALYST_RUNTIME-Serving-app-CATALYST_ORCHESTRATOR" xsi:type="Relationship" relationshipRef="r-node-CATALYST_RUNTIME-Serving-app-CATALYST_ORCHESTRATOR" source="vnode-view-transition-repository-authority-e-node-CATALYST_RUNTIME" target="vnode-view-transition-repository-authority-e-app-CATALYST_ORCHESTRATOR"/>
+      <connection identifier="vc-transition-repository-authority-r-techsvc-OBS-Serving-app-CATALYST_ORCHESTRATOR" xsi:type="Relationship" relationshipRef="r-techsvc-OBS-Serving-app-CATALYST_ORCHESTRATOR" source="vnode-view-transition-repository-authority-e-techsvc-OBS" target="vnode-view-transition-repository-authority-e-app-CATALYST_ORCHESTRATOR"/>
+      <connection identifier="vc-transition-repository-authority-r-app-CATALYST_ORCHESTRATOR-Flow-app-APP-ICT-0003" xsi:type="Relationship" relationshipRef="r-app-CATALYST_ORCHESTRATOR-Flow-app-APP-ICT-0003" source="vnode-view-transition-repository-authority-e-app-CATALYST_ORCHESTRATOR" target="vnode-view-transition-repository-authority-e-app-APP-ICT-0003"/>
+      <connection identifier="vc-transition-repository-authority-r-req-CRM_AUTHORITY-Association-bo-BUSINESS_TRANSACTION" xsi:type="Relationship" relationshipRef="r-req-CRM_AUTHORITY-Association-bo-BUSINESS_TRANSACTION" source="vnode-view-transition-repository-authority-e-req-CRM_AUTHORITY" target="vnode-view-transition-repository-authority-e-bo-BUSINESS_TRANSACTION"/>
     </view>
     <view identifier="view-transition-migration" xsi:type="Diagram">
       <name xml:lang="en">TRANSITION — Gap and Migration Plateaus</name>
       <documentation xml:lang="en">Source-grounded snapshot; dotted status and incomplete domain objects require review. Selected view of larger element catalogue.</documentation>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-plateau-baseline" x="50" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-plateau-transition" x="320" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-plateau-target" x="590" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-evt-CONFORMANCE" x="860" y="40" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-001" x="50" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-003" x="320" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-004" x="590" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-005" x="860" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-006" x="1130" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-007" x="1400" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-008" x="1670" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-gap-EA-GAP-009" x="1940" y="195" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-EA-ALIGN-007" x="50" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-EA-ALIGN-010" x="320" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-EA-ALIGN-011" x="590" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-EA-ALIGN-012" x="860" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-GitHub-57" x="1130" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-EA-ALIGN-006" x="1400" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-EA-ALIGN-017" x="1670" y="350" w="245" h="115"/>
-      <node identifier="vnode-transition-migration" xsi:type="Element" elementRef="e-wp-EA-ALIGN-018" x="1940" y="350" w="245" h="115"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-001" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-001" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-001-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-001-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-007-Association-gap-EA-GAP-001" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-007-Association-gap-EA-GAP-001" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-003" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-003" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-003-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-003-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-010-Association-gap-EA-GAP-003" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-010-Association-gap-EA-GAP-003" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-004" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-004" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-004-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-004-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-011-Association-gap-EA-GAP-004" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-011-Association-gap-EA-GAP-004" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-005" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-005" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-005-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-005-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-012-Association-gap-EA-GAP-005" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-012-Association-gap-EA-GAP-005" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-006" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-006" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-006-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-006-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-GitHub-57-Association-gap-EA-GAP-006" xsi:type="Relationship" relationshipRef="r-wp-GitHub-57-Association-gap-EA-GAP-006" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-007" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-007" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-007-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-007-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-006-Association-gap-EA-GAP-007" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-006-Association-gap-EA-GAP-007" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-008" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-008" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-008-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-008-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-017-Association-gap-EA-GAP-008" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-017-Association-gap-EA-GAP-008" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-009" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-009" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-gap-EA-GAP-009-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-009-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-018-Association-gap-EA-GAP-009" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-018-Association-gap-EA-GAP-009" source="vnode-transition-migration" target="vnode-transition-migration"/>
-      <connection identifier="vc-transition-migration-r-evt-CONFORMANCE-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-evt-CONFORMANCE-Association-plateau-target" source="vnode-transition-migration" target="vnode-transition-migration"/>
+      <node identifier="vnode-view-transition-migration-e-plateau-baseline" xsi:type="Element" elementRef="e-plateau-baseline" x="50" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-plateau-transition" xsi:type="Element" elementRef="e-plateau-transition" x="320" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-plateau-target" xsi:type="Element" elementRef="e-plateau-target" x="590" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-evt-CONFORMANCE" xsi:type="Element" elementRef="e-evt-CONFORMANCE" x="860" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-001" xsi:type="Element" elementRef="e-gap-EA-GAP-001" x="50" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-003" xsi:type="Element" elementRef="e-gap-EA-GAP-003" x="320" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-004" xsi:type="Element" elementRef="e-gap-EA-GAP-004" x="590" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-005" xsi:type="Element" elementRef="e-gap-EA-GAP-005" x="860" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-006" xsi:type="Element" elementRef="e-gap-EA-GAP-006" x="1130" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-007" xsi:type="Element" elementRef="e-gap-EA-GAP-007" x="1400" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-008" xsi:type="Element" elementRef="e-gap-EA-GAP-008" x="1670" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-gap-EA-GAP-009" xsi:type="Element" elementRef="e-gap-EA-GAP-009" x="1940" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-EA-ALIGN-007" xsi:type="Element" elementRef="e-wp-EA-ALIGN-007" x="50" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-EA-ALIGN-010" xsi:type="Element" elementRef="e-wp-EA-ALIGN-010" x="320" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-EA-ALIGN-011" xsi:type="Element" elementRef="e-wp-EA-ALIGN-011" x="590" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-EA-ALIGN-012" xsi:type="Element" elementRef="e-wp-EA-ALIGN-012" x="860" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-GitHub-57" xsi:type="Element" elementRef="e-wp-GitHub-57" x="1130" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-EA-ALIGN-006" xsi:type="Element" elementRef="e-wp-EA-ALIGN-006" x="1400" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-EA-ALIGN-017" xsi:type="Element" elementRef="e-wp-EA-ALIGN-017" x="1670" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-transition-migration-e-wp-EA-ALIGN-018" xsi:type="Element" elementRef="e-wp-EA-ALIGN-018" x="1940" y="350" w="245" h="115"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-001" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-001" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-001"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-001-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-001-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-001" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-007-Association-gap-EA-GAP-001" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-007-Association-gap-EA-GAP-001" source="vnode-view-transition-migration-e-wp-EA-ALIGN-007" target="vnode-view-transition-migration-e-gap-EA-GAP-001"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-003" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-003" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-003"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-003-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-003-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-003" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-010-Association-gap-EA-GAP-003" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-010-Association-gap-EA-GAP-003" source="vnode-view-transition-migration-e-wp-EA-ALIGN-010" target="vnode-view-transition-migration-e-gap-EA-GAP-003"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-004" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-004" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-004"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-004-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-004-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-004" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-011-Association-gap-EA-GAP-004" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-011-Association-gap-EA-GAP-004" source="vnode-view-transition-migration-e-wp-EA-ALIGN-011" target="vnode-view-transition-migration-e-gap-EA-GAP-004"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-005" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-005" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-005"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-005-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-005-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-005" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-012-Association-gap-EA-GAP-005" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-012-Association-gap-EA-GAP-005" source="vnode-view-transition-migration-e-wp-EA-ALIGN-012" target="vnode-view-transition-migration-e-gap-EA-GAP-005"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-006" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-006" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-006"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-006-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-006-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-006" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-GitHub-57-Association-gap-EA-GAP-006" xsi:type="Relationship" relationshipRef="r-wp-GitHub-57-Association-gap-EA-GAP-006" source="vnode-view-transition-migration-e-wp-GitHub-57" target="vnode-view-transition-migration-e-gap-EA-GAP-006"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-007" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-007" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-007"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-007-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-007-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-007" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-006-Association-gap-EA-GAP-007" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-006-Association-gap-EA-GAP-007" source="vnode-view-transition-migration-e-wp-EA-ALIGN-006" target="vnode-view-transition-migration-e-gap-EA-GAP-007"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-008" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-008" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-008"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-008-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-008-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-008" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-017-Association-gap-EA-GAP-008" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-017-Association-gap-EA-GAP-008" source="vnode-view-transition-migration-e-wp-EA-ALIGN-017" target="vnode-view-transition-migration-e-gap-EA-GAP-008"/>
+      <connection identifier="vc-transition-migration-r-plateau-baseline-Association-gap-EA-GAP-009" xsi:type="Relationship" relationshipRef="r-plateau-baseline-Association-gap-EA-GAP-009" source="vnode-view-transition-migration-e-plateau-baseline" target="vnode-view-transition-migration-e-gap-EA-GAP-009"/>
+      <connection identifier="vc-transition-migration-r-gap-EA-GAP-009-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-gap-EA-GAP-009-Association-plateau-target" source="vnode-view-transition-migration-e-gap-EA-GAP-009" target="vnode-view-transition-migration-e-plateau-target"/>
+      <connection identifier="vc-transition-migration-r-wp-EA-ALIGN-018-Association-gap-EA-GAP-009" xsi:type="Relationship" relationshipRef="r-wp-EA-ALIGN-018-Association-gap-EA-GAP-009" source="vnode-view-transition-migration-e-wp-EA-ALIGN-018" target="vnode-view-transition-migration-e-gap-EA-GAP-009"/>
+      <connection identifier="vc-transition-migration-r-evt-CONFORMANCE-Association-plateau-target" xsi:type="Relationship" relationshipRef="r-evt-CONFORMANCE-Association-plateau-target" source="vnode-view-transition-migration-e-evt-CONFORMANCE" target="vnode-view-transition-migration-e-plateau-target"/>
     </view>
     </diagrams>
   </views>
