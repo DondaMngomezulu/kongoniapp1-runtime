@@ -5124,72 +5124,72 @@
     <view identifier="view-baseline-domain-landscape" xsi:type="Diagram">
       <name xml:lang="en">BASELINE — Enterprise Five-Domain and Six-Stream Landscape</name>
       <documentation xml:lang="en">Source-grounded snapshot; dotted status and incomplete domain objects require review. Selected view of larger element catalogue.</documentation>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-01" x="50" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-02" x="320" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-03" x="590" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-04" x="860" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-domain-EA-DV-05" x="1130" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-vs-VS00" x="50" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-vs-VS01" x="320" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-vs-VS02" x="590" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-vs-VS03" x="860" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-vs-VS04" x="1130" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-vs-VS05" x="1400" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-vs-VS06" x="1670" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-req-REQ-EA-001" x="50" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-req-REQ-EA-003" x="320" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="590" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="860" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="1130" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-domain-landscape" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="1400" y="350" w="245" h="115"/>
-      <connection identifier="vc-baseline-domain-landscape-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-baseline-domain-landscape" target="vnode-baseline-domain-landscape"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-domain-EA-DV-01" xsi:type="Element" elementRef="e-domain-EA-DV-01" x="50" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-domain-EA-DV-02" xsi:type="Element" elementRef="e-domain-EA-DV-02" x="320" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-domain-EA-DV-03" xsi:type="Element" elementRef="e-domain-EA-DV-03" x="590" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-domain-EA-DV-04" xsi:type="Element" elementRef="e-domain-EA-DV-04" x="860" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-domain-EA-DV-05" xsi:type="Element" elementRef="e-domain-EA-DV-05" x="1130" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-vs-VS00" xsi:type="Element" elementRef="e-vs-VS00" x="50" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-vs-VS01" xsi:type="Element" elementRef="e-vs-VS01" x="320" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-vs-VS02" xsi:type="Element" elementRef="e-vs-VS02" x="590" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-vs-VS03" xsi:type="Element" elementRef="e-vs-VS03" x="860" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-vs-VS04" xsi:type="Element" elementRef="e-vs-VS04" x="1130" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-vs-VS05" xsi:type="Element" elementRef="e-vs-VS05" x="1400" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-vs-VS06" xsi:type="Element" elementRef="e-vs-VS06" x="1670" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-req-REQ-EA-001" xsi:type="Element" elementRef="e-req-REQ-EA-001" x="50" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-req-REQ-EA-003" xsi:type="Element" elementRef="e-req-REQ-EA-003" x="320" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-data-CRM_TRANSACTION" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="590" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-app-APP-ICT-0003" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="860" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-app-GOOGLE_DRIVE" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="1130" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-domain-landscape-e-app-APP-ICT-0018" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="1400" y="350" w="245" h="115"/>
+      <connection identifier="vc-baseline-domain-landscape-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-view-baseline-domain-landscape-e-app-APP-ICT-0003" target="vnode-view-baseline-domain-landscape-e-data-CRM_TRANSACTION"/>
     </view>
     <view identifier="view-baseline-value-streams" xsi:type="Diagram">
       <name xml:lang="en">BASELINE — Operating Value Streams and Specialist Capability Families</name>
       <documentation xml:lang="en">Source-grounded snapshot; dotted status and incomplete domain objects require review. Selected view of larger element catalogue.</documentation>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-vs-VS01" x="50" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-vs-VS02" x="320" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-vs-VS03" x="590" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-vs-VS04" x="860" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-vs-VS05" x="1130" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-vs-VS06" x="1400" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-family-S01" x="50" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-family-S03" x="320" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-family-S04" x="590" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-family-S05" x="860" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-family-S06" x="1130" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-family-S02" x="1400" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-cap-P04" x="50" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-cap-P07" x="320" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-cap-P08" x="590" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-cap-P06" x="860" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-cap-P05" x="1130" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-value-streams" xsi:type="Element" elementRef="e-cap-P14" x="1400" y="350" w="245" h="115"/>
-      <connection identifier="vc-baseline-value-streams-r-vs-VS01-Association-family-S01" xsi:type="Relationship" relationshipRef="r-vs-VS01-Association-family-S01" source="vnode-baseline-value-streams" target="vnode-baseline-value-streams"/>
-      <connection identifier="vc-baseline-value-streams-r-vs-VS02-Association-family-S03" xsi:type="Relationship" relationshipRef="r-vs-VS02-Association-family-S03" source="vnode-baseline-value-streams" target="vnode-baseline-value-streams"/>
-      <connection identifier="vc-baseline-value-streams-r-cap-P07-Serving-vs-VS02" xsi:type="Relationship" relationshipRef="r-cap-P07-Serving-vs-VS02" source="vnode-baseline-value-streams" target="vnode-baseline-value-streams"/>
-      <connection identifier="vc-baseline-value-streams-r-vs-VS03-Association-family-S04" xsi:type="Relationship" relationshipRef="r-vs-VS03-Association-family-S04" source="vnode-baseline-value-streams" target="vnode-baseline-value-streams"/>
-      <connection identifier="vc-baseline-value-streams-r-vs-VS04-Association-family-S05" xsi:type="Relationship" relationshipRef="r-vs-VS04-Association-family-S05" source="vnode-baseline-value-streams" target="vnode-baseline-value-streams"/>
-      <connection identifier="vc-baseline-value-streams-r-vs-VS05-Association-family-S06" xsi:type="Relationship" relationshipRef="r-vs-VS05-Association-family-S06" source="vnode-baseline-value-streams" target="vnode-baseline-value-streams"/>
-      <connection identifier="vc-baseline-value-streams-r-vs-VS06-Association-family-S02" xsi:type="Relationship" relationshipRef="r-vs-VS06-Association-family-S02" source="vnode-baseline-value-streams" target="vnode-baseline-value-streams"/>
+      <node identifier="vnode-view-baseline-value-streams-e-vs-VS01" xsi:type="Element" elementRef="e-vs-VS01" x="50" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-vs-VS02" xsi:type="Element" elementRef="e-vs-VS02" x="320" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-vs-VS03" xsi:type="Element" elementRef="e-vs-VS03" x="590" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-vs-VS04" xsi:type="Element" elementRef="e-vs-VS04" x="860" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-vs-VS05" xsi:type="Element" elementRef="e-vs-VS05" x="1130" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-vs-VS06" xsi:type="Element" elementRef="e-vs-VS06" x="1400" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-family-S01" xsi:type="Element" elementRef="e-family-S01" x="50" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-family-S03" xsi:type="Element" elementRef="e-family-S03" x="320" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-family-S04" xsi:type="Element" elementRef="e-family-S04" x="590" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-family-S05" xsi:type="Element" elementRef="e-family-S05" x="860" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-family-S06" xsi:type="Element" elementRef="e-family-S06" x="1130" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-family-S02" xsi:type="Element" elementRef="e-family-S02" x="1400" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-cap-P04" xsi:type="Element" elementRef="e-cap-P04" x="50" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-cap-P07" xsi:type="Element" elementRef="e-cap-P07" x="320" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-cap-P08" xsi:type="Element" elementRef="e-cap-P08" x="590" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-cap-P06" xsi:type="Element" elementRef="e-cap-P06" x="860" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-cap-P05" xsi:type="Element" elementRef="e-cap-P05" x="1130" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-value-streams-e-cap-P14" xsi:type="Element" elementRef="e-cap-P14" x="1400" y="350" w="245" h="115"/>
+      <connection identifier="vc-baseline-value-streams-r-vs-VS01-Association-family-S01" xsi:type="Relationship" relationshipRef="r-vs-VS01-Association-family-S01" source="vnode-view-baseline-value-streams-e-vs-VS01" target="vnode-view-baseline-value-streams-e-family-S01"/>
+      <connection identifier="vc-baseline-value-streams-r-vs-VS02-Association-family-S03" xsi:type="Relationship" relationshipRef="r-vs-VS02-Association-family-S03" source="vnode-view-baseline-value-streams-e-vs-VS02" target="vnode-view-baseline-value-streams-e-family-S03"/>
+      <connection identifier="vc-baseline-value-streams-r-cap-P07-Serving-vs-VS02" xsi:type="Relationship" relationshipRef="r-cap-P07-Serving-vs-VS02" source="vnode-view-baseline-value-streams-e-cap-P07" target="vnode-view-baseline-value-streams-e-vs-VS02"/>
+      <connection identifier="vc-baseline-value-streams-r-vs-VS03-Association-family-S04" xsi:type="Relationship" relationshipRef="r-vs-VS03-Association-family-S04" source="vnode-view-baseline-value-streams-e-vs-VS03" target="vnode-view-baseline-value-streams-e-family-S04"/>
+      <connection identifier="vc-baseline-value-streams-r-vs-VS04-Association-family-S05" xsi:type="Relationship" relationshipRef="r-vs-VS04-Association-family-S05" source="vnode-view-baseline-value-streams-e-vs-VS04" target="vnode-view-baseline-value-streams-e-family-S05"/>
+      <connection identifier="vc-baseline-value-streams-r-vs-VS05-Association-family-S06" xsi:type="Relationship" relationshipRef="r-vs-VS05-Association-family-S06" source="vnode-view-baseline-value-streams-e-vs-VS05" target="vnode-view-baseline-value-streams-e-family-S06"/>
+      <connection identifier="vc-baseline-value-streams-r-vs-VS06-Association-family-S02" xsi:type="Relationship" relationshipRef="r-vs-VS06-Association-family-S02" source="vnode-view-baseline-value-streams-e-vs-VS06" target="vnode-view-baseline-value-streams-e-family-S02"/>
     </view>
     <view identifier="view-baseline-repository-authority" xsi:type="Diagram">
       <name xml:lang="en">BASELINE — Transaction, Content, Runtime and Engineering Authority</name>
       <documentation xml:lang="en">Source-grounded snapshot; dotted status and incomplete domain objects require review. Selected view of larger element catalogue.</documentation>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-bo-BUSINESS_TRANSACTION" x="50" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-bo-DOCUMENT_EVIDENCE" x="320" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-req-REQ-EA-011" x="590" y="40" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="50" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-data-DOC_REF" x="320" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-data-RUNTIME_METADATA" x="590" y="195" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="50" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="320" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-app-APP-ICT-0046" x="590" y="350" w="245" h="115"/>
-      <node identifier="vnode-baseline-repository-authority" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="50" y="505" w="245" h="115"/>
-      <connection identifier="vc-baseline-repository-authority-r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" xsi:type="Relationship" relationshipRef="r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" source="vnode-baseline-repository-authority" target="vnode-baseline-repository-authority"/>
-      <connection identifier="vc-baseline-repository-authority-r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" xsi:type="Relationship" relationshipRef="r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" source="vnode-baseline-repository-authority" target="vnode-baseline-repository-authority"/>
-      <connection identifier="vc-baseline-repository-authority-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-baseline-repository-authority" target="vnode-baseline-repository-authority"/>
-      <connection identifier="vc-baseline-repository-authority-r-app-GOOGLE_DRIVE-Access-data-DOC_REF" xsi:type="Relationship" relationshipRef="r-app-GOOGLE_DRIVE-Access-data-DOC_REF" source="vnode-baseline-repository-authority" target="vnode-baseline-repository-authority"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-bo-BUSINESS_TRANSACTION" xsi:type="Element" elementRef="e-bo-BUSINESS_TRANSACTION" x="50" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-bo-DOCUMENT_EVIDENCE" xsi:type="Element" elementRef="e-bo-DOCUMENT_EVIDENCE" x="320" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-req-REQ-EA-011" xsi:type="Element" elementRef="e-req-REQ-EA-011" x="590" y="40" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-data-CRM_TRANSACTION" xsi:type="Element" elementRef="e-data-CRM_TRANSACTION" x="50" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-data-DOC_REF" xsi:type="Element" elementRef="e-data-DOC_REF" x="320" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-data-RUNTIME_METADATA" xsi:type="Element" elementRef="e-data-RUNTIME_METADATA" x="590" y="195" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-app-APP-ICT-0003" xsi:type="Element" elementRef="e-app-APP-ICT-0003" x="50" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-app-GOOGLE_DRIVE" xsi:type="Element" elementRef="e-app-GOOGLE_DRIVE" x="320" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-app-APP-ICT-0046" xsi:type="Element" elementRef="e-app-APP-ICT-0046" x="590" y="350" w="245" h="115"/>
+      <node identifier="vnode-view-baseline-repository-authority-e-app-APP-ICT-0018" xsi:type="Element" elementRef="e-app-APP-ICT-0018" x="50" y="505" w="245" h="115"/>
+      <connection identifier="vc-baseline-repository-authority-r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" xsi:type="Relationship" relationshipRef="r-data-CRM_TRANSACTION-Realization-bo-BUSINESS_TRANSACTION" source="vnode-view-baseline-repository-authority-e-data-CRM_TRANSACTION" target="vnode-view-baseline-repository-authority-e-bo-BUSINESS_TRANSACTION"/>
+      <connection identifier="vc-baseline-repository-authority-r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" xsi:type="Relationship" relationshipRef="r-data-DOC_REF-Realization-bo-DOCUMENT_EVIDENCE" source="vnode-view-baseline-repository-authority-e-data-DOC_REF" target="vnode-view-baseline-repository-authority-e-bo-DOCUMENT_EVIDENCE"/>
+      <connection identifier="vc-baseline-repository-authority-r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" xsi:type="Relationship" relationshipRef="r-app-APP-ICT-0003-Access-data-CRM_TRANSACTION" source="vnode-view-baseline-repository-authority-e-app-APP-ICT-0003" target="vnode-view-baseline-repository-authority-e-data-CRM_TRANSACTION"/>
+      <connection identifier="vc-baseline-repository-authority-r-app-GOOGLE_DRIVE-Access-data-DOC_REF" xsi:type="Relationship" relationshipRef="r-app-GOOGLE_DRIVE-Access-data-DOC_REF" source="vnode-view-baseline-repository-authority-e-app-GOOGLE_DRIVE" target="vnode-view-baseline-repository-authority-e-data-DOC_REF"/>
     </view>
     </diagrams>
   </views>
