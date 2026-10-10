@@ -1,0 +1,126 @@
+workflow:
+  id: WF-TENDER-001
+  name: Tender Management Lifecycle Workflow
+  version: 1.0.0-candidate
+  status: PRODUCTION_ACTIVE_PENDING_CONTROL_HARDENING
+  task_class: T2
+  methodology: MET-PDCA-001
+  process_spine:
+    primary: APQC
+    adaptation: supplier-side tender management
+    overlays:
+      - TM Forum where the tender scope concerns TM Forum-defined capabilities or services
+  crm_binding:
+    system: Zoho CRM Production
+    module:
+      api_name: Tenders
+      id: '5643538000008311009'
+    requirements_module:
+      api_name: TenderRequirements
+      id: '5643538000008309165'
+    stage_field:
+      api_name: Workflow_Stage
+      id: '5643538000008334780'
+    blueprint:
+      name: WF-TENDER-001 Tender Lifecycle
+      api_name: WFTEND001
+      id: '5643538000008338021'
+      activation: ACTIVE
+  lifecycle:
+    - Discovered
+    - Documents Acquired
+    - Requirements Under Review
+    - Eligibility Hold
+    - Eligibility Passed
+    - Bid No Bid Review
+    - Bid Approved
+    - Bid Preparation
+    - Compliance Check
+    - Ready for Submission
+    - Submitted
+    - Clarification Evaluation
+    - Awarded
+    - Unsuccessful
+    - Withdrawn
+    - Cancelled
+  controlled_paths:
+    - from: Discovered
+      to: Documents Acquired
+      transition: Acquire Documents
+    - from: Documents Acquired
+      to: Requirements Under Review
+      transition: Start Requirements Review
+    - from: Requirements Under Review
+      to: Eligibility Hold
+      transition: Place Eligibility Hold
+    - from: Requirements Under Review
+      to: Eligibility Passed
+      transition: Pass Eligibility
+    - from: Eligibility Hold
+      to: Eligibility Passed
+      transition: Resolve Hold and Pass
+    - from: Eligibility Passed
+      to: Bid No Bid Review
+      transition: Start Bid No Bid Review
+    - from: Bid No Bid Review
+      to: Bid Approved
+      transition: Approve Bid
+    - from: Bid No Bid Review
+      to: Withdrawn
+      transition: Decide No Bid
+    - from: Bid Approved
+      to: Bid Preparation
+      transition: Start Bid Preparation
+    - from: Bid Preparation
+      to: Compliance Check
+      transition: Start Compliance Check
+    - from: Compliance Check
+      to: Ready for Submission
+      transition: Mark Ready for Submission
+    - from: Ready for Submission
+      to: Submitted
+      transition: Submit Tender
+    - from: Submitted
+      to: Clarification Evaluation
+      transition: Enter Evaluation
+    - from: Clarification Evaluation
+      to: Awarded
+      transition: Record Award
+    - from: Clarification Evaluation
+      to: Unsuccessful
+      transition: Record Unsuccessful
+    - from: Discovered
+      to: Cancelled
+      transition: Cancel Tender
+  related_objects:
+    - Tender Requirements
+    - Reissues
+    - Accounts
+    - Leads
+    - Deals
+  service_bindings:
+    value_stream_classification: MS-TENDER-VS-001
+    legal_compliance: existing governed Legal and Compliance engine stack via tender processing profile
+    commercial_bid_no_bid: Deal Engine after eligibility and value-stream qualification
+  document_binding:
+    canary_repository: Google Drive
+    target_repository: Zoho WorkDrive
+    crm_control: Store governed document/folder identifiers and provenance, not duplicate source files
+  check_evidence:
+    module_created: PASS
+    requirements_module_created: PASS
+    lifecycle_states: PASS_16_OF_16
+    lifecycle_transitions: PASS_16_OF_16
+    blueprint_activation: PASS
+    tender_requirements_related_list: PASS
+    reissue_relationship: PASS
+    transition_hard_gate_automation: NOT_YET_COMPLETE
+  known_control_gap:
+    description: >-
+      The Blueprint lifecycle is active, but transition-level automated eligibility, evidence,
+      compliance, submission and Deal handoff controls are not yet fully bound. The CRM transition
+      update API returned OAUTH_SCOPE_MISMATCH under the current connector authorization.
+    consequence: >-
+      State progression currently requires governance discipline and must not be treated as fully
+      machine-enforced until Catalyst/legal/compliance integrations and transition validations are tested.
+  act_recommendation: ADAPT

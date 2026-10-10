@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Lead-to-Value-Stream Classification Microservice
+  version: 1.0.0-candidate
+paths:
+  /classifications:
+    post:
+      summary: Classify a lead or tender to a primary Kongoni value stream
+      operationId: classifyLeadValueStream
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassificationRequest'
+      responses:
+        '200':
+          description: Classification completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassificationResult'
+        '422':
+          description: Input cannot be classified with sufficient evidence
+components:
+  schemas:
+    ClassificationRequest:
+      type: object
+      required: [lead_id, source_type, buyer, scope_text]
+      properties:
+        lead_id: {type: string}
+        source_type: {type: string}
+        buyer: {type: string}
+        scope_text: {type: string}
+        contracted_output: {type: string}
+        requirement_refs:
+          type: array
+          items: {type: string}
+        evidence_refs:
+          type: array
+          items: {type: string}
+    ClassificationResult:
+      type: object
+      required: [classification_id, primary_value_stream_id, confidence_score, rationale, qualification_status, rule_version]
+      properties:
+        classification_id: {type: string}
+        primary_value_stream_id: {type: string}
+        secondary_value_stream_ids:
+          type: array
+          items: {type: string}
+        capability_ids:
+          type: array
+          items: {type: string}
+        service_ids:
+          type: array
+          items: {type: string}
+        confidence_score:
+          type: number
+          minimum: 0
+          maximum: 1
+        rationale: {type: string}
+        qualification_status: {type: string}
+        evidence_refs:
+          type: array
+          items: {type: string}
+        rule_version: {type: string}
