@@ -1,0 +1,40 @@
+{
+  "change_id": "CHG-20261009-DEFAULT-GITHUB-REPO-001",
+  "timestamp_utc": "2026-10-09T10:37:06.719Z",
+  "actor": {
+    "type": "ChatGPT",
+    "name": "ChatGPT - governed engineering assistant",
+    "agent_contract_ref": null
+  },
+  "mandate_ref": "User instruction 2026-10-09: Make the connected GitHub repository the default",
+  "accountability_task_ref": null,
+  "task_class": "T1",
+  "change_type": "configuration",
+  "summary": "Record the connected Kongoniapp1 GitHub repository as the default engineering workspace and point root agent instructions to its binding.",
+  "reason": "Avoid ambiguity about the engineering repository for target architecture, document schemas and integrations without displacing authoritative business records.",
+  "affected_paths": [
+    "README.md",
+    "AGENTS.md",
+    "agent-workspace/governance/default-repository-binding.yaml"
+  ],
+  "environment": "repository",
+  "authority": {
+    "status": "AUTHORISED",
+    "reference": "Direct user request in ChatGPT on 2026-10-09 for the working-repository selection only"
+  },
+  "pdca": {
+    "phase": "CHECK_STUDY",
+    "do_complete": true,
+    "check_study_result": "Repository identity and Catalyst architecture reference verified before change; GitHub post-write readback and CI pending.",
+    "act_decision": null,
+    "task_complete": false
+  },
+  "evidence": [
+    "GitHub get_repo confirms repo ID 1329642514, public visibility, main default branch and push permission",
+    "CatalystRepositoryIndex KEA-MOD-HS-001 matches architecture hash recorded in GitHub architecture-reference.yaml; approval remains PROPOSED",
+    "Github CI change-log validation and independent readback are required after write"
+  ],
+  "commit_sha": null,
+  "pull_request": null,
+  "notes": "Non-production user-selected working default only; not a new architecture approval or ChatGPT-wide repository setting."
+}
