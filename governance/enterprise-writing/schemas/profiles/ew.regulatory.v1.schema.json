@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ewf:candidate:profile:regulatory-writing:v1",
+  "title": "Regulatory Writing - Enterprise Writing Profile (REVIEW DRAFT)",
+  "description": "Typed discipline-specific document data; external normative source remains authoritative for matching document types.",
+  "allOf": [
+    {
+      "$ref": "urn:ewf:candidate:common:document-envelope:v1"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "discipline_key": {
+          "const": "regulatory-writing"
+        },
+        "profile_key": {
+          "const": "ew.regulatory.v1"
+        },
+        "profile_version": {
+          "const": "1.0.0-draft"
+        }
+      },
+      "required": [
+        "discipline_key",
+        "profile_key",
+        "profile_version"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "regulatory_authority_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicable_requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "compliance_positions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "filing_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "narrative_sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "heading": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "section_id",
+              "heading",
+              "body"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "regulatory_authority_reference",
+        "applicable_requirements",
+        "compliance_positions"
+      ]
+    }
+  },
+  "required": [
+    "metadata",
+    "content"
+  ]
+}

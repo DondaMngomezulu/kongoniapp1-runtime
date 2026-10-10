@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ewf:candidate:profile:marketing-brand-writing:v1",
+  "title": "Marketing and Brand Writing - Enterprise Writing Profile (REVIEW DRAFT)",
+  "description": "Typed discipline-specific document data; external normative source remains authoritative for matching document types.",
+  "allOf": [
+    {
+      "$ref": "urn:ewf:candidate:common:document-envelope:v1"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "discipline_key": {
+          "const": "marketing-brand-writing"
+        },
+        "profile_key": {
+          "const": "ew.marketing_brand.v1"
+        },
+        "profile_version": {
+          "const": "1.0.0-draft"
+        }
+      },
+      "required": [
+        "discipline_key",
+        "profile_key",
+        "profile_version"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_audience": {
+          "type": "string",
+          "minLength": 1
+        },
+        "marketing_claims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "distribution_channels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "claim_approvals": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "narrative_sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "heading": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "section_id",
+              "heading",
+              "body"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "target_audience",
+        "marketing_claims",
+        "distribution_channels"
+      ]
+    }
+  },
+  "required": [
+    "metadata",
+    "content"
+  ]
+}

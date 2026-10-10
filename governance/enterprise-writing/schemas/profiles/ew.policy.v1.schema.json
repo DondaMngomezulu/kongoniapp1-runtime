@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ewf:candidate:profile:policy-writing:v1",
+  "title": "Policy Writing - Enterprise Writing Profile (REVIEW DRAFT)",
+  "description": "Typed discipline-specific document data; external normative source remains authoritative for matching document types.",
+  "allOf": [
+    {
+      "$ref": "urn:ewf:candidate:common:document-envelope:v1"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "discipline_key": {
+          "const": "policy-writing"
+        },
+        "profile_key": {
+          "const": "ew.policy.v1"
+        },
+        "profile_version": {
+          "const": "1.0.0-draft"
+        }
+      },
+      "required": [
+        "discipline_key",
+        "profile_key",
+        "profile_version"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policy_owner_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicability_statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normative_rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "exceptions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "narrative_sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "heading": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "section_id",
+              "heading",
+              "body"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "policy_owner_reference",
+        "applicability_statement",
+        "normative_rules"
+      ]
+    }
+  },
+  "required": [
+    "metadata",
+    "content"
+  ]
+}
