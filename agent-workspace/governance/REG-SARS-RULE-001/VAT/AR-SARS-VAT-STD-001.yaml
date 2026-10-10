@@ -1,0 +1,113 @@
+rule_id: AR-SARS-VAT-STD-001
+version: '0.1'
+status: LEGALLY_VERIFIED_CANDIDATE
+execution_status: NOT_EXECUTABLE
+jurisdiction: ZA
+tax_domain: VAT
+rule_type: RATE_APPLICATION
+purpose: Apply the current South African standard VAT rate only after a governed upstream decision has classified a supply as standard-rated and confirmed vendor applicability.
+
+normative_authority:
+  primary:
+    authority: South African legislation administered by SARS
+    instrument: Value-Added Tax Act 89 of 1991
+    locator: section 7(1), subject to exemptions, exceptions, deductions and adjustments in the Act
+  current_rate_confirmation:
+    authority: South African Revenue Service
+    source: Other Taxes - Value-added Tax
+    source_date: '2026-02-25'
+    current_standard_rate: 0.15
+  amendment_confirmation:
+    authority: South African Revenue Service
+    instrument: Rates and Monetary Amounts and Amendment of Revenue Laws Act 3 of 2026
+    government_gazette: GG 54446
+    promulgation_date: '2026-04-01'
+    effect_relevant_to_rule: The announced 2025 VAT increase did not come into effect; the standard rate remains 15 percent.
+
+source_urls:
+  - https://www.sars.gov.za/tax-rates/other-taxes/
+  - https://www.sars.gov.za/types-of-tax/value-added-tax/
+  - https://www.sars.gov.za/legal-counsel/primary-legislation/amendment-acts/
+  - https://www.gov.za/documents/value-added-tax-act-12-may-2015-0846
+
+source_hierarchy:
+  - PRIMARY_LEGISLATION
+  - PROMULGATED_AMENDMENT_ACT
+  - SARS_CURRENT_RATE_PUBLICATION
+
+applicability:
+  all_conditions_required: true
+  conditions:
+    - field: jurisdiction
+      operator: EQ
+      value: ZA
+    - field: vendor_vat_status
+      operator: EQ
+      value: REGISTERED
+    - field: supply_tax_classification
+      operator: EQ
+      value: STANDARD_RATED
+    - field: event_date
+      operator: GTE
+      value: '2018-04-01'
+  explicit_exclusions:
+    - ZERO_RATED_SUPPLY
+    - EXEMPT_SUPPLY
+    - OUT_OF_SCOPE_SUPPLY
+    - IMPORTED_GOODS_SPECIAL_VALUATION_WITHOUT_SEPARATE_RULE
+    - IMPORTED_SERVICES_WITHOUT_SEPARATE_RULE
+    - DOMESTIC_REVERSE_CHARGE_WITHOUT_SEPARATE_RULE
+
+inputs:
+  required:
+    - jurisdiction
+    - vendor_vat_status
+    - supply_tax_classification
+    - event_date
+    - taxable_value
+    - currency
+  governed_dependencies:
+    - vendor_registration_status_decision
+    - supply_tax_classification_decision
+
+condition:
+  type: ALL
+  predicates:
+    - jurisdiction == 'ZA'
+    - vendor_vat_status == 'REGISTERED'
+    - supply_tax_classification == 'STANDARD_RATED'
+    - event_date >= '2018-04-01'
+
+outcome:
+  vat_rate: 0.15
+  calculation: vat_amount = taxable_value * 0.15
+  posting_authorised: false
+  note: This atomic rule determines rate only. It does not itself authorise a Zoho Books posting or determine whether the supply is taxable.
+
+effective_period:
+  effective_from: '2018-04-01'
+  effective_to: null
+  current_as_of: '2026-08-18'
+
+legal_verification:
+  verification_id: LEGVER-SARS-VAT-STD-001
+  status: VERIFIED_SOURCE_AND_CURRENT_RATE
+  verified_on: '2026-08-18'
+  verification_basis:
+    - SARS current 2026 tax-rate publication states VAT is levied at the standard rate of 15 percent on supplies of goods and services by registered vendors.
+    - SARS current VAT publication confirms taxable supplies may be standard-rated at 15 percent or zero-rated, and certain supplies are exempt.
+    - SARS primary-legislation register confirms Act 3 of 2026 was promulgated on 1 April 2026.
+    - Government of South Africa publishes the Value-Added Tax Act 89 of 1991 as the governing primary Act.
+  legal_caveat: Verification confirms the rate proposition and source hierarchy only. Transaction-specific taxability, place/time/value-of-supply, zero-rating, exemptions, imports, reverse charge, deductions and special rules require separate atomic rules.
+
+approval:
+  executive_approval_status: NOT_YET_ADOPTED_FOR_EXECUTION
+  legal_verification_required_before_execution: true
+  rule_registry_binding_authorised: false
+  books_posting_authorised: false
+
+traceability:
+  microservice_id: MS-VS02-TAX-COMPLIANCE-001
+  service_specification_id: SRV-APQC-VS02-TAX-001
+  apqc_level_3: '9.9 Manage taxes'
+  candidate_operation: DetermineCurrentTaxTreatment

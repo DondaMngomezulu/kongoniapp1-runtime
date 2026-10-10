@@ -1,0 +1,16 @@
+evidence_id: EV-2026-08-18-PR13-UPDATE
+pr: 13
+status: CHECK_STUDY_UPDATED
+resolved_since_pr_open:
+  - authoritative Microservice Register integration completed using schema v0.4 modular entry pattern
+  - MS-VS02-TAX-COMPLIANCE-001 added to REG-ARCH-MICROSVC-001
+  - first SARS atomic rule candidate AR-SARS-VAT-STD-001 created
+  - legal/source verification evidence EV-2026-08-18-SARS-VAT-STD-001 recorded
+remaining_gates:
+  - stable APQC Level 5 binding or controlled decomposition exception
+  - explicit executive adoption of AR-SARS-VAT-STD-001 before execution binding
+  - service specification approval before engineering handover
+  - contract security integration and deployment tests before Development deployment
+production_changed: false
+development_deployed: false
+act: ADAPT

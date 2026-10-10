@@ -1,0 +1,204 @@
+service_specification_id: SRV-APQC-VS02-TAX-001
+version: '0.1'
+status: CONTROLLED_DESIGN_CANDIDATE
+microservice_id: MS-VS02-TAX-COMPLIANCE-001
+legacy_candidate_id: MS-GC-TAX-001
+catalogue_pattern_id: MS-GOVCOMP-002
+name: Tax Determination and Compliance Service
+service_class: BUSINESS_PROCESS
+value_stream_id: VS02
+value_stream_name: Asset Finance & Capital Provision
+service_owner: VS02
+architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+methodology: MET-PDCA-001
+
+process_spine:
+  framework: APQC Process Classification Framework
+  profile: Cross-Industry
+  profile_version: '8.0'
+  level_2: '9.0 Manage Financial Resources'
+  level_3:
+    id: '9.9'
+    title: Manage taxes
+    mapping_status: PROPOSED_PENDING_SOURCE_ID_BINDING
+  level_4:
+    - perform_tax_planning_and_strategy
+    - prepare_tax_returns
+    - calculate_deferred_taxes
+    - account_for_taxes
+    - monitor_tax_compliance
+    - address_tax_inquiries
+  level_5:
+    status: PENDING_STABLE_ENTERPRISE_BINDING
+  boundary_basis: APQC_L3_DEFAULT_CANDIDATE_PASSED_BOUNDED_CONTEXT_DESIGN_TEST
+
+bounded_context:
+  outcome: Determine and evidence South African tax obligations and compliance outcomes for VS02 governed business events before downstream accounting execution.
+  includes:
+    - tax_applicability
+    - registration_and_filing_obligations
+    - tax_rate_and_effective_date_resolution
+    - tax_return_input_validation
+    - current_tax_treatment_input
+    - deferred_tax_tax_base_input
+    - payment_refund_and_assessment_compliance
+    - compliance_monitoring
+    - dispute_and_information_request_case_opening
+  excludes:
+    - autonomous_SARS_filing
+    - legal_advice
+    - IFRS_recognition_measurement_or_disclosure_decisions
+    - general_ledger_posting
+    - operation_of_a_competing_accounting_ledger
+
+semantic_crosswalks:
+  SARS:
+    role: normative_tax_authority
+    sources:
+      - CAT-SARS-DIG-001
+      - CAT-SARS-RULE-001
+      - CAT-SARS-TPL-001
+      - REG-SARS-RULE-001_when_approved
+  IFRS:
+    role: accounting_consequence_dependency_only
+    source: approved_IFRS_SARS_GovComp_crosswalk
+  BIAN:
+    role: financial_services_semantic_crosswalk_where_applicable
+    boundary_authority: false
+  TM_Forum:
+    role: API_and_information_semantic_crosswalk_where_applicable
+    boundary_authority: false
+
+canonical_business_object: TaxObligationDecision
+owned_state:
+  - TaxObligationDecision
+  - TaxComplianceAssessment
+  - TaxComplianceCase
+referenced_state:
+  - LegalEntity
+  - Party
+  - BusinessEvent
+  - Agreement
+  - FinancialTransaction
+  - Document
+  - Handover
+
+data_ownership:
+  decision_and_evidence_state: Zoho Catalyst
+  accounting_ledger: Zoho Books
+  tax_authority: SARS
+  rule_registry: Governance_and_Compliance_Rule_Registry
+  cross_service_write_rule: Other services shall consume decisions through governed API/event contracts and shall not directly mutate tax decision state.
+
+service_operations:
+  - name: ResolveTaxObligations
+    method: POST
+    idempotent: true
+    input_contract: BusinessEventTaxContext
+    output_contract: TaxObligationDecision
+  - name: ValidateTaxReturnInputs
+    method: POST
+    idempotent: true
+    input_contract: TaxReturnContext
+    output_contract: ValidationResult
+  - name: DetermineCurrentTaxTreatment
+    method: POST
+    idempotent: true
+    input_contract: TaxAccountingContext
+    output_contract: TaxTreatmentDecision
+  - name: DetermineDeferredTaxInputs
+    method: POST
+    idempotent: true
+    input_contract: DeferredTaxContext
+    output_contract: TaxBaseDecision
+  - name: CheckTaxCompliance
+    method: POST
+    idempotent: true
+    input_contract: EntityComplianceContext
+    output_contract: TaxComplianceAssessment
+  - name: OpenTaxComplianceCase
+    method: POST
+    idempotent: true
+    input_contract: TaxCaseContext
+    output_contract: TaxComplianceCase
+
+events:
+  publishes:
+    - TaxObligationResolved
+    - TaxCompliancePassed
+    - TaxComplianceFailed
+    - TaxCaseOpened
+  consumes:
+    - BusinessEventReadyForCompliance
+    - FinancialTransactionProposed
+
+integration:
+  zoho_books:
+    role: accounting_system_of_record
+    path: Books Financial Gateway
+    rule: Tax decisions may constrain a posting but this service shall not directly post to the ledger.
+  zoho_crm:
+    role: source_customer_and_commercial_context_where_applicable
+    path: CRM Commercial Gateway
+  zoho_workdrive:
+    role: supporting_document_content_target_only_after_repository_authority_control
+    path: WorkDrive Document Gateway
+  sars:
+    role: normative_external_authority_and_submission_target
+    autonomous_submission: false
+
+runtime_target:
+  platform: Zoho Catalyst
+  project: Kongoniapp1
+  pattern: Advanced I/O Function
+  stack: node20
+  api_ingress: API Gateway
+  eventing: Signals
+  persistence: Catalyst Data Store
+  external_connections: Connections
+  deployment_authorised: false
+
+security:
+  authentication: required
+  authorization: least_privilege
+  service_identity: required
+  tax_and_personal_data: minimise_and_control
+
+resilience:
+  fail_mode: FAIL_CLOSED_FOR_POSTING_AUTHORISATION
+  retries: safe_idempotent_dependencies_only
+  idempotency_key: required_for_state_creating_operations
+
+observability:
+  required_fields:
+    - microservice_id
+    - operation
+    - execution_id
+    - correlation_id
+    - rule_id
+    - rule_version
+    - source_authority_version
+    - outcome
+    - error_class
+
+release_gate:
+  mandatory:
+    - APQC_L3_L4_L5_mapping_verified
+    - approved_service_specification
+    - approved_atomic_SARS_rules_for_released_scope
+    - source_version_and_effective_date_traceability
+    - authority_precedence_test_passed
+    - no_unverified_legal_rule_execution
+    - no_direct_Books_ledger_mutation
+    - contract_and_security_tests_passed
+    - objective_CHECK_STUDY_evidence
+    - valid_ACT_decision
+  rule: DO_COMPLETE_IS_NOT_TASK_COMPLETE
+
+implementation_state:
+  architecture_design_complete: true
+  service_specification_approved: false
+  code_scaffold_permitted_for_non_deployable_test: true
+  deployed: false
+  production_authorised: false

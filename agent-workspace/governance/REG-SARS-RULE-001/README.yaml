@@ -1,0 +1,16 @@
+registry_id: REG-SARS-RULE-001
+version: '0.1'
+status: CONTROLLED_BUILD
+normative_authority: SARS and applicable South African tax legislation
+purpose: Maintain atomic, versioned, source-traceable South African tax rules for consumption by value-stream Governance and Compliance microservices.
+execution_policy:
+  - SOURCE_ONLY and LEGALLY_VERIFIED_CANDIDATE rules SHALL NOT execute.
+  - Executable status requires explicit controlled adoption, legal verification, effective-date validation, negative-case testing and regression evidence.
+  - No rule may directly post to Zoho Books; posting requires the applicable Governance and Compliance decision gate and Financial Gateway control.
+  - Guidance may not override higher-order legislation, regulations, binding rulings or judgments.
+initial_rules:
+  - rule_id: AR-SARS-VAT-STD-001
+    status: LEGALLY_VERIFIED_CANDIDATE
+    execution_status: NOT_EXECUTABLE
+    evidence_ref: EV-2026-08-18-SARS-VAT-STD-001
+    domain: VAT

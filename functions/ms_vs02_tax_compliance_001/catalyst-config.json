@@ -1,0 +1,11 @@
+{
+  "deployment": {
+    "name": "ms_vs02_tax_compliance_001",
+    "stack": "node20",
+    "type": "advancedio",
+    "env_variables": {}
+  },
+  "execution": {
+    "main": "index.js"
+  }
+}
