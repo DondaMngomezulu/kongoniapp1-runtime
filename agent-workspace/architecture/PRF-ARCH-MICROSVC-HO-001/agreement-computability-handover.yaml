@@ -1,0 +1,48 @@
+handover_extension_id: HO-AGR-COMPUTABLE-001
+version: '0.1'
+status: PROPOSED_FOR_REVIEW
+as_of: '2026-10-09'
+parent_profile_id: PRF-ARCH-MICROSVC-HO-001
+contract_profile_ref: PRF-AGR-COMPUTABLE-001
+architecture_decision_ref: ADR-COMP-AGR-001
+applicability: >
+  Required for each microservice whose bounded responsibility drafts, parses,
+  models, calculates, evaluates or executes obligations from applicable agreements.
+  Otherwise record NOT_APPLICABLE with reasons; do not create a new overlapping service.
+required_inputs:
+  - agreement_class_and_applicability_record
+  - approved_source_repo_reference_and_signed_instrument_hash
+  - source_amendment_history_and_current_effective_version
+  - governed_party_and_concept_refs
+  - clause_to_legalruleml_actus_and_logic_crosswalk_or_applicability_gap
+  - original_contract_dates_and_as_of_date_separation
+  - risk_factor_and_bank_event_evidence_if_financial
+  - legal_and_finance_approvers_and_action_authority
+  - validation_profile_and_test_catalogue
+required_outputs:
+  - versioned_computable_agreement_manifest
+  - bounded_rule_and_financial_engine_specifications
+  - input_output_and_error_contracts
+  - legal_vs_calculated_vs_actual_event_ledger_mapping
+  - approval_required_outcomes_and_safe_non_effecting_simulation_mode
+  - source_clause_provenance_and_model_version_lineage
+  - objective_acceptance_tests_and_security_gates
+  - unresolved_interpretation_and_legal_authority_list
+handover_gate:
+  mode: FAIL_CLOSED
+  ready_for_development_when: >
+    Architectural ownership, boundaries and applicable source standards are resolved;
+    explicit nonproduction simulation limitations and required developer test work are recorded.
+  ready_for_production_when: >
+    All applicable conformance, legal, accounting, security and action-authority gates pass;
+    objective CHECK_STUDY evidence exists, and a valid ACT approval is recorded.
+  nonacceptable_shortcuts:
+    - assume_model_is_signed_agreement
+    - treat_legalruleml_xsd_pass_as_execution_proof
+    - treat_actus_pam_as_complete_convertible_instrument
+    - silently_merge_or_novate_two_agreements
+    - grant_ai_agent_autonomous_legal_or_bank_write_access
+    - publish_agreement_source_data_in_public_github
+  unresolved_legal_interpretation: BLOCK_EXECUTION_PER_AFFECTED_RULE
+  unsupported_financial_contract_type: BLOCK_ACTUS_PROJECTION_PER_AFFECTED_COMPONENT
+  pending_architecture_approval: REVIEW_ONLY
