@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lrml:LegalRuleML
+  xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+  xmlns:ruleml="http://ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:kng="urn:kongoni:rule:vocab:"
+  xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/compact/lrml-compact.xsd">
+
+  <lrml:Prefix pre="kng" refID="urn:kongoni:rule:vocab:"/>
+
+  <lrml:LegalSources>
+    <lrml:LegalSource key="src-met-pdca" sameAs="urn:kongoni:source:MET-PDCA-001"/>
+    <lrml:LegalSource key="src-br-pdca" sameAs="urn:kongoni:source:BR-PDCA-001"/>
+    <lrml:LegalSource key="src-apqc-map" sameAs="urn:kongoni:source:APQC-L5-MAPPING-RULE"/>
+    <lrml:LegalSource key="src-togaf-vs" sameAs="urn:kongoni:source:TOGAF-VALUE-STREAM-RULE"/>
+    <lrml:LegalSource key="src-vs06-gmg" sameAs="urn:kongoni:source:VS06-GMG-GOVERNANCE"/>
+    <lrml:LegalSource key="src-vs04-mimosa" sameAs="urn:kongoni:source:VS04-MIMOSA-GOVERNANCE"/>
+    <lrml:LegalSource key="src-boundary-els" sameAs="urn:kongoni:source:MINE-ASSET-SUPPORT-BOUNDARY"/>
+    <lrml:LegalSource key="src-proj-dev" sameAs="urn:kongoni:source:VS00-PROJECT-DEVELOPMENT"/>
+    <lrml:LegalSource key="src-proj-exec" sameAs="urn:kongoni:source:PROJECT-EXECUTION-BOUNDARY"/>
+    <lrml:LegalSource key="src-legalruleml" sameAs="urn:kongoni:source:LEGALRULEML-DECISION"/>
+    <lrml:LegalSource key="src-ste" sameAs="urn:kongoni:source:STE-COMMUNICATION-RULE"/>
+  </lrml:LegalSources>
+
+  <lrml:Associations>
+    <lrml:Association><lrml:appliesSource keyref="#src-br-pdca"/><lrml:toTarget keyref="#BR-PDCA-001-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-met-pdca"/><lrml:toTarget keyref="#MET-PDCA-001-R02"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-met-pdca"/><lrml:toTarget keyref="#MET-PDCA-001-R03"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-met-pdca"/><lrml:toTarget keyref="#MET-PDCA-001-R04"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-met-pdca"/><lrml:toTarget keyref="#MET-PDCA-001-R05"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-apqc-map"/><lrml:toTarget keyref="#APQC-L5-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-togaf-vs"/><lrml:toTarget keyref="#TOGAF-VS-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-vs06-gmg"/><lrml:toTarget keyref="#VS06-GMG-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-vs04-mimosa"/><lrml:toTarget keyref="#VS04-MIMOSA-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-boundary-els"/><lrml:toTarget keyref="#VS-BOUNDARY-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-boundary-els"/><lrml:toTarget keyref="#VS-BOUNDARY-R02"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-proj-dev"/><lrml:toTarget keyref="#VS00-PD-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-proj-exec"/><lrml:toTarget keyref="#PROJECT-EXEC-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-legalruleml"/><lrml:toTarget keyref="#LEGALRULEML-R01"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-legalruleml"/><lrml:toTarget keyref="#LEGALRULEML-R02"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-legalruleml"/><lrml:toTarget keyref="#LEGALRULEML-R03"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-ste"/><lrml:toTarget keyref="#STE-R01"/></lrml:Association>
+  </lrml:Associations>
+
+  <lrml:Statements key="kng-current-enterprise-rules">
+    <lrml:PrescriptiveStatement key="BR-PDCA-001-R01">
+      <ruleml:Rule key="kng:BR-PDCA-001-R01-rule" closure="universal">
+        <lrml:Paraphrase>A material task must not close when only the DO step is complete.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:taskStateIs"/><ruleml:Ind>MaterialTask</ruleml:Ind><ruleml:Ind>DO_COMPLETE</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Prohibition key="BR-PDCA-001-R01-prohibition"><ruleml:Atom><ruleml:Rel iri="kng:closeTaskAtDoComplete"/><ruleml:Ind>MaterialTask</ruleml:Ind></ruleml:Atom></lrml:Prohibition></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="MET-PDCA-001-R02">
+      <ruleml:Rule key="kng:MET-PDCA-001-R02-rule" closure="universal">
+        <lrml:Paraphrase>Material work must complete CHECK/STUDY before controlled closure.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:taskClassIsMaterial"/><ruleml:Ind>MaterialTask</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="MET-PDCA-001-R02-obligation"><ruleml:Atom><ruleml:Rel iri="kng:performCheckStudy"/><ruleml:Ind>MaterialTask</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="MET-PDCA-001-R03">
+      <ruleml:Rule key="kng:MET-PDCA-001-R03-rule" closure="universal">
+        <lrml:Paraphrase>Material work must record an ACT decision before controlled closure.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:taskClassIsMaterial"/><ruleml:Ind>MaterialTask</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="MET-PDCA-001-R03-obligation"><ruleml:Atom><ruleml:Rel iri="kng:recordActDecision"/><ruleml:Ind>MaterialTask</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="MET-PDCA-001-R04">
+      <ruleml:Rule key="kng:MET-PDCA-001-R04-rule" closure="universal">
+        <lrml:Paraphrase>For T2 and T3 work, the accountability task remains open until a valid ACT outcome exists and required authoritative records are updated.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:taskClassIs"/><ruleml:Ind>T2orT3Task</ruleml:Ind><ruleml:Ind>T2_OR_T3</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="MET-PDCA-001-R04-obligation"><ruleml:Atom><ruleml:Rel iri="kng:keepTaskOpenUntilActAndRecords"/><ruleml:Ind>T2orT3Task</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="MET-PDCA-001-R05">
+      <ruleml:Rule key="kng:MET-PDCA-001-R05-rule" closure="universal">
+        <lrml:Paraphrase>An ACT decision must be one of ADOPT, ADAPT, REPEAT, REJECT, or ESCALATE.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="MET-PDCA-001-R05-obligation"><ruleml:Atom><ruleml:Rel iri="kng:usePermittedActDecisionSet"/><ruleml:Ind>ACT</ruleml:Ind><ruleml:Ind>ADOPT|ADAPT|REPEAT|REJECT|ESCALATE</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="APQC-L5-R01">
+      <ruleml:Rule key="kng:APQC-L5-R01-rule" closure="universal">
+        <lrml:Paraphrase>A controlled enterprise task must map to one approved APQC Level 5 task before execution.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:beforeExecution"/><ruleml:Ind>ControlledTask</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="APQC-L5-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:mapTaskToApprovedAPQCL5"/><ruleml:Ind>ControlledTask</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="TOGAF-VS-R01">
+      <ruleml:Rule key="kng:TOGAF-VS-R01-rule" closure="universal">
+        <lrml:Paraphrase>Enterprise value-stream concepts, definitions, decomposition, and architecture must use TOGAF semantics.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="TOGAF-VS-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:useTOGAFValueStreamSemantics"/><ruleml:Ind>EnterpriseValueStream</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="VS06-GMG-R01">
+      <ruleml:Rule key="kng:VS06-GMG-R01-rule" closure="universal">
+        <lrml:Paraphrase>VS06 Mining Production and Delivery must use GMG as its primary surface-mining domain reference.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="VS06-GMG-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:governWithPrimaryDomainReference"/><ruleml:Ind>VS06</ruleml:Ind><ruleml:Ind>GMG</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="VS04-MIMOSA-R01">
+      <ruleml:Rule key="kng:VS04-MIMOSA-R01-rule" closure="universal">
+        <lrml:Paraphrase>VS04 Asset Lifecycle Performance must use MIMOSA CCOM/OIIE as its primary asset-lifecycle semantic and interoperability reference.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="VS04-MIMOSA-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:governWithPrimaryDomainReference"/><ruleml:Ind>VS04</ruleml:Ind><ruleml:Ind>MIMOSA_CCOM_OIIE</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="VS-BOUNDARY-R01">
+      <ruleml:Rule key="kng:VS-BOUNDARY-R01-rule" closure="universal">
+        <lrml:Paraphrase>Mine Asset and Operational Support must remain within the Equipment Life Support value stream and must not be duplicated in VS06.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="VS-BOUNDARY-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:retainCapabilityInValueStream"/><ruleml:Ind>MineAssetAndOperationalSupport</ruleml:Ind><ruleml:Ind>EquipmentLifeSupport</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="VS-BOUNDARY-R02">
+      <ruleml:Rule key="kng:VS-BOUNDARY-R02-rule" closure="universal">
+        <lrml:Paraphrase>VS06 must not own equipment maintenance, reliability, spares, tyres, GET, or asset lifecycle support.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Prohibition key="VS-BOUNDARY-R02-prohibition"><ruleml:Atom><ruleml:Rel iri="kng:assignAssetLifecycleSupportToVS06"/><ruleml:Ind>VS06</ruleml:Ind></ruleml:Atom></lrml:Prohibition></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="VS00-PD-R01">
+      <ruleml:Rule key="kng:VS00-PD-R01-rule" closure="universal">
+        <lrml:Paraphrase>Project Development must be classified as a VS00 enterprise capability.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="VS00-PD-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:classifyCapability"/><ruleml:Ind>ProjectDevelopment</ruleml:Ind><ruleml:Ind>VS00</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="PROJECT-EXEC-R01">
+      <ruleml:Rule key="kng:PROJECT-EXEC-R01-rule" closure="universal">
+        <lrml:Paraphrase>Project Execution must remain separate from Project Development.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="PROJECT-EXEC-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:separateLifecycleDomains"/><ruleml:Ind>ProjectDevelopment</ruleml:Ind><ruleml:Ind>ProjectExecution</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="LEGALRULEML-R01">
+      <ruleml:Rule key="kng:LEGALRULEML-R01-rule" closure="universal">
+        <lrml:Paraphrase>LegalRuleML must be used as the enterprise machine-readable representation standard for normative rules.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="LEGALRULEML-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:representNormativeRulesWith"/><ruleml:Ind>EnterpriseNormativeRule</ruleml:Ind><ruleml:Ind>LegalRuleML</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="LEGALRULEML-R02">
+      <ruleml:Rule key="kng:LEGALRULEML-R02-rule" closure="universal">
+        <lrml:Paraphrase>A LegalRuleML representation must not replace the authoritative source object.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Prohibition key="LEGALRULEML-R02-prohibition"><ruleml:Atom><ruleml:Rel iri="kng:replaceAuthoritativeSourceWithRepresentation"/><ruleml:Ind>LegalRuleML</ruleml:Ind></ruleml:Atom></lrml:Prohibition></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="LEGALRULEML-R03">
+      <ruleml:Rule key="kng:LEGALRULEML-R03-rule" closure="universal">
+        <lrml:Paraphrase>Each machine-readable normative rule must retain traceability to its authoritative source.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="LEGALRULEML-R03-obligation"><ruleml:Atom><ruleml:Rel iri="kng:retainSourceTraceability"/><ruleml:Ind>MachineReadableNormativeRule</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="STE-R01">
+      <ruleml:Rule key="kng:STE-R01-rule" closure="universal">
+        <lrml:Paraphrase>Enterprise conversational and report outputs must use Simplified Technical English unless a higher-order mandate requires different language.</lrml:Paraphrase>
+        <ruleml:if><ruleml:Atom><ruleml:Rel iri="kng:enterpriseContextApplies"/><ruleml:Ind>KongoniGroup</ruleml:Ind></ruleml:Atom></ruleml:if>
+        <ruleml:then><lrml:Obligation key="STE-R01-obligation"><ruleml:Atom><ruleml:Rel iri="kng:useLanguageStandard"/><ruleml:Ind>EnterpriseOutput</ruleml:Ind><ruleml:Ind>SimplifiedTechnicalEnglish</ruleml:Ind></ruleml:Atom></lrml:Obligation></ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+  </lrml:Statements>
+</lrml:LegalRuleML>

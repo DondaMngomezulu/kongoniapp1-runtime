@@ -1,0 +1,164 @@
+artifact_id: BND-AGR-SA-CLAUSE-001
+version: "0.1"
+status: CONTROLLED_CANDIDATE
+work_id: WRK-AGR-SA-LEGAL-20260818
+normative_rule: >-
+  Statute and transaction-specific South African common law govern legal substance.
+  Template headings are controlled projections and are not legal authority.
+authoritative_sources:
+  - source_id: SRC-SA-NCA-001
+    authority: "National Credit Act 34 of 2005"
+    provisions:
+      - "section 4 — application of Act"
+      - "section 6 — limited application when consumer is a juristic person"
+      - "sections 89-90 — unlawful agreements/provisions where applicable"
+      - "sections 92-105 — disclosure, cost of credit, interest and charges where applicable"
+      - "sections 129-130 — debt enforcement procedures where applicable"
+  - source_id: SRC-SA-COACT-001
+    authority: "Companies Act 71 of 2008, as amended"
+    provisions:
+      - "section 44 — financial assistance for subscription/acquisition of securities"
+      - "section 45 — financial assistance; section 45(2A) subsidiary exclusion introduced by Companies Amendment Act 16 of 2024"
+      - "sections 50-53 — securities registers and transfer mechanics"
+      - "sections 117-127 — affected transactions and takeover regulation applicability"
+  - source_id: SRC-SA-ECTA-001
+    authority: "Electronic Communications and Transactions Act 25 of 2002"
+    provisions:
+      - "sections 11-14 — legal recognition, writing, signature and original requirements"
+  - source_id: SRC-SA-FIC-001
+    authority: "Financial Intelligence Centre Act 38 of 2001 and Schedule 1"
+    provisions:
+      - "Schedule 1 Item 11 — credit providers, including specified NCA-excluded credit business"
+  - source_id: SRC-SA-STT-001
+    authority: "Securities Transfer Tax Act 25 of 2007 and Securities Transfer Tax Administration Act 26 of 2007"
+    provisions:
+      - "STT applies to listed and unlisted securities; current rate 0.25%"
+      - "unlisted transferee notification to issuer within 30 days"
+      - "unlisted STT payment within two months from month-end of transfer"
+
+bindings:
+  - template_id: TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001
+    clauses:
+      - heading: "Authority, Capacity and Required Approvals"
+        controls: [SA-AGR-COM-001, SA-FAC-002]
+        sources: [SRC-SA-COACT-001]
+        gate: TRANSACTION_FACTS_REQUIRED
+      - heading: "Facility Amount, Currency and Purpose"
+        controls: [SA-FAC-001]
+        sources: [SRC-SA-NCA-001]
+        gate: NCA_APPLICABILITY_MUST_BE_CLASSIFIED
+      - heading: "Interest, Margin, Default Interest and Fees"
+        controls: [SA-FAC-001]
+        sources: [SRC-SA-NCA-001]
+        gate: NCA_COST_OF_CREDIT_RULES_IF_APPLICABLE
+      - heading: "Events of Default and Acceleration"
+        controls: [SA-FAC-004]
+        sources: [SRC-SA-NCA-001]
+        gate: ENFORCEMENT_REGIME_MUST_BE_CLASSIFIED
+      - heading: "Security Package and Intercreditor Position"
+        controls: [SA-FAC-003, SA-SEC-001, SA-SEC-004]
+        sources: [SRC-SA-COACT-001]
+        gate: EACH_SECURITY_INSTRUMENT_AND_PERFECTION_STEP_REQUIRED
+      - heading: "Data Protection, Cybersecurity and Information Handling"
+        controls: [SA-AGR-COM-003]
+        sources: [SRC-SA-FIC-001]
+        gate: FIC_APPLICABILITY_AND_CDD_EVIDENCE_REQUIRED_IF_ACCOUNTABLE_INSTITUTION
+      - heading: "Counterparts, Electronic Signature and Execution Mechanics"
+        controls: [SA-AGR-COM-002]
+        sources: [SRC-SA-ECTA-001]
+        gate: E_SIGNATURE_FORMALITY_CHECK_REQUIRED
+
+  - template_id: TPL-VS02-SECURITY-AGREEMENT-001
+    clauses:
+      - heading: "Security Assets and Collateral Description"
+        controls: [SA-SEC-001]
+        sources: [SRC-SA-COACT-001]
+        gate: COLLATERAL_CLASS_MANDATORY
+      - heading: "Creation, Perfection and Registration of Security"
+        controls: [SA-SEC-001, SA-SEC-002, SA-SEC-003, SA-SEC-004]
+        sources: [SRC-SA-COACT-001]
+        gate: COLLATERAL_SPECIFIC_PERFECTION_EVIDENCE_REQUIRED
+      - heading: "Priority, Ranking and Subordination"
+        controls: [SA-SEC-001]
+        sources: [SRC-SA-COACT-001]
+        gate: PRIOR_EXISTING_SECURITY_AND_REGISTRATION_SEARCH_REQUIRED
+      - heading: "Enforcement Triggers and Remedies"
+        controls: [SA-SEC-005, SA-FAC-004]
+        sources: [SRC-SA-NCA-001]
+        gate: STATUTORY_AND_COMMON_LAW_ENFORCEMENT_REVIEW_REQUIRED
+      - heading: "Possession, Collection, Realisation and Sale"
+        controls: [SA-SEC-005]
+        sources: [SRC-SA-COACT-001]
+        gate: NO_SELF_HELP_ASSUMPTION
+      - heading: "Release, Discharge and Reinstatement"
+        controls: [SA-SEC-005]
+        sources: [SRC-SA-COACT-001]
+        gate: SECURED_OBLIGATIONS_AND_RELEASE_EVIDENCE_REQUIRED
+      - heading: "Counterparts, Electronic Signature and Execution Mechanics"
+        controls: [SA-AGR-COM-002]
+        sources: [SRC-SA-ECTA-001]
+        gate: E_SIGNATURE_FORMALITY_CHECK_REQUIRED
+
+  - template_id: TPL-VS05-SHARE-PURCHASE-AGREEMENT-001
+    clauses:
+      - heading: "Authority, Capacity and Required Approvals"
+        controls: [SA-AGR-COM-001, SA-SPA-001, SA-SPA-005]
+        sources: [SRC-SA-COACT-001]
+        gate: MOI_SHAREHOLDER_AGREEMENT_AND_REGULATED_COMPANY_TEST_REQUIRED
+      - heading: "Commercial Terms"
+        controls: [SA-SPA-004]
+        sources: [SRC-SA-STT-001]
+        gate: STT_TAXABLE_AMOUNT_EXEMPTION_AND_PAYMENT_OWNER_REQUIRED
+      - heading: "Conditions Precedent"
+        controls: [SA-SPA-001, SA-SPA-005]
+        sources: [SRC-SA-COACT-001]
+        gate: CONSENTS_PREEMPTION_AND_TAKEOVER_REGIME_TEST_REQUIRED
+      - heading: "Execution and Signatures"
+        controls: [SA-SPA-002, SA-AGR-COM-002]
+        sources: [SRC-SA-COACT-001, SRC-SA-ECTA-001]
+        gate: PROPER_TRANSFER_INSTRUMENT_AND_EXECUTION_FORMALITY_REQUIRED
+      - heading: "Schedules and Annexures"
+        controls: [SA-SPA-002, SA-SPA-003]
+        sources: [SRC-SA-COACT-001]
+        gate: SECURITIES_REGISTER_AND_BENEFICIAL_OWNERSHIP_DELIVERABLES_REQUIRED
+      - heading: "Tax, Duties and Withholding"
+        controls: [SA-SPA-004]
+        sources: [SRC-SA-STT-001]
+        gate: STT_DECLARATION_PAYMENT_AND_EXEMPTION_EVIDENCE_REQUIRED
+
+source_evidence:
+  - id: EVD-SRC-NCA-S4
+    proposition: >-
+      NCA section 4 applies to arm's-length credit agreements with specified exclusions, including
+      juristic-person and large-agreement exclusions; applicability must therefore be determined from
+      consumer status, related entities, asset/turnover threshold, agreement size and arm's-length facts.
+  - id: EVD-SRC-COACT-S50-S51
+    proposition: >-
+      A company must maintain a securities register; a transfer of certificated securities is entered
+      only if evidenced by a proper instrument of transfer or effected by operation of law.
+  - id: EVD-SRC-COACT-S45-2024
+    proposition: >-
+      Companies Amendment Act 16 of 2024 inserted section 45(2A), excluding financial assistance
+      by a company to or for the benefit of its subsidiaries from section 45.
+  - id: EVD-SRC-STT
+    proposition: >-
+      SARS states STT applies to listed and unlisted securities at 0.25%; unlisted transfers require
+      notification to the issuer within 30 days and payment within two months from the end of the transfer month.
+  - id: EVD-SRC-FIC-ITEM11
+    proposition: >-
+      FIC Schedule 1 Item 11 covers persons carrying on credit-provider business and specified credit
+      business excluded from the NCA under section 4(1)(a) or (b).
+
+check_study:
+  result: PASS_ON_STATUTORY_ARCHITECTURE_WITH_CONTROLLED_GAPS
+  passed:
+    - "All three structural profiles have material South African statutory controls mapped to relevant clause headings."
+    - "Conditional regimes are expressed as applicability tests rather than blanket assumptions."
+    - "Market precedent is not treated as legal authority."
+  gaps:
+    - "No operative South African clause text has yet been legally approved."
+    - "Common-law security creation, cession, pledge and enforcement rules still require collateral-specific legal opinion/precedent validation."
+    - "Transaction facts are not yet bound to the templates."
+    - "MOI, shareholder-agreement, existing security, corporate approval and regulated-company evidence are transaction-specific."
+    - "Competition Act/merger-control applicability has not yet been added to the SPA gate and must be tested before transaction promotion where thresholds or control acquisition make it relevant."
+  transaction_ready: false

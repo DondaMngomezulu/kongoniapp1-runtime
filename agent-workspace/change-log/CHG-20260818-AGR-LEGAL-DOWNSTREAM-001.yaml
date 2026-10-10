@@ -1,0 +1,48 @@
+change_id: CHG-20260818-AGR-LEGAL-DOWNSTREAM-001
+timestamp_utc: "2026-08-18T20:23:00Z"
+actor:
+  type: ChatGPT
+  name: ChatGPT Agreement Codification Agent
+  agent_contract_ref: null
+mandate_ref: "Group CEO approved ACT=ADOPT for AGR-XWALK-011-B — 2026-08-18"
+accountability_task_ref: WRK-AGR-OPERATIVE-CLAUSE-20260818
+task_class: T2
+change_type: governance
+summary: >-
+  Adopted the governed South African operative clause-library architecture and approval-control structure while preserving
+  zero approved operative clauses, and retained the Kiboko-Venduo evidence and collateral-specific security gates as fail-closed controls.
+reason: >-
+  Establish the mandatory governance structure for future South African operative clauses without treating structural requirements,
+  market precedents, or unreviewed wording as approved legal content.
+affected_paths:
+  - agent-workspace/governance/agreement-artifact-crosswalk-v0.2.yaml
+  - agent-workspace/work/WRK-AGR-LEGAL-APPLICABILITY-20260818/evidence-gap-register-v0.2.yaml
+  - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/operative-clause-library-v0.1.yaml
+  - agent-workspace/work/WRK-AGR-OPERATIVE-CLAUSE-20260818/outcome.yaml
+  - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/mandate.yaml
+  - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/share-pledge-validation-v0.1.yaml
+  - agent-workspace/work/WRK-AGR-SECURITY-COMMONLAW-20260818/outcome.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: "Group CEO ACT=ADOPT for AGR-XWALK-011-B — 2026-08-18"
+pdca:
+  phase: CLOSE_OR_REPLAN
+  do_complete: true
+  check_study_result: PASS_LIBRARY_ARCHITECTURE_ZERO_APPROVED_CLAUSES
+  act_decision: ADOPT
+  task_complete: true
+evidence:
+  - "Kongoni Group Entity Register"
+  - "Kiboko_Position_Paper_Fingroup — June 2026"
+  - "MoI_and_Shareholders_Agreements_Inventory"
+  - "Companies Act 71 of 2008"
+  - "Bock v Duburoro Investments (SCA)"
+  - "Simmonds NO v Essafrau (SCA)"
+  - "Vantage Goldfields v Arqomanzi (SCA)"
+pull_request: 10
+notes: >-
+  LIB-SA-AGR-CLAUSE-001 v0.1 governance architecture is adopted. Six candidate clause requirements remain non-operative and
+  approved_operative_clauses remains zero. AGR-XWALK-011-B-LEGAL-REVIEW, AGR-XWALK-011-A-EVIDENCE and AGR-XWALK-011-C remain open.
+  No Agreement Template or transaction is approved for execution.

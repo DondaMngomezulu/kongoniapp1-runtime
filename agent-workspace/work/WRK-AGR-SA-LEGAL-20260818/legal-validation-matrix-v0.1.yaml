@@ -1,0 +1,120 @@
+artifact_id: MAT-AGR-SA-LEGAL-001
+version: "0.1"
+status: CONTROLLED_CANDIDATE
+work_id: WRK-AGR-SA-LEGAL-20260818
+method: MET-PDCA-001
+normative_position: >-
+  South African legislation, regulations and transaction-specific common law govern legal substance.
+  Market precedents and LMA materials are comparative drafting references only.
+common_controls:
+  - id: SA-AGR-COM-001
+    topic: authority_and_capacity
+    requirement: "Resolve legal entity, constitutional authority, board/shareholder approvals and signing authority before execution."
+    authority: "Companies Act 71 of 2008 and entity constitutional documents"
+    status: REQUIRED_TRANSACTION_SPECIFIC
+  - id: SA-AGR-COM-002
+    topic: electronic_execution
+    requirement: "Determine whether the agreement may be concluded and signed electronically and whether any statutory/formality exception applies."
+    authority: "Electronic Communications and Transactions Act 25 of 2002"
+    status: CONDITIONAL
+  - id: SA-AGR-COM-003
+    topic: fica
+    requirement: "Where a party carries on credit-provider business, test FIC Schedule 1 accountable-institution status and complete required risk-based customer due diligence before transaction activation."
+    authority: "Financial Intelligence Centre Act 38 of 2001; FIC Schedule 1 Item 11"
+    status: CONDITIONAL
+
+templates:
+  - template_id: TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001
+    legal_gate: FAIL_CLOSED_PENDING_OPERATIVE_TEXT_AND_TRANSACTION_FACTS
+    controls:
+      - id: SA-FAC-001
+        topic: national_credit_act_applicability
+        requirement: "Determine whether the National Credit Act applies to the credit agreement and borrower before selecting NCA disclosure, affordability, registration, interest, fee, default and enforcement controls."
+        authority: "National Credit Act 34 of 2005"
+        status: MANDATORY_APPLICABILITY_TEST
+      - id: SA-FAC-002
+        topic: corporate_financial_assistance
+        requirement: "Where the facility or related security constitutes financial assistance for acquisition/subscription of securities or to related/inter-related persons, test the applicable Companies Act approval and solvency/liquidity requirements."
+        authority: "Companies Act 71 of 2008, including sections 44 and 45 as applicable"
+        status: CONDITIONAL
+      - id: SA-FAC-003
+        topic: security_dependency
+        requirement: "Do not state the facility is secured unless each security instrument and perfection step is separately identified and evidenced."
+        authority: "South African security law; Companies Act where corporate approvals apply"
+        status: REQUIRED_IF_SECURED
+      - id: SA-FAC-004
+        topic: default_and_enforcement
+        requirement: "Default, acceleration and enforcement wording must be tested against applicable statutory restrictions and transaction-specific common-law requirements."
+        authority: "National Credit Act where applicable; South African common law"
+        status: CONDITIONAL
+
+  - template_id: TPL-VS02-SECURITY-AGREEMENT-001
+    legal_gate: FAIL_CLOSED_PENDING_COLLATERAL_CLASS_AND_OPERATIVE_TEXT
+    controls:
+      - id: SA-SEC-001
+        topic: collateral_classification
+        requirement: "Classify collateral before selecting the security technique; one generic Security Agreement cannot evidence perfection for every collateral type."
+        authority: "South African security law"
+        status: MANDATORY_APPLICABILITY_TEST
+      - id: SA-SEC-002
+        topic: movable_property_notarial_bond
+        requirement: "If security is a notarial bond over specified movable property, apply registration and legal-effect requirements of the Security by Means of Movable Property Act."
+        authority: "Security by Means of Movable Property Act 57 of 1993"
+        status: CONDITIONAL
+      - id: SA-SEC-003
+        topic: share_pledge
+        requirement: "For certificated shares, identify possession/document delivery, transfer-form and securities-register mechanics required by the transaction and company constitutional documents; for uncertificated securities, apply the applicable securities-system rules."
+        authority: "Companies Act 71 of 2008; Financial Markets Act 19 of 2012 where applicable; South African pledge law"
+        status: CONDITIONAL
+      - id: SA-SEC-004
+        topic: corporate_approvals
+        requirement: "Test Companies Act financial-assistance and authority requirements before security is granted by a company."
+        authority: "Companies Act 71 of 2008, including sections 44 and 45 as applicable"
+        status: CONDITIONAL
+      - id: SA-SEC-005
+        topic: enforcement
+        requirement: "Enforcement, possession, realisation and sale provisions require collateral-specific legal review; no self-help remedy may be assumed merely from template wording."
+        authority: "South African common law and applicable statutes"
+        status: REQUIRED
+
+  - template_id: TPL-VS05-SHARE-PURCHASE-AGREEMENT-001
+    legal_gate: FAIL_CLOSED_PENDING_OPERATIVE_TEXT_AND_TARGET_FACTS
+    controls:
+      - id: SA-SPA-001
+        topic: transferability_and_moi
+        requirement: "Confirm transfer restrictions, pre-emption or consent requirements in the target company's MOI and shareholder arrangements before completion."
+        authority: "Companies Act 71 of 2008; target constitutional documents"
+        status: MANDATORY_TRANSACTION_TEST
+      - id: SA-SPA-002
+        topic: securities_register
+        requirement: "Completion deliverables must include the proper instrument/evidence of transfer and update of the company's securities register where certificated securities are transferred."
+        authority: "Companies Act 71 of 2008 and Companies Regulations"
+        status: REQUIRED
+      - id: SA-SPA-003
+        topic: beneficial_ownership
+        requirement: "Assess and update beneficial ownership/securities-register filings and records required after the ownership change."
+        authority: "Companies Act 71 of 2008 as amended; Companies Regulations; CIPC beneficial ownership requirements"
+        status: REQUIRED_AS_APPLICABLE
+      - id: SA-SPA-004
+        topic: securities_transfer_tax
+        requirement: "Determine STT liability, taxable amount, exemption status, payer and filing/payment responsibility for the share transfer."
+        authority: "Securities Transfer Tax Act 25 of 2007; Securities Transfer Tax Administration Act 26 of 2007; SARS"
+        status: MANDATORY_TAX_TEST
+      - id: SA-SPA-005
+        topic: regulated_transaction
+        requirement: "Determine whether the target is a regulated/affected company and whether takeover-regulation approvals or disclosures apply."
+        authority: "Companies Act 71 of 2008 and Takeover Regulations"
+        status: MANDATORY_APPLICABILITY_TEST
+
+check_study_position:
+  current_result: FAIL_CLOSED_CONTROLLED_GAPS
+  reason: >-
+    All three templates contain structural headings but not operative clause text. Statutory applicability,
+    transaction facts, corporate approvals, collateral perfection and target-company facts are not yet bound.
+    The matrix therefore validates the clause architecture and legal gate conditions, but does not prove a
+    transaction-ready agreement.
+next_actions:
+  - "Bind each template clause heading to the applicable control IDs in this matrix."
+  - "Add authoritative source-clause citations for each statutory control."
+  - "Obtain or approve South African operative precedent language for controlled clause drafting."
+  - "Run legal review against one controlled transaction instance before template promotion."

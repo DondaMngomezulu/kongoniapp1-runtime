@@ -1,0 +1,29 @@
+name: LegalRuleML OASIS XSD Conformance
+
+on:
+  pull_request:
+    paths:
+      - 'agent-workspace/legalruleml/**'
+      - 'agent-workspace/scripts/validate_legalruleml.py'
+      - '.github/workflows/legalruleml-xsd-validate.yml'
+  push:
+    paths:
+      - 'agent-workspace/legalruleml/**'
+      - 'agent-workspace/scripts/validate_legalruleml.py'
+      - '.github/workflows/legalruleml-xsd-validate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-legalruleml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install XML validator
+        run: pip install lxml
+      - name: Validate against official OASIS compact XSD
+        run: python agent-workspace/scripts/validate_legalruleml.py

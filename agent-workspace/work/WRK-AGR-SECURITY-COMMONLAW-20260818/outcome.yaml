@@ -1,0 +1,32 @@
+work_id: WRK-AGR-SECURITY-COMMONLAW-20260818
+pdca_stage: CHECK_STUDY
+check_study:
+  result: PASS_CONTROL_PATTERN_TRANSACTION_BLOCKED
+  findings:
+    - "A collateral-specific control pattern is required; execution of a generic Security Agreement does not prove perfection."
+    - "For certificated shares, the control requires proof of title, constitutional clearance, possession/control of the share certificate and appropriate transfer/security documents."
+    - "The company securities register remains authoritative for registered ownership."
+    - "South African case law recognises contractual parate-executie mechanisms in pledge contexts subject to public-policy and debtor-protection controls; unrestricted self-help is not approved."
+    - "The Kiboko-Venduo first-ranking-share-pledge statement remains a proposed contractual effect, not proven priority evidence."
+    - "Fingroup MOI, shareholder agreement, securities register and share-certificate status are still missing."
+recommended_act:
+  decision: HOLD_PENDING_EVIDENCE
+  rationale: >-
+    Do not seek final ACT on the canary share-security package until GAP-KV-004, GAP-KV-005 and GAP-KV-006 are closed or
+    formally classified. The control pattern itself is suitable for later adoption, but transaction perfection/priority remains unproven.
+open_controls:
+  - control_id: AGR-XWALK-011-A-EVIDENCE
+    status: OPEN_FAIL_CLOSED
+  - control_id: AGR-XWALK-011-C-SHARE-EVIDENCE
+    status: OPEN
+    action: "Obtain Fingroup constitutional and share-title/certificate/register evidence and rerun the canary validation."
+record_state:
+  share_pledge_control_pattern_created: true
+  canary_creation_proven: false
+  canary_perfection_proven: false
+  canary_priority_proven: false
+  canary_enforcement_approved: false
+  task_complete: false
+transaction_use:
+  security_package_approved: false
+  template_promotion_allowed: false

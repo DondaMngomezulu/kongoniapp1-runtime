@@ -1,0 +1,43 @@
+work_id: WRK-AGR-LEGAL-APPLICABILITY-20260818
+pdca_stage: ACT
+check_study:
+  result: PASS_PROFILE_WITH_BLOCKING_EVIDENCE_GAPS
+  findings:
+    - "The canary transaction is sufficiently defined to create a controlled Legal Applicability Profile."
+    - "The current engineering term basis records a R6,022,500 vendor facility, Prime + 400 bps, maturity 2027-09-28 and first-ranking pledge over the Fingroup 25% shares."
+    - "The June 2026 position paper is negotiation provenance; the current GitHub LegalRuleML term basis is the engineering candidate and contains later risk remediation through interest and security."
+    - "NCA application is provisionally unlikely if Venduo is confirmed as a juristic person in an arm's-length large agreement, but legal identity evidence is still required."
+    - "Securities-transfer and STT controls apply on completion unless a specific exemption applies."
+    - "Competition merger control, Companies Act sections 44/45, FIC Item 11, ECTA execution and share-pledge perfection remain conditional or blocked pending evidence."
+    - "Twelve blocking evidence gaps have been registered."
+    - "No Agreement Template or transaction is legally ready for execution."
+act:
+  decision: ADOPT
+  authority: Group CEO
+  decision_date: "2026-08-18"
+  status: APPROVED
+  scope: >-
+    Adopt LAP-KIB-VEN-001 v0.1 as the controlled transaction applicability profile and its evidence-gap
+    register as the fail-closed precondition set. This does not approve the facility, share transfer,
+    security package or any Agreement Template for execution.
+open_controls:
+  - control_id: AGR-XWALK-011-A-EVIDENCE
+    status: OPEN
+    action: "Close or classify each blocking evidence gap in REG-KIB-VEN-LEGAL-EVIDENCE-GAP-001 before execution."
+  - control_id: AGR-XWALK-011-B
+    status: OPEN
+    action: "Create and legally approve operative South African clause variants."
+  - control_id: AGR-XWALK-011-C
+    status: OPEN
+    action: "Complete collateral-specific common-law share-security validation."
+record_state:
+  transaction_profile_created: true
+  applicability_controls_classified: true
+  blocking_evidence_gap_count: 12
+  transaction_ready: false
+  template_promotion_allowed: false
+  act_recorded: true
+  task_complete: true
+closure:
+  result: CLOSED_ADOPTED_WITH_BLOCKING_EVIDENCE_GAPS
+  next_gate: "AGR-XWALK-011-B and AGR-XWALK-011-C; evidence gaps remain mandatory preconditions."

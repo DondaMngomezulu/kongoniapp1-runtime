@@ -1,0 +1,66 @@
+{
+  "work_id": "WRK-AGR-ARTIFACT-CROSSWALK-20260818",
+  "evidence_id": "EVD-AGR-ARTIFACT-CROSSWALK-001",
+  "evidence_type": "CONFORMANCE",
+  "created_by": "ChatGPT automation",
+  "created_at": "2026-08-18T18:06:32Z",
+  "source": "XWALK-AGR-ARTIFACT-001 v0.1",
+  "result": "PASS",
+  "details": {
+    "check_study_result": "PASS_WITH_CONTROLLED_GAPS",
+    "recommended_act": "ADAPT",
+    "canonical_objects_preserved": [
+      "CAT-SA-AGR-PREC-001 v1.0",
+      "REG-AGR-TPL-001 v1.1"
+    ],
+    "source_families": {
+      "kongoni_native": {
+        "decision": "ADOPT",
+        "artifacts": [
+          "evidence.schema.json@8c3eef5b0bdeb05695740da0c54ca62afb40dd3e",
+          "work-item.schema.json@85adcbe1638d8b20af98b5ff4c9be47258ca0b8c",
+          "change-log.schema.json@080250d518b021670c06184070a1594857227cbc",
+          "handoff.schema.json@70587d3599b886bdbd9889dcb69278934b94ecb3"
+        ]
+      },
+      "oasis_legalruleml": {
+        "decision": "ADOPT",
+        "treatment": "Normative technical representation/conformance source; not South African substantive legal authority",
+        "ipr": "OASIS IPR Policy; LegalRuleML TC RF on Limited Terms Mode",
+        "artifacts": [
+          "oasis-tcs/legalruleml README.md@9e168c5d22deb7b658c148a0d461f61d8b93567f",
+          "oasis-tcs/legalruleml usecases/usecase1.md@64827945a046fc23a74199590c1c0262d4e842b2",
+          "OASIS-Docs/svn-archive-legalruleml xsd-schema/compact@cc0c966f4cc8756c97a78aa05286eed86b2f11bd"
+        ]
+      },
+      "accord_cicero": {
+        "decision": "ADAPT",
+        "treatment": "Technical template/data/render/test pattern below Kongoni Artifact Contract and Template governance",
+        "licence": "Apache-2.0 for source code; CC-BY-4.0 for documentation",
+        "artifacts": [
+          "README.md@1febe5faf8edf2ef2631c0a696314b3835c30f58",
+          "package.json@dcdcfef7ca63114afe0fdfd0d09e52c7eb0724d3",
+          "src/fixed-interests/model/model.cto@722c2daf99d0e0dd8d618b8fe89dad7867dad019",
+          "src/fixed-interests/text/grammar.tem.md@3462a9d83c2ca676571b30eac6ad8ffda83e88f1",
+          "src/fixed-interests/logic/logic.test.ts@d5a32af68c31ac66bdebe99e783f738cd61bb7d2"
+        ]
+      }
+    },
+    "tests": [
+      {"id": "AGR-XWALK-001", "result": "PASS", "control": "Provenance is recorded"},
+      {"id": "AGR-XWALK-002", "result": "PASS_WITH_CONTROL", "control": "Licence/IPR treatment is explicit"},
+      {"id": "AGR-XWALK-003", "result": "PASS", "control": "No parallel Agreement Catalogue"},
+      {"id": "AGR-XWALK-004", "result": "PASS", "control": "No parallel Agreement Template Register"},
+      {"id": "AGR-XWALK-005", "result": "PASS", "control": "South African legal-authority precedence preserved"},
+      {"id": "AGR-XWALK-006", "result": "PASS", "control": "CAT normative-effect fields map cleanly to LegalRuleML representation"},
+      {"id": "AGR-XWALK-007", "result": "PASS", "control": "Accord pattern supports typed variables, rendering, and technical tests"},
+      {"id": "AGR-XWALK-008", "result": "PASS", "control": "Existing Kongoni schemas cover execution/evidence governance"},
+      {"id": "AGR-XWALK-009", "result": "PASS", "control": "REG v1.1 transaction-readiness states unchanged"},
+      {"id": "AGR-XWALK-010", "result": "OPEN_CONTROLLED_GAP", "control": "Official OASIS XSD conformance of current Kongoni LegalRuleML artifacts"},
+      {"id": "AGR-XWALK-011", "result": "OPEN_CONTROLLED_GAP", "control": "Substantive South African legal validation of the three VALIDATING templates"}
+    ],
+    "build_boundary": "Only a thin Agreement Clause Profile and validator/orchestrator may be built after reuse testing; no new contract language, catalogue, template register, or generic evidence framework is justified."
+  },
+  "artifact_hash": null,
+  "external_ref": "agent-workspace/governance/agreement-artifact-crosswalk-v0.1.yaml"
+}

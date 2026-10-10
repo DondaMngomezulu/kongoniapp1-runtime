@@ -1,0 +1,55 @@
+artifact_id: REG-KIB-VEN-LEGAL-EVIDENCE-GAP-001
+version: "0.1"
+status: OPEN
+work_id: WRK-AGR-LEGAL-APPLICABILITY-20260818
+gaps:
+  - id: GAP-KV-001
+    evidence: "Canonical legal identity and registration number for Kiboko contracting/lending entity"
+    owner: Reandra
+    blocks: [NCA, FIC, COMPANIES_ACT, EXECUTION]
+  - id: GAP-KV-002
+    evidence: "Canonical legal identity and registration number for Venduo contracting/borrower/acquirer entity"
+    owner: Reandra
+    blocks: [NCA, FIC, COMPANIES_ACT, EXECUTION]
+  - id: GAP-KV-003
+    evidence: "Canonical legal identity and registration number for Fingroup target company"
+    owner: Reandra
+    blocks: [COMPANIES_ACT, SHARE_TRANSFER, STT, COMPETITION, SECURITY]
+  - id: GAP-KV-004
+    evidence: "Current Fingroup MOI"
+    owner: Jane Seaward
+    blocks: [SHARE_TRANSFER, SECURITY, CORPORATE_APPROVALS]
+  - id: GAP-KV-005
+    evidence: "Current Fingroup shareholders agreement and amendments"
+    owner: Jane Seaward
+    blocks: [SHARE_TRANSFER, SECURITY, CONTROL_ANALYSIS]
+  - id: GAP-KV-006
+    evidence: "Current Fingroup securities register, share certificate status and exact 25% share identification"
+    owner: Jane Seaward
+    blocks: [SHARE_TRANSFER, SECURITY, BENEFICIAL_OWNERSHIP]
+  - id: GAP-KV-007
+    evidence: "Pre/post transaction control analysis and current target/acquiring-group turnover/assets"
+    owner: Reandra
+    blocks: [COMPETITION]
+  - id: GAP-KV-008
+    evidence: "Section 44/45 corporate relationship and approval analysis, including solvency/liquidity evidence where applicable"
+    owner: Reandra
+    blocks: [COMPANIES_ACT]
+  - id: GAP-KV-009
+    evidence: "FIC Item 11 applicability and accountable-institution registration/RMCP/KYC evidence where applicable"
+    owner: Reandra
+    blocks: [FIC]
+  - id: GAP-KV-010
+    evidence: "STT exemption/taxable amount, payer and filing/payment responsibility"
+    owner: Reandra
+    blocks: [STT]
+  - id: GAP-KV-011
+    evidence: "Signing authorities and board/shareholder resolutions for all executing parties"
+    owner: Jane Seaward
+    blocks: [EXECUTION]
+  - id: GAP-KV-012
+    evidence: "Collateral-specific South African legal review of share pledge attachment, perfection, priority and enforcement"
+    owner: Reandra
+    blocks: [SECURITY]
+    downstream_control: AGR-XWALK-011-C
+closure_rule: "Every blocking gap must be evidenced or formally classified not applicable before transaction legal readiness can pass."

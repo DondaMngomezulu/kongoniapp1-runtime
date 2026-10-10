@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lrml:LegalRuleML
+    xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+    xmlns:ruleml="http://ruleml.org/spec"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:kg="urn:kongoni:legalruleml:facility:"
+    xmlns:fin="urn:kongoni:finance:"
+    xmlns:party="urn:kongoni:party:"
+    xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/xsd-schema/compact/lrml-compact.xsd">
+
+  <lrml:Prefix pre="kg" refID="urn:kongoni:legalruleml:facility:"/>
+  <lrml:Prefix pre="fin" refID="urn:kongoni:finance:"/>
+  <lrml:Prefix pre="party" refID="urn:kongoni:party:"/>
+
+  <lrml:LegalSources>
+    <lrml:LegalSource key="src-kng-fac" sameAs="urn:kongoni:template:TPL-KNG-CON-FAC-001:v0.1"/>
+    <lrml:LegalSource key="src-lma-class" sameAs="urn:kongoni:template:TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001"/>
+    <lrml:LegalSource key="src-terms" sameAs="urn:kongoni:transaction:kiboko-venduo:term-basis:2026-08-18"/>
+  </lrml:LegalSources>
+
+  <lrml:Associations>
+    <lrml:Association><lrml:appliesSource keyref="#src-kng-fac"/><lrml:toTarget keyref="#ps-facility-purpose"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-lma-class"/><lrml:toTarget keyref="#ps-interest"/></lrml:Association>
+    <lrml:Association><lrml:appliesSource keyref="#src-terms"/><lrml:toTarget keyref="#ps-maturity"/></lrml:Association>
+  </lrml:Associations>
+
+  <!--
+  CONTROLLED BINDING v0.2
+  Agreement Class: TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001
+  Controlled Parent: TPL-KNG-CON-FAC-001 v0.1
+  Licensed LMA clause text: NOT AVAILABLE — exact LMA clause-source bindings remain pending.
+  This artifact does not reproduce LMA wording.
+-->
+
+  <lrml:Statements>
+
+    <lrml:PrescriptiveStatement key="ps-facility-purpose">
+      <ruleml:Rule key="kg:r-facility-purpose">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="kg:facilityEffective"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Obligation key="obl-purpose">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:applyFacilityProceedsOnlyForAcquisition"/>
+              <ruleml:Ind iri="kg:vendorFacility"/>
+              <ruleml:Ind iri="kg:fingroup25PercentShares"/>
+            </ruleml:Atom>
+          </lrml:Obligation>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:ConstitutiveStatement key="cs-principal">
+      <ruleml:Rule key="kg:r-principal">
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel iri="fin:principalAmount"/>
+            <ruleml:Ind iri="kg:vendorFacility"/>
+            <ruleml:Data xsi:type="xs:decimal">6022500.00</ruleml:Data>
+            <ruleml:Ind iri="fin:ZAR"/>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:ConstitutiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-interest">
+      <ruleml:Rule key="kg:r-interest">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:principalOutstanding"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Obligation key="obl-interest">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:payMonthlyInterest"/>
+              <ruleml:Ind iri="kg:vendorFacility"/>
+              <ruleml:Ind iri="fin:PrimeRatePlus400bps"/>
+            </ruleml:Atom>
+          </lrml:Obligation>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-maturity">
+      <ruleml:Rule key="kg:r-maturity">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:maturityDateReached"/><ruleml:Data xsi:type="xs:date">2027-09-28</ruleml:Data></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Obligation key="obl-repay-principal">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:repayOutstandingPrincipalInFull"/>
+              <ruleml:Ind iri="kg:vendorFacility"/>
+            </ruleml:Atom>
+          </lrml:Obligation>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-prepayment">
+      <ruleml:Rule key="kg:r-prepayment">
+        <ruleml:then>
+          <lrml:Permission key="perm-prepay">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:prepayWithoutPenalty"/>
+              <ruleml:Ind iri="kg:vendorFacility"/>
+            </ruleml:Atom>
+          </lrml:Permission>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-security">
+      <ruleml:Rule key="kg:r-security">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:facilityUtilised"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Obligation key="obl-security">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:createFirstRankingSharePledge"/>
+              <ruleml:Ind iri="kg:fingroup25PercentShares"/>
+              <ruleml:Ind iri="party:Kiboko"/>
+            </ruleml:Atom>
+          </lrml:Obligation>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-security-release">
+      <ruleml:Rule key="kg:r-security-release">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:securedObligationsOutstanding"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Prohibition key="for-release-security">
+            <ruleml:slot><lrml:Bearer iri="party:Kiboko"/><ruleml:Ind iri="party:Kiboko"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:releaseSecurity"/>
+              <ruleml:Ind iri="kg:fingroup25PercentShares"/>
+            </ruleml:Atom>
+          </lrml:Prohibition>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-negative-pledge">
+      <ruleml:Rule key="kg:r-negative-pledge">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:securedObligationsOutstanding"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Prohibition key="for-further-security">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:createFurtherSecurityOverPledgedShares"/>
+              <ruleml:Ind iri="kg:fingroup25PercentShares"/>
+            </ruleml:Atom>
+          </lrml:Prohibition>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-disposal-restriction">
+      <ruleml:Rule key="kg:r-disposal-restriction">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:securedObligationsOutstanding"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Prohibition key="for-disposal">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:disposeOfPledgedSharesWithoutConsent"/>
+              <ruleml:Ind iri="kg:fingroup25PercentShares"/>
+            </ruleml:Atom>
+          </lrml:Prohibition>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-information">
+      <ruleml:Rule key="kg:r-information">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:facilityOutstanding"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Obligation key="obl-information">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:provideMaterialFinancialAndDefaultInformation"/>
+              <ruleml:Ind iri="party:Kiboko"/>
+            </ruleml:Atom>
+          </lrml:Obligation>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-eod-nonpayment">
+      <ruleml:Rule key="kg:r-eod-nonpayment">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="fin:paymentOverdueAfterCurePeriod"/><ruleml:Ind iri="kg:vendorFacility"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Permission key="perm-accelerate">
+            <ruleml:slot><lrml:Bearer iri="party:Kiboko"/><ruleml:Ind iri="party:Kiboko"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="fin:accelerateAndEnforceSecurity"/>
+              <ruleml:Ind iri="kg:vendorFacility"/>
+            </ruleml:Atom>
+          </lrml:Permission>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps-clean-exit">
+      <ruleml:Rule key="kg:r-clean-exit">
+        <ruleml:if>
+          <ruleml:Atom><ruleml:Rel iri="kg:shareDisposalCompletes"/><ruleml:Ind iri="kg:fingroup25PercentShares"/></ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <lrml:Obligation key="obl-clean-exit">
+            <ruleml:slot><lrml:Bearer iri="party:Venduo"/><ruleml:Ind iri="party:Venduo"/></ruleml:slot>
+            <ruleml:Atom>
+              <ruleml:Rel iri="kg:procureCleanEconomicAndLiabilityExit"/>
+              <ruleml:Ind iri="party:Kiboko"/>
+            </ruleml:Atom>
+          </lrml:Obligation>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+  </lrml:Statements>
+
+</lrml:LegalRuleML>
