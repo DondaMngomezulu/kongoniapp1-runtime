@@ -7,7 +7,7 @@ class TestCRMReadback(unittest.TestCase):
   self.assertEqual(len(a['profiles']),101)
   self.assertEqual({x['type'] for x in a['profiles']},{x['ubl_type'] for x in b['profiles']})
   self.assertEqual(a['counts']['exact_matches'],27)
-  self.assertEqual(a['counts']['types_without_match'],79)
+  self.assertEqual(a['counts']['types_without_match'],80)
  def test_fail_closed(self):
   self.assertTrue(all(x['issuance']=='DENY' and x['binding_status']=='UNVERIFIED' for x in a['profiles']))
  def test_names(self):
