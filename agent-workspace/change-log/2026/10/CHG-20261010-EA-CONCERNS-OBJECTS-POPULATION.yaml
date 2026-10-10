@@ -1,0 +1,40 @@
+change_id: CHG-20261010-EA-CONCERNS-OBJECTS-POPULATION
+timestamp_utc: '2026-10-10T00:00:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-6
+mandate_ref: 'User instruction on 2026-10-10: proceed to full architecture population and conformance assessment; GitHub issue #59 and draft PR #60.'
+task_class: T2
+change_type: governance
+summary: >-
+  Add read-only source-grounded enterprise architecture inventory, candidate
+  baseline, target and conformance gaps, and machine-checkable source coverage.
+reason: >-
+  Preserve canonical concerns, value streams, capabilities, applications,
+  reference processes, requirements and source mappings without claiming
+  complete enterprise architecture or authorizing production changes.
+affected_paths:
+  - governance/architecture/enterprise-concern-object-completeness.candidate.md
+  - governance/architecture/models/enterprise-source-coverage.candidate.json
+  - governance/architecture/models/enterprise-baseline.candidate.json
+  - governance/architecture/models/enterprise-target.candidate.json
+  - governance/architecture/models/enterprise-conformance.candidate.json
+  - governance/architecture/tests/validate_source_coverage.py
+  - .github/workflows/enterprise-architecture-source-coverage.yml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'User-directed architecture documentation and GitHub working branch; NOT permission to release a production runtime.'
+pdca:
+  phase: DO
+  do_complete: true
+  check_study_result: 'PENDING GitHub CI and source-owner conformance review; no normative ArchiMate exchange validation completed.'
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'Read-only source matrices: BA-VS-001, Enterprise Capability Model, REG-ICT-APP-001, KEA-SCH-REP-001, REG-EA-ALIGN-001, BA-PRO-001, and CRM logical design.'
+  - '12 governance areas; 7 VS entries including VS06; 18 platform capabilities; 48 application services; 15 EA requirements; 85 repository artifact rows; 93 proposed CRM module designs.'
+  - 'Historical VS04/VS06 S02 mapping conflict and repository conformance defects retained as explicit gaps.'
+  - 'Issue: https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/59'
+  - 'Draft PR: https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/60'
+notes: 'Architecture and configuration only. No operational or customer business records in GitHub; no CRM/Catalyst production mutations.'
