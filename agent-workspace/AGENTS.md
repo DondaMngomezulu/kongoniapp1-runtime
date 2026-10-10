@@ -39,3 +39,13 @@ All agents working in this directory SHALL follow this protocol before execution
 ## Collaboration rule
 
 Agents collaborate by updating governed work objects. Chat messages are not the authoritative work state.
+
+
+## Enterprise development and configuration routing: CTL-ENG-GH-ROUTE-001
+
+- All material systems development and system configuration changes SHALL originate in a GitHub Issue and be proposed through a linked PR; include Route-ID, Task-Class, Change-Class, Target-System, Target-Environment, Authority-Ref and Verification-Plan.
+- For low-code changes (Zoho CRM fields/layouts/Blueprint/workflows, Zoho Creator/Flow, Workspace/IAM, WordPress forms, DNS, runtime settings), commit a redacted configuration change manifest under `governance/configuration-changes/` even when configuration will ultimately be applied by an authorised API gateway.
+- Preserve Catalyst as the authoritative environment and architecture control plane. A passing GitHub CI check is not sufficient execution authority; T2/T3 changes require separate confirmed execution authority.
+- The native system remains authoritative for runtime and business data. Capture the immutable code/config version, GitHub Actions run ID, native transaction receipt and before/after CHECK/STUDY evidence.
+- If platform gateway/branch/environment enforcement has not been verified, block ordinary T2/T3 direct edits and raise an issue. A P0 emergency needs explicit, time-boxed break-glass and retrospective reconciliation.
+- See `../../AGENTS.md`, `governance/controls/CTL-ENG-GH-ROUTE-001.yaml` and `governance/configuration-routes/enterprise-platforms.yaml`.

@@ -1,0 +1,22 @@
+config_change_id: CFG-ENG-20261009-001
+route_id: CTL-ENG-GH-ROUTE-001
+issue_url: https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/50
+target_system: GitHub Actions and enterprise configuration route registry
+target_environment: repository
+change_class: governance
+affected_paths:
+  - .github/workflows/enterprise-route-gate.yml
+  - governance/controls/CTL-ENG-GH-ROUTE-001.yaml
+  - governance/configuration-routes/enterprise-platforms.yaml
+  - governance/schemas/configuration-change.schema.json
+  - agent-workspace/scripts/validate_enterprise_route.py
+owner: Chief of Accountability
+before_state_ref: "PR #51 initial routing workflow and absent platform registry"
+desired_state_ref: "PR #51 hardened routing validator and platform onboarding register"
+authority_ref: "Group CEO instruction 2026-10-09 to apply GitHub control to systems development and configurations"
+execution_mode: GOVERNANCE_ONLY_NOT_DEPLOYED
+approval_state: PENDING_INDEPENDENT_REVIEW
+secret_values_committed: false
+evidence_plan: "GitHub Actions positive and negative validation tests, reviewed PR, admin ruleset evidence, then platform-native execution receipts"
+native_audit_ref: null
+run_id: null

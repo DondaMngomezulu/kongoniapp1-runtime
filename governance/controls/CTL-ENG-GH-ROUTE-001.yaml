@@ -1,0 +1,103 @@
+control_id: CTL-ENG-GH-ROUTE-001
+version: "1.0.0"
+status: ADOPTED_POLICY
+policy_effective_date: "2026-10-09"
+decision_evidence: "Group CEO instruction in ChatGPT on 2026-10-09: apply this control for systems development and configurations"
+technical_enforcement_state: PARTIAL_PLATFORM_GATES_PENDING
+title: Enterprise GitHub Engineering and Configuration Routing Control
+owner: Chief of Accountability
+approval_authority: Group CEO
+implementation_issue: https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/50
+scope:
+  subjects: [human, ChatGPT, Claude, Codex, Zia, specialist_agent, CI, integration]
+  systems: ALL_GROUP_CONTROLLED_ENTERPRISE_SYSTEMS
+  in_scope_operations:
+    - software_and_agent_development
+    - application_configuration_and_metadata_change
+    - workflow_and_blueprint_change
+    - integration_and_API_configuration
+    - domain_DNS_sender_identity_change
+    - database_schema_and_data_migration
+    - infrastructure_as_code_and_cloud_configuration
+    - AI_prompt_model_policy_and_agent_contract_change
+    - deployment_release_and_rollback
+    - infrastructure_and_security_configuration_change
+  excluded_per_transaction:
+    - normal_customer_sales_finance_and_service_transactions_executed_by_approved_workflows
+    - routine_records_and_messages_under_governed_approved_product_operations
+authority_boundary:
+  github: authoritative_engineering_request_review_version_and_release_trace
+  catalyst: authoritative_enterprise_architecture_and_environment_execution_authority
+  business_systems: native_systems_of_record_and_native_audit_evidence
+  enterprise_write_audit: CTL-SYS-WRITE-AUDIT-001
+  enterprise_change_log: CTL-DEV-CHG-LOG-001
+  reserved_approval: CTL-GOV-CEO-APPROVAL-001
+  architecture_preflight: Rule-14
+  pdca: MET-PDCA-001
+mandatory_route:
+  step_1: register_GitHub_issue_with_immutable_route_id_and_scope
+  step_2: classify_T0_T1_T2_T3_and_resolve_actor_mandate_architecture_and_authority
+  step_3: capture_redacted_before_state_and_desired_configuration
+  step_4: create_topic_branch_and_PR_linked_to_issue
+  step_5: commit_conformant_change_log_and_configuration_manifest_if_applicable
+  step_6: validate_in_CI_review_independently_and_approve_reserved_decisions
+  step_7: execute_only_via_authorised_GitHub_Action_or_GitHub_initiated_gateway
+  step_8: record_GitHub_run_ID_SHA_gateway_receipt_native_write_receipt_and_before_after_evidence
+  step_9: reconcile_target_configuration_against_approved_version_and_record_CHECK_STUDY_ACT
+required_correlation:
+  - github_issue_url
+  - github_pull_request_url
+  - route_id
+  - actor_and_accountable_owner
+  - task_class_and_mandate
+  - target_system_and_environment
+  - architecture_binding_and_version
+  - approval_authority_and_evidence
+  - commit_sha
+  - github_actions_run_id_or_approved_execution_gateway_run_id
+  - native_platform_transaction_or_audit_identifier
+  - test_evidence_and_change_log
+development_rules:
+  protected_branch_and_pull_request_only: required
+  independent_review: required
+  checks: [enterprise-route-gate, validate-change-log, validate]
+  no_direct_main_commit: required
+  no_secret_values_in_git: required
+  signed_or_attributable_release: required
+configuration_rules:
+  config_as_code_or_redacted_export: required_for_supported_platforms
+  external_UI_changes: governed_config_change_manifest_and_GitHub_initiated_gateway_required
+  drift_detection: required
+  baseline_and_after_snapshot_refs: required
+  no_uncontrolled_native_UI_T2_T3_edits: required
+  secrets: managed_in_native_vault_never_in_GitHub
+  native_platform_RBAC: least_privilege
+deployment_rules:
+  production_environment_protection: required
+  independent_target_authority: required
+  required_review_and_green_CI: required
+  use_immutable_SHA: required
+  short_lived_credentials: required
+  fail_closed_when_authority_unknown: required
+  read_back_target_state_and_link_native_receipt: required
+  DO_COMPLETE_not_equal_TASK_COMPLETE: true
+emergency_exception:
+  priority: P0_only
+  pre_authorisation: required
+  expiry: time_bound
+  minimum_privilege: required
+  native_write_audit: required
+  retrospective_GitHub_issue_PR_and_review: within_one_business_day
+  automatic_CEO_waiver: forbidden
+control_evidence:
+  branch_ruleset: NOT_VERIFIED
+  independent_review: NOT_VERIFIED
+  production_environment_approval: NOT_VERIFIED
+  cross_platform_gateway_enforcement: NOT_VERIFIED
+  github_PR_route_validator: PROPOSED_FOR_CI
+  platform_inventory: ONBOARDING_REQUIRED
+related_controls:
+  - CTL-DEV-CHG-LOG-001
+  - CTL-SYS-WRITE-AUDIT-001
+  - CTL-GOV-CEO-APPROVAL-001
+  - MET-PDCA-001

@@ -1,0 +1,63 @@
+registry_id: REG-ENG-CONFIG-ROUTES-001
+version: "1.0"
+status: BASELINE_PENDING_CONNECTOR_AND_ACCESS_VERIFICATION
+owner: ICT Governance
+controller: Chief of Accountability
+purpose: "Catalogue target platform configuration routes; none of these bindings asserts that vendor-native changes are yet technically blocked."
+default_route:
+  intake: GitHub Issue
+  review: GitHub PR with immutable version and required checks
+  target_execution: GitHub Actions or approved gateway, subject to authoritative runtime access
+  evidence: Native platform audit record plus enterprise write audit
+platforms:
+  - id: SYS-GITHUB
+    platform: GitHub repositories and Actions
+    configuration_scope: [rulesets, workflows, branch_protection, secrets_references, runners]
+    config_baseline: GitHub API metadata and redacted configuration
+    route_state: GITHUB_PR_CI_PROPOSED
+    hard_enforcement: PENDING_BRANCH_RULESET
+  - id: SYS-CATALYST
+    platform: Zoho Catalyst
+    configuration_scope: [functions, application_settings, environment, API_gateway, Signals, Circuits, datastore_schema]
+    config_baseline: Approved Catalyst deployment manifests and redacted service metadata
+    route_state: ADAPTER_NOT_VERIFIED
+    hard_enforcement: PENDING_NATIVE_RBAC_GATEWAY
+  - id: SYS-CRM
+    platform: Zoho CRM
+    configuration_scope: [modules, fields, layouts, blueprints, workflow_rules, functions, templates, variable_groups, integrations]
+    config_baseline: CRM settings APIs and redacted metadata export
+    route_state: ADAPTER_NOT_VERIFIED
+    hard_enforcement: PENDING_NATIVE_RBAC_GATEWAY
+  - id: SYS-ZOHO-INTEGRATION
+    platform: Zoho Creator Flow Writer Directory and related apps
+    configuration_scope: [applications, flows, mail_merge_rules, connections, directory_policies]
+    config_baseline: Native export or settings evidence
+    route_state: ADAPTER_NOT_VERIFIED
+    hard_enforcement: PENDING_NATIVE_RBAC_GATEWAY
+  - id: SYS-GOOGLE
+    platform: Google Cloud Workspace Drive and identity
+    configuration_scope: [cloud_IaC, IAM, APIs, directory, policy, workflow_automation]
+    config_baseline: Approved declarative configuration or settings export
+    route_state: ADAPTER_NOT_VERIFIED
+    hard_enforcement: PENDING_NATIVE_RBAC_GATEWAY
+  - id: SYS-WEB
+    platform: WordPress websites and registrar DNS
+    configuration_scope: [website_code, themes, plugins, forms, DNS, SPF_DKIM_DMARC, TLS]
+    config_baseline: Redacted export and native settings evidence
+    route_state: ADAPTER_NOT_VERIFIED
+    hard_enforcement: PENDING_NATIVE_RBAC_GATEWAY
+  - id: SYS-FINANCE-CONFIG
+    platform: Zoho Books and accounting application configuration
+    configuration_scope: [chart_of_accounts_schema, user_roles, approvals, integrations, invoice_templates]
+    config_baseline: Governed settings export without transactional financial data
+    route_state: ADAPTER_NOT_VERIFIED
+    hard_enforcement: PENDING_NATIVE_RBAC_GATEWAY
+  - id: SYS-AI
+    platform: Enterprise AI agent and provider configuration
+    configuration_scope: [agent_contracts, prompts, tools, policies, model_routing, allowed_connectors]
+    config_baseline: Approved agent and policy configuration (no private prompts or credentials)
+    route_state: ADAPTER_NOT_VERIFIED
+    hard_enforcement: PENDING_NATIVE_RBAC_GATEWAY
+exceptions:
+  ordinary_business_transactions: native_operational_workflows_remain_authoritative
+  unsupported_platform: "Block T2/T3 configuration writes until a gateway is proved or a time-bound P0 exception is authorised."
