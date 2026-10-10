@@ -1,0 +1,23 @@
+name: Enterprise Architecture Source Coverage
+on:
+  pull_request:
+    paths:
+      - 'governance/architecture/models/**'
+      - 'governance/architecture/tests/**'
+      - '.github/workflows/enterprise-architecture-source-coverage.yml'
+  push:
+    paths:
+      - 'governance/architecture/models/**'
+      - 'governance/architecture/tests/**'
+      - '.github/workflows/enterprise-architecture-source-coverage.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python governance/architecture/tests/validate_source_coverage.py
