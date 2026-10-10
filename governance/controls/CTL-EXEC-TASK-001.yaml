@@ -1,0 +1,121 @@
+control_id: CTL-EXEC-TASK-001
+version: 1.0
+status: adopted
+name: Execute Task List Canonical Task Control
+owner: Chief of Accountability
+approver: Group CEO
+runtime_repository: Zoho Catalyst Development / Kongoniapp1 / EnterpriseAction
+canonical_register_name: Execute Task List
+methodology: MET-PDCA-001
+
+purpose: >-
+  Establish one governed enterprise task list as the single authoritative register
+  for enterprise tasks while allowing source and execution systems to retain linked
+  operational records.
+
+canonical_object:
+  physical_table: EnterpriseAction
+  user_facing_register: Execute Task List
+  persistent_identifier: EnterpriseActionId
+  canonical_flag_field: CanonicalFlag
+  register_name_field: RegisterName
+
+source_system_rule: >-
+  Gmail, Google Calendar, Zoho CRM, Zoho Projects, GitHub, Catalyst and other systems
+  MAY originate or execute work, but an enterprise task is authoritative only when
+  represented by one canonical EnterpriseAction row in the Execute Task List.
+
+identity_rule:
+  one_real_world_task_one_id: true
+  immutable_task_id: true
+  duplicate_source_records_must_link: true
+  source_object_does_not_define_task_identity: true
+
+required_task_semantics:
+  - EnterpriseActionId
+  - Title
+  - ActionClassCode
+  - ActionPurposeCode
+  - AccountableOwner
+  - PriorityCode
+  - LifecycleStateCode
+  - PDCACycleId
+  - OpenedDate
+  - SourceReference
+  - RegisterName
+  - CanonicalFlag
+
+extended_task_semantics:
+  - TaskTypeCode
+  - MaterialityClass
+  - ValueStreamCode
+  - LegalEntityCode
+  - CompletionCriteria
+  - EvidenceRequirement
+  - SourceSystemCode
+  - SourceObjectType
+  - SourceObjectId
+  - SourceObjectUrl
+  - ExecutionBindingsJson
+  - DependencyTaskIdsJson
+  - ReconciliationState
+  - LastReconciledAt
+  - ReconciliationExceptions
+
+lifecycle:
+  source_event: candidate_task
+  candidate_task: deduplicate_and_resolve_identity
+  governed_task: record_in_execute_task_list
+  execution: linked_execution_system
+  evidence: objective_evidence
+  check_study: mandatory_for_T2_T3
+  act: ADOPT_ADAPT_REPEAT_REJECT_ESCALATE
+  closure: authoritative_record_update
+
+reconciliation:
+  allowed_states:
+    - UNRECONCILED
+    - LINKED
+    - MATCHED
+    - EXCEPTION
+    - CLOSED_RECONCILED
+  fail_closed_when:
+    - source_identity_unresolved
+    - duplicate_identity_unresolved
+    - accountable_owner_missing
+    - material_task_missing_pdca
+    - completion_claim_without_evidence
+
+execution_binding_contract:
+  storage_field: ExecutionBindingsJson
+  type: array
+  item_fields:
+    - system
+    - object_type
+    - object_id
+    - uri
+    - role
+    - observed_state
+    - sync_direction
+    - last_observed_at
+
+source_precedence:
+  task_authority: Execute Task List
+  source_fact_authority: originating_system
+  execution_state_authority: execution_system
+  governance_state_authority: Execute Task List
+
+closure_rule: >-
+  DO_COMPLETE does not equal TASK_COMPLETE. T2/T3 tasks remain open until objective
+  CHECK/STUDY evidence exists, an applicable ACT decision is recorded, and the
+  authoritative Execute Task List record is updated.
+
+migration_rule: >-
+  Existing records in MY Task List, Zoho Projects, CRM, GitHub, Calendar and other
+  sources SHALL be reconciled into the Execute Task List as LINK, CREATE, DUPLICATE,
+  HISTORICAL_CLOSED or NON_TASK. No source system may bulk-create authoritative tasks
+  without deduplication and identity resolution.
+
+production_control:
+  development_first: true
+  production_change_requires_explicit_approval: true
