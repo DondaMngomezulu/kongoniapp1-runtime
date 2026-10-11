@@ -1,0 +1,43 @@
+control_id: EA-CTL-SYSML-001
+version: 0.2.0
+status: PROPOSED_PENDING_GOVERNANCE_APPROVAL
+name: Mandatory enterprise SysML v2 system projection
+owner: Enterprise Architecture Authority
+approval_control: CTL-GOV-CEO-APPROVAL-001
+standard_register: REG-STD-001
+standard_reference: https://www.omg.org/spec/SysML/2.0
+normative_architecture: ArchiMate 3.2
+control_representation: NIST OSCAL catalog candidate
+scope:
+  inclusion: All applications in REG-ICT-APP-001; additional managed engines, services and integrations on registration
+  required_model: SysML v2 with observable system boundaries, interfaces, dependencies, applicable requirements, behaviour, constraints and verification
+  black_box_projections: Permitted for proprietary third-party systems; do not infer internal vendor design
+  exclusions: Explicit time-limited approval; REVIEW_REQUIRED is not an exclusion
+requirements:
+  source_of_truth: REG-ICT-APP-001 is authoritative for business application records
+  architecture_identity: Each manifest entry binds to a real ArchiMate ApplicationComponent
+  version_control: Every in-scope system has one registered projection status with evidence
+  model_integrity: Textual SysML must be parsed by an approved pinned implementation; filenames do not constitute conformance
+  release_validation: Reconciliation, parsed-model evidence, signed or separately controlled approval attestation, and independent release gate
+  approval: Exact model version and its source/approval identity must be evidenced
+  waivers: Non-self-authorising, version-scoped, expiring, independently approved and auditable
+implementation:
+  architecture_repository: DondaMngomezulu/bug-free-octo-journey
+  governance_repository: DondaMngomezulu/kongoniapp1-runtime
+  architecture_manifest: architecture/enterprise-system-landscape/sysml/application-projections.json
+  baseline_validator: scripts/validate_sysml_projection.py
+  baseline_workflow: .github/workflows/sysml-projection-gate.yml
+  baseline_scope: Inventory membership, uniqueness, real ArchiMate element types and manifest path safety
+  release_mode: FAIL_CLOSED_PENDING_TRUSTED_ATTESTATION_AND_PARSER
+  prohibited_claims:
+    - Baseline pass means SysML grammar conformance
+    - Repo publication equals CEO approval
+    - A GitHub workflow without mandatory protection gates production deployment
+hold_points:
+  - SYSML_STANDARD_IDENTIFIER_UNALLOCATED
+  - CEO_APPROVAL_EVIDENCE_UNVERIFIED
+  - LIVE_REGISTRY_RECONCILIATION_NOT_AUTOMATED
+  - SYSML_PARSER_NOT_INTEGRATED
+  - TRUSTED_APPROVAL_ATTESTATIONS_NOT_CONFIGURED
+  - PRIVATE_REPOSITORY_REQUIRED_CHECKS_NOT_CONFIRMED
+  - DEPLOYMENT_GATES_NOT_CONFIRMED
