@@ -1,0 +1,42 @@
+{
+  "catalog": {
+    "uuid": "515546d9-346f-51ef-9dc9-378c23e32bc3",
+    "metadata": {
+      "title": "EA-CTL-SYSML-001 Enterprise SysML projection control (candidate)",
+      "version": "0.2.0",
+      "oscal_version": "1.1.2",
+      "published": "2026-10-11T00:00:00Z",
+      "remarks": "Candidate representation only; no OSCAL schema certification or governance approval implied."
+    },
+    "groups": [
+      {
+        "id": "enterprise-architecture",
+        "title": "Enterprise Architecture Governance",
+        "controls": [
+          {
+            "id": "ea-ctl-sysml-001",
+            "title": "Mandatory SysML v2 Projection",
+            "props": [
+              {
+                "name": "status",
+                "value": "proposed-pending-governance-approval"
+              }
+            ],
+            "parts": [
+              {
+                "id": "ea-ctl-sysml-001_smt",
+                "name": "statement",
+                "prose": "Maintain traceable SysML v2 projections for in-scope enterprise applications, services and managed engines, linked to live registered identities and ArchiMate architecture; require verified parser output, controlled approval attestations and formal waivers for a release pass."
+              },
+              {
+                "id": "ea-ctl-sysml-001_gdn",
+                "name": "guidance",
+                "prose": "A baseline inventory pass is not SysML v2 conformance. Proprietary SaaS systems may have black-box boundary/interface projections. Production deployment controls must be separately enforced. No approval is inferred from repository publication."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
