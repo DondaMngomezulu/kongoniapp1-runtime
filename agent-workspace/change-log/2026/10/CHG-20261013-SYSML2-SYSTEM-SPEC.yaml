@@ -1,0 +1,32 @@
+change_id: CHG-20261013-SYSML2-SYSTEM-SPEC
+timestamp_utc: '2026-10-13T04:00:55Z'
+actor:
+  type: ChatGPT
+  name: GPT-6
+  agent_contract_ref: null
+mandate_ref: 'User instruction 2026-10-13: adopt SysML v2 as Systems Specifications Standard and create enforcement'
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Align proposed SysML architecture control and OSCAL candidate with primary systems specification standard and tested GitHub baseline gate.
+reason: Translate the adoption directive into requirements, machine-readable control, source provenance and fail-closed release handling without asserting Group CEO attestation.
+affected_paths:
+  - governance/controls/EA-CTL-SYSML-001.yaml
+  - governance/controls/oscal/EA-CTL-SYSML-001.catalog.json
+environment: repository
+authority:
+  status: PENDING
+  reference: 'User design directive recorded 2026-10-13; CTL-GOV-CEO-APPROVAL-001 independent evidence not verified'
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: 'Engineering baseline PR #42 run 38344315428 PASS; production release controls remain HOLD'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'https://github.com/DondaMngomezulu/bug-free-octo-journey/pull/42'
+  - 'https://github.com/DondaMngomezulu/bug-free-octo-journey/actions/runs/38344315428'
+  - 'https://docs.google.com/spreadsheets/d/1tA7rKtgwkw57uROBC1Cht4rlOEjuQ60bLnhA-Daen6M/edit'
+commit_sha: null
+pull_request: 64
+notes: 'Design control only; no authorised transition to production or CEO-approved status. Canonical SysML enterprise standard ID remains unallocated.'

@@ -1,0 +1,32 @@
+change_id: CHG-20261011-EA-CTL-SYSML-001
+timestamp_utc: '2026-10-11T09:31:07Z'
+actor:
+  type: ChatGPT
+  name: Enterprise architecture control implementation
+  agent_contract_ref: null
+mandate_ref: User instruction on 2026-10-11 to adopt and apply EA-CTL-SYSML-001
+accountability_task_ref: null
+task_class: T2
+change_type: governance
+summary: Stage SysML v2 projection control and OSCAL catalogue candidate for review
+reason: Govern versioned system projections without falsely claiming SysML conformance
+affected_paths:
+  - governance/controls/EA-CTL-SYSML-001.yaml
+  - governance/controls/oscal/EA-CTL-SYSML-001.catalog.json
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: User instruction 2026-10-11 authorises drafting and repository review, not Group CEO approval
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: null
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'REG-STD-001 OMG SysML v2 row: standard ID and formal CEO evidence HOLD'
+  - REG-ICT-APP-001 canonical ICT inventory
+  - CTL-GOV-CEO-APPROVAL-001 existing approval gate
+commit_sha: null
+pull_request: null
+notes: Candidate publication and review only; deployment and approval holds unchanged.
