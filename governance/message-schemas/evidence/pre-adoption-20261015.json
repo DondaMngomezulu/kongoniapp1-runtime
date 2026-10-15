@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-15T18:20:20.645827+00:00",
+  "reviewedBaseCommit": "1468a7dc9701053734517ab0af9986050898e3fc",
+  "status": "TECHNICAL_REVIEW_TESTS_PASS_PRODUCTION_ADOPTION_HELD",
+  "cleanVirtualEnvironment": true,
+  "pythonVersion": "Python 3.12.14",
+  "unitTestMethods": 45,
+  "unitTests": "PASS",
+  "existingEnvelopeChecks": 13,
+  "existingEnvelopeChecksStatus": "PASS",
+  "privateApplicationProjection": "PASS_LOCAL_ONLY_NO_PAYLOAD_PUBLISHED",
+  "networkUseDuringPreview": "BLOCKED_BY_TEST_AND_NOT_USED",
+  "dispatchEnabled": false,
+  "beforeRemediation": {
+    "newTestMethods": 20,
+    "failedSubcases": 46,
+    "uncontrolledErrors": 7,
+    "note": "Counts are test outcomes, not distinct defect counts."
+  },
+  "benchmark": {
+    "serialPreviews": 25,
+    "serialMedianMs": 71.63,
+    "serialMaxMs": 98.57,
+    "parallelWorkers": 4,
+    "parallelPreviews": 12,
+    "parallelDeterminism": "PASS",
+    "largeSyntheticItems": 100,
+    "largeRenderedBytes": 106677,
+    "largeInputValidation": "PASS",
+    "scope": "Local reference baseline, not a production load test or SLA."
+  },
+  "testedCodeSha256": "37b9136330b404c603b6ef2ef0615dd311d123e37aabde5bb0b73dfea456a578",
+  "openGates": [
+    "Canonical profile/schema reference allocation and enterprise semantic approval",
+    "Live CRM channel adapter, authority and consent review",
+    "Durable duplicate-send prevention, response matching and delivery evidence",
+    "Applicable licensed ACORD native source and insurance profile",
+    "Production capacity limits, operational integration and deployment approval"
+  ],
+  "githubCI": "PENDING_UPDATED_COMMIT"
+}

@@ -1,0 +1,58 @@
+change_id: CHG-20261015-REUSABLE-MESSAGE-PROFILES
+timestamp_utc: '2026-10-15T18:00:50Z'
+actor:
+  type: Codex
+  name: Codex
+  agent_contract_ref: null
+mandate_ref: 'User instruction 2026-10-15: implement the proposed reusable BIAN/TM
+  Forum/ACORD message approach, beginning with the existing envelope and an information-request
+  profile.'
+accountability_task_ref: https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/53
+task_class: T2
+change_type: schema
+summary: Prepare reusable version-selected information-request profile, native schema
+  projections and validation.
+reason: Reuse one candidate contract and deterministic renderer across channels while
+  keeping source adoption, mapping approval and runtime authority distinct.
+affected_paths:
+- .github/workflows/message-profile-validation.yml
+- agent-workspace/change-log/2026/10/CHG-20261015-REUSABLE-MESSAGE-PROFILES.yaml
+- governance/message-schemas/REUSABLE-PROFILES.md
+- governance/message-schemas/fixtures/information-request.synthetic.json
+- governance/message-schemas/profiles/registry.candidate.json
+- governance/message-schemas/requirements.txt
+- governance/message-schemas/schemas/information-request-email.candidate.schema.json
+- governance/message-schemas/schemas/reusable-message-envelope.candidate.schema.json
+- governance/message-schemas/scripts/message_profiles.py
+- governance/message-schemas/sources/bian/14.0.0/Correspondence.yaml
+- governance/message-schemas/sources/bian/LICENSE
+- governance/message-schemas/sources/manifest.json
+- governance/message-schemas/sources/tmforum/4.0.0/TMF681.swagger.json
+- governance/message-schemas/sources/tmforum/LICENSE
+- governance/message-schemas/tests/test_message_profiles.py
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'User explicitly instructed Please publish on 2026-10-15 after reviewing
+    the tested package and the request for a one-time repository-only exception. Scope:
+    isolated branch and draft pull request only; no merge, deployment, profile adoption,
+    register mutation or customer dispatch authority.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: Local 23 profile tests and 13 existing envelope checks passed;
+    native source blob hashes and package digests verified; patch applies to main
+    a95898935cf51615893e3c4e798871857f529d39. Repository controls rerun before publication;
+    GitHub CI pending publication.
+  act_decision: null
+  task_complete: false
+evidence:
+- governance/message-schemas/tests/test_canonical_event_envelope.py
+- governance/message-schemas/tests/test_message_profiles.py
+- governance/message-schemas/sources/manifest.json
+commit_sha: null
+pull_request: null
+notes: User-authorised repository-only exception resolves draft publication prerequisites
+  for this specific change set. Formal mapping/profile approvals and target runtime
+  authorisation remain pending. Actual business records remain excluded from GitHub.
+  No merge, deployment or message resend is authorised by this record.
