@@ -1,0 +1,24 @@
+name: Candidate message profile validation
+on:
+  pull_request:
+    paths:
+      - 'governance/message-schemas/**'
+      - '.github/workflows/message-profile-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/message-schemas/**'
+      - '.github/workflows/message-profile-validation.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r governance/message-schemas/requirements.txt
+      - run: python governance/message-schemas/tests/test_canonical_event_envelope.py
+      - run: python -m unittest discover -s governance/message-schemas/tests -p 'test_message_profiles.py' -v

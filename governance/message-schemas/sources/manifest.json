@@ -1,0 +1,39 @@
+{
+  "status": "PINNED_REVIEW_SNAPSHOT",
+  "checkedOn": "2026-10-15",
+  "files": [
+    {
+      "path": "sources/bian/14.0.0/Correspondence.yaml",
+      "version": "14.0.0",
+      "variant": "BOM extended OpenAPI 3.0.1",
+      "blobSha": "65c15ba330772a3b88af538d7bb5efb300b92bd7",
+      "sourceUri": "https://github.com/bian-official/public/blob/main/release14.0.0/semantic-apis/oas3%20/yamls/Correspondence.yaml",
+      "sha256": "955b0505dceed7a527c7ebbb1e956e447cbb133aee20c9c92ab6effed369c4f8"
+    },
+    {
+      "path": "sources/tmforum/4.0.0/TMF681.swagger.json",
+      "version": "4.0.0",
+      "variant": "Swagger 2.0",
+      "blobSha": "16f56e0ce2476cc5e3f756d5b9b98d11bb26a0af",
+      "sourceUri": "https://github.com/tmforum-apis/TMF681_Communication/blob/main/TMF681-Communication-v4.0.0.swagger.json",
+      "sha256": "6c97c723110b6cc167d34de16936775619c920e07ad4012969fb95dd5b5dec8c"
+    },
+    {
+      "path": "sources/bian/LICENSE",
+      "sha256": "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
+    },
+    {
+      "path": "sources/tmforum/LICENSE",
+      "sha256": "6ba290f21ca82faae3127cc7de54fcb07a442c37bd00b7815bb29e518dc73f47"
+    }
+  ],
+  "acord": {
+    "standardId": "STD-INS-ARCH-001",
+    "enterpriseAdoption": "REFERENCE_ARCHITECTURE_ADOPTED",
+    "nativeSourceInstalled": false,
+    "release": null,
+    "licenceEntitlementVerified": false,
+    "implementationApproval": "PENDING",
+    "publicationRule": "Do not redistribute restricted native artifacts without the applicable entitlement."
+  }
+}

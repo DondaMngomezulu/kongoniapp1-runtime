@@ -1,0 +1,173 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile",
+    "reference",
+    "subject",
+    "sender",
+    "to",
+    "cc",
+    "introduction",
+    "requestedItems",
+    "confidentiality",
+    "qualificationQuestions",
+    "responseDueDate",
+    "financingMethod",
+    "financePreApproval",
+    "purchasingEntity"
+  ],
+  "properties": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "version"
+      ],
+      "properties": {
+        "key": {
+          "const": "information-request-email"
+        },
+        "version": {
+          "const": "0.1.0"
+        }
+      }
+    },
+    "reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sender": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "email"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "to": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "email"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    },
+    "cc": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "email"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    },
+    "introduction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requestedItems": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "description",
+          "disclosure"
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disclosure": {
+            "enum": [
+              "ANONYMISED",
+              "SUMMARY",
+              "BASIC_RECORD"
+            ]
+          }
+        }
+      }
+    },
+    "confidentiality": {
+      "enum": [
+        "PROPOSE_NDA_REVIEW",
+        "NOT_REQUESTED"
+      ]
+    },
+    "qualificationQuestions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "responseDueDate": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "financingMethod": {
+      "const": null
+    },
+    "financePreApproval": {
+      "const": null
+    },
+    "purchasingEntity": {
+      "const": null
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Information-request email \u2014 local candidate profile 0.1.0",
+  "description": "Enterprise draft implementation, not a publisher schema. This initial-discovery profile cannot assert a purchaser or financing arrangement."
+}

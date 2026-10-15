@@ -1,0 +1,42 @@
+{
+  "status": "CANDIDATE_REVIEW",
+  "canonicalId": null,
+  "schemaVersion": "0.1.0",
+  "profiles": [
+    {
+      "key": "information-request-email",
+      "version": "0.1.0",
+      "canonicalId": null,
+      "approvalStatus": "PENDING",
+      "runtimeEnabled": false,
+      "renderingVersion": "0.1.0",
+      "envelopeSchema": "schemas/reusable-message-envelope.candidate.schema.json",
+      "businessSchema": "schemas/information-request-email.candidate.schema.json",
+      "mappingStatus": "REVIEW",
+      "standards": [
+        {
+          "family": "BIAN",
+          "version": "14.0.0",
+          "component": "Outbound",
+          "responseComponent": "OutboundWithResponse",
+          "source": "sources/bian/14.0.0/Correspondence.yaml",
+          "implementationApproval": "HOLD"
+        },
+        {
+          "family": "TMF681",
+          "version": "4.0.0",
+          "component": "CommunicationMessage_Create",
+          "source": "sources/tmforum/4.0.0/TMF681.swagger.json",
+          "implementationApproval": "PENDING"
+        },
+        {
+          "family": "ACORD",
+          "applicability": "NOT_APPLICABLE_TO_GENERAL_INFORMATION_REQUEST",
+          "implementationApproval": "NOT_IMPLEMENTED",
+          "source": null,
+          "reason": "Insurance transactions require a separate profile and licensed, version-pinned native source."
+        }
+      ]
+    }
+  ]
+}
