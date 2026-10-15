@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enterprise outbound message release evidence — candidate v0.1",
+  "description": "Engineering candidate only. Evidence declaration is not source authentication, actual normative payload validation, send authorisation or production enablement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "messageId",
+    "messageType",
+    "direction",
+    "standard",
+    "profile",
+    "payload",
+    "template",
+    "parties",
+    "channel",
+    "authority",
+    "validation",
+    "delivery"
+  ],
+  "properties": {
+    "messageId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "messageType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "direction": {
+      "const": "OUTBOUND"
+    },
+    "standard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "family",
+        "registerId",
+        "edition",
+        "artifactUri",
+        "artifactKind",
+        "status"
+      ],
+      "properties": {
+        "family": {
+          "enum": [
+            "OASIS",
+            "ACORD",
+            "BIAN",
+            "TM_FORUM"
+          ]
+        },
+        "registerId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifactUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "artifactKind": {
+          "enum": [
+            "XSD",
+            "JSON_SCHEMA",
+            "OPENAPI",
+            "OTHER_FORMAL_CONTRACT"
+          ]
+        },
+        "status": {
+          "enum": [
+            "APPROVED",
+            "DRAFT",
+            "HOLD",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "registryEntry",
+        "approval",
+        "semanticMappingVerified"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registryEntry": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approval": {
+          "enum": [
+            "APPROVED",
+            "DRAFT",
+            "HOLD",
+            "UNKNOWN"
+          ]
+        },
+        "semanticMappingVerified": {
+          "type": "boolean"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaUri",
+        "sourceRecordRef",
+        "payloadDigest",
+        "normativeConformance"
+      ],
+      "properties": {
+        "schemaUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sourceRecordRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payloadDigest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "normativeConformance": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_TESTED"
+          ]
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "approval",
+        "renderingVerified",
+        "mergeFieldsResolved"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approval": {
+          "enum": [
+            "APPROVED",
+            "DRAFT",
+            "HOLD",
+            "UNKNOWN"
+          ]
+        },
+        "renderingVerified": {
+          "type": "boolean"
+        },
+        "mergeFieldsResolved": {
+          "type": "boolean"
+        },
+        "parentDocumentValid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "parties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issuerId",
+        "issuerVerified",
+        "recipientId",
+        "recipientVerified"
+      ],
+      "properties": {
+        "issuerId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issuerVerified": {
+          "type": "boolean"
+        },
+        "recipientId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recipientVerified": {
+          "type": "boolean"
+        }
+      }
+    },
+    "channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "renderingId",
+        "adapterId",
+        "channelVerified",
+        "consentVerified"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "renderingId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapterId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "channelVerified": {
+          "type": "boolean"
+        },
+        "consentVerified": {
+          "type": "boolean"
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actorId",
+        "approved",
+        "approvalEvidenceRef"
+      ],
+      "properties": {
+        "actorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "approvalEvidenceRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaPassed",
+        "businessRulesPassed",
+        "evidenceRef",
+        "engineVersion",
+        "runtimeReceiptVerified"
+      ],
+      "properties": {
+        "schemaPassed": {
+          "type": "boolean"
+        },
+        "businessRulesPassed": {
+          "type": "boolean"
+        },
+        "evidenceRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "engineVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtimeReceiptVerified": {
+          "type": "boolean"
+        }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "correlationId",
+        "idempotencyKey",
+        "auditRef",
+        "adapterGateVerified",
+        "channelIdMatches"
+      ],
+      "properties": {
+        "correlationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "idempotencyKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "auditRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapterGateVerified": {
+          "type": "boolean"
+        },
+        "channelIdMatches": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
