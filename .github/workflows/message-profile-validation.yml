@@ -20,5 +20,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r governance/message-schemas/requirements.txt
-      - run: python governance/message-schemas/tests/test_canonical_event_envelope.py
-      - run: python -m unittest discover -s governance/message-schemas/tests -p 'test_message_profiles.py' -v
+      - run: python -m unittest discover -s governance/message-schemas/tests -p 'test_*.py' -v

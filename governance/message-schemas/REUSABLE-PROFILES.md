@@ -26,8 +26,7 @@ The same preview function can be invoked from an approved service or pipeline af
 ## Validation
 Run the existing envelope checks and the new profile tests:
 ```bash
-python governance/message-schemas/tests/test_canonical_event_envelope.py
-python -m unittest discover -s governance/message-schemas/tests -p test_message_profiles.py -v
+python -m unittest discover -s governance/message-schemas/tests -p 'test_*.py' -v
 ```
 Tests cover source corruption, required fields, timestamp/email formats, unknown versions, unsupported ACORD projection, BIAN enums, TMF mandatory fields, reference mismatches, HTML escaping, To/Cc retention, unknown financial facts and unverified authority assertions.
 
@@ -48,3 +47,10 @@ Sources and status authority:
 - Existing envelope task: https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/53
 
 The repository overlay contains synthetic fixtures only. Actual correspondence and deal examples belong in the separate private application folder of the review bundle, never in the GitHub overlay.
+
+## Pre-adoption hardening — 15 October 2026
+Adversarial testing found gaps in malformed-input handling, source-manifest coverage, metadata/source binding and message hygiene. The candidate now checks complete manifest coverage and publisher blob identity, rejects duplicate JSON members and unsupported native bindings, requires format-checker availability, validates bare mailbox syntax, preserves local-part case while comparing domains without case, rejects duplicate To/Cc recipients, header control characters, blank material text and unresolved template tokens.
+
+The schema URI is bound to the selected profile. Its current urn:example reference is explicitly synthetic and remains a registration gate before production adoption. Registry metadata cannot enable dispatch in this preview implementation. Publisher signatures or trust in a package distribution are not established by hashes alone: the verifier and its source pins must be delivered through the reviewed repository/release.
+
+These corrections tighten previously accepted candidate inputs without changing the pinned source standards or the 0.1.0 candidate key. No approved or production contract is migrated. Free-text factual accuracy, confidentiality and real-party authority still need review; this validator does not infer them.

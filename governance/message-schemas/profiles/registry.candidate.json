@@ -36,7 +36,9 @@
           "source": null,
           "reason": "Insurance transactions require a separate profile and licensed, version-pinned native source."
         }
-      ]
+      ],
+      "schemaUri": "urn:example:information-request-email:0.1.0",
+      "schemaUriStatus": "SYNTHETIC_REVIEW_REFERENCE_NOT_CANONICAL"
     }
   ]
 }

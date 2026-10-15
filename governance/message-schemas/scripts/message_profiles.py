@@ -3,6 +3,9 @@ import copy
 import hashlib
 import html
 import json
+import re
+from email.errors import HeaderParseError
+from email.headerregistry import Address
 from pathlib import Path
 
 import yaml
@@ -11,30 +14,83 @@ from referencing import Registry, Resource
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# Publisher Git blob identities form part of the reviewed verifier, separately
+# from the editable manifest. They are not enterprise approval assertions.
+NATIVE_RELEASES = {
+    "BIAN": {"path": "sources/bian/14.0.0/Correspondence.yaml", "version": "14.0.0",
+             "blobSha": "65c15ba330772a3b88af538d7bb5efb300b92bd7",
+             "component": "Outbound"},
+    "TMF681": {"path": "sources/tmforum/4.0.0/TMF681.swagger.json", "version": "4.0.0",
+               "blobSha": "16f56e0ce2476cc5e3f756d5b9b98d11bb26a0af",
+               "component": "CommunicationMessage_Create"}}
+EXPECTED_SOURCE_PATHS = {release["path"] for release in NATIVE_RELEASES.values()} | {
+    "sources/bian/LICENSE", "sources/tmforum/LICENSE"}
+
+
+def _unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("Duplicate JSON member: " + key)
+        result[key] = value
+    return result
+
 
 def _json(path):
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(), object_pairs_hook=_unique_object)
 
 
 def _profile(key, version):
     registry = _json(ROOT / "profiles/registry.candidate.json")
+    if not isinstance(registry, dict) or not isinstance(registry.get("profiles"), list):
+        raise ValueError("Malformed profile registry")
+    if not all(isinstance(p, dict) and "key" in p and "version" in p for p in registry["profiles"]):
+        raise ValueError("Malformed profile entry")
     matches = [p for p in registry["profiles"] if p["key"] == key and p["version"] == version]
     if len(matches) != 1:
         raise ValueError("Unknown or ambiguous profile/version")
-    return matches[0]
+    profile = matches[0]
+    standards = profile.get("standards")
+    if not isinstance(standards, list) or not all(isinstance(s, dict) for s in standards):
+        raise ValueError("Malformed standard bindings")
+    for family, release in NATIVE_RELEASES.items():
+        bindings = [s for s in standards if s.get("family") == family]
+        if len(bindings) != 1 or any(bindings[0].get(k) != release[k] for k in ("version", "component")):
+            raise ValueError("Unsupported native binding: " + family)
+        if bindings[0].get("source") != release["path"]:
+            raise ValueError("Native source binding mismatch: " + family)
+    return profile
 
 
 def verify_sources():
     manifest = _json(ROOT / "sources/manifest.json")
-    for item in manifest["files"]:
+    if not isinstance(manifest, dict) or not isinstance(manifest.get("files"), list):
+        raise ValueError("Malformed source manifest")
+    entries = manifest["files"]
+    if not all(isinstance(item, dict) and isinstance(item.get("path"), str) for item in entries):
+        raise ValueError("Malformed source manifest entry")
+    paths = [item["path"] for item in entries]
+    if len(paths) != len(set(paths)) or set(paths) != EXPECTED_SOURCE_PATHS:
+        raise ValueError("Source manifest must cover each pinned source and licence exactly once")
+    for item in entries:
         path = (ROOT / item["path"]).resolve()
         if not path.is_relative_to(ROOT.resolve()):
             raise ValueError("Source path escapes package")
-        if hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
+        if not path.is_file():
+            raise ValueError("Pinned source missing: " + item["path"])
+        contents = path.read_bytes()
+        if hashlib.sha256(contents).hexdigest() != item.get("sha256"):
             raise ValueError("Pinned source digest mismatch: " + item["path"])
+        for release in NATIVE_RELEASES.values():
+            if item["path"] == release["path"]:
+                blob = hashlib.sha1(b"blob " + str(len(contents)).encode() + b"\0" + contents).hexdigest()
+                if item.get("version") != release["version"] or item.get("blobSha") != release["blobSha"] or blob != release["blobSha"]:
+                    raise ValueError("Source differs from pinned publisher release: " + item["path"])
 
 
 def _validate_local(envelope):
+    if not {"date-time", "uuid", "uri", "email"}.issubset(FormatChecker.checkers):
+        raise ValueError("Required format validators unavailable; install jsonschema[format]")
     schemas = {}
     registry = Registry()
     for path in (ROOT / "schemas").glob("*.json"):
@@ -48,6 +104,45 @@ def _validate_local(envelope):
         schemas["reusable-message-envelope.candidate.schema.json"],
         registry=registry, format_checker=FormatChecker())
     validator.validate(envelope)
+
+
+def _validate_message_text(data):
+    def visit(value):
+        if isinstance(value, dict):
+            for child in value.values():
+                visit(child)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child)
+        elif isinstance(value, str):
+            if not value.strip():
+                raise ValueError("Blank material message value")
+            if "{{" in value or "}}" in value or "${" in value:
+                raise ValueError("Unresolved template token")
+            if re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", value):
+                raise ValueError("Control character in message text")
+    visit(data)
+
+    def header(value):
+        if any(ord(char) < 32 or ord(char) == 127 for char in value):
+            raise ValueError("Control character in header value")
+    header(data["subject"])
+    identities = set()
+    for index, party in enumerate([data["sender"], *data["to"], *data["cc"]]):
+        header(party["name"])
+        header(party["email"])
+        try:
+            mailbox = Address(addr_spec=party["email"])
+            if not mailbox.username or not mailbox.domain or mailbox.addr_spec != party["email"]:
+                raise ValueError("Bare mailbox address required")
+        except (ValueError, HeaderParseError, IndexError) as error:
+            raise ValueError("Invalid bare mailbox address") from error
+        # Preserve local-part case; DNS domain names are case-insensitive.
+        identity = (mailbox.username, mailbox.domain.casefold())
+        if index > 0:
+            if identity in identities:
+                raise ValueError("Duplicate recipient across To/Cc")
+            identities.add(identity)
 
 
 def render_message(data):
@@ -86,12 +181,15 @@ def _native_validate(payload, family, component):
 
 
 def prepare_preview(envelope):
-    profile = _profile(envelope.get("schema", {}).get("id"), envelope.get("schema", {}).get("version"))
-    verify_sources()
     _validate_local(envelope)
+    profile = _profile(envelope["schema"]["id"], envelope["schema"]["version"])
+    if envelope["schema"]["uri"] != profile.get("schemaUri"):
+        raise ValueError("Schema reference and selected profile disagree")
+    verify_sources()
     if envelope["subject"]["objectId"] != envelope["data"]["reference"]:
         raise ValueError("Envelope subject and business reference disagree")
     data = envelope["data"]
+    _validate_message_text(data)
     if data["profile"]["key"] != profile["key"] or data["profile"]["version"] != profile["version"]:
         raise ValueError("Business payload and selected profile disagree")
     content = render_message(data)
