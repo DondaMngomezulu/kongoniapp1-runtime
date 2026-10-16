@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Enterprise outbound message release evidence — candidate v0.1",
-  "description": "Engineering candidate only. Evidence declaration is not source authentication, actual normative payload validation, send authorisation or production enablement.",
+  "description": "Engineering-only release evidence. Actual approval and payload verification require a trusted server-side resolver; fields are never send permissions.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -155,7 +155,8 @@
         "version",
         "approval",
         "renderingVerified",
-        "mergeFieldsResolved"
+        "mergeFieldsResolved",
+        "parentDocumentValid"
       ],
       "properties": {
         "id": {
