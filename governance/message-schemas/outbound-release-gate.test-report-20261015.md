@@ -46,3 +46,20 @@ These results demonstrate **missing checks in this candidate function**, not tha
 6. Retest the change-log governance workflow after adding a same-change-set entry; do not treat one green test as production readiness.
 
 **CHECK/STUDY result:** candidate schema/negative-fixture tests PASS; end-to-end runtime and authority tests NOT VERIFIED; secure release acceptance **FAIL / HOLD**.
+
+
+## 2026-10-16 remediation addendum — controlled candidate CHECK/STUDY
+
+PR #68 hardening changes remove the nine *identified self-attestation acceptance paths* from the candidate policy by introducing an authenticated-authority abstraction, exact message-type/profile/template/channel joint bindings, authoritative issuer/recipient/source record lookups, real-payload SHA-256 comparison, a normative validator interface, independently resolved scoped approval and validation receipts, audit lookup, adapter binding, and dispatch reservation/replay-status checks. Missing, held, expired, revoked, unknown or inconsistent evidence is denied. This API is deliberately REVIEW-ONLY: success is `ALLOW_CANDIDATE_ONLY`, not a sending token.
+
+A synthetic in-memory EvidenceResolver test double demonstrates the intended integration port; **its outputs are not signatures, real registry certifications or evidence of production readiness**. The supplied fixture artifact is JSON Schema and is not a claim of validation against an official OASIS/ACORD/BIAN/TM Forum message version.
+
+### New independently recorded CI evidence
+
+- [Outbound Gate workflow run 38844769523](https://github.com/DondaMngomezulu/kongoniapp1-runtime/actions/runs/38844769523) — SUCCESS, includes all nine formerly accepted adversarial examples and trusted-reference/expiry/replay negative checks.
+- [Change Log Control run 38844769576](https://github.com/DondaMngomezulu/kongoniapp1-runtime/actions/runs/38844769576) — SUCCESS.
+- [Agent Workspace Validation run 38844769548](https://github.com/DondaMngomezulu/kongoniapp1-runtime/actions/runs/38844769548) — SUCCESS.
+
+### Revised outcome
+
+**Nine candidate-policy flaws: remediated and regression-tested (synthetic).** **Enterprise deployment / actual sender bypasses: still on HOLD.** A genuine trusted adapter must authenticate register revisions, owner approvals, revocations, validation attestations and immutable write-once audit records. The actual normative artifact must be obtained/licensed and pinned securely. A production dispatcher must enforce atomic reservation-to-delivery state transitions to prevent two parallel sends; a mere read-only RESERVED flag is not an atomic send guarantee. CRM/Catalyst Development end-to-end tests for direct sendMail, UI, agent, bulk email and provider API paths are still required before production acceptance.
