@@ -27,7 +27,7 @@ GOOD={
 "validation":{"schemaPassed":True,"businessRulesPassed":True,"evidenceRef":"validation-1","engineVersion":"fixture","runtimeReceiptVerified":True},
 "delivery":{"correlationId":"corr-1","idempotencyKey":"reservation-1","auditRef":"audit-1","adapterGateVerified":True,"channelIdMatches":True}}
 def row(**kwargs):
- return dict(status="APPROVED",revoked=False,validUntil="2027-01-01T00:00:00Z",**kwargs)
+ return {**dict(status="APPROVED",revoked=False,validUntil="2027-01-01T00:00:00Z"),**kwargs}
 class Resolver(p.EvidenceResolver):
  def __init__(self):
   self.artifact_ok=True
