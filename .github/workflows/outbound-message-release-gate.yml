@@ -1,0 +1,23 @@
+name: Candidate Outbound Message Release Gate
+on:
+  pull_request:
+    paths:
+      - 'governance/message-schemas/**'
+      - '.github/workflows/outbound-message-release-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/message-schemas/**'
+      - '.github/workflows/outbound-message-release-gate.yml'
+jobs:
+  release-gate-synthetic:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'jsonschema[format]>=4,<5'
+      - run: python governance/message-schemas/tests/test_outbound_release_gate.py
