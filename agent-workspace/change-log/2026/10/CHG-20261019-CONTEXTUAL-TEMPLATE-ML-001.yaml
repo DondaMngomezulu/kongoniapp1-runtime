@@ -11,6 +11,7 @@ change_type: source_code
 summary: 'Review-only supervised contextual template ranker, feedback and gap proposals, schema contracts, evaluator and 23 synthetic tests'
 reason: 'Select existing approved templates more accurately and propose governed improvements without autonomous publication or sending'
 affected_paths:
+  - .github/workflows/contextual-template-learning-candidate.yml
   - governance/message-schemas/ml/ADR-CONTEXTUAL-TEMPLATE-LEARNING-001.md
   - governance/message-schemas/ml/contextual_template_learning.py
   - governance/message-schemas/ml/evaluate_candidate.py
@@ -30,7 +31,8 @@ pdca:
   act_decision: null
   task_complete: false
 evidence:
-  - 'Local test: python3 -m unittest discover -s contextual_template_learning/tests -v (23 passed)'
+  - 'Local test: python3 -m unittest discover -s /mnt/data/contextual_template_learning/tests -v (23 passed)'
+  - 'Dedicated PR CI: .github/workflows/contextual-template-learning-candidate.yml (validation pending)'
   - 'Pull request: https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/71'
   - 'Parent release-control PR: https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/70'
   - 'Source message register: https://docs.google.com/spreadsheets/d/1TlHa9Q43Y-xJr-QJN4QveO0TKhT9hwm13K0wpX6BGVI/edit'
