@@ -39,3 +39,6 @@ Material operations require a valid preflight evidence record in `MCP_Governance
 ## Deployment handoff
 
 The current Zoho Catalyst MCP management surface can list AppSail services but does not expose first-time AppSail creation/deployment. The remaining bootstrap is therefore: deploy this folder to AppSail in Kongoniapp1 Development, set `CRM_CONNECTION_LINK_NAME`, then run health, negative preflight and CRM connection tests.
+
+## Enterprise production execution precedence — CEO directive 2026-10-20
+This gateway is not an autonomous production business runtime. Any future production use must be invoked through approved Zoho CRM Functions/Blueprints/approvals with CRM authoritative workflow state. Keep this AppSail service development-only unless an exact-version CRM-mediated integration contract and separate release controls pass. A GitHub merge is not deployment.
