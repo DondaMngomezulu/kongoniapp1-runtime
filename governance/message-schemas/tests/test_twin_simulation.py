@@ -36,6 +36,19 @@ class TwinSimulationTests(unittest.TestCase):
         self.assertGreaterEqual(BASE["source"]["email_templates_observed"], 1)
         self.assertIs(BASE["deployment"]["production_authorised"], False)
         self.assertIs(BASE["configuration"]["synchronous_send_interceptor"]["verified"], False)
+    def test_target_delta_is_review_only(self):
+        delta = json.loads((base / "crm-release-target-delta.review.json").read_text())
+        self.assertIs(delta["release"]["production_authorised"], False)
+        self.assertIs(delta["release"]["sandbox_write_authorised"], False)
+        self.assertIs(delta["source_status"]["sandbox_fresh_for_target"], False)
+        self.assertIs(delta["source_status"]["sandbox_actual_implementation_tested"], False)
+        self.assertIs(delta["source_status"]["business_record_data_stored_in_github"], False)
+        self.assertEqual(delta["status"], "SANDBOX_DESIGN_ONLY")
+        self.assertGreaterEqual(len(delta["target_delta"]), 6)
+        self.assertGreaterEqual(len(delta["egress_routes"]), 8)
+        for route in delta["egress_routes"]:
+            self.assertEqual(route["state"], "NOT_VERIFIED")
+            self.assertNotEqual(route["required_control"], "")
     def test_baseline_partial(self):
         self.assertDenied(BASE, candidate(), "BASELINE_PARTIAL")
     def test_current_direct_send_unverified(self):
