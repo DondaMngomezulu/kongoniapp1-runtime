@@ -12,7 +12,23 @@
     ],
     "completeness": "partial",
     "authoritative_runtime": "Zoho CRM",
-    "contains_business_records": false
+    "contains_business_records": false,
+    "last_review": "2026-10-20",
+    "metadata_scope": [
+      "CustomerCommunications",
+      "Agreement_Templates",
+      "BusinessDocumentTypes",
+      "CustomerDocuments",
+      "GovernedApprovals",
+      "Quotes",
+      "Deals"
+    ],
+    "email_templates_observed": 64,
+    "named_template_example": {
+      "id": "5643538000009735014",
+      "name": "VS02-05 KYC and Credit Documents Request",
+      "approval_not_inferred": true
+    }
   },
   "configuration": {
     "module": "CustomerCommunications",
@@ -45,6 +61,25 @@
     },
     "unrestricted_agent_transport_closed": {
       "verified": false
+    },
+    "related_module_field_counts": {
+      "CustomerCommunications": 74,
+      "Agreement_Templates": 114,
+      "BusinessDocumentTypes": 44,
+      "CustomerDocuments": 55,
+      "GovernedApprovals": 53,
+      "Quotes": 154,
+      "Deals": 157
+    },
+    "active_quote_email_functions_present": true,
+    "active_quote_email_functions_do_not_prove_universal_send_guard": true,
+    "bypass_inventory": {
+      "direct_CRM_sendMail": "UNVERIFIED",
+      "Gmail_send": "UNVERIFIED",
+      "bulk_email": "UNVERIFIED",
+      "WhatsApp": "UNVERIFIED",
+      "WeChat": "UNVERIFIED",
+      "document_external_share": "UNVERIFIED"
     }
   },
   "target": {
