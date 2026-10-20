@@ -15,6 +15,8 @@ affected_paths:
   - governance/message-schemas/controls/release_gate_preflight.py
   - governance/message-schemas/schemas/ai-native-issue-send-gate.review.schema.json
   - governance/message-schemas/tests/test_release_gate_preflight.py
+  - governance/message-schemas/controls/customer-communications-twin.review.json
+  - governance/message-schemas/controls/simulate_twin.py
   - agent-workspace/change-log/2026/10/CHG-20261020-AI-TEMPLATE-RELEASE-P0.yaml
 environment: repository
 authority:
@@ -23,7 +25,7 @@ authority:
 pdca:
   phase: CHECK_STUDY
   do_complete: false
-  check_study_result: 'Changed candidate JSON contract and preflight regression tests; GitHub CI check was failing because same-change-set log missing. Further CI, Development runtime and bypass testing outstanding.'
+  check_study_result: 'Changed candidate JSON contract and preflight regression tests; GitHub CI check was failing because same-change-set log missing. Added metadata-only CRM digital twin and deterministic hold simulation. Further CI, Development runtime and bypass testing outstanding.'
   act_decision: null
   task_complete: false
 evidence:
