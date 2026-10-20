@@ -11,6 +11,7 @@ change_type: schema
 summary: Strengthen AI-native governed document and correspondence preflight to bind exact content, template, recipient and separately approved specific-template instances.
 reason: Existing CRM Send Mail path allowed custom customer correspondence without synchronous authorised template resolution; close review-contract ambiguity and prepare enforcement without asserting deployment.
 affected_paths:
+  - agent-workspace/AGENTS.md
   - governance/message-schemas/controls/AI-NATIVE-ISSUE-SEND-001.md
   - governance/message-schemas/controls/release_gate_preflight.py
   - governance/message-schemas/schemas/ai-native-issue-send-gate.review.schema.json
