@@ -9,16 +9,16 @@ spec.loader.exec_module(m)
 H = "a" * 64
 T = "b" * 64
 good = {
-    "intent": "FINANCE_LEASE", "channel": "CH-EMAIL",
+    "intent": "FINANCE_LEASE", "issuance_basis":"GOVERNED_TEMPLATE", "specific_approval":None, "action":"SEND", "channel": "CH-EMAIL",
     "crm": {"module": "Quotes", "record_id": "q1", "account_id": "a1"},
     "issuer": {"entity_id": "entity-a", "sender_id": "u1"},
     "template": {"id": "msg1", "version": "1", "hash": T, "class": "QUOTE_EMAIL",
-                 "status": "CONTROLLED", "approval_receipt": "apr1",
+                 "status": "CONTROLLED", "allowed_intents": ["FINANCE_LEASE"], "approval_receipt": "apr1",
                  "issuer_id": "entity-a", "channels": ["CH-EMAIL"]},
     "parent": {"id": "doc1", "version": "1", "hash": T, "class": "FINANCE_LEASE",
                "status": "CONTROLLED", "approval_receipt": "apr2",
                "issuer_id": "entity-a", "channels": ["CH-EMAIL"]},
-    "snapshot": {"source_hash": H, "artifact_hash": T, "merge_status": "PASS"},
+    "snapshot": {"source_hash": H, "artifact_hash": T, "message_hash": H, "parent_instance_hash": T, "intent":"FINANCE_LEASE", "action":"SEND", "channel":"CH-EMAIL", "issuer_id":"entity-a", "crm_record_id":"q1", "template_id":"msg1", "template_hash":T, "recipients":["customer@example.test"], "message_hash": H, "parent_instance_hash": T, "merge_status": "PASS"},
     "approval": {"receipt": "receipt1", "approver": "officer1", "status": "APPROVED",
                  "source_hash": H, "artifact_hash": T,
                  "expires_at": "2027-12-31T00:00:00+00:00"},
@@ -30,7 +30,7 @@ proof = dict.fromkeys([
     "source_hash_verified", "template_hash_verified", "parent_hash_verified",
     "availability_verified", "credit_approval_verified", "pricing_verified",
     "crm_record_current", "channel_access_control_verified",
-    "idempotency_key_available", "current_exact_approval_verified"
+    "idempotency_key_available", "current_exact_approval_verified", "message_hash_verified", "exact_template_scope_verified", "parent_instance_verified"
 ], True)
 
 def test(label, data, evidence, expected):
@@ -65,3 +65,17 @@ for k, expected in [
 r = test("account hold", good, {**proof, "account_quote_blocked": True}, "DENY")
 assert "ACCOUNT_QUOTE_HOLD" in r["reason_codes"]
 print("PASS: 16 representative preflight checks; nominal remains REVIEW_ONLY.")
+
+for key, value, reason in [
+    ("intent", "INVOICE", "INTENT_NOT_GOVERNED"),
+    ("issuance_basis", "CUSTOM", "ISSUANCE_BASIS_INVALID"),
+    ("recipients", ["other@example.test"], "APPROVAL_RECIPIENTS_MISMATCH"),
+    ("snapshot", {**good["snapshot"], "message_hash":"c"*64}, "MESSAGE_NOT_APPROVED"),
+    ("snapshot", {**good["snapshot"], "parent_instance_hash":"c"*64}, "PARENT_INSTANCE_CHANGED"),
+    ("specific_approval", {"status":"APPROVED"}, "UNEXPECTED_SPECIFIC_APPROVAL")
+]:
+    r = test("strict_"+key, {**good,key:value}, proof, "DENY")
+    assert reason in r["reason_codes"], r
+r = test("specific_without_receipt", {**good,"issuance_basis":"APPROVED_SPECIFIC_TEMPLATE"}, proof, "DENY")
+assert "SPECIFIC_TEMPLATE_NOT_APPROVED" in r["reason_codes"]
+print("PASS: additional scope, exact-content and specific approval tests")
