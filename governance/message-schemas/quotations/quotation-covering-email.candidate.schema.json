@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Quotation covering email composition candidate; review only",
-  "description": "Stage-aware structured inputs, not a published enterprise or runtime contract.",
+  "description": "Stage-aware structured inputs; any approved_for_send flag is only an independently sourced assertion, never a technical dispatch permit. This candidate contract does not implement production send control.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -398,6 +398,9 @@
                 "const": true
               }
             }
+          },
+          "approval_status": {
+            "const": "approved_for_send"
           }
         }
       }
