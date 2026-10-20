@@ -40,3 +40,4 @@ jobs:
           python -m unittest discover -s governance/message-schemas/tests -p 'test_deluge_issue_preflight_contract.py' -v
           python -m unittest discover -s governance/message-schemas/tests -p 'test_exact_instance_review.py' -v
           python -m unittest discover -s governance/message-schemas/tests -p 'test_outbox_rehearsal.py' -v
+          python -m unittest discover -s governance/message-schemas/tests -p 'test_crm_native_egress_release.py' -v
