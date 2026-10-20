@@ -82,3 +82,6 @@ even when application dependencies fail to install.
 
 Functions are pinned to the `node18` stack in `catalyst-config.json`. Changing
 the stack is a one-line edit in that file, per function.
+
+## Group CEO enterprise production authority directive — 2026-10-20
+Zoho CRM (APP-ICT-0003) is the authoritative production runtime for governed business workflows. This Catalyst project is a supporting integration, engineering and computation platform, not a second business workflow/decision production authority. No new Catalyst function/AppSail/pipeline is authorised by this instruction. Every future Catalyst production integration must expose a governed CRM entry point, preserve CRM approval and record authority, and pass exact-version CEO approval, regression, rollback and production readback. Financial ledgers remain separate designated systems of record. GitHub design merges do not activate CRM or Catalyst deployments. See Kongoni Enterprise Architecture `architecture/enterprise-system-landscape/production-runtime-authority.json`.
