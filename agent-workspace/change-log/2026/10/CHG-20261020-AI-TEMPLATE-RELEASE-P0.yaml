@@ -1,0 +1,51 @@
+change_id: CHG-20261020-AI-TEMPLATE-RELEASE-P0
+timestamp_utc: '2026-10-20T15:52:00Z'
+actor:
+  type: ChatGPT
+  name: ChatGPT engineering assistant
+  agent_contract_ref: null
+mandate_ref: 'User instructions of 20 October 2026 to enforce stronger AI business document/correspondence templates and prioritise implementation'
+accountability_task_ref: 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/67'
+task_class: T2
+change_type: schema
+summary: Strengthen AI-native governed document and correspondence preflight to bind exact content, template, recipient and separately approved specific-template instances.
+reason: Existing CRM Send Mail path allowed custom customer correspondence without synchronous authorised template resolution; close review-contract ambiguity and prepare enforcement without asserting deployment.
+affected_paths:
+  - agent-workspace/AGENTS.md
+  - governance/message-schemas/controls/AI-NATIVE-ISSUE-SEND-001.md
+  - governance/message-schemas/controls/release_gate_preflight.py
+  - governance/message-schemas/schemas/ai-native-issue-send-gate.review.schema.json
+  - governance/message-schemas/tests/test_release_gate_preflight.py
+  - governance/message-schemas/controls/customer-communications-twin.review.json
+  - governance/message-schemas/controls/simulate_twin.py
+  - governance/message-schemas/controls/crm-release-target-delta.review.json
+  - governance/message-schemas/controls/kng_governed_issue_preflight_v1.review.ds
+  - governance/message-schemas/controls/exact_instance_review.py
+  - governance/message-schemas/controls/outbox_rehearsal.py
+  - governance/message-schemas/controls/crm-native-egress-implementation.review.json
+  - governance/message-schemas/controls/durable_reservation_reference.py
+  - governance/message-schemas/tests/test_durable_reservation_reference.py
+  - governance/message-schemas/tests/test_crm_native_egress_release.py
+  - governance/message-schemas/tests/test_outbox_rehearsal.py
+  - governance/message-schemas/tests/test_exact_instance_review.py
+  - governance/message-schemas/tests/test_deluge_issue_preflight_contract.py
+  - governance/message-schemas/tests/test_twin_simulation.py
+  - .github/workflows/ai-template-twin-review.yml
+  - agent-workspace/change-log/2026/10/CHG-20261020-AI-TEMPLATE-RELEASE-P0.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO user direction 2026-10-20 for engineering preparation and P0 prioritisation; no CRM Production change or external dispatch approved'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: false
+  check_study_result: 'Changed candidate JSON contract and preflight regression tests; GitHub CI check was failing because same-change-set log missing. Added metadata-only CRM digital twin and deterministic hold simulation. Review simulation regression and PR CI workflow added; target release delta and egress bypass inventory simulated; exact-envelope integrity and synthetic tamper regression added; real CRM gateway/permission bypass tests still outstanding.'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/70'
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/67'
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/actions/runs/39451774475'
+commit_sha: null
+pull_request: 70
+notes: 'Review-only. Valid preflight never emits ALLOW. CRM direct send controls, gateway authentication, account restrictions, signed approval readback and Production ACT remain HOLD.'

@@ -1,0 +1,88 @@
+// REVIEW CANDIDATE — NOT A PUBLISHED CRM FUNCTION OR A PERMISSION TO SEND.
+// Target: Zoho CRM Standalone Deluge, bound to isolated Configuration Sandbox first.
+// This function is read-only. It neither invokes sendmail nor modifies CRM records.
+// It is deliberately non-authorising until the authenticated release-receipt,
+// template-registry resolver, transport restrictions and idempotency reservation
+// are proven independently in the CRM sandbox.
+string standalone.kng_governed_issue_preflight_v1(string communication_id, string approval_record_id, string expected_message_sha256, string idempotency_key)
+{
+    result = Map();
+    result.put("control_id","AI-NATIVE-ISSUE-SEND-001");
+    result.put("status","HOLD");
+    result.put("release_allowed",false);
+    result.put("reason","NOT_VALIDATED");
+    if(communication_id == null || communication_id.trim() == "" || approval_record_id == null || approval_record_id.trim() == "" || expected_message_sha256 == null || expected_message_sha256.trim() == "" || idempotency_key == null || idempotency_key.trim() == "")
+    {
+        result.put("reason","REQUIRED_INPUT_MISSING");
+        return result.toString();
+    }
+    if(expected_message_sha256.length() != 64)
+    {
+        result.put("reason","PAYLOAD_DIGEST_INVALID");
+        return result.toString();
+    }
+    try
+    {
+        communication = zoho.crm.getRecordById("CustomerCommunications", communication_id.toLong());
+        if(communication == null || communication.get("id") == null)
+        {
+            result.put("reason","COMMUNICATION_NOT_FOUND");
+            return result.toString();
+        }
+        if(ifnull(communication.get("Governed_Msg_Template_ID"),"").toString().trim() == "" || ifnull(communication.get("Template_Version"),"").toString().trim() == "" || ifnull(communication.get("Message_Profile_ID"),"").toString().trim() == "")
+        {
+            result.put("reason","TEMPLATE_BINDING_MISSING");
+            return result.toString();
+        }
+        if(ifnull(communication.get("Related_Record_ID"),"").toString().trim() == "" || ifnull(communication.get("Channel_ID"),"").toString().trim() == "")
+        {
+            result.put("reason","TRANSACTION_OR_CHANNEL_MISSING");
+            return result.toString();
+        }
+        if(ifnull(communication.get("Approval_Evidence"),"").toString().trim() != approval_record_id)
+        {
+            result.put("reason","APPROVAL_REFERENCE_MISMATCH");
+            return result.toString();
+        }
+        content = ifnull(communication.get("Customer_Content"),"").toString();
+        if(content.trim() == "")
+        {
+            result.put("reason","RENDERED_CONTENT_MISSING");
+            return result.toString();
+        }
+        body_digest = zoho.encryption.sha256(content,"hex");
+        if(body_digest != expected_message_sha256)
+        {
+            result.put("reason","PAYLOAD_DIGEST_MISMATCH");
+            return result.toString();
+        }
+        decision = zoho.crm.getRecordById("GovernedApprovals",approval_record_id.toLong());
+        if(decision == null || decision.get("id") == null)
+        {
+            result.put("reason","APPROVAL_NOT_FOUND");
+            return result.toString();
+        }
+        if(ifnull(decision.get("AI_Payload_Hash"),"").toString() != body_digest)
+        {
+            result.put("reason","APPROVAL_CONTENT_MISMATCH");
+            return result.toString();
+        }
+        if(ifnull(decision.get("Approval_Status"),"").toString().toUpperCase() != "APPROVED" || ifnull(decision.get("Approval_Decision"),"").toString().toUpperCase() != "APPROVED")
+        {
+            result.put("reason","APPROVAL_NOT_ACTIVE");
+            return result.toString();
+        }
+        // Approval and document hash match is insufficient:
+        // No authenticated registry lookup, signed transaction scope, recipient
+        // verification, channel revocation, persisted replay lock, or safe transport
+        // ownership has been proven. These MUST be independently integrated.
+        result.put("reason","AUTHORISED_DISPATCH_ADAPTER_NOT_VERIFIED");
+        result.put("read_only_preflight","PASS");
+        return result.toString();
+    }
+    catch (e)
+    {
+        result.put("reason","VALIDATION_ERROR");
+        return result.toString();
+    }
+}

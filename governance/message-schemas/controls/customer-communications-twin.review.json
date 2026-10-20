@@ -1,0 +1,98 @@
+{
+  "contract": "governed-system-twin/review-1",
+  "status": "OBSERVED_PARTIAL_BASELINE_REVIEW_ONLY",
+  "system": "Zoho CRM",
+  "application_id": "APP-ICT-0003",
+  "source": {
+    "method": "connected live CRM metadata readback 2026-10-20",
+    "evidence": [
+      "ZohoCRM_getFields",
+      "ZohoCRM_getValidationRules",
+      "ZohoCRM_getBlueprint"
+    ],
+    "completeness": "partial",
+    "authoritative_runtime": "Zoho CRM",
+    "contains_business_records": false,
+    "last_review": "2026-10-20",
+    "metadata_scope": [
+      "CustomerCommunications",
+      "Agreement_Templates",
+      "BusinessDocumentTypes",
+      "CustomerDocuments",
+      "GovernedApprovals",
+      "Quotes",
+      "Deals"
+    ],
+    "email_templates_observed": 64,
+    "named_template_example": {
+      "id": "5643538000009735014",
+      "name": "VS02-05 KYC and Credit Documents Request",
+      "approval_not_inferred": true
+    },
+    "complete_tenant_model": false,
+    "metadata_api_refresh": "2026-10-20 retry returned incomplete payload, prior independently observed counts retained, no new metadata certified"
+  },
+  "configuration": {
+    "module": "CustomerCommunications",
+    "observed_fields": [
+      "Message_Profile_ID",
+      "Governed_Msg_Template_ID",
+      "Channel_ID",
+      "Channel_Rendering_ID",
+      "Customer_Content",
+      "Template_Version",
+      "Approval_State",
+      "Approval_Outcome",
+      "Approval_Evidence",
+      "Approval_Approver",
+      "Approval_Timestamp",
+      "Publication_Status",
+      "Related_Record_ID",
+      "Delivery_Status"
+    ],
+    "validation_rules": {
+      "observed": false,
+      "response": "204 empty"
+    },
+    "blueprint": {
+      "observed": false,
+      "response": "204 empty"
+    },
+    "synchronous_send_interceptor": {
+      "verified": false
+    },
+    "unrestricted_agent_transport_closed": {
+      "verified": false
+    },
+    "related_module_field_counts": {
+      "CustomerCommunications": 74,
+      "Agreement_Templates": 114,
+      "BusinessDocumentTypes": 44,
+      "CustomerDocuments": 55,
+      "GovernedApprovals": 53,
+      "Quotes": 154,
+      "Deals": 157
+    },
+    "active_quote_email_functions_present": true,
+    "active_quote_email_functions_do_not_prove_universal_send_guard": true,
+    "bypass_inventory": {
+      "direct_CRM_sendMail": "UNVERIFIED",
+      "Gmail_send": "UNVERIFIED",
+      "bulk_email": "UNVERIFIED",
+      "WhatsApp": "UNVERIFIED",
+      "WeChat": "UNVERIFIED",
+      "document_external_share": "UNVERIFIED"
+    }
+  },
+  "target": {
+    "approved_template_or_scoped_instance": true,
+    "exact_approval_and_content_digest": true,
+    "synchronous_gate_before_transport": true,
+    "agent_bypass_routes_denied": true,
+    "immutable_evidence_and_idempotency": true
+  },
+  "deployment": {
+    "simulation_only": true,
+    "production_authorised": false
+  }
+}
