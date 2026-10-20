@@ -18,9 +18,11 @@ good = {
     "parent": {"id": "doc1", "version": "1", "hash": T, "class": "FINANCE_LEASE",
                "status": "CONTROLLED", "approval_receipt": "apr2",
                "issuer_id": "entity-a", "channels": ["CH-EMAIL"]},
-    "snapshot": {"source_hash": H, "artifact_hash": T, "message_hash": H, "parent_instance_hash": T, "intent":"FINANCE_LEASE", "action":"SEND", "channel":"CH-EMAIL", "issuer_id":"entity-a", "crm_record_id":"q1", "template_id":"msg1", "template_hash":T, "recipients":["customer@example.test"], "message_hash": H, "parent_instance_hash": T, "merge_status": "PASS"},
+    "snapshot": {"source_hash": H, "artifact_hash": T, "message_hash": H, "parent_instance_hash": T, "merge_status": "PASS"},
     "approval": {"receipt": "receipt1", "approver": "officer1", "status": "APPROVED",
-                 "source_hash": H, "artifact_hash": T,
+                 "source_hash": H, "artifact_hash": T, "message_hash": H, "parent_instance_hash": T,
+                 "intent":"FINANCE_LEASE", "action":"SEND", "channel":"CH-EMAIL", "issuer_id":"entity-a",
+                 "crm_record_id":"q1", "template_id":"msg1", "template_hash":T, "recipients":["customer@example.test"],
                  "expires_at": "2027-12-31T00:00:00+00:00"},
     "recipients": ["customer@example.test"],
     "transport": {"adapter_id": "crm-gateway", "idempotency_key": "id-1"}
