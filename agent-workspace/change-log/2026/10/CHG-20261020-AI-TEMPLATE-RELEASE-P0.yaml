@@ -16,6 +16,7 @@ affected_paths:
   - governance/message-schemas/schemas/ai-native-issue-send-gate.review.schema.json
   - governance/message-schemas/tests/test_release_gate_preflight.py
   - governance/message-schemas/controls/customer-communications-twin.review.json
+  - governance/message-schemas/controls/zoho-communication-config-observed.review.json
   - governance/message-schemas/controls/simulate_twin.py
   - governance/message-schemas/tests/test_twin_simulation.py
   - .github/workflows/ai-template-twin-review.yml
