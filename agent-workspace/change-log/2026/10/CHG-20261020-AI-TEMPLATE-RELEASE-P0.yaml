@@ -16,8 +16,8 @@ affected_paths:
   - governance/message-schemas/schemas/ai-native-issue-send-gate.review.schema.json
   - governance/message-schemas/tests/test_release_gate_preflight.py
   - governance/message-schemas/controls/customer-communications-twin.review.json
-  - governance/message-schemas/controls/zoho-communication-config-observed.review.json
   - governance/message-schemas/controls/simulate_twin.py
+  - governance/message-schemas/controls/crm-release-target-delta.review.json
   - governance/message-schemas/tests/test_twin_simulation.py
   - .github/workflows/ai-template-twin-review.yml
   - agent-workspace/change-log/2026/10/CHG-20261020-AI-TEMPLATE-RELEASE-P0.yaml
@@ -28,7 +28,7 @@ authority:
 pdca:
   phase: CHECK_STUDY
   do_complete: false
-  check_study_result: 'Changed candidate JSON contract and preflight regression tests; GitHub CI check was failing because same-change-set log missing. Added metadata-only CRM digital twin and deterministic hold simulation. Review simulation regression and PR CI workflow added; real CRM gateway/permission bypass tests still outstanding.'
+  check_study_result: 'Changed candidate JSON contract and preflight regression tests; GitHub CI check was failing because same-change-set log missing. Added metadata-only CRM digital twin and deterministic hold simulation. Review simulation regression and PR CI workflow added; target release delta and egress bypass inventory simulated; real CRM gateway/permission bypass tests still outstanding.'
   act_decision: null
   task_complete: false
 evidence:
