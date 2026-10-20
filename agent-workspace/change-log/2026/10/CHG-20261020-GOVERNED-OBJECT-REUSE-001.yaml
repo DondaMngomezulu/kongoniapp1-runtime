@@ -1,0 +1,38 @@
+change_id: CHG-20261020-GOVERNED-OBJECT-REUSE-001
+timestamp_utc: '2026-10-20T10:44:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-6 enterprise governance design
+  agent_contract_ref: null
+mandate_ref: '20 October 2026: user accepted quotation template proposals and directed extension of reusable comments to governed objects before final testing and publication'
+accountability_task_ref: 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/72'
+task_class: T2
+change_type: schema
+summary: 'Stage-gated quotation covering correspondence and reusable governed-object evidence controls, CRM bindings, tests and CI'
+reason: 'Centralise source identity, provenance, evidence, lifecycle, governed content and release criteria without creating duplicate document or template identity'
+affected_paths:
+  - .github/workflows/governed-object-reuse-candidate.yml
+  - governance/message-schemas/quotations/README.md
+  - governance/message-schemas/quotations/quotation-covering-email.candidate.schema.json
+  - governance/message-schemas/shared/README.md
+  - governance/message-schemas/shared/governed-object-evidence.candidate.schema.json
+  - governance/message-schemas/tests/test_governed_object_reuse.py
+  - agent-workspace/change-log/2026/10/CHG-20261020-GOVERNED-OBJECT-REUSE-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Design and reusable review work accepted by user, not unilateral production or canonical registration approval'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: false
+  check_study_result: 'Synthetic schema test/CI pending; no live CRM or provider enforcement'
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/72'
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/54'
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/67'
+  - 'https://docs.google.com/spreadsheets/d/1TlHa9Q43Y-xJr-QJN4QveO0TKhT9hwm13K0wpX6BGVI/edit'
+commit_sha: null
+pull_request: 72
+notes: 'Review candidate only. Preserve all existing CRM and register IDs; no customer information or production mutation. Closure requires independent source, policy, document-controller, CRM and security readback.'
