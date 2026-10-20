@@ -1,0 +1,61 @@
+{
+  "contract": "governed-system-twin/review-1",
+  "status": "OBSERVED_PARTIAL_BASELINE_REVIEW_ONLY",
+  "system": "Zoho CRM",
+  "application_id": "APP-ICT-0003",
+  "source": {
+    "method": "connected live CRM metadata readback 2026-10-20",
+    "evidence": [
+      "ZohoCRM_getFields",
+      "ZohoCRM_getValidationRules",
+      "ZohoCRM_getBlueprint"
+    ],
+    "completeness": "partial",
+    "authoritative_runtime": "Zoho CRM",
+    "contains_business_records": false
+  },
+  "configuration": {
+    "module": "CustomerCommunications",
+    "observed_fields": [
+      "Message_Profile_ID",
+      "Governed_Msg_Template_ID",
+      "Channel_ID",
+      "Channel_Rendering_ID",
+      "Customer_Content",
+      "Template_Version",
+      "Approval_State",
+      "Approval_Outcome",
+      "Approval_Evidence",
+      "Approval_Approver",
+      "Approval_Timestamp",
+      "Publication_Status",
+      "Related_Record_ID",
+      "Delivery_Status"
+    ],
+    "validation_rules": {
+      "observed": false,
+      "response": "204 empty"
+    },
+    "blueprint": {
+      "observed": false,
+      "response": "204 empty"
+    },
+    "synchronous_send_interceptor": {
+      "verified": false
+    },
+    "unrestricted_agent_transport_closed": {
+      "verified": false
+    }
+  },
+  "target": {
+    "approved_template_or_scoped_instance": true,
+    "exact_approval_and_content_digest": true,
+    "synchronous_gate_before_transport": true,
+    "agent_bypass_routes_denied": true,
+    "immutable_evidence_and_idempotency": true
+  },
+  "deployment": {
+    "simulation_only": true,
+    "production_authorised": false
+  }
+}
