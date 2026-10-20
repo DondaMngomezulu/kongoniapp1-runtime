@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifest_kind": "governed-config-target-delta",
+  "version": "0.1.0-review",
+  "status": "SANDBOX_DESIGN_ONLY",
+  "work_item": "https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/67",
+  "source_baseline": "governance/message-schemas/controls/customer-communications-twin.review.json",
+  "source_status": {
+    "crm_readback_date": "2026-10-20",
+    "crm_metadata_complete": false,
+    "sandbox_name": "Zoho CRM Configuration Sandbox",
+    "sandbox_last_refresh": "2026-08-17",
+    "sandbox_fresh_for_target": false,
+    "sandbox_actual_implementation_tested": false,
+    "target_system": "Zoho CRM",
+    "business_record_data_stored_in_github": false
+  },
+  "existing_configuration": {
+    "message_module": "CustomerCommunications",
+    "observed_module_fields": [
+      "Governed_Msg_Template_ID",
+      "Message_Profile_ID",
+      "Channel_ID",
+      "Channel_Rendering_ID",
+      "Customer_Content",
+      "Approval_State",
+      "Approval_Evidence",
+      "Approval_Timestamp",
+      "Template_Version",
+      "Related_Record_ID"
+    ],
+    "validation_rules_present": false,
+    "blueprint_present": false,
+    "quote_email_functions_exist": true,
+    "quote_email_functions_are_not_universal_pre_send_gate": true,
+    "template_catalog_exists": true,
+    "template_record_count_observed": 64,
+    "template_approval_completeness_verified": false
+  },
+  "target_delta": [
+    {
+      "ref": "CAND-SEND-001",
+      "object_type": "CRM_Function",
+      "change": "CREATE",
+      "purpose": "Read authoritative CRM records and independently validate exact template version, issuer, recipient, intended action, attachment hash and approval against immutable rendered content",
+      "dependency": [
+        "GovernedApprovals",
+        "Agreement_Templates",
+        "CustomerCommunications",
+        "BusinessDocumentTypes"
+      ],
+      "status": "DESIGN_ONLY"
+    },
+    {
+      "ref": "CAND-SEND-002",
+      "object_type": "CRM_Approval_Process",
+      "change": "BIND",
+      "purpose": "Authoritative separate approval and revocation of one immutable message/document instance; underwriting document request does not imply credit approval",
+      "dependency": [
+        "GovernedApprovals"
+      ],
+      "status": "DESIGN_ONLY"
+    },
+    {
+      "ref": "CAND-SEND-003",
+      "object_type": "CRM_Transport_Adapter",
+      "change": "RESTRICT",
+      "purpose": "Actual dispatch only from CRM-authorised gateway with one-time idempotency reservation and immutable send outcome",
+      "dependency": [
+        "CAND-SEND-001"
+      ],
+      "status": "DESIGN_ONLY"
+    },
+    {
+      "ref": "CAND-SEND-004",
+      "object_type": "CRM_Profile_OAuth",
+      "change": "RESTRICT",
+      "purpose": "Remove direct send scope from AI identities while preserving humans and controlled sender",
+      "dependency": [
+        "CAND-SEND-003"
+      ],
+      "status": "DESIGN_ONLY"
+    },
+    {
+      "ref": "CAND-SEND-005",
+      "object_type": "CRM_Blueprint_or_Validation",
+      "change": "IMPLEMENT",
+      "purpose": "Guard CustomerCommunications lifecycle transitions and templates; not a substitute for API send gateway",
+      "dependency": [
+        "CustomerCommunications"
+      ],
+      "status": "DESIGN_ONLY"
+    },
+    {
+      "ref": "CAND-SEND-006",
+      "object_type": "Document_Export_Share",
+      "change": "RESTRICT",
+      "purpose": "Prevent external file sharing of unapproved document/term-sheet instances or replacing payload after approval",
+      "dependency": [
+        "CustomerDocuments",
+        "Agreement_Templates"
+      ],
+      "status": "DESIGN_ONLY"
+    }
+  ],
+  "egress_routes": [
+    {
+      "id": "crm_api_sendmail",
+      "source": "Zoho CRM native sendMail API",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "AI_CALL_DENY_OR_CRM_GATEWAY"
+    },
+    {
+      "id": "crm_ui_mail",
+      "source": "Zoho CRM manual UI",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "ROLE_SCOPED_GUARD_OR_HUMAN_BREAKGLASS"
+    },
+    {
+      "id": "crm_bulk",
+      "source": "Zoho CRM mass/bulk mail",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "AI_CALL_DENY_OR_CRM_GATEWAY"
+    },
+    {
+      "id": "crm_workflow",
+      "source": "CRM workflow, Functions and third-party webhooks",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "ONLY_APPROVED_CRM_DISPATCH"
+    },
+    {
+      "id": "gmail_api",
+      "source": "Direct Gmail connector or OAuth",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "AI_CALL_DENY_OR_CRM_GATEWAY"
+    },
+    {
+      "id": "whatsapp",
+      "source": "WhatsApp provider/CRM integration",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "AI_CALL_DENY_OR_CRM_GATEWAY"
+    },
+    {
+      "id": "wechat",
+      "source": "WeChat provider/CRM integration",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "AI_CALL_DENY_OR_CRM_GATEWAY"
+    },
+    {
+      "id": "document_external_share",
+      "source": "Drive/document export and public-sharing",
+      "evidence": "UNKNOWN",
+      "state": "NOT_VERIFIED",
+      "required_control": "APPROVED_DOCUMENT_INSTANCE_ONLY"
+    }
+  ],
+  "unverified_deployment_evidence": [
+    "source_metadata_complete",
+    "sandbox_refreshed_and_readback",
+    "independent_approval_signature",
+    "protected_agent_profile",
+    "synchronous_gateway_in_sandbox",
+    "provider_restrictions_in_sandbox",
+    "integration_bypass_negative_tests",
+    "idempotency_ledger_persistent",
+    "independent_security_qa",
+    "rollback_test",
+    "ceo_act_exact_version",
+    "production_readback"
+  ],
+  "test_scenarios": [
+    {
+      "id": "positive-governed",
+      "subject": "governed template exact match and signed release",
+      "expected": "REVIEW_ONLY_UNTIL_TRUSTED_GATEWAY"
+    },
+    {
+      "id": "positive-one-off",
+      "subject": "specifically approved exact one-time template instance",
+      "expected": "REVIEW_ONLY_UNTIL_TRUSTED_GATEWAY"
+    },
+    {
+      "id": "negative-document-hold",
+      "subject": "term sheet content or pricing approval on hold",
+      "expected": "DENY"
+    },
+    {
+      "id": "negative-information-request",
+      "subject": "credit-underwriting information request not permitted to assert financing approval",
+      "expected": "DENY_IF_NOT_APPROVED_TEMPLATE"
+    },
+    {
+      "id": "negative-tamper",
+      "subject": "altered recipient, sender, body, attachment or template version",
+      "expected": "DENY"
+    },
+    {
+      "id": "negative-bypass",
+      "subject": "direct CRM/Gmail/WhatsApp send by agent bypassing gateway",
+      "expected": "DENY"
+    }
+  ],
+  "architecture": {
+    "enterprise": "ArchiMate 3.2",
+    "systems": "SysML v2",
+    "semantic_authority": "REG-STD-001",
+    "crm_config_authority": "CAT-ZCRM-CONFIG-001",
+    "governed_document_types": "REG-KNG-BDT-001",
+    "message_type_register": "ROR-0095",
+    "message_merge_rule": "MRG-CVR-001",
+    "existing_egress_policy_candidate": "PR #68",
+    "existing_template_resolver_candidate": "PR #12"
+  },
+  "release": {
+    "candidate_simulation_only": true,
+    "production_authorised": false,
+    "sandbox_write_authorised": false,
+    "production_change_made": false
+  }
+}
