@@ -28,7 +28,8 @@
       "id": "5643538000009735014",
       "name": "VS02-05 KYC and Credit Documents Request",
       "approval_not_inferred": true
-    }
+    },
+    "complete_tenant_model": false
   },
   "configuration": {
     "module": "CustomerCommunications",
@@ -80,6 +81,38 @@
       "WhatsApp": "UNVERIFIED",
       "WeChat": "UNVERIFIED",
       "document_external_share": "UNVERIFIED"
+    },
+    "physical_projection": {
+      "readback_date": "2026-10-20",
+      "authority": "Zoho CRM connected metadata API",
+      "data_class": "CONFIGURATION_ONLY",
+      "tenant_completeness": "PARTIAL",
+      "fields": {},
+      "email_templates": {
+        "count": null,
+        "more_records": false,
+        "status": "UNVERIFIED_APPROVAL",
+        "sample_governed_request_template_id": "5643538000009735014"
+      },
+      "profiles": {
+        "count": null,
+        "roles": [],
+        "effective_agent_permissions": "UNVERIFIED"
+      },
+      "functions": {
+        "count": 0,
+        "relevant": [],
+        "universal_release_interceptor": "UNVERIFIED"
+      },
+      "errors": [
+        "CustomerCommunications:UNAVAILABLE",
+        "Agreement_Templates:UNAVAILABLE",
+        "BusinessDocumentTypes:UNAVAILABLE",
+        "CustomerDocuments:UNAVAILABLE",
+        "GovernedApprovals:UNAVAILABLE",
+        "Quotes:UNAVAILABLE",
+        "Deals:UNAVAILABLE"
+      ]
     }
   },
   "target": {
