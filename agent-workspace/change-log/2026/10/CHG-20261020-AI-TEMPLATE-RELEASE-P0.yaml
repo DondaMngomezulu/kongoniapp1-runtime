@@ -23,6 +23,8 @@ affected_paths:
   - governance/message-schemas/controls/exact_instance_review.py
   - governance/message-schemas/controls/outbox_rehearsal.py
   - governance/message-schemas/controls/crm-native-egress-implementation.review.json
+  - governance/message-schemas/controls/durable_reservation_reference.py
+  - governance/message-schemas/tests/test_durable_reservation_reference.py
   - governance/message-schemas/tests/test_crm_native_egress_release.py
   - governance/message-schemas/tests/test_outbox_rehearsal.py
   - governance/message-schemas/tests/test_exact_instance_review.py
