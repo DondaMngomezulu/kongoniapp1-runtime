@@ -14,7 +14,10 @@
     "snapshot",
     "approval",
     "recipients",
-    "transport"
+    "transport",
+    "intent",
+    "issuance_basis",
+    "specific_approval"
   ],
   "properties": {
     "request_id": {
@@ -74,7 +77,8 @@
       }
     },
     "template": {
-      "$ref": "#/$defs/template"
+      "$ref": "#/$defs/template",
+      "description": "Resolved registry template; issuance_basis governs general versus separately approved transaction-scoped use"
     },
     "parent": {
       "anyOf": [
@@ -91,7 +95,9 @@
       "required": [
         "source_hash",
         "artifact_hash",
-        "merge_status"
+        "merge_status",
+        "message_hash",
+        "parent_instance_hash"
       ],
       "properties": {
         "source_hash": {
@@ -106,6 +112,19 @@
             "FAIL",
             "NOT_TESTED"
           ]
+        },
+        "message_hash": {
+          "$ref": "#/$defs/hash"
+        },
+        "parent_instance_hash": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/hash"
+            }
+          ]
         }
       }
     },
@@ -117,7 +136,17 @@
         "status",
         "source_hash",
         "artifact_hash",
-        "expires_at"
+        "expires_at",
+        "message_hash",
+        "parent_instance_hash",
+        "intent",
+        "channel",
+        "action",
+        "issuer_id",
+        "crm_record_id",
+        "template_id",
+        "template_hash",
+        "recipients"
       ],
       "properties": {
         "receipt": {
@@ -142,6 +171,55 @@
         "expires_at": {
           "type": "string",
           "format": "date-time"
+        },
+        "message_hash": {
+          "$ref": "#/$defs/hash"
+        },
+        "parent_instance_hash": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/hash"
+            }
+          ]
+        },
+        "intent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "channel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issuer_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "crm_record_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "template_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "template_hash": {
+          "$ref": "#/$defs/hash"
+        },
+        "recipients": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
         }
       }
     },
@@ -151,7 +229,8 @@
       "items": {
         "type": "string",
         "minLength": 3
-      }
+      },
+      "uniqueItems": true
     },
     "transport": {
       "type": "object",
@@ -167,6 +246,95 @@
           "type": "string"
         }
       }
+    },
+    "intent": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Governed business-intent code, independently resolved from approved template/CRM purpose"
+    },
+    "issuance_basis": {
+      "enum": [
+        "GOVERNED_TEMPLATE",
+        "APPROVED_SPECIFIC_TEMPLATE"
+      ],
+      "description": "A transaction-scoped template is not an unrestricted custom-send exception"
+    },
+    "specific_approval": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "receipt",
+            "status",
+            "template_id",
+            "template_version",
+            "template_hash",
+            "issuer_id",
+            "crm_record_id",
+            "channel",
+            "intent",
+            "recipients",
+            "message_hash",
+            "expires_at"
+          ],
+          "properties": {
+            "receipt": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "APPROVED"
+            },
+            "template_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "template_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "template_hash": {
+              "$ref": "#/$defs/hash"
+            },
+            "issuer_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "crm_record_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "channel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "intent": {
+              "type": "string",
+              "minLength": 1
+            },
+            "recipients": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 3
+              }
+            },
+            "message_hash": {
+              "$ref": "#/$defs/hash"
+            },
+            "expires_at": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      ]
     }
   },
   "$defs": {
@@ -217,6 +385,15 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        },
+        "allowed_intents": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
           }
         }
       }
