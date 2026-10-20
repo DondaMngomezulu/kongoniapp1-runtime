@@ -28,6 +28,16 @@ class TwinSimulationTests(unittest.TestCase):
         self.assertEqual(result["decision"], "HOLD")
         self.assertFalse(result["production_authorised"])
         self.assertIn(reason, result["reasons"])
+    def test_source_metadata_projection(self):
+        projection = json.loads((base / "zoho-communication-config-observed.review.json").read_text())
+        self.assertIs(projection["business_records_embedded"], False)
+        self.assertIs(projection["complete_tenant_model"], False)
+        for name in ("CustomerCommunications", "Agreement_Templates", "BusinessDocumentTypes", "CustomerDocuments", "GovernedApprovals", "Quotes", "Deals"):
+            self.assertIn(name, projection["observed"]["modules"])
+        self.assertGreaterEqual(projection["observed"]["email_templates"]["count"], 1)
+        self.assertIs(projection["observed"]["email_templates"]["publication_status_verified"], False)
+        self.assertIs(projection["observed"]["profiles"]["effective_agent_permissions_verified"], False)
+        self.assertIs(projection["observed"]["functions"]["release_interceptor_verified"], False)
     def test_baseline_partial(self):
         self.assertDenied(BASE, candidate(), "BASELINE_PARTIAL")
     def test_current_direct_send_unverified(self):
