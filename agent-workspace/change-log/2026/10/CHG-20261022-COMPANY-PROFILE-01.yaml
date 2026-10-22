@@ -8,12 +8,14 @@ mandate_ref: 'User instruction 2026-10-22: Please promote this to production.'
 accountability_task_ref: null
 task_class: T2
 change_type: schema
-summary: CRM-backed WhatsApp company profile candidate and automated tests
+summary: CRM-backed WhatsApp company profile and 19 enterprise message bindings with tests
 reason: Reusable company details message with traceable CRM fields, verification warnings and privacy controls
 affected_paths:
   - governance/message-schemas/company-profile/company-profile.candidate.json
   - governance/message-schemas/company-profile/render-company-profile.mjs
   - governance/message-schemas/company-profile/test-company-profile.mjs
+  - governance/message-schemas/company-profile/enterprise-message-catalogue.candidate.json
+  - governance/message-schemas/company-profile/test-enterprise-message-catalogue.mjs
 environment: repository
 authority:
   status: AUTHORISED
@@ -21,12 +23,12 @@ authority:
 pdca:
   phase: CHECK_STUDY
   do_complete: true
-  check_study_result: 'Candidate specification and tests added; repo CI and integration evidence pending. No production release approval.'
+  check_study_result: 'Company profile and 19 existing CRM template candidates; field metadata verified, schema instances/contents, end-to-end live delivery and independent release pending.'
   act_decision: ESCALATE
   task_complete: false
 evidence:
   - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/74'
-  - 'Previous CI run 39752027109 failed due to missing change-log entry; this change adds mandatory log'
+  - 'Previous CI run 39752027109 failed due to missing change-log entry; corrected. Enterprise Message Schema Register and live CRM field metadata reviewed'
 commit_sha: null
 pull_request: 74
 notes: 'Review only; canonical ID, message approval and WhatsApp integration are unresolved. No automated send enabled.'
