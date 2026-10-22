@@ -1,0 +1,116 @@
+{
+  "id": "BR-COMM-WA-QUOTATION-001",
+  "version": "0.1.0",
+  "state": "REVIEW_ONLY",
+  "production_send": false,
+  "authority": {
+    "business_document": "STD-BDOC-001",
+    "channel": "STD-TMF-OC-001",
+    "crm_information": "STD-TMF-SID-001",
+    "rule_model": "STD-LEGALRULE-001",
+    "governed_codes": "STD-REFDATA-001",
+    "control_evidence": "STD-NIST-OSCAL-001",
+    "records": [
+      "STD-REC-002",
+      "STD-META-001"
+    ]
+  },
+  "source_registers": [
+    "REG-STD-001",
+    "REG-COMM-CHN-001",
+    "REG-MD-BDT-001"
+  ],
+  "channel": "CH-WHATSAPP",
+  "document_type": {
+    "normative_name": "Quotation",
+    "ubl_version": "2.5",
+    "crm_module": "Quotes"
+  },
+  "classes": {
+    "full_message": [
+      "enquiry_acknowledgement",
+      "availability_response",
+      "schedule_notice"
+    ],
+    "summary_plus_formal": [
+      "Quotation",
+      "Order",
+      "OrderResponse",
+      "Invoice",
+      "DespatchAdvice"
+    ],
+    "restricted_workflow": [
+      "lease_agreement",
+      "credit_decision",
+      "kyc",
+      "security_document",
+      "bank_detail_change"
+    ]
+  },
+  "decisions": [
+    {
+      "id": "WA-001",
+      "condition": "contact_opt_in_verified === true && business_phone_verified === true && issuing_entity_verified === true",
+      "on_false": "HOLD_CONSENT_OR_IDENTITY"
+    },
+    {
+      "id": "WA-002",
+      "condition": "document_state === 'ISSUED' && release_approved === true && document_id && document_version && document_hash && formal_attachment_verified === true",
+      "on_false": "HOLD_FORMAL_DOCUMENT"
+    },
+    {
+      "id": "WA-003",
+      "condition": "template_approved === true && meta_template_approved === true && provider_policy_permits === true && channel_authorized === true",
+      "on_false": "HOLD_TEMPLATE_OR_CHANNEL"
+    },
+    {
+      "id": "WA-004",
+      "condition": "all_required_commercial_fields_verified === true && merge_fields_resolved === true && numbers_match_formal_document === true",
+      "on_false": "HOLD_DATA_OR_MISMATCH"
+    },
+    {
+      "id": "WA-005",
+      "condition": "customer_requested_channel === 'CH-WHATSAPP' || customer_channel_preference === 'CH-WHATSAPP'",
+      "on_false": "HOLD_CHANNEL_PREFERENCE"
+    },
+    {
+      "id": "WA-006",
+      "condition": "recipient_verified === true && sensitive_financial_or_kyc_data_in_body === false && collection_activity === false",
+      "on_false": "HOLD_PRIVACY_OR_PROVIDER_POLICY"
+    },
+    {
+      "id": "WA-007",
+      "condition": "no_customer_acceptance_by_message === true && no_contract_variation_by_message === true",
+      "on_false": "ROUTE_TO_GOVERNED_ACCEPTANCE"
+    }
+  ],
+  "required_evidence": [
+    "crm_quote_id",
+    "crm_account_id",
+    "crm_contact_id",
+    "issuing_entity_id",
+    "preferred_channel_record_id",
+    "opt_in_evidence_ref",
+    "meta_template_id",
+    "approved_template_version",
+    "formal_document_id",
+    "formal_document_version",
+    "formal_document_sha256",
+    "render_validation_result",
+    "recipient_verification_ref",
+    "delivery_audit_event_id"
+  ],
+  "output": {
+    "rendering": "text/plain",
+    "source": "CRM_QUOTE",
+    "delivery": "META_WHATSAPP_BUSINESS_PLATFORM",
+    "type": "QUOTE_SUMMARY_WITH_FORMAL_DOCUMENT",
+    "never_source_of_truth": true
+  },
+  "on_any_hold": {
+    "render_preview_allowed": true,
+    "send_allowed": false,
+    "crm_transaction_mutation_allowed": false
+  },
+  "legal_boundary": "Do not infer contractual acceptance from a conversational reply; route to legally reviewed acceptance and signature controls. A disclaimer alone does not prevent electronic agreement formation."
+}
