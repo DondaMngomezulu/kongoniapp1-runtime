@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contextual candidate template change proposal - engineering candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "proposal",
+    "context",
+    "distinct_cases",
+    "lifecycle"
+  ],
+  "properties": {
+    "proposal": {
+      "enum": [
+        "REVISE_EXISTING_CANDIDATE",
+        "REVIEW_EXISTING_CANDIDATE",
+        "PROPOSE_NEW_CANDIDATE"
+      ]
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value_stream",
+        "intent",
+        "document_class",
+        "channel",
+        "issuer_entity"
+      ],
+      "properties": {
+        "value_stream": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "intent": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "document_class": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "channel": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "issuer_entity": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        }
+      }
+    },
+    "distinct_cases": {
+      "type": "integer",
+      "minimum": 3
+    },
+    "lifecycle": {
+      "const": "REVIEW_ONLY"
+    },
+    "template_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "edit_reason_code": {
+      "enum": [
+        "REQUIRED_FIELD",
+        "CLARITY",
+        "CHANNEL_LAYOUT",
+        "TONE"
+      ]
+    },
+    "similar_templates": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "canonical_id": {
+      "type": "null"
+    }
+  }
+}

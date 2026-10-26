@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Minimal reviewer-labelled contextual template event - engineering candidate",
+  "description": "Training input excludes customer identity, contact data, message body and commercial amounts; reader must independently verify receipt/permission.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "context",
+    "presented_template_ids",
+    "chosen_template_id",
+    "feedback",
+    "reviewer_verified",
+    "learning_allowed"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "context": {
+      "$ref": "#/$defs/context"
+    },
+    "presented_template_ids": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "chosen_template_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "feedback": {
+      "enum": [
+        "ACCEPTED",
+        "REJECTED"
+      ]
+    },
+    "reviewer_verified": {
+      "type": "boolean"
+    },
+    "learning_allowed": {
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value_stream",
+        "intent",
+        "document_class",
+        "channel",
+        "issuer_entity",
+        "stage"
+      ],
+      "properties": {
+        "value_stream": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "intent": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "document_class": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "channel": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "issuer_entity": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "stage": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "audience": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "contract_type": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "locale": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_+.-]{1,80}$"
+        },
+        "available_fields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.]*$"
+          }
+        }
+      }
+    }
+  }
+}
