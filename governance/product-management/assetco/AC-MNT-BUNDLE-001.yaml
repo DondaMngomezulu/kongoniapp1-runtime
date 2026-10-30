@@ -48,15 +48,14 @@ controls:
   - each bundle component SHALL declare inclusion rule and cardinality
   - ProductOfferingPrice SHALL NOT be approved until the applicable LCC and maintenance reserve pass CHECK/STUDY
   - LCC cost SHALL remain distinct from customer sell price
-zizwe_seed:
+customer_bundle_seed:
+  record_locus: Zoho CRM ProductOfferings (read at run time)
   bundles:
     - id: AC-OFR-ZIZ-MNT-54M-001
       term_months: 54
-      crm_record_id: '5643538000008464733'
       composition: Bundle
     - id: AC-OFR-ZIZ-MNT-36M-001
       term_months: 36
-      crm_record_id: '5643538000008464734'
       composition: Bundle
   mandatory_components:
     - Preventive Maintenance

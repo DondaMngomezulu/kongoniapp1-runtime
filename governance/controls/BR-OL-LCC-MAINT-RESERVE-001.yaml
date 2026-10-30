@@ -74,7 +74,7 @@ term_controls:
     54-month reserve SHALL be calculated independently over the 54-month/expected-hour
     horizon. The 36-month reserve SHALL NOT be scaled linearly to 54 months where event
     timing, component replacements, rebuilds or utilisation-dependent costs differ.
-  zizwe_reference_hours:
+  example_reference_hours:
     option_b_36_months_at_240h: 8640
     option_a_54_months_at_240h: 12960
 
@@ -102,7 +102,7 @@ source_evidence:
     support: >-
       Contains machine-maintenance tasks, intervals, occurrences, lifetime cost and cost per
       operating hour used as LCC evidence.
-  - source: Zizwe Khutala Option A/B Commercial Proposal v0.3
+  - source: Customer Option A/B commercial proposal v0.3 (customer deal document, held outside the repository)
     support: >-
       Records the legacy 15 percent reserve as a placeholder and identifies the bottom-up
       AssetCo L5 method as the required basis.

@@ -227,7 +227,7 @@ source_provenance:
       - labour hours
       - lifetime cost
       - cost per operating hour
-  - source: Zizwe revised quotation L5 methodology
+  - source: Customer revised quotation L5 methodology (customer deal document, held outside the repository)
     authority: TRANSACTION_APPLICATION_PROFILE
     supports:
       - corrective repair

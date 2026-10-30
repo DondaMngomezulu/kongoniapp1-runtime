@@ -67,8 +67,8 @@ benchmark_policy:
   oem_comparators:
     - id: HITACHI-ACTUAL-INVOICE
       evidence_class: T1_TRANSACTIONAL
-      standard_labour_per_hour_ex_vat: 998.27
-      overtime_1_5_per_hour_ex_vat: 1497.40
+      numeric_rate_status: HELD_OUTSIDE_REPOSITORY
+      numeric_rate_locus: source supplier invoices, held outside the repository; values are not published here
     - id: KOMATSU-MARC
       evidence_class: T4_OEM_PUBLIC_PROGRAMME
       concepts:
