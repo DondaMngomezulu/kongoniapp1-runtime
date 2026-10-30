@@ -1,0 +1,52 @@
+change_id: CHG-20261030-STRIP-LIVE-COMMERCIAL-DATA
+timestamp_utc: '2026-10-30T07:45:00Z'
+actor:
+  type: Claude
+  name: Claude
+  agent_contract_ref: null
+mandate_ref: 'Group CEO instruction in chat on 2026-10-30: keep kongoniapp1-runtime public and strip the live data
+  from it.'
+accountability_task_ref: null
+task_class: T1
+change_type: governance
+summary: Remove live customer, supplier and commercial data from the public repository.
+reason: The repository is public. It held a customer reserve profile and a customer reserve allocation, internal
+  commercial evidence with plant and load-and-haul rates, supplier invoice labour rates, internal lifecycle cost
+  totals, customer-specific offering names, contract dates and CRM record IDs, and a group company tax number. These
+  are operational business records; they belong in Zoho CRM or the source registers, not in a public repository.
+affected_paths:
+- governance/assetco/marc/AC-MARC-MINING-BENCHMARK-REGISTER-v1.0.yaml
+- governance/assetco/marc/AC-MARC-REFERENCE-AND-OFFERING-v1.0.yaml
+- governance/controls/BR-OL-LCC-MAINT-RESERVE-001.yaml
+- governance/crm/assetco-seed-manifest.yaml
+- governance/product-management/assetco/AC-MNT-BUNDLE-001.yaml
+- governance/product-management/assetco/AC-MNT-RESERVE-ALLOC-XE800GK-001.yaml
+- governance/product-specification/CAT-MNT-PROG-001_maintenance-program-catalogue.yaml
+- governance/product-specification/CW-XE800GK-MNT-PROG-001.json
+- governance/product-specification/assetco/maintenance/assetco-maintenance-seed.yaml
+- governance/product-specification/zizwe-lcc-reserve-profile-v0.1.yaml
+- agent-workspace/change-log/2026/10/CHG-20261030-STRIP-LIVE-COMMERCIAL-DATA.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO, 2026-10-30, in answer to the choice between making the repository private and stripping
+    the data: "Keep public, strip the data".'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: A scan of the working tree against the CRM account, lead and vendor name lists, plus rand
+    amounts, e-mail addresses, tokens and tax numbers, finds no remaining live counterparty data. Public tender
+    references (published procurement records), CRM schema identifiers (module, field and blueprint IDs) and product
+    catalogue record IDs are kept. All edited YAML and JSON files parse; Agent Workspace Validation and CTL-DEV-CHG-LOG-001
+    pass locally.
+  act_decision: null
+  task_complete: false
+evidence:
+- 'Repository boundary decision: governance/architecture/ADR-VS05-REPOSITORY-BOUNDARY-001.md'
+- 'Precedent: commit 0bdf84d5388200d44a95e35613b9522fe6a551b1 removed an operational CRM record from GitHub'
+- 'Control and validator: CTL-DEV-CHG-LOG-001; agent-workspace/scripts/validate_change_log.py'
+commit_sha: null
+pull_request: null
+notes: Removed values stay in the git history of this public repository and in older branches; this change cleans
+  the current main branch only. One evidence key in AC-MARC-MINING-BENCHMARK-REGISTER was renamed to drop a counterparty
+  name. Governed offering codes are unchanged so that they still match CRM.

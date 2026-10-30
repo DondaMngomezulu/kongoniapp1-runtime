@@ -12,7 +12,6 @@ canonical_role_rule: economic and contractual roles are effective-dated Party Ro
 assetco_party:
   legal_name: Somkhele Plant (Pty) Ltd
   registration_number: 2007/004283/07
-  tax_number: 9696029157
   phase_1_roles:
     - DealerCo
     - AssetCo

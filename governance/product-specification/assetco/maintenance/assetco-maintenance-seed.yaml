@@ -20,21 +20,14 @@ crm_product_specifications:
   - {code: AC-PS-MNT-TECH-001, crm_id: '5643538000008478013', status: Draft}
   - {code: AC-PS-MNT-CBM-001, crm_id: '5643538000008478014', status: Draft}
 crm_product_offerings:
+  # Customer-specific offering records are held in Zoho CRM (ProductOfferings) and read at run time.
   - code: AC-OFR-ZIZ-MNT-54M-001
-    crm_id: '5643538000008464733'
-    name: Zizwe 54M Full Maintenance Program — RFQ Conforming
     product_specification: AC-PS-MNT-FULL-001
     term_months: 54
-    valid_from: 2027-03-01
-    valid_to: 2031-08-31
     status: Draft
   - code: AC-OFR-ZIZ-MNT-36M-001
-    crm_id: '5643538000008464734'
-    name: Zizwe 36M Full Maintenance Program — Purchase Option Alternative
     product_specification: AC-PS-MNT-FULL-001
     term_months: 36
-    valid_from: 2027-03-01
-    valid_to: 2030-02-28
     status: Draft
 mimosa_seed_summary:
   source_machine_identity: XE750GK in demand register; source note references XE800GK LCC
@@ -43,8 +36,9 @@ mimosa_seed_summary:
   lube_demand_lines: 6
   total_occurrences: 847
   labour_hours_recorded: 1119
-  repair_lifecycle_cost_zar: 14597466.25366574
-  repair_cost_per_operating_hour_zar: 486.58220845552466
+  repair_lifecycle_cost_zar: null
+  repair_cost_per_operating_hour_zar: null
+  cost_value_locus: Held in the source register VMG-AIM-FCT-001, outside the repository; values are not published here.
   largest_cost_bucket: Undercarriage
   mapping_counts:
     MNT-PM-005_Filter_Replacement: 13

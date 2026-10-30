@@ -10,8 +10,9 @@
   "summary": {
     "repair_maintenance_task_rows": 59,
     "lubricant_demand_rows": 6,
-    "repair_lifecycle_cost_r": 14597466.253665742,
-    "repair_cost_per_operating_hour_r": 486.5822084555247,
+    "repair_lifecycle_cost_r": null,
+    "repair_cost_per_operating_hour_r": null,
+    "cost_value_locus": "Held in the source register VMG-AIM-FCT-001, outside the repository; values are not published here.",
     "recorded_labour_hours": 1119.0,
     "unmonetised_labour_rows": 56,
     "unpriced_lubricant_rows": 6,
