@@ -94,6 +94,6 @@ def decision(
         authoritative_match, document_authenticity, crm_match
     ):
         return ValidationResult(Status.REJECTED, checks, "failed_required_check")
-    if None in (authoritative_match, document_authenticity, crm_match):
+    if structural.status != Status.MANUAL_REVIEW_REQUIRED or None in (authoritative_match, document_authenticity, crm_match):
         return ValidationResult(Status.MANUAL_REVIEW_REQUIRED, checks, "incomplete_evidence")
     return ValidationResult(Status.VERIFIED, checks, "all_required_checks_passed")
