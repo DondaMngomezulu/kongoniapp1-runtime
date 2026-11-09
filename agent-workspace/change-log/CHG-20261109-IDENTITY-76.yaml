@@ -1,0 +1,40 @@
+change_id: CHG-20261109-IDENTITY-76
+timestamp_utc: '2026-11-09T17:30:00Z'
+actor:
+  type: ChatGPT
+  name: ChatGPT
+  agent_contract_ref: null
+mandate_ref: 'User instruction: promote and continue identity validation stack'
+accountability_task_ref: 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/76'
+task_class: T2
+change_type: source_code
+summary: 'Python identity validation foundation, fail-closed onboarding gates, CRM update planning and synthetic CI tests'
+reason: 'Provide auditable development foundation while preventing unverified access activation'
+affected_paths:
+  - '.github/workflows/identity-validation-tests.yml'
+  - 'identity_validation/README.md'
+  - 'identity_validation/crm_adapter.py'
+  - 'identity_validation/enrollment.py'
+  - 'identity_validation/orchestrator.py'
+  - 'identity_validation/schemas/verification-evidence.schema.json'
+  - 'identity_validation/validator.py'
+  - 'tests/test_identity_crm_adapter.py'
+  - 'tests/test_identity_enrollment.py'
+  - 'tests/test_identity_orchestrator.py'
+  - 'tests/test_identity_validator.py'
+environment: development
+authority:
+  status: AUTHORISED
+  reference: 'User development instruction; production approval not granted'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: false
+  check_study_result: 'Synthetic identity validation CI run 42665314825 succeeded; external provider, OCR, security and production acceptance outstanding'
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/77'
+  - 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/actions/runs/42665314825'
+commit_sha: null
+pull_request: 77
+notes: 'Development only; no CRM writes or PIN provisioning; independent security and integration review pending'

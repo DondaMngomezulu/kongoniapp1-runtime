@@ -1,0 +1,24 @@
+name: Identity validation checks
+on:
+  pull_request:
+    paths:
+      - 'identity_validation/**'
+      - 'tests/test_identity_*.py'
+      - '.github/workflows/identity-validation-tests.yml'
+  push:
+    branches:
+      - feature/identity-validation-stack-76
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python sources
+        run: python -m compileall -q identity_validation tests
+      - name: Execute synthetic unit tests
+        run: python -m unittest discover -s tests -p 'test_identity_*.py' -v
