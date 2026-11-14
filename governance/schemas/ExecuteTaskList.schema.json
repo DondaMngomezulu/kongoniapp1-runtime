@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:schema:execute-task-list:1.0",
+  "title": "Execute Task List Canonical Task",
+  "type": "object",
+  "required": [
+    "EnterpriseActionId",
+    "Title",
+    "ActionClassCode",
+    "ActionPurposeCode",
+    "AccountableOwner",
+    "PriorityCode",
+    "LifecycleStateCode",
+    "PDCACycleId",
+    "OpenedDate",
+    "SourceReference",
+    "RegisterName",
+    "CanonicalFlag"
+  ],
+  "properties": {
+    "EnterpriseActionId": {"type": "string", "minLength": 1, "maxLength": 80},
+    "RecordUuid": {"type": "string", "format": "uuid"},
+    "RegisterName": {"const": "Execute Task List"},
+    "CanonicalFlag": {"const": true},
+    "Title": {"type": "string", "minLength": 1, "maxLength": 255},
+    "ActionClassCode": {"type": "string", "minLength": 1},
+    "ActionPurposeCode": {"type": "string", "minLength": 1},
+    "TaskTypeCode": {"type": ["string", "null"]},
+    "MaterialityClass": {"enum": ["T0", "T1", "T2", "T3", null]},
+    "PriorityCode": {"type": "string", "minLength": 1},
+    "AccountableOwner": {"type": "string", "minLength": 1},
+    "CoordinatingAgent": {"type": ["string", "null"]},
+    "ValueStreamCode": {"type": ["string", "null"]},
+    "LegalEntityCode": {"type": ["string", "null"]},
+    "OpenedDate": {"type": "string", "format": "date"},
+    "DueDate": {"type": ["string", "null"], "format": "date"},
+    "ClosedDate": {"type": ["string", "null"], "format": "date"},
+    "LifecycleStateCode": {"type": "string", "minLength": 1},
+    "SourceStatus": {"type": "string"},
+    "PDCACycleId": {"type": "string", "minLength": 1},
+    "SourceReference": {"type": "string", "minLength": 1},
+    "SourceSystemCode": {"type": ["string", "null"]},
+    "SourceObjectType": {"type": ["string", "null"]},
+    "SourceObjectId": {"type": ["string", "null"]},
+    "SourceObjectUrl": {"type": ["string", "null"]},
+    "CompletionCriteria": {"type": ["string", "null"]},
+    "EvidenceRequirement": {"type": ["string", "null"]},
+    "DependencyTaskIdsJson": {
+      "type": ["array", "null"],
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "ExecutionBindingsJson": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": ["system", "object_type", "object_id", "role"],
+        "properties": {
+          "system": {"type": "string"},
+          "object_type": {"type": "string"},
+          "object_id": {"type": "string"},
+          "uri": {"type": ["string", "null"]},
+          "role": {"enum": ["SOURCE", "EXECUTION", "EVIDENCE", "NOTIFICATION"]},
+          "observed_state": {"type": ["string", "null"]},
+          "sync_direction": {"enum": ["INBOUND", "OUTBOUND", "BIDIRECTIONAL", "NONE"]},
+          "last_observed_at": {"type": ["string", "null"], "format": "date-time"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "ReconciliationState": {
+      "enum": ["UNRECONCILED", "LINKED", "MATCHED", "EXCEPTION", "CLOSED_RECONCILED"]
+    },
+    "LastReconciledAt": {"type": ["string", "null"], "format": "date-time"},
+    "ReconciliationExceptions": {"type": ["array", "null"]}
+  },
+  "additionalProperties": true
+}

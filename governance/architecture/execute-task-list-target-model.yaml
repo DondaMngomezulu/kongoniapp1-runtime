@@ -1,0 +1,86 @@
+architecture_id: ARCH-EXEC-TASK-001
+version: 1.0
+status: development_implemented
+name: Execute Task List Target Model
+
+canonical_register:
+  name: Execute Task List
+  runtime_platform: Zoho Catalyst
+  project: Kongoniapp1
+  environment: Development
+  datastore_table: EnterpriseAction
+  persistent_id: EnterpriseActionId
+
+systems:
+  authoritative_task_register:
+    - Execute Task List
+  source_and_execution_systems:
+    - Zoho CRM
+    - Zoho Projects
+    - GitHub
+    - Zoho Catalyst
+    - Gmail
+    - Google Calendar
+    - Zoho Sign
+    - other governed systems
+
+flow:
+  - source_event
+  - candidate_task
+  - identity_resolution
+  - duplicate_check
+  - canonical_task_create_or_link
+  - execution_binding
+  - execution
+  - evidence_capture
+  - check_study
+  - act
+  - authoritative_closure
+
+identity:
+  enterprise_task_id: EnterpriseActionId
+  real_world_rule: one real-world task resolves to one canonical task id
+  source_ids: non_authoritative_link_keys
+  legacy_ids: retained_for_traceability
+
+runtime_fields_added_2026_08_22:
+  - RegisterName
+  - TaskTypeCode
+  - MaterialityClass
+  - ValueStreamCode
+  - LegalEntityCode
+  - CompletionCriteria
+  - EvidenceRequirement
+  - ReconciliationState
+  - LastReconciledAt
+  - CanonicalFlag
+  - SourceSystemCode
+  - SourceObjectType
+  - SourceObjectId
+  - SourceObjectUrl
+  - ExecutionBindingsJson
+  - DependencyTaskIdsJson
+  - ReconciliationExceptions
+
+constraint:
+  catalyst_table_limit: >-
+    A normalized ExecuteTaskExternalBinding table could not be created because the
+    Catalyst datastore table limit was reached. Multiple source/execution bindings
+    are therefore stored as governed JSON within the canonical EnterpriseAction row.
+  remediation: >-
+    Normalize execution bindings later only if datastore capacity is increased or an
+    existing redundant table is retired under separate controlled migration.
+
+migration:
+  old_display_name: MY Task List
+  new_display_name: Execute Task List
+  existing_enterprise_action_rows: retained
+  backfill:
+    RegisterName: Execute Task List
+    CanonicalFlag: true
+    ReconciliationState: UNRECONCILED
+  source_reconciliation_required: true
+
+production:
+  changed: false
+  explicit_production_approval_required: true
