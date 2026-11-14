@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ENG-S01-QUOTATION ComposeDraft Response",
+  "type": "object",
+  "required": ["engine_id", "engine_version", "schema_version", "draft_id", "correlation_id", "tenant_id", "quote_type", "currency", "totals", "lines", "gate_checks", "ai_review", "release_blockers", "review_status", "customer_issue_authorised", "crm_write_authorised", "provenance", "crm_draft_candidate"],
+  "properties": {
+    "engine_id": { "const": "ENG-S01-QUOTATION" },
+    "engine_version": { "type": "string" },
+    "schema_version": { "const": "1.0" },
+    "draft_id": { "type": "string", "pattern": "^QPREVIEW-[0-9a-f]{20}$" },
+    "correlation_id": { "type": "string" },
+    "tenant_id": { "type": "string" },
+    "quote_type": { "enum": ["CASH_SALE", "OPERATING_LEASE", "DRY_RENTAL"] },
+    "currency": { "const": "ZAR" },
+    "totals": { "type": "object", "required": ["ONE_TIME", "FIXED_MONTHLY", "HOURLY_VARIABLE", "ESTIMATED_MONTHLY"],
+      "properties": {
+        "ONE_TIME": { "$ref": "#/$defs/amount" },
+        "FIXED_MONTHLY": { "$ref": "#/$defs/amount" },
+        "HOURLY_VARIABLE": { "$ref": "#/$defs/amount" },
+        "ESTIMATED_MONTHLY": { "$ref": "#/$defs/amount" }
+      } },
+    "lines": { "type": "array", "items": { "type": "object", "required": ["line_id", "product_id", "amount_ex_tax_minor", "tax_minor", "amount_inc_tax_minor"] } },
+    "gate_checks": { "type": "array", "items": { "type": "object" } },
+    "ai_review": { "type": "object" },
+    "release_blockers": { "type": "array", "items": { "type": "string" } },
+    "review_status": { "enum": ["HOLD", "READY_FOR_INTERNAL_REVIEW"] },
+    "customer_issue_authorised": { "const": false },
+    "crm_write_authorised": { "const": false },
+    "provenance": { "type": "object" },
+    "crm_draft_candidate": { "type": "object" }
+  },
+  "$defs": { "amount": { "type": "object", "required": ["ex_tax_minor", "tax_minor", "inc_tax_minor"],
+    "properties": { "ex_tax_minor": { "type": "integer", "minimum": 0 },
+      "tax_minor": { "type": "integer", "minimum": 0 }, "inc_tax_minor": { "type": "integer", "minimum": 0 } } } }
+}

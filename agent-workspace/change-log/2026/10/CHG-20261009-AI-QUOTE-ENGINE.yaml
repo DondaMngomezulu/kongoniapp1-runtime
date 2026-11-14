@@ -1,0 +1,62 @@
+change_id: CHG-20261009-AI-QUOTE-ENGINE
+timestamp_utc: '2026-10-09T04:01:37Z'
+actor:
+  type: ChatGPT
+  name: GPT-6
+  agent_contract_ref: null
+mandate_ref: 'User instruction on 2026-10-09: Please create an AI Native Quote Generation Engine.'
+accountability_task_ref: null
+task_class: T2
+change_type: source_code
+summary: Create governed development-only ENG-S01-QUOTATION quote composition and AI proposal boundary.
+reason: >-
+  Reuse the candidate Equipment Quotation Engine ID and deliver a deterministic, testable
+  quotation preview with controlled input/output contracts, separated billing bases,
+  source provenance, CRM read/write boundary and fail-closed human approval gates.
+affected_paths:
+  - functions/kongoni_quote_generation_engine/lib/engine.cjs
+  - functions/kongoni_quote_generation_engine/lib/intent.cjs
+  - functions/kongoni_quote_generation_engine/lib/crm.cjs
+  - functions/kongoni_quote_generation_engine/index.js
+  - functions/kongoni_quote_generation_engine/catalyst-config.json
+  - functions/kongoni_quote_generation_engine/package.json
+  - functions/kongoni_quote_generation_engine/schema/quote-request.schema.json
+  - functions/kongoni_quote_generation_engine/schema/quote-response.schema.json
+  - functions/kongoni_quote_generation_engine/test/engine.test.cjs
+  - functions/kongoni_quote_generation_engine/test/handler.test.cjs
+  - functions/kongoni_quote_generation_engine/examples/cash_sale_request.json
+  - functions/kongoni_quote_generation_engine/examples/cash_sale_preview.json
+  - functions/kongoni_quote_generation_engine/examples/operating_lease_request.json
+  - functions/kongoni_quote_generation_engine/examples/operating_lease_preview.json
+  - functions/kongoni_quote_generation_engine/README.md
+  - agent-workspace/services/SRV-VS01-QUOTE-001/service-specification.yaml
+  - agent-workspace/services/SRV-VS01-QUOTE-001/openapi.yaml
+  - agent-workspace/architecture/REG-ARCH-MICROSVC-001/amendments/MS-VS01-QUOTATION-001-add.yaml
+  - .github/workflows/quote-engine-contract-test.yml
+  - catalyst.json
+  - functions/kongoni_quote_generation_engine/lib/crm-source.cjs
+  - functions/kongoni_quote_generation_engine/lib/templates.cjs
+  - functions/kongoni_quote_generation_engine/test/crm-source.test.cjs
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'User instruction 2026-10-09 authorises draft design and development source only; no production deployment, CRM write, model data processing or customer issue authority.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 'Initial offline tests passed; new read-only CRM source adapter and template binding tests submitted to GitHub CI. Live managed OAuth runtime and AI integration not verified.'
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'CatalystRepositoryIndex 86824000000409703: KEA-MOD-HS-001 v0.1 hash e989c6a984b9ef3d1bcca02e31ceda8b50687124d7cb40c5957c40864f1c7526, status ACTIVE_G2_BASELINE_CANDIDATE.'
+  - 'Catalyst EnterpriseEngineCatalog contains ENG-S01-QUOTATION Candidate/P2; no duplicate row created.'
+  - 'Existing GitHub .catalystrc and catalyst.json linked to Catalyst project Kongoniapp1 86824000000020001.'
+  - 'Eighteen offline synthetic Node unit and transport cases passed for cash, lease, rental, separation, AI authority, tenant mismatch, missing approvals, deterministic calculation and invalid data.'
+  - 'Two synthetic scenario request/response pairs structurally validated against Draft 2020-12 JSON Schema.'
+  - 'Read-only CRM Quotes, Quoted_Items, ProductOfferingPrices and ProductOfferings metadata verified 9 October 2026; customer-specific price approval alone is not evidence of approved source or terms.'
+  - 'No CRM writes, no customer communication and no Production deployment in this change.'
+notes: >-
+  The repository is public: only synthetic examples and implementation code were committed.
+  CRM Quoted_Items metadata and template identifiers were verified using live read-only CRM APIs.
+  A read-only CRM source adapter is now implemented as a testable library, but is NOT wired to a publicly callable endpoint or live credentials; live OAuth readback is unverified.
+  No CRM writes, customer issue or model processing permitted. Do not promote without approval.

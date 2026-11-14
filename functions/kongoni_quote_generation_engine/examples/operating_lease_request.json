@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "request_id": "SYN-QUOTE-OPERATING_LEASE",
+  "tenant_id": "SYNTHETIC-TENANT",
+  "deal_id": "SYNTHETIC-DEAL",
+  "account_id": "SYNTHETIC-ACCOUNT",
+  "quote_type": "OPERATING_LEASE",
+  "currency": "ZAR",
+  "subject": "Synthetic training-only equipment quote",
+  "quote_date": "2026-10-09",
+  "valid_until": "2026-10-23",
+  "provenance": {
+    "source_system": "Zoho CRM",
+    "snapshot_id": "SYN-SNAPSHOT-001",
+    "catalogue_version": "SYN-1",
+    "policy_version": "SYN-1",
+    "document_template_id": "SYN-TEMPLATE-001"
+  },
+  "lines": [
+    {
+      "line_id": "SYN-FIXED",
+      "product_id": "SYN-EXC-FIXED",
+      "quantity": 1,
+      "basis": "FIXED_MONTHLY",
+      "unit_price_minor": 1500000,
+      "price_status": "APPROVED",
+      "price_source_ref": "SYN-LEASE-01",
+      "price_rule_version": "SYN-1",
+      "tax_rate_bps": 1500,
+      "tax_source_ref": "SYN-TAX-01"
+    },
+    {
+      "line_id": "SYN-VARIABLE",
+      "product_id": "SYN-EXC-HOURLY",
+      "quantity": 1,
+      "basis": "HOURLY_VARIABLE",
+      "unit_price_minor": 45000,
+      "planned_hours_per_unit": 100,
+      "price_status": "APPROVED",
+      "price_source_ref": "SYN-LEASE-02",
+      "price_rule_version": "SYN-1",
+      "tax_rate_bps": 1500,
+      "tax_source_ref": "SYN-TAX-01"
+    }
+  ],
+  "gates": {
+    "catalogue": true,
+    "pricing": true,
+    "tax": true,
+    "commercial_terms": true,
+    "counterparty": true,
+    "stock": true,
+    "issuer": true,
+    "document_template": true,
+    "credit": true,
+    "legal": true,
+    "lifecycle_cost": true,
+    "finance": true
+  },
+  "gate_evidence": {
+    "catalogue": "SYN-EVIDENCE-CATALOGUE",
+    "pricing": "SYN-EVIDENCE-PRICING",
+    "tax": "SYN-EVIDENCE-TAX",
+    "commercial_terms": "SYN-EVIDENCE-COMMERCIAL_TERMS",
+    "counterparty": "SYN-EVIDENCE-COUNTERPARTY",
+    "stock": "SYN-EVIDENCE-STOCK",
+    "issuer": "SYN-EVIDENCE-ISSUER",
+    "document_template": "SYN-EVIDENCE-DOCUMENT_TEMPLATE",
+    "credit": "SYN-EVIDENCE-CREDIT",
+    "legal": "SYN-EVIDENCE-LEGAL",
+    "lifecycle_cost": "SYN-EVIDENCE-LIFECYCLE_COST",
+    "finance": "SYN-EVIDENCE-FINANCE"
+  }
+}

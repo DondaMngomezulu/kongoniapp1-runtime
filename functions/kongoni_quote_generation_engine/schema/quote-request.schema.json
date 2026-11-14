@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ENG-S01-QUOTATION ComposeDraft Request",
+  "description": "Development-only source-snapshot contract. Snapshot is UNTRUSTED until independently re-read via an approved CRM connection.",
+  "type": "object",
+  "required": ["schema_version", "request_id", "tenant_id", "deal_id", "account_id", "quote_type", "currency", "subject", "quote_date", "valid_until", "provenance", "lines", "gates", "gate_evidence"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "request_id": { "$ref": "#/$defs/identifier" },
+    "tenant_id": { "$ref": "#/$defs/identifier" },
+    "deal_id": { "$ref": "#/$defs/identifier" },
+    "account_id": { "$ref": "#/$defs/identifier" },
+    "quote_type": { "enum": ["CASH_SALE", "OPERATING_LEASE", "DRY_RENTAL"] },
+    "currency": { "const": "ZAR" },
+    "subject": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "quote_date": { "type": "string", "format": "date" },
+    "valid_until": { "type": "string", "format": "date" },
+    "provenance": {
+      "type": "object", "required": ["source_system", "snapshot_id", "catalogue_version", "policy_version", "document_template_id"],
+      "properties": {
+        "source_system": { "const": "Zoho CRM" },
+        "snapshot_id": { "$ref": "#/$defs/identifier" },
+        "catalogue_version": { "$ref": "#/$defs/identifier" },
+        "policy_version": { "$ref": "#/$defs/identifier" },
+        "document_template_id": { "$ref": "#/$defs/identifier" }
+      }, "additionalProperties": false
+    },
+    "lines": { "type": "array", "minItems": 1, "maxItems": 100, "items": { "$ref": "#/$defs/line" } },
+    "gates": { "type": "object", "additionalProperties": { "type": "boolean" } },
+    "gate_evidence": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": { "type": "string", "minLength": 1, "maxLength": 120, "pattern": "^[A-Za-z0-9_.:/-]+$" },
+    "line": {
+      "type": "object",
+      "required": ["line_id", "product_id", "quantity", "basis", "unit_price_minor", "price_status", "price_source_ref", "price_rule_version", "tax_rate_bps", "tax_source_ref"],
+      "properties": {
+        "line_id": { "$ref": "#/$defs/identifier" },
+        "product_id": { "$ref": "#/$defs/identifier" },
+        "quantity": { "type": "integer", "minimum": 1, "maximum": 100000 },
+        "basis": { "enum": ["ONE_TIME", "FIXED_MONTHLY", "HOURLY_VARIABLE"] },
+        "unit_price_minor": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+        "price_status": { "const": "APPROVED" },
+        "price_source_ref": { "$ref": "#/$defs/identifier" },
+        "price_rule_version": { "$ref": "#/$defs/identifier" },
+        "tax_rate_bps": { "type": "integer", "minimum": 0, "maximum": 10000 },
+        "tax_source_ref": { "$ref": "#/$defs/identifier" },
+        "planned_hours_per_unit": { "type": "integer", "minimum": 0, "maximum": 100000 }
+      }, "additionalProperties": false,
+      "allOf": [ { "if": { "properties": { "basis": { "const": "HOURLY_VARIABLE" } }, "required": ["basis"] },
+        "then": { "required": ["planned_hours_per_unit"] },
+        "else": { "not": { "required": ["planned_hours_per_unit"] } } } ]
+    }
+  }
+}

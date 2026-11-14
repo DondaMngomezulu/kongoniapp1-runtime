@@ -1,0 +1,168 @@
+{
+  "engine_id": "ENG-S01-QUOTATION",
+  "engine_version": "0.1.0",
+  "schema_version": "1.0",
+  "draft_id": "QPREVIEW-f1e5d537fb200f4b85fb",
+  "correlation_id": "SYN-QUOTE-CASH_SALE",
+  "tenant_id": "SYNTHETIC-TENANT",
+  "quote_type": "CASH_SALE",
+  "quote_date": "2026-10-09",
+  "valid_until": "2026-10-23",
+  "currency": "ZAR",
+  "totals": {
+    "ONE_TIME": {
+      "ex_tax_minor": 30000000,
+      "tax_minor": 4500000,
+      "inc_tax_minor": 34500000
+    },
+    "FIXED_MONTHLY": {
+      "ex_tax_minor": 0,
+      "tax_minor": 0,
+      "inc_tax_minor": 0
+    },
+    "HOURLY_VARIABLE": {
+      "ex_tax_minor": 0,
+      "tax_minor": 0,
+      "inc_tax_minor": 0
+    },
+    "ESTIMATED_MONTHLY": {
+      "ex_tax_minor": 0,
+      "tax_minor": 0,
+      "inc_tax_minor": 0
+    }
+  },
+  "lines": [
+    {
+      "line_id": "SYN-L1",
+      "product_id": "SYN-EXC-101",
+      "quantity": 2,
+      "basis": "ONE_TIME",
+      "unit_price_minor": 15000000,
+      "planned_hours_per_unit": null,
+      "amount_ex_tax_minor": 30000000,
+      "tax_minor": 4500000,
+      "amount_inc_tax_minor": 34500000,
+      "price_source_ref": "SYN-PRICE-01",
+      "price_rule_version": "SYN-1",
+      "tax_source_ref": "SYN-TAX-01"
+    }
+  ],
+  "gate_checks": [
+    {
+      "gate": "catalogue",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-CATALOGUE"
+    },
+    {
+      "gate": "pricing",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-PRICING"
+    },
+    {
+      "gate": "tax",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-TAX"
+    },
+    {
+      "gate": "commercial_terms",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-COMMERCIAL_TERMS"
+    },
+    {
+      "gate": "counterparty",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-COUNTERPARTY"
+    },
+    {
+      "gate": "stock",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-STOCK"
+    },
+    {
+      "gate": "issuer",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-ISSUER"
+    },
+    {
+      "gate": "document_template",
+      "passed": true,
+      "evidence_ref": "SYN-EVIDENCE-DOCUMENT_TEMPLATE"
+    }
+  ],
+  "ai_review": {
+    "present": false,
+    "model_id": null,
+    "candidates": [],
+    "blocks": []
+  },
+  "release_blockers": [
+    "SOURCE_ADAPTER_NOT_VERIFIED"
+  ],
+  "review_status": "HOLD",
+  "customer_issue_authorised": false,
+  "crm_write_authorised": false,
+  "provenance": {
+    "source_system": "Zoho CRM",
+    "snapshot_id": "SYN-SNAPSHOT-001",
+    "catalogue_version": "SYN-1",
+    "policy_version": "SYN-1",
+    "document_template_id": "SYN-TEMPLATE-001",
+    "source_verified": false,
+    "result_hash": "f1e5d537fb200f4b85fb9b1f10d17161eca34ee01726f87c900ed5988f715e1f"
+  },
+  "crm_draft_candidate": {
+    "integration_state": "NOT_WRITE_READY",
+    "reason": "Quoted_Items subform/line-item field contract and managed CRM connection require verification",
+    "allowed_write_mode": "NONE",
+    "module": "Quotes",
+    "header": {
+      "Subject": "Synthetic training-only equipment quote",
+      "Deal_Name": {
+        "id": "SYNTHETIC-DEAL"
+      },
+      "Account_Name": {
+        "id": "SYNTHETIC-ACCOUNT"
+      },
+      "Quote_Date": "2026-10-09",
+      "Valid_Till": "2026-10-23",
+      "Quote_Stage": "Draft",
+      "Quote_State": "inProgress",
+      "Release_Status": "Pending"
+    },
+    "proposed_line_items": [
+      {
+        "product_id": "SYN-EXC-101",
+        "quantity": 2,
+        "billing_basis": "ONE_TIME",
+        "unit_price_minor": 15000000,
+        "planned_hours_per_unit": null,
+        "price_source_ref": "SYN-PRICE-01"
+      }
+    ],
+    "pricing_summary_minor": {
+      "ONE_TIME": {
+        "ex_tax_minor": 30000000,
+        "tax_minor": 4500000,
+        "inc_tax_minor": 34500000
+      },
+      "FIXED_MONTHLY": {
+        "ex_tax_minor": 0,
+        "tax_minor": 0,
+        "inc_tax_minor": 0
+      },
+      "HOURLY_VARIABLE": {
+        "ex_tax_minor": 0,
+        "tax_minor": 0,
+        "inc_tax_minor": 0
+      },
+      "ESTIMATED_MONTHLY": {
+        "ex_tax_minor": 0,
+        "tax_minor": 0,
+        "inc_tax_minor": 0
+      }
+    },
+    "source_request_id": "SYN-QUOTE-CASH_SALE",
+    "document_template_id": "SYN-TEMPLATE-001",
+    "approved_for_customer_issue": false
+  }
+}

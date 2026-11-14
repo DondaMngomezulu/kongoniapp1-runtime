@@ -1,13 +1,12 @@
 {
-	"functions": {
-		"source": "functions",
-		"targets": [
-			"kongoniapp1_health",
-			"kongoni_crm_connection_test"
-		],
-		"ignore": []
-	},
-	"client": {
-		"source": "client"
-	}
+  "functions": {
+    "source": "functions",
+    "targets": [
+      "kongoniapp1_health",
+      "kongoni_crm_connection_test",
+      "kongoni_quote_generation_engine"
+    ],
+    "ignore": []
+  },
+  "client": { "source": "client" }
 }

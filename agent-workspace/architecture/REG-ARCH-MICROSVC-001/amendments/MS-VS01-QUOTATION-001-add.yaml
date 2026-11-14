@@ -1,0 +1,34 @@
+amendment:
+  id: AMD-ARCH-MS-VS01-QUOTATION-001
+  status: PROPOSED_DEVELOPMENT_ONLY
+  register: REG-ARCH-MICROSVC-001
+  action: ADD
+  entry:
+    microservice_id: MS-VS01-QUOTATION-001
+    microservice_name: AI-Native Quote Generation Service
+    value_stream_id: VS01
+    value_stream_name: Asset Provision & Access
+    lifecycle_state: BUILDING
+    engine_code: ENG-S01-QUOTATION
+    source_domain_id: PENDING_TMF_BIAN_CROSSWALK
+    service_boundary: Governed quote draft assembly, not pricing, underwriting or customer communication
+    canonical_business_object: QuoteDraft
+    service_owner: VS01
+    service_specification_id: SRV-VS01-QUOTE-001
+    service_specification_status: DEVELOPMENT_PROPOSAL_NOT_APPROVED_FOR_RELEASE
+    key_operations: [ComposeQuoteDraft, AssessAIProposal, PrepareCRMDraftCandidate]
+    engineering_handover_status: ARCHITECTURE_GAP
+    target_platform: Zoho Catalyst
+    catalyst_project: Kongoniapp1
+    github_source_ref: agent-workspace/services/SRV-VS01-QUOTE-001/service-specification.yaml
+    catalyst_runtime_ref: null
+    development_status: SOURCE_CREATED_LOCAL_TESTS_ONLY
+    production_status: NOT_AUTHORISED
+    apqc_mapping_status: PENDING
+    coverage_state: ARCHITECTURE_GAP
+    test_status: LOCAL_UNIT_TESTS_ONLY
+    audit_status: REQUIRED
+    pdca_stage: DO
+    act_decision: null
+  approval_ref: null
+  note: Proposed architectural addition; does not mutate the DRAFT register or claim accepted source mappings.
