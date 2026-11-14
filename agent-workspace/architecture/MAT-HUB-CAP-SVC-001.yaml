@@ -1,0 +1,93 @@
+matrix_id: MAT-HUB-CAP-SVC-001
+title: Enterprise Hub Capability-to-Service Gap Matrix
+version: '0.1'
+status: DRAFT_FOR_CHECK_STUDY
+parent_capability_catalogue: CAT-HUB-CAP-001
+service_catalogue: CAT-HUB-SVC-001
+methodology: MET-PDCA-001
+findings:
+  implemented_or_platform_available:
+    - api_exposure
+    - workflow_and_process_orchestration
+    - service_composition
+    - structured_runtime_state
+    - object_storage
+    - authentication
+    - audit_and_change_governance
+    - authoritative_business_spokes
+  partial:
+    - policy_and_rule_governance
+    - authority_and_accountability_resolution
+    - reasoning_and_decision_services
+    - agent_and_model_routing
+    - semantic_resolution
+    - information_authority_and_provenance
+    - mcp_interfaces
+    - system_connectors_and_adapters
+    - state_synchronisation
+    - integration_observability
+    - digital_representation_binding
+    - security_and_identity
+    - resilience_and_recovery
+  genuine_gaps:
+    - gap_id: HUB-GAP-001
+      capability: canonical_identity_management
+      recommendation: Specify a technology-neutral Enterprise Identity and Binding Service.
+      priority: CRITICAL
+    - gap_id: HUB-GAP-002
+      capability: enterprise_policy_decision
+      recommendation: Specify one machine-executable Policy Decision Service that consumes governed rules and authority records.
+      priority: HIGH
+    - gap_id: HUB-GAP-003
+      capability: repository_routing_authority
+      recommendation: Implement CTL-DATA-REPO-ROUTE-001 as an executable Hub service using the Information Authority Matrix.
+      priority: HIGH
+    - gap_id: HUB-GAP-004
+      capability: enterprise_event_backbone
+      recommendation: Define canonical event transport semantics, routing, delivery guarantees and implementation options before selecting a platform.
+      priority: HIGH
+    - gap_id: HUB-GAP-005
+      capability: canonical_message_envelope
+      recommendation: Adopt a canonical enterprise message/event envelope and routing registry; CloudEvents is a candidate reference for events.
+      priority: HIGH
+    - gap_id: HUB-GAP-006
+      capability: integration_connector_catalogue
+      recommendation: Create a governed catalogue of connectors, supported protocols, identities, schemas, permissions and health state.
+      priority: HIGH
+    - gap_id: HUB-GAP-007
+      capability: integration_reliability_control
+      recommendation: Define enterprise idempotency, retry, timeout, circuit-breaker and dead-letter controls.
+      priority: HIGH
+    - gap_id: HUB-GAP-008
+      capability: canonical_spoke_resource_registry
+      recommendation: Create a registry for spokes/resources, enterprise IDs, endpoints, capabilities, ownership, health and authority role.
+      priority: HIGH
+    - gap_id: HUB-GAP-009
+      capability: cross_platform_orchestration_abstraction
+      recommendation: Define orchestration contracts independent of Catalyst Circuits or any other workflow engine.
+      priority: MEDIUM
+    - gap_id: HUB-GAP-010
+      capability: cross_platform_observability
+      recommendation: Define a common logs/metrics/traces/evidence model across Hub services and spokes.
+      priority: MEDIUM
+  duplication_risks:
+    - risk: Semantic capability is represented across multiple Catalyst semantic tables and GitHub architecture artifacts.
+      treatment: Preserve source authorities but rationalise service ownership and runtime interface; do not collapse healthy relational semantics.
+    - risk: Tool and MCP registers overlap in naming and scope.
+      treatment: Maintain distinct capability-group and tool-instance concepts, but bind them through one Hub service-discovery model.
+    - risk: Governance rules exist as documents, tables and runtime controls.
+      treatment: Separate rule authority from executable decision service; prohibit competing policy authorities.
+engineering_sequence:
+  - HUB-GAP-001
+  - HUB-GAP-002
+  - HUB-GAP-003
+  - HUB-GAP-008
+  - HUB-GAP-006
+  - HUB-GAP-007
+  - HUB-GAP-004
+  - HUB-GAP-005
+  - HUB-GAP-009
+  - HUB-GAP-010
+check_study_result: PASS_WITH_MATERIAL_HUB_SERVICE_GAPS
+act_recommendation: ADAPT
+closure_rule: DO_COMPLETE != TASK_COMPLETE

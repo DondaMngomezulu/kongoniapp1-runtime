@@ -1,0 +1,32 @@
+change_id: CHG-20260819-HUB-RAMI-CAPABILITY-MODEL
+timestamp_utc: '2026-08-19T07:24:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO instructed use of RAMI layers as the guide for decomposing the adopted Enterprise Hub brain-and-nervous-system architecture on 2026-08-19.'
+task_class: T2
+change_type: architecture
+summary: Add a RAMI-guided Enterprise Hub Capability Catalogue and crosswalk current services to identify genuine Hub service gaps.
+reason: Provide a standards-grounded capability decomposition for the logical Hub while preventing technology platforms or RAMI layers from becoming accidental deployment boundaries.
+affected_paths:
+  - agent-workspace/architecture/CAT-HUB-CAP-001.yaml
+  - agent-workspace/architecture/CAT-HUB-SVC-001.yaml
+  - agent-workspace/architecture/MAT-HUB-CAP-SVC-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation on 2026-08-19.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: PASS_WITH_MATERIAL_HUB_SERVICE_GAPS
+  act_decision: null
+  task_complete: false
+evidence:
+  - 'STD-ARCH-HUB-SPOKE-001 v1.0 is merged on main and defines Hub = Brain + Nervous System.'
+  - 'CAT-HUB-CAP-001 classifies Business, Functional, Information, Communication, Integration and Asset layers using RAMI guidance.'
+  - 'Catalyst feature discovery confirms platform capabilities including API Gateway, Functions, AppSail, Circuits, Authentication, Logs, Data Store and Stratus.'
+  - 'Live Catalyst inventory confirms governed semantic, agent, tool/MCP, methodology, EDRMS, BIAN/APQC/MIMOSA, repository and execution-authority structures.'
+  - 'CAT-HUB-SVC-001 separates enterprise Hub services from the platforms that implement them.'
+  - 'MAT-HUB-CAP-SVC-001 identifies ten genuine enterprise service gaps and three duplication-risk families.'
+notes: 'CHECK/STUDY recommends ADAPT. Highest-priority gaps are canonical enterprise identity, machine-executable policy decisioning, repository routing authority, canonical spoke/resource registry, integration connector catalogue, reliability controls, event backbone and canonical message envelope. DO_COMPLETE != TASK_COMPLETE.'
