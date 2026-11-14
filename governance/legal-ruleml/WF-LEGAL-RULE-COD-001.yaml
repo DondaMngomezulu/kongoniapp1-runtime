@@ -1,0 +1,209 @@
+id: WF-LEGAL-RULE-COD-001
+name: Governed Legal Rule Codification & Reference Execution Workflow
+version: 1.0.0
+status: CONTROLLED_DRAFT
+owner: Reandra
+record_controller: Jane Seaward
+scope:
+  enterprise: Kongoni Group
+  applies_to:
+    - legal definitions
+    - agreement rules
+    - obligations
+    - permissions
+    - prohibitions
+    - constitutive legal statements
+    - regulated product legal classifications
+  interim_execution_environment:
+    - GitHub governed engineering repository
+    - ChatGPT Library governed reference artifacts
+  target_runtime_environment:
+    - Zoho Catalyst Legal Engine
+purpose: >-
+  Provide a reusable governed workflow for converting authoritative legal and regulatory
+  source material into traceable LegalRuleML representations, validating the representation,
+  executing controlled reference simulations before runtime deployment, recording objective
+  evidence, and handing the validated package to the Zoho Catalyst Legal Engine when available.
+methodology:
+  governing_methodology: MET-PDCA-001
+  canonical_loop:
+    - Mandate
+    - PLAN
+    - Authorisation
+    - DO
+    - Evidence
+    - CHECK_STUDY
+    - ACT
+    - Record
+    - Close_or_Replan
+  closure_rule: DO_COMPLETE != TASK_COMPLETE
+standards:
+  primary_machine_readable_standard: OASIS LegalRuleML 1.0
+  rule_semantics:
+    - obligation
+    - permission
+    - prohibition
+    - constitutive_statement
+  supporting_standards:
+    - ISO 704 terminology principles
+    - applicable governing law and regulation
+    - governed Kongoni semantic standards
+source_precedence:
+  - authoritative_law_or_regulation
+  - executed_or_approved_authoritative_agreement_or_policy
+  - governed_Kongoni_template_or_controlled_source
+  - licensed_industry_reference_where_permitted
+  - external_reference_standard
+  - derived_LegalRuleML_representation
+controls:
+  - LegalRuleML SHALL NOT replace the authoritative source.
+  - Every rule SHALL retain source traceability.
+  - Licensed or copyrighted clause text SHALL NOT be reproduced unless authorised.
+  - Derived rules SHALL be labelled as derived and SHALL identify their source basis.
+  - Reference execution SHALL NOT be represented as deployed runtime execution.
+  - Production promotion SHALL require successful validation, CHECK/STUDY evidence, and an ACT decision.
+workflow:
+  - stage: 1
+    name: Source Intake and Authority Resolution
+    inputs:
+      - authoritative_source
+      - source_version
+      - source_owner
+      - legal_or_regulatory_authority
+    outputs:
+      - controlled_source_binding
+      - provenance_record
+    gate: authoritative source and version resolved
+  - stage: 2
+    name: Legal Concept and Rule Classification
+    activities:
+      - identify parties and legal objects
+      - identify definitions and constitutive statements
+      - identify obligations
+      - identify permissions
+      - identify prohibitions
+      - identify conditions, triggers, exceptions and temporal constraints
+    outputs:
+      - rule_inventory
+      - concept_mapping
+  - stage: 3
+    name: LegalRuleML Codification
+    activities:
+      - create LegalSources bindings
+      - create controlled namespaces and identifiers
+      - encode statements using LegalRuleML and RuleML structures
+      - create source-to-rule associations
+    outputs:
+      - legalruleml_artifact
+      - mapping_artifact
+  - stage: 4
+    name: Schema and Structural Validation
+    activities:
+      - validate XML well-formedness
+      - validate against the applicable OASIS LegalRuleML schema profile where available
+      - validate identifiers and source associations
+    outputs:
+      - schema_validation_result
+      - structural_validation_result
+    gate: no unresolved structural error may be promoted
+  - stage: 5
+    name: Semantic and Legal Review
+    activities:
+      - compare rule meaning to authoritative source
+      - confirm no invented legal obligation or permission
+      - confirm legal classification and terminology
+      - record unresolved legal interpretation questions
+    outputs:
+      - semantic_validation_result
+      - legal_review_result
+  - stage: 6
+    name: Controlled Reference Execution
+    execution_mode: REFERENCE_SIMULATION
+    activities:
+      - execute representative rule scenarios in ChatGPT or other approved reference harness
+      - test positive, negative and boundary scenarios where applicable
+      - record observed versus expected outcomes
+    evidence_fields:
+      - simulation_run_id
+      - input
+      - observed_output
+      - expected_output
+      - assertions
+      - pass_flag
+      - policy_basis
+      - evidence_hash
+      - runtime_status
+    outputs:
+      - reference_execution_evidence
+  - stage: 7
+    name: CHECK/STUDY
+    activities:
+      - verify source fidelity
+      - verify schema and semantic conformance
+      - review regression impact
+      - verify evidence completeness
+      - confirm repository and record traceability
+    outputs:
+      - check_study_result
+      - exception_register_entries
+  - stage: 8
+    name: ACT
+    permitted_decisions:
+      - ADOPT
+      - ADAPT
+      - REPEAT
+      - REJECT
+      - ESCALATE
+    gate: material work remains open until a valid ACT decision exists
+  - stage: 9
+    name: Record and Controlled Publication
+    activities:
+      - register approved artifacts in governed legal content catalogue
+      - store LegalRuleML and mapping artifacts in governed repository
+      - update evidence and change records
+      - maintain authoritative-source references
+    outputs:
+      - registered_legal_rule_package
+      - audit_record
+  - stage: 10
+    name: Catalyst Runtime Handover
+    trigger: Zoho Catalyst Legal Engine runtime becomes available
+    activities:
+      - migrate validated rule package without semantic redesign
+      - bind runtime endpoint to governed artifacts
+      - replay reference scenarios in Catalyst
+      - compare Catalyst outputs to reference evidence
+      - record production-promotion decision
+    outputs:
+      - catalyst_runtime_binding
+      - runtime_regression_evidence
+      - production_promotion_decision
+artifact_contract:
+  mandatory_artifacts:
+    - '*.lrml or *.xml LegalRuleML artifact'
+    - '*_mapping.json'
+    - validation evidence
+    - reference execution evidence
+    - source provenance record
+    - ACT decision record
+  recommended_naming:
+    legalruleml: '<Subject>_LegalRuleML_v<version>.lrml'
+    mapping: '<Subject>_LegalRuleML_mapping_v<version>.json'
+    validation: '<Subject>_LegalRuleML_validation_v<version>.json'
+reference_precedent:
+  artifact_id: LRML-KIB-VEN-FAC-001
+  subject: Kiboko/Venduo Secured Term Facility
+  files:
+    - Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml
+    - Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_mapping_v0.1.json
+  precedent_use: structure and workflow precedent only; transaction-specific rules SHALL NOT be reused as generic legal content
+interim_rule:
+  statement: >-
+    Until the Zoho Catalyst Legal Engine runtime is deployed and validated, GitHub SHALL be the
+    governed engineering source for the workflow and LegalRuleML packages, while ChatGPT Library
+    MAY hold governed reference artifacts and reference-execution outputs. Any such execution SHALL
+    be labelled REFERENCE_SIMULATION and SHALL NOT be represented as production legal-engine execution.
+runtime_transition:
+  target_state: Zoho Catalyst Legal Engine
+  migration_principle: validated artifacts migrate; semantics are not re-authored during migration
+  retirement_condition: interim reference-execution designation may be retired only after Catalyst replay passes regression and the ACT decision authorises runtime adoption
