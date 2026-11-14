@@ -1,6 +1,7 @@
 control_id: CTL-APP-AUTH-BOUNDARY-001
-version: '0.3'
+version: '0.4'
 status: DRAFT
+as_of: '2026-10-09'
 purpose: Define one authoritative application per governed state dimension for microservice architecture and engineering handover.
 rule: >-
   Each governed state dimension SHALL have one authoritative application. Projections, caches,
@@ -62,3 +63,39 @@ storage_rule:
 handover_requirement: >-
   Every microservice handover SHALL identify authoritative systems for each state dimension it reads,
   writes or projects and SHALL define integration behaviour at each authority boundary.
+
+agreement_computability_authority:
+  profile_ref: PRF-AGR-COMPUTABLE-001
+  decision_ref: ADR-COMP-AGR-001
+  status: PROPOSED_FOR_REVIEW
+  applies_to: Every governed agreement when an applicability assessment identifies machine-readable or executable obligations.
+  executed_legal_instrument:
+    authority: Current approved document repository for the agreement class and matter.
+    requirement: Preserve the exact signed original, signatures, version lineage, legal effect and source hash.
+    forbidden: GitHub source code, generated XML, ACTUS schedules or typed logic SHALL NOT silently amend, replace or cancel the signed agreement.
+  agreement_metadata:
+    authority: Current governed agreement and enterprise party registers; CRM only for the commercial state it already owns.
+    rule: Canonical contract and party identifiers SHALL bind to source records rather than becoming competing masters.
+  contract_representation_and_rules:
+    authority: Version-controlled GitHub engineering definitions, subject to legal review and governed evidence publication.
+    rule: LegalDocML, LegalRuleML, typed logic, ACTUS and their test results are derivative artefacts, not executed legal instruments.
+  financial_events:
+    model: ACTUS for supported financial algorithms, with verified risk-factor inputs and contractual event history.
+    actual_accounting_authority: Zoho Books and source bank/payment evidence under existing controls.
+    rule: Predicted or simulated ACTUS cash flows SHALL NOT automatically post to the accounting ledger.
+  execution_and_permissions:
+    authority: Approved policy and authorisation controls in the Hub/Catalyst orchestration plane.
+    prohibited_automatic_effects:
+      - legal_signing_or_execution
+      - amendment_novation_cession_or_discharge
+      - waiver_or_election_of_legal_right
+      - conversion_or_issue_of_shares
+      - bank_payment_or_funding_commitment
+      - legally_effective_notice_or_enforcement
+    rule: Proposed effects are review-only unless a separate evidenced mandate, requisite approvals and controlled gateway specifically authorise the action.
+  cross_agreement_boundary: >
+    Separate agreements SHALL retain independent identity, parties, dates, obligations and accounting evidence.
+    Consolidation, substitution, offset, extension or discharge requires a separately evidenced legally effective act.
+  storage_and_publication: >
+    This GitHub repository is public; private signed agreements, customer data, privileged advice,
+    banking details and live financial schedules SHALL NOT be committed here.

@@ -1,5 +1,5 @@
 profile_id: PRF-ARCH-MICROSVC-HO-001
-version: '0.1'
+version: '0.2'
 status: DRAFT
 name: Microservice Engineering Handover Profile
 owner_skill: SKL-GH-MICROSVC-ARCH-001
@@ -65,6 +65,25 @@ entry_requirements:
   application_authority_mapping:
     required: true
     rule: Each state dimension must have one authoritative system; projections may not become competing masters.
+  agreement_computability_profile:
+    required: conditional
+    condition: >
+      The service ingests, drafts, represents, calculates, decides or executes obligations
+      from a governed agreement or contract template.
+    reference_profile: PRF-AGR-COMPUTABLE-001
+    status: PROPOSED_FOR_REVIEW
+    minimum:
+      - agreement_class_and_applicability_decision
+      - immutable_signed_source_and_amendment_chain
+      - clause_to_data_rule_and_financial_event_traceability
+      - legal_document_and_legal_rule_schema_coverage_or_gap
+      - contract_execution_logic_and_approval_gate
+      - actual_vs_forecast_event_and_authority_separation
+      - technical_and_legal_review_and_test_evidence
+    handover_blocker: >
+      A proposed profile SHALL NOT be represented as adopted. Unresolved source identity,
+      unsupported legal effect, missing required consent, ambiguous legal interpretation,
+      financial reconciliation or prohibited automatic action blocks production execution.
   security_design:
     required: true
     requirements:
