@@ -1,0 +1,24 @@
+name: Candidate Message Mapping Regression
+on:
+  pull_request:
+    paths:
+      - 'governance/message-schemas/**'
+      - '.github/workflows/message-mapping-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/message-schemas/**'
+      - '.github/workflows/message-mapping-regression.yml'
+jobs:
+  message-mapping-regression:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'jsonschema[format]>=4,<5'
+      - run: python governance/message-schemas/tests/test_crm_template_bindings.py
+      - run: python governance/message-schemas/tests/test_canonical_event_envelope.py

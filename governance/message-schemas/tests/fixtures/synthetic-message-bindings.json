@@ -1,0 +1,57 @@
+[
+  {
+    "bindingId": "SB-0001",
+    "documentCode": "BDT-1006",
+    "schemaId": "BDT-L1-UBL-060",
+    "schemaVersion": "2.4",
+    "crmModule": "Quotes",
+    "crmField": "Quoted_Items",
+    "mappingKind": "SUBFORM",
+    "observedFieldType": "subform",
+    "releaseGate": "BLOCKED_PENDING_RUNTIME_AND_APPROVAL"
+  },
+  {
+    "bindingId": "SB-0002",
+    "documentCode": "BDT-1022",
+    "schemaId": "BDT-L1-UBL-019",
+    "schemaVersion": "2.4",
+    "crmModule": "EquipmentAssets",
+    "crmField": "Name",
+    "mappingKind": "IDENTITY_RESOLVER",
+    "observedFieldType": "text",
+    "releaseGate": "BLOCKED_PENDING_RUNTIME_AND_APPROVAL"
+  },
+  {
+    "bindingId": "SB-0003",
+    "documentCode": "BDT-1036",
+    "schemaId": "BDT-L1-UBL-043",
+    "schemaVersion": "2.4",
+    "crmModule": "BusinessDocumentTypes",
+    "crmField": "Document_Type_ID",
+    "mappingKind": "IDENTITY_RESOLVER",
+    "observedFieldType": "autonumber",
+    "releaseGate": "BLOCKED_PENDING_RUNTIME_AND_APPROVAL"
+  },
+  {
+    "bindingId": "SB-0004",
+    "documentCode": "BDT-1037",
+    "schemaId": "BDT-L1-UBL-043",
+    "schemaVersion": "2.4",
+    "crmModule": "CustomerDocuments",
+    "crmField": "Business_Document_Type",
+    "mappingKind": "NATIVE_LOOKUP",
+    "observedFieldType": "lookup",
+    "releaseGate": "BLOCKED_PENDING_RUNTIME_AND_APPROVAL"
+  },
+  {
+    "bindingId": "SB-0006",
+    "documentCode": "BDT-1006",
+    "schemaId": "KON-VS02-UBL-Quotation-1.0",
+    "schemaVersion": "1.0",
+    "crmModule": "Quotes",
+    "crmField": "Cash_Price",
+    "mappingKind": "DIRECT_SCALAR",
+    "observedFieldType": "currency",
+    "releaseGate": "BLOCKED_PENDING_RUNTIME_AND_APPROVAL"
+  }
+]
