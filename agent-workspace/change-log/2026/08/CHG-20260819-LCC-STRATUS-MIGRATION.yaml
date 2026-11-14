@@ -1,0 +1,29 @@
+change_id: CHG-20260819-LCC-STRATUS-MIGRATION
+timestamp_utc: '2026-08-19T11:20:00Z'
+actor:
+  type: ChatGPT
+  name: GPT-5.6 Sol
+mandate_ref: 'Group CEO approved application of the unstructured-data migration to the correct Catalyst environment on 2026-08-19.'
+task_class: T2
+change_type: integration
+summary: Initiate controlled migration of five populated LCC_ModelDatasetChunk payload rows from Catalyst Data Store to the VS04 Development Stratus bucket.
+reason: Remove unstructured/base64 payload storage from the relational Data Store while preserving provenance and zero-loss controls.
+affected_paths:
+  - agent-workspace/migrations/MIG-CAT-LCC-STRATUS-001.yaml
+environment: Development
+authority:
+  status: AUTHORISED
+  reference: 'Group CEO instruction in active ChatGPT conversation on 2026-08-19.'
+pdca:
+  phase: DO
+  do_complete: false
+  check_study_result: NOT_YET_ELIGIBLE
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - 'Bulk read job 86824000000424422 completed with 5 records processed and more_records=false.'
+  - 'Target bucket vs04-asset-lifecycle-performance-dev confirmed versioned, encrypted and audit-enabled.'
+  - 'Stratus PutObject/GetObject upload authority signature successfully issued.'
+  - 'Signed object upload URL successfully generated for the first target key.'
+  - 'No Data Store row was deleted or modified.'
+notes: 'Transfer is fail-closed because current MCP tooling lacks a direct object-body PutObject action and the local execution container has no outbound network path to the Catalyst bulk-export endpoint. Source rows remain authoritative until a network-enabled authorised uploader completes upload, read-back, hash verification, binding update and regression check.'
