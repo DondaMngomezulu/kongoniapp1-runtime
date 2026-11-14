@@ -1,0 +1,24 @@
+name: ArchiMate Model Structural and Relationship Validation
+on:
+  pull_request:
+    paths:
+      - 'governance/architecture/models/archimate/**'
+      - 'governance/architecture/tests/validate_archimate_models.py'
+      - '.github/workflows/enterprise-archimate-validation.yml'
+  push:
+    paths:
+      - 'governance/architecture/models/archimate/**'
+      - 'governance/architecture/tests/validate_archimate_models.py'
+      - '.github/workflows/enterprise-archimate-validation.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install lxml
+      - run: python governance/architecture/tests/validate_archimate_models.py

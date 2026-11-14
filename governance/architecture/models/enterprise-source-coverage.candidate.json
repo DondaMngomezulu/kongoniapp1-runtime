@@ -1,0 +1,4426 @@
+{
+  "metadata": {
+    "profile": "enterprise-architecture-source-inventory/candidate-1",
+    "lifecycle": "CONTROLLED_ENGINEERING_DRAFT_NOT_APPROVED",
+    "authority": "Governed source registers; extracted architecture records only; no operational instances",
+    "as_of": "2026-10-10",
+    "issue": "https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/59",
+    "source_provenance": {
+      "value_streams": {
+        "source_id": "1PqspV3b5alhRrFTXSov2jAGJW-EbD55C5UOC8XprERc",
+        "tab": "Value_Streams",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1PqspV3b5alhRrFTXSov2jAGJW-EbD55C5UOC8XprERc/edit"
+      },
+      "value_stream_capabilities": {
+        "source_id": "1PqspV3b5alhRrFTXSov2jAGJW-EbD55C5UOC8XprERc",
+        "tab": "Capability_Mapping",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1PqspV3b5alhRrFTXSov2jAGJW-EbD55C5UOC8XprERc/edit"
+      },
+      "platform_capabilities": {
+        "source_id": "1otFsnZJ_FqV_9dDkdi3qOR54-MAi20oySQtFtWhLhxQ",
+        "tab": "Platform_Capabilities",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1otFsnZJ_FqV_9dDkdi3qOR54-MAi20oySQtFtWhLhxQ/edit"
+      },
+      "specialist_families": {
+        "source_id": "1otFsnZJ_FqV_9dDkdi3qOR54-MAi20oySQtFtWhLhxQ",
+        "tab": "Specialist_Capabilities",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1otFsnZJ_FqV_9dDkdi3qOR54-MAi20oySQtFtWhLhxQ/edit"
+      },
+      "applications": {
+        "source_id": "1qS9zBkOvo3ybrOhskxei2GiyLI9zDvS8NpeMWdYpBQ4",
+        "tab": "Applications_Services",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1qS9zBkOvo3ybrOhskxei2GiyLI9zDvS8NpeMWdYpBQ4/edit"
+      },
+      "requirements": {
+        "source_id": "1vMCOLLlnqMLpwlAQMWfj67L3BPXO6GFgA16qAT876lw",
+        "tab": "Requirements",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1vMCOLLlnqMLpwlAQMWfj67L3BPXO6GFgA16qAT876lw/edit"
+      },
+      "architecture_objects": {
+        "source_id": "1rx-Hq1GDlbqiXA3R0xtwwaqb1eZklPyVwx-qHWU0YrU",
+        "tab": "Repository Index",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1rx-Hq1GDlbqiXA3R0xtwwaqb1eZklPyVwx-qHWU0YrU/edit"
+      },
+      "architecture_view_map": {
+        "source_id": "1rx-Hq1GDlbqiXA3R0xtwwaqb1eZklPyVwx-qHWU0YrU",
+        "tab": "Artifact_View_Mapping",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1rx-Hq1GDlbqiXA3R0xtwwaqb1eZklPyVwx-qHWU0YrU/edit"
+      },
+      "process_reference": {
+        "source_id": "1NiXTSVR8XSbghlXb9uZu9SaQDjYRp4CcJM0AJfo3_NI",
+        "tab": "Process Catalogue",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1NiXTSVR8XSbghlXb9uZu9SaQDjYRp4CcJM0AJfo3_NI/edit"
+      },
+      "crm_module_designs": {
+        "source_id": "1VALT3DS3v8MISJooxeeaNp-BAX1PiMDkvDhTmYvg5dI",
+        "tab": "Module_Catalogue",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/1VALT3DS3v8MISJooxeeaNp-BAX1PiMDkvDhTmYvg5dI/edit"
+      },
+      "business_services_vs05": {
+        "source_id": "16_XAvRFbozKIVqLf_CavkW8AEeabrV6QKCZme8B5hJg",
+        "tab": "02_Service_Domains",
+        "read_as_of": "2026-10-10",
+        "url": "https://docs.google.com/spreadsheets/d/16_XAvRFbozKIVqLf_CavkW8AEeabrV6QKCZme8B5hJg/edit"
+      }
+    },
+    "notes": [
+      "Architecture object inventory is derived from multiple registers and is not a unified authority. Source approval and development implementation are distinct.",
+      "Source inventories are live snapshots; no authoritative Drive records or CRM configurations were modified.",
+      "Some source registers describe an older five-stream view and logical CRM module candidates; disambiguation holds are explicit.",
+      "No business transaction instances, personal records, source emails, confidential financials or customer data are included."
+    ]
+  },
+  "concerns": [
+    {
+      "source_id": "GOV-01",
+      "name": "Corporate Governance and Direction",
+      "governing_artifact_ids": [
+        "GOV-DIR-001",
+        "GOV-DEC-001",
+        "GOV-PRN-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-02",
+      "name": "Enterprise Architecture Governance",
+      "governing_artifact_ids": [
+        "GOV-ARC-001",
+        "GOV-ASR-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-03",
+      "name": "Policy, Risk, Legal, Regulatory and Compliance Governance",
+      "governing_artifact_ids": [
+        "GOV-OBL-001",
+        "GOV-RSK-001",
+        "GOV-CTL-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-04",
+      "name": "Security and Privacy Governance",
+      "governing_artifact_ids": [
+        "GOV-SEC-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-05",
+      "name": "Data and Information Governance",
+      "governing_artifact_ids": [
+        "GOV-DAT-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-06",
+      "name": "API, Integration and Interoperability Governance",
+      "governing_artifact_ids": [
+        "GOV-API-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-07",
+      "name": "Artificial Intelligence, Analytics and Automation Governance",
+      "governing_artifact_ids": [
+        "GOV-AI-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-08",
+      "name": "Knowledge, Document and Records Governance",
+      "governing_artifact_ids": [
+        "GOV-KRM-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-09",
+      "name": "Transformation, Investment, Portfolio and Change Governance",
+      "governing_artifact_ids": [
+        "GOV-TRN-001",
+        "GOV-RDM-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-10",
+      "name": "Performance, Metrics and Maturity Governance",
+      "governing_artifact_ids": [
+        "GOV-MET-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-11",
+      "name": "Resilience, Continuity and Operational Assurance",
+      "governing_artifact_ids": [
+        "GOV-RES-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "source_id": "GOV-12",
+      "name": "Sourcing, Supplier, Cloud and Responsible-Technology Governance",
+      "governing_artifact_ids": [
+        "GOV-SRC-001"
+      ],
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "primary_domain_view": "EA-DV-01",
+      "stakeholder_concern_instances_verified": 0,
+      "concern_instance_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    }
+  ],
+  "value_streams": [
+    {
+      "id": "VS00",
+      "name": "Enterprise Shared Content & Capabilities",
+      "definition": "Enterprise-wide shared semantic, governance, reference, platform and enabling content/capabilities that are reused across VS01–VS05 and are not exclusively owned by any operating Value Stream.",
+      "source_status": "APPROVED ENTERPRISE SHARED LOCUS",
+      "stage_status": "NOT AN OPERATING VALUE STREAM — NO VALUE-STAGE MODEL REQUIRED",
+      "family": "ENTERPRISE SHARED / PLATFORM",
+      "primary_domain_view": "EA-DV-02",
+      "operating_value_stream": false,
+      "source_ref": "BA-VS-001"
+    },
+    {
+      "id": "VS01",
+      "name": "Asset Provision & Access",
+      "definition": "Transform a validated requirement for productive-asset access into an agreed, provisioned and accepted asset-access arrangement, while originating and orchestrating associated lease and insurance requirements for specialist execution by VS02 and VS03.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "family": "S01 — Asset Provision / Dealership",
+      "primary_domain_view": "EA-DV-02",
+      "operating_value_stream": true,
+      "source_ref": "BA-VS-001"
+    },
+    {
+      "id": "VS02",
+      "name": "Asset Finance & Capital Provision",
+      "definition": "Transform a validated lease or financing requirement handed over from VS01 into an assessed, structured, approved, funded and serviced financing exposure that is ultimately settled, refinanced, transferred or distributed.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "family": "S03 — Credit Origination & Servicing + P07 Capital, Treasury & Funding Management",
+      "primary_domain_view": "EA-DV-02",
+      "operating_value_stream": true,
+      "source_ref": "BA-VS-001"
+    },
+    {
+      "id": "VS03",
+      "name": "Asset Risk Protection & Recovery",
+      "definition": "Transform a validated insurance/protection requirement handed over from VS01 into effective protection and, where a covered loss occurs, into an administered and settled recovery outcome.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "family": "S04 — Insurance / Protection",
+      "primary_domain_view": "EA-DV-02",
+      "operating_value_stream": true,
+      "source_ref": "BA-VS-001"
+    },
+    {
+      "id": "VS04",
+      "name": "Asset Lifecycle Performance",
+      "definition": "Transform lifecycle/service demand originated by ServiceCo under an active Master Service Agreement into sustained and optimised productive-asset performance through condition monitoring, maintenance, reliability intervention and authorised lifecycle exit.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "family": "S05 — Maintenance / Reliability / Technical Service",
+      "primary_domain_view": "EA-DV-02",
+      "operating_value_stream": true,
+      "source_ref": "BA-VS-001"
+    },
+    {
+      "id": "VS05",
+      "name": "Investment & Portfolio Value Realisation",
+      "definition": "Transform an investment thesis, strategic opportunity or capital-allocation requirement into an evaluated, approved, executed and governed investment position or strategic transaction, including senior-debt investment into FinanceCo, that produces authorised value realisation.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "family": "S06 — Investment / Portfolio / Corporate Development",
+      "primary_domain_view": "EA-DV-02",
+      "operating_value_stream": true,
+      "source_ref": "BA-VS-001"
+    },
+    {
+      "id": "VS06",
+      "name": "Mining Production & Delivery",
+      "definition": "Creates stakeholder value by converting approved mining contract requirements and mine production plans into delivered mining production that meets agreed quantity, quality, schedule, safety and commercial performance requirements. The value stream covers the end-to-end flow of production delivery and excludes mine asset lifecycle support, maintenance, reliability, spares, tyres, GET, fuel support and related equipment-life-support activities, which remain governed within VS04 Asset Lifecycle Performance.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "DRAFT STAGE MODEL — PENDING ADOPTION",
+      "family": "S02 — Productive Asset / Fleet Operations (moved from VS04) + surface mining production",
+      "primary_domain_view": "EA-DV-02",
+      "operating_value_stream": true,
+      "source_ref": "BA-VS-001"
+    }
+  ],
+  "platform_capabilities": [
+    {
+      "id": "P01",
+      "name": "Enterprise Direction, Governance & Architecture",
+      "definition": "Direct, govern, architect and assure the enterprise, including strategy, decision rights, policy, architecture and governance.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P02",
+      "name": "Market, Counterparty & Relationship Management",
+      "definition": "Identify markets and establish, govern and optimise enterprise relationships with external counterparties and stakeholders.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P03",
+      "name": "Product & Proposition Management",
+      "definition": "Design, govern, price and lifecycle-manage reusable products, services and integrated propositions across Value Streams.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P04",
+      "name": "Demand, Sales & Origination Management",
+      "definition": "Generate, capture, qualify and progress market demand and opportunities into governed downstream Value Streams.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P05",
+      "name": "Contract & Transaction Management",
+      "definition": "Govern preparation, negotiation, execution, activation, amendment, obligation and closure of enterprise contracts and transactions.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P06",
+      "name": "Enterprise Asset Governance & Intelligence",
+      "definition": "Maintain canonical Asset identity, ownership/right state, lifecycle state, valuation framework, provenance, portfolio intelligence and cross-stream Asset traceability.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P07",
+      "name": "Capital, Treasury & Funding Management",
+      "definition": "Source, structure, allocate, manage, recycle and repay pooled enterprise capital and liquidity.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P08",
+      "name": "Enterprise Risk, Compliance & Assurance",
+      "definition": "Define risk appetite and taxonomy; identify, aggregate, control and assure enterprise risks, obligations, controls and remediation.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P09",
+      "name": "Financial & Economic Performance Management",
+      "definition": "Maintain authoritative accounting, financial control, profitability, planning and economic performance measurement.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P10",
+      "name": "Sourcing, Procurement & Supplier Management",
+      "definition": "Source and govern enterprise goods, services and suppliers, including due diligence, purchasing, performance and supply risk.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P11",
+      "name": "People, Organisation & Authority Management",
+      "definition": "Provide workforce, organisation structures, roles, competencies, delegations and accountable authority required by the enterprise.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P12",
+      "name": "Knowledge & Semantic Management",
+      "definition": "Govern enterprise meaning, semantic authority, ontology, Knowledge Assets, methodologies and reusable knowledge across the adopted Knowledge View.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P13",
+      "name": "Enterprise Data Management",
+      "definition": "Govern enterprise data ownership, stewardship, quality, master/reference data, metadata, lineage, access and lifecycle.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P14",
+      "name": "Technology, Integration & Automation Management",
+      "definition": "Design, operate and govern applications, platforms, infrastructure, integration, security technology, observability, automation and AI-agent runtime.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P15",
+      "name": "Information & Records Management",
+      "definition": "Govern controlled information, documents, records, evidence, retention, preservation, legal hold and authoritative repositories.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P16",
+      "name": "Legal & Corporate Affairs Management",
+      "definition": "Provide enterprise legal advisory, entity/corporate legal support, regulatory engagement, disputes, legal privilege and intellectual-property governance.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P17",
+      "name": "Transformation & Delivery Management",
+      "definition": "Select, mobilise, manage and assure programmes, projects, change, benefits and controlled delivery of enterprise transformation.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    },
+    {
+      "id": "P18",
+      "name": "Enterprise Performance & Continuous Improvement",
+      "definition": "Measure and improve enterprise processes, capability performance, productivity, quality, maturity and operational excellence.",
+      "approval_status": "Approved",
+      "controlled_issue_status": "Pending controlled issue",
+      "primary_domain_view": "EA-DV-02",
+      "source_ref": "Enterprise Platform Capability Model v1.0 [controlled issue pending]"
+    }
+  ],
+  "specialist_families": [
+    {
+      "source_code": "S01",
+      "name": "Asset Provision / Dealership",
+      "governance_status": "Approved specialist family; Value Stream taxonomy subject to separate final approval",
+      "canonical_capability_id": null,
+      "source_ref": "Platform Capability Model v1.0",
+      "designation": "family_not_registered_L1_capability"
+    },
+    {
+      "source_code": "S02",
+      "name": "Productive Asset / Fleet Operations",
+      "governance_status": "Approved specialist family; dedicated L1 capability build required",
+      "canonical_capability_id": null,
+      "source_ref": "Platform Capability Model v1.0",
+      "designation": "family_not_registered_L1_capability"
+    },
+    {
+      "source_code": "S03",
+      "name": "Credit Origination & Servicing",
+      "governance_status": "Approved specialist family; Value Stream taxonomy subject to separate final approval",
+      "canonical_capability_id": null,
+      "source_ref": "Platform Capability Model v1.0",
+      "designation": "family_not_registered_L1_capability"
+    },
+    {
+      "source_code": "S04",
+      "name": "Insurance / Protection",
+      "governance_status": "Approved specialist family; Value Stream taxonomy subject to separate final approval",
+      "canonical_capability_id": null,
+      "source_ref": "Platform Capability Model v1.0",
+      "designation": "family_not_registered_L1_capability"
+    },
+    {
+      "source_code": "S05",
+      "name": "Maintenance / Reliability / Technical Service",
+      "governance_status": "Approved specialist family; Value Stream taxonomy subject to separate final approval",
+      "canonical_capability_id": null,
+      "source_ref": "Platform Capability Model v1.0",
+      "designation": "family_not_registered_L1_capability"
+    },
+    {
+      "source_code": "S06",
+      "name": "Investment / Portfolio / Corporate Development",
+      "governance_status": "Approved specialist family; integrate into canonical capability model",
+      "canonical_capability_id": null,
+      "source_ref": "Platform Capability Model v1.0",
+      "designation": "family_not_registered_L1_capability"
+    }
+  ],
+  "application_services": [
+    {
+      "id": "APP-ICT-0001",
+      "name": "GoDaddy Domain & DNS",
+      "service_type": "Domain registrar and authoritative DNS",
+      "service_domain": "DOMAIN_DNS",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0001",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0002",
+      "name": "Zoho Directory",
+      "service_type": "Identity and access management",
+      "service_domain": "IDENTITY_ACCESS",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0002",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0003",
+      "name": "Zoho CRM",
+      "service_type": "CRM / commercial system",
+      "service_domain": "BUSINESS_APPS",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0003",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0004",
+      "name": "Zoho CRM Webforms / Zoho Forms",
+      "service_type": "Web/customer data capture",
+      "service_domain": "BUSINESS_APPS",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0003",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0005",
+      "name": "Zoho WorkDrive",
+      "service_type": "Content collaboration",
+      "service_domain": "PRODUCTIVITY_COLLAB",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0006",
+      "name": "Zoho People",
+      "service_type": "HR lifecycle",
+      "service_domain": "PAYROLL_HR",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0007",
+      "name": "Zoho Projects",
+      "service_type": "Project management",
+      "service_domain": "BUSINESS_APPS",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0008",
+      "name": "Zoho Inventory",
+      "service_type": "Inventory / order management",
+      "service_domain": "BUSINESS_APPS",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0009",
+      "name": "Zoho Sign",
+      "service_type": "Digital signature",
+      "service_domain": "BUSINESS_APPS",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0010",
+      "name": "Zoho Cliq",
+      "service_type": "Messaging / collaboration",
+      "service_domain": "PRODUCTIVITY_COLLAB",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0011",
+      "name": "Zoho Meeting",
+      "service_type": "Meetings / conferencing",
+      "service_domain": "PRODUCTIVITY_COLLAB",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0012",
+      "name": "Zoho MDM",
+      "service_type": "Mobile device management",
+      "service_domain": "SECURITY_DEVICE",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0005",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0013",
+      "name": "Zoho Creator",
+      "service_type": "Low-code application platform",
+      "service_domain": "CLOUD_DEV_INTEGRATION",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0002",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0014",
+      "name": "Zoho Flow",
+      "service_type": "Integration / workflow automation",
+      "service_domain": "CLOUD_DEV_INTEGRATION",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0002",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0015",
+      "name": "Zoho FinancePlus",
+      "service_type": "Finance suite",
+      "service_domain": "FINANCE_ACCOUNTING",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0007",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0016",
+      "name": "Zoho Books — Ubuntu organisation",
+      "service_type": "Accounting",
+      "service_domain": "FINANCE_ACCOUNTING",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0009",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0017",
+      "name": "Zoho Procurement",
+      "service_type": "Procurement workflow",
+      "service_domain": "PROCUREMENT",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0008",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0018",
+      "name": "Catalyst by Zoho",
+      "service_type": "Cloud/serverless developer platform",
+      "service_domain": "CLOUD_DEV_INTEGRATION",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity / Enterprise",
+      "source_evidence_id": "EVD-ICT-0010",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0019",
+      "name": "Google Workspace Enterprise Standard",
+      "service_type": "Email / productivity / collaboration",
+      "service_domain": "PRODUCTIVITY_COLLAB",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0011",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0020",
+      "name": "Google Cloud",
+      "service_type": "Cloud platform",
+      "service_domain": "CLOUD_DEV_INTEGRATION",
+      "lifecycle": "ACTIVE_ENVIRONMENT",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0012",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0021",
+      "name": "Gemini Enterprise app — Business",
+      "service_type": "Enterprise AI application",
+      "service_domain": "AI",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Team",
+      "source_evidence_id": "EVD-ICT-0013",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0022",
+      "name": "Google AI Expanded Access",
+      "service_type": "AI licence add-on",
+      "service_domain": "AI",
+      "lifecycle": "SUSPENDED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0014",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0023",
+      "name": "Microsoft 365 Business Standard",
+      "service_type": "Productivity suite",
+      "service_domain": "PRODUCTIVITY_COLLAB",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise exception",
+      "source_evidence_id": "EVD-ICT-0015",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0024",
+      "name": "Microsoft 365 Personal",
+      "service_type": "Individual productivity",
+      "service_domain": "PRODUCTIVITY_COLLAB",
+      "lifecycle": "ACTIVE_INDIVIDUAL",
+      "scope": "Individual",
+      "source_evidence_id": "EVD-ICT-0016",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0025",
+      "name": "ChatGPT Business",
+      "service_type": "Enterprise AI workspace",
+      "service_domain": "AI",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0017",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0026",
+      "name": "Claude Pro",
+      "service_type": "AI assistant",
+      "service_domain": "AI",
+      "lifecycle": "ACTIVE_INDIVIDUAL",
+      "scope": "Individual",
+      "source_evidence_id": "EVD-ICT-0018",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0027",
+      "name": "Zoho AI / Zia",
+      "service_type": "Embedded AI capability",
+      "service_domain": "AI",
+      "lifecycle": "ACTIVE_BUNDLED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0004",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0028",
+      "name": "WordPress.com Business — Ready to Move",
+      "service_type": "Public website / CMS",
+      "service_domain": "WEB_DIGITAL",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0019",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0029",
+      "name": "Frappe Cloud / ERPNext",
+      "service_type": "Hosted ERP / application",
+      "service_domain": "CLOUD_DEV_INTEGRATION",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0020",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0030",
+      "name": "Xero — Donda Mngomezulu",
+      "service_type": "Accounting",
+      "service_domain": "FINANCE_ACCOUNTING",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Individual / Entity",
+      "source_evidence_id": "EVD-ICT-0021",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0031",
+      "name": "Xero — Kiboko Equipment",
+      "service_type": "Accounting",
+      "service_domain": "FINANCE_ACCOUNTING",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0022",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0032",
+      "name": "ApprovalMax",
+      "service_type": "Approval workflow for accounting",
+      "service_domain": "FINANCE_ACCOUNTING",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise / Entity",
+      "source_evidence_id": "EVD-ICT-0023",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0033",
+      "name": "SimplePay",
+      "service_type": "Payroll",
+      "service_domain": "PAYROLL_HR",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Multi-entity",
+      "source_evidence_id": "EVD-ICT-0024",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0034",
+      "name": "Voys Freedom / Voys Telecom",
+      "service_type": "Hosted VoIP / UC",
+      "service_domain": "VOIP_UC",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity / Enterprise",
+      "source_evidence_id": "EVD-ICT-0025",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0035",
+      "name": "Level 7 Wireless Fibre",
+      "service_type": "Fixed Internet / fibre",
+      "service_domain": "NETWORK_INTERNET",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0026",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0036",
+      "name": "MTN Business",
+      "service_type": "Mobile/SIM/data connectivity",
+      "service_domain": "NETWORK_INTERNET",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0027",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0037",
+      "name": "Vox connectivity solution",
+      "service_type": "Wi-Fi / connectivity",
+      "service_domain": "NETWORK_INTERNET",
+      "lifecycle": "PROPOSED_QUOTED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0028",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0038",
+      "name": "SocketLabs / Infobip transactional email",
+      "service_type": "Transactional email delivery",
+      "service_domain": "MESSAGING_DELIVERY",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0029",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0039",
+      "name": "Cartrack",
+      "service_type": "Vehicle tracking / telematics",
+      "service_domain": "TELEMATICS",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0030",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0040",
+      "name": "Netstar",
+      "service_type": "Vehicle tracking",
+      "service_domain": "TELEMATICS",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0031",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0041",
+      "name": "Inoxico Quickview",
+      "service_type": "Credit / company intelligence",
+      "service_domain": "DATA_INTELLIGENCE",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0032",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0042",
+      "name": "MarketBook / Sandhills",
+      "service_type": "Equipment advertising / marketing",
+      "service_domain": "WEB_DIGITAL",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0033",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0043",
+      "name": "Canva",
+      "service_type": "Design / creative SaaS",
+      "service_domain": "MARKETING_DESIGN",
+      "lifecycle": "ACTIVE_INDIVIDUAL",
+      "scope": "Individual",
+      "source_evidence_id": "EVD-ICT-0034",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0044",
+      "name": "Meta Business Suite — Somkhele Equipment",
+      "service_type": "Social media / digital marketing",
+      "service_domain": "WEB_DIGITAL",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Entity",
+      "source_evidence_id": "EVD-ICT-0035",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0045",
+      "name": "TenderAlerts",
+      "service_type": "Tender discovery / alerts",
+      "service_domain": "TENDER_INTELLIGENCE",
+      "lifecycle": "ACTIVE_PRODUCTION",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0036",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0046",
+      "name": "GitHub",
+      "service_type": "Source control / developer tooling",
+      "service_domain": "CLOUD_DEV_INTEGRATION",
+      "lifecycle": "UNVERIFIED",
+      "scope": "Enterprise / Individual",
+      "source_evidence_id": "EVD-ICT-0037",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0047",
+      "name": "Cloudflare",
+      "service_type": "Edge / CDN / WAF / DNS candidate",
+      "service_domain": "DOMAIN_DNS",
+      "lifecycle": "EVALUATED_NOT_ADOPTED",
+      "scope": "Enterprise",
+      "source_evidence_id": "EVD-ICT-0038",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    },
+    {
+      "id": "APP-ICT-0048",
+      "name": "GoDaddy Managed WordPress temporary instances",
+      "service_type": "Managed WordPress hosting instances",
+      "service_domain": "WEB_DIGITAL",
+      "lifecycle": "ACTIVE_ENVIRONMENT",
+      "scope": "Entity / Unmapped",
+      "source_evidence_id": "EVD-ICT-0039",
+      "archimate_element_type": null,
+      "archimate_mapping_state": "NOT_VALIDATED_FOR_ALL_APPLICATIONS"
+    }
+  ],
+  "architecture_requirements": [
+    {
+      "id": "REQ-EA-001",
+      "name": "Governance",
+      "statement": "TOGAF Standard, 10th Edition and Technical Corrigendum 1 shall be the target enterprise architecture method and content baseline.",
+      "owner": "Group CEO",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "KEA-TA-001",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-002",
+      "name": "Method",
+      "statement": "Kongoni shall maintain a controlled tailoring of the ADM, including engagement triggers, iterations, phase gates and deliverables.",
+      "owner": "Enterprise Architecture Authority",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Kongoni ADM Tailoring Standard",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-003",
+      "name": "Architecture Domains",
+      "statement": "Every material enterprise architecture shall address Business, Data, Application and Technology domains at an appropriate level of detail.",
+      "owner": "Enterprise Architecture Authority",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Four-domain Architecture Definition",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-004",
+      "name": "Transformation",
+      "statement": "Every target architecture shall trace to a baseline, gaps, building blocks, transition architectures and an approved roadmap.",
+      "owner": "Enterprise Architecture Authority",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Gap and Migration Traceability Matrix",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-005",
+      "name": "Principles",
+      "statement": "Architecture decisions shall conform to approved principles or carry a time-bound CEO-approved exception.",
+      "owner": "Group CEO",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Architecture Principles and Exception Register",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-006",
+      "name": "Business Architecture",
+      "statement": "Capabilities shall remain canonical enterprise abilities; value streams shall be stakeholder value-flow views; processes shall operationalise work.",
+      "owner": "Enterprise Architecture Authority",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Capability, Value Stream and Process Metamodel",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-007",
+      "name": "Kongoni Tailoring",
+      "statement": "The approved Kongoni capability, ontology, business-model and system-boundary rules shall remain controlled tailoring unless formally changed.",
+      "owner": "Group CEO",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Architecture Content Metamodel",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-008",
+      "name": "Requirements",
+      "statement": "Architecture requirements shall be sourced, owned, prioritised, versioned, traced to content and linked to verification evidence.",
+      "owner": "Enterprise Architecture Authority",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Architecture Requirements Repository",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-009",
+      "name": "Repository",
+      "statement": "Architecture content shall have one authoritative source, controlled status, owner, version, repository path and supersession link.",
+      "owner": "Jane Seaward – Document Controller",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "KEAR Index and Governance Standard",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-010",
+      "name": "Implementation Governance",
+      "statement": "Material implementations shall pass architecture compliance gates before production unless an approved exception exists.",
+      "owner": "Enterprise Architecture Authority",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Architecture Compliance Standard",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-011",
+      "name": "CRM Boundary",
+      "statement": "Zoho CRM shall be the operational execution and task-tracking layer; it shall not replace the authoritative architecture repository.",
+      "owner": "CRM System Administrator",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "CRM Action Map and Task Records",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-012",
+      "name": "Executive Accountability",
+      "statement": "MY Task List shall remain the single executive accountability register; CRM Tasks shall track delegated operational execution only.",
+      "owner": "Reandra – AI Chief of Staff",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Accountability Operating Rule",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-013",
+      "name": "Evidence",
+      "statement": "Every alignment assertion shall be supported by controlled evidence and a recorded test procedure.",
+      "owner": "Jane Seaward – Document Controller",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "Evidence and Conformance Registers",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-014",
+      "name": "Change Management",
+      "statement": "Architecture baselines, targets, principles and roadmaps shall be reviewed at least quarterly and upon material change triggers.",
+      "owner": "Enterprise Architecture Authority",
+      "approval_status": "Approved",
+      "criticality": "Medium",
+      "verification_artifact": "Architecture Change Management Procedure",
+      "primary_domain_view": "EA-DV-01"
+    },
+    {
+      "id": "REQ-EA-015",
+      "name": "Reference Licensing",
+      "statement": "TOGAF publications and templates shall be used in accordance with applicable The Open Group licensing and attribution conditions.",
+      "owner": "Jane Seaward – Document Controller",
+      "approval_status": "Approved",
+      "criticality": "High",
+      "verification_artifact": "TOGAF Reference Baseline Register",
+      "primary_domain_view": "EA-DV-01"
+    }
+  ],
+  "architecture_artifacts": [
+    {
+      "id": "REP-ROOT",
+      "name": "Kongoni Enterprise Architecture Repository",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "FOL-001",
+      "name": "01 Governing Models",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "FOL-002",
+      "name": "02 Enterprise Registers",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-EBM-001",
+      "name": "Kongoni Enterprise Business Model Register",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Under Review",
+      "approval_status": "Pending",
+      "implementation_status": "In Development",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-015",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "FOL-003",
+      "name": "03 Standards and Reference Architecture",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-STANDARDS",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "FOL-004",
+      "name": "04 Assessments and Conformance",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "FOL-005",
+      "name": "05 Working Papers and Evidence",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "FOL-006",
+      "name": "06 Superseded and Archive",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-DOC-CTRL",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-STD-001",
+      "name": "Enterprise Reference Standards Register",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-STANDARDS",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KON-KE-CRM-OP-001",
+      "name": "Zoho CRM Native Origination Partner Workflow Design",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "In Development",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-APP-OWNER",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [
+        {
+          "id": "MAP-VW-068",
+          "domain": "EA-DV-04",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEAR-SKL-001",
+      "name": "Monitor Enterprise Systems Governance and Strategy v1.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Deployment Ready",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-ICT-GOV",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-066",
+          "domain": "EA-DV-04",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-ICT-001",
+      "name": "Enterprise Systems Developments and Weekly Scan Register v1.1",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-ICT-GOV",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-036",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEAR-SKL-001-PKG",
+      "name": "kongoni-ict-weekly-intelligence.skill",
+      "kind": "Skill Package",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Deployment Ready",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-APP-OWNER",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [
+        {
+          "id": "MAP-VW-067",
+          "domain": "EA-DV-04",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "PRO-IG-001",
+      "name": "Enterprise Records Management Instruction v1.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Implemented",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-INFO-GOV",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-033",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "LIB-TOGAF-001",
+      "name": "TOGAF 10 Reference Library",
+      "kind": "Folder",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-STANDARDS",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-TA-001",
+      "name": "TOGAF 10 Target Architecture and Alignment Standard v1.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-EA-ALIGN-001",
+      "name": "TOGAF 10 Alignment Roadmap and Conformance Register v1.2",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "In Progress",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-035",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "STD-EA-001",
+      "name": "Open Group Standards Alignment Standard v1.0",
+      "kind": "Markdown File",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Implemented",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-037",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-EA-001",
+      "name": "Open Group Artifact Alignment Register v1.2",
+      "kind": "JSON Register",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-034",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-MOD-BA-001",
+      "name": "MVP Business Architecture Landscape v1.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-003",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-MOD-EA-001",
+      "name": "Enterprise Architecture Landscape v1.9",
+      "kind": "Google Doc",
+      "lifecycle_status": null,
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-GOV-LND-001",
+      "name": "Enterprise Governance and Enterprise Concerns Landscape v1.0",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-002",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEAR-GOV-001",
+      "name": "Kongoni Enterprise Architecture Repository Governance Standard v1.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-032",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-REP-001",
+      "name": "Kongoni Enterprise Architecture Repository Metadata Schema and Index v2.0",
+      "kind": "Google Sheet",
+      "lifecycle_status": null,
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-ECBM-001",
+      "name": "Kongoni Enterprise Capability Standards Schema v1.1",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-007",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-ECBM-002",
+      "name": "Level 2 Capability Implementation Register v2.1",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-008",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-CRM-001",
+      "name": "Zoho CRM Logical Data Model v0.2",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Implemented — Pilot",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-APP-OWNER",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [
+        {
+          "id": "MAP-VW-069",
+          "domain": "EA-DV-04",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "STD-EXEC-001",
+      "name": "Kongoni Open Group-Aligned Task Management Control v1.0",
+      "kind": "Configured Standard",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Implemented",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-038",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "CFG-ZCRM-TASK-001",
+      "name": "Zoho CRM Open Group Execution Governance Configuration v1.0",
+      "kind": "System Configuration",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Implemented",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-APP-OWNER",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [
+        {
+          "id": "MAP-VW-065",
+          "domain": "EA-DV-04",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "CLASS-IG-001",
+      "name": "Records Classification and Document Taxonomy Scheme v1.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-INFO-GOV",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-031",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-JRN-001",
+      "name": "Kongoni Enterprise Journey Register v2.2",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "BA-SVC-001",
+      "name": "Corporate Development Business Service Catalogue v1.1",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-CORPDEV",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-010",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "STD-IG-001",
+      "name": "Enterprise Document Control Taxonomy Standard v1.0",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conformant",
+      "owner_role": "ROLE-INFO-GOV",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-039",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-RA-ED-001",
+      "name": "Kongoni Equipment Dealership Reference Architecture v1.1",
+      "kind": "Reference Architecture",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-RA-AF-001",
+      "name": "Kongoni Asset Finance Reference Architecture v1.1",
+      "kind": "Reference Architecture",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-RA-AI-001",
+      "name": "Kongoni Asset Insurance Reference Architecture v1.1",
+      "kind": "Reference Architecture",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-RA-LS-001",
+      "name": "Kongoni Lifecycle Services Reference Architecture v1.1",
+      "kind": "Reference Architecture",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-RA-SS-001",
+      "name": "Kongoni Shared Services Reference Architecture v1.1",
+      "kind": "Reference Architecture",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-IH-001",
+      "name": "Kongoni Investment Holding Normative Schema v1.3",
+      "kind": "Normative Schema",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 3",
+      "views": [
+        {
+          "id": "MAP-VW-011",
+          "domain": "EA-DV-03",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-ED-001",
+      "name": "Kongoni Equipment Dealership Normative Schema v1.1",
+      "kind": "Normative Schema",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 3",
+      "views": [
+        {
+          "id": "MAP-VW-062",
+          "domain": "EA-DV-03",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-AF-001",
+      "name": "Kongoni Asset Finance Normative Schema v1.1",
+      "kind": "Normative Schema",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 3",
+      "views": [
+        {
+          "id": "MAP-VW-060",
+          "domain": "EA-DV-03",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-AI-001",
+      "name": "Kongoni Asset Insurance Normative Schema v1.1",
+      "kind": "Normative Schema",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 3",
+      "views": [
+        {
+          "id": "MAP-VW-061",
+          "domain": "EA-DV-03",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-LS-001",
+      "name": "Kongoni Lifecycle Services Normative Schema v1.1",
+      "kind": "Normative Schema",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 3",
+      "views": [
+        {
+          "id": "MAP-VW-063",
+          "domain": "EA-DV-03",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-SCH-SS-001",
+      "name": "Kongoni Shared Services Normative Schema v1.1",
+      "kind": "Normative Schema",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 3",
+      "views": [
+        {
+          "id": "MAP-VW-064",
+          "domain": "EA-DV-03",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-DA-LND-001",
+      "name": "Data Architecture Landscape v0.1",
+      "kind": "Model",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 3",
+      "views": [
+        {
+          "id": "MAP-VW-004",
+          "domain": "EA-DV-03",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-AA-LND-001",
+      "name": "Application Architecture Landscape v0.1",
+      "kind": "Model",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-APP-OWNER",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [
+        {
+          "id": "MAP-VW-005",
+          "domain": "EA-DV-04",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-TECH-LND-001",
+      "name": "Technology Architecture Landscape v0.1",
+      "kind": "Model",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-TECH-OWNER",
+      "primary_domain_from_index": "Pillar 5",
+      "views": [
+        {
+          "id": "MAP-VW-006",
+          "domain": "EA-DV-05",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-PRN-001",
+      "name": "Enterprise Principles Catalogue v0.1",
+      "kind": "Catalogue",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-041",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-REQ-001",
+      "name": "Architecture Requirements and Decision Register v0.1",
+      "kind": "Register",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-XC-MAP-001",
+      "name": "Enterprise Concern-to-Domain Mapping Register v0.1",
+      "kind": "Matrix",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-ABB-001",
+      "name": "Architecture Building Block Catalogue v0.1",
+      "kind": "Catalogue",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-REF-001",
+      "name": "Architecture Reference Library Register v0.1",
+      "kind": "Catalogue",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-STANDARDS",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-GAP-001",
+      "name": "Integrated Architecture Gap and Dependency Register v0.1",
+      "kind": "Register",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-RDM-001",
+      "name": "Enterprise Architecture Roadmap and Migration Plan v0.1",
+      "kind": "Roadmap",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-PPM-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "EA-CON-001",
+      "name": "Architecture Governance, Conformance and Assurance Log v0.1",
+      "kind": "Register",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-ASSURANCE",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-040",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-DIR-001",
+      "name": "Corporate Governance and Enterprise Direction Model v0.1",
+      "kind": "Model",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-GOV-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-049",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-OBL-001",
+      "name": "Legal, Regulatory, Contractual and Compliance Obligations Register v0.1",
+      "kind": "Register",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-COMP-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-052",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-DEC-001",
+      "name": "Decision Rights, Delegations and Reserved Matters Matrix v0.1",
+      "kind": "Matrix",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-GOV-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-048",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-RSK-001",
+      "name": "Enterprise Risk Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-RISK-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-054",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-CTL-001",
+      "name": "Enterprise Control Objectives Catalogue v0.1",
+      "kind": "Catalogue",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-COMP-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-046",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-ARC-001",
+      "name": "Enterprise Architecture Governance and Engagement Model v0.1",
+      "kind": "Model",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-044",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-SEC-001",
+      "name": "Security and Privacy Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-SEC-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-055",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-DAT-001",
+      "name": "Data and Information Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-DATA-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-047",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-API-001",
+      "name": "API, Integration and Interoperability Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-APP-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-043",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-AI-001",
+      "name": "AI, Analytics and Automation Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-AI-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-042",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-KRM-001",
+      "name": "Knowledge, Document and Records Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-INFO-GOV",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-050",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-TRN-001",
+      "name": "Transformation, Investment, Portfolio and Change Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-PPM-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-057",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-MET-001",
+      "name": "Governance Outcomes, Metrics and Maturity Model v0.1",
+      "kind": "Model",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-ASSURANCE",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-051",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-RES-001",
+      "name": "Resilience, Continuity and Operational Assurance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-RES-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-053",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-SRC-001",
+      "name": "Sourcing, Supplier, Cloud and Responsible-Technology Governance Framework v0.1",
+      "kind": "Framework",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-SRC-OWNER",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-056",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "GOV-BT-001",
+      "name": "Baseline and Target Governance View v0.1",
+      "kind": "Model",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [
+        {
+          "id": "MAP-VW-045",
+          "domain": "EA-DV-01",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KEA-RA-IH-001",
+      "name": "Kongoni Investment Holding Reference Architecture v1.1",
+      "kind": "Reference Architecture",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "BA-VS-001",
+      "name": "Enterprise Value Stream Catalogue and Capability Mapping v0.1",
+      "kind": "Catalogue",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "Planned",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-059",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "BA-PRO-001",
+      "name": "Enterprise Process Architecture Catalogue v0.1",
+      "kind": "Catalogue",
+      "lifecycle_status": "Draft",
+      "approval_status": "Approved to Build",
+      "implementation_status": "In Development",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-BA-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-058",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-IH-TPA-001",
+      "name": "Investment Holding Transaction Programme Artifact Register v1.1",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-CORPDEV",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [
+        {
+          "id": "MAP-VW-012",
+          "domain": "EA-DV-02",
+          "conformance": "NON-CONFORMANT",
+          "view_status": "Approved",
+          "active": "TRUE"
+        }
+      ],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "PRISM-REP-002",
+      "name": "Project Prism Master Artifact Register v1.2",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Active",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-CORPDEV",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "KON-KE-SOM-PRD-001",
+      "name": "Somkhele BIAN-Aligned Operating Lease Product and Zoho CRM Design v0.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Draft",
+      "approval_status": "Pending",
+      "implementation_status": "Not Started",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-GM-AF",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "SKL-PM-MGR-001",
+      "name": "Project Manager Skill v1.1",
+      "kind": "Google Doc",
+      "lifecycle_status": "Proposed",
+      "approval_status": "Approved for supervised use",
+      "implementation_status": "Runtime Binding Pending",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "AGT-PM-MGR-001",
+      "name": "Project Manager Agent Class v1.0",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Registry Active / Handler Pending",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "AGT-PM-SUP-001",
+      "name": "Project Management Supervisor Agent v1.0",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Data Controls Active / Handler Pending",
+      "conformance_status": "Conditionally Conformant",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Pillar 4",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "REG-MTH-001-PROVISIONAL",
+      "name": "Kongoni Enterprise Methodology Library v0.2 — Approved Taxonomy; Controlled Issue Pending",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Under Review",
+      "approval_status": "Approved Taxonomy Baseline",
+      "implementation_status": "In Development",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Shared Enterprise",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": null,
+      "name": "Kongoni Enterprise Platform Capability Model v1.0 — Approved Content; Controlled Issue Pending",
+      "kind": "Google Sheet",
+      "lifecycle_status": "Under Review",
+      "approval_status": "Approved Content",
+      "implementation_status": "Implemented in Kongoniapp1 Development",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-EA-AUTH",
+      "primary_domain_from_index": "Shared Enterprise",
+      "views": [],
+      "canonical_id_status": "PENDING_ID"
+    },
+    {
+      "id": "PRJ-STD-CONT-001",
+      "name": "SABS Standards Catalogue Project Continuation File v1.0",
+      "kind": "DOCX",
+      "lifecycle_status": "Active",
+      "approval_status": "Working / continuation",
+      "implementation_status": "Active",
+      "conformance_status": "Not Assessed",
+      "owner_role": "ROLE-STANDARDS",
+      "primary_domain_from_index": "Pillar 1",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "POL-PM-001",
+      "name": "Kongoni Group Product Management Policy v1.0",
+      "kind": "Google Doc",
+      "lifecycle_status": "Approved",
+      "approval_status": "Approved",
+      "implementation_status": "Policy Issued / Execution Controls Pending",
+      "conformance_status": "Conditionally Conformant — implementation verification pending",
+      "owner_role": "ROLE-PRODUCT-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    },
+    {
+      "id": "STD-PM-COD-001",
+      "name": "Product Codification Standard v0.1 — CONTROLLED PILOT",
+      "kind": "Google Doc",
+      "lifecycle_status": "Pilot",
+      "approval_status": "Approved for Controlled Pilot",
+      "implementation_status": "SPH Pilot Authorised / CRM Writes Prohibited",
+      "conformance_status": "Not Assessed — CHECK/STUDY Pending",
+      "owner_role": "ROLE-PRODUCT-OWNER",
+      "primary_domain_from_index": "Pillar 2",
+      "views": [],
+      "canonical_id_status": "EXISTING"
+    }
+  ],
+  "reference_processes": [
+    {
+      "id": "APQC-CI8-16400",
+      "name": "Manage portfolio, program, and project",
+      "pcf_id": "16400",
+      "pcf_level": "L2 Process Group",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16401",
+      "name": "Manage portfolio",
+      "pcf_id": "16401",
+      "pcf_level": "L3 Process",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16402",
+      "name": "Establish portfolio strategy",
+      "pcf_id": "16402",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16403",
+      "name": "Define portfolio governance",
+      "pcf_id": "16403",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16404",
+      "name": "Monitor and control portfolio",
+      "pcf_id": "16404",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16405",
+      "name": "Manage programs",
+      "pcf_id": "16405",
+      "pcf_level": "L3 Process",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16406",
+      "name": "Establish program structure and approach",
+      "pcf_id": "16406",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16407",
+      "name": "Manage program stakeholders and partners",
+      "pcf_id": "16407",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16408",
+      "name": "Manage program execution",
+      "pcf_id": "16408",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16409",
+      "name": "Review and report program performance",
+      "pcf_id": "16409",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16410",
+      "name": "Manage projects",
+      "pcf_id": "16410",
+      "pcf_level": "L3 Process",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16411",
+      "name": "Establish project scope",
+      "pcf_id": "16411",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11117",
+      "name": "Identify project requirements and objectives",
+      "pcf_id": "11117",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16412",
+      "name": "Identify project resource requirements",
+      "pcf_id": "16412",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11118",
+      "name": "Assess culture and readiness for project management approach",
+      "pcf_id": "11118",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11120",
+      "name": "Create business case",
+      "pcf_id": "11120",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11121",
+      "name": "Develop project measures and indicators",
+      "pcf_id": "11121",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-21454",
+      "name": "Prioritize and select projects for the portfolio",
+      "pcf_id": "21454",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11119",
+      "name": "Identify appropriate project management methodologies",
+      "pcf_id": "11119",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16413",
+      "name": "Develop project plans",
+      "pcf_id": "16413",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11123",
+      "name": "Define roles and resources",
+      "pcf_id": "11123",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-20142",
+      "name": "Acquire/secure project resources",
+      "pcf_id": "20142",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11124",
+      "name": "Identify specific IT requirements",
+      "pcf_id": "11124",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11125",
+      "name": "Create training and communication plans",
+      "pcf_id": "11125",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11127",
+      "name": "Design recognition and reward approaches",
+      "pcf_id": "11127",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11128",
+      "name": "Design and plan launch of project",
+      "pcf_id": "11128",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11129",
+      "name": "Deploy the project",
+      "pcf_id": "11129",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16414",
+      "name": "Execute projects",
+      "pcf_id": "16414",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11131",
+      "name": "Evaluate impact of project management (strategy and projects) on measures and outcomes",
+      "pcf_id": "11131",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16415",
+      "name": "Report the status of project",
+      "pcf_id": "16415",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16416",
+      "name": "Manage project scope",
+      "pcf_id": "16416",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11132",
+      "name": "Promote and sustain activity and involvement",
+      "pcf_id": "11132",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-21455",
+      "name": "Conduct Project Reviews with Program Managers and other stakeholders",
+      "pcf_id": "21455",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-11133",
+      "name": "Realign and refresh project management strategy and approaches",
+      "pcf_id": "11133",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-21456",
+      "name": "Adjust project plan as needed",
+      "pcf_id": "21456",
+      "pcf_level": "L5 Task",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16417",
+      "name": "Review and report project performance",
+      "pcf_id": "16417",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    },
+    {
+      "id": "APQC-CI8-16418",
+      "name": "Close projects",
+      "pcf_id": "16418",
+      "pcf_level": "L4 Activity",
+      "source_system": "BA-PRO-001 APQC cross-industry 8.0",
+      "implementation_verified": false
+    }
+  ],
+  "crm_module_designs": [
+    {
+      "id": "CRM-001",
+      "display_name": "Accounts",
+      "proposed_api_name": "Accounts",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002177",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-002",
+      "display_name": "Contacts",
+      "proposed_api_name": "Contacts",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002179",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-003",
+      "display_name": "Programmes",
+      "proposed_api_name": "Programmes",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-004",
+      "display_name": "Programme Parties",
+      "proposed_api_name": "Programme_Parties",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-005",
+      "display_name": "Partner Appointments",
+      "proposed_api_name": "Partner_Appointments",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-006",
+      "display_name": "Operating Projects",
+      "proposed_api_name": "Operating_Projects",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-007",
+      "display_name": "Sites",
+      "proposed_api_name": "Sites",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-008",
+      "display_name": "Underlying Contracts",
+      "proposed_api_name": "Underlying_Contracts",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-009",
+      "display_name": "Vendors",
+      "proposed_api_name": "Vendors",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and link to Account",
+      "current_crm_module_id": "5643538000000002215",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-010",
+      "display_name": "OEM Brands",
+      "proposed_api_name": "OEM_Brands",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-011",
+      "display_name": "OEM Mandates",
+      "proposed_api_name": "OEM_Mandates",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-012",
+      "display_name": "Equipment Families",
+      "proposed_api_name": "Equipment_Families",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-013",
+      "display_name": "Equipment Models",
+      "proposed_api_name": "Equipment_Models",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-014",
+      "display_name": "Equipment Configurations",
+      "proposed_api_name": "Equipment_Configurations",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-015",
+      "display_name": "Products",
+      "proposed_api_name": "Products",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002213",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-016",
+      "display_name": "Product Bundle Components",
+      "proposed_api_name": "Product_Bundle_Components",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-017",
+      "display_name": "Price Books",
+      "proposed_api_name": "Price_Books",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002217",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-018",
+      "display_name": "Eligibility Rules",
+      "proposed_api_name": "Eligibility_Rules",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-019",
+      "display_name": "Campaigns",
+      "proposed_api_name": "Campaigns",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse",
+      "current_crm_module_id": "5643538000000002183",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-020",
+      "display_name": "Leads",
+      "proposed_api_name": "Leads",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002175",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-021",
+      "display_name": "Deals",
+      "proposed_api_name": "Deals",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002181",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-022",
+      "display_name": "Tenders and RFQs",
+      "proposed_api_name": "Tenders_RFQs",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-023",
+      "display_name": "Applications",
+      "proposed_api_name": "Applications",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-024",
+      "display_name": "Application Equipment Lines",
+      "proposed_api_name": "Application_Equipment_Lines",
+      "design_state": "New Subform",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-025",
+      "display_name": "Customer Solutions",
+      "proposed_api_name": "Customer_Solutions",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-026",
+      "display_name": "Quotes",
+      "proposed_api_name": "Quotes",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002219",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-027",
+      "display_name": "Quoted Items",
+      "proposed_api_name": "Quoted_Items",
+      "design_state": "Existing Subform",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000233001",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-028",
+      "display_name": "Supplier Quotations",
+      "proposed_api_name": "Supplier_Quotations",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-029",
+      "display_name": "Sales Orders",
+      "proposed_api_name": "Sales_Orders",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002221",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-030",
+      "display_name": "Ordered Items",
+      "proposed_api_name": "Ordered_Items",
+      "design_state": "Existing Subform",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000233419",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-031",
+      "display_name": "Purchase Orders",
+      "proposed_api_name": "Purchase_Orders",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002223",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-032",
+      "display_name": "Purchase Items",
+      "proposed_api_name": "Purchase_Items",
+      "design_state": "Existing Subform",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000233837",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-033",
+      "display_name": "Fulfilment Events",
+      "proposed_api_name": "FulfilmentEvents",
+      "design_state": "Existing Custom",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000007740673",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-034",
+      "display_name": "Financial Releases",
+      "proposed_api_name": "FinancialReleases",
+      "design_state": "Existing Custom",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000007742001",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-035",
+      "display_name": "Underwriting Cases",
+      "proposed_api_name": "Underwriting_Cases",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-036",
+      "display_name": "Underwriting Assessments",
+      "proposed_api_name": "Underwriting_Assessments",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-037",
+      "display_name": "Transaction Structures",
+      "proposed_api_name": "Transaction_Structures",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-038",
+      "display_name": "Credit Decisions",
+      "proposed_api_name": "Credit_Decisions",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-039",
+      "display_name": "Credit Conditions",
+      "proposed_api_name": "Credit_Conditions",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-040",
+      "display_name": "Credit Exceptions",
+      "proposed_api_name": "Credit_Exceptions",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-041",
+      "display_name": "Agreements",
+      "proposed_api_name": "Agreements",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-042",
+      "display_name": "Agreement Parties",
+      "proposed_api_name": "Agreement_Parties",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-043",
+      "display_name": "Lease Agreements",
+      "proposed_api_name": "Lease_Agreements",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-044",
+      "display_name": "Lease Schedules",
+      "proposed_api_name": "Lease_Schedules",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-045",
+      "display_name": "Variations",
+      "proposed_api_name": "Variations",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-046",
+      "display_name": "Equipment Assets",
+      "proposed_api_name": "Equipment_Assets",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-047",
+      "display_name": "Lease Schedule Assets",
+      "proposed_api_name": "Lease_Schedule_Assets",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-048",
+      "display_name": "Asset Party Roles",
+      "proposed_api_name": "Asset_Party_Roles",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-049",
+      "display_name": "Asset Deployments",
+      "proposed_api_name": "Asset_Deployments",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-050",
+      "display_name": "Inspections",
+      "proposed_api_name": "Inspections",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-051",
+      "display_name": "Components",
+      "proposed_api_name": "Components",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-052",
+      "display_name": "Asset Lifecycle Events",
+      "proposed_api_name": "Asset_Lifecycle_Events",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-053",
+      "display_name": "Residual Reviews",
+      "proposed_api_name": "Residual_Reviews",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-054",
+      "display_name": "Redeployment Cases",
+      "proposed_api_name": "Redeployment_Cases",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-055",
+      "display_name": "Disposal Cases",
+      "proposed_api_name": "Disposal_Cases",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-056",
+      "display_name": "Trade-Ins",
+      "proposed_api_name": "Trade_Ins",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-057",
+      "display_name": "Service Entitlements",
+      "proposed_api_name": "Service_Entitlements",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-058",
+      "display_name": "Maintenance Plans",
+      "proposed_api_name": "Maintenance_Plans",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-059",
+      "display_name": "Work Orders",
+      "proposed_api_name": "Work_Orders",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-060",
+      "display_name": "Parts Requests",
+      "proposed_api_name": "PartsRequests",
+      "design_state": "Existing Custom",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000007740001",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-061",
+      "display_name": "Parts Request Lines",
+      "proposed_api_name": "PartsRequestLines",
+      "design_state": "Existing Custom",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000007722004",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-062",
+      "display_name": "Part Identifications",
+      "proposed_api_name": "PartIdentifications",
+      "design_state": "Existing Custom",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000007741001",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-063",
+      "display_name": "Warranty Claims",
+      "proposed_api_name": "Warranty_Claims",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-064",
+      "display_name": "Technical Campaigns",
+      "proposed_api_name": "Technical_Campaigns",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-065",
+      "display_name": "Technical Campaign Assets",
+      "proposed_api_name": "Technical_Campaign_Assets",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-066",
+      "display_name": "Insurance Placements",
+      "proposed_api_name": "Insurance_Placements",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-067",
+      "display_name": "Insurance Policies",
+      "proposed_api_name": "Insurance_Policies",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-068",
+      "display_name": "Policy Asset Schedules",
+      "proposed_api_name": "Policy_Asset_Schedules",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-069",
+      "display_name": "Insurance Claims",
+      "proposed_api_name": "Insurance_Claims",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-070",
+      "display_name": "Protection Instruments",
+      "proposed_api_name": "Protection_Instruments",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-071",
+      "display_name": "Customer Accounts",
+      "proposed_api_name": "Customer_Accounts",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-072",
+      "display_name": "Invoices",
+      "proposed_api_name": "Invoices",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse as transactional invoice",
+      "current_crm_module_id": "5643538000000002225",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-073",
+      "display_name": "Invoiced Items",
+      "proposed_api_name": "Invoiced_Items",
+      "design_state": "Existing Subform",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000234255",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-074",
+      "display_name": "Billing Instructions",
+      "proposed_api_name": "Billing_Instructions",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-075",
+      "display_name": "Payments",
+      "proposed_api_name": "Payments",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-076",
+      "display_name": "Payment Allocations",
+      "proposed_api_name": "Payment_Allocations",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-077",
+      "display_name": "Cases",
+      "proposed_api_name": "Cases",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse and extend",
+      "current_crm_module_id": "5643538000000002209",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-078",
+      "display_name": "Collections Cases",
+      "proposed_api_name": "Collections_Cases",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-079",
+      "display_name": "Arrears Cases",
+      "proposed_api_name": "Arrears_Cases",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-080",
+      "display_name": "Default Cases",
+      "proposed_api_name": "Default_Cases",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-081",
+      "display_name": "Recoveries",
+      "proposed_api_name": "Recoveries",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-082",
+      "display_name": "Covenants",
+      "proposed_api_name": "Covenants",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-083",
+      "display_name": "Monitoring Reviews",
+      "proposed_api_name": "Monitoring_Reviews",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-084",
+      "display_name": "Funding Facilities",
+      "proposed_api_name": "Funding_Facilities",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-085",
+      "display_name": "Funding Exposures",
+      "proposed_api_name": "Funding_Exposures",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-086",
+      "display_name": "Funding Allocations",
+      "proposed_api_name": "Funding_Allocations",
+      "design_state": "New Linking",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-087",
+      "display_name": "Security Interests",
+      "proposed_api_name": "Security_Interests",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-088",
+      "display_name": "Approval Records",
+      "proposed_api_name": "Approval_Records",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-089",
+      "display_name": "Document Register",
+      "proposed_api_name": "Document_Register",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-090",
+      "display_name": "Integration Exceptions",
+      "proposed_api_name": "Integration_Exceptions",
+      "design_state": "New Custom",
+      "target_action": "Create",
+      "current_crm_module_id": null,
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-091",
+      "display_name": "Tasks",
+      "proposed_api_name": "Tasks",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse operationally",
+      "current_crm_module_id": "5643538000000002193",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-092",
+      "display_name": "Meetings",
+      "proposed_api_name": "Events",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse",
+      "current_crm_module_id": "5643538000000002195",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    },
+    {
+      "id": "CRM-093",
+      "display_name": "Calls",
+      "proposed_api_name": "Calls",
+      "design_state": "Existing Standard",
+      "target_action": "Reuse",
+      "current_crm_module_id": "5643538000000033015",
+      "source_document_state": "DRAFT_LOGICAL_MODEL",
+      "production_readback_for_this_snapshot": false
+    }
+  ],
+  "business_services_vs05": [
+    {
+      "id": "CDS-01",
+      "name": "Corporate Development Strategy",
+      "domain_id": "CD-BD-01",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-02",
+      "name": "Portfolio Architecture and Investment Thesis",
+      "domain_id": "CD-BD-01",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-03",
+      "name": "Transaction Policy and Delegations",
+      "domain_id": "CD-BD-01",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-04",
+      "name": "Capital Capacity and Exposure Constraints",
+      "domain_id": "CD-BD-01",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-05",
+      "name": "Corporate Development Function Management",
+      "domain_id": "CD-BD-01",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-06",
+      "name": "Market and Sector Intelligence",
+      "domain_id": "CD-BD-02",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-07",
+      "name": "Competitor and Consolidation Intelligence",
+      "domain_id": "CD-BD-02",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-08",
+      "name": "Opportunity Pipeline Management",
+      "domain_id": "CD-BD-02",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-09",
+      "name": "Counterparty and Partner Relationship Management",
+      "domain_id": "CD-BD-02",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-10",
+      "name": "Transaction Mandate and Proposal Management",
+      "domain_id": "CD-BD-02",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-11",
+      "name": "Strategic Fit and Portfolio Impact Assessment",
+      "domain_id": "CD-BD-03",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-12",
+      "name": "Counterparty and Integrity Due Diligence",
+      "domain_id": "CD-BD-03",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-13",
+      "name": "Financial and Accounting Due Diligence",
+      "domain_id": "CD-BD-03",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-14",
+      "name": "Commercial and Market Due Diligence",
+      "domain_id": "CD-BD-03",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-15",
+      "name": "Operational, Technology and Risk Due Diligence",
+      "domain_id": "CD-BD-03",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-16",
+      "name": "Legal, Regulatory and Tax Due Diligence",
+      "domain_id": "CD-BD-03",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-17",
+      "name": "Valuation, Synergy and Deal Economics",
+      "domain_id": "CD-BD-03",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-18",
+      "name": "Ownership and Perimeter Transaction Structuring",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-19",
+      "name": "Capital Structure and Funding Strategy",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-20",
+      "name": "Transaction Tax Structuring",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-21",
+      "name": "Private Capital Placement",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-22",
+      "name": "Public Capital Markets Offering",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-23",
+      "name": "Equity and Debt Instrument Issuance",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-24",
+      "name": "Acquisition, Project and Syndicated Financing",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-25",
+      "name": "Asset-Backed Funding, Securitisation and Credit Enhancement",
+      "domain_id": "CD-BD-04",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-26",
+      "name": "Transaction Risk Assessment",
+      "domain_id": "CD-BD-05",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-27",
+      "name": "Policy, Legal and Regulatory Compliance",
+      "domain_id": "CD-BD-05",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-28",
+      "name": "Competition, Sector and Authority Approval Management",
+      "domain_id": "CD-BD-05",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-29",
+      "name": "Independent Review and Transaction Assurance",
+      "domain_id": "CD-BD-05",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-30",
+      "name": "Executive Decision and Approval Management",
+      "domain_id": "CD-BD-05",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-31",
+      "name": "Transaction Programme and Workstream Management",
+      "domain_id": "CD-BD-06",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-32",
+      "name": "Adviser, Consortium and Service Provider Management",
+      "domain_id": "CD-BD-06",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-33",
+      "name": "Negotiation and Transaction Agreement Management",
+      "domain_id": "CD-BD-06",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-34",
+      "name": "Conditions Precedent and Closing Readiness",
+      "domain_id": "CD-BD-06",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-35",
+      "name": "Funds, Consideration, Escrow and Closing Settlement",
+      "domain_id": "CD-BD-06",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-36",
+      "name": "Transaction Master and Reference Data",
+      "domain_id": "CD-BD-07",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-37",
+      "name": "Data Room, Document and Evidence Control",
+      "domain_id": "CD-BD-07",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-38",
+      "name": "Transaction Correspondence and Disclosure Control",
+      "domain_id": "CD-BD-07",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-39",
+      "name": "Decision, Closing Record and Archive Management",
+      "domain_id": "CD-BD-07",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-40",
+      "name": "Integration and Transition Management",
+      "domain_id": "CD-BD-08",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-41",
+      "name": "Separation, Carve-Out and TSA Management",
+      "domain_id": "CD-BD-08",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-42",
+      "name": "Investment Portfolio and Ownership Administration",
+      "domain_id": "CD-BD-08",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-43",
+      "name": "Value Realisation, Performance and Exit Readiness",
+      "domain_id": "CD-BD-08",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-44",
+      "name": "Restructuring, Workout and Rescue Strategy",
+      "domain_id": "CD-BD-09",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-45",
+      "name": "Distressed Financing and Distressed Transaction Execution",
+      "domain_id": "CD-BD-09",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    },
+    {
+      "id": "CDS-46",
+      "name": "Enforcement, Collateral Realisation and Wind-Down",
+      "domain_id": "CD-BD-09",
+      "source_register": "BA-SVC-001",
+      "scope": "Investment Holding Corporate Development",
+      "enterprise_wide_coverage_not_asserted": true
+    }
+  ],
+  "source_crosswalks": [
+    {
+      "mapping_id": "VSCAP-000",
+      "from": "VS00",
+      "to": "ENTERPRISE-SHARED",
+      "source_status": "APPROVED ARCHITECTURAL BOUNDARY",
+      "verification": "VALIDATED",
+      "relationship": "HOSTS_SHARED_CAPABILITIES_AND_REFERENCE_CONTENT",
+      "source_issue": null
+    },
+    {
+      "mapping_id": "VSCAP-001",
+      "from": "VS01",
+      "to": "S01",
+      "source_status": "APPROVED",
+      "verification": "VALIDATED",
+      "relationship": "REALIZED_BY_SPECIALIST_FAMILY",
+      "source_issue": null
+    },
+    {
+      "mapping_id": "VSCAP-002",
+      "from": "VS02",
+      "to": "S03",
+      "source_status": "APPROVED",
+      "verification": "VALIDATED",
+      "relationship": "REALIZED_BY_SPECIALIST_FAMILY",
+      "source_issue": null
+    },
+    {
+      "mapping_id": "VSCAP-003",
+      "from": "VS02",
+      "to": "P07",
+      "source_status": "APPROVED ARCHITECTURAL BOUNDARY",
+      "verification": "VALIDATED",
+      "relationship": "PLATFORM_CAPABILITY_SUPPORTS_VALUE_STREAM",
+      "source_issue": null
+    },
+    {
+      "mapping_id": "VSCAP-004",
+      "from": "VS03",
+      "to": "S04",
+      "source_status": "APPROVED",
+      "verification": "VALIDATED",
+      "relationship": "REALIZED_BY_SPECIALIST_FAMILY",
+      "source_issue": null
+    },
+    {
+      "mapping_id": "VSCAP-005",
+      "from": "VS04",
+      "to": "S02",
+      "source_status": "APPROVED",
+      "verification": "VALIDATED",
+      "relationship": "REALIZED_BY_SPECIALIST_FAMILY",
+      "source_issue": "CONFLICTS_WITH_LATER_VS06_BOUNDARY"
+    },
+    {
+      "mapping_id": "VSCAP-006",
+      "from": "VS04",
+      "to": "S05",
+      "source_status": "APPROVED",
+      "verification": "VALIDATED",
+      "relationship": "REALIZED_BY_SPECIALIST_FAMILY",
+      "source_issue": null
+    },
+    {
+      "mapping_id": "VSCAP-007",
+      "from": "VS05",
+      "to": "S06",
+      "source_status": "APPROVED",
+      "verification": "VALIDATED",
+      "relationship": "REALIZED_BY_SPECIALIST_FAMILY",
+      "source_issue": null
+    },
+    {
+      "mapping_id": "VSCAP-008",
+      "from": "VS00",
+      "to": "APQC-CI8-16400",
+      "source_status": "APPROVED",
+      "verification": "VALIDATED",
+      "relationship": "GOVERNED_ENTERPRISE_SHARED_CAPABILITY",
+      "source_issue": null
+    }
+  ],
+  "controls_and_holds": [
+    {
+      "id": "EA-HOLD-01",
+      "finding": "VS04-S02 association in older Capability_Mapping is inconsistent with later approved VS06 Mining Production & Delivery definition and its transfer of S02 from VS04",
+      "action": "Review mapping against DEC-VS06-PERFORMER-20261004-001; preserve history, update only through controlled source owner.",
+      "status": "OPEN_SOURCE_RECONCILIATION"
+    },
+    {
+      "id": "EA-HOLD-02",
+      "finding": "Source Architecture_Reconciliation retains previous five-stream historical treatment while value stream catalogue includes VS06",
+      "action": "Classify as historical; verify all active mappings and derived views.",
+      "status": "OPEN_SOURCE_RECONCILIATION"
+    },
+    {
+      "id": "EA-HOLD-03",
+      "finding": "Repository Index still lists BA-VS-001 as Draft/Planned while BA-VS-001 live source is CEO-Adopted v1.1",
+      "action": "Document controller reconcile Index, maintain source provenance and approval events.",
+      "status": "OPEN_SOURCE_RECONCILIATION"
+    },
+    {
+      "id": "EA-HOLD-04",
+      "finding": "Platform Capability Model content approved but its controlled document issue remains pending",
+      "action": "Obtain controlled ID and issue, preserve P01-P18.",
+      "status": "OPEN_DOCUMENT_CONTROL"
+    },
+    {
+      "id": "EA-HOLD-05",
+      "finding": "93 CRM logical design entries cannot be equated with 93 deployed CRM modules",
+      "action": "Compare individual Current_Module_ID and API metadata against live CRM; test governed field bindings.",
+      "status": "OPEN_IMPLEMENTATION_READBACK"
+    },
+    {
+      "id": "EA-HOLD-06",
+      "finding": "Approved ArchiMate 3.2 element-type checklist has not yet been measured against independently validated source models in either state",
+      "action": "Pin official 3.1/3.2 exchange schema, validate element and relationship types, semantics and diagrams.",
+      "status": "OPEN_MODEL_CONFORMANCE"
+    }
+  ]
+}

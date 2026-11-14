@@ -1,0 +1,645 @@
+{
+  "document_class": "ENTERPRISE_ARCHITECTURE_AS_IS",
+  "status": "SOURCE_BASED_CANDIDATE_NOT_APPROVED",
+  "as_of": "2026-10-10",
+  "source_snapshot": "enterprise-source-coverage.candidate.json",
+  "governance_areas": [
+    {
+      "id": "GOV-01",
+      "name": "Corporate Governance and Direction",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-02",
+      "name": "Enterprise Architecture Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-03",
+      "name": "Policy, Risk, Legal, Regulatory and Compliance Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-04",
+      "name": "Security and Privacy Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-05",
+      "name": "Data and Information Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-06",
+      "name": "API, Integration and Interoperability Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-07",
+      "name": "Artificial Intelligence, Analytics and Automation Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-08",
+      "name": "Knowledge, Document and Records Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-09",
+      "name": "Transformation, Investment, Portfolio and Change Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-10",
+      "name": "Performance, Metrics and Maturity Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-11",
+      "name": "Resilience, Continuity and Operational Assurance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    },
+    {
+      "id": "GOV-12",
+      "name": "Sourcing, Supplier, Cloud and Responsible-Technology Governance",
+      "source_status": "GOVERNANCE_AREA_ADOPTED",
+      "stakeholder_coverage": "UNKNOWN_REQUIRES_STAKEHOLDER_INVENTORY"
+    }
+  ],
+  "value_streams": [
+    {
+      "id": "VS00",
+      "name": "Enterprise Shared Content & Capabilities",
+      "definition": "Enterprise-wide shared semantic, governance, reference, platform and enabling content/capabilities that are reused across VS01–VS05 and are not exclusively owned by any operating Value Stream.",
+      "source_status": "APPROVED ENTERPRISE SHARED LOCUS",
+      "stage_status": "NOT AN OPERATING VALUE STREAM — NO VALUE-STAGE MODEL REQUIRED",
+      "technical_state": "EXISTING_ARCHITECTURE_CONCEPT_NOT_PHYSICAL_SERVICE"
+    },
+    {
+      "id": "VS01",
+      "name": "Asset Provision & Access",
+      "definition": "Transform a validated requirement for productive-asset access into an agreed, provisioned and accepted asset-access arrangement, while originating and orchestrating associated lease and insurance requirements for specialist execution by VS02 and VS03.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "technical_state": "EXISTING_ARCHITECTURE_CONCEPT_NOT_PHYSICAL_SERVICE"
+    },
+    {
+      "id": "VS02",
+      "name": "Asset Finance & Capital Provision",
+      "definition": "Transform a validated lease or financing requirement handed over from VS01 into an assessed, structured, approved, funded and serviced financing exposure that is ultimately settled, refinanced, transferred or distributed.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "technical_state": "EXISTING_ARCHITECTURE_CONCEPT_NOT_PHYSICAL_SERVICE"
+    },
+    {
+      "id": "VS03",
+      "name": "Asset Risk Protection & Recovery",
+      "definition": "Transform a validated insurance/protection requirement handed over from VS01 into effective protection and, where a covered loss occurs, into an administered and settled recovery outcome.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "technical_state": "EXISTING_ARCHITECTURE_CONCEPT_NOT_PHYSICAL_SERVICE"
+    },
+    {
+      "id": "VS04",
+      "name": "Asset Lifecycle Performance",
+      "definition": "Transform lifecycle/service demand originated by ServiceCo under an active Master Service Agreement into sustained and optimised productive-asset performance through condition monitoring, maintenance, reliability intervention and authorised lifecycle exit.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "technical_state": "EXISTING_ARCHITECTURE_CONCEPT_NOT_PHYSICAL_SERVICE"
+    },
+    {
+      "id": "VS05",
+      "name": "Investment & Portfolio Value Realisation",
+      "definition": "Transform an investment thesis, strategic opportunity or capital-allocation requirement into an evaluated, approved, executed and governed investment position or strategic transaction, including senior-debt investment into FinanceCo, that produces authorised value realisation.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "ADOPTED TOGAF-ANCHORED STAGE MODEL",
+      "technical_state": "EXISTING_ARCHITECTURE_CONCEPT_NOT_PHYSICAL_SERVICE"
+    },
+    {
+      "id": "VS06",
+      "name": "Mining Production & Delivery",
+      "definition": "Creates stakeholder value by converting approved mining contract requirements and mine production plans into delivered mining production that meets agreed quantity, quality, schedule, safety and commercial performance requirements. The value stream covers the end-to-end flow of production delivery and excludes mine asset lifecycle support, maintenance, reliability, spares, tyres, GET, fuel support and related equipment-life-support activities, which remain governed within VS04 Asset Lifecycle Performance.",
+      "source_status": "ADOPTED VALUE STREAM",
+      "stage_status": "DRAFT STAGE MODEL — PENDING ADOPTION",
+      "technical_state": "EXISTING_ARCHITECTURE_CONCEPT_NOT_PHYSICAL_SERVICE"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "P01",
+      "name": "Enterprise Direction, Governance & Architecture",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P02",
+      "name": "Market, Counterparty & Relationship Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P03",
+      "name": "Product & Proposition Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P04",
+      "name": "Demand, Sales & Origination Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P05",
+      "name": "Contract & Transaction Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P06",
+      "name": "Enterprise Asset Governance & Intelligence",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P07",
+      "name": "Capital, Treasury & Funding Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P08",
+      "name": "Enterprise Risk, Compliance & Assurance",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P09",
+      "name": "Financial & Economic Performance Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P10",
+      "name": "Sourcing, Procurement & Supplier Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P11",
+      "name": "People, Organisation & Authority Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P12",
+      "name": "Knowledge & Semantic Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P13",
+      "name": "Enterprise Data Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P14",
+      "name": "Technology, Integration & Automation Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P15",
+      "name": "Information & Records Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P16",
+      "name": "Legal & Corporate Affairs Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P17",
+      "name": "Transformation & Delivery Management",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    },
+    {
+      "id": "P18",
+      "name": "Enterprise Performance & Continuous Improvement",
+      "status": "Approved",
+      "controlled_issue": "Pending controlled issue"
+    }
+  ],
+  "application_inventory": [
+    {
+      "id": "APP-ICT-0001",
+      "name": "GoDaddy Domain & DNS",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0001",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0002",
+      "name": "Zoho Directory",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0002",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0003",
+      "name": "Zoho CRM",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0003",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0004",
+      "name": "Zoho CRM Webforms / Zoho Forms",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0003",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0005",
+      "name": "Zoho WorkDrive",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0006",
+      "name": "Zoho People",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0007",
+      "name": "Zoho Projects",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0008",
+      "name": "Zoho Inventory",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0009",
+      "name": "Zoho Sign",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0010",
+      "name": "Zoho Cliq",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0011",
+      "name": "Zoho Meeting",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0012",
+      "name": "Zoho MDM",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0005",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0013",
+      "name": "Zoho Creator",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0002",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0014",
+      "name": "Zoho Flow",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0002",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0015",
+      "name": "Zoho FinancePlus",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0007",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0016",
+      "name": "Zoho Books — Ubuntu organisation",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0009",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0017",
+      "name": "Zoho Procurement",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0008",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0018",
+      "name": "Catalyst by Zoho",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0010",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0019",
+      "name": "Google Workspace Enterprise Standard",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0011",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0020",
+      "name": "Google Cloud",
+      "source_lifecycle": "ACTIVE_ENVIRONMENT",
+      "source_evidence_id": "EVD-ICT-0012",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0021",
+      "name": "Gemini Enterprise app — Business",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0013",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0022",
+      "name": "Google AI Expanded Access",
+      "source_lifecycle": "SUSPENDED",
+      "source_evidence_id": "EVD-ICT-0014",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0023",
+      "name": "Microsoft 365 Business Standard",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0015",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0024",
+      "name": "Microsoft 365 Personal",
+      "source_lifecycle": "ACTIVE_INDIVIDUAL",
+      "source_evidence_id": "EVD-ICT-0016",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0025",
+      "name": "ChatGPT Business",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0017",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0026",
+      "name": "Claude Pro",
+      "source_lifecycle": "ACTIVE_INDIVIDUAL",
+      "source_evidence_id": "EVD-ICT-0018",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0027",
+      "name": "Zoho AI / Zia",
+      "source_lifecycle": "ACTIVE_BUNDLED",
+      "source_evidence_id": "EVD-ICT-0004",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0028",
+      "name": "WordPress.com Business — Ready to Move",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0019",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0029",
+      "name": "Frappe Cloud / ERPNext",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0020",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0030",
+      "name": "Xero — Donda Mngomezulu",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0021",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0031",
+      "name": "Xero — Kiboko Equipment",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0022",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0032",
+      "name": "ApprovalMax",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0023",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0033",
+      "name": "SimplePay",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0024",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0034",
+      "name": "Voys Freedom / Voys Telecom",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0025",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0035",
+      "name": "Level 7 Wireless Fibre",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0026",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0036",
+      "name": "MTN Business",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0027",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0037",
+      "name": "Vox connectivity solution",
+      "source_lifecycle": "PROPOSED_QUOTED",
+      "source_evidence_id": "EVD-ICT-0028",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0038",
+      "name": "SocketLabs / Infobip transactional email",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0029",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0039",
+      "name": "Cartrack",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0030",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0040",
+      "name": "Netstar",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0031",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0041",
+      "name": "Inoxico Quickview",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0032",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0042",
+      "name": "MarketBook / Sandhills",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0033",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0043",
+      "name": "Canva",
+      "source_lifecycle": "ACTIVE_INDIVIDUAL",
+      "source_evidence_id": "EVD-ICT-0034",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0044",
+      "name": "Meta Business Suite — Somkhele Equipment",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0035",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0045",
+      "name": "TenderAlerts",
+      "source_lifecycle": "ACTIVE_PRODUCTION",
+      "source_evidence_id": "EVD-ICT-0036",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0046",
+      "name": "GitHub",
+      "source_lifecycle": "UNVERIFIED",
+      "source_evidence_id": "EVD-ICT-0037",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0047",
+      "name": "Cloudflare",
+      "source_lifecycle": "EVALUATED_NOT_ADOPTED",
+      "source_evidence_id": "EVD-ICT-0038",
+      "latest_runtime_readback_verified": false
+    },
+    {
+      "id": "APP-ICT-0048",
+      "name": "GoDaddy Managed WordPress temporary instances",
+      "source_lifecycle": "ACTIVE_ENVIRONMENT",
+      "source_evidence_id": "EVD-ICT-0039",
+      "latest_runtime_readback_verified": false
+    }
+  ],
+  "information_authority": {
+    "crm": "OPERATING_COMMERCIAL_TRANSACTION_SYSTEM_EVIDENCED; ENFORCEMENT_GAPS",
+    "drive": "CONTROLLED_DOCUMENTS_GOVERNED_IN_DESIGN",
+    "catalyst": "APPLICATION_RUNTIME_WITH_EXISTING_AUTHORITATIVE_SPECIALIST_REGISTERS",
+    "github": "ENGINEERING_CONFIGURATION_AS_CODE",
+    "specialist_ledger": "ZOHO_BOOKS_AND_OTHER_APPROVED_LEDGER_SYSTEMS_RETAIN_POSTINGS"
+  },
+  "gaps": [
+    {
+      "gap_id": "EA-GAP-001",
+      "baseline_finding": "GOV-01..12 approved; individual stakeholder concerns not inventoried",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-002",
+      "baseline_finding": "VS06 adopted; S02 legacy mapping still VS04",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-003",
+      "baseline_finding": "Not yet complete as controlled enterprise Baseline",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-004",
+      "baseline_finding": "48 application service entries, 93 CRM design entries not fully runtime-verified",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-005",
+      "baseline_finding": "Architecture alignment score 0.5/5; no controlled enterprise technology Baseline evidenced",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-006",
+      "baseline_finding": "CRM messages can be sent without evidenced approved schema validation receipt",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-007",
+      "baseline_finding": "35 of 85 indexed architecture artifacts lack observed active approved-domain view mapping in extracted range; 50 active mappings labelled NON-CONFORMANT",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-008",
+      "baseline_finding": "Formal enterprise XML source model not evidenced in discovered repository",
+      "status": "OPEN"
+    },
+    {
+      "gap_id": "EA-GAP-009",
+      "baseline_finding": "Integrated transition plateau and migration signoff not evidenced",
+      "status": "OPEN"
+    }
+  ],
+  "conformance": {
+    "architecture_complete": false,
+    "authoritative_sources_reconciled": false,
+    "full_archimate_model_exchange_validated": false
+  }
+}

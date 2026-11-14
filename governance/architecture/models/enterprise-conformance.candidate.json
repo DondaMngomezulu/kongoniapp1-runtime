@@ -1,0 +1,132 @@
+{
+  "profile": "ea-object-conformance/candidate-1",
+  "as_of": "2026-10-10",
+  "snapshot_file": "enterprise-source-coverage.candidate.json",
+  "claim": "PARTIAL_ARCHITECTURE_SPECIFICATION; NO_ENTERPRISE_COMPLETENESS_CERTIFICATION",
+  "source_counts": {
+    "concerns": 12,
+    "value_streams": 7,
+    "platform_capabilities": 18,
+    "specialist_families": 6,
+    "application_services": 48,
+    "architecture_requirements": 15,
+    "architecture_artifacts": 85,
+    "reference_processes": 37,
+    "crm_module_designs": 93,
+    "business_services_vs05": 46
+  },
+  "findings": {
+    "source_duplicate_keys": [],
+    "architecture_artifacts_without_resolved_active_primary_domain": 35,
+    "architecture_artifacts_count": 85,
+    "active_source_view_mappings_reported_non_conformant": 50,
+    "governance_areas_with_approved_catalogue": 12,
+    "governance_individual_concerns_full_coverage": false,
+    "vs06_stage_adopted": false,
+    "physical_crm_readback_within_this_assessment": false,
+    "archimate_model_coverage_verified": false
+  },
+  "gaps": [
+    {
+      "id": "EA-GAP-001",
+      "name": "Governance concern-to-stakeholder and control trace completeness",
+      "domain": "EA-DV-01",
+      "severity": "HIGH",
+      "source": "EA-GOV-LND-001",
+      "baseline": "GOV-01..12 approved; individual stakeholder concerns not inventoried",
+      "target": "Each applicable individual concern traces via stakeholder, requirement, object, control and evidence",
+      "work_package": "EA-ALIGN-007",
+      "owner": "Enterprise Architecture Authority"
+    },
+    {
+      "id": "EA-GAP-002",
+      "name": "Value stream revision consistency VS04-VS06",
+      "domain": "EA-DV-02",
+      "severity": "HIGH",
+      "source": "BA-VS-001",
+      "baseline": "VS06 adopted; S02 legacy mapping still VS04",
+      "target": "Current S02 production operations mapped to VS06; VS04 retains maintenance lifecycle",
+      "work_package": "EA-ALIGN-013",
+      "owner": "Business Architecture Owner"
+    },
+    {
+      "id": "EA-GAP-003",
+      "name": "Data Architecture landscape",
+      "domain": "EA-DV-03",
+      "severity": "HIGH",
+      "source": "KEA-MOD-EA-001",
+      "baseline": "Not yet complete as controlled enterprise Baseline",
+      "target": "Approved data baseline, target, lineage, source authority, migration and security model",
+      "work_package": "EA-ALIGN-010",
+      "owner": "Enterprise Data Owner"
+    },
+    {
+      "id": "EA-GAP-004",
+      "name": "Application Architecture landscape and CRM physical crosswalk",
+      "domain": "EA-DV-04",
+      "severity": "HIGH",
+      "source": "REG-ICT-APP-001; KEA-SCH-CRM-001",
+      "baseline": "48 application service entries, 93 CRM design entries not fully runtime-verified",
+      "target": "Complete authoritative application inventory, real integration contracts and production physical conformance",
+      "work_package": "EA-ALIGN-011",
+      "owner": "ICT Executive"
+    },
+    {
+      "id": "EA-GAP-005",
+      "name": "Technology Architecture landscape",
+      "domain": "EA-DV-05",
+      "severity": "CRITICAL",
+      "source": "REG-EA-ALIGN-001",
+      "baseline": "Architecture alignment score 0.5/5; no controlled enterprise technology Baseline evidenced",
+      "target": "Approved technology architecture including platform runtime, cloud/AI services, identity, security and resilience",
+      "work_package": "EA-ALIGN-012",
+      "owner": "ICT Executive"
+    },
+    {
+      "id": "EA-GAP-006",
+      "name": "Message validation and CRM transaction authority enforcement",
+      "domain": "EA-DV-04",
+      "severity": "HIGH",
+      "source": "GitHub #57; TMF683 CRM crosswalk",
+      "baseline": "CRM messages can be sent without evidenced approved schema validation receipt",
+      "target": "Fail-closed schema gate with CRM transaction identity and native transmission receipt",
+      "work_package": "GitHub #57",
+      "owner": "CRM System Administrator"
+    },
+    {
+      "id": "EA-GAP-007",
+      "name": "Controlled source index and primary-domain conformance",
+      "domain": "EA-DV-01",
+      "severity": "HIGH",
+      "source": "KEA-SCH-REP-001",
+      "baseline": "35 of 85 indexed architecture artifacts lack observed active approved-domain view mapping in extracted range; 50 active mappings labelled NON-CONFORMANT",
+      "target": "Every substantive architecture object has one approved active primary domain and independently verified mapping conformance",
+      "work_package": "EA-ALIGN-006",
+      "owner": "Enterprise Architecture Authority"
+    },
+    {
+      "id": "EA-GAP-008",
+      "name": "Approved ArhiMate element/relationship model exchange conformance",
+      "domain": "EA-DV-04",
+      "severity": "HIGH",
+      "source": "ArchiMate 3.2 (REG-STD-001)",
+      "baseline": "Formal enterprise XML source model not evidenced in discovered repository",
+      "target": "Version-pinned valid exchange models for Baseline, Transition and Target with relation legality and complete coverage dispositions",
+      "work_package": "EA-ALIGN-017",
+      "owner": "Enterprise Architecture Authority"
+    },
+    {
+      "id": "EA-GAP-009",
+      "name": "Transition architecture, decisions and migration evidence",
+      "domain": "EA-DV-01",
+      "severity": "HIGH",
+      "source": "KEA-TA-001",
+      "baseline": "Integrated transition plateau and migration signoff not evidenced",
+      "target": "Trace each target gap via work packages, transition plateau, acceptance and deployment evidence",
+      "work_package": "EA-ALIGN-018",
+      "owner": "Group CEO"
+    }
+  ],
+  "source_controls_not_modified": true,
+  "control_issue": "https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/59"
+}

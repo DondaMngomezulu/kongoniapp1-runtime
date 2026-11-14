@@ -1,0 +1,380 @@
+{
+  "document_class": "ENTERPRISE_ARCHITECTURE_TO_BE",
+  "status": "PROPOSED_NOT_APPROVED",
+  "as_of": "2026-10-10",
+  "source_snapshot": "enterprise-source-coverage.candidate.json",
+  "architecture_priorities": [
+    "CLOUD_NATIVE",
+    "AI_NATIVE",
+    "SYSTEM_OF_RECORD_AUTHORITY",
+    "FAIL_CLOSED_RULES",
+    "IDENTITY_AND_POLICY",
+    "OBSERVABILITY_AND_AUDIT"
+  ],
+  "governance_areas": [
+    {
+      "id": "GOV-01",
+      "required_artifacts": [
+        "GOV-DIR-001",
+        "GOV-DEC-001",
+        "GOV-PRN-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-02",
+      "required_artifacts": [
+        "GOV-ARC-001",
+        "GOV-ASR-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-03",
+      "required_artifacts": [
+        "GOV-OBL-001",
+        "GOV-RSK-001",
+        "GOV-CTL-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-04",
+      "required_artifacts": [
+        "GOV-SEC-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-05",
+      "required_artifacts": [
+        "GOV-DAT-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-06",
+      "required_artifacts": [
+        "GOV-API-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-07",
+      "required_artifacts": [
+        "GOV-AI-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-08",
+      "required_artifacts": [
+        "GOV-KRM-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-09",
+      "required_artifacts": [
+        "GOV-TRN-001",
+        "GOV-RDM-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-10",
+      "required_artifacts": [
+        "GOV-MET-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-11",
+      "required_artifacts": [
+        "GOV-RES-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    },
+    {
+      "id": "GOV-12",
+      "required_artifacts": [
+        "GOV-SRC-001"
+      ],
+      "concern_trace": "stakeholder -> driver -> requirement -> business|data|application|technology object -> control -> evidence -> conformance"
+    }
+  ],
+  "value_streams": [
+    {
+      "id": "VS00",
+      "name": "Enterprise Shared Content & Capabilities",
+      "retain_source_identity": true,
+      "desired_state": "CANONICAL_WITH_ARCHITECTURE_TRACEABILITY",
+      "stage_model_gate": null
+    },
+    {
+      "id": "VS01",
+      "name": "Asset Provision & Access",
+      "retain_source_identity": true,
+      "desired_state": "CANONICAL_WITH_ARCHITECTURE_TRACEABILITY",
+      "stage_model_gate": null
+    },
+    {
+      "id": "VS02",
+      "name": "Asset Finance & Capital Provision",
+      "retain_source_identity": true,
+      "desired_state": "CANONICAL_WITH_ARCHITECTURE_TRACEABILITY",
+      "stage_model_gate": null
+    },
+    {
+      "id": "VS03",
+      "name": "Asset Risk Protection & Recovery",
+      "retain_source_identity": true,
+      "desired_state": "CANONICAL_WITH_ARCHITECTURE_TRACEABILITY",
+      "stage_model_gate": null
+    },
+    {
+      "id": "VS04",
+      "name": "Asset Lifecycle Performance",
+      "retain_source_identity": true,
+      "desired_state": "CANONICAL_WITH_ARCHITECTURE_TRACEABILITY",
+      "stage_model_gate": null
+    },
+    {
+      "id": "VS05",
+      "name": "Investment & Portfolio Value Realisation",
+      "retain_source_identity": true,
+      "desired_state": "CANONICAL_WITH_ARCHITECTURE_TRACEABILITY",
+      "stage_model_gate": null
+    },
+    {
+      "id": "VS06",
+      "name": "Mining Production & Delivery",
+      "retain_source_identity": true,
+      "desired_state": "CANONICAL_WITH_ARCHITECTURE_TRACEABILITY",
+      "stage_model_gate": "STAGE_ADOPTION_REQUIRED"
+    }
+  ],
+  "platform_capabilities": [
+    {
+      "id": "P01",
+      "name": "Enterprise Direction, Governance & Architecture",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P02",
+      "name": "Market, Counterparty & Relationship Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P03",
+      "name": "Product & Proposition Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P04",
+      "name": "Demand, Sales & Origination Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P05",
+      "name": "Contract & Transaction Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P06",
+      "name": "Enterprise Asset Governance & Intelligence",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P07",
+      "name": "Capital, Treasury & Funding Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P08",
+      "name": "Enterprise Risk, Compliance & Assurance",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P09",
+      "name": "Financial & Economic Performance Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P10",
+      "name": "Sourcing, Procurement & Supplier Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P11",
+      "name": "People, Organisation & Authority Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P12",
+      "name": "Knowledge & Semantic Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P13",
+      "name": "Enterprise Data Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P14",
+      "name": "Technology, Integration & Automation Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P15",
+      "name": "Information & Records Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P16",
+      "name": "Legal & Corporate Affairs Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P17",
+      "name": "Transformation & Delivery Management",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    },
+    {
+      "id": "P18",
+      "name": "Enterprise Performance & Continuous Improvement",
+      "target": "CONTROLLED_CANONICAL_CAPABILITY_WITH_CROSS_VALUE_STREAM_BINDING",
+      "document_control_gap": "Pending controlled issue"
+    }
+  ],
+  "repository_authority": {
+    "business_transactions": {
+      "system": "ZOHO_CRM",
+      "scope": "IN_SCOPE_TRANSACTION_IDENTITY_LIFECYCLE_APPROVAL_INTERACTION_AND_STATUS",
+      "native_accounting_exception": "LEDGER_POSTING_REMAINS_IN_STATUTORY_LEDGER"
+    },
+    "documents": {
+      "system": "GOOGLE_DRIVE",
+      "scope": "UNSTRUCTURED_GOVERNED_DOCUMENT_CONTENT_AND_EVIDENCE",
+      "crm_link_required": true
+    },
+    "engineering": {
+      "system": "GITHUB",
+      "scope": "ARCHITECTURE_SCHEMA_CONFIG_CODE_TESTS",
+      "prohibit_business_instances": true
+    },
+    "runtime": {
+      "system": "ZOHO_CATALYST",
+      "scope": "TRANSIENT_ORCHESTRATION_VALIDATION_INTEGRATION_CONTROL_METADATA_OBSERVABILITY",
+      "no_duplicate_crm_master": true
+    }
+  },
+  "gaps": [
+    {
+      "gap_id": "EA-GAP-001",
+      "name": "Governance concern-to-stakeholder and control trace completeness",
+      "domain": "EA-DV-01",
+      "target_requirement": "Each applicable individual concern traces via stakeholder, requirement, object, control and evidence",
+      "owner": "Enterprise Architecture Authority",
+      "work_package": "EA-ALIGN-007",
+      "priority": "HIGH"
+    },
+    {
+      "gap_id": "EA-GAP-002",
+      "name": "Value stream revision consistency VS04-VS06",
+      "domain": "EA-DV-02",
+      "target_requirement": "Current S02 production operations mapped to VS06; VS04 retains maintenance lifecycle",
+      "owner": "Business Architecture Owner",
+      "work_package": "EA-ALIGN-013",
+      "priority": "HIGH"
+    },
+    {
+      "gap_id": "EA-GAP-003",
+      "name": "Data Architecture landscape",
+      "domain": "EA-DV-03",
+      "target_requirement": "Approved data baseline, target, lineage, source authority, migration and security model",
+      "owner": "Enterprise Data Owner",
+      "work_package": "EA-ALIGN-010",
+      "priority": "HIGH"
+    },
+    {
+      "gap_id": "EA-GAP-004",
+      "name": "Application Architecture landscape and CRM physical crosswalk",
+      "domain": "EA-DV-04",
+      "target_requirement": "Complete authoritative application inventory, real integration contracts and production physical conformance",
+      "owner": "ICT Executive",
+      "work_package": "EA-ALIGN-011",
+      "priority": "HIGH"
+    },
+    {
+      "gap_id": "EA-GAP-005",
+      "name": "Technology Architecture landscape",
+      "domain": "EA-DV-05",
+      "target_requirement": "Approved technology architecture including platform runtime, cloud/AI services, identity, security and resilience",
+      "owner": "ICT Executive",
+      "work_package": "EA-ALIGN-012",
+      "priority": "CRITICAL"
+    },
+    {
+      "gap_id": "EA-GAP-006",
+      "name": "Message validation and CRM transaction authority enforcement",
+      "domain": "EA-DV-04",
+      "target_requirement": "Fail-closed schema gate with CRM transaction identity and native transmission receipt",
+      "owner": "CRM System Administrator",
+      "work_package": "GitHub #57",
+      "priority": "HIGH"
+    },
+    {
+      "gap_id": "EA-GAP-007",
+      "name": "Controlled source index and primary-domain conformance",
+      "domain": "EA-DV-01",
+      "target_requirement": "Every substantive architecture object has one approved active primary domain and independently verified mapping conformance",
+      "owner": "Enterprise Architecture Authority",
+      "work_package": "EA-ALIGN-006",
+      "priority": "HIGH"
+    },
+    {
+      "gap_id": "EA-GAP-008",
+      "name": "Approved ArhiMate element/relationship model exchange conformance",
+      "domain": "EA-DV-04",
+      "target_requirement": "Version-pinned valid exchange models for Baseline, Transition and Target with relation legality and complete coverage dispositions",
+      "owner": "Enterprise Architecture Authority",
+      "work_package": "EA-ALIGN-017",
+      "priority": "HIGH"
+    },
+    {
+      "gap_id": "EA-GAP-009",
+      "name": "Transition architecture, decisions and migration evidence",
+      "domain": "EA-DV-01",
+      "target_requirement": "Trace each target gap via work packages, transition plateau, acceptance and deployment evidence",
+      "owner": "Group CEO",
+      "work_package": "EA-ALIGN-018",
+      "priority": "HIGH"
+    }
+  ],
+  "conformance_requirements": [
+    "ALL_STAKEHOLDER_CONCERNS_TRACED_OR_AUTHORISED_EXCEPTION",
+    "ALL_CANONICAL_ARCHITECTURE_OBJECTS_HAVE_AUTHORITY_AND_OWNER",
+    "ALL_APPLICABLE_ARCHIMATE_TYPES_ACCOUNTED_FOR",
+    "VALIDATED_BASELINE_TARGET_EXCHANGE_FILES",
+    "LIVE_CRM_CATALYST_READBACK_AND_NEGATIVE_TESTS",
+    "APPROVED_MIGRATION_AND_CEO_ACT"
+  ]
+}
