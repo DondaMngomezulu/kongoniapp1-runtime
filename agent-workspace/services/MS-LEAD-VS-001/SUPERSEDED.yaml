@@ -1,0 +1,11 @@
+supersession:
+  service_id: MS-LEAD-VS-001
+  status: SUPERSEDED_BEFORE_ADOPTION
+  superseded_by: MS-TENDER-VS-001
+  reason: >-
+    Executive direction narrowed the bounded context to Tender Management. Generic lead classification
+    is outside this microservice scope and must not be deployed from this change set.
+  controls:
+    production_deployment: PROHIBITED
+    merge_as_active_service: PROHIBITED
+    retain_for_traceability: true

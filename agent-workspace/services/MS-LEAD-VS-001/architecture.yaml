@@ -1,0 +1,35 @@
+architecture:
+  service_id: MS-LEAD-VS-001
+  style: stateless_orchestration_microservice
+  target_platform: Zoho Catalyst
+  target_environment: Development
+  preferred_runtime: Python
+  interaction: synchronous_request_response
+  components:
+    - name: Intake Adapter
+      responsibility: validate and normalize lead or tender payload
+    - name: Value Stream Mapping Engine
+      responsibility: apply reusable mapping and scoring rules
+    - name: Evidence Assembler
+      responsibility: return provenance and decision rationale
+  upstream:
+    - Zoho CRM Lead
+    - Tender Requirement Processor
+  downstream:
+    - Zoho CRM classification fields
+    - Deal Engine
+    - Tender Workflow
+  external_rule_interfaces:
+    - capability_catalogue
+    - service_catalogue
+    - value_stream_catalogue
+    - legal_entity_catalogue
+  separation_of_concerns:
+    legal_and_compliance: delegated
+    commercial_bid_no_bid: delegated_to_deal_engine
+    documents: delegated_to_document_repository_and_controller
+  deployment_control:
+    github_repository: DondaMngomezulu/kongoniapp1-runtime
+    production_protected: true
+    development_first: true
+    runtime_function_registration_required: true

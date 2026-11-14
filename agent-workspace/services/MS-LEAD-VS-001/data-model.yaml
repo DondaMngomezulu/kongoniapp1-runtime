@@ -1,0 +1,30 @@
+data_model:
+  service_id: MS-LEAD-VS-001
+  input:
+    lead_id: {type: string, required: true}
+    source_type: {type: string, enum: [lead, tender, rfq, rfp, rfi, eoi], required: true}
+    buyer: {type: string, required: true}
+    scope_text: {type: string, required: true}
+    contracted_output: {type: string, required: false}
+    requirement_refs: {type: array, items: string, required: false}
+    evidence_refs: {type: array, items: string, required: false}
+  output:
+    classification_id: {type: string, required: true}
+    primary_value_stream_id: {type: string, required: true}
+    secondary_value_stream_ids: {type: array, items: string}
+    capability_ids: {type: array, items: string}
+    service_ids: {type: array, items: string}
+    legal_entity_id: {type: string, nullable: true}
+    offering_ids: {type: array, items: string}
+    confidence_score: {type: number, minimum: 0, maximum: 1}
+    qualification_status:
+      type: string
+      enum: [DISCOVERED, MAPPING_COMPLETE, ELIGIBILITY_HOLD, ELIGIBILITY_FAILED, READY_FOR_QUALIFICATION]
+    rationale: {type: string, required: true}
+    evidence_refs: {type: array, items: string}
+    rule_version: {type: string, required: true}
+  invariants:
+    - primary_value_stream_id_must_be_present
+    - confidence_score_must_be_bounded
+    - rationale_must_reference_business_outcome_not_keywords_only
+    - eligibility_failure_may_not_be_overridden_by_weighted_score

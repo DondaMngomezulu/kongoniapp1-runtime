@@ -1,0 +1,42 @@
+architecture:
+  service_id: MS-TENDER-VS-001
+  bounded_context: Tender Management
+  runtime_target: Zoho Catalyst Development
+  proposed_function: tender_value_stream_classifier
+  pattern: thin orchestration microservice with reusable mapping engine
+  inputs:
+    - Zoho CRM Tender record
+    - Tender Requirements Register
+    - controlled tender source documents
+    - addenda and clarification records
+    - eligibility evidence
+  components:
+    tender_classifier:
+      responsibility: orchestrate tender classification and preserve source provenance
+    value_stream_mapping_engine:
+      responsibility: resolve buyer outcome to capability, service and owning value stream
+    eligibility_gate_adapter:
+      responsibility: consume eligibility results and prevent invalid advancement
+  outputs:
+    - primary_value_stream
+    - supporting_value_streams
+    - capability_ids
+    - service_ids
+    - confidence_score
+    - rationale
+    - provenance
+    - eligibility_effect
+    - tender_workflow_next_state
+  integration:
+    upstream:
+      - Tender Ingestion
+      - Tender Requirement Processing
+    downstream:
+      - Tender Workflow
+      - Legal and Compliance services
+      - Deal Engine after qualification
+  constraints:
+    - no generic lead classification
+    - no direct bid/no-bid authorisation
+    - no direct deal creation
+    - no legal interpretation embedded in this microservice
