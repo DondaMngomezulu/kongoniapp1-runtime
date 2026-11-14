@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "template_key": "CANDIDATE-COMPANY-PROFILE-WHATSAPP",
+  "canonical_template_id": null,
+  "version": "0.1.0",
+  "lifecycle": "REVIEW_ONLY",
+  "message_type": "Company Profile",
+  "channel_code": "CH-WHATSAPP",
+  "channel_transport": "plain_message",
+  "source": {
+    "system": "Zoho CRM",
+    "module": "Accounts",
+    "primary_key": "id",
+    "read_policy": "Fetch exactly one current Account record by CRM Account ID; do not source instance values from the template"
+  },
+  "governance": {
+    "enterprise_message_register": "https://docs.google.com/spreadsheets/d/1TlHa9Q43Y-xJr-QJN4QveO0TKhT9hwm13K0wpX6BGVI/edit",
+    "register_status": "CONTROLLED DRAFT - ID PENDING",
+    "typesetting_profile_key": "candidate-corporate-typesetting@0.1.0",
+    "typesetting_profile_sha256": "05c31811fb834a33198c56a6e103e33ebc03f2799feba8b51325ab75b592c850",
+    "semantic_policy": "Retain current enterprise dictionary terms; candidate IDs are not canonical",
+    "release": "Requires independent template/semantic approval and verified entity, recipient, channel and sending authority; never auto-send"
+  },
+  "sections": [
+    {
+      "title": "",
+      "fields": [
+        {
+          "key": "Account_Name",
+          "label": "Registered Company / Account Name",
+          "required": true,
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "Trading_Name",
+          "label": "Trading Name",
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "Company_Registration_Number",
+          "label": "Company Registration Number",
+          "required": true,
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "Tax_Number",
+          "label": "Income Tax Number",
+          "kind": "text",
+          "tier": "standard",
+          "verification_required": true
+        },
+        {
+          "key": "VAT_Number",
+          "label": "VAT Registration Number",
+          "kind": "text",
+          "tier": "standard",
+          "verification_required": true
+        }
+      ]
+    },
+    {
+      "title": "Address",
+      "fields": [
+        {
+          "key": "Registered_Address",
+          "label": "Registered Address",
+          "required": true,
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "Business_Physical_Address",
+          "label": "Business Address",
+          "kind": "text",
+          "tier": "standard"
+        }
+      ]
+    },
+    {
+      "title": "Contact",
+      "fields": [
+        {
+          "key": "Company_email",
+          "label": "Company Email",
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "Secondary_Email",
+          "label": "Additional Email",
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "Phone",
+          "label": "Telephone",
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "WhatsApp",
+          "label": "WhatsApp",
+          "kind": "text",
+          "tier": "standard"
+        },
+        {
+          "key": "Website",
+          "label": "Website",
+          "kind": "text",
+          "tier": "standard"
+        }
+      ]
+    },
+    {
+      "title": "Company",
+      "fields": [
+        {
+          "key": "Organisation_Type",
+          "label": "Company Type",
+          "kind": "text",
+          "tier": "extended"
+        },
+        {
+          "key": "Country_of_Registration",
+          "label": "Country of Registration",
+          "kind": "text",
+          "tier": "extended"
+        },
+        {
+          "key": "Incorporation_Date",
+          "label": "Incorporation Date",
+          "kind": "date",
+          "tier": "extended"
+        },
+        {
+          "key": "Legal_Entity_Status",
+          "label": "Legal Entity Status",
+          "kind": "text",
+          "tier": "extended"
+        },
+        {
+          "key": "Business_Activity",
+          "label": "Business Activity",
+          "kind": "text",
+          "tier": "extended"
+        },
+        {
+          "key": "Parent_Account",
+          "label": "Parent Company",
+          "kind": "lookup_name",
+          "tier": "extended"
+        },
+        {
+          "key": "Ultimate_Parent",
+          "label": "Ultimate Parent",
+          "kind": "lookup_name",
+          "tier": "extended"
+        },
+        {
+          "key": "Financial_Year_End",
+          "label": "Financial Year-End",
+          "kind": "year_end",
+          "tier": "extended"
+        },
+        {
+          "key": "CSD_Number",
+          "label": "CSD Number",
+          "kind": "text",
+          "tier": "extended",
+          "verification_required": true
+        },
+        {
+          "key": "BBBEE_Valid_Until",
+          "label": "B-BBEE Proof Valid Until",
+          "kind": "date",
+          "tier": "extended",
+          "verification_required": true
+        }
+      ]
+    }
+  ],
+  "internal_controls": [
+    "id",
+    "Master_Data_Status",
+    "Master_Data_Validated_At",
+    "Registered_Source",
+    "Reg_Address_As_Of",
+    "Reg_Address_Source_URL",
+    "WhatsApp_Status",
+    "CSD_Registration_Doc",
+    "BBBEE",
+    "VAT_Registration",
+    "Tax_Registration",
+    "KYC_Status",
+    "Credit_Status"
+  ],
+  "unsupported_without_review": [
+    "private personal numbers",
+    "banking details",
+    "tax PIN",
+    "CSD credentials",
+    "identity documents",
+    "unverified director/signatory claims"
+  ],
+  "null_policy": "Omit blank optional fields; missing required data places draft on HOLD; never infer values or borrow from related companies",
+  "source_snapshot_rule": "Record source CRM Account ID, read time, evidence/verification state, approvals and recipient in protected internal audit metadata, not the WhatsApp text"
+}

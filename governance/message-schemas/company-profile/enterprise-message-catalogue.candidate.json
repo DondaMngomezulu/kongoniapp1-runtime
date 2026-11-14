@@ -1,0 +1,950 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "catalogue_key": "CANDIDATE-ENTERPRISE-COMMUNICATION-PROFILES",
+  "version": "0.1.0",
+  "lifecycle": "REVIEW_ONLY",
+  "canonical_catalogue_id": null,
+  "authority_register": "https://docs.google.com/spreadsheets/d/1TlHa9Q43Y-xJr-QJN4QveO0TKhT9hwm13K0wpX6BGVI/edit",
+  "source_business_document_types": "https://docs.google.com/spreadsheets/d/1OxgfobMF19ZrWg6pLuuhG_ZZNiTVUtcQgdEdSXEXw78/edit",
+  "standards_register": "https://docs.google.com/spreadsheets/d/1tA7rKtgwkw57uROBC1Cht4rlOEjuQ60bLnhA-Daen6M/edit",
+  "notes": "Preserves native CRM template IDs; these are proposed semantic and field bindings, not verified existing email content, schema instances, approvals or live configurations. UBL messages governed by UBL 2.5 while existing 2.4 profiles need migration/instance checks. Finance messages remain without financial instrument profile until verified.",
+  "rules": {
+    "root_source": "Zoho CRM record by exact ID",
+    "lookup_resolution": "typed lookup fields require explicit CRM dereference and permissions",
+    "missing_required": "HOLD",
+    "sending": "DISABLED",
+    "no_duplicate_templates": true,
+    "source_record_immutable": true,
+    "channel_release": "requires verified renderer, recipient consent, approved Meta category/language if WhatsApp, permitted sender, source hash"
+  },
+  "templates": [
+    {
+      "key": "CAND-MSG-ENQ-ACK",
+      "canonical_id": null,
+      "name": "Enquiry Acknowledgement",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009740001",
+      "semantic_authority": "STD-TMF-699",
+      "enterprise_source_binding": "VS02-01",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Leads",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Full_Name",
+        "Lead_Status"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Leads",
+          "crm_field": "Full_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Leads",
+          "crm_field": "Lead_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Leads",
+          "crm_field": "Email",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Existing CRM template; do not duplicate."
+    },
+    {
+      "key": "CAND-MSG-QUAL-INFO",
+      "canonical_id": null,
+      "name": "Qualification Information Request",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009733101",
+      "semantic_authority": "STD-TMF-699",
+      "enterprise_source_binding": "VS02-02",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Leads",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Full_Name",
+        "Email"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Leads",
+          "crm_field": "Full_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Leads",
+          "crm_field": "Email",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Leads",
+          "crm_field": "Product_Enquiry_Notes",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": ""
+    },
+    {
+      "key": "CAND-MSG-REQ-CONF",
+      "canonical_id": null,
+      "name": "Requirements Confirmation",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009732101",
+      "semantic_authority": "STD-TMF-699",
+      "enterprise_source_binding": "VS02-03",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Contact_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Stage",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": ""
+    },
+    {
+      "key": "CAND-MSG-BUD-PROP",
+      "canonical_id": null,
+      "name": "Budgetary Proposal Cover",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009741001",
+      "semantic_authority": "STD-TMF-648 / STD-BDOC-001",
+      "enterprise_source_binding": "VS02-04",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Contact_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Text message is only covering communication; commercial quotation payload retains UBL Quotation governance."
+    },
+    {
+      "key": "CAND-MSG-KYC-DOCS",
+      "canonical_id": null,
+      "name": "KYC and Credit Documents Request",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009735014",
+      "semantic_authority": "STD-TMF-699 / STD-LEGALRULE-001",
+      "enterprise_source_binding": "VS02-05",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Contact_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Do not include sensitive KYC data; document requirements from approved rules."
+    },
+    {
+      "key": "CAND-MSG-COND-APP",
+      "canonical_id": null,
+      "name": "Conditional Approval",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009742001",
+      "semantic_authority": "STD-LEGALRULE-001",
+      "enterprise_source_binding": "VS02-06",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Decision_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Requires separately verified authorisation; no grant inferred from Deal Stage."
+    },
+    {
+      "key": "CAND-MSG-QUOTE-ACCEPT",
+      "canonical_id": null,
+      "name": "Quote Acceptance Acknowledgement",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009727007",
+      "semantic_authority": "STD-TMF-648 / STD-BDOC-001",
+      "enterprise_source_binding": "VS02-07",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Quotes",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Quote_Number",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Quote_Number",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Acceptance_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Grand_Total",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Must not represent a quote as accepted without controlled evidence."
+    },
+    {
+      "key": "CAND-MSG-CONTRACT-ISSUE",
+      "canonical_id": null,
+      "name": "Contract Issue Cover",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009739101",
+      "semantic_authority": "STD-LEGALRULE-001 / STD-TMF-SID-001",
+      "enterprise_source_binding": "VS02-08",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Contact_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Contract evidence/signature source must be separately attached, not derived from Deal."
+    },
+    {
+      "key": "CAND-MSG-CPS-OUT",
+      "canonical_id": null,
+      "name": "Conditions Precedent Outstanding",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009743001",
+      "semantic_authority": "STD-LEGALRULE-001",
+      "enterprise_source_binding": "VS02-09",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Contact_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Actual CP list only from approved transaction-specific governed obligations."
+    },
+    {
+      "key": "CAND-MSG-CONTRACT-EXEC",
+      "canonical_id": null,
+      "name": "Contract Execution Confirmation",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009729101",
+      "semantic_authority": "STD-LEGALRULE-001",
+      "enterprise_source_binding": "VS02-10",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Contact_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Execution state and signatories must be evidenced independently."
+    },
+    {
+      "key": "CAND-MSG-COMMENCE",
+      "canonical_id": null,
+      "name": "Commencement Confirmation",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009739104",
+      "semantic_authority": "STD-TMF-SID-001",
+      "enterprise_source_binding": "VS02-11",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Deals",
+        "key": "id"
+      },
+      "business_domain": "VS02",
+      "required_fields": [
+        "Deal_Name",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Deals",
+          "crm_field": "Deal_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Deals",
+          "crm_field": "Stage",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Effective date requires agreement/evidence check."
+    },
+    {
+      "key": "CAND-MSG-QUOTE-FOLLOWUP",
+      "canonical_id": null,
+      "name": "Customer Quote Follow-up",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009526001",
+      "semantic_authority": "STD-TMF-648",
+      "enterprise_source_binding": "P1-03",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Quotes",
+        "key": "id"
+      },
+      "business_domain": "Sales",
+      "required_fields": [
+        "Quote_Number",
+        "Account_Name"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Quote_Number",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Account_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Quote_Stage",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Contact_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": ""
+    },
+    {
+      "key": "CAND-MSG-TENDER-RECEIPT",
+      "canonical_id": null,
+      "name": "Tender Receipt Notice",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009207257",
+      "semantic_authority": "STD-BDOC-001",
+      "enterprise_source_binding": "BDT-L1-UBL-TenderReceipt",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Tenders",
+        "key": "id"
+      },
+      "business_domain": "Procurement",
+      "required_fields": [
+        "Name",
+        "Workflow_Stage"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Tenders",
+          "crm_field": "Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Tenders",
+          "crm_field": "Workflow_Stage",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Tenders",
+          "crm_field": "Closing_DateTime",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "UBL TenderReceipt payload is not equivalent to the email body; applicable UBL release/variant unverified."
+    },
+    {
+      "key": "CAND-MSG-SERVICE-EXCEPTION",
+      "canonical_id": null,
+      "name": "Service Exception Notification",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009225231",
+      "semantic_authority": "STD-BDOC-001",
+      "enterprise_source_binding": "BDT-L1-UBL-ExceptionNotification",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "CustomerServiceRequests",
+        "key": "id"
+      },
+      "business_domain": "Service",
+      "required_fields": [
+        "Name",
+        "Status"
+      ],
+      "bindings": [
+        {
+          "crm_module": "CustomerServiceRequests",
+          "crm_field": "Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "CustomerServiceRequests",
+          "crm_field": "Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Normative UBL payload to be validated independently."
+    },
+    {
+      "key": "CAND-MSG-DOC-STATUS",
+      "canonical_id": null,
+      "name": "Document Status Notification",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009250398",
+      "semantic_authority": "STD-BDOC-001 / STD-REGREP-001",
+      "enterprise_source_binding": "BDT-L1-UBL-DocumentStatus",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "CustomerDocuments",
+        "key": "id"
+      },
+      "business_domain": "Document",
+      "required_fields": [
+        "Name",
+        "Document_Status"
+      ],
+      "bindings": [
+        {
+          "crm_module": "CustomerDocuments",
+          "crm_field": "Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "CustomerDocuments",
+          "crm_field": "Document_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "CustomerDocuments",
+          "crm_field": "Document_Type",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "CustomerDocuments",
+          "crm_field": "Document_Link",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Document source/evidence and access permissions must be checked."
+    },
+    {
+      "key": "CAND-MSG-DELIVERY",
+      "canonical_id": null,
+      "name": "Delivery Confirmation",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009215444",
+      "semantic_authority": "STD-BDOC-001",
+      "enterprise_source_binding": "BDT-L1-UBL-DeliveryNote",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "DeliveryEvents",
+        "key": "id"
+      },
+      "business_domain": "Delivery",
+      "required_fields": [
+        "Name",
+        "Sales_Order"
+      ],
+      "bindings": [
+        {
+          "crm_module": "DeliveryEvents",
+          "crm_field": "Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "DeliveryEvents",
+          "crm_field": "Sales_Order",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "DeliveryEvents",
+          "crm_field": "Delivery_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "DeliveryEvents",
+          "crm_field": "Delivery_Note_Date",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "The message is a notice only; DeliveryNote and DespatchAdvice applicability must be checked separately."
+    },
+    {
+      "key": "CAND-MSG-LEAD-ACTION",
+      "canonical_id": null,
+      "name": "Lead Action Required",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009495001",
+      "semantic_authority": "STD-TMF-699",
+      "enterprise_source_binding": "P1-01",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Leads",
+        "key": "id"
+      },
+      "business_domain": "Internal",
+      "required_fields": [
+        "Full_Name",
+        "Lead_Status"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Leads",
+          "crm_field": "Full_Name",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Leads",
+          "crm_field": "Lead_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Leads",
+          "crm_field": "Owner",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Internal notice only; never externally dispatched."
+    },
+    {
+      "key": "CAND-MSG-QUOTE-ACTION",
+      "canonical_id": null,
+      "name": "Quote Action Required",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009499001",
+      "semantic_authority": "STD-TMF-648",
+      "enterprise_source_binding": "P1-02",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "Quotes",
+        "key": "id"
+      },
+      "business_domain": "Internal",
+      "required_fields": [
+        "Subject",
+        "Quote_Number"
+      ],
+      "bindings": [
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Subject",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Quote_Number",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "Quotes",
+          "crm_field": "Quote_Stage",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Internal notice only; never externally dispatched."
+    },
+    {
+      "key": "CAND-MSG-CHANNEL-STATUS",
+      "canonical_id": null,
+      "name": "Communication Delivery Status",
+      "version": "0.1.0",
+      "status": "REVIEW_ONLY",
+      "channel": "EMAIL",
+      "crm_template_id": "5643538000009329003",
+      "semantic_authority": "TMF681 (PROFILE_UNVERIFIED) / STD-TMF-OC-001",
+      "enterprise_source_binding": "TMF681 CommunicationMessage",
+      "primary_source": {
+        "system": "Zoho CRM",
+        "module": "CustomerCommunications",
+        "key": "id"
+      },
+      "business_domain": "Cross-domain",
+      "required_fields": [
+        "Subject",
+        "Channel_ID"
+      ],
+      "bindings": [
+        {
+          "crm_module": "CustomerCommunications",
+          "crm_field": "Subject",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "CustomerCommunications",
+          "crm_field": "Channel_ID",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "CustomerCommunications",
+          "crm_field": "Delivery_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        },
+        {
+          "crm_module": "CustomerCommunications",
+          "crm_field": "Interaction_Status",
+          "verified_in_live_metadata": true,
+          "source": "CRM_FIELD",
+          "render_type": "text"
+        }
+      ],
+      "recipient_policy": "Resolve Contact and recipient communications consent in CRM before release; never infer recipient from company email",
+      "transmission": "DISABLED",
+      "notes": "Existing CRM template is Action Required; name of candidate profile is distinct and requires owner reconciliation."
+    }
+  ]
+}
