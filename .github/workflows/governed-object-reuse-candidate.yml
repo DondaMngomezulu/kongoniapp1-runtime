@@ -1,0 +1,26 @@
+name: Governed Object Reuse Candidate Checks
+on:
+  pull_request:
+    paths:
+      - 'governance/message-schemas/quotations/**'
+      - 'governance/message-schemas/shared/**'
+      - 'governance/message-schemas/tests/test_governed_object_reuse.py'
+      - '.github/workflows/governed-object-reuse-candidate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/message-schemas/quotations/**'
+      - 'governance/message-schemas/shared/**'
+      - 'governance/message-schemas/tests/test_governed_object_reuse.py'
+jobs:
+  synthetic-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'jsonschema[format]==4.26.0'
+      - run: python governance/message-schemas/tests/test_governed_object_reuse.py

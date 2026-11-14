@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shared governed-object content and evidence profile — engineering candidate",
+  "description": "Reusable structured composition/evidence parts for governed object families, not an approved identity, business rule, event envelope or dispatch gate. MRG-CVR-001 and independent production controls retain authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_record",
+    "source_provenance",
+    "claims",
+    "review_state"
+  ],
+  "properties": {
+    "source_record": {
+      "$ref": "#/$defs/crm_source"
+    },
+    "source_provenance": {
+      "$ref": "#/$defs/source_provenance"
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "review_state": {
+      "$ref": "#/$defs/review_state"
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "evidence_status"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "evidence_status": {
+          "enum": [
+            "verified",
+            "proposed",
+            "clarification_required",
+            "not_applicable"
+          ]
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clarification_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicability_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "concept_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "crm_field_api": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9.]*$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evidence_status": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "evidence_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "source_ref"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_status": {
+                "const": "proposed"
+              }
+            },
+            "required": [
+              "evidence_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "policy_ref"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_status": {
+                "const": "clarification_required"
+              }
+            },
+            "required": [
+              "evidence_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "clarification_ref"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_status": {
+                "const": "not_applicable"
+              }
+            },
+            "required": [
+              "evidence_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "applicability_ref"
+            ]
+          }
+        }
+      ]
+    },
+    "claims_section": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "crm_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "id"
+      ],
+      "properties": {
+        "module": {
+          "enum": [
+            "Leads",
+            "Deals",
+            "Accounts",
+            "Contacts",
+            "Quotes",
+            "Quoted_Items",
+            "ProductOfferings",
+            "ProductOfferingPrices",
+            "ProductSpecifications",
+            "GroupEntities",
+            "FulfilmentEvents",
+            "CustomerCommunications",
+            "Agreements",
+            "Agreement_Templates",
+            "Sales_Orders",
+            "Purchase_Orders",
+            "Invoices",
+            "Tenders",
+            "TenderRequirements",
+            "BusinessDocumentTypes",
+            "CustomerDocuments",
+            "Products",
+            "ServiceOfferings"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9]+$"
+        }
+      }
+    },
+    "template_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_id",
+        "version",
+        "merge_schema_id",
+        "published"
+      ],
+      "properties": {
+        "template_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "merge_schema_id": {
+          "const": "MRG-CVR-001"
+        },
+        "published": {
+          "type": "boolean"
+        }
+      }
+    },
+    "source_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_ref",
+        "authority",
+        "version",
+        "evidence_status"
+      ],
+      "properties": {
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "enum": [
+            "VERIFIED",
+            "REVIEW_PENDING",
+            "HOLD"
+          ]
+        }
+      }
+    },
+    "review_state": {
+      "enum": [
+        "REVIEW_ONLY",
+        "HOLD",
+        "CHECK_STUDY",
+        "APPROVED_BY_EXTERNAL_EVIDENCE"
+      ]
+    }
+  }
+}
