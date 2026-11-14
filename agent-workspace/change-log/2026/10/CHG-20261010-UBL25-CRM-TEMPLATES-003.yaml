@@ -1,0 +1,21 @@
+change_id: CHG-20261010-UBL25-CRM-TEMPLATES-003
+timestamp_utc: '2026-10-10T15:15:00Z'
+actor: {type: ChatGPT, name: ChatGPT engineering assistant, agent_contract_ref: null}
+mandate_ref: 'User 2026-10-10 instruction to proceed with UBL2.5 target architecture remediation'
+accountability_task_ref: 'https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/57'
+task_class: T2
+change_type: schema
+summary: 'Evidence-bound crosswalk of existing Zoho CRM UBL-labelled templates to 101 candidate document types'
+reason: 'CRM template records were not previously linked in the candidate HTML projection architecture'
+affected_paths:
+  - governance/message-schemas/ubl25-html-projections/crm-template-bindings.candidate.json
+  - governance/message-schemas/ubl25-html-projections/tests/test_crm_template_readback.py
+  - governance/message-schemas/ubl25-html-projections/README.crm-readback.md
+environment: repository
+authority: {status: AUTHORISED, reference: 'User 2026-10-10 repository architectural change, read-only CRM inspection'}
+pdca: {phase: DO, do_complete: false, check_study_result: null, act_decision: null, task_complete: false}
+evidence:
+  - https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/63
+commit_sha: null
+pull_request: 63
+notes: 'No CRM configuration changed, no emails sent; all bindings and matching labels remain unverified.'

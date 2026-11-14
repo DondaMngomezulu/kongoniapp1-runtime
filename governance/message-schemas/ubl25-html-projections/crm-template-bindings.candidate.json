@@ -1,0 +1,1037 @@
+{
+  "id": "UBL25-CRM-TEMPLATE-READBACK-CANDIDATE-001",
+  "version": "0.1",
+  "state": "CHECK_STUDY_HOLD",
+  "source": "Zoho CRM live template metadata 2026-10-10",
+  "counts": {
+    "total": 101,
+    "crm_email_labelled_ubl25": 19,
+    "crm_inventory_labelled_ubl24": 10,
+    "exact_matches": 27,
+    "unmatched_custom_templates": [
+      "Tender Response Profile",
+      "Equipment Sales Commercial Proposal"
+    ],
+    "types_without_match": 80
+  },
+  "profiles": [
+    {
+      "type": "ApplicationResponse",
+      "projection_key": "ubl2.5/html-email/ApplicationResponse",
+      "legacy_id": "BDT-L1-UBL-001",
+      "templates": [
+        {
+          "type": "ApplicationResponse",
+          "id": "5643538000008795012",
+          "module": "Quotes",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        },
+        {
+          "type": "ApplicationResponse",
+          "id": "5643538000008834006",
+          "module": "Quotes",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "AttachedDocument",
+      "projection_key": "ubl2.5/html-email/AttachedDocument",
+      "legacy_id": "BDT-L1-UBL-002",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "AwardedNotification",
+      "projection_key": "ubl2.5/html-email/AwardedNotification",
+      "legacy_id": "BDT-L1-UBL-003",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "BillOfLading",
+      "projection_key": "ubl2.5/html-email/BillOfLading",
+      "legacy_id": "BDT-L1-UBL-004",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "BusinessCard",
+      "projection_key": "ubl2.5/html-email/BusinessCard",
+      "legacy_id": "BDT-L1-UBL-005",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "BusinessInformation",
+      "projection_key": "ubl2.5/html-email/BusinessInformation",
+      "legacy_id": "BDT-L1-UBL-006",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CallForTenders",
+      "projection_key": "ubl2.5/html-email/CallForTenders",
+      "legacy_id": "BDT-L1-UBL-007",
+      "templates": [
+        {
+          "type": "CallForTenders",
+          "id": "5643538000009284367",
+          "module": "Tenders",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Catalogue",
+      "projection_key": "ubl2.5/html-email/Catalogue",
+      "legacy_id": "BDT-L1-UBL-008",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CatalogueDeletion",
+      "projection_key": "ubl2.5/html-email/CatalogueDeletion",
+      "legacy_id": "BDT-L1-UBL-009",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CatalogueItemSpecificationUpdate",
+      "projection_key": "ubl2.5/html-email/CatalogueItemSpecificationUpdate",
+      "legacy_id": "BDT-L1-UBL-010",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CataloguePricingUpdate",
+      "projection_key": "ubl2.5/html-email/CataloguePricingUpdate",
+      "legacy_id": "BDT-L1-UBL-011",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CatalogueRequest",
+      "projection_key": "ubl2.5/html-email/CatalogueRequest",
+      "legacy_id": "BDT-L1-UBL-012",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CertificateOfOrigin",
+      "projection_key": "ubl2.5/html-email/CertificateOfOrigin",
+      "legacy_id": "BDT-L1-UBL-013",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CommonTransportationReport",
+      "projection_key": "ubl2.5/html-email/CommonTransportationReport",
+      "legacy_id": "BDT-L1-UBL-014",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ContractAwardNotice",
+      "projection_key": "ubl2.5/html-email/ContractAwardNotice",
+      "legacy_id": "BDT-L1-UBL-015",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ContractNotice",
+      "projection_key": "ubl2.5/html-email/ContractNotice",
+      "legacy_id": "BDT-L1-UBL-016",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "CreditNote",
+      "projection_key": "ubl2.5/html-email/CreditNote",
+      "legacy_id": "BDT-L1-UBL-017",
+      "templates": [
+        {
+          "type": "CreditNote",
+          "id": "5643538000008798024",
+          "module": "Invoices",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "DebitNote",
+      "projection_key": "ubl2.5/html-email/DebitNote",
+      "legacy_id": "BDT-L1-UBL-018",
+      "templates": [
+        {
+          "type": "DebitNote",
+          "id": "5643538000008781017",
+          "module": "Invoices",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "DeliveryNote",
+      "projection_key": "ubl2.5/html-email/DeliveryNote",
+      "legacy_id": null,
+      "templates": [
+        {
+          "type": "DeliveryNote",
+          "id": "5643538000009215444",
+          "module": "DeliveryEvents",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "DespatchAdvice",
+      "projection_key": "ubl2.5/html-email/DespatchAdvice",
+      "legacy_id": "BDT-L1-UBL-019",
+      "templates": [
+        {
+          "type": "DespatchAdvice",
+          "id": "5643538000009285034",
+          "module": "DeliveryEvents",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "DigitalAgreement",
+      "projection_key": "ubl2.5/html-email/DigitalAgreement",
+      "legacy_id": "BDT-L1-UBL-020",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "DigitalCapability",
+      "projection_key": "ubl2.5/html-email/DigitalCapability",
+      "legacy_id": "BDT-L1-UBL-021",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "DocumentStatus",
+      "projection_key": "ubl2.5/html-email/DocumentStatus",
+      "legacy_id": "BDT-L1-UBL-022",
+      "templates": [
+        {
+          "type": "DocumentStatus",
+          "id": "5643538000009250398",
+          "module": "CustomerDocuments",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "DocumentStatusRequest",
+      "projection_key": "ubl2.5/html-email/DocumentStatusRequest",
+      "legacy_id": "BDT-L1-UBL-023",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Enquiry",
+      "projection_key": "ubl2.5/html-email/Enquiry",
+      "legacy_id": "BDT-L1-UBL-024",
+      "templates": [
+        {
+          "type": "Enquiry",
+          "id": "5643538000009222780",
+          "module": "CustomerCommunications",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "EnquiryResponse",
+      "projection_key": "ubl2.5/html-email/EnquiryResponse",
+      "legacy_id": "BDT-L1-UBL-025",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ExceptionCriteria",
+      "projection_key": "ubl2.5/html-email/ExceptionCriteria",
+      "legacy_id": "BDT-L1-UBL-026",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ExceptionNotification",
+      "projection_key": "ubl2.5/html-email/ExceptionNotification",
+      "legacy_id": "BDT-L1-UBL-027",
+      "templates": [
+        {
+          "type": "ExceptionNotification",
+          "id": "5643538000009225231",
+          "module": "CustomerServiceRequests",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ExportCustomsDeclaration",
+      "projection_key": "ubl2.5/html-email/ExportCustomsDeclaration",
+      "legacy_id": "BDT-L1-UBL-028",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ExpressionOfInterestRequest",
+      "projection_key": "ubl2.5/html-email/ExpressionOfInterestRequest",
+      "legacy_id": "BDT-L1-UBL-029",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ExpressionOfInterestResponse",
+      "projection_key": "ubl2.5/html-email/ExpressionOfInterestResponse",
+      "legacy_id": "BDT-L1-UBL-030",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Forecast",
+      "projection_key": "ubl2.5/html-email/Forecast",
+      "legacy_id": "BDT-L1-UBL-031",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ForecastRevision",
+      "projection_key": "ubl2.5/html-email/ForecastRevision",
+      "legacy_id": "BDT-L1-UBL-032",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ForwardingInstructions",
+      "projection_key": "ubl2.5/html-email/ForwardingInstructions",
+      "legacy_id": "BDT-L1-UBL-033",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "FreightInvoice",
+      "projection_key": "ubl2.5/html-email/FreightInvoice",
+      "legacy_id": "BDT-L1-UBL-034",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "FulfilmentCancellation",
+      "projection_key": "ubl2.5/html-email/FulfilmentCancellation",
+      "legacy_id": "BDT-L1-UBL-035",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "GoodsCertificate",
+      "projection_key": "ubl2.5/html-email/GoodsCertificate",
+      "legacy_id": "BDT-L1-UBL-036",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "GoodsItemItinerary",
+      "projection_key": "ubl2.5/html-email/GoodsItemItinerary",
+      "legacy_id": "BDT-L1-UBL-037",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "GoodsItemPassport",
+      "projection_key": "ubl2.5/html-email/GoodsItemPassport",
+      "legacy_id": "BDT-L1-UBL-038",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "GuaranteeCertificate",
+      "projection_key": "ubl2.5/html-email/GuaranteeCertificate",
+      "legacy_id": "BDT-L1-UBL-039",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ImportCustomsDeclaration",
+      "projection_key": "ubl2.5/html-email/ImportCustomsDeclaration",
+      "legacy_id": "BDT-L1-UBL-040",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "InstructionForReturns",
+      "projection_key": "ubl2.5/html-email/InstructionForReturns",
+      "legacy_id": "BDT-L1-UBL-041",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "InventoryReport",
+      "projection_key": "ubl2.5/html-email/InventoryReport",
+      "legacy_id": "BDT-L1-UBL-042",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Invoice",
+      "projection_key": "ubl2.5/html-email/Invoice",
+      "legacy_id": "BDT-L1-UBL-043",
+      "templates": [
+        {
+          "type": "Invoice",
+          "id": "5643538000008778024",
+          "module": "Invoices",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        },
+        {
+          "type": "Invoice",
+          "id": "5643538000008782048",
+          "module": "Invoices",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "InvoiceStatusRequest",
+      "projection_key": "ubl2.5/html-email/InvoiceStatusRequest",
+      "legacy_id": null,
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "InvoiceStatusResponse",
+      "projection_key": "ubl2.5/html-email/InvoiceStatusResponse",
+      "legacy_id": null,
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ItemInformationRequest",
+      "projection_key": "ubl2.5/html-email/ItemInformationRequest",
+      "legacy_id": "BDT-L1-UBL-044",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Manifest",
+      "projection_key": "ubl2.5/html-email/Manifest",
+      "legacy_id": "BDT-L1-UBL-045",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Order",
+      "projection_key": "ubl2.5/html-email/Order",
+      "legacy_id": "BDT-L1-UBL-046",
+      "templates": [
+        {
+          "type": "Order",
+          "id": "5643538000008791051",
+          "module": "Purchase_Orders",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        },
+        {
+          "type": "Order",
+          "id": "5643538000008792393",
+          "module": "Purchase_Orders",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "OrderCancellation",
+      "projection_key": "ubl2.5/html-email/OrderCancellation",
+      "legacy_id": "BDT-L1-UBL-047",
+      "templates": [
+        {
+          "type": "OrderCancellation",
+          "id": "5643538000009209547",
+          "module": "Purchase_Orders",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        },
+        {
+          "type": "OrderCancellation",
+          "id": "5643538000008804015",
+          "module": "Purchase_Orders",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "OrderChange",
+      "projection_key": "ubl2.5/html-email/OrderChange",
+      "legacy_id": "BDT-L1-UBL-048",
+      "templates": [
+        {
+          "type": "OrderChange",
+          "id": "5643538000009211156",
+          "module": "Purchase_Orders",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        },
+        {
+          "type": "OrderChange",
+          "id": "5643538000008785037",
+          "module": "Purchase_Orders",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "OrderResponse",
+      "projection_key": "ubl2.5/html-email/OrderResponse",
+      "legacy_id": "BDT-L1-UBL-049",
+      "templates": [
+        {
+          "type": "OrderResponse",
+          "id": "5643538000008775025",
+          "module": "Sales_Orders",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        },
+        {
+          "type": "OrderResponse",
+          "id": "5643538000008794014",
+          "module": "Sales_Orders",
+          "kind": "INVENTORY",
+          "labelled_version": "2.4"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "OrderResponseSimple",
+      "projection_key": "ubl2.5/html-email/OrderResponseSimple",
+      "legacy_id": "BDT-L1-UBL-050",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "PackingList",
+      "projection_key": "ubl2.5/html-email/PackingList",
+      "legacy_id": "BDT-L1-UBL-051",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "PriorInformationNotice",
+      "projection_key": "ubl2.5/html-email/PriorInformationNotice",
+      "legacy_id": "BDT-L1-UBL-052",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ProcurementStatus",
+      "projection_key": "ubl2.5/html-email/ProcurementStatus",
+      "legacy_id": null,
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ProcurementStatusRequest",
+      "projection_key": "ubl2.5/html-email/ProcurementStatusRequest",
+      "legacy_id": null,
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ProductActivity",
+      "projection_key": "ubl2.5/html-email/ProductActivity",
+      "legacy_id": "BDT-L1-UBL-053",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ProofOfReexportation",
+      "projection_key": "ubl2.5/html-email/ProofOfReexportation",
+      "legacy_id": "BDT-L1-UBL-054",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ProofOfReexportationReminder",
+      "projection_key": "ubl2.5/html-email/ProofOfReexportationReminder",
+      "legacy_id": "BDT-L1-UBL-055",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ProofOfReexportationRequest",
+      "projection_key": "ubl2.5/html-email/ProofOfReexportationRequest",
+      "legacy_id": "BDT-L1-UBL-056",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "PurchaseReceipt",
+      "projection_key": "ubl2.5/html-email/PurchaseReceipt",
+      "legacy_id": "BDT-L1-UBL-057",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "QualificationApplicationRequest",
+      "projection_key": "ubl2.5/html-email/QualificationApplicationRequest",
+      "legacy_id": "BDT-L1-UBL-058",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "QualificationApplicationResponse",
+      "projection_key": "ubl2.5/html-email/QualificationApplicationResponse",
+      "legacy_id": "BDT-L1-UBL-059",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Quotation",
+      "projection_key": "ubl2.5/html-email/Quotation",
+      "legacy_id": "BDT-L1-UBL-060",
+      "templates": [
+        {
+          "type": "Quotation",
+          "id": "5643538000008802024",
+          "module": "Quotes",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "ReceiptAdvice",
+      "projection_key": "ubl2.5/html-email/ReceiptAdvice",
+      "legacy_id": "BDT-L1-UBL-061",
+      "templates": [
+        {
+          "type": "ReceiptAdvice",
+          "id": "5643538000009215441",
+          "module": "DeliveryEvents",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Reminder",
+      "projection_key": "ubl2.5/html-email/Reminder",
+      "legacy_id": "BDT-L1-UBL-062",
+      "templates": [
+        {
+          "type": "Reminder",
+          "id": "5643538000009237150",
+          "module": "Invoices",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "RemittanceAdvice",
+      "projection_key": "ubl2.5/html-email/RemittanceAdvice",
+      "legacy_id": "BDT-L1-UBL-063",
+      "templates": [
+        {
+          "type": "RemittanceAdvice",
+          "id": "5643538000009206382",
+          "module": "Invoices",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "RequestForQuotation",
+      "projection_key": "ubl2.5/html-email/RequestForQuotation",
+      "legacy_id": "BDT-L1-UBL-064",
+      "templates": [
+        {
+          "type": "RequestForQuotation",
+          "id": "5643538000009246250",
+          "module": "PartsRequests",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "RetailEvent",
+      "projection_key": "ubl2.5/html-email/RetailEvent",
+      "legacy_id": "BDT-L1-UBL-065",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "SelfBilledCreditNote",
+      "projection_key": "ubl2.5/html-email/SelfBilledCreditNote",
+      "legacy_id": "BDT-L1-UBL-066",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "SelfBilledInvoice",
+      "projection_key": "ubl2.5/html-email/SelfBilledInvoice",
+      "legacy_id": "BDT-L1-UBL-067",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Statement",
+      "projection_key": "ubl2.5/html-email/Statement",
+      "legacy_id": "BDT-L1-UBL-068",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "StockAvailabilityReport",
+      "projection_key": "ubl2.5/html-email/StockAvailabilityReport",
+      "legacy_id": "BDT-L1-UBL-069",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Tender",
+      "projection_key": "ubl2.5/html-email/Tender",
+      "legacy_id": "BDT-L1-UBL-070",
+      "templates": [
+        {
+          "type": "Tender",
+          "id": "5643538000009217958",
+          "module": "Tenders",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TenderContract",
+      "projection_key": "ubl2.5/html-email/TenderContract",
+      "legacy_id": "BDT-L1-UBL-071",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TenderReceipt",
+      "projection_key": "ubl2.5/html-email/TenderReceipt",
+      "legacy_id": "BDT-L1-UBL-072",
+      "templates": [
+        {
+          "type": "TenderReceipt",
+          "id": "5643538000009207257",
+          "module": "Tenders",
+          "kind": "EMAIL",
+          "labelled_version": "2.5"
+        }
+      ],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TenderStatus",
+      "projection_key": "ubl2.5/html-email/TenderStatus",
+      "legacy_id": "BDT-L1-UBL-073",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TenderStatusRequest",
+      "projection_key": "ubl2.5/html-email/TenderStatusRequest",
+      "legacy_id": "BDT-L1-UBL-074",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TenderWithdrawal",
+      "projection_key": "ubl2.5/html-email/TenderWithdrawal",
+      "legacy_id": "BDT-L1-UBL-075",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TendererQualification",
+      "projection_key": "ubl2.5/html-email/TendererQualification",
+      "legacy_id": "BDT-L1-UBL-076",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TendererQualificationResponse",
+      "projection_key": "ubl2.5/html-email/TendererQualificationResponse",
+      "legacy_id": "BDT-L1-UBL-077",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TradeItemLocationProfile",
+      "projection_key": "ubl2.5/html-email/TradeItemLocationProfile",
+      "legacy_id": "BDT-L1-UBL-078",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransitCustomsDeclaration",
+      "projection_key": "ubl2.5/html-email/TransitCustomsDeclaration",
+      "legacy_id": "BDT-L1-UBL-079",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportExecutionPlan",
+      "projection_key": "ubl2.5/html-email/TransportExecutionPlan",
+      "legacy_id": "BDT-L1-UBL-080",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportExecutionPlanRequest",
+      "projection_key": "ubl2.5/html-email/TransportExecutionPlanRequest",
+      "legacy_id": "BDT-L1-UBL-081",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportProgressStatus",
+      "projection_key": "ubl2.5/html-email/TransportProgressStatus",
+      "legacy_id": "BDT-L1-UBL-082",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportProgressStatusRequest",
+      "projection_key": "ubl2.5/html-email/TransportProgressStatusRequest",
+      "legacy_id": "BDT-L1-UBL-083",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportServiceDescription",
+      "projection_key": "ubl2.5/html-email/TransportServiceDescription",
+      "legacy_id": "BDT-L1-UBL-084",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportServiceDescriptionRequest",
+      "projection_key": "ubl2.5/html-email/TransportServiceDescriptionRequest",
+      "legacy_id": "BDT-L1-UBL-085",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportationStatus",
+      "projection_key": "ubl2.5/html-email/TransportationStatus",
+      "legacy_id": "BDT-L1-UBL-086",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "TransportationStatusRequest",
+      "projection_key": "ubl2.5/html-email/TransportationStatusRequest",
+      "legacy_id": "BDT-L1-UBL-087",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "UnawardedNotification",
+      "projection_key": "ubl2.5/html-email/UnawardedNotification",
+      "legacy_id": "BDT-L1-UBL-088",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "UnsubscribeFromProcedureRequest",
+      "projection_key": "ubl2.5/html-email/UnsubscribeFromProcedureRequest",
+      "legacy_id": "BDT-L1-UBL-089",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "UnsubscribeFromProcedureResponse",
+      "projection_key": "ubl2.5/html-email/UnsubscribeFromProcedureResponse",
+      "legacy_id": "BDT-L1-UBL-090",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "UtilityStatement",
+      "projection_key": "ubl2.5/html-email/UtilityStatement",
+      "legacy_id": "BDT-L1-UBL-091",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "WasteMovement",
+      "projection_key": "ubl2.5/html-email/WasteMovement",
+      "legacy_id": null,
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "WasteNotification",
+      "projection_key": "ubl2.5/html-email/WasteNotification",
+      "legacy_id": null,
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "Waybill",
+      "projection_key": "ubl2.5/html-email/Waybill",
+      "legacy_id": "BDT-L1-UBL-092",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "WeightStatement",
+      "projection_key": "ubl2.5/html-email/WeightStatement",
+      "legacy_id": "BDT-L1-UBL-093",
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    },
+    {
+      "type": "WorkReport",
+      "projection_key": "ubl2.5/html-email/WorkReport",
+      "legacy_id": null,
+      "templates": [],
+      "binding_status": "UNVERIFIED",
+      "issuance": "DENY"
+    }
+  ]
+}
