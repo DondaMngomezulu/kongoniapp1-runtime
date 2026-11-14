@@ -1,0 +1,170 @@
+artifact_id: TST-ZCRM-MODULE-DEF-001
+name: Zoho CRM Module Definition Reference Crosswalk and Regression Test
+version: 1.0.0
+status: CHECK_STUDY_COMPLETE
+methodology: MET-PDCA-001
+test_date: 2026-08-19
+source_environment: Zoho CRM live module metadata readback captured by AUD-ZCRM-RAT-001 on 2026-08-19
+reference_sources:
+  primary:
+    authority: TM Forum
+    standard: Information Framework (SID), GB922
+    source_url: https://www.tmforum.org/open-digital-architecture/information-framework-sid/
+    source_concept: Business Entity
+    source_summary: A Business Entity is a business-understandable thing with attributes and relationships to other Business Entities. SID provides a platform-independent information model and common vocabulary.
+  identity_support:
+    authority: TM Forum
+    concept: RootEntity
+    source_url: https://www.tmforum.org/Browsable_HTML_SID_v22.0/html/EARoot/EA2/EA9/EA10/EA4132.htm
+    source_summary: RootEntity provides common properties including an ID that unambiguously distinguishes object instances.
+  financial_services_refinement:
+    authority: BIAN
+    concept: Control Record
+    source_url: https://bian.org/servicelandscape-10-0-0/object_18.html?object=61244
+    source_summary: A Control Record contains the business information needed to fulfil a Service Domain role and can track the lifecycle of its governed asset type.
+canonical_crm_module_definition:
+  statement: A Zoho CRM Module SHALL represent a durable business entity or independently governed business record type whose instances require persistent identity, lifecycle, attributes and/or relationships. A status, classification, projection, screen, workflow step, derived availability result, or dependent repeating detail SHALL NOT become a Module unless it independently satisfies the identity and lifecycle test.
+  source_derivation:
+    - TM Forum SID Business Entity provides the generic business-entity basis.
+    - TM Forum RootEntity provides the persistent-instance identity test.
+    - BIAN Control Record provides the financial-services lifecycle-record refinement.
+  implementation_note: Zoho CRM Module is an implementation construct. TM Forum and BIAN define the business-information semantics used to decide when the implementation construct is justified.
+regression_test_protocol:
+  tests:
+    - id: M01
+      name: Business entity test
+      pass_if: The object is a business-understandable thing rather than a state, classification, screen, process step or projection.
+    - id: M02
+      name: Independent identity test
+      pass_if: Individual records need a stable identifier independent of a parent record.
+    - id: M03
+      name: Lifecycle test
+      pass_if: The record has an independently meaningful lifecycle, effective period or governed state progression.
+    - id: M04
+      name: Relationship test
+      pass_if: The object participates in persistent business relationships as an entity or relationship object.
+    - id: M05
+      name: Persistence test
+      pass_if: Business operations require persisted instances, not only a derived view or calculated result.
+    - id: M06
+      name: Non-module alternative test
+      pass_if: A Field, Picklist, Lookup, Subform, View, Layout or Blueprint cannot represent the requirement without loss of semantic integrity.
+  decision_rule: A module normally requires PASS on M01, M02 and M05, plus at least one of M03 or M04; M06 must also justify why a lighter CRM construct is insufficient.
+regression_results:
+  - object: Agreements
+    result: PASS
+    rationale: Durable agreement entity with independent identity, lifecycle, parties, terms and relationships.
+    disposition: KEEP_MODULE
+  - object: CustomerProducts
+    result: PASS
+    rationale: Realised product instance with independent identity, lifecycle and customer relationships.
+    disposition: KEEP_MODULE
+  - object: ProductCatalogues
+    result: PASS
+    rationale: Durable catalogue with membership, governance, lifecycle and market/channel relationships.
+    disposition: KEEP_MODULE
+  - object: ProductSpecifications
+    result: PASS
+    rationale: Durable specification master with identity, provenance and lifecycle.
+    disposition: KEEP_MODULE
+  - object: ProductTaxonomy
+    result: PASS
+    rationale: Persistent governed hierarchy nodes with identity, parent-child relationships and reuse.
+    disposition: KEEP_MODULE
+  - object: ProductArtifacts
+    result: PASS
+    rationale: Independent governed artifact/evidence records with provenance and lifecycle.
+    disposition: KEEP_MODULE
+  - object: MachineModels
+    result: PASS
+    rationale: Durable resource specification/type distinct from serialized assets.
+    disposition: KEEP_MODULE
+  - object: EquipmentAssets
+    result: PASS
+    rationale: Serialized asset instances have independent identity and lifecycle.
+    disposition: KEEP_MODULE
+  - object: PartyRelationships
+    result: PASS
+    rationale: Relationship records can carry type, dates, provenance and governance independently.
+    disposition: KEEP_MODULE
+  - object: AvailableProducts
+    result: FAIL
+    failed_tests: [M01, M02, M03, M06]
+    rationale: Availability is a derived qualification/projection, not normally an independently governed business entity.
+    disposition: CONVERT_TO_VIEW_OR_PROJECTION
+  - object: CustomerOverviews
+    result: FAIL
+    failed_tests: [M01, M02, M03, M06]
+    rationale: Customer overview is an aggregation/projection over authoritative records.
+    disposition: CONVERT_TO_VIEW_OR_PROJECTION
+  - object: AvailableCustomerServices
+    result: FAIL
+    failed_tests: [M01, M02, M03, M06]
+    rationale: Availability is derived from specification, entitlement and qualification context.
+    disposition: CONVERT_TO_VIEW_OR_PROJECTION
+  - object: CustomerFinanceStatuses
+    result: FAIL
+    failed_tests: [M01, M02, M04, M06]
+    rationale: Status is a characteristic/state of an owning entity unless a separate status-event ledger is explicitly required.
+    disposition: CONVERT_TO_ATTRIBUTE
+  - object: CustomerInsuranceStatuses
+    result: FAIL
+    failed_tests: [M01, M02, M04, M06]
+    rationale: Status is a characteristic of a policy/customer product rather than an independent master entity.
+    disposition: CONVERT_TO_ATTRIBUTE
+  - object: CustomerContractMiningStatuses
+    result: FAIL
+    failed_tests: [M01, M02, M04, M06]
+    rationale: Lifecycle status belongs on the contract-mining product/service/agreement unless a separate event ledger is justified.
+    disposition: CONVERT_TO_ATTRIBUTE
+  - object: CustomerAgreements
+    result: CONDITIONAL
+    rationale: Passes only if it is a relationship object with independent attributes/lifecycle. Otherwise it duplicates Agreements.
+    disposition: MERGE_OR_LINK
+  - object: MARC_Contract
+    result: CONDITIONAL
+    rationale: A subtype should remain separate only if its lifecycle/schema is materially distinct from Agreement.
+    disposition: MERGE_OR_SPECIALISE
+  - object: CustomerServices
+    result: CONDITIONAL
+    rationale: Keep only if realised service instances are independently lifecycle-managed and distinct from CustomerProducts and ServiceEntitlements.
+    disposition: KEEP_CONDITIONAL
+  - object: ProductQualifications
+    result: CONDITIONAL
+    rationale: Persisted qualification may justify identity when decision evidence, criteria, result and expiry must be retained.
+    disposition: KEEP_CONDITIONAL
+  - object: ServiceEntitlements
+    result: CONDITIONAL
+    rationale: Keep only if effective dates, limits, status and evidence are independently governed.
+    disposition: KEEP_CONDITIONAL
+  - object: PartyRoles
+    result: CONDITIONAL
+    rationale: Keep as a module only where role assignments have independent effective dates/context and are not only controlled values on relationships.
+    disposition: KEEP_CONDITIONAL
+  - object: Windscreen_claim
+    result: FAIL_AS_SEPARATE_CANONICAL_MODULE
+    rationale: Windscreen is normally a Claim subtype/type; a separate module requires a materially distinct lifecycle/schema.
+    disposition: MERGE_OR_SPECIALISE
+  - object: Deals_X_Contacts2
+    result: FAIL_AS_DUPLICATE
+    rationale: Duplicate association structure; one canonical Deal-Contact relationship should remain after dependency migration.
+    disposition: MERGE
+  - object: Price_Books_X_Products2
+    result: FAIL_AS_DUPLICATE
+    rationale: Duplicate association structure; one canonical Price Book-Product relationship should remain after dependency migration.
+    disposition: MERGE
+summary:
+  definition_result: PASS
+  finding: The adopted CRM Module definition is supported by TM Forum SID and BIAN and materially holds against the current CRM rationalisation dataset.
+  confirmed_keep_modules: 9
+  confirmed_non_module_or_merge_candidates: 9
+  conditional_modules: 5
+  regression_status: PASS_WITH_REMEDIATIONS
+  limitations:
+    - Direct Zoho CRM connector access was unavailable during this test, so the regression used the live module metadata readback already captured in AUD-ZCRM-RAT-001 on the same date.
+    - No module was changed or deleted by this test.
+act_recommendation: ADAPT
+next_actions:
+  - Promote the canonical module definition into CAT-ZCRM-CONFIG-001.
+  - Complete field/record/dependency tests for all CONDITIONAL objects.
+  - Re-run the regression directly against live Zoho CRM metadata when connector access is available.
