@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kongoni:ms-vs02-tax-compliance-001:BusinessEventTaxContext:1.0",
+  "title": "BusinessEventTaxContext",
+  "type": "object",
+  "required": ["request_id", "legal_entity_id", "event_type", "event_date", "jurisdiction", "amount", "currency"],
+  "properties": {
+    "request_id": {"type": "string", "minLength": 1},
+    "legal_entity_id": {"type": "string", "minLength": 1},
+    "counterparty_id": {"type": ["string", "null"]},
+    "agreement_id": {"type": ["string", "null"]},
+    "event_type": {"type": "string", "minLength": 1},
+    "event_date": {"type": "string", "format": "date"},
+    "jurisdiction": {"type": "string", "const": "ZA"},
+    "amount": {"type": "number"},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "tax_context": {"type": "object", "additionalProperties": true},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "name": "ms_vs02_tax_compliance_001",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Kongoni Group",
+  "private": true,
+  "dependencies": {}
+}

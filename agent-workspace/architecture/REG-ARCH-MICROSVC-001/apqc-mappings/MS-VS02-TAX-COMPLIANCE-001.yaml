@@ -1,0 +1,73 @@
+mapping_id: MAP-APQC-MS-VS02-TAX-001
+version: '0.2'
+status: PROPOSED_WITH_VERIFIED_RULE_CANDIDATE
+microservice_id: MS-VS02-TAX-COMPLIANCE-001
+service_specification_id: SRV-APQC-VS02-TAX-001
+value_stream_id: VS02
+apqc:
+  framework: APQC Process Classification Framework
+  profile: Cross-Industry
+  profile_version: '8.0'
+  level_2:
+    id: '9.0'
+    title: Manage Financial Resources
+  level_3:
+    id: '9.9'
+    title: Manage taxes
+    mapping_type: EXACT_CANDIDATE
+    role: DEFAULT_CANDIDATE_BUSINESS_MICROSERVICE_BOUNDARY
+  level_4:
+    - id: '9.9.2.1'
+      title: Perform tax planning/strategy
+      operation: ResolveTaxObligations
+      mapping_type: SUPPORTING
+    - id: '9.9.2.2'
+      title: Prepare tax returns
+      operation: ValidateTaxReturnInputs
+      mapping_type: SUPPORTING
+    - id: '9.9.2.4'
+      title: Calculate deferred taxes
+      operation: DetermineDeferredTaxInputs
+      mapping_type: PARTIAL
+      boundary_note: IAS 12 governs recognition and measurement; this service supplies SARS tax-base/rate inputs.
+    - id: '9.9.2.5'
+      title: Account for taxes
+      operation: DetermineCurrentTaxTreatment
+      mapping_type: PARTIAL
+      boundary_note: Final accounting recognition/posting remains governed by IFRS controls and Zoho Books execution.
+    - id: '9.9.2.6'
+      title: Monitor tax compliance
+      operation: CheckTaxCompliance
+      mapping_type: SUPPORTING
+    - id: '9.9.2.7'
+      title: Address tax inquiries
+      operation: OpenTaxComplianceCase
+      mapping_type: SUPPORTING
+  level_5:
+    status: PENDING_STABLE_ENTERPRISE_BINDING
+    rule: Engineering handover remains blocked until stable Level 5 mappings are registered or an approved decomposition exception is recorded.
+bounded_context_test:
+  business_outcome: PASS
+  state_ownership: PASS
+  accountable_owner: PASS
+  coupling: PASS
+  security_boundary: PASS
+  failure_isolation: PASS
+  independent_deployment: PASS_AS_DESIGN
+  scaling: PASS_AS_DESIGN
+  lifecycle_cohesion: PASS
+  result: PASS_WITH_OPEN_L5_BINDING
+semantic_crosswalks:
+  SARS: normative_tax_authority
+  IFRS: accounting_dependency
+  BIAN: optional_financial_services_semantics
+  TM_Forum: optional_API_information_semantics
+first_atomic_rule_candidate:
+  rule_id: AR-SARS-VAT-STD-001
+  domain: VAT
+  purpose: Apply the current 15 percent standard VAT rate only after governed supply classification and VAT-registration status are established.
+  legal_verification_evidence: EV-2026-08-18-SARS-VAT-STD-001
+  source_verification_status: PASS
+  execution_status: NOT_EXECUTABLE
+  executive_adoption_status: PENDING
+verification_status: PARTIAL_PASS_OPEN_L5_AND_EXECUTION_ADOPTION

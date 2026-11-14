@@ -1,0 +1,86 @@
+microservice_id: MS-VS02-TAX-COMPLIANCE-001
+microservice_name: VS02 Tax Determination and Compliance Service
+service_class: BUSINESS_PROCESS
+value_stream_id: VS02
+value_stream_name: Asset Finance & Capital Provision
+lifecycle_state: ARCHITECTED
+
+apqc_mapping_status: PROPOSED
+apqc_profile: Cross-Industry
+apqc_profile_version: '8.0'
+apqc_level_3:
+  id: '9.9'
+  title: Manage taxes
+apqc_level_4:
+  - '9.9.2.1 Perform tax planning/strategy'
+  - '9.9.2.2 Prepare tax returns'
+  - '9.9.2.4 Calculate deferred taxes'
+  - '9.9.2.5 Account for taxes'
+  - '9.9.2.6 Monitor tax compliance'
+  - '9.9.2.7 Address tax inquiries'
+apqc_level_5: []
+apqc_mapping_basis: Governed APQC/SARS crosswalk; stable Level 5 identifiers remain a controlled handover condition.
+
+service_domain_name: Tax Determination and Compliance
+reference_standard: APQC + SARS
+reference_version: APQC 8.0 / current SARS legal sources
+source_domain_id: urn:kongoni:apqc:8.0:9.9
+service_boundary: Determine and evidence South African tax obligations and tax-treatment decisions for VS02 business events without becoming a general ledger, autonomous SARS filing service, or IFRS accounting engine.
+canonical_business_object: TaxObligationDecision
+service_owner: VS02
+architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+
+service_specification_id: SRV-APQC-VS02-TAX-001
+service_specification_status: CONTROLLED_DESIGN_CANDIDATE
+key_operations:
+  - ResolveTaxObligations
+  - ValidateTaxReturnInputs
+  - DetermineCurrentTaxTreatment
+  - CheckTaxCompliance
+  - OpenTaxComplianceCase
+api_intent: Expose governed, deterministic tax decisions to VS02 services and the Zoho Books financial execution path.
+data_ownership: Catalyst owns governed tax decision/evidence state; SARS remains normative authority; Zoho Books remains the accounting system of record.
+dependencies:
+  - REG-SARS-RULE-001
+  - Governance and Compliance Rule Registry
+  - Books Financial Gateway
+  - Zoho Books
+  - CRM Commercial Gateway
+security_class: HIGHLY_CONFIDENTIAL_TAX
+nonfunctional_requirements:
+  - auditability
+  - authority_traceability
+  - rule_versioning
+  - deterministic_decisions
+  - fail_closed
+  - idempotency
+  - least_privilege
+acceptance_criteria:
+  - unapproved or source-only SARS rules cannot execute
+  - every executable decision retains authority source, version and effective date
+  - service cannot directly post to the Zoho Books ledger
+  - same governed inputs and rule version yield reproducible outcomes
+  - rule/dependency failure blocks posting authorisation
+engineering_handover_status: BLOCKED_RULE_AND_L5_APPROVAL
+
+target_platform: Zoho Catalyst
+catalyst_project: Kongoniapp1
+preferred_runtime: Advanced I/O Function
+preferred_language: Node.js 20
+github_source_ref: agent-workspace/architecture/REG-ARCH-MICROSVC-001/service-specifications/SRV-APQC-VS02-TAX-001.yaml
+catalyst_runtime_ref: null
+development_status: SCAFFOLDED_NOT_DEPLOYED
+production_status: NOT_STARTED
+
+source_provenance: APQC 8.0 process spine plus SARS official current tax-rate, VAT and primary-legislation sources; IFRS accounting consequences remain separately governed.
+mapping_basis: APPROVED_APQC_SPINE_WITH_SARS_NORMATIVE_AUTHORITY
+coverage_state: VERIFIED_SOURCE_WITH_L5_GAP
+test_status: PARTIAL_PASS_OPEN_CONDITIONS
+audit_status: REQUIRED
+pdca_stage: CHECK_STUDY
+act_decision: ADAPT
+
+rule_scope:
+  first_legally_verified_candidate: AR-SARS-VAT-STD-001
+  execution_binding_status: NOT_BOUND
+  reason: First atomic rule is source-verified but not yet executive-adopted for execution.

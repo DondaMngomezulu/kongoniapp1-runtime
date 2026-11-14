@@ -1,35 +1,54 @@
 policy_id: POL-ARCH-MICROSVC-APQC-001
-version: '0.1'
-status: DRAFT
+version: '0.2'
+status: APPROVED_CONTROLLED_ADOPTION
 applies_to: REG-ARCH-MICROSVC-001
 owner_skill: SKL-GH-MICROSVC-ARCH-001
+approval_ref: Group CEO decision in active conversation on 2026-08-18
 purpose: >-
-  Define how APQC Process Classification Framework content is used to refine and assure
-  Value Stream Service Domains and microservice engineering handovers.
+  Define APQC as the primary enterprise process spine for microservice identification,
+  while preserving approved domain and interoperability standards as semantic crosswalks.
 
 source_authority:
   cross_industry:
     framework: APQC Process Classification Framework
     current_version_checked: '8.0'
-    role: enterprise_common_process_baseline
+    role: enterprise_common_process_spine
   industry_specific:
-    role: preferred_sector_process_decomposition_when_applicable
+    role: preferred_sector_process_spine_when_applicable
     rule: Use the most applicable current APQC industry-specific PCF and retain its exact version in each mapping.
 
-canonical_mapping:
-  value_stream: business ownership boundary
-  service_domain: candidate microservice boundary
-  apqc_level_3: process-scope validation and major process decomposition
-  apqc_level_4: process decomposition and operation-group candidate
-  apqc_level_5: task/activity decomposition and candidate application command or workflow step
-  service_operation: executable business operation candidate
-  service_specification: engineering handover contract
+canonical_decomposition:
+  value_stream: economic_and_accountability_boundary
+  apqc_level_2: process_group
+  apqc_level_3: default_candidate_business_microservice_boundary
+  bounded_context_test: confirms_or_adapts_candidate_boundary
+  apqc_level_4: default_candidate_service_operation
+  apqc_level_5: default_candidate_executable_task_or_workflow_step
+  service_domain: semantic_domain_and_external_reference_crosswalk
+  service_operation: executable_business_operation
+  service_specification: engineering_handover_contract
 
 boundary_rule: >-
-  APQC L3, L4, and L5 elements SHALL be used to test completeness, cohesion, process ownership,
-  and operation coverage of a Service Domain. They SHALL NOT be converted automatically into
-  independent microservices. A separate microservice requires an independent architecture reason
-  such as ownership, scaling, security, failure isolation, data sovereignty, or deployment autonomy.
+  APQC Level 3 SHALL be the default candidate boundary for business microservices.
+  An APQC Level 3 process SHALL NOT become a deployable microservice automatically.
+  It SHALL pass bounded outcome, state ownership, accountability, coupling, security,
+  failure-isolation, scaling, lifecycle, and independent-deployment tests. Where those
+  tests fail, adjacent Level 3 processes MAY be merged or the process MAY be decomposed
+  to Level 4 or Level 5, with rationale and CHECK/STUDY evidence recorded.
+
+semantic_authority_rule: >-
+  APQC is the process spine. It SHALL NOT displace approved domain or interoperability
+  authorities. BIAN and TM Forum may provide service-domain, information-model, and API
+  semantics; MIMOSA remains applicable to asset-lifecycle semantics; GMG remains applicable
+  to surface-mining domain semantics. These references SHALL be crosswalked onto the APQC spine.
+
+service_class_exceptions:
+  - class: DOMAIN_STATE_SERVICE
+    rule: APQC linkage is mandatory, but the service boundary may be defined by authoritative domain state rather than a single APQC Level 3 process.
+  - class: INTEGRATION_GATEWAY
+    rule: APQC linkage is inherited from supported processes; the gateway is not itself an APQC business-process boundary.
+  - class: PLATFORM_SERVICE
+    rule: APQC linkage is inherited from enabled processes; the platform capability is not forced into a business-process classification.
 
 handover_requirement:
   applicable_mapping_required: true
@@ -77,7 +96,7 @@ sector_selection:
       primary: Cross-Industry
       secondary_candidates: [Automotive, Aerospace and Defense, Upstream Petroleum]
       status: REQUIRES_DOMAIN_BY_DOMAIN_TEST
-      note: MIMOSA remains the asset-lifecycle information-model source; APQC provides process decomposition only.
+      note: MIMOSA remains the asset-lifecycle information-model authority while APQC remains the process spine.
     VS05:
       primary: Banking
       secondary_candidates: [Cross-Industry]
@@ -86,13 +105,14 @@ sector_selection:
       primary: Cross-Industry
       secondary_candidates: [Upstream Petroleum]
       status: SECTOR_PROFILE_GAP
-      note: APQC does not currently publish a mining-specific PCF in its industry-specific catalogue. GMG remains the mining-domain reference; APQC is used only where process mapping is supportable.
+      note: GMG remains the mining-domain reference while APQC remains the process spine where mapping is supportable.
 
 assurance_tests:
-  - Each Service Domain has an APQC applicability decision.
-  - Each applicable Service Domain maps to L3, L4 and L5 elements or records a justified decomposition gap.
-  - No APQC L3-L5 element is treated as a microservice solely because of its hierarchy level.
-  - Each service operation traces to at least one business activity where applicable.
+  - Each business microservice starts from an APQC Level 3 candidate or records an approved exception class.
+  - Each applicable business microservice maps to APQC L3, L4 and L5 elements or records a justified decomposition gap.
+  - No APQC Level 3 element is deployed solely because of its hierarchy level.
+  - Each service operation traces to at least one APQC activity where applicable.
+  - Service Domain references are crosswalks and do not silently override the APQC process spine.
   - Duplicate process coverage across microservices is identified and resolved.
   - Cross-Value-Stream APQC mappings retain one accountable owner.
   - Sector-specific and cross-industry mappings do not silently conflict.

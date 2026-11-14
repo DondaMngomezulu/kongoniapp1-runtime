@@ -1,0 +1,17 @@
+register_id: REG-ARCH-MICROSVC-001
+schema_version: '0.4'
+status: CONTROLLED_MODULAR_EXTENSION
+purpose: Index atomic entries that form part of the authoritative Enterprise Microservice Register alongside legacy register.yaml entries.
+entries:
+  - microservice_id: MS-VS02-TAX-COMPLIANCE-001
+    path: agent-workspace/architecture/REG-ARCH-MICROSVC-001/entries/MS-VS02-TAX-COMPLIANCE-001.yaml
+    state: ARCHITECTED
+    service_specification_id: SRV-APQC-VS02-TAX-001
+    first_rule_candidate: AR-SARS-VAT-STD-001
+    rule_verification_evidence: EV-2026-08-18-SARS-VAT-STD-001
+    pdca_stage: CHECK_STUDY
+    act_decision: ADAPT
+rules:
+  - A microservice_id SHALL not have two active authoritative entries.
+  - Legacy entries in register.yaml remain authoritative until individually migrated.
+  - New modular entries SHALL conform to the active schema and handover gates.
