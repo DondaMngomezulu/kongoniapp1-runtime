@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ewf:candidate:profile:investment-writing:v1",
+  "title": "Investment Writing - Enterprise Writing Profile (REVIEW DRAFT)",
+  "description": "Typed discipline-specific document data; external normative source remains authoritative for matching document types.",
+  "allOf": [
+    {
+      "$ref": "urn:ewf:candidate:common:document-envelope:v1"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "discipline_key": {
+          "const": "investment-writing"
+        },
+        "profile_key": {
+          "const": "ew.investment.v1"
+        },
+        "profile_version": {
+          "const": "1.0.0-draft"
+        }
+      },
+      "required": [
+        "discipline_key",
+        "profile_key",
+        "profile_version"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "investment_thesis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capital_structure": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "risk_factors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "return_scenarios": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "narrative_sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "heading": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "section_id",
+              "heading",
+              "body"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "investment_thesis",
+        "capital_structure",
+        "risk_factors"
+      ]
+    }
+  },
+  "required": [
+    "metadata",
+    "content"
+  ]
+}

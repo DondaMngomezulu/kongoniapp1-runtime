@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ewf:candidate:profile:research-analytical-writing:v1",
+  "title": "Research and Analytical Writing - Enterprise Writing Profile (REVIEW DRAFT)",
+  "description": "Typed discipline-specific document data; external normative source remains authoritative for matching document types.",
+  "allOf": [
+    {
+      "$ref": "urn:ewf:candidate:common:document-envelope:v1"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "discipline_key": {
+          "const": "research-analytical-writing"
+        },
+        "profile_key": {
+          "const": "ew.research_analytical.v1"
+        },
+        "profile_version": {
+          "const": "1.0.0-draft"
+        }
+      },
+      "required": [
+        "discipline_key",
+        "profile_key",
+        "profile_version"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "research_question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "methodology": {
+          "type": "string",
+          "minLength": 1
+        },
+        "findings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ]
+          }
+        },
+        "research_limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "narrative_sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "heading": {
+                "type": "string",
+                "minLength": 1
+              },
+              "body": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "section_id",
+              "heading",
+              "body"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "research_question",
+        "methodology",
+        "findings"
+      ]
+    }
+  },
+  "required": [
+    "metadata",
+    "content"
+  ]
+}

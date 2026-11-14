@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ewf:candidate:common:document-envelope:v1",
+  "title": "Enterprise Writing Document Envelope (CANDIDATE)",
+  "description": "Shared structural envelope; review draft. Does not replace native external standards, legal approval, or verified evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "document_title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "discipline_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_version": {
+          "type": "string",
+          "const": "1.0.0-draft"
+        },
+        "lifecycle_status": {
+          "enum": [
+            "DRAFT",
+            "IN_REVIEW",
+            "APPROVED",
+            "ISSUED",
+            "SUPERSEDED"
+          ]
+        },
+        "document_type_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "enum": [
+                "MAPPED",
+                "PENDING"
+              ]
+            },
+            "document_type_code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "native_schema_uri": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "status"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "MAPPED"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "required": [
+                  "document_type_code"
+                ]
+              }
+            }
+          ]
+        },
+        "source_references": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "governed_concept_references": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "native_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "artifact_reference": {
+                "type": "string",
+                "minLength": 1
+              },
+              "native_schema_uri": {
+                "type": "string",
+                "format": "uri"
+              },
+              "validation_state": {
+                "enum": [
+                  "NOT_TESTED",
+                  "PASSED",
+                  "FAILED"
+                ]
+              }
+            },
+            "required": [
+              "artifact_reference",
+              "native_schema_uri",
+              "validation_state"
+            ]
+          }
+        }
+      },
+      "required": [
+        "document_id",
+        "document_title",
+        "discipline_key",
+        "profile_key",
+        "profile_version",
+        "lifecycle_status",
+        "document_type_binding",
+        "source_references"
+      ]
+    },
+    "content": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "metadata",
+    "content"
+  ]
+}
