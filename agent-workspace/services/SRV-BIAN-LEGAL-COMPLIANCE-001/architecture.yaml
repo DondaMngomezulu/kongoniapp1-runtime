@@ -1,0 +1,63 @@
+architecture:
+  service_specification_id: SRV-BIAN-LEGAL-COMPLIANCE-001
+  microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+  version: '0.1'
+  status: CONTROLLED_DRAFT
+  pattern: workflow_plus_rule_engine_microservice
+  service_boundary: >-
+    Evaluate and evidence legal and compliance requirements applicable to FinCo activities without
+    becoming the system of record for customer commercial state, accounting state, or authoritative legal sources.
+  components:
+    - name: Workflow Orchestrator
+      ref: WF-LEGAL-RULE-COD-001
+      responsibility: source intake, rule classification, codification, validation, execution orchestration, evidence and ACT routing
+    - name: LegalRuleML Rule Engine
+      responsibility: evaluate governed LegalRuleML rule packages against controlled fact inputs and return traceable assertions
+    - name: Validation Adapter
+      responsibility: XML structural validation, LegalRuleML schema/profile validation where available, identifier and source-binding checks
+    - name: Evidence Adapter
+      responsibility: persist input/output/assertion/audit evidence and evidence hashes
+    - name: Authority Resolver
+      responsibility: resolve source precedence, versions, effective dates and jurisdiction before evaluation
+  state_authority:
+    authoritative_legal_source: external statute/regulator/executed agreement/governed policy as applicable
+    rule_package: GitHub governed LegalRuleML artifact
+    assessment_state_target: Zoho Catalyst
+    commercial_projection: Zoho CRM
+    accounting_projection: Zoho Books
+  request_flow:
+    - receive assessment request
+    - resolve authority and source version
+    - load governed rule package
+    - validate rule package and facts
+    - execute applicable rules
+    - generate findings and exceptions
+    - record evidence and audit event
+    - return assessment result
+  failure_modes:
+    - unresolved_source_authority: ESCALATE
+    - invalid_rule_package: REJECT_EXECUTION
+    - schema_validation_failure: REJECT_EXECUTION
+    - missing_required_fact: RETURN_CONTROLLED_INCOMPLETE
+    - conflicting_authorities: ESCALATE
+    - runtime_dependency_failure: FAIL_CLOSED_WITH_AUDIT
+  architecture_decisions:
+    - id: ADR-LC-001
+      decision: Preserve BIAN Legal Compliance as service-domain boundary while using OASIS LegalRuleML for machine-readable rules.
+    - id: ADR-LC-002
+      decision: Workflow and rule engine are components of one microservice because they share one legal/compliance assessment lifecycle and evidence boundary.
+    - id: ADR-LC-003
+      decision: GitHub remains rule-package engineering authority until Catalyst runtime is validated; ChatGPT execution is REFERENCE_SIMULATION only.
+    - id: ADR-LC-004
+      decision: Microservice must fail closed on unresolved authority or invalid rules and must never infer a legal obligation without source support.
+  trust_boundaries:
+    - external_authoritative_sources_to_governed_ingest
+    - CRM_or_other_fact_sources_to_assessment_api
+    - governed_GitHub_rule_packages_to_runtime
+    - runtime_to_evidence_repository
+  runtime_target:
+    platform: Zoho Catalyst
+    environment: Development
+    runtime_class: AppSail
+    language: Python
+    ingress: API Gateway

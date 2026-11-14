@@ -1,0 +1,56 @@
+reference_execution:
+  id: SIM-FINCO-PRODUCT-SEM-001
+  version: '0.1'
+  status: REFERENCE_SIMULATION
+  microservice_id: MS-VS02-LEGAL-COMPLIANCE-001
+  workflow_id: WF-LEGAL-RULE-COD-001
+  rule_package_ref: RPK-FINCO-PRODUCT-SEM-001
+  agreement_mapping_ref: MAP-FINCO-PRODUCT-AGREEMENT-001
+  purpose: Verify that the four approved FinCo product classes resolve deterministically to their semantic authority overlays and canonical agreement archetypes.
+  scenarios:
+    - scenario_id: SEM-LOAN-001
+      input: Equipment Loan financing of identified equipment with borrower repayment obligation and equipment security.
+      expected_product: Equipment Loan
+      expected_agreement: Equipment Loan Agreement
+      expected_overlays: [SARS_debt_or_loan, IFRS_9_financial_instrument, ELFA_loan_or_debt]
+      assertion: Equipment collateral does not convert the product into a lease.
+      result: PASS
+    - scenario_id: SEM-FINLEASE-001
+      input: Equipment lease meeting IFRS 16 lease definition and transferring substantially all ownership risks and rewards from lessor perspective.
+      expected_product: Equipment Finance Lease
+      expected_agreement: Equipment Finance Lease Agreement
+      expected_overlays: [SARS_non_operating_lease_where_applicable, IFRS_16_finance_lease_lessor, ELFA_finance_lease]
+      assertion: Agreement title alone is insufficient; substance test is required.
+      result: PASS
+    - scenario_id: SEM-OPLEASE-001
+      input: Equipment lease meeting IFRS 16 lease definition where lessor does not transfer substantially all ownership risks and rewards.
+      expected_product: Equipment Operating Lease
+      expected_agreement: Equipment Operating Lease Agreement
+      expected_overlays: [SARS_operating_lease_where_applicable, IFRS_16_operating_lease_lessor, ELFA_operating_lease]
+      assertion: Rental payment terminology does not rename Operating Lease as Rental.
+      result: PASS
+    - scenario_id: SEM-RENTAL-001
+      input: Temporary equipment access where provider has substantive substitution rights and customer does not control an identified asset.
+      expected_product: Equipment Rental
+      expected_agreement: Equipment Rental Agreement
+      expected_overlays: [SARS_rental_or_letting_hiring, IFRS_16_no_lease_component_on_stated_facts, ELFA_rental]
+      assertion: Rental is not automatically a lease under IFRS 16.
+      result: PASS
+    - scenario_id: SEM-RENTAL-LEASE-COMPONENT-002
+      input: Commercially labelled Equipment Rental where a specific asset is identified, substitution rights are not substantive, and customer controls use for the period.
+      expected_product: Equipment Rental
+      expected_agreement: Equipment Rental Agreement
+      expected_overlays: [SARS_rental_or_letting_hiring, IFRS_16_contains_lease, ELFA_rental]
+      assertion: Commercial product label remains Rental while accounting overlay records a lease component.
+      result: PASS
+  check_study:
+    deterministic_resolution: PASS
+    product_vs_agreement_separation: PASS
+    authority_overlay_separation: PASS
+    sabs_gap_explicit: PASS
+    elfa_precedence_control: PASS
+    unresolved_items:
+      - Confirm any applicable licensed SANS/ISO financial-services terminology if obtained through SABS subscription/library; do not infer absent content.
+      - Complete OASIS LegalRuleML XSD/profile validation before Production.
+  act_recommendation: ADAPT
+  act_rationale: Adopt the semantic and agreement mappings for controlled Development use, while retaining the SABS product-definition gap and Production schema-validation blocker.

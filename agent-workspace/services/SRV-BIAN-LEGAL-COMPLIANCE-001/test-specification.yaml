@@ -1,0 +1,64 @@
+test_specification:
+  id: TST-SRV-BIAN-LEGAL-COMPLIANCE-001
+  version: '0.1'
+  status: CONTROLLED_DRAFT
+  required_tests:
+    - id: LC-SCHEMA-001
+      class: schema
+      assertion: request and response payloads conform to the governed data and API contracts
+    - id: LC-AUTHN-001
+      class: authentication
+      assertion: unauthenticated requests are rejected
+    - id: LC-AUTHZ-001
+      class: authorisation
+      assertion: caller without VS02 legal/compliance authority cannot execute or update assessments
+    - id: LC-NEG-001
+      class: negative_input
+      assertion: missing authoritative_source_refs returns controlled incomplete/rejection and no legal conclusion
+    - id: LC-SOURCE-001
+      class: authority_resolution
+      assertion: conflicting active authorities create an exception and block final pass
+    - id: LC-RULE-001
+      class: rule_traceability
+      assertion: every finding resolves to a LegalRuleML rule and authoritative source binding
+    - id: LC-REF-001
+      class: reference_execution
+      assertion: reference harness output is labelled REFERENCE_SIMULATION and never DEPLOYED_RUNTIME
+    - id: LC-DET-001
+      class: determinism
+      assertion: same governed deterministic inputs and rule package version produce equivalent assertions
+    - id: LC-AUDIT-001
+      class: audit
+      assertion: create and update operations emit immutable evidence/audit references
+    - id: LC-INTEG-001
+      class: integration
+      assertion: CRM commercial-state references remain projections and do not overwrite legal source authority
+    - id: LC-REG-001
+      class: regression
+      assertion: existing Venduo reference rule package remains structurally traceable and is not reclassified as generic legal content
+    - id: LC-SMOKE-001
+      class: deployment_smoke
+      assertion: Development endpoint passes health and Evaluate/Retrieve round-trip after deployment
+    - id: LC-REC-001
+      class: recovery
+      assertion: runtime dependency failure preserves prior assessment/evidence state and fails closed
+  canary_scenarios:
+    - id: CANARY-OL-POSITIVE
+      use_case: Operating Lease
+      type: positive
+      expected: governed source bindings and classification findings returned with pass_flag true where all rules pass
+    - id: CANARY-OL-MISSING-SOURCE
+      use_case: Operating Lease
+      type: negative
+      expected: no legal conclusion; controlled exception or rejection
+    - id: CANARY-OL-AUTHORITY-CONFLICT
+      use_case: Operating Lease
+      type: boundary
+      expected: ESCALATE or controlled exception; pass_flag false
+  production_gate:
+    required_before_production:
+      - OASIS LegalRuleML schema/profile validation resolved for governed packages
+      - Catalyst runtime replay of reference scenarios matches reference evidence
+      - Production execution authority exists
+      - Production SLOs and operational runbook adopted
+      - ACT decision authorises Production adoption
