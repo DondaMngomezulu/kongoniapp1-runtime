@@ -1,0 +1,16 @@
+{
+  "name": "kongoni_tax_service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fail-closed tax decision microservice for APQC 9.9.",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "UNLICENSED"
+}
+

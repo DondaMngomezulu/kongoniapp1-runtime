@@ -1,0 +1,10 @@
+{
+  "deployment": {
+    "name": "kongoni_tax_signal_handler",
+    "stack": "node20",
+    "type": "event"
+  },
+  "execution": {
+    "main": "index.js"
+  }
+}

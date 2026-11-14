@@ -1,0 +1,51 @@
+catalyst_signals_trigger:
+  id: KNG-TRG-SIGNAL-TAX-001
+  version: '1.0.0'
+  status: SOURCE_DEFINED_NOT_PROVISIONED
+  reason: The connected Catalyst interface does not expose Signals publisher, event, or rule creation.
+  platform:
+    project: Kongoniapp1
+    project_id: '86824000000020001'
+    environment: Development
+    production_authority: NOT_GRANTED
+  publisher:
+    type: CUSTOM
+    name: Kongoni Tax Events
+    api_name: kongoni_tax_events
+  event:
+    name: Tax Evaluation Requested
+    api_name: kongoni_tax_evaluation_requested_v1
+    canonical_event_type: kongoni.tax.evaluation.requested.v1
+    schema: event-schema.json
+  rule:
+    id: KNG-RULE-TAX-EVALUATION-001
+    name: Route Tax Evaluation Requests
+    target_type: FUNCTION
+    target_name: kongoni_tax_signal_handler
+    target_input: FULL_EVENT_ENVELOPE
+    dispatch: INSTANT
+    retry:
+      enabled: true
+      maximum_attempts: 3
+      time_to_live_minutes: 15
+  target_controls:
+    required_project_id: '86824000000020001'
+    required_environment: Development
+    service_url_boundary: API_GATEWAY
+    service_url_setting: KONGONI_TAX_SERVICE_URL
+    service_token_setting: KONGONI_TAX_SERVICE_TOKEN
+    service_url_protocol: HTTPS_ONLY
+    idempotency_header: idempotency-key
+    failure_mode: FAIL_CLOSED
+  provisioning_sequence:
+    - Deploy the two functions to Development after approval.
+    - Configure the authenticated Development API Gateway service URL and secret token.
+    - Create the custom publisher and event from this manifest and schema.
+    - Create the rule and select kongoni_tax_signal_handler as the target.
+    - Send one synthetic event and retain delivery and function evidence.
+    - Complete CHECK and record the ACT decision.
+  documentation:
+    introduction: https://docs.catalyst.zoho.com/en/signals/getting-started/introduction/
+    events: https://docs.catalyst.zoho.com/en/signals/help/events/
+    targets: https://docs.catalyst.zoho.com/en/signals/help/targets/key-aspects/
+    rules: https://docs.catalyst.zoho.com/en/signals/help/rules/key-aspects/

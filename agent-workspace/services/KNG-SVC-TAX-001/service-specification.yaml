@@ -1,0 +1,62 @@
+service_specification:
+  id: KNG-SVC-TAX-001
+  version: '0.1.0'
+  status: DEVELOPMENT_CANDIDATE
+  name: Kongoni Tax Microservice
+  architecture_owner_skill: SKL-GH-MICROSVC-ARCH-001
+  engineering_consumer_skill: SKL-CAT-MICROSVC-ENG-001
+  business_domain: Tax
+  business_owner: Group Finance
+  task_class: T2
+  purpose: Evaluate tax facts against an approved and effective-dated rule and return evidence for a controlled decision.
+  apqc_scope:
+    parent: '9.9'
+    name: Manage taxes
+    activities:
+      - '9.9.1.1'
+      - '9.9.1.2'
+      - '9.9.1.3'
+      - '9.9.2.1'
+      - '9.9.2.2'
+      - '9.9.2.3'
+      - '9.9.2.4'
+      - '9.9.2.5'
+      - '9.9.2.6'
+      - '9.9.2.7'
+  process_boundaries:
+    payroll_tax_primary_process: APQC 9.5.3
+    customs_primary_process: APQC 9.11
+  control_boundary:
+    - The service SHALL NOT contain an embedded production tax rate.
+    - The service SHALL execute only an approved and effective-dated rule.
+    - The service SHALL retain authority, clause, approval, and input-hash evidence.
+    - A rule preparer and rule approver SHALL be different identities.
+    - The service SHALL fail closed when a rule or control is incomplete.
+    - A deferred-tax posting SHALL require valid SARS and IFRS decisions.
+  runtime_constraints:
+    platform: Zoho Catalyst
+    project: Kongoniapp1
+    project_id: '86824000000020001'
+    environment: Development
+    production_write_allowed: false
+    northbound_boundary: API Gateway
+    service_function: kongoni_tax_service
+    signal_function: kongoni_tax_signal_handler
+    stack: node20
+  trigger_refs:
+    event_schema: event-schema.json
+    chatgpt: chatgpt-trigger.yaml
+    catalyst_signals: catalyst-signals-trigger.yaml
+  api_contract: ../../../functions/kongoni_tax_service/openapi.yaml
+  rule_state:
+    repository: UNCONFIGURED_FAIL_CLOSED
+    approved_rule_register: PENDING
+  approval_state: APPROVED_FOR_SOURCE_PUBLICATION
+  approval_ref: Group CEO instructions and approvals in ChatGPT on 2026-08-20
+  production_authority: NOT_GRANTED
+  pdca:
+    stage: ACT
+    do_complete: true
+    check_study_result: ADAPT
+    task_complete: false
+    act_decision: ADAPT

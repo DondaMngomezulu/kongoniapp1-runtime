@@ -1,0 +1,35 @@
+plan:
+  id: WRK-TAX-MICROSVC-001
+  method: MET-PDCA-001
+  task_class: T2
+  plan:
+    status: COMPLETE
+    actions:
+      - Confirm APQC 9.9 and adjacent-process boundaries.
+      - Confirm the Development Catalyst project and repository pattern.
+      - Define fail-closed service and trigger contracts.
+  do:
+    status: COMPLETE
+    actions:
+      - Implement the Advanced I/O tax function.
+      - Implement the ChatGPT trigger adapter.
+      - Implement the Catalyst event-function adapter.
+      - Create controlled manifests and automated tests.
+  check_study:
+    status: COMPLETE
+    result: ADAPT
+    evidence:
+      - Twenty-four automated tests passed.
+      - JSON and YAML documents parsed successfully.
+      - JavaScript syntax checks passed.
+      - Production execution is blocked by explicit environment controls.
+  act:
+    decision: ADAPT
+    retained:
+      - Service contract and fail-closed decision core
+      - Canonical event contract and both trigger adapters
+    required_next:
+      - Approve and implement the governed rule repository.
+      - Approve API Gateway and function authentication controls.
+      - Provision and verify the Catalyst Signals objects in Development.
+  task_complete: false
