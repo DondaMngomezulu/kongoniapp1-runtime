@@ -1,0 +1,67 @@
+control_id: EA-CTL-SYSML-001
+version: 0.3.0
+status: PROPOSED_PENDING_GOVERNANCE_APPROVAL
+name: Primary OMG SysML v2 Systems Specifications Standard and enforcement
+owner: Enterprise Architecture Authority
+approval_control: CTL-GOV-CEO-APPROVAL-001
+standard_register: REG-STD-001
+standard_reference: https://www.omg.org/spec/SysML/2.0
+standard_version: "2.0"
+normative_language_document: formal/26-03-02
+normative_transformation_document: formal/26-03-03
+canonical_enterprise_standard_id: null
+identifier_allocation_owner: SCOPE-002
+lifecycle_authority: STD-SYS-001
+requirements_authority: STD-SYS-002
+enterprise_architecture_representation: STD-ARCH-002
+control_representation: NIST OSCAL catalog candidate
+adoption_direction:
+  date: 2026-10-13
+  decision: SysML v2 designated primary Systems Specifications Standard
+  evidence: User instruction recorded in conversation; Group CEO identity/attestation unverified
+  effect: Target design directed, not production release or independent governance ratification
+scope:
+  inclusion: All applications in REG-ICT-APP-001 and managed engines in REG-COMP-MOD-001; registered services and integrations as applicable
+  required_model: SysML v2 system boundary, identity, structure, interfaces, requirements, behaviour, typed attributes, constraints and verification
+  new_or_materially_changed: Mandatory target-state system specification; record legacy gaps without false conformance
+  computational_models: Govern variable and coefficient identity, calculations, constraints, calibration source, implementation binding and numerical verification independently
+  black_box_projections: Allowed for proprietary systems without claiming unknown vendor internals
+  exclusions: Independently approved time-limited waiver; REVIEW_REQUIRED is not an exemption
+requirements:
+  source_of_truth: REG-ICT-APP-001 and REG-COMP-MOD-001 retain ownership of registered identities
+  architecture_identity: Each application entry binds to an existing ArchiMate ApplicationComponent
+  version_control: Every in-scope system has a single registered projection status, model revision and evidence lineage
+  structural_model: Typed parts, data items, ports, requirements and traceable external interactions
+  behavioural_model: Behaviour/state/actions as applicable; documented not-applicable rationale required
+  parametric_model: Typed quantities and units, coefficients, calculation definitions, constraints and source/execution verification for financial and lifecycle engines
+  model_integrity: Approved pinned OMG SysML v2 parser/semantic reviewer and independent evidence required; source filenames alone cannot certify conformance
+  release_validation: Source register reconciliation, parser and semantic evidence, independent authorised approval attestation, verified protected deployment gate
+  approval: Exact model/version and externally controlled authority identity required
+  waivers: Non-self-authorising, version-scoped, expiring and auditable
+implementation:
+  architecture_repository: DondaMngomezulu/bug-free-octo-journey
+  governance_repository: DondaMngomezulu/kongoniapp1-runtime
+  architecture_manifest: architecture/enterprise-system-landscape/sysml/application-projections.json
+  engine_manifest: architecture/enterprise-system-landscape/sysml/engine-projections.json
+  standard_profile: architecture/enterprise-system-landscape/sysml/system-specifications-standard.json
+  baseline_validator: scripts/validate_sysml_projection.py
+  engine_validator: scripts/validate_engine_sysml_projection.py
+  system_specification_validator: scripts/validate_system_specification.py
+  workflow: .github/workflows/sysml-projection-gate.yml
+  baseline_ci_evidence: https://github.com/DondaMngomezulu/bug-free-octo-journey/actions/runs/38344315428
+  supplementary_parser: OpenSysML v0.9.2 checked five drafts; NOT formal OMG SysML 2.0 certification
+  baseline_scope: Structural/identity checks only; existing missing projections remain as explicit GAP
+  release_mode: FAIL_CLOSED_PENDING_TRUSTED_ATTESTATION_AND_APPROVED_PARSER_AND_PROTECTION
+  prohibited_claims:
+    - Baseline pass implies SysML grammar or semantic conformance
+    - Supplementary OpenSysML compatibility implies OMG SysML 2.0 certification
+    - Repository publication equals Group CEO approval
+    - GitHub workflow without required protected checks governs deployment
+hold_points:
+  - SYSML_STANDARD_IDENTIFIER_UNALLOCATED
+  - CEO_APPROVAL_EVIDENCE_UNVERIFIED
+  - LIVE_REGISTRY_RECONCILIATION_NOT_AUTOMATED
+  - APPROVED_OMG_2_0_PARSER_AND_SEMANTIC_REVIEW_NOT_VERIFIED
+  - INDEPENDENT_MODEL_AND_WAIVER_ATTESTATIONS_NOT_CONFIGURED
+  - PRIVATE_REPOSITORY_REQUIRED_CHECKS_UNVERIFIED
+  - PRODUCTION_DEPLOYMENT_GATES_NOT_CONFIRMED
