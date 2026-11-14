@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifest_kind": "crm-native-egress-implementation-gate",
+  "version": "0.1-review",
+  "status": "BLOCKED_DEVELOPMENT_DESIGN",
+  "work_item": "https://github.com/DondaMngomezulu/kongoniapp1-runtime/issues/67",
+  "source_date": "2026-10-20",
+  "authorities": {
+    "runtime": "Zoho CRM",
+    "governance": "GitHub Digital Twin",
+    "business_records": "Zoho CRM",
+    "documents": "governed documents repository"
+  },
+  "observed": {
+    "sandbox": {
+      "id": "5643538000008113021",
+      "status": "active",
+      "last_refresh": "2026-08-17T18:48:21+02:00",
+      "accessible_user_count": 1,
+      "verified_current": false
+    },
+    "crm_modules": {
+      "CustomerCommunications": {
+        "fields": 74
+      },
+      "GovernedApprovals": {
+        "fields": 53
+      },
+      "DeliveryEvents": {
+        "fields": 35
+      },
+      "AccessEntitlements": {
+        "fields": 51
+      }
+    },
+    "unique_reservation_constraint_verified": false,
+    "exclusive_dispatcher_verified": false,
+    "agent_identity_provider_acl_verified": false,
+    "profile_ids_not_effective_permissions": true,
+    "account_owner_send_permission_observed": true
+  },
+  "design_candidate": {
+    "reserved_status": "DESIGN_ONLY",
+    "crm_home": "CRM function and CRM-authoritative outbox",
+    "components": [
+      {
+        "id": "EG-01",
+        "description": "Versioned sender/agent identity binding",
+        "required_proof": "role grant and OAuth scopes matched to effective agent identity",
+        "status": "UNVERIFIED"
+      },
+      {
+        "id": "EG-02",
+        "description": "Authoritative approved template instance",
+        "required_proof": "template master, status, specific approval, immutable exact message and document hash",
+        "status": "UNVERIFIED"
+      },
+      {
+        "id": "EG-03",
+        "description": "Atomic durable unique idempotency",
+        "required_proof": "Zoho CRM-supported unique reservation key and concurrent create-if-absent tested under separate token identities; no mere search-then-create",
+        "status": "UNVERIFIED"
+      },
+      {
+        "id": "EG-04",
+        "description": "Synchronous transport authorisation",
+        "required_proof": "CRM-owned release receipt and actual provider-exclusive credential, no pre-approval side-send",
+        "status": "UNVERIFIED"
+      },
+      {
+        "id": "EG-05",
+        "description": "Provider uncertain-outcome recovery",
+        "required_proof": "unknown-send quarantined, provider message ID reconciliation, no automatic duplicate retry",
+        "status": "UNVERIFIED"
+      },
+      {
+        "id": "EG-06",
+        "description": "Agent bypass denial",
+        "required_proof": "negative tests CRM SendMail, native UI, bulk, functions, Gmail, WhatsApp, WeChat, share/export under actual agent credentials",
+        "status": "UNVERIFIED"
+      },
+      {
+        "id": "EG-07",
+        "description": "Rollback and release authority",
+        "required_proof": "independent QA, controlled delegated approval, exact version deployment log, rollback, post production readback",
+        "status": "UNVERIFIED"
+      }
+    ]
+  },
+  "unsafe_assumptions": [
+    "CRM field list is not a uniqueness proof",
+    "Profile permission IDs do not establish effective agent send rights",
+    "Deluge inline create auto-publishes; cannot safely use without explicit sandbox endpoint",
+    "The simulator is not a service and does not own transport credentials",
+    "The existing CRM Sandbox is stale relative to October production state"
+  ],
+  "evidence_gates": {
+    "github_ci_required": true,
+    "existing_sandbox_refresh_verified": false,
+    "source_readback_complete": false,
+    "crm_unique_reservation_verified": false,
+    "provider_channel_acl_verified": false,
+    "real_negative_tests_passed": false,
+    "ceo_act_exact_version": false,
+    "production_readback_verified": false
+  },
+  "release": {
+    "development_configuration_write": false,
+    "production_enabled": false,
+    "issued_messages": 0,
+    "production_authorised": false
+  }
+}
