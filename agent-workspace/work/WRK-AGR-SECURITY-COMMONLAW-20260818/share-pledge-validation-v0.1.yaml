@@ -1,0 +1,94 @@
+artifact_id: MAT-SA-SEC-SHARE-PLEDGE-001
+version: "0.1"
+status: CONTROLLED_CANDIDATE
+work_id: WRK-AGR-SECURITY-COMMONLAW-20260818
+control_id: AGR-XWALK-011-C
+collateral_class: certificated_shares
+canary: Kiboko-Venduo Fingroup 25 percent share-security package
+normative_sources:
+  legislation:
+    - "Companies Act 71 of 2008 — securities register and certificated/uncertificated securities provisions"
+  judicial_authorities:
+    - "Bock and Others v Duburoro Investments (Pty) Ltd (SCA) — pledge of shares; parate executie/public-policy control"
+    - "Simmonds NO v Essafrau and Others (SCA) — share certificate and signed blank transfer form as pledge security mechanics"
+    - "Vantage Goldfields SA (Pty) Ltd v Arqomanzi (Pty) Ltd (SCA) — parate executie in relation to movables held in pledge"
+    - "Small Enterprise Finance Agency SOC Ltd v Sakthi Trading (Pty) Ltd — pledge enforcement does not create unrestricted self-help"
+    - "Graham NO v Sailing Puppy (Pty) Ltd — certificated-share pledge mechanics include delivery of share certificate and transfer form"
+principles:
+  - id: SP-CREATION-001
+    topic: pledge_agreement
+    requirement: "There must be a valid security agreement identifying the secured obligation, pledgor, pledgee and pledged shares."
+    canary_status: PARTIAL
+    evidence: "LegalRuleML engineering candidate identifies secured obligation and first-ranking pledge concept, but no approved operative share-pledge agreement is yet bound."
+  - id: SP-TITLE-001
+    topic: pledgor_title
+    requirement: "Pledgor title/entitlement to the exact shares must be proven from authoritative company records before security is accepted."
+    canary_status: BLOCKED
+    evidence_gap: GAP-KV-006
+  - id: SP-CONSTITUTION-001
+    topic: transfer_and_security_restrictions
+    requirement: "Target-company MOI and shareholder agreement must be checked for pledge, transfer, consent, pre-emption or encumbrance restrictions."
+    canary_status: BLOCKED
+    evidence_gaps: [GAP-KV-004, GAP-KV-005]
+  - id: SP-DELIVERY-001
+    topic: possession_and_perfection
+    requirement: >-
+      For certificated shares, the control requires delivery/control of the original share certificate and the legally appropriate
+      transfer instrument/security documents to the pledgee or agreed security holder. Signature of a generic Security Agreement
+      alone is not treated as perfection.
+    canary_status: BLOCKED
+    evidence_gap: GAP-KV-006
+  - id: SP-REGISTER-001
+    topic: securities_register
+    requirement: >-
+      The company securities register remains authoritative for registered ownership. A pledge does not by itself justify recording
+      the pledgee as owner; any transfer upon enforcement must comply with the Companies Act, company constitutional documents and
+      the lawful enforcement mechanism.
+    canary_status: BLOCKED
+    evidence_gap: GAP-KV-006
+  - id: SP-PRIORITY-001
+    topic: competing_security
+    requirement: "Search and evidence prior pledges, cessions, liens, contractual restrictions and other competing rights before representing first-ranking status."
+    canary_status: BLOCKED
+    evidence_gaps: [GAP-KV-004, GAP-KV-005, GAP-KV-006]
+  - id: SP-VOTING-001
+    topic: voting_and_dividends_pre_default
+    requirement: "Allocate voting and dividend rights expressly and consistently with ownership, beneficial-interest and security arrangements before and after default."
+    canary_status: CANDIDATE_REQUIREMENT_ONLY
+  - id: SP-ENFORCEMENT-001
+    topic: enforcement
+    requirement: >-
+      Enforcement wording must distinguish lawful contractual parate-executie mechanisms from impermissible forfeiture or uncontrolled self-help.
+      The debtor retains access to court protection against prejudicial or public-policy-incompatible enforcement.
+    canary_status: LEGAL_REVIEW_REQUIRED
+  - id: SP-VALUATION-001
+    topic: realisation_value
+    requirement: "Any private realisation mechanism must protect against prejudicial disposal and should include objective value/market-process controls."
+    canary_status: LEGAL_REVIEW_REQUIRED
+  - id: SP-PROCEEDS-001
+    topic: application_of_proceeds
+    requirement: "Sale/realisation proceeds must be applied to secured obligations with surplus accounted for to the entitled party."
+    canary_status: CANDIDATE_REQUIREMENT_ONLY
+  - id: SP-RELEASE-001
+    topic: release
+    requirement: "On full discharge, possession/control documents and any ancillary security rights must be returned/released and the evidence pack closed."
+    canary_status: CANDIDATE_REQUIREMENT_ONLY
+  - id: SP-UNCERT-001
+    topic: uncertificated_securities
+    requirement: >-
+      If the shares are uncertificated, do not apply certificated-share delivery mechanics; instead bind the transaction to the
+      uncertificated securities register, participant/CSD rules and applicable statutory control mechanics.
+    canary_status: BLOCKED_CLASSIFICATION
+    evidence_gap: GAP-KV-006
+canary_check_study:
+  result: CONTROL_PATTERN_VALIDATED_TRANSACTION_BLOCKED
+  findings:
+    - "The common-law control pattern is sufficiently defined for certificated shares."
+    - "The current canary cannot prove attachment/perfection/priority because the Fingroup MOI, shareholder agreement, securities register and share-certificate status are not available."
+    - "First-ranking status in the LegalRuleML candidate is a proposed contractual effect, not proven priority evidence."
+    - "No self-help enforcement language is approved."
+transaction_ready: false
+template_promotion_allowed: false
+recommended_next_action: >-
+  Obtain GAP-KV-004/005/006 evidence, classify shares as certificated or uncertificated, then draft the applicable operative
+  share-pledge clause/instrument under LIB-SA-AGR-CLAUSE-001 and obtain substantive South African legal review.

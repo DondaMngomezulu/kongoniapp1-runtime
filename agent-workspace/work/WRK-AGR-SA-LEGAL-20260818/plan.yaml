@@ -1,0 +1,25 @@
+work_id: WRK-AGR-SA-LEGAL-20260818
+method: MET-PDCA-001
+control: AGR-XWALK-011
+scope:
+  templates:
+    - TPL-VS02-BILATERAL-FACILITY-AGREEMENT-001
+    - TPL-VS02-SECURITY-AGREEMENT-001
+    - TPL-VS05-SHARE-PURCHASE-AGREEMENT-001
+plan:
+  - "Preserve each template at VALIDATING until substantive legal requirements and operative clause text are proven."
+  - "Use South African primary legal authorities as normative sources; market precedents are comparative only."
+  - "Crosswalk each specialist clause heading to mandatory, conditional, prohibited, and evidence requirements."
+  - "Test National Credit Act applicability before applying consumer-credit clauses to bilateral facilities."
+  - "Test Companies Act authority, financial-assistance, share-transfer, securities-register and beneficial-ownership requirements."
+  - "Test security creation/perfection/enforcement requirements by collateral type; do not treat one generic Security Agreement as sufficient for every asset class."
+  - "Test FIC Act/accountable-institution implications for credit-provider activity and transaction onboarding."
+  - "Test Securities Transfer Tax and transfer-record requirements for share-sale transactions."
+  - "Test Electronic Communications and Transactions Act requirements for electronic execution where applicable."
+  - "Record unresolved common-law and transaction-specific legal-opinion dependencies separately from statutory controls."
+acceptance_criteria:
+  - "Every specialist template clause has a South African authority/evidence classification."
+  - "No LMA or other market precedent is represented as South African legal authority."
+  - "Conditional statutory regimes are applied only after their applicability test passes."
+  - "Perfection and corporate-approval steps are explicit and fail closed where transaction facts are missing."
+  - "No template is promoted until operative clause text receives South African legal review and approval."

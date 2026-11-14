@@ -1,0 +1,136 @@
+artifact_id: LAP-KIB-VEN-001
+version: "0.1"
+status: CONTROLLED_CANDIDATE
+work_id: WRK-AGR-LEGAL-APPLICABILITY-20260818
+control: AGR-XWALK-011-A
+transaction:
+  name: Kiboko-Venduo secured vendor facility / Fingroup 25% share transaction
+  commercial_facts:
+    shareholding_subject: "25% shareholding in Fingroup"
+    principal_or_purchase_price_zar: 6022500.00
+    facility_purpose: "Acquisition of the Fingroup 25% shares"
+    interest: "Prime + 400 bps, payable monthly"
+    maturity_date: "2027-09-28"
+    voluntary_prepayment: "Permitted without penalty"
+    security: "First-ranking pledge over the Fingroup 25% shares"
+    negative_pledge: true
+    disposal_restriction: true
+    information_undertaking: true
+    nonpayment_acceleration: true
+    clean_exit_obligation: true
+  provenance:
+    - source: "Kiboko_Position_Paper_Fingroup — June 2026"
+      classification: "NEGOTIATION_PROVENANCE"
+      note: "Records Venduo proposal to acquire Kiboko's 25% Fingroup shareholding for R6,022,500 and the original deferred-payment commercial context."
+    - source: "agent-workspace/legalruleml/Kiboko_Venduo_Secured_Term_Facility_LegalRuleML_v0.2.lrml"
+      classification: "CURRENT_ENGINEERING_TERM_BASIS"
+      note: "Records the current controlled candidate facility terms, including interest, maturity and share pledge."
+
+party_identity:
+  kiboko:
+    canonical_legal_entity_id: null
+    registered_name: null
+    registration_number: null
+    status: BLOCKED_EVIDENCE_REQUIRED
+  venduo:
+    canonical_legal_entity_id: null
+    registered_name: null
+    registration_number: null
+    juristic_person_confirmed: false
+    status: BLOCKED_EVIDENCE_REQUIRED
+  fingroup_target:
+    canonical_legal_entity_id: null
+    registered_name: null
+    registration_number: null
+    status: BLOCKED_EVIDENCE_REQUIRED
+
+applicability:
+  national_credit_act:
+    status: PROVISIONAL_LIKELY_NOT_APPLICABLE
+    basis:
+      - "Principal debt R6,022,500 exceeds the current NCA higher threshold of R250,000 for a large agreement."
+      - "If Venduo is confirmed to be a juristic person and the arrangement is arm's length, section 4 exclusions for juristic-person large agreements are expected to apply."
+    authority:
+      - "National Credit Act 34 of 2005, section 4"
+      - "GN 713 of 2006: section 7(1)(a) threshold R1,000,000; higher threshold R250,000"
+    blockers:
+      - "Confirm Venduo legal form/juristic-person status."
+      - "Confirm transaction is arm's length and no section 4 related-party exclusion analysis changes the result."
+    fail_closed_action: "Do not apply full NCA consumer-credit clause set until applicability is formally classified."
+
+  fic_act_item_11:
+    status: CONDITIONAL_BLOCKED
+    basis: "A one-off vendor-finance transaction does not by itself prove that Kiboko carries on the business of a credit provider; Item 11 applicability depends on business activity and party status."
+    blockers:
+      - "Confirm whether Kiboko or the relevant lending entity carries on credit-provider business."
+      - "Confirm existing FIC accountable-institution registration/status and RMCP/KYC evidence if applicable."
+
+  companies_act_section_44:
+    status: CONDITIONAL_BLOCKED
+    question: "Does the vendor facility/security constitute financial assistance by a company for the acquisition of securities of that company or a related/inter-related company?"
+    blockers:
+      - "Resolve the lender legal entity and relationship between Kiboko and Fingroup."
+      - "Resolve board/shareholder approval requirements and solvency/liquidity evidence if section 44 applies."
+
+  companies_act_section_45:
+    status: CONDITIONAL_BLOCKED
+    question: "Is any financial assistance being provided to a director, prescribed officer, related/inter-related company or corporation within section 45?"
+    blockers:
+      - "Resolve corporate relationship between Kiboko, Venduo and Fingroup."
+      - "Apply section 45(2A) subsidiary exclusion only if the actual relationship satisfies it."
+
+  securities_transfer:
+    status: APPLICABLE_ON_COMPLETION
+    requirements:
+      - "Confirm transfer restrictions, pre-emption rights and consents in Fingroup MOI/shareholder arrangements."
+      - "Obtain proper transfer instrument/evidence."
+      - "Update Fingroup securities register."
+      - "Update beneficial-ownership records/filings as applicable."
+    blockers:
+      - "Fingroup MOI not yet bound."
+      - "Fingroup shareholder agreement not yet bound."
+      - "Current securities register/certificate evidence not yet bound."
+
+  securities_transfer_tax:
+    status: APPLICABLE_UNLESS_EXEMPT
+    basis: "Transfer of unlisted securities is within the STT regime unless a statutory exemption applies."
+    requirements:
+      - "Determine taxable amount and exemption status."
+      - "Assign payer, notification, filing and payment responsibility."
+    blockers:
+      - "No STT exemption analysis or tax calculation evidence bound."
+
+  competition_act_merger_control:
+    status: BLOCKED_APPLICABILITY_TEST
+    questions:
+      - "Does Venduo acquire or establish control that it did not already possess?"
+      - "Do Fingroup / acquiring-group turnover or asset values meet current notification thresholds?"
+    blockers:
+      - "Pre-transaction and post-transaction control rights not bound."
+      - "Current turnover/assets of target and acquiring group not bound."
+    fail_closed_action: "Do not complete transfer until merger-control classification is documented."
+
+  ecta_electronic_execution:
+    status: CONDITIONAL
+    basis: "Electronic execution is permitted only after section 11-14 formality analysis and any statutory/document-specific exceptions are checked."
+    blockers:
+      - "Execution method not selected."
+      - "No signature-authority evidence bound."
+
+  share_pledge_security:
+    status: BLOCKED_COMMON_LAW_VALIDATION
+    requirements:
+      - "Confirm certificated or uncertificated status of Fingroup shares."
+      - "Confirm possession/control, certificate, transfer-form and securities-register mechanics for attachment/perfection."
+      - "Confirm MOI/shareholder-agreement restrictions on pledge, voting, dividends, transfer and enforcement."
+      - "Confirm enforcement mechanics and prohibition on impermissible self-help."
+    downstream_control: AGR-XWALK-011-C
+
+readiness:
+  facility_agreement: NOT_TRANSACTION_READY
+  share_purchase_agreement: NOT_TRANSACTION_READY
+  security_agreement: NOT_TRANSACTION_READY
+  template_promotion_allowed: false
+  reason: >-
+    Commercial terms are sufficiently defined for a controlled canary, but legal identity, constitutional documents,
+    corporate relationships, security-perfection facts, merger-control facts, STT treatment and signing authority remain unbound.

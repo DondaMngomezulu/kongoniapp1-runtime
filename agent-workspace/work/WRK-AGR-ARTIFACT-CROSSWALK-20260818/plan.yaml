@@ -1,0 +1,16 @@
+work_id: WRK-AGR-ARTIFACT-CROSSWALK-20260818
+method: MET-PDCA-001
+plan:
+  - "Preserve CAT-SA-AGR-PREC-001 v1.0 as the sole canonical South African Agreements Catalogue."
+  - "Preserve REG-AGR-TPL-001 v1.1 as the authoritative Agreement Template Register and promotion lifecycle."
+  - "Inventory OASIS LegalRuleML, Accord Project Cicero, and existing Kongoni governance schemas with immutable provenance references."
+  - "Classify each artifact using ADOPT -> ADAPT -> BUILD and record licence/IPR boundaries."
+  - "Crosswalk external artifacts to CAT source/T&C fields, REG Artifact Contract/template/promotion fields, and MET-PDCA evidence controls."
+  - "Test for duplicate authority, duplicate repositories, legal-authority inversion, transaction-readiness leakage, and unnecessary custom build."
+  - "Report CHECK/STUDY result and recommended ACT without promoting any Agreement Template."
+acceptance_criteria:
+  - "Every source has provenance and licence/IPR treatment."
+  - "No parallel Agreement Catalogue or Agreement Template Register is created."
+  - "South African legal authority precedence is preserved."
+  - "Current VALIDATING template states are unchanged."
+  - "Open gaps are explicit, including OASIS XSD validation and substantive clause validation."

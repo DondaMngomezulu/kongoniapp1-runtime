@@ -1,0 +1,87 @@
+artifact_id: XWALK-AGR-ARTIFACT-001
+version: "0.2"
+date: "2026-08-18"
+status: ACT_ADAPT_APPROVED
+supersedes:
+  artifact: agent-workspace/governance/agreement-artifact-crosswalk-v0.1.yaml
+  version: "0.1"
+  preservation_rule: >-
+    Version 0.1 remains the immutable CHECK/STUDY candidate record. All source manifest,
+    crosswalk mappings, checks, findings, boundaries, and open controls in v0.1 remain
+    inherited unless explicitly changed below.
+task_class: T2
+authority:
+  mandate: "Group CEO approved controlled ingestion and crosswalk of OASIS LegalRuleML, Accord Project Cicero, and existing Kongoni GitHub schemas — 2026-08-18"
+  act_authority: Group CEO
+  act_decision: ADAPT
+  act_date: "2026-08-18"
+execution_owner: Reandra
+record_controller: Jane Seaward
+method: "ADOPT -> ADAPT -> BUILD"
+
+controlled_architecture:
+  authoritative_source: "South African authoritative source governed through CAT-SA-AGR-PREC-001"
+  sequence:
+    - CAT-SA-AGR-PREC-001.Source_and_TermsAndConditions
+    - South_African_Statutory_Control
+    - Transaction_Legal_Applicability_Profile
+    - Governed_Agreement_Clause
+    - Approved_Operative_Clause_Variant
+    - LegalRuleML_representation_where_normative_execution_is_required
+    - Artifact_Contract
+    - Accord_compatible_typed_template_model_where_useful
+    - REG-AGR-TPL-001.Governed_Agreement_Template
+    - Technical_compile_data_render_logic_tests
+    - Transaction_specific_legal_validation
+    - Evidence
+    - ACT
+
+act:
+  decision: ADAPT
+  adopt:
+    - "OASIS LegalRuleML 1.0 semantics and official schema family as the machine-readable normative-rule representation and conformance source."
+    - "Existing Kongoni work-item, evidence, change-log, and handoff schemas as the execution and governance envelope."
+  adapt:
+    - "Accord Cicero/Concerto typed model, variable binding, deterministic rendering, and automated technical test patterns beneath existing Artifact Contract and Agreement Template governance."
+  build_only_the_gap:
+    - "Thin Kongoni Agreement Clause Profile linking CAT source provenance and T&C normative effect to LegalRuleML rule IDs, REG template bindings, and technical test cases."
+    - "Thin validator/orchestrator for source traceability, OASIS XSD conformance, template data validation, render/logic tests, and governed evidence output."
+  prohibited:
+    - "Parallel Agreement Catalogue."
+    - "Parallel Agreement Template Register."
+    - "New proprietary contract language."
+    - "New generic evidence framework."
+    - "Use of Accord wording or technical tests as South African substantive legal authority."
+
+controls:
+  - control_id: AGR-XWALK-010
+    status: CLOSED_ADOPTED
+  - control_id: AGR-XWALK-011
+    status: CLOSED_ADAPTED
+  - control_id: AGR-XWALK-011-A
+    status: CLOSED_ADOPTED_WITH_BLOCKING_EVIDENCE_GAPS
+  - control_id: AGR-XWALK-011-A-EVIDENCE
+    status: OPEN_FAIL_CLOSED
+  - control_id: AGR-XWALK-011-B
+    status: CLOSED_ADOPTED
+    note: "Clause-library governance/approval architecture adopted; approved operative clauses remain zero."
+  - control_id: AGR-XWALK-011-B-LEGAL-REVIEW
+    status: OPEN
+  - control_id: AGR-XWALK-011-C
+    status: CHECK_STUDY_TRANSACTION_BLOCKED
+
+transaction_use:
+  agreement_templates_promoted: false
+  reason: >-
+    Transaction evidence, clause-specific substantive legal review, and collateral-specific canary validation remain mandatory.
+
+closure:
+  crosswalk_pdca_complete: true
+  act_recorded: true
+  decision: ADAPT
+  xsd_conformance_gate_complete: true
+  statutory_architecture_gate_complete: true
+  transaction_applicability_profile_gate_complete: true
+  clause_library_architecture_gate_complete: true
+  downstream_validation_complete: false
+  next_gate: "AGR-XWALK-011-C ACT after CHECK/STUDY, while A-EVIDENCE and B-LEGAL-REVIEW remain open fail-closed controls"

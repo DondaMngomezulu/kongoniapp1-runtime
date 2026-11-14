@@ -1,0 +1,39 @@
+change_id: CHG-20260818-AGT-WS-AUTH-001
+timestamp_utc: "2026-08-18T21:12:00Z"
+actor:
+  type: ChatGPT
+  name: ChatGPT Enterprise Architecture Agent
+  agent_contract_ref: null
+mandate_ref: "Group CEO approval to codify Agent Workspace authority boundary — 2026-08-18"
+accountability_task_ref: WRK-AGR-LEGAL-APPLICABILITY-20260818
+task_class: T2
+change_type: governance
+summary: >-
+  Codified the Agent Workspace authority boundary so validation and engineering storage cannot be
+  interpreted as enterprise, legal, accounting, tax or commercial authority.
+reason: >-
+  Prevent agent-workspace from becoming a competing system of record and preserve object-specific
+  authority across GitHub, Zoho Catalyst, governed enterprise registers/libraries/catalogues and external normative sources.
+affected_paths:
+  - agent-workspace/README.md
+  - agent-workspace/AGENTS.md
+  - agent-workspace/governance/agent-workspace-authority-boundary-v0.1.yaml
+  - agent-workspace/change-log/CHG-20260818-AGT-WS-AUTH-001.yaml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: "Group CEO: Yes — 2026-08-18"
+pdca:
+  phase: ACT
+  do_complete: true
+  check_study_result: PASS_WITH_CONTROLLED_GAPS
+  act_decision: ADOPT
+  task_complete: true
+evidence:
+  - "agent-workspace/README.md prior authority-boundary wording"
+  - "agent-workspace/AGENTS.md collaboration protocol"
+pull_request: 10
+notes: >-
+  The control does not move authoritative enterprise objects into agent-workspace. GitHub remains the governed engineering repository.
+  Zoho Catalyst authority remains object-specific for designated runtime/execution-control/architecture records.
+  Validators establish conformance only and do not confer substantive business authority.
