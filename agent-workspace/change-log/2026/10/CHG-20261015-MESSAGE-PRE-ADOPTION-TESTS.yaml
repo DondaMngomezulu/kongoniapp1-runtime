@@ -1,0 +1,47 @@
+change_id: CHG-20261015-MESSAGE-PRE-ADOPTION-TESTS
+timestamp_utc: '2026-10-15T18:21:31Z'
+actor:
+  type: Codex
+  name: Codex
+  agent_contract_ref: null
+mandate_ref: 'User instruction 2026-10-15: Please test before adoption.'
+accountability_task_ref: https://github.com/DondaMngomezulu/kongoniapp1-runtime/pull/69
+task_class: T2
+change_type: source_code
+summary: Record pre-adoption failures, harden candidate validation and add adversarial
+  regression tests.
+reason: Original happy-path and negative tests missed source-integrity and message-hygiene
+  failures.
+affected_paths:
+- .github/workflows/message-profile-validation.yml
+- agent-workspace/change-log/2026/10/CHG-20261015-MESSAGE-PRE-ADOPTION-TESTS.yaml
+- governance/message-schemas/PRE-ADOPTION-20261015.md
+- governance/message-schemas/REUSABLE-PROFILES.md
+- governance/message-schemas/evidence/pre-adoption-20261015.json
+- governance/message-schemas/profiles/registry.candidate.json
+- governance/message-schemas/scripts/message_profiles.py
+- governance/message-schemas/tests/test_pre_adoption.py
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: 'Current explicit testing instruction and prior repository-only draft-publication
+    authority for PR #69; regression fixes and evidence stay on the same draft PR.
+    No merge, adoption, runtime deployment, register mutation or dispatch authority.'
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 45 unittest methods and 13 original envelope checks pass in
+    a clean virtual environment. Private application projection, serial/concurrent
+    and larger synthetic-input exercises pass. GitHub CI pending updated publication;
+    production integration and semantic approval remain unverified.
+  act_decision: null
+  task_complete: false
+evidence:
+- governance/message-schemas/PRE-ADOPTION-20261015.md
+- governance/message-schemas/evidence/pre-adoption-20261015.json
+- governance/message-schemas/tests/test_pre_adoption.py
+commit_sha: null
+pull_request: 69
+notes: ACT recommendation is ADAPT for a controlled pilot; no adoption decision has
+  been taken. Candidate version 0.1.0 remains unreleased. Pinned publisher artifacts
+  remain unchanged; all published test data are synthetic.

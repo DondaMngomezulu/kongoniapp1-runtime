@@ -1,0 +1,68 @@
+{
+  "eventId": "79b334ca-9268-4d10-8d28-46ab353d7b98",
+  "eventType": "message.information-request.preview",
+  "occurredAt": "2000-01-01T00:00:00Z",
+  "producer": {
+    "system": "synthetic-fixture",
+    "service": "message-preview",
+    "environment": "sandbox"
+  },
+  "subject": {
+    "objectType": "SyntheticAssessment",
+    "objectId": "EXAMPLE-001"
+  },
+  "schema": {
+    "id": "information-request-email",
+    "version": "0.1.0",
+    "uri": "urn:example:information-request-email:0.1.0"
+  },
+  "correlationId": "example-thread-001",
+  "idempotencyKey": "example-request-001",
+  "actor": {
+    "actorType": "agent",
+    "actorId": "synthetic-test-agent"
+  },
+  "data": {
+    "profile": {
+      "key": "information-request-email",
+      "version": "0.1.0"
+    },
+    "reference": "EXAMPLE-001",
+    "subject": "Initial information request",
+    "sender": {
+      "name": "Example Enquirer",
+      "email": "enquirer@example.invalid"
+    },
+    "to": [
+      {
+        "name": "Example Agent",
+        "email": "agent@example.invalid"
+      }
+    ],
+    "cc": [],
+    "introduction": "Please consider a staged release of information for an initial assessment.",
+    "requestedItems": [
+      {
+        "description": "An anonymised occupancy and rental schedule.",
+        "disclosure": "ANONYMISED"
+      },
+      {
+        "description": "Historical operating costs with source dates.",
+        "disclosure": "SUMMARY"
+      },
+      {
+        "description": "Unit schedule and basic ownership and zoning information.",
+        "disclosure": "BASIC_RECORD"
+      }
+    ],
+    "confidentiality": "PROPOSE_NDA_REVIEW",
+    "qualificationQuestions": [
+      "What minimum qualification evidence is needed for remaining confidential records?",
+      "Would an NDA or non-binding institutional expression of interest be acceptable initially?"
+    ],
+    "responseDueDate": null,
+    "financingMethod": null,
+    "financePreApproval": null,
+    "purchasingEntity": null
+  }
+}

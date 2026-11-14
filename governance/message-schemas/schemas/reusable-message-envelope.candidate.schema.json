@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reusable message envelope \u2014 candidate 0.1.0",
+  "allOf": [
+    {
+      "$ref": "canonical-event-envelope.candidate.schema.json"
+    },
+    {
+      "required": [
+        "idempotencyKey",
+        "actor"
+      ],
+      "properties": {
+        "eventType": {
+          "const": "message.information-request.preview"
+        },
+        "schema": {
+          "properties": {
+            "id": {
+              "const": "information-request-email"
+            },
+            "version": {
+              "const": "0.1.0"
+            }
+          }
+        },
+        "data": {
+          "$ref": "information-request-email.candidate.schema.json"
+        }
+      }
+    }
+  ]
+}
