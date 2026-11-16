@@ -5,6 +5,7 @@
  * Extraction is not proof of authenticity. A trusted verification decision is required.
  */
 const crypto = require("node:crypto");
+const { crmTermsGate } = require("./crm-terms-acceptance");
 const TYPES = Object.freeze(["SA_ID", "DRIVERS_LICENCE"]);
 const STATUS = Object.freeze({PENDING:"PENDING_VERIFICATION",REVIEW:"MANUAL_REVIEW",VERIFIED:"VERIFIED",REJECTED:"REJECTED"});
 function required(value,name){if(typeof value!=="string"||!value.trim())throw new Error("MISSING_"+name);return value.trim();}
@@ -33,16 +34,23 @@ function recordVerification(state,decision){
  return {intake:state.intake,verificationStatus:decision.outcome,reviewerId:decision.reviewerId,
   evidenceRef:decision.evidenceRef,verifiedAt:required(decision.timestamp,"TIMESTAMP"),accessActive:false};
 }
-function enterpriseGate({crmUser,identity,terms}){
+function enterpriseGate({crmUser,identity,terms,crmTermsContext,now}){
  const reasons=[];
  if(!crmUser||crmUser.status!=="active"||crmUser.confirm!==true)reasons.push("CRM_USER_NOT_ACTIVE_CONFIRMED");
  if(identity?.verificationStatus!=="VERIFIED")reasons.push("IDENTITY_NOT_VERIFIED");
  if(terms?.accepted!==true||!terms.version||!terms.acceptedAt||!terms.evidenceRef)reasons.push("ENTERPRISE_TERMS_NOT_ACCEPTED");
- return {passed:reasons.length===0,reasons};
+ const crmTerms=crmTermsGate(crmTermsContext,now);
+ reasons.push(...crmTerms.reasons);
+ if(!crmUser?.id||crmTermsContext?.crmUser?.id!==crmUser.id||
+    !identity?.intake?.contactId||identity.intake.contactId!==crmTermsContext?.contact?.id)reasons.push("ENTERPRISE_SUBJECT_MISMATCH");
+ return {passed:reasons.length===0,reasons,contactId:crmTermsContext?.contact?.id||null};
 }
-function accessGate({enterprise,approval,terms,slot,controller}){
+function accessGate({enterprise,approval,terms,slot,controller,crmTermsContext,now}){
  const reasons=[];
  if(enterprise?.passed!==true)reasons.push("ENTERPRISE_GATE_INCOMPLETE");
+ const crmTerms=crmTermsGate(crmTermsContext,now);
+ reasons.push(...crmTerms.reasons);
+ if(!enterprise?.contactId||enterprise.contactId!==crmTermsContext?.contact?.id)reasons.push("ENTERPRISE_SUBJECT_MISMATCH");
  if(approval?.approved!==true||!approval.approverId)reasons.push("ACCESS_NOT_APPROVED");
  if(terms?.accepted!==true||!terms.version||!terms.acceptedAt||!terms.evidenceRef)reasons.push("ACCESS_TERMS_NOT_ACCEPTED");
  if(!Number.isInteger(slot)||slot<200||slot>299)reasons.push("INVALID_EMPLOYEE_SLOT");
