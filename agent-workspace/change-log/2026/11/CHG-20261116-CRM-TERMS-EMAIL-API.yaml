@@ -1,0 +1,36 @@
+change_id: CHG-20261116-CRM-TERMS-EMAIL-API
+timestamp_utc: '2026-11-16T14:10:00Z'
+actor:
+  type: Codex
+  name: Codex
+  agent_contract_ref: null
+mandate_ref: User instruction on 16 November 2026 to update the access-code API after requiring explicit reply-email acceptance of CRM Terms of Use.
+accountability_task_ref: null
+task_class: T2
+change_type: source_code
+summary: Require current CRM terms acceptance and verified reply evidence in access-code preflight.
+reason: An active CRM account or caller-supplied acceptance flag must not permit code issuance without the user's reviewed reply to the terms request.
+affected_paths:
+  - governance/crm-terms-acceptance.js
+  - governance/identity-verification-service.js
+  - governance/gate-access-allocation-v2.js
+  - governance/crm/gate-access-enrolment-preflight.ds
+  - governance/crm/gate-access-enrolment-preflight.md
+  - governance/tests/crm-terms-acceptance.test.js
+  - .github/workflows/access-control-tests.yml
+environment: repository
+authority:
+  status: AUTHORISED
+  reference: User's 16 November 2026 API-update instruction; source and read-only native contract update only. No issuing endpoint, new REST exposure or Catalyst deployment authorised.
+pdca:
+  phase: CHECK_STUDY
+  do_complete: true
+  check_study_result: 42 synthetic Node tests passed locally; native readback and GitHub CI recorded separately. No live email-evidence adapter or issuance execution tested.
+  act_decision: ADAPT
+  task_complete: false
+evidence:
+  - governance/tests/crm-terms-acceptance.test.js
+  - governance/crm/gate-access-enrolment-preflight.md
+commit_sha: null
+pull_request: null
+notes: Production authority remains with CRM. The existing contract retains HOLD_EVENT_HANDLER_NOT_CONNECTED and issue_credential=false. Pure functions are not authentication mechanisms. Public source contains synthetic fixtures and configuration only; live CRM/mail evidence and deployment receipts stay in CRM. No Catalyst architecture authority is inferred from this source change.

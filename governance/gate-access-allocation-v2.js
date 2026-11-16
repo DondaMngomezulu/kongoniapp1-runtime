@@ -1,4 +1,5 @@
 "use strict";
+const { crmTermsGate } = require("./crm-terms-acceptance");
 /** Gate access: CRM tracks approvals; Thabani programs employee PINs on keypad. */
 const POLICY=Object.freeze({masterSlot:100,employee:[200,299],visitor:[300,1000],temporaryMaxPasses:10,temporaryExpiresOn:"2026-11-13"});
 const inRange=(s,[a,b])=>Number.isInteger(s)&&s>=a&&s<=b;
@@ -16,6 +17,8 @@ function reconcile({records,controllerSlots=[],inventoryComplete=false}){
    if(r.onboardingApproved!==true)reasons.push("ONBOARDING_NOT_APPROVED");
    if(r.employeeConfirmed!==true)reasons.push("EMPLOYMENT_NOT_CONFIRMED");
    if(r.slotApproved!==true)reasons.push("SLOT_NOT_APPROVED");
+   reasons.push(...crmTermsGate(r.crmTermsContext).reasons);
+   if(r.crmTermsContext?.contact?.id!==r.contactId)reasons.push("CRM_TERMS_SUBJECT_MISMATCH");
    if(r.keypadProgrammedBy!=="Thabani Mkhize"||r.keypadProgrammingConfirmed!==true)reasons.push("KEYPAD_PROGRAMMING_UNCONFIRMED");
   }
   if(r.userType==="VISITOR"){

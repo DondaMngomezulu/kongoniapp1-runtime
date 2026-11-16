@@ -1,0 +1,31 @@
+string standalone.kg_gate_access_enrolment_preflight_v1()
+{
+result = Map();
+result.put("schema_version","1.2");
+result.put("event_type","DOCUMENT_UPLOADED");
+result.put("accepted_document_types","SA_ID,DRIVERS_LICENCE");
+result.put("intake_policy","RESTRICTED_STORAGE_REFERENCE_ONLY");
+result.put("required_event_fields","event_id,contact_id,document_type,attachment_id,sha256,uploaded_at");
+result.put("idempotency_key","event_id+attachment_id+sha256");
+result.put("contact_match_policy","EXISTING_CONTACT_ID_OR_MANUAL_REVIEW");
+result.put("identity_status","VERIFICATION_PENDING");
+result.put("slot_status","NO_AUTOMATIC_ALLOCATION");
+result.put("crm_terms_acceptance_required",true);
+result.put("crm_terms_acceptance_method","EXPLICIT_USER_REPLY_EMAIL_REVIEWED_BY_AUTHORISED_ADMINISTRATOR");
+result.put("crm_terms_fields","CRM_Terms_Acceptance,CRM_Terms_Reference,CRM_Terms_Reply_Evidence,CRM_Terms_Accepted_At");
+result.put("crm_terms_required_state","Accepted");
+result.put("crm_terms_subject_binding","ENTITLEMENT_CONTACT_CRM_USER_AND_VERIFIED_REPLY_SENDER_MUST_MATCH");
+result.put("crm_terms_reference_binding","CURRENT_REQUIRED_TERMS_REFERENCE_MUST_MATCH_REQUEST_AND_REVIEW");
+result.put("crm_terms_reply_binding","ORIGINAL_REQUEST_MESSAGE_AND_THREAD_MUST_MATCH_VERIFIED_REPLY");
+result.put("crm_terms_review_binding","AUTHORISED_REVIEWER_EXPLICIT_ACCEPTANCE_AND_VALID_TIMESTAMPS_REQUIRED");
+result.put("crm_terms_inference","ACTIVE_ACCOUNT_DOCUMENT_RECEIPT_DELIVERY_READ_RECEIPT_OR_SILENCE_IS_NOT_ACCEPTANCE");
+result.put("record_write_feature","apply_feature_execution:criteria_validation_rule");
+result.put("caller_acceptance_assertions","REJECTED_READ_CURRENT_CRM_AND_EMAIL_EVIDENCE_SERVER_SIDE");
+result.put("separate_terms","ENTERPRISE_AND_ACCESS_CONTROL_TERMS_REMAIN_REQUIRED");
+result.put("required_server_adapters","AUTHENTICATED_CURRENT_CRM_AND_MAIL_REPLY_REVIEW_EVIDENCE");
+result.put("controller_activation","PROHIBITED_WITHOUT_APPROVAL");
+result.put("activation_confirmation","PROHIBITED_WITHOUT_CONTROLLER_ACK");
+result.put("issue_credential",false);
+result.put("status","HOLD_EVENT_HANDLER_NOT_CONNECTED");
+return result.toString();
+}
