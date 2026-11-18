@@ -1,0 +1,178 @@
+profile_id: PRF-AGR-COMPUTABLE-001
+version: '0.1'
+as_of: '2026-10-09'
+status: PROPOSED_FOR_REVIEW
+name: Enterprise Computable Agreement Application Profile
+decision_ref: ADR-COMP-AGR-001
+parent_architecture:
+  - STD-ARCH-HUB-SPOKE-001
+  - ADR-HUB-FOUNDATION-001
+  - KEA-MOD-HS-001
+existing_controls:
+  - CAT-SA-AGR-PREC-001
+  - REG-AGR-TPL-001
+  - PRF-AGR-CLAUSE-PKG-001
+  - PRF-AGR-TPL-VAL-001
+  - CTL-LEGALRULEML-XSD-001
+  - CTL-DEV-CHG-LOG-001
+  - MET-PDCA-001
+purpose: >
+  Provide enterprise-wide criteria, inputs, outputs, authority and conformance gates for
+  machine-readable and bounded-executable agreement derivatives. This profile neither
+  amends executed instruments nor authorises deployment or legally effective acts.
+scope:
+  enterprise_wide: true
+  agreement_coverage: Conditional by agreement class and clause semantics, not by vendor application.
+  lifecycle_coverage: Draft, executed, amended, restated, expired, terminated, historical replay.
+  promotion_states: [DRAFT, VALIDATING, LEGAL_REVIEW, FINANCE_REVIEW, APPROVED_MODEL, EXECUTION_AUTHORISED, BLOCKED, SUPERSEDED]
+  applicability_states: [APPLICABLE, PARTIAL, NOT_APPLICABLE, BLOCKED]
+standards:
+  legal_text:
+    specification: OASIS LegalDocML / Akoma Ntoso 1.0
+    role: Structured document representation only where selected schema covers the contract class.
+    boundary: Private-contract schema coverage requires verification; use a governed contract XML profile if unsupported.
+  normative_rules:
+    specification: OASIS LegalRuleML Core 1.0
+    role: Represent obligations, rights, permissions, prohibitions, temporal and defeasible legal rules.
+    conformance_control: CTL-LEGALRULEML-XSD-001
+    boundary: Machine-readable XML is not by itself an executable, binding legal decision.
+  financial_contract:
+    specification: ACTUS
+    role: Event-driven cash-flow generation for independently supported financial contract types.
+    release_gate: Pin dictionary version, technical specification, engine version and supported contract-type coverage.
+    boundary: Financial amortisation does not automatically encode equity conversion or legal remedies.
+  executable_pattern:
+    specification: Accord Project Concerto / Cicero
+    adoption: ADAPT_REFERENCE
+    role: Typed data and tested logic pattern; executable logic is optional per applicable clause.
+    boundary: Accord template wording is not South African legal authority.
+  decisions:
+    specification: OMG DMN
+    adoption: PROPOSED_NOT_MANDATORY
+    boundary: Use only after a controlled architecture and standards adoption decision.
+  semantics:
+    authority: South African law and verified enterprise dictionary concepts, with FIBO as reviewed overlay.
+    governance: ISO/IEC 11179; OASIS RegRep; Genericode where applicable.
+    boundary: Do not invent canonical concept URIs or equate FIBO classes without verified mappings.
+applicability_matrix:
+  - agreement_class: loan_or_credit
+    legal_rules: CONDITIONAL
+    financial_events: ACTUS_IF_SUPPORTED
+    typed_execution: CONDITIONAL
+  - agreement_class: convertible_loan_or_option_linked_finance
+    legal_rules: REQUIRED_FOR_REPRESENTED_RIGHTS
+    financial_events: ACTUS_SUPPORTED_DEBT_COMPONENT_ONLY
+    typed_execution: OPTION_AND_VALUATION_CALCULATIONS_WITH_HUMAN_LEGAL_GATE
+  - agreement_class: finance_lease_or_instalment_sale
+    legal_rules: CONDITIONAL
+    financial_events: ACTUS_IF_SUPPORTED
+    typed_execution: CONDITIONAL
+  - agreement_class: rental_or_operating_lease
+    legal_rules: CONDITIONAL
+    financial_events: ACTUS_ONLY_IF_SUPPORTED_FINANCIAL_COMPONENT
+    typed_execution: PRICE_USAGE_SERVICE_RULES_WHERE_DETERMINISTIC
+  - agreement_class: supply_sale_or_service
+    legal_rules: CONDITIONAL
+    financial_events: NOT_APPLICABLE_UNLESS_FINANCING_COMPONENT_EVIDENCED
+    typed_execution: ACCEPTANCE_PAYMENT_OR_SLA_RULES_WHERE_DETERMINISTIC
+  - agreement_class: guarantee_suretyship_cession_novation_or_amendment
+    legal_rules: CONDITIONAL
+    financial_events: CASE_SPECIFIC_SUPPORTED_FINANCIAL_EFFECT_ONLY
+    typed_execution: NO_IMPLIED_TRANSFER_RELEASE_OR_VARIATION
+  - agreement_class: narrative_or_judgement_dominant
+    legal_rules: PARTIAL_OR_NOT_APPLICABLE
+    financial_events: NOT_APPLICABLE
+    typed_execution: MANUAL_REVIEW
+inputs:
+  required_source:
+    - agreement_id
+    - agreement_class_and_applicability_decision
+    - current_authoritative_repository_uri
+    - signed_original_content_hash_or_verified_absence
+    - source_and_amendment_version_chain
+    - signatures_parties_and_authorisation_evidence
+    - governing_law_effective_dates_and_clause_anchors
+  conditional:
+    - canonical_party_role_and_concept_bindings
+    - parameter_provenance_and_risk_factor_history
+    - independent_bank_and_accounting_actuals
+    - interest_day_count_and_calendar_rules
+    - valuations_consents_notices_and_option_exercise_evidence
+    - legal_interpretation_decisions_and_exception_register
+outputs:
+  - agreement_manifest_with_source_hash_and_lifecycle
+  - structured_clause_representation_and_versioned_rule_ids
+  - clause_rule_model_input_output_crosswalk
+  - actus_contract_and_event_projection_when_applicable
+  - typed_executable_rules_when_deterministic_and_reviewed
+  - proposed_action_or_manual_review_recommendation
+  - independent_evidenced_actual_event_register
+  - test_security_legal_financial_and_approval_evidence
+immutable_principles:
+  - Signed source and effective amendments remain legal authority; derivatives never alter them.
+  - Each agreement retains distinct parties, instrument ID, dates and obligations without explicit legally effective consolidation.
+  - Past contractual due dates never become future maturity dates through model refresh.
+  - Interest assumptions and prime resets are input evidence, never invented defaults.
+  - Actual posting, option exercise and signature are external facts requiring evidence.
+  - Do not promote a proposal to executed legal status by rendering or test pass.
+service_binding:
+  doc_integration: MS-VS00-DOCUMENT-SERVICES-001
+  finance_legal_compliance_use_case: MS-VS02-LEGAL-COMPLIANCE-001
+  source_of_truth: Existing approved governed document repository.
+  architecture_and_code: GitHub
+  execution_control: Logical Hub/Catalyst policy gateway as approved.
+  accounting: Zoho Books
+  crm: Zoho CRM for commercial relationship state only.
+  rule: Reuse the existing Service Domains, do not create one deployable microservice per standard.
+execution_controls:
+  permitted_without_external_effect:
+    - read_and_classify
+    - parse_and_link_clauses
+    - calculate_simulated_events
+    - test_historical_replay
+    - generate_draft_recommendations
+  gated_legally_or_financially_effective_actions:
+    - sign_or_execute
+    - amend_novate_cede_assign_release_waive_or_terminate
+    - exercise_conversion_or_issue_shares
+    - send_legally_effective_notice_or_accelerate
+    - initiate_payment_or_financial_commitment
+    - post_to_accounting_master
+  required_gate: Exact action mandate, delegated authority, review, source evidence, audit ID and designated application gateway.
+  failure_mode: BLOCK_AND_ESCALATE_TO_ACCOUNTABLE_OWNER
+assurance:
+  - {gate: CA-001, requirement: Source and executed-status evidence verified, failure: BLOCK}
+  - {gate: CA-002, requirement: Source clauses traced to structured representation, failure: BLOCK}
+  - {gate: CA-003, requirement: Legal rights preserved and interpretation reviewed, failure: BLOCK}
+  - {gate: CA-004, requirement: OASIS XSD and selected document-schema coverage checked, failure: BLOCK_IF_APPLICABLE}
+  - {gate: CA-005, requirement: ACTUS release and contract type pinned and reference events reconciled, failure: BLOCK_IF_APPLICABLE}
+  - {gate: CA-006, requirement: Typed execution compile/schema/logic and negative tests passed, failure: BLOCK_IF_APPLICABLE}
+  - {gate: CA-007, requirement: Financial forecasts separated from actuals and Books reconciled, failure: BLOCK_IF_APPLICABLE}
+  - {gate: CA-008, requirement: Legal effects and accounting writes protected by permission and human/approved gateway checks, failure: BLOCK}
+  - {gate: CA-009, requirement: Security privacy provenance and licensing reviewed, failure: BLOCK}
+  - {gate: CA-010, requirement: Independent agreement identity and amendment-chain regression passed, failure: BLOCK}
+  - {gate: CA-011, requirement: PDCA CHECK_STUDY ACT decision and authoritative register update recorded, failure: BLOCK_PROMOTION}
+synthetic_regressions:
+  - An unamended convertible loan retains its original borrower, maturity date and conversion clause.
+  - A loan rate replay uses evidence of every effective prime rate and day-count rule.
+  - Conversion calculation does not create shares or discharge debt without verified legal events.
+  - Two separate agreements never consolidate because their balances share an accounting counterparty.
+  - An unsupported ACTUS contract type is blocked rather than mapped to PAM by convenience.
+  - A generated LegalRuleML document with no engine/interpretation validation cannot be marked executable.
+  - A failed gate leaves the source document unchanged and prevents legal or accounting side effects.
+open_gates:
+  - Determine contract-specific LegalDocML schema coverage and any private-contract XML extension.
+  - Pin the adopted ACTUS dictionary technical specification and tested engine version.
+  - Determine LegalRuleML-to-runtime reasoning implementation, if needed.
+  - Review Accord engine licensing/dependency/support and applicability per clause.
+  - Decide DMN adoption separately; do not imply approved status.
+  - Obtain accountable legal and finance owner sign-off and authoritative ACT record before promotion.
+implementation_status:
+  architecture_defined: true
+  schema_conformance_tested: false
+  agreement_instances_codified: false
+  financial_engine_deployed: false
+  executable_engine_deployed: false
+  legal_authority_approved: false
+  production_authorised: false
+closure_rule: DO_COMPLETE != TASK_COMPLETE
